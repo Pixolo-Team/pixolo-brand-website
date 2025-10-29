@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+
+/* =========================
+   Neometric Font Faces
+   ========================= */
+@font-face {
+  font-family: "Neometric";
+  src: url("/fonts/neometric-hairline.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neometric";
+  src: url("/fonts/neometric-extralight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neometric";
+  src: url("/fonts/neometric-light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neometric";
+  src: url("/fonts/neometric-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neometric";
+  src: url("/fonts/neometric-medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neometric";
+  src: url("/fonts/neometric-bold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neometric";
+  src: url("/fonts/neometric-extrabold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neometric";
+  src: url("/fonts/neometric-heavy.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neometric";
+  src: url("/fonts/neometric-black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ---------------------------------------
+   Base Global Styles
+---------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px; /* base 1rem = 16px */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Neometric", sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+* {
+  @apply box-border;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Optional scrollbar style (nice subtle look) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Colour Variables */
+@theme inline {
+  --color-n-50: var(--color-n-50);
+  --color-n-100: var(--color-n-100);
+  --color-n-200: var(--color-n-200);
+  --color-n-300: var(--color-n-300);
+  --color-n-400: var(--color-n-400);
+  --color-n-500: var(--color-n-500);
+  --color-n-600: var(--color-n-600);
+  --color-n-700: var(--color-n-700);
+  --color-n-800: var(--color-n-800);
+  --color-n-900: var(--color-n-900);
+  --color-n-950: var(--color-n-950);
+}
+
+:root {
+  --color-n-50: #ffffff;
+  --color-n-100: var(--color-slate-100);
+  --color-n-200: var(--color-slate-200);
+  --color-n-300: var(--color-slate-300);
+  --color-n-400: var(--color-slate-400);
+  --color-n-500: var(--color-slate-500);
+  --color-n-600: var(--color-slate-600);
+  --color-n-700: var(--color-slate-700);
+  --color-n-800: var(--color-slate-800);
+  --color-n-900: var(--color-slate-900);
+  --color-n-950: var(--color-slate-950);
+
+  /* Blue Shades */
+  --blue-50:  #EEF0FB;
+  --blue-100: #CDD2F4;
+  --blue-200: #ACB3EC;
+  --blue-300: #8B95E5;
+  --blue-400: #6977DD;
+  --blue-500: #4254D4;
+  --blue-600: #2D3FC8;
+  --blue-700: #2635A6;
+  --blue-800: #1E2A85;
+  --blue-900: #172064;
+  --blue-950: #0F1543;
+
+  /* Violet Shades */
+  --violet-50:  #F1EFFA;
+  --violet-100: #D6D0F1;
+  --violet-200: #BAB1E7;
+  --violet-300: #9E92DD;
+  --violet-400: #8373D4;
+  --violet-500: #5F4AC8;
+  --violet-600: #4F3ABB;
+  --violet-700: #423096;
+  --violet-800: #35267D;
+  --violet-900: #281D5E;
+  --violet-950: #1A133E;
+}
+
+.dark {
+  --color-n-50: var(--color-slate-950);
+  --color-n-100: var(--color-slate-900);
+  --color-n-200: var(--color-slate-800);
+  --color-n-300: var(--color-slate-700);
+  --color-n-400: var(--color-slate-600);
+  --color-n-500: var(--color-slate-500);
+  --color-n-600: var(--color-slate-400);
+  --color-n-700: var(--color-slate-300);
+  --color-n-800: var(--color-slate-200);
+  --color-n-900: var(--color-slate-100);
+  --color-n-950: #ffffff;
+}
