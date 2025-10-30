@@ -4,10 +4,14 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout>
   <div class="bg-n-950">
-	<!-- Background Star Image -->
-    <img
-      class="absolute top-0 left-0 w-full h-full"
-      src="/background-star.png"
+   <!-- Background Star Video -->
+    <video
+      class="absolute top-0 left-0 w-full h-full object-cover"
+      src="/videos/stars.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
     />
 
 	<!-- Background Circle Gradient -->
@@ -19,6 +23,7 @@ filter: blur(250px);"
   </div>
 
   <!-- Start adding sections from below  -->
-   <p class="font-bold">Hello</p>
-
+    <div class="relative z-10">
+      <p class="font-bold text-white">Hello</p>
+    </div>
 </Layout>
