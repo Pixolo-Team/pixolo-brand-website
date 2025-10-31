@@ -1,15 +1,20 @@
 ---
+interface MenuItem {
+  name: string;
+  url: string;
+}
 
+const { items = [] }: { items?: MenuItem[] } = Astro.props;
 ---
 
-<!-- Navbar content -->
-
-<nav class="py-4">
-  <ul class="flex items-center gap-8">
-    <li><a href="/" class="text-gray-800 hover:text-blue-600 font-medium">Home</a></li>
-    <li><a href="/software" class="text-gray-800 hover:text-blue-600 font-medium">Software</a></li>
-    <li><a href="/iot" class="text-gray-800 hover:text-blue-600 font-medium">IOT</a></li>
-    <li><a href="/tutorials" class="text-gray-800 hover:text-blue-600 font-medium">Tutorials</a></li>
+<nav>
+  <ul class="flex gap-10">
+    {items.map((item: MenuItem) => (
+      <li>
+        <a href={item.url} class="text-n-950 text-blue-600 text-base">
+          {item.name}
+        </a>
+      </li>
+    ))}
   </ul>
 </nav>
-
