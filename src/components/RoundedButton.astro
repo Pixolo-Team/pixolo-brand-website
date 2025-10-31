@@ -1,13 +1,19 @@
 ---
-const buttonText="Contact"
+const { buttonText, leftIcon, rightIcon } = Astro.props
 ---
-<section>
+
 
     <!-- Rounded Button -->
      <button>
+        <!--Left icon of Rounded Button  -->
+        {leftIcon && <img src={`/icons/${rightIcon}.svg`} alt={`${leftIcon} `} />}
+
+        <!-- Rounded Button Text -->
         <p>
             {buttonText}
         </p>
+        
+        <!-- Right Icon Of Rounded Button -->
+        {rightIcon && <img src={`/icons/${rightIcon}.svg`} alt={`${rightIcon} `} />}
      </button>
 
-</section>
