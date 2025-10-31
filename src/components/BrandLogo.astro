@@ -1,7 +1,7 @@
 ---
-const { variant = "Default" } = Astro.props;
+const { variant = "default" } = Astro.props;
 ---
 
 <a href="/">
-  <img src={`brand-logo/variant=${variant}.png`} alt="Brand Logo" />
+  <img src={`brand-logo/${variant}.png`} alt="Brand Logo" />
 </a>
