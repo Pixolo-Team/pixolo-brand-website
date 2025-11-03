@@ -1,0 +1,21 @@
+---
+
+// OTHERS //
+import BrandLogo from "./BrandLogo.astro";
+import MenuBar from "./MenuBar.astro";
+
+const menuItems = [
+  { name: "Home", url: "/", isActive: true },
+  { name: "About", url: "/about" },
+  { name: "Careers", url: "/careers" },
+  { name: "Portfolio", url: "/portfolio" },
+];
+
+---
+
+<!-- Navbar Display -->
+
+<header class="flex justify-between px-5 py-4 relative z-10">
+    <BrandLogo variant="light"/>
+    <MenuBar items={menuItems}/>
+</header>
