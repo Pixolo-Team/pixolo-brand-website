@@ -1,30 +1,37 @@
 ---
-// COMPONENTS IMPORT
+// COMPONENTS //
 import RoundedButton from "../components/RoundedButton.astro";
-// LAYOUT IMPORT
+
+// OTHERS //
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <div class="bg-n-950">
-	<!-- Background Star Image -->
-    <img
-      class="absolute top-0 left-0 w-full h-full"
-      src="/background-star.png"
-    />
+  <div class="bg-n-50">
+    <!-- Background Star Video -->
+    <!-- <video
+      class="absolute top-0 left-0 w-full h-full object-cover bg-transparent z-0"
+      src="/videos/stars.mp4"
+      autoplay
+      muted
+      loop
+      playsinline></video> -->
 
-	<!-- Background Circle Gradient -->
+    <!-- Background Circle Gradient -->
     <div
       class="fixed top-[30%] w-[885px] h-[885px] rounded-full left-1/2 -translate-x-1/2"
       style="background: linear-gradient(90deg, rgba(22, 125, 229, 0.36) 0%, rgba(95, 74, 200, 0.36) 92.31%);
 filter: blur(250px);"
-    />
+    >
+    </div>
+
+    <!-- Start adding sections from below  -->
+    <div class="relative z-10">
+      <RoundedButton
+        buttonText="Contact Us"
+        leftIcon="contactUsIcon"
+        rightIcon="contactUsIcon"
+      />
+    </div>
   </div>
-
-  <!-- Start adding sections from below  -->
-   <p class="font-bold">Hello</p>
-      
-     
-    <RoundedButton buttonText="Contact Us" leftIcon="contactUsIcon" rightIcon="contactUsIcon"/>
 </Layout>
-
