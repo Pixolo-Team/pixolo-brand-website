@@ -7,11 +7,12 @@ interface MenuItem {
 const { items = [] }: { items?: MenuItem[] } = Astro.props;
 ---
 
-<nav>
+<!-- Menu Content -->
+<nav class="bg-n-50 rounded-4xl px-6 py-2">
   <ul class="flex gap-10">
     {items.map((item: MenuItem) => (
       <li>
-        <a href={item.url} class="text-n-950 text-blue-600 text-base">
+        <a href={item.url} class="text-n-950 text-blue-600 text-base font-medium">
           {item.name}
         </a>
       </li>
