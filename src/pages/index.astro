@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import BottomCTA from '../components/BottomCTA.astro';
+
 ---
 
 <Layout>
@@ -20,5 +22,8 @@ filter: blur(250px);"
 
   <!-- Start adding sections from below  -->
    <p class="font-bold">Hello</p>
+
+  <BottomCTA  ctaText="Tell us about your needs" svgName="menu" />
+	<BottomCTA ctaText="Save for later" svgName="delete" /> 
 
 </Layout>
