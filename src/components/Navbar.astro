@@ -4,8 +4,14 @@
 import BrandLogo from "./BrandLogo.astro";
 import MenuBar from "./MenuBar.astro";
 
+const navItems = [
+  { name: "Home", url: "/", isActive: true },
+  { name: "Software", url: "/software" },
+  { name: "IOT", url: "/iot" },
+  { name: "Tutorials", url: "/tutorials" },
+];
 ---
-<header>
-    <BrandLogo />
-    <MenuBar />
+<header class="flex justify-between px-5 py-4 relative z-10">
+    <BrandLogo variant="light"/>
+    <MenuBar items={navItems}/>
 </header>
