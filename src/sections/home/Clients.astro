@@ -1,26 +1,87 @@
 ---
 // COMPONENTS //
+import BrandLogo from "../../components/BrandLogo.astro";
 import ToolBadge from "../../components/ToolBadge.astro";
 
+const clients = {
+    groupA : ["reliance-digital.svg","times-of-india.svg","ceat.svg","eighty-days.svg","pango.svg",],
+    groupB : ["too-yumm.svg","sai-international-school.svg","zizo.svg","ceat.svg","reliance-digital.svg"],
+    groupC : ["skorost-united.svg","fcb.svg","times-of-india.svg","times-of-india.svg"]
+}
 ---
 
 <!-- Clients Section -->
 <section>
+
     <!-- Container -->
-    <div>
+    <div class="flex-col flex-wrap justify-center items-center">
+
         <!-- Header Wrapper -->
-        <div>
-            <div>
+        <div class="flex-col flex-wrap p-6 w-full justify-center items-center">
+            <div class="flex justify-center">
                 <ToolBadge/>
             </div>
-            <p>Brands that believe in our code</p>
+            <p class="text-n-200 text-2xl w-full h-[60px] font-extrabold leading-tight text-center">Brands that believe in our code</p>
         </div>
 
         <!-- Client Logo Wrapper -->
-        <div>
-            <img src="/icons/reliance-digital.svg" alt="">
-            <img src="/icons/reliance-digital.svg" alt="">
-            <img src="/icons/reliance-digital.svg" alt="">
-        </div>
+        <!-- <div class="flex flex-wrap justify-center items-center p-6 gap-6">
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/reliance-digital.svg" alt="">
+            </div>
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/times-of-india.svg" alt="">
+            </div>
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/ceat.svg" alt="">
+            </div>
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/eighty-days.svg" alt="">
+            </div>
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/pango.svg" alt="">
+            </div>
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/too-yumm.svg" alt="">
+            </div>
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/sai-international-school.svg" alt="">
+            </div>
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/zizo.svg" alt="">
+            </div>
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/skorost-united.svg" alt="">
+            </div>
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/fcb.svg" alt="">
+            </div>
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/reliance-digital.svg" alt="">
+            </div>
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/reliance-digital.svg" alt="">
+            </div>
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/times-of-india.svg" alt="">
+            </div>
+            <div class="w-[100px] h-[54px] flex justify-center">
+                <img src="/icons/times-of-india.svg" alt="">
+            </div>
+        </div> -->
+        
+        {Object.entries(clients).map(([groupName, logos])=>(
+        <div class="flex flex-wrap justify-center gap-6 p-4">
+
+            {
+                logos.map((logo)=>(
+                <div class="w-[100px] h-[54px] flex justify-center items-center"}>
+                    <img src={`/icons/${logo}`} alt={logo.replace('.svg',"")} class="object-contain">
+                </div>))
+            }
+        </div>))
+        }
+
     </div>
+
 </section>
