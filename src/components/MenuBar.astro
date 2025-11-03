@@ -8,11 +8,11 @@ const { items = [] }: { items?: MenuItem[] } = Astro.props;
 ---
 
 <!-- Menu Content -->
-<nav class="bg-n-50 rounded-4xl px-6 py-2">
+<nav class="bg-n-100 rounded-4xl px-6 py-2">
   <ul class="flex gap-10">
     {items.map((item: MenuItem) => (
       <li>
-        <a href={item.url} class="text-n-950 text-blue-600 text-base font-medium">
+        <a href={item.url} class="text-n-950 text-base font-medium hover:text-blue-600">
           {item.name}
         </a>
       </li>
