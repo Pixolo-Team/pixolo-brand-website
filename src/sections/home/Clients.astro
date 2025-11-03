@@ -3,11 +3,21 @@
 import BrandLogo from "../../components/BrandLogo.astro";
 import ToolBadge from "../../components/ToolBadge.astro";
 
-const clients = {
-    groupA : ["reliance-digital.svg","times-of-india.svg","ceat.svg","eighty-days.svg","pango.svg",],
-    groupB : ["too-yumm.svg","sai-international-school.svg","zizo.svg","ceat.svg","reliance-digital.svg"],
-    groupC : ["skorost-united.svg","fcb.svg","times-of-india.svg","times-of-india.svg"]
-}
+const clientLogos = [
+                    {clientName: "reliance-digital.svg", alt: "Reliance Digital"},
+                    {clientName: "times-of-india.svg", alt: "Times Of India"},
+                    {clientName: "ceat.svg", alt: "Ceat"},
+                    {clientName: "eighty-days.svg", alt: "Eighty Days"},
+                    {clientName: "too-yumm.svg", alt: "Too Yumm"},
+                    {clientName: "sai-international-school.svg", alt: "Sai International School"},
+                    {clientName: "zizo.svg", alt: "Zizo"},
+                    {clientName: "ceat.svg", alt: "Ceat"},
+                    {clientName: "reliance-digital.svg", alt: "Reliance Digital"},
+                    {clientName: "skorost-united.svg", alt: "Skorost United"},
+                    {clientName: "fcb.svg", alt: "Fcb"},
+                    {clientName: "times-of-india.svg", alt: "Times Of India"},
+                    {clientName: "times-of-india.svg", alt: "Times Of India"}
+                    ]
 ---
 
 <!-- Clients Section -->
@@ -25,18 +35,13 @@ const clients = {
         </div>
 
         <!-- Client Logo Wrapper -->
-        
-        {Object.entries(clients).map(([groupName, logos])=>(
-        <div class="flex flex-wrap justify-center gap-6 p-4">
-
-            {
-                logos.map((logo)=>(
-                <div class="w-[100px] h-[54px] flex justify-center items-center"}>
-                    <img src={`/icons/${logo}`} alt={logo.replace('.svg',"")} class="object-contain">
-                </div>))
-            }
-        </div>))
-        }
+        <div class="flex flex-wrap justify-center items-center gap-6 p-6"> 
+            {clientLogos.map((logo)=>(
+                <div class="w-[100px] h-[54px] flex justify-center items-center">
+                    <img src={`/icons/${logo.clientName}`} alt={`${logo.alt}`} class="object-contain">
+                </div>
+            ))}
+        </div>
 
     </div>
 
