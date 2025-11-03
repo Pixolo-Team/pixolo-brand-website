@@ -1,10 +1,4 @@
 ---
-/**
- * Hero.astro
- * -----------------------------------
- * Simplified, static hero section using Pixolo standards.
- * No props, no loops — clean and readable.
- */
 
 const heroOverline = ["We’re the", "Geeks"];
 const heroTitle = "Big Tech Story.";
@@ -14,10 +8,10 @@ const ball1Src = "/3d-ball-1.svg";
 const ball2Src = "/3d-ball-1.svg";
 ---
 
-<!-- 🌌 Hero Section Start -->
+<!--  Hero Section Start -->
 <section class="relative flex flex-col items-center justify-center min-h-[474px] w-full overflow-hidden text-center">
 
-  <!-- 🟣 Decorative 3D shapes -->
+  <!--  Decorative 3D shapes -->
   <img
     src={ball2Src}
     alt="3d ball 2"
@@ -30,17 +24,17 @@ const ball2Src = "/3d-ball-1.svg";
     class="absolute top-[20px] left-[20px] w-[34.1px] h-[34.1px] rotate-[22deg]"
   />
 
-  <!-- 🧱 Hero Text Wrap -->
+  <!--  Hero Text Wrap -->
   <div class="flex flex-col items-center justify-center gap-[12px] w-[327px] h-auto">
 
     <!-- Overline / intro text -->
     <div class="flex flex-col items-center justify-center leading-none">
-      <p class="text-3xl font-normal tracking-[-0.02em] text-white">{heroOverline[0]}</p>
-      <p class="text-3xl font-bold tracking-[-0.02em] text-white">{heroOverline[1]}</p>
+      <p class="text-3xl font-normal tracking-[-0.02em] text-n-50 dark:text-n-950">{heroOverline[0]}</p>
+      <p class="text-3xl font-bold tracking-[-0.02em] text-n-50 dark:text-n-950">{heroOverline[1]}</p>
     </div>
 
     <!-- Main headline -->
-    <p class="text-3xl font-bold leading-none tracking-[-0.02em] text-white">{heroTitle}</p>
+    <p class="text-3xl font-bold leading-none tracking-[-0.02em] text-n-50 dark:text-n-950">{heroTitle}</p>
 
     <!-- Subtext paragraph -->
     <p class="text-sm font-medium leading-loose text-center bg-gradient-to-r from-[#6654D4] to-[#8B77F3] bg-clip-text text-transparent">
@@ -48,4 +42,4 @@ const ball2Src = "/3d-ball-1.svg";
     </p>
   </div>
 </section>
-<!-- 🌌 Hero Section End -->
+<!--  Hero Section End -->
