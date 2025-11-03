@@ -31,11 +31,13 @@ const clientLogos = [
             <div class="flex justify-center">
                 <ToolBadge/>
             </div>
-            <p class="text-n-200 text-2xl w-full h-[60px] font-extrabold leading-tight text-center">Brands that believe in our code</p>
+            <p class="text-n-200 text-2xl w-full font-extrabold leading-tight text-center">Brands that believe in our code</p>
         </div>
 
         <!-- Client Logo Wrapper -->
         <div class="flex flex-wrap justify-center items-center gap-6 p-6"> 
+
+            <!-- Loop Through Client Logos -->
             {clientLogos.map((logo)=>(
                 <div class="w-[100px] h-[54px] flex justify-center items-center">
                     <img src={`/icons/${logo.clientName}`} alt={`${logo.alt}`} class="object-contain">
