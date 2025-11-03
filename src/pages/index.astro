@@ -1,6 +1,7 @@
 ---
 // COMPONENTS //
 import RoundedButton from "../components/RoundedButton.astro";
+import BottomCTA from "../components/BottomCTA.astro";
 
 // OTHERS //
 import Layout from "../layouts/Layout.astro";
@@ -9,13 +10,13 @@ import Layout from "../layouts/Layout.astro";
 <Layout>
   <div class="bg-n-50">
     <!-- Background Star Video -->
-    <!-- <video
+    <video
       class="absolute top-0 left-0 w-full h-full object-cover bg-transparent z-0"
       src="/videos/stars.mp4"
       autoplay
       muted
       loop
-      playsinline></video> -->
+      playsinline></video>
 
     <!-- Background Circle Gradient -->
     <div
@@ -32,6 +33,9 @@ filter: blur(250px);"
         leftIcon="contactUsIcon"
         rightIcon="contactUsIcon"
       />
+
+      <BottomCTA ctaText="Tell us about your needs" svgName="menu" />
+      <BottomCTA ctaText="Save for later" svgName="delete" />
     </div>
   </div>
 </Layout>
