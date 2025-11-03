@@ -1,73 +1,65 @@
 ---
-const heroOverline = ["We're the", "Geeks"];
-const heroTitle = "Big Tech Story.";
-const heroSub = "Smart builds. Good vibes. Great stories.";
+const ballPrimarySrc = "/3d-ball-1.svg";
+const ballSecondarySrc = "/3d-ball-1.svg";
+const codeIconSrc = "/3d-code-icon.svg";
 
-const ballOne = "/3d-ball-1.svg";
-const codeIcon = "/3d-code-icon.svg";
-const starsVideo = "/videos/stars.mp4";
+const heroHeading = [
+  [
+    { text: "We’re the ", bold: false },
+    { text: "Geeks", bold: true },
+  ],
+  [
+    { text: "behind your", bold: false },
+    { icon: codeIconSrc },
+    { text: "next", bold: false },
+  ],
+  [
+    { text: "Big Tech Story.", bold: true },
+  ],
+];
+
+const heroSubText = "Smart builds. Good vibes. Great stories.";
 ---
 
-<!-- Hero Section Start -->
-<section
-  class="relative flex flex-col items-center justify-center w-full h-[474px] bg-[#020617] overflow-hidden text-center text-white font-[Neometric]"
->
-  <!-- Background stars video -->
-  <video
-    autoplay
-    muted
-    loop
-    playsinline
-    class="absolute inset-0 w-full h-full object-cover opacity-60 z-0"
-  >
-    <source src={starsVideo} type="video/mp4" />
-  </video>
+<!--  Hero Section Start -->
+<section class="relative flex flex-col items-center justify-center min-h-[474px] w-full overflow-hidden text-center">
 
-   <!-- 3D ball top-left -->
+  <!--  3D Decorative Balls -->
   <img
-    src={ballOne}
-    alt="3D ball top-left"
-    class="absolute z-10 top-[30px] left-[35px] w-[19px] h-[19px] rotate-[22deg] opacity-90"
+    src={ballPrimarySrc}
+    alt="3d ball primary"
+    class="absolute top-[20px] left-[20px] w-[34.1px] h-[34.1px] rotate-[22deg]"
   />
 
-  <!-- 3D ball bottom-right -->
   <img
-    src={ballOne}
-    alt="3D ball bottom-right"
-    class="absolute z-10 bottom-[75px] right-[40px] w-[19px] h-[19px] rotate-[22deg] opacity-90"
+    src={ballSecondarySrc}
+    alt="3d ball secondary"
+    class="absolute bottom-[60px] right-[20px] w-[18.94px] h-[18.94px] rotate-[22.29deg]"
   />
 
-  <!-- Hero Text Content -->
-  <div class="relative z-20 flex flex-col items-center justify-center w-full max-w-[327px] gap-2 text-center">
-    <!-- Overline -->
-   <p class="text-[28px] font-normal tracking-[-0.02em] leading-[100%]">
-      {heroOverline[0]} <span class="font-bold">{heroOverline[1]}</span>
-    </p>
+  <!--  Hero Text Wrapper -->
+  <div class="flex flex-col items-center justify-center w-[327px] gap-[12px]">
 
-    <!-- Title line with icon -->
-    <p class="text-[28px] font-normal tracking-[-0.02em] leading-[125%] flex items-center justify-center gap-2">
-      behind your
-      <span class="inline-flex items-center justify-center">
-        <img
-          src={codeIcon}
-          alt="Code icon"
-          class="w-[24px] h-[24px] object-contain"
-        />
-      </span>
-      next
-    </p>
+    {heroHeading.map((line) => (
+      <p class="text-3xl font-normal leading-tight tracking-[-0.02em] text-n-50 dark:text-n-950 flex items-center justify-center gap-[8px]">
+        {line.map((part) => (
+          part.icon ? (
+            <img
+              src={part.icon}
+              alt="3d-code-icon"
+              class="inline-block w-[36.2px] h-[36.2px] align-middle"
+            />
+          ) : (
+            <span class={part.bold ? "font-bold" : ""}>{part.text}</span>
+          )
+        ))}
+      </p>
+    ))}
 
-    <!-- Hero title -->
-    <p class="text-[28px] font-bold tracking-[-0.02em] leading-[120%]">
-      {heroTitle}
+    <!--  Subtext -->
+    <p class="text-sm font-medium leading-loose text-center bg-gradient-to-r from-[#6654D4] to-[#8B77F3] bg-clip-text text-transparent">
+      {heroSubText}
     </p>
-
-    <!-- Subtext -->
-    <p
-  class="text-sm font-medium leading-[200%] text-center bg-gradient-to-r from-[#4254D4] to-[#8B77F3] text-transparent bg-clip-text mt-2"
->
-{heroSub}
-</p>
   </div>
 </section>
-<!-- Hero Section End -->
+<!--  Hero Section End -->
