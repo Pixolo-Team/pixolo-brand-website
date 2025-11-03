@@ -5,6 +5,7 @@ import BottomCTA from "../components/BottomCTA.astro";
 
 // OTHERS //
 import Layout from "../layouts/Layout.astro";
+import Clients from "../sections/home/Clients.astro";
 ---
 
 <Layout>
@@ -28,14 +29,7 @@ filter: blur(250px);"
 
     <!-- Start adding sections from below  -->
     <div class="relative z-10">
-      <RoundedButton
-        buttonText="Contact Us"
-        leftIcon="contactUsIcon"
-        rightIcon="contactUsIcon"
-      />
-
-      <BottomCTA ctaText="Tell us about your needs" svgName="menu" />
-      <BottomCTA ctaText="Save for later" svgName="delete" />
+    <Clients  />
     </div>
   </div>
 </Layout>
