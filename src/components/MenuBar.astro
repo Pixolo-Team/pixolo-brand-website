@@ -1,0 +1,20 @@
+---
+interface MenuItem {
+  name: string;
+  url: string;
+}
+
+const { items = [] }: { items?: MenuItem[] } = Astro.props;
+---
+
+<nav>
+  <ul class="flex gap-10">
+    {items.map((item: MenuItem) => (
+      <li>
+        <a href={item.url} class="text-n-950 text-blue-600 text-base">
+          {item.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

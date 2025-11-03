@@ -1,0 +1,20 @@
+---
+const { ctaText, svgName } = Astro.props
+const iconPath = `/icons/${svgName}.svg`
+---
+<div>
+
+    <!-- CTA  -->
+    <div>
+        <!-- CTA Text -->
+        <p>{ctaText}</p>
+
+        <!-- Icon -->
+        <div>
+            <img src={iconPath} alt=`${svgName} Icon`>
+        </div> 
+        
+    </div>
+
+    
+</div>

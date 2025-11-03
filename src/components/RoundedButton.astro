@@ -1,11 +1,13 @@
 ---
-import "../styles/global.css"
+// STYLES //
+import "../styles/global.css";
+
 const { buttonText, leftIcon, rightIcon } = Astro.props
 ---
 
 
     <!-- Rounded Button -->
-     <button class="flex gap-2 px-5 py-3 rounded-[33px] text-n-100 bg-n-950 ">
+     <button class="flex gap-2 px-5 py-3 rounded-4xl text-n-100 bg-n-950">
         <!--Left icon of Rounded Button  -->
         {leftIcon && <img src={`/icons/${rightIcon}.svg`} alt={`${leftIcon} `} />}
 
