@@ -1,65 +1,51 @@
 ---
-const ballPrimarySrc = "/3d-ball-1.svg";
-const ballSecondarySrc = "/3d-ball-1.svg";
-const codeIconSrc = "/3d-code-icon.svg";
+/**
+ * Hero.astro
+ * -----------------------------------
+ * Simplified, static hero section using Pixolo standards.
+ * No props, no loops — clean and readable.
+ */
 
-const heroHeading = [
-  [
-    { text: "We’re the ", bold: false },
-    { text: "Geeks", bold: true },
-  ],
-  [
-    { text: "behind your", bold: false },
-    { icon: codeIconSrc },
-    { text: "next", bold: false },
-  ],
-  [
-    { text: "Big Tech Story.", bold: true },
-  ],
-];
+const heroOverline = ["We’re the", "Geeks"];
+const heroTitle = "Big Tech Story.";
+const heroSub = "Smart builds. Good vibes. Great stories.";
 
-const heroSubText = "Smart builds. Good vibes. Great stories.";
+const ball1Src = "/3d-ball-1.svg";
+const ball2Src = "/3d-ball-1.svg";
 ---
 
-<!--  Hero Section Start -->
+<!-- 🌌 Hero Section Start -->
 <section class="relative flex flex-col items-center justify-center min-h-[474px] w-full overflow-hidden text-center">
 
-  <!--  3D Decorative Balls -->
+  <!-- 🟣 Decorative 3D shapes -->
   <img
-    src={ballPrimarySrc}
-    alt="3d ball primary"
+    src={ball2Src}
+    alt="3d ball 2"
+    class="absolute bottom-[60px] right-[20px] w-[18.94px] h-[18.94px] rotate-[22deg]"
+  />
+
+  <img
+    src={ball1Src}
+    alt="3d ball 1"
     class="absolute top-[20px] left-[20px] w-[34.1px] h-[34.1px] rotate-[22deg]"
   />
 
-  <img
-    src={ballSecondarySrc}
-    alt="3d ball secondary"
-    class="absolute bottom-[60px] right-[20px] w-[18.94px] h-[18.94px] rotate-[22.29deg]"
-  />
+  <!-- 🧱 Hero Text Wrap -->
+  <div class="flex flex-col items-center justify-center gap-[12px] w-[327px] h-auto">
 
-  <!--  Hero Text Wrapper -->
-  <div class="flex flex-col items-center justify-center w-[327px] gap-[12px]">
+    <!-- Overline / intro text -->
+    <div class="flex flex-col items-center justify-center leading-none">
+      <p class="text-3xl font-normal tracking-[-0.02em] text-white">{heroOverline[0]}</p>
+      <p class="text-3xl font-bold tracking-[-0.02em] text-white">{heroOverline[1]}</p>
+    </div>
 
-    {heroHeading.map((line) => (
-      <p class="text-3xl font-normal leading-tight tracking-[-0.02em] text-n-50 dark:text-n-950 flex items-center justify-center gap-[8px]">
-        {line.map((part) => (
-          part.icon ? (
-            <img
-              src={part.icon}
-              alt="3d-code-icon"
-              class="inline-block w-[36.2px] h-[36.2px] align-middle"
-            />
-          ) : (
-            <span class={part.bold ? "font-bold" : ""}>{part.text}</span>
-          )
-        ))}
-      </p>
-    ))}
+    <!-- Main headline -->
+    <p class="text-3xl font-bold leading-none tracking-[-0.02em] text-white">{heroTitle}</p>
 
-    <!--  Subtext -->
+    <!-- Subtext paragraph -->
     <p class="text-sm font-medium leading-loose text-center bg-gradient-to-r from-[#6654D4] to-[#8B77F3] bg-clip-text text-transparent">
-      {heroSubText}
+      {heroSub}
     </p>
   </div>
 </section>
-<!--  Hero Section End -->
+<!-- 🌌 Hero Section End -->
