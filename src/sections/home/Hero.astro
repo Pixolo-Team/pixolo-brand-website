@@ -1,12 +1,4 @@
 ---
-/**
- * Hero.astro
- * -----------------------------------
- * Uses array-based structure for text segments.
- * Follows Pixolo’s coding + naming conventions.
- * Color: Auto adapts (text-n-950 for light, text-n-50 for dark)
- */
-
 const ballPrimarySrc = "/3d-ball-1.svg";
 const ballSecondarySrc = "/3d-ball-1.svg";
 const codeIconSrc = "/3d-code-icon.svg";
@@ -29,10 +21,10 @@ const heroHeading = [
 const heroSubText = "Smart builds. Good vibes. Great stories.";
 ---
 
-<!-- 🌌 Hero Section Start -->
+<!--  Hero Section Start -->
 <section class="relative flex flex-col items-center justify-center min-h-[474px] w-full overflow-hidden text-center">
 
-  <!-- 🟣 3D Decorative Balls -->
+  <!--  3D Decorative Balls -->
   <img
     src={ballPrimarySrc}
     alt="3d ball primary"
@@ -45,7 +37,7 @@ const heroSubText = "Smart builds. Good vibes. Great stories.";
     class="absolute bottom-[60px] right-[20px] w-[18.94px] h-[18.94px] rotate-[22.29deg]"
   />
 
-  <!-- 🧩 Hero Text Wrapper -->
+  <!--  Hero Text Wrapper -->
   <div class="flex flex-col items-center justify-center w-[327px] gap-[12px]">
 
     {heroHeading.map((line) => (
@@ -64,7 +56,7 @@ const heroSubText = "Smart builds. Good vibes. Great stories.";
       </p>
     ))}
 
-    <!-- 🌈 Subtext -->
+    <!--  Subtext -->
     <p class="text-sm font-medium leading-loose text-center bg-gradient-to-r from-[#6654D4] to-[#8B77F3] bg-clip-text text-transparent">
       {heroSubText}
     </p>
