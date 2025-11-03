@@ -41,7 +41,7 @@ const clientLogos = [
             <!-- Loop Through Client Logos -->
             {clientLogos.map((logo)=>(
                 <div class="w-[100px] h-[54px] md:w-[200px] md:h-[108px] lg:w-[260px] lg:h-[141px] flex justify-center items-center">
-                    <img src={`/icons/${logo.clientName}`} alt={`${logo.alt}`} class="object-contain max-h-[40px] md:max-h-[60px] lg:max-h-[90px] w-full">
+                    <img src={`/icons/${logo.clientName}`} alt={`${logo.alt}`} class="object-contain max-h-full md:max-h-[60px] lg:max-h-[90px] w-full">
                 </div>
             ))}
         </div>
