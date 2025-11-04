@@ -101,12 +101,7 @@ body {
   @apply box-border;
 }
 
-img,
-svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
+
 
 /* Optional scrollbar style (nice subtle look) */
 ::-webkit-scrollbar {
