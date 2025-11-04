@@ -1,0 +1,73 @@
+---
+import RoundedButton from "./RoundedButton.astro";
+const shortName="Pixolo"
+const logoPath="/icons/pixolo-logo.svg"
+const expandIconPath="/icons/expand-icon.svg"
+const {
+  formData = {
+    fromPlaceholder: "",
+    phonePlaceholder: "",
+    subjectLabel: "",
+    subjects: [],
+    additionalNotePlaceholder: ""
+    
+  }
+} = Astro.props;
+---
+<form>
+    <!-- Title Bar -->
+
+    <div>
+        <!-- 3 Buttons -->
+        <button type="button" ></button>
+        <button type="button" ></button>
+        <button type="button" ></button>
+    </div>
+
+    <!-- Form Container -->
+    <div>
+
+        <!-- Input Wrapper -->
+        <div>
+
+            <!-- Email To  -->
+             <div>
+                <label for="emailTo">To</label>
+                <img src={logoPath} alt="Pixolo Logo" id="emailTo" />
+                <p>{shortName}</p>
+            </div>
+
+            <!-- Email From -->
+            <div>
+                <label for="emailFrom">From</label>
+                <input type="email" name="emailFrom" placeholder={formData.fromPlaceholder} id="emailFrom">
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+                <label for="phoneNo">Phone No</label>
+                <input type="text" name="emailFrom" placeholder={formData.phonePlaceholder} id="phoneNo">
+            </div>
+
+            <!-- Subjects Dropdown  -->
+            <div>
+
+                <label for="subject">{formData.subjectLabel}</label>
+                <select name="subject" id="subject">
+                    {formData.subjects.map(subject => (<option value={subject}>{subject}</option>))}
+                </select>
+
+            </div>
+
+            <!-- Additional Note -->
+            <textarea name="additionalNote" placeholder={formData.additionalNotePlaceholder}></textarea>
+            <img src={expandIconPath} alt="Expand Icon">
+           
+        </div>
+
+        <!-- SendMessage Button -->
+         <RoundedButton buttonText="Send Message" />
+    </div>
+
+
+</form>
