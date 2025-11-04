@@ -4,6 +4,7 @@ import "../styles/global.css";
 
 // COMPONENTS //
 import Navbar from "../components/Navbar.astro";
+import WhatsappButton from "../components/WhatsappButton.astro";
 ---
 
 <!doctype html>
@@ -27,8 +28,9 @@ import Navbar from "../components/Navbar.astro";
     <title>Pixolo Technologies</title>
   </head>
   <body>
-    <div class="fixed top-3 left-0 w-full z-50">
+    <div class="fixed top-3 left-0 w-full h-full z-50 container">
       <Navbar />
+      <WhatsappButton />
     </div>
     <slot />
   </body>
