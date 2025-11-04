@@ -17,12 +17,12 @@ const menuItems = [
 <!-- Navbar Display -->
 <header class="flex justify-between items-center px-3 relative z-10">
     <BrandLogo/>
+    <div class="hidden md:block">
     <MenuBar items={menuItems}/>
-    <div>
+    </div>
+    <div class="hidden md:block">
       <RoundedButton
         buttonText="Contact Us"
-        leftIcon="contactUsIcon"
-        rightIcon="contactUsIcon"
     />
     </div>
 </header>
