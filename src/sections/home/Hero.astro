@@ -16,49 +16,48 @@ const heroSubText = "Smart builds. Good vibes. Great stories.";
 
 <!-- Hero Section Start -->
 <section
-  class="relative flex flex-col items-center justify-center w-full min-h-[474px] max-w-container-md px-6 pt-36 pb-36 gap-9 overflow-hidden text-center "
+  class="relative flex flex-col items-center justify-center w-full min-h-[474px] max-w-container-md px-6 pt-36 pb-36 gap-9 overflow-hidden text-center"
 >
   <!-- Decorative 3D Balls -->
   <img
     src={ballPrimarySrc}
     alt="3d ball primary"
-    class="absolute top-[20px] left-[20px] w-[56px] h-[34.1px] rotate-[22deg]"
+    class="absolute top-[20px] left-[20px] w-[56px] h-[34.1px] md:h-[41.67px] md:w-[123.89px] rotate-[22.29deg]"
   />
 
   <img
     src={ballSecondarySrc}
     alt="3d ball secondary"
-    class="absolute bottom-[60px] right-[20px] w-[56px] h-[18.94px] rotate-[22.29deg]"
+    class="absolute bottom-[60px] right-[20px] w-[56px] h-[18.94px]  md:h-[41.67px] md:w-[123.89px]"
   />
 
   <!-- Hero Text Wrapper -->
-  <div class="flex flex-col items-center justify-center gap-[12px]">
+  <div class="flex flex-col items-center justify-center gap-3">
     
     <!-- Line 1 -->
-    <p class="text-3xl font-normal leading-none tracking-[-0.02em] text-n-50">
+    <p class="text-3xl font-normal leading-none tracking-[-2%] text-n-50 md:text-7xl ">
       {heroTitle[0]} <span class="font-bold">{heroTitle[1]}</span>
     </p>
 
     <!-- Line 2 -->
-    <p class="text-3xl font-normal leading-[125%] tracking-[-0.02em] text-n-50 text-center flex justify-center items-center "
- >
-<span>{heroTitle[2]}</span>
+    <p class="text-3xl font-normal leading-tight tracking-[-2%] text-n-50 text-center flex justify-center items-center md:text-7xl">
+      <span>{heroTitle[2]}</span>
       <img
         src={iconCode}
         alt="3d-code-icon"
-        class="inline-block w-[56px] h-[36.2px] align-middle"
+        class="inline-block w-[56px] h-[36.2px] align-middle md:w-[173px] md:h-[118.3px] mx-2"
       />
       <span>{heroTitle[3]}</span>
     </p>
 
     <!-- Line 3 -->
-    <p class="text-3xl font-bold leading-none tracking-[-0.02em] text-n-50">
+    <p class="text-3xl font-bold leading-none tracking-[-0.02em] text-n-50 md:text-7xl">
       {heroTitle[4]}
     </p>
 
     <!-- Subtext -->
     <p
-      class="text-sm font-medium leading-loose text-center bg-gradient-to-r from-[#6654D4] to-[#8B77F3] bg-clip-text text-transparent"
+      class="text-sm font-medium leading-loose text-center bg-gradient-to-r from-[#6654D4] to-[#8B77F3] bg-clip-text text-transparent md:text-xl"
     >
       {heroSubText}
     </p>
