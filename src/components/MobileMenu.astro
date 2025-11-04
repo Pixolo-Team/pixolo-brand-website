@@ -1,0 +1,49 @@
+---
+import RoundedButton from "./RoundedButton.astro";
+
+interface MenuItem {
+    name: string;
+    url: string;
+}
+
+const items: MenuItem[] = [
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+    { name: "Careers", url: "/careers" },
+    { name: "Portfolio", url: "/portfolio" },
+];
+
+const variant = "default";
+const currentPath = Astro.url.pathname;
+---
+
+<div class="absolute z-99 h-full w-full flex flex-col py-5 px-6">
+    <!-- Logo at top -->
+    <div>
+        <a href="/">
+            <img src={`/brand-logo/${variant}.png`} alt="Brand Logo" />
+        </a>
+    </div>
+
+    <!-- Menu items vertically centered -->
+    <div class="flex flex-col justify-center flex-1 pt-28 pb-60 gap-6 leading-tight">
+        {items.map((item) => {
+            const isActive = currentPath === item.url;
+            return (
+                <a
+                    href={item.url}
+                    class={`text-lg font-normal text-4xl transition-colors ${
+                        isActive ? "text-n-950" : "text-n-500"
+                    }`}
+                >
+                    {item.name}
+                </a>
+            );
+        })}
+    </div>
+    <!-- Bottom fixed buttons -->
+    <div class="fixed bottom-6 inset-x-0 justify-center px-7 py-4 flex flex-row gap-2.5">
+        <RoundedButton buttonText="Call" />
+        <RoundedButton buttonText="Whatsapp" />
+    </div>
+</div>
