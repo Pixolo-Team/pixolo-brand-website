@@ -27,7 +27,9 @@ import Navbar from "../components/Navbar.astro";
     <title>Pixolo Technologies</title>
   </head>
   <body>
-    <Navbar />
+    <div class="fixed top-3 left-0 w-full z-50">
+      <Navbar />
+    </div>
     <slot />
   </body>
 </html>
