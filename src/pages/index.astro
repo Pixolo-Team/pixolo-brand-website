@@ -2,6 +2,7 @@
 // COMPONENTS //
 
 // OTHERS //
+import ServiceItem from "../components/ServiceItem.astro";
 import Layout from "../layouts/Layout.astro";
 import Clients from "../sections/home/Clients.astro";
 ---
@@ -29,5 +30,7 @@ filter: blur(250px);"
     <div class="relative z-10">
       <Clients />
     </div>
+
+    <ServiceItem/>
   </div>
 </Layout>
