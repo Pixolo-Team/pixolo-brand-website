@@ -10,9 +10,17 @@ const {
   required,
 } = Astro.props;
 ---
+<!-- Container for textarea and line -->
+<div class="flex flex-col gap-2">
 
-<div class="flex flex-col gap-11">
-  <textarea name={name} placeholder={placeholder} id={id} required={required} 
-  ></textarea>
-  <Icon name={iconName} class="self-end" />
+    <!-- Container for textarea and icon -->
+  <div class="flex flex-col gap-11">
+
+    <!-- Textarea and Icon -->
+    <textarea name={name} placeholder={placeholder} id={id} required={required} ></textarea>
+    <Icon name={iconName} class="self-end" />
+
+  </div>
+
+  <hr class="border-b border-n-300" />
 </div>

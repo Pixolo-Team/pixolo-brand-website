@@ -6,7 +6,6 @@ import ContactForm from "../components/ContactForm.astro";
 
 // OTHERS //
 import Layout from "../layouts/Layout.astro";
-
 ---
 
 <Layout>
@@ -39,18 +38,7 @@ filter: blur(250px);"
       <BottomCTA ctaText="Tell us about your needs" svgName="menu" />
       <BottomCTA ctaText="Save for later" svgName="delete" />
 
-      <ContactForm   formData={{
-          fromPlaceholder:"your@email.com",
-          phonePlaceholder: "your phone number",
-          subjectLabel: "Subject",
-          subjects: ["Mobile App Development", "Web Development", "Project Planning", "UX Design"],
-          additionalNotePlaceholder: "Say something about your project...",
-        }}
-      />
-      
-
-
-
+      <ContactForm />
     </div>
   </div>
 </Layout>

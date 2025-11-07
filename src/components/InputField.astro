@@ -10,8 +10,15 @@ const {
 } = Astro.props;
 ---
 
+<!-- Container for line and label  -->
+<div class="w-full flex flex-col gap-2">
+<!-- Container for label and Input -->
 <div class="flex gap-3 items-center">
+
+  <!-- Label for the input -->
   <label for={id}>{label}</label>
+
+  <!-- Show the input if "showInput" is true -->
   {
     showInput && (
       <input
@@ -23,4 +30,7 @@ const {
       />
     )
   }
+  
+</div>
+<hr class="border-b border-n-300">
 </div>

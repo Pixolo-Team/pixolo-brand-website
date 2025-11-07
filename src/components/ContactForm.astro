@@ -30,7 +30,7 @@ const subjectOptions = [
     <!-- Input Wrapper -->
     <div class="flex flex-col gap-5">
       <!-- Email To  -->
-      <div class="flex gap-4">
+      <div class="flex gap-4 w-full relative">
         <InputField
           label="To"
           name="emailTo"
@@ -38,9 +38,11 @@ const subjectOptions = [
           type="text"
           showInput={false}
         />
-        <Chip iconName="pixolo-logo" text="Pixolo" />
+        <div class="absolute left-10 bottom-2">
+          <Chip iconName="pixolo-logo" text="Pixolo" />
+        </div>
       </div>
-      <hr class="border-b border-n-300" />
+
       <!-- Email From -->
       <InputField
         label="From"
@@ -50,7 +52,7 @@ const subjectOptions = [
         id="emailFrom"
         required={true}
       />
-      <hr class="border-b border-n-300" />
+
       <!-- Phone Number -->
       <InputField
         label="Phone No"
@@ -60,7 +62,7 @@ const subjectOptions = [
         id="phoneNo"
         required={true}
       />
-      <hr class="border-b border-n-300" />
+
       <!-- Subjects Dropdown  -->
       <Dropdown
         label="Subject"
@@ -68,7 +70,7 @@ const subjectOptions = [
         id="Subject"
         options={subjectOptions}
       />
-      <hr class="border-b border-n-300" />
+
       <!-- Additional Note -->
       <TextArea
         iconName="expand-icon"
@@ -76,7 +78,6 @@ const subjectOptions = [
         name="additionalNote"
         id="additionalNote"
       />
-      <hr class="border-b border-n-300" />
     </div>
     <!-- SendMessage Button -->
     <div class="self-end">
