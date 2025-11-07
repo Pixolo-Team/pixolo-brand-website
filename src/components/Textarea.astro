@@ -1,0 +1,18 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+const {
+  iconName,
+  placeholder = "",
+  name = "",
+  id = "",
+  required,
+} = Astro.props;
+---
+
+<div class="flex flex-col gap-11">
+  <textarea name={name} placeholder={placeholder} id={id} required={required} 
+  ></textarea>
+  <Icon name={iconName} class="self-end" />
+</div>

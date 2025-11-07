@@ -1,0 +1,26 @@
+---
+const {
+  label = "",
+  placeholder = "",
+  name = "",
+  id = "",
+  type = "",
+  required,
+  showInput = true,
+} = Astro.props;
+---
+
+<div class="flex gap-3 items-center">
+  <label for={id}>{label}</label>
+  {
+    showInput && (
+      <input
+        type={type}
+        id={id}
+        placeholder={placeholder}
+        name={name}
+        required={required}
+      />
+    )
+  }
+</div>

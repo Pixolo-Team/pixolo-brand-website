@@ -1,79 +1,86 @@
 ---
 // OTHERS //
+import Chip from "./Chip.astro";
+import Dropdown from "./Dropdown.astro";
+import InputField from "./InputField.astro";
 import RoundedButton from "./RoundedButton.astro";
+import TextArea from "./TextArea.astro";
 
-const shortName = "Pixolo";
-const logoPath = "/icons/pixolo-logo.svg";
-const expandIconPath = "/icons/expand-icon.svg";
+const subjectOptions = [
+  "Mobile App Development",
+  "Web Development",
+  "Project Planning",
+  "UX Design",
+];
 ---
 
-<form>
+<form
+  class="flex flex-col rounded-3xl bg-n-50 border-n-400 border w-fit overflow-hidden"
+>
   <!-- Title Bar -->
-
-  <div class="flex gap-2 py-3 px-6 bg-n-400 ">
+  <div class="flex gap-2 py-3 px-6 bg-n-400">
     <!-- 3 Buttons -->
     <div class="w-4 h-4 bg-[#C45E52] rounded-full"></div>
     <div class="w-4 h-4 bg-[#CAA144] rounded-full"></div>
     <div class="w-4 h-4 bg-n-500 rounded-full"></div>
-    
   </div>
 
   <!-- Form Container -->
-  <div>
+  <div class="flex flex-col p-5 gap-5 items-center">
     <!-- Input Wrapper -->
-    <div>
+    <div class="flex flex-col gap-5">
       <!-- Email To  -->
-      <div>
-        <label for="emailTo">To</label>
-        <div>
-          <img src={logoPath} alt="Pixolo Logo" id="emailTo" />
-          <p>{shortName}</p>
-        </div>
-      </div>
-
-      <!-- Email From -->
-      <div>
-        <label for="emailFrom">From</label>
-        <input
-          type="email"
-          name="emailFrom"
-          placeholder="your@email.com"
-          id="emailFrom"
-        />
-      </div>
-
-      <!-- Phone Number -->
-      <div>
-        <label for="phoneNo">Phone No</label>
-        <input
+      <div class="flex gap-4">
+        <InputField
+          label="To"
+          name="emailTo"
+          id="emailTo"
           type="text"
-          name="emailFrom"
-          placeholder="your phone number"
-          id="phoneNo"
+          showInput={false}
         />
+        <Chip iconName="pixolo-logo" text="Pixolo" />
       </div>
-
+      <hr class="border-b border-n-300" />
+      <!-- Email From -->
+      <InputField
+        label="From"
+        type="email"
+        name="emailFrom"
+        placeholder="your@email.com"
+        id="emailFrom"
+        required={true}
+      />
+      <hr class="border-b border-n-300" />
+      <!-- Phone Number -->
+      <InputField
+        label="Phone No"
+        type="tel"
+        name="phoneNo"
+        placeholder="your phone number"
+        id="phoneNo"
+        required={true}
+      />
+      <hr class="border-b border-n-300" />
       <!-- Subjects Dropdown  -->
-      <div>
-        <label for="subject">Subject</label>
-        <select name="subject" id="subject">
-          <option value="mobileAppDevelopment">Mobile App Development</option>
-          <option value="webDevelopment">MWeb Development</option>
-          <option value="projectPlanning">Project Planning</option>
-          <option value="uxDesign">UX Design</option>
-        </select>
-      </div>
-
+      <Dropdown
+        label="Subject"
+        name="Subject"
+        id="Subject"
+        options={subjectOptions}
+      />
+      <hr class="border-b border-n-300" />
       <!-- Additional Note -->
-      <div>
-        <textarea
-          name="additionalNote"
-          placeholder="Say something about your project..."></textarea>
-        <img src={expandIconPath} alt="Expand Icon" />
-      </div>
+      <TextArea
+        iconName="expand-icon"
+        placeholder="Say something about your project..."
+        name="additionalNote"
+        id="additionalNote"
+      />
+      <hr class="border-b border-n-300" />
     </div>
-
     <!-- SendMessage Button -->
-    <RoundedButton buttonText="Send Message" />
+    <div class="self-end">
+      <RoundedButton buttonText="Send Message" />
+    </div>
   </div>
 </form>
