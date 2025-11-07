@@ -1,0 +1,39 @@
+---
+// OTHERS //
+import Badge from "./Badge.astro";
+
+    const serviceImage = {
+        src: "/icons/service-image.svg", alt: "Service Image"
+    };
+    
+    const title = "Design";
+    const tags = ["Website", "Mobile", "UI", "App"];
+---
+
+<!-- Service Item -->
+<div>
+
+    <!-- Service Image -->
+     <div>
+        <img src= {serviceImage.src} alt= {serviceImage.alt}>
+    </div>
+
+    <!-- Content -->
+    <div>
+
+        <!-- Title -->
+        <p>
+            {title}
+        </p>
+
+        <!-- Tool Badges -->
+        <div>
+
+            <!-- Iterating Over A String Array - tags -->
+            {tags.map((tag)=>(
+                <Badge badgeText = {tag} />
+            ))}
+        </div>
+
+    </div>
+</div>
