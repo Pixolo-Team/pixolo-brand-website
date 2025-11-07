@@ -2,12 +2,11 @@
 // OTHERS //
 import Badge from "./Badge.astro";
 
-    const serviceImage = {
-        src: "/icons/service-image.svg", alt: "Service Image"
-    };
-    
-    const title = "Design";
-    const tags = ["Website", "Mobile", "UI", "App"];
+    const {
+    imageName= "service-image.png",
+    title= "Design",
+    tags= ["Website", "Mobile", "UI", "App"]
+    } = Astro.props
 ---
 
 <!-- Service Item -->
@@ -15,7 +14,7 @@ import Badge from "./Badge.astro";
 
     <!-- Service Image -->
      <div>
-        <img src= {serviceImage.src} alt= {serviceImage.alt}>
+        <img src= {`/icons/${imageName}`} alt= {title}>
     </div>
 
     <!-- Content -->
