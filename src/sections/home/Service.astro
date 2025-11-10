@@ -1,0 +1,42 @@
+---
+// COMPONENTS //
+import ServiceItem from "../../components/ServiceItem.astro";
+import ToolBadge from "../../components/ToolBadge.astro";
+
+---
+
+<!-- Service Section -->
+<section class="bg-n-50">
+
+    <!-- Container -->
+    <div class="flex flex-col flex-wrap justify-center items-center md:container px-6 py-16 gap-12">
+
+        <!-- Section Header -->
+        <div class="gap-6 flex flex-col flex-wrap relative">
+
+            <!-- Tool Badge -->
+            <div class="flex justify-center items-center self-start">
+                <ToolBadge icon = "service-icon.svg" text = "Services we offer" />
+            </div>
+
+            <!-- Details -->
+            <div class="gap-0.5">
+            <!-- Text -->
+            <p class="text-[32px] font-normal leading-tight text-n-950 w-fit">
+                We deliver client-focused solutions that drive results and build lasting partnerships.
+            </p>
+            </div>
+
+        </div>
+
+        <!-- Content Wrap -->
+
+        <div class="flex flex-col gap-11">
+            <ServiceItem imageName = "service-image" title = "Design" tags = {["Website", "Mobile", "UI", "App"]} />
+            <ServiceItem imageName = "service-image" title = "Web & Mobile Apps" tags = {["Website", "Mobile", "UI", "App"]} />
+            <ServiceItem imageName = "service-image" title = "Technology" tags = {["Website", "Mobile", "UI", "App"]} />
+        </div>
+
+    </div>
+
+</section>
