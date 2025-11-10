@@ -1,0 +1,84 @@
+---
+import ToolBadge from "../../components/ToolBadge.astro";
+
+import { Icon } from "astro-icon/components";
+---
+
+<section>
+    <div class="container mx-auto flex flex-col gap-11 px-6 py-16">
+        <!-- Section Header -->
+        <div class="flex flex-col items-center gap-6">
+
+            <!-- Tool Badge component -->
+            <ToolBadge title="Collaborate with Pixolo"  />
+
+            <!-- Header Content -->
+            <div class="flex flex-col gap-3.5 text-center">
+                <p class="text-n-950 font-medium text-3xl">Come say Hi&#x21; 👋</p>
+                <p class="text-n-950 font-medium text-base">Your vision deserves the right team — let’s start there.</p>
+            </div>
+        </div>
+
+        <!-- Content wrap -->
+        <div class="flex flex-col gap-3.5">
+            <!-- Phone -->
+            <div class="flex gap-5 items-end justify-between rounded-4xl bg-n-100 py-5 px-6">
+                <div class="flex items-center gap-5">
+                    <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3]">
+                        <Icon name="phone" class="size-5" />
+                    </div>
+                    <div class="flex flex-col gap-0.5">
+                        <p class="font-bold text-xs text-n-700">Call / Text Us</p>
+                        <p class="font-semibold text-sm text-n-900">9768941186</p>
+                    </div>
+                </div>
+                <Icon name="copy" class="size-5" />
+            </div>
+
+            <!-- Mail -->
+            <div class="flex w-full gap-5 items-end justify-between rounded-4xl bg-n-100 py-5 px-6">
+                <div class="flex items-center gap-5 max-w-[80%]">
+                    <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3]">
+                        <Icon name="mail" class="size-5" />
+                    </div>
+                    <div class="flex flex-col gap-0.5 w-[60%]" >
+                        <p class="font-bold text-xs text-n-700">Drop a Email</p>
+                        <p class="font-semibold text-sm text-n-900 truncate">hello@pixolotechnologies.com</p>
+                    </div>
+                </div>
+                <div class="">
+                    <Icon name="copy" class="size-5" />
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="p-6 flex flex-col gap-5 bg-n-100 rounded-4xl">
+                <div class="flex flex-col gap-5">
+                    <div class="flex flex-col gap-2.5">
+                        <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3]">
+                            <Icon name="phone" class="size-5" />
+                        </div>
+                        <div class="flex flex-col gap-0.5">
+                            <p class="font-bold text-xs text-n-700">Our Space</p>
+                            <p class="font-semibold text-sm text-n-900">Where ideas meet code</p>
+                        </div>
+
+                    </div>
+                    <div class="flex gap-5">
+                        <p class="font-semibold text-xs">G Block BKC, Mumbai</p>
+                        <Icon name="right-arrow"/>
+                    </div>
+                </div>
+                <!-- Map -->
+                <div class="border-n-950 border rounded-4xl overflow-hidden">
+                    <img src="/images/map.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        
+
+    </div>
+</section>
