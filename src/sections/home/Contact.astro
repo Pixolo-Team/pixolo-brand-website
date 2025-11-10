@@ -24,12 +24,12 @@ import { Icon } from "astro-icon/components";
             <!-- Phone -->
             <div class="flex gap-5 items-end justify-between rounded-4xl bg-n-100 py-5 px-6">
                 <div class="flex items-center gap-5">
-                    <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3]">
-                        <Icon name="phone" class="size-5" />
+                    <div class="flex size-11 sm:size-16 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3]">
+                        <Icon name="phone" class="size-5 sm:size-6" />
                     </div>
                     <div class="flex flex-col gap-0.5">
-                        <p class="font-bold text-xs text-n-700">Call / Text Us</p>
-                        <p class="font-semibold text-sm text-n-900">9768941186</p>
+                        <p class="font-bold text-xs sm:text-sm text-n-700">Call / Text Us</p>
+                        <p class="font-semibold text-sm sm:text-lg text-n-900">9768941186</p>
                     </div>
                 </div>
                 <Icon name="copy" class="size-5" />
@@ -38,12 +38,12 @@ import { Icon } from "astro-icon/components";
             <!-- Mail -->
             <div class="flex w-full gap-5 items-end justify-between rounded-4xl bg-n-100 py-5 px-6">
                 <div class="flex items-center gap-5 max-w-[80%]">
-                    <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3]">
-                        <Icon name="mail" class="size-5" />
+                    <div class="flex size-11 sm:size-16 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3]">
+                        <Icon name="mail" class="size-5 sm:size-6" />
                     </div>
                     <div class="flex flex-col gap-0.5 w-[60%]" >
-                        <p class="font-bold text-xs text-n-700">Drop a Email</p>
-                        <p class="font-semibold text-sm text-n-900 truncate">hello@pixolotechnologies.com</p>
+                        <p class="font-bold text-xs text-n-700 sm:text-sm">Drop a Email</p>
+                        <p class="font-semibold text-sm text-n-900 max-sm:truncate sm:text-lg">hello@pixolotechnologies.com</p>
                     </div>
                 </div>
                 <div class="">
@@ -52,15 +52,15 @@ import { Icon } from "astro-icon/components";
             </div>
 
             <!-- Location -->
-            <div class="p-6 flex flex-col gap-5 bg-n-100 rounded-4xl">
+            <div class="p-6 flex flex-col sm:flex-row justify-between gap-5 bg-n-100 rounded-4xl sm:gap-24">
                 <div class="flex flex-col gap-5">
                     <div class="flex flex-col gap-2.5">
-                        <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3]">
-                            <Icon name="phone" class="size-5" />
+                        <div class="flex size-11 sm:size-16 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3]">
+                            <Icon name="location" class="size-5 sm:size-6" />
                         </div>
                         <div class="flex flex-col gap-0.5">
-                            <p class="font-bold text-xs text-n-700">Our Space</p>
-                            <p class="font-semibold text-sm text-n-900">Where ideas meet code</p>
+                            <p class="font-bold text-xs text-n-700 sm:text-sm">Our Space</p>
+                            <p class="font-semibold text-sm text-n-900 sm:text-lg">Where ideas meet code</p>
                         </div>
 
                     </div>
@@ -75,10 +75,6 @@ import { Icon } from "astro-icon/components";
                 </div>
             </div>
         </div>
-
         </div>
-
-        
-
     </div>
 </section>
