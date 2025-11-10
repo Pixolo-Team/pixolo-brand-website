@@ -20,9 +20,9 @@ const {
 ---
 
 <!-- Container for label and Input -->
-<div class="flex gap-3 items-center border-b border-n-300 pb-2 w-full">
+<div class="flex gap-3 items-center border-b border-n-300 pb-2 w-full md:gap-4">
   <!-- Label for the input field -->
-  <label for={id}>{label}</label>
+  <label for={id} class="text-sm md:text-base font-medium">{label}</label>
 
   <!-- Input field that sets type, id , placeholder, name and required attributes from props -->
   <input

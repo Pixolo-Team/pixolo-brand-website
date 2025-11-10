@@ -20,6 +20,7 @@ const {
 ---
 
 <!-- Container for textarea and icon -->
+ 
 <div class="flex flex-col gap-11 pb-2 border-b border-n-300 w-full">
   <!-- Textarea and Icon -->
   <textarea
@@ -27,6 +28,7 @@ const {
     placeholder={showPlaceholder ? placeholder : undefined}
     id={id}
     required={required}
-    class="focus:border-none outline-none"></textarea>
+    class="focus:border-none outline-none resize-none"></textarea>
   <Icon name={iconName} class="self-end" />
+
 </div>

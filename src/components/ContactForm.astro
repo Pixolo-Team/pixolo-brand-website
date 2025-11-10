@@ -6,6 +6,7 @@ import InputField from "./InputField.astro";
 import RoundedButton from "./RoundedButton.astro";
 import Textarea from "./Textarea.astro";
 
+// Array to store the dropdown menu
 const subjectOptions = [
   "Mobile App Development",
   "Web Development",
@@ -15,9 +16,9 @@ const subjectOptions = [
 ---
 
 <form
-  class="flex flex-col rounded-3xl bg-n-50 border-n-400 border w-fit overflow-hidden">
+  class="flex flex-col rounded-3xl bg-n-50 border-n-400 border max-w-[375px] md:max-w-[680px] lg:max-w-[800px] overflow-hidden">
   <!-- Title Bar -->
-  <div class="flex gap-2 py-3 px-6 bg-n-400">
+  <div class="flex gap-2 py-3 px-6 bg-n-400 w-full lg:py-4 lg:px-11">
     <!-- 3 Buttons -->
     <div class="w-4 h-4 bg-[#C45E52] rounded-full"></div>
     <div class="w-4 h-4 bg-[#CAA144] rounded-full"></div>
@@ -25,11 +26,11 @@ const subjectOptions = [
   </div>
 
   <!-- Form Container -->
-  <div class="flex flex-col p-5 gap-5 items-center">
+  <div class="flex flex-col p-5 gap-5 items-start md:px-7 md:pb-6 md:pt-7">
     <!-- Input Wrapper -->
-    <div class="flex flex-col gap-5">
+    <div class="flex flex-col gap-5 md:gap-6 w-full">
       <!-- Email To  -->
-      <div class="flex gap-4 w-full relative">
+      <div class="flex gap-4 w-full relative md:gap-3">
         <InputField
           label="To"
           name="emailTo"
@@ -37,8 +38,15 @@ const subjectOptions = [
           type="text"
           showPlaceholder={false}
         />
-        <div class="absolute left-10 -top-2">
+        <!-- For mobiles -->
+        <div class="absolute left-10 -top-2 md:hidden">
           <Chip iconName="pixolo-logo" text="Pixolo" />
+        </div>
+        <!-- For tablets and desktops -->
+        <div
+          class="absolute left-10 -top-2 hidden md:flex md:gap-4 md:items-center">
+          <Chip iconName="pixolo-logo" text="Pixolo Technologies" />
+          <p class="text-sm font-normal">(business@pixolotechnologies.com)</p>
         </div>
       </div>
 
@@ -68,6 +76,7 @@ const subjectOptions = [
         name="Subject"
         id="Subject"
         options={subjectOptions}
+        iconName="dropdown-icon"
       />
 
       <!-- Additional Note -->
@@ -82,5 +91,6 @@ const subjectOptions = [
     <div class="self-end">
       <RoundedButton buttonText="Send Message" />
     </div>
+
   </div>
 </form>

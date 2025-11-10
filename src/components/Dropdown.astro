@@ -1,21 +1,34 @@
 ---
+import { Icon } from "astro-icon/components";
+
 export interface Props {
   options: string[];
   label: string;
   name: string;
   id: string;
+  iconName: string;
 }
-const { options = [], label = "", name = "", id = "" } = Astro.props;
+const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
 ---
 
 <!-- Container for label and dropdown -->
-<div class="flex gap-3 items-center border-b border-n-300 pb-2 w-full">
+<div
+  class="flex gap-3 items-center border-b border-n-300 pb-2 text-sm font-medium md:text-base lg:text-lg">
   <!-- Displays the label passed as prop -->
   <label for={id}>{label}</label>
 
   <!-- Dropdown menu -->
-  <select name={name} id={id} class="p-3 rounded-[40px] bg-n-950/10">
-    <!-- Adds each option passed as prop in dropdown -->
-    {options.map((opt: string) => <option value={opt}>{opt}</option>)}
-  </select>
+  <div class="flex p-3 rounded-[40px] bg-n-950/10 text-sm font-medium gap-3">
+    <select
+      name={name}
+      id={id}
+      class="appearance-none focus:border-none outline-none">
+    
+      <!-- Adds each option passed as prop in dropdown -->
+      {options.map((opt: string) => <option value={opt} >{opt}</option>)}
+    </select>
+    <!-- Custom icon for dropdown -->
+    <Icon name={iconName} />
+
+  </div>
 </div>
