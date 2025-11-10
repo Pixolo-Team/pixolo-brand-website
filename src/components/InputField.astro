@@ -1,10 +1,19 @@
 ---
+export interface Props {
+  label: string;
+  name: string;
+  id: string;
+  placeholder?: string;
+  type?: astroHTML.JSX.HTMLInputTypeAttribute;
+  required?: boolean;
+  showPlaceholder?: boolean;
+}
 const {
   label = "",
   placeholder = "",
   name = "",
   id = "",
-  type = "",
+  type,
   required,
   showPlaceholder = true,
 } = Astro.props;
@@ -12,9 +21,10 @@ const {
 
 <!-- Container for label and Input -->
 <div class="flex gap-3 items-center border-b border-n-300 pb-2 w-full">
- 
+  <!-- Label for the input field -->
   <label for={id}>{label}</label>
 
+  <!-- Input field that sets type, id , placeholder, name and required attributes from props -->
   <input
     type={type}
     id={id}

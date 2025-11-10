@@ -1,7 +1,14 @@
 ---
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
-
+export interface Props {
+  name: string;
+  id: string;
+  placeholder?: string;
+  required?: boolean;
+  showPlaceholder?: boolean;
+  iconName: string;
+}
 const {
   iconName,
   placeholder = "",

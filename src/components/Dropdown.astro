@@ -1,4 +1,10 @@
 ---
+export interface Props {
+  options: string[];
+  label: string;
+  name: string;
+  id: string;
+}
 const { options = [], label = "", name = "", id = "" } = Astro.props;
 ---
 

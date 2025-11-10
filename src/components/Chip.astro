@@ -2,6 +2,11 @@
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
 
+export interface Props {
+  iconName: string;
+  text: string;
+}
+
 const { iconName, text } = Astro.props;
 ---
 

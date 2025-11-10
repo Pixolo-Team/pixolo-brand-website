@@ -23,21 +23,11 @@ import Layout from "../layouts/Layout.astro";
     <div
       class="fixed top-[30%] w-[885px] h-[885px] rounded-full left-1/2 -translate-x-1/2"
       style="background: linear-gradient(90deg, rgba(22, 125, 229, 0.36) 0%, rgba(95, 74, 200, 0.36) 92.31%);
-filter: blur(250px);"
-    >
+filter: blur(250px);">
     </div>
 
     <!-- Start adding sections from below  -->
     <div class="relative z-10">
-      <RoundedButton
-        buttonText="Contact Us"
-        leftIcon="contactUsIcon"
-        rightIcon="contactUsIcon"
-      />
-
-      <BottomCTA ctaText="Tell us about your needs" svgName="menu" />
-      <BottomCTA ctaText="Save for later" svgName="delete" />
-
       <ContactForm />
     </div>
   </div>
