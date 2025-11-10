@@ -4,7 +4,7 @@ import Chip from "./Chip.astro";
 import Dropdown from "./Dropdown.astro";
 import InputField from "./InputField.astro";
 import RoundedButton from "./RoundedButton.astro";
-import TextArea from "./TextArea.astro";
+import Textarea from "./Textarea.astro";
 
 const subjectOptions = [
   "Mobile App Development",
@@ -15,8 +15,7 @@ const subjectOptions = [
 ---
 
 <form
-  class="flex flex-col rounded-3xl bg-n-50 border-n-400 border w-fit overflow-hidden"
->
+  class="flex flex-col rounded-3xl bg-n-50 border-n-400 border w-fit overflow-hidden">
   <!-- Title Bar -->
   <div class="flex gap-2 py-3 px-6 bg-n-400">
     <!-- 3 Buttons -->
@@ -36,9 +35,9 @@ const subjectOptions = [
           name="emailTo"
           id="emailTo"
           type="text"
-          showInput={false}
+          showPlaceholder={false}
         />
-        <div class="absolute left-10 bottom-2">
+        <div class="absolute left-10 -top-2">
           <Chip iconName="pixolo-logo" text="Pixolo" />
         </div>
       </div>
@@ -72,7 +71,7 @@ const subjectOptions = [
       />
 
       <!-- Additional Note -->
-      <TextArea
+      <Textarea
         iconName="expand-icon"
         placeholder="Say something about your project..."
         name="additionalNote"

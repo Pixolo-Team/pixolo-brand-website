@@ -2,20 +2,14 @@
 const { options = [], label = "", name = "", id = "" } = Astro.props;
 ---
 
-<!-- Container for label and line -->
-<div class="flex flex-col gap-2">
+<!-- Container for label and dropdown -->
+<div class="flex gap-3 items-center border-b border-n-300 pb-2 w-full">
+  <!-- Displays the label passed as prop -->
+  <label for={id}>{label}</label>
 
-  <!-- Container for label and dropdown -->
-  <div class="flex gap-3 items-center">
-    <!-- Displays the label passed as prop -->
-    <label for={id}>{label}</label>
-
-    <!-- Dropdown menu -->
-    <select name={name} id={id} class="p-3 rounded-[40px] bg-n-950/10">
-      <!-- Adds each option passed as prop in dropdown -->
-      {options.map((opt) => <option value={opt}>{opt}</option>)}
-    </select>
-  </div>
-  <hr class="border-b border-n-300" />
-
+  <!-- Dropdown menu -->
+  <select name={name} id={id} class="p-3 rounded-[40px] bg-n-950/10">
+    <!-- Adds each option passed as prop in dropdown -->
+    {options.map((opt: string) => <option value={opt}>{opt}</option>)}
+  </select>
 </div>
