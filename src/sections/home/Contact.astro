@@ -1,7 +1,37 @@
 ---
+// COMPONENTS //
 import ToolBadge from "../../components/ToolBadge.astro";
-
 import { Icon } from "astro-icon/components";
+import Tooltip from "../../components/Tooltip.astro";
+
+// Contact data for mapping
+const contactSectionData = {
+  badgeTitle: "Collaborate with Pixolo",
+  heading: "Come say Hi! 👋",
+  subheading: "Your vision deserves the right team — let’s start there.",
+  contactCards: [
+    {
+      id: "phone",
+      title: "Call / Text Us",
+      value: "9768941186",
+      icon: "phone",
+    },
+    {
+      id: "mail",
+      title: "Drop a Email",
+      value: "hello@pixolotechnologies.com",
+      icon: "mail",
+    },
+  ],
+  location: {
+    title: "Our Space",
+    subtitle: "Where ideas meet code",
+    address: "G Block BKC, Mumbai",
+    icon: "location",
+    mapUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.975084087423!2d72.8677285752373!3d19.06646435212271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c90de1e0bffb%3A0x289f99b1f86ad34!2sG%20Block%20BKC%2C%20Mumbai!5e0!3m2!1sen!2sin!4v1730992500000!5m2!1sen!2sin",
+  },
+};
 ---
 
 <section>
@@ -11,15 +41,17 @@ import { Icon } from "astro-icon/components";
     <!-- Section Header -->
     <div class="flex flex-col items-center gap-6 lg:gap-7">
       <!-- Tool Badge component -->
-      <ToolBadge title="Collaborate with Pixolo" />
+      <ToolBadge title={contactSectionData.badgeTitle} />
 
       <!-- Header Content -->
       <div class="flex flex-col gap-3.5 text-center lg:gap-4">
+        <!-- Heading -->
         <p class="text-n-950 text-3xl font-medium lg:text-7xl">
-          Come say Hi&#x21; 👋
+          {contactSectionData.heading}
         </p>
+        <!-- Subheading -->
         <p class="text-n-950 text-base font-medium lg:text-xl">
-          Your vision deserves the right team — let’s start there.
+          {contactSectionData.subheading}
         </p>
       </div>
     </div>
@@ -27,55 +59,39 @@ import { Icon } from "astro-icon/components";
     <!-- Content wrap -->
     <div class="flex flex-col justify-center gap-3.5 lg:flex-row">
       <div class="flex w-full flex-col gap-3.5 lg:w-[440px]">
-        <!-- Phone -->
-        <div
-          class="hover:bg-n-200 bg-n-100 flex items-end justify-between gap-5 rounded-4xl px-6 py-5"
-        >
-          <div class="flex items-center gap-5">
-            <div
-              class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
-            >
-              <Icon name="phone" class="size-5 sm:size-6" />
-            </div>
-            <div class="flex flex-col gap-0.5">
-              <p
-                class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl"
-              >
-                Call / Text Us
-              </p>
-              <p class="text-n-900 text-sm font-semibold sm:text-lg">
-                9768941186
-              </p>
-            </div>
-          </div>
-          <Icon name="copy" class="size-5" />
-        </div>
+        {
+          contactSectionData.contactCards.map((item) => (
+            // Contact Card
+            <div class="hover:bg-n-200 bg-n-100 flex w-full items-end justify-between gap-5 rounded-4xl px-6 py-5">
+              <div class="flex max-w-[80%] items-center gap-5">
+                {/* Icon wrapper */}
+                <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]">
+                  <Icon name={item.icon} class="size-5 sm:size-6" />
+                </div>
 
-        <!-- Mail -->
-        <div
-          class="hover:bg-n-200 bg-n-100 flex w-full items-end justify-between gap-5 rounded-4xl px-6 py-5"
-        >
-          <div class="flex max-w-[80%] items-center gap-5">
-            <div
-              class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
-            >
-              <Icon name="mail" class="size-5 sm:size-6" />
+                {/* Contact info */}
+                <div class="flex w-[60%] flex-col gap-0.5">
+                  <p class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl">
+                    {item.title}
+                  </p>
+                  <p
+                    class:list={[
+                      "text-n-900 text-sm font-semibold sm:text-lg",
+                      item.id === "mail" ? "truncate" : "",
+                    ]}
+                  >
+                    {item.value}
+                  </p>
+                </div>
+              </div>
+
+              {/* Tooltip with copy icon */}
+              <Tooltip text="Copy" position="top">
+                <Icon name="copy" class="size-5 cursor-pointer" />
+              </Tooltip>
             </div>
-            <div class="flex w-[60%] flex-col gap-0.5">
-              <p
-                class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl"
-              >
-                Drop a Email
-              </p>
-              <p class="text-n-900 truncate text-sm font-semibold sm:text-lg">
-                hello@pixolotechnologies.com
-              </p>
-            </div>
-          </div>
-          <div class="">
-            <Icon name="copy" class="size-5" />
-          </div>
-        </div>
+          ))
+        }
       </div>
 
       <!-- Location -->
@@ -84,35 +100,44 @@ import { Icon } from "astro-icon/components";
       >
         <div class="flex flex-col gap-5">
           <div class="flex flex-col gap-2.5">
+            <!-- Icon wrapper -->
             <div
               class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
             >
-              <Icon name="location" class="size-5 sm:size-6" />
+              <Icon
+                name={contactSectionData.location.icon}
+                class="size-5 sm:size-6"
+              />
             </div>
+
+            <!-- Location content -->
             <div class="flex flex-col gap-0.5">
               <p
                 class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl"
               >
-                Our Space
+                {contactSectionData.location.title}
               </p>
               <p class="text-n-900 text-sm font-semibold sm:text-lg">
-                Where ideas meet code
+                {contactSectionData.location.subtitle}
               </p>
             </div>
           </div>
+
+          <!-- Address with right arrow icon -->
           <div class="flex items-center gap-5">
             <p class="text-xs font-semibold sm:text-base">
-              G Block BKC, Mumbai
+              {contactSectionData.location.address}
             </p>
             <Icon name="right-arrow" />
           </div>
         </div>
+
         <!-- Map View -->
         <div
           class="border-n-950 overflow-hidden rounded-4xl border md:w-[40%] lg:w-full lg:flex-1"
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.975084087423!2d72.8677285752373!3d19.06646435212271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c90de1e0bffb%3A0x289f99b1f86ad34!2sG%20Block%20BKC%2C%20Mumbai!5e0!3m2!1sen!2sin!4v1730992500000!5m2!1sen!2sin"
+            src={contactSectionData.location.mapUrl}
             width="100%"
             height="100%"
             allowfullscreen=""
