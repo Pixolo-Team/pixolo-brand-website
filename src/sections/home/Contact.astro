@@ -6,7 +6,7 @@ import { Icon } from "astro-icon/components";
 
 <section>
   <div
-    class="container mx-auto flex flex-col gap-11 lg:gap-20 px-6 py-16 md:py-24 lg:py-20"
+    class="container mx-auto flex flex-col gap-11 px-6 py-16 md:py-24 lg:gap-20 lg:py-20"
   >
     <!-- Section Header -->
     <div class="flex flex-col items-center gap-6 lg:gap-7">
@@ -14,62 +14,60 @@ import { Icon } from "astro-icon/components";
       <ToolBadge title="Collaborate with Pixolo" />
 
       <!-- Header Content -->
-      <div class="flex flex-col gap-3.5 lg:gap-4 text-center">
-        <p class="text-n-950 font-medium text-3xl lg:text-7xl">
+      <div class="flex flex-col gap-3.5 text-center lg:gap-4">
+        <p class="text-n-950 text-3xl font-medium lg:text-7xl">
           Come say Hi&#x21; 👋
         </p>
-        <p class="text-n-950 font-medium text-base lg:text-xl">
+        <p class="text-n-950 text-base font-medium lg:text-xl">
           Your vision deserves the right team — let’s start there.
         </p>
       </div>
     </div>
 
     <!-- Content wrap -->
-    <div class="flex flex-col lg:flex-row justify-center gap-3.5">
-      <div>
+    <div class="flex flex-col justify-center gap-3.5 lg:flex-row">
+      <div class="flex w-full flex-col gap-3.5 lg:w-[440px]">
         <!-- Phone -->
-        <a
-          class="hover:bg-n-200 flex gap-5 items-end justify-between rounded-4xl bg-n-100 py-5 px-6"
+        <div
+          class="hover:bg-n-200 bg-n-100 flex items-end justify-between gap-5 rounded-4xl px-6 py-5"
         >
           <div class="flex items-center gap-5">
             <div
-              class="flex size-11 sm:size-16 lg:size-[74px] items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3]"
+              class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
             >
               <Icon name="phone" class="size-5 sm:size-6" />
             </div>
             <div class="flex flex-col gap-0.5">
               <p
-                class="text-n-700 font-bold text-xs sm:text-sm  md:text-base lg:text-xl"
+                class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl"
               >
                 Call / Text Us
               </p>
-              <p class="font-semibold text-sm sm:text-lg text-n-900">
+              <p class="text-n-900 text-sm font-semibold sm:text-lg">
                 9768941186
               </p>
             </div>
           </div>
           <Icon name="copy" class="size-5" />
-        </a>
+        </div>
 
         <!-- Mail -->
-        <a
-          class="hover:bg-n-200 flex w-full gap-5 items-end justify-between rounded-4xl bg-n-100 py-5 px-6"
+        <div
+          class="hover:bg-n-200 bg-n-100 flex w-full items-end justify-between gap-5 rounded-4xl px-6 py-5"
         >
-          <div class="flex items-center gap-5 max-w-[80%]">
+          <div class="flex max-w-[80%] items-center gap-5">
             <div
-              class="flex size-11 sm:size-16 lg:size-[74px] items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3]"
+              class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
             >
               <Icon name="mail" class="size-5 sm:size-6" />
             </div>
-            <div class="flex flex-col gap-0.5 w-[60%]">
+            <div class="flex w-[60%] flex-col gap-0.5">
               <p
-                class="font-bold text-xs text-n-700 sm:text-sm md:text-base lg:text-xl"
+                class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl"
               >
                 Drop a Email
               </p>
-              <p
-                class="font-semibold text-sm text-n-900 max-sm:truncate sm:text-lg"
-              >
+              <p class="text-n-900 truncate text-sm font-semibold sm:text-lg">
                 hello@pixolotechnologies.com
               </p>
             </div>
@@ -77,35 +75,50 @@ import { Icon } from "astro-icon/components";
           <div class="">
             <Icon name="copy" class="size-5" />
           </div>
-        </a>
+        </div>
       </div>
 
       <!-- Location -->
       <div
-        class="hover:bg-n-200 p-6 flex flex-col sm:flex-row justify-between gap-5 bg-n-100 rounded-4xl sm:gap-24"
+        class="bg-n-100 hover:bg-n-200 flex w-full flex-col justify-between gap-5 rounded-4xl p-6 sm:flex-row lg:w-[520px]"
       >
         <div class="flex flex-col gap-5">
           <div class="flex flex-col gap-2.5">
             <div
-              class="flex size-11 sm:size-16 lg:size-[74px] items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3]"
+              class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
             >
               <Icon name="location" class="size-5 sm:size-6" />
             </div>
             <div class="flex flex-col gap-0.5">
-              <p class="font-bold text-xs text-n-700 sm:text-sm">Our Space</p>
-              <p class="font-semibold text-sm text-n-900 sm:text-lg">
+              <p
+                class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl"
+              >
+                Our Space
+              </p>
+              <p class="text-n-900 text-sm font-semibold sm:text-lg">
                 Where ideas meet code
               </p>
             </div>
           </div>
-          <div class="flex gap-5">
-            <p class="font-semibold text-xs">G Block BKC, Mumbai</p>
+          <div class="flex items-center gap-5">
+            <p class="text-xs font-semibold sm:text-base">
+              G Block BKC, Mumbai
+            </p>
             <Icon name="right-arrow" />
           </div>
         </div>
-        <!-- Map -->
-        <div class="border-n-950 border rounded-4xl overflow-hidden w-full flex-1">
-          <img src="/images/map.png" alt="" class="h-full object-contain" />
+        <!-- Map View -->
+        <div
+          class="border-n-950 overflow-hidden rounded-4xl border md:w-[40%] lg:w-full lg:flex-1"
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.975084087423!2d72.8677285752373!3d19.06646435212271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c90de1e0bffb%3A0x289f99b1f86ad34!2sG%20Block%20BKC%2C%20Mumbai!5e0!3m2!1sen!2sin!4v1730992500000!5m2!1sen!2sin"
+            width="100%"
+            height="100%"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="w-full border-0"></iframe>
         </div>
       </div>
     </div>
