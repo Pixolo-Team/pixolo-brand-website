@@ -4,9 +4,19 @@ import { Icon } from "astro-icon/components";
 
 <section
   id="loading-screen"
-  class="fixed z-[9999] flex h-screen w-screen flex-col items-center justify-center bg-n-50 overflow-hidden text-center transition-opacity duration-700"
+  class="fixed z-[999] flex h-screen w-screen flex-col items-center justify-center bg-n-50 overflow-hidden text-center transition-opacity duration-700"
 >
   <div class="relative flex items-center justify-center w-full h-full">
+    <svg
+      class="absolute z-[9999] ball -left-[14%] top-[18%]"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="10" cy="10" r="10" fill="white"></circle>
+    </svg>
     <!-- Step 1: Hello -->
     <p class="firstText text-n-950 text-5xl font-regular">Hello</p>
 
@@ -26,6 +36,22 @@ import { Icon } from "astro-icon/components";
   </div>
 </section>
 <style>
+  .ball {
+    offset-path: path(
+      "M-149 0.5C-149 0.5 -136.866 349.5 -64.0604 349.5C8.74496 349.5 53.7427 0.5 119.975 0.5C186.208 0.5 231.711 349.5 296.427 349.5C361.143 349.5 427.376 0.5 495.631 0.5C563.886 0.5 579.559 349.5 645.286 349.5C711.013 349.5 773.707 0.5 833.367 0.5C893.027 0.5 960 300.5 960 300.5V0.5L969.371 300.5L981 0.5"
+    );
+    offset-rotate: auto;
+    animation: moveBall 5s ease-in-out forwards;
+  }
+
+  @keyframes moveBall {
+    0% {
+      offset-distance: 0%;
+    }
+    100% {
+      offset-distance: 100%;
+    }
+  }
   /* Common base */
   .firstText,
   .secondText,
