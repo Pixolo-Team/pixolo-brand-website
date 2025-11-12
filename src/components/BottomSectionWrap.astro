@@ -1,0 +1,21 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+export interface props {
+  socialLinks?: string[];
+  iconName?: string;
+  text?: string;
+}
+const { socialLinks = [], iconName = "copyright", text = "" } = Astro.props;
+---
+
+<div>
+  <div>
+    {socialLinks.map((link: string) => <Icon name={link} />)}
+  </div>
+  <div>
+    <Icon name={iconName} />
+    <span>{text}</span>
+  </div>
+</div>

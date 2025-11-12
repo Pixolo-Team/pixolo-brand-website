@@ -1,0 +1,33 @@
+---
+// OTHERS //
+import SectionHeader from "./sectionHeader.astro";
+import LogoCtaWrap from "./LogoCtaWrap.astro";
+import BottomSectionWrap from "./BottomSectionWrap.astro";
+
+const socialLinks = ["instagram", "linkedin"];
+---
+
+<!-- Footer Container -->
+<footer>
+
+  <!-- Header Section -->
+  <SectionHeader
+    iconName="logo-only"
+    headerText="Every line of code we write carries our story of curiosity, courage, and a shared laugh between deadlines."
+  />
+
+  <!-- Logo Cta Wrap -->
+  <LogoCtaWrap
+    toolBadgeText="Make the Logo Bigger",
+    iconName="text-only-logo",
+    message="We code better than we socialize. It’s your move."
+  />
+
+  <!-- Bottom Section Wrap -->
+  <BottomSectionWrap
+    text="2025",
+    iconName="copyright",
+    socialLinks={socialLinks}
+  />
+  
+</footer>

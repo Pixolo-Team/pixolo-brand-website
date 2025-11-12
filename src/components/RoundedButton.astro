@@ -2,6 +2,9 @@
 // STYLES //
 import "../styles/global.css";
 
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
 const { buttonText, leftIcon, rightIcon } = Astro.props;
 ---
 
@@ -12,11 +15,7 @@ const { buttonText, leftIcon, rightIcon } = Astro.props;
   <!--Left icon of Rounded Button  -->
   {
     leftIcon && (
-      <img
-        src={`/icons/${rightIcon}.svg`}
-        alt={`${leftIcon}`}
-        class="size-4 lg:size-6"
-      />
+      <Icon name={leftIcon} class="lg:size-6 size-4"/>
     )
   }
 
@@ -28,11 +27,7 @@ const { buttonText, leftIcon, rightIcon } = Astro.props;
   <!-- Right Icon Of Rounded Button -->
   {
     rightIcon && (
-      <img
-        src={`/icons/${rightIcon}.svg`}
-        alt={`${rightIcon} `}
-        class="size-4 lg:size-6"
-      />
+      <Icon name={rightIcon} class="size-4 lg:size-6"/>
     )
   }
 </button>
