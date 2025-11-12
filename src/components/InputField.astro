@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 export interface Props {
   label: string;
   name: string;
@@ -7,6 +9,8 @@ export interface Props {
   type?: astroHTML.JSX.HTMLInputTypeAttribute;
   required?: boolean;
   showPlaceholder?: boolean;
+  errorMessages?: string[];
+  isError?: boolean;
 }
 const {
   label = "",
@@ -16,21 +20,41 @@ const {
   type = "text",
   required = false,
   showPlaceholder = true,
+  errorMessages = [],
+  isError = false,
 } = Astro.props;
 ---
 
-<!-- Container for label and Input -->
-<div class="flex gap-3 items-center border-b border-n-300 pb-2 w-full focus-within:border-n-900 md:gap-4">
-  <!-- Label for the input field -->
-  <label for={id} class="text-sm md:text-base font-medium">{label}</label>
+<!-- Container for input field and error message -->
+<div class="flex flex-col gap-3 w-full">
+  <!-- Container for label and Input -->
+  <div
+    class="flex gap-3 items-center border-b border-n-300 pb-2 focus-within:border-n-900 md:gap-4">
+    <!-- Label for the input field -->
+    <label for={id} class="text-sm md:text-base font-medium">{label}</label>
 
-  <!-- Input field that sets type, id , placeholder, name and required attributes from props -->
-  <input
-    type={type}
-    id={id}
-    placeholder={showPlaceholder ? placeholder : undefined}
-    name={name}
-    required={required}
-    class="focus:border-none outline-none"
-  />
+    <!-- Input field that sets type, id , placeholder, name and required attributes from props -->
+    <input
+      type={type}
+      id={id}
+      placeholder={showPlaceholder ? placeholder : undefined}
+      name={name}
+      required={required}
+      class="focus:border-none outline-none"
+    />
+  </div>
+
+  <!-- Check if isError is true show the error message -->
+  {
+    isError && (
+      <div class="flex flex-col gap-3">
+        {errorMessages.map((msg) => (
+          <div class="flex gap-1.5">
+            <Icon name="error-icon" />
+            <p class="font-normal text-sm text-red-600">{msg}</p>
+          </div>
+        ))}
+      </div>
+    )
+  }
 </div>

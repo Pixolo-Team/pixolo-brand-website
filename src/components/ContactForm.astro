@@ -14,84 +14,94 @@ const subjectOptions = [
   "UX Design",
 ];
 ---
+
 <div class="flex-col gap-10 py-24 px-6">
-<form
-  class="flex flex-col rounded-3xl bg-n-50 border-n-400 border md:max-w-[680px] lg:max-w-[800px] overflow-hidden">
-  <!-- Title Bar -->
-  <div class="flex gap-2 py-3 px-6 bg-n-400 w-full lg:py-4 lg:px-11">
-    <!-- 3 Buttons -->
-    <div class="w-4 h-4 bg-[#C45E52] rounded-full"></div>
-    <div class="w-4 h-4 bg-[#CAA144] rounded-full"></div>
-    <div class="w-4 h-4 bg-n-500 rounded-full"></div>
-  </div>
+  <form
+    class="flex flex-col rounded-3xl bg-n-50 border-n-400 border md:max-w-[680px] lg:max-w-[800px] overflow-hidden">
+    <!-- Title Bar -->
+    <div class="flex gap-2 py-3 px-6 bg-n-400 w-full lg:py-4 lg:px-11">
+      <!-- 3 Buttons -->
+      <div class="w-4 h-4 bg-[#C45E52] rounded-full"></div>
+      <div class="w-4 h-4 bg-[#CAA144] rounded-full"></div>
+      <div class="w-4 h-4 bg-n-500 rounded-full"></div>
+    </div>
 
-  <!-- Form Container -->
-  <div class="flex flex-col p-5 gap-5 items-start md:px-7 md:pb-6 md:pt-7">
-    <!-- Input Wrapper -->
-    <div class="flex flex-col gap-5 md:gap-6 w-full">
-      <!-- Email To  -->
-      <div class="flex gap-4 w-full relative md:gap-3">
+    <!-- Form Container -->
+    <div class="flex flex-col p-5 gap-5 items-start md:px-7 md:pb-6 md:pt-7">
+      <!-- Input Wrapper -->
+      <div class="flex flex-col gap-5 md:gap-6 w-full">
+        <!-- Email To  -->
+        <div class="flex gap-4 w-full relative md:gap-3">
+          <InputField
+            label="To"
+            name="emailTo"
+            id="emailTo"
+            type="text"
+            showPlaceholder={false}
+          />
+          <!-- For mobiles -->
+          <div class="absolute left-10 -top-2 md:hidden">
+            <Chip iconName="pixolo-logo" text="Pixolo" />
+          </div>
+          <!-- For tablets and desktops -->
+          <div
+            class="absolute left-10 -top-2 hidden md:flex md:gap-4 md:items-center">
+            <Chip iconName="pixolo-logo" text="Pixolo Technologies" />
+            <p class="text-sm font-normal">(business@pixolotechnologies.com)</p>
+          </div>
+        </div>
+
+        <!-- Email From -->
         <InputField
-          label="To"
-          name="emailTo"
-          id="emailTo"
-          type="text"
-          showPlaceholder={false}
+          label="From"
+          type="email"
+          name="emailFrom"
+          placeholder="your@email.com"
+          id="emailFrom"
+          required={true}
+          isError={true}
+          errorMessages={[
+            "This doesn’t look like an email address.",
+            "This field is required.",
+          ]}
         />
-        <!-- For mobiles -->
-        <div class="absolute left-10 -top-2 md:hidden">
-          <Chip iconName="pixolo-logo" text="Pixolo" />
-        </div>
-        <!-- For tablets and desktops -->
-        <div
-          class="absolute left-10 -top-2 hidden md:flex md:gap-4 md:items-center">
-          <Chip iconName="pixolo-logo" text="Pixolo Technologies" />
-          <p class="text-sm font-normal">(business@pixolotechnologies.com)</p>
-        </div>
+
+        <!-- Phone Number -->
+        <InputField
+          label="Phone No"
+          type="tel"
+          name="phoneNo"
+          placeholder="your phone number"
+          id="phoneNo"
+          required={true}
+          isError={true}
+          errorMessages={[
+            "This field is required.",
+            "This doesn’t look like a phone number.",
+          ]}
+        />
+
+        <!-- Subjects Dropdown  -->
+        <Dropdown
+          label="Subject"
+          name="Subject"
+          id="Subject"
+          options={subjectOptions}
+          iconName="dropdown-icon"
+        />
+
+        <!-- Additional Note -->
+        <Textarea
+          iconName="expand-icon"
+          placeholder="Say something about your project..."
+          name="additionalNote"
+          id="additionalNote"
+        />
       </div>
-
-      <!-- Email From -->
-      <InputField
-        label="From"
-        type="email"
-        name="emailFrom"
-        placeholder="your@email.com"
-        id="emailFrom"
-        required={true}
-      />
-
-      <!-- Phone Number -->
-      <InputField
-        label="Phone No"
-        type="tel"
-        name="phoneNo"
-        placeholder="your phone number"
-        id="phoneNo"
-        required={true}
-      />
-
-      <!-- Subjects Dropdown  -->
-      <Dropdown
-        label="Subject"
-        name="Subject"
-        id="Subject"
-        options={subjectOptions}
-        iconName="dropdown-icon"
-      />
-
-      <!-- Additional Note -->
-      <Textarea
-        iconName="expand-icon"
-        placeholder="Say something about your project..."
-        name="additionalNote"
-        id="additionalNote"
-      />
+      <!-- SendMessage Button -->
+      <div class="self-end">
+        <RoundedButton buttonText="Send Message" />
+      </div>
     </div>
-    <!-- SendMessage Button -->
-    <div class="self-end">
-      <RoundedButton buttonText="Send Message" />
-    </div>
-
-  </div>
-</form>
+  </form>
 </div>
