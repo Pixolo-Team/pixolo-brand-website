@@ -1,20 +1,18 @@
 ---
+// COMPONENTS //
 import { Icon } from "astro-icon/components";
 ---
 
 <!-- Whatsapp Button -->
 <div
-  class="group flex justify-center items-center w-fit rounded-[61px] p-6 md:py-6 md:px-8 gap-2.5 bg-n-800/20 absolute transition-all duration-300 cursor-pointer"
+  class="group flex justify-center items-center w-fit rounded-[61px] p-6 md:py-6 md:px-8 bg-n-800/20 absolute transition-all duration-300 cursor-pointer"
 >
   <!-- Whatsapp Icon -->
-  <Icon
-    name="whatsapp-logo"
-    class="size-8 transition-transform duration-500 ease-in-out"
-  />
+  <Icon name="whatsapp-logo" class="size-8" />
 
   <!-- Button Text -->
   <div
-    class="hidden group-hover:flex flex-col w-fit gap-0.5 transition-all duration-500 ease-in-out"
+    class="whitespace-nowrap overflow-hidden opacity-0 max-w-0 group-hover:flex flex-col w-fit group-hover:ml-2.5 gap-0.5 transition-all duration-300 ease-in-out group-hover:max-w-[250px] group-hover:opacity-100"
   >
     <p class="text-lg font-medium text-n-950 leading-[22px]">Whatsapp</p>
     <p class="text-xs font-medium text-n-950">Let's Connect</p>
