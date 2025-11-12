@@ -132,19 +132,21 @@ const contactSectionData = {
           </div>
         </div>
 
-        <!-- Map View -->
-        <div
-          class="border-n-950 overflow-hidden rounded-4xl border md:w-[40%] lg:w-full lg:flex-1"
-        >
-          <iframe
-            src={contactSectionData.location.mapUrl}
-            width="100%"
-            height="100%"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            class="w-full border-0"></iframe>
-        </div>
+        <Tooltip text="View in map" position="center">
+          
+          <!-- Map View -->
+          <div class="border-n-950 overflow-hidden rounded-4xl border md:w-[40%] lg:w-full lg:flex-1">
+            <iframe
+              src={contactSectionData.location.mapUrl}
+              width="100%"
+              height="100%"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="w-full border-0">
+            </iframe>
+          </div>
+        </Tooltip>
       </div>
     </div>
   </div>
