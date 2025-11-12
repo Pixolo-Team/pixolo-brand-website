@@ -14,14 +14,13 @@ const {
   placeholder = "",
   name = "",
   id = "",
-  required,
+  required = false,
   showPlaceholder = true,
 } = Astro.props;
 ---
 
 <!-- Container for textarea and icon -->
- 
-<div class="flex flex-col gap-11 pb-2 border-b border-n-300 w-full">
+<div class="flex flex-col gap-11 pb-2 border-b border-n-300 focus-within:border-n-900 w-full">
   <!-- Textarea and Icon -->
   <textarea
     name={name}
@@ -30,5 +29,4 @@ const {
     required={required}
     class="focus:border-none outline-none resize-none"></textarea>
   <Icon name={iconName} class="self-end" />
-
 </div>

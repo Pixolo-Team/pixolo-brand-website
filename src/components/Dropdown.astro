@@ -23,12 +23,16 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
       name={name}
       id={id}
       class="appearance-none focus:border-none outline-none">
-    
       <!-- Adds each option passed as prop in dropdown -->
-      {options.map((opt: string) => <option value={opt} >{opt}</option>)}
+      {
+        options.map((opt: string) => (
+          <option value={opt} class="bg-n-900 text-n-100">
+            {opt}
+          </option>
+        ))
+      }
     </select>
     <!-- Custom icon for dropdown -->
     <Icon name={iconName} />
-
   </div>
 </div>

@@ -1,6 +1,9 @@
 ---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
 const { ctaText, svgName } = Astro.props;
-const iconPath = `/icons/${svgName}.svg`;
+
 ---
 
 <div>
@@ -13,7 +16,7 @@ const iconPath = `/icons/${svgName}.svg`;
     <!-- Icon -->
     <div
       class="w-12 h-12 bg-n-950 flex items-center justify-center rounded-full">
-      <img src={iconPath} alt=`${svgName} Icon` />
+      <Icon name={svgName} />
     </div>
   </div>
 </div>
