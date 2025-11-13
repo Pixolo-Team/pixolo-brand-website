@@ -1,0 +1,44 @@
+---
+// STYLES //
+import "../styles/global.css";
+
+// COMPONENTS //
+import Navbar from "../components/Navbar.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="color-scheme" content="light dark" />
+    <link
+      rel="icon"
+      href="/favicon-light.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <!-- Favicon for dark mode -->
+    <link
+      rel="icon"
+      href="/favicon-dark.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>Pixolo Technologies</title>
+  </head>
+  <body>
+    <div class="fixed top-3 left-0 w-full z-50">
+      <Navbar />
+    </div>
+    <slot />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
