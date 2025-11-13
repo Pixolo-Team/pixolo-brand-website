@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* =========================
    Neometric Font Faces
@@ -76,7 +77,6 @@
   font-display: swap;
 }
 
-
 /* ---------------------------------------
    Base Global Styles
 ---------------------------------------- */
@@ -96,13 +96,6 @@ body {
 
 * {
   @apply box-border;
-}
-
-img,
-svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
 }
 
 /* Optional scrollbar style (nice subtle look) */
@@ -133,55 +126,57 @@ svg {
 }
 
 :root {
+  --color-n-100: #f1f5f9;
+  --color-n-200: #e2e8f1;
+  --color-n-300: #cad5e2;
+  --color-n-400: #90a2b9;
   --color-n-50: #ffffff;
-  --color-n-100: var(--color-slate-100);
-  --color-n-200: var(--color-slate-200);
-  --color-n-300: var(--color-slate-300);
-  --color-n-400: var(--color-slate-400);
-  --color-n-500: var(--color-slate-500);
-  --color-n-600: var(--color-slate-600);
-  --color-n-700: var(--color-slate-700);
-  --color-n-800: var(--color-slate-800);
-  --color-n-900: var(--color-slate-900);
-  --color-n-950: var(--color-slate-950);
+  --color-n-500: #62748e;
+  --color-n-600: #45556c;
+  --color-n-700: #324158;
+  --color-n-800: #1d283d;
+  --color-n-900: #0e172b;
+  --color-n-950: #020617;
 
   /* Blue Shades */
-  --blue-50:  #EEF0FB;
-  --blue-100: #CDD2F4;
-  --blue-200: #ACB3EC;
-  --blue-300: #8B95E5;
-  --blue-400: #6977DD;
-  --blue-500: #4254D4;
-  --blue-600: #2D3FC8;
-  --blue-700: #2635A6;
-  --blue-800: #1E2A85;
+  --blue-50: #eef0fb;
+  --blue-100: #cdd2f4;
+  --blue-200: #acb3ec;
+  --blue-300: #8b95e5;
+  --blue-400: #6977dd;
+  --blue-500: #4254d4;
+  --blue-600: #2d3fc8;
+  --blue-700: #2635a6;
+  --blue-800: #1e2a85;
   --blue-900: #172064;
-  --blue-950: #0F1543;
+  --blue-950: #0f1543;
 
   /* Violet Shades */
-  --violet-50:  #F1EFFA;
-  --violet-100: #D6D0F1;
-  --violet-200: #BAB1E7;
-  --violet-300: #9E92DD;
-  --violet-400: #8373D4;
-  --violet-500: #5F4AC8;
-  --violet-600: #4F3ABB;
+  --violet-50: #f1effa;
+  --violet-100: #d6d0f1;
+  --violet-200: #bab1e7;
+  --violet-300: #9e92dd;
+  --violet-400: #8373d4;
+  --violet-500: #5f4ac8;
+  --violet-600: #4f3abb;
   --violet-700: #423096;
-  --violet-800: #35267D;
-  --violet-900: #281D5E;
-  --violet-950: #1A133E;
+  --violet-800: #35267d;
+  --violet-900: #281d5e;
+  --violet-950: #1a133e;
 }
 
-.dark {
-  --color-n-50: var(--color-slate-950);
-  --color-n-100: var(--color-slate-900);
-  --color-n-200: var(--color-slate-800);
-  --color-n-300: var(--color-slate-700);
-  --color-n-400: var(--color-slate-600);
-  --color-n-500: var(--color-slate-500);
-  --color-n-600: var(--color-slate-400);
-  --color-n-700: var(--color-slate-300);
-  --color-n-800: var(--color-slate-200);
-  --color-n-900: var(--color-slate-100);
-  --color-n-950: #ffffff;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-n-50: #020617;
+    --color-n-100: #0e172b;
+    --color-n-200: #1d283d;
+    --color-n-300: #324158;
+    --color-n-400: #45556c;
+    --color-n-500: #62748e;
+    --color-n-600: #90a2b9;
+    --color-n-700: #cad5e2;
+    --color-n-800: #e2e8f1;
+    --color-n-900: #f1f5f9;
+    --color-n-950: #ffffff;
+  }
 }
