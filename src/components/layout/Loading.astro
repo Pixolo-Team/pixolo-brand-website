@@ -7,12 +7,16 @@ import { Icon } from "astro-icon/components";
   class="fixed z-[999] flex h-screen w-screen flex-col items-center justify-center bg-n-50 overflow-hidden text-center transition-opacity duration-700"
 >
   <div class="relative flex items-center justify-center w-full h-full">
-    <svg width="969" height="350" viewBox="0 0 969 350" fill="none" xmlns="http://www.w3.org/2000/svg"
-    class="absolute z-[9999] -left-[14%] top-[18%] h-full w-full">
-      <path id="anim-path" d="M968.5 300.5L957 0.5V300.5L961.5 0.5V300.5C961.5 300.5 881.5 0.5 822.5 0.5C763.5 0.5 701.5 349.5 636.5 349.5C571.5 349.5 556 0.5 488.5 0.5C421 0.5 355.5 349.5 291.5 349.5C227.5 349.5 182.5 0.5 117 0.5C51.5 0.5 7 349.5 -65 349.5C-137 349.5 -149 0.5 -149 0.5" stroke="white"/>
-      <circle offsetPath="#anim-path" id="ball" cy="259.5" r="10" fill="white"/>
+    <svg
+      class="ball"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="10" cy="10" r="8" fill="white"></circle>
     </svg>
-
 
     <!-- Step 1: Hello -->
     <p class="firstText text-n-950 text-5xl font-regular">Hello</p>
@@ -21,8 +25,9 @@ import { Icon } from "astro-icon/components";
     <p class="secondText text-n-950 text-5xl font-regular">We are</p>
 
     <!-- Step 3: Pixolo -->
-    <div class="pixolo h-[72px]">
-      <Icon name="pixolo" class="w-full h-full" />
+    <div class="pixolo flex gap-1 items-center justify-center">
+      <Icon name="pixolo-icon" class="w-[101px] h-[101px]" />
+      <Icon name="pixolo" class="w-full h-[68px]" />
     </div>
 
     <!-- Loader Number -->
@@ -34,20 +39,88 @@ import { Icon } from "astro-icon/components";
   </div>
 </section>
 <style>
-  #ball {
-    offset-path: path(#anim-path);
-    offset-rotate: auto;
-    animation: moveBall 5s ease-in-out forwards;
+  .ball {
+    position: absolute;
+    left: 14%;
+
+    animation:
+      bounce 8s ease-in-out 1 forwards,
+      movement 12s ease-in-out 8s 1 forwards;
   }
 
-  @keyframes moveBall {
+  @keyframes bounce {
     0% {
-      offset-distance: 0%;
+      left: 0%;
+      top: 50%;
+      -webkit-animation-timing-function: ease-in;
+    }
+    8% {
+      left: 8%;
+      top: 21%;
+      -webkit-animation-timing-function: ease-in;
+    }
+    16% {
+      left: 17%;
+      top: 50%;
+      -webkit-animation-timing-function: ease-in;
+    }
+    24% {
+      left: 27%;
+      top: 21%;
+      -webkit-animation-timing-function: ease-in;
+    }
+    32% {
+      left: 35%;
+      top: 50%;
+      -webkit-animation-timing-function: ease-in;
+    }
+    40% {
+      left: 45%;
+      top: 21%;
+      -webkit-animation-timing-function: ease-in;
+    }
+    48% {
+      left: 50%;
+      top: 50%;
+      -webkit-animation-timing-function: ease-in;
+    }
+    56% {
+      left: 50%;
+      top: 21%;
+      -webkit-animation-timing-function: ease-in;
+    }
+    62% {
+      left: 50%;
+      top: 50%;
+      -webkit-animation-timing-function: ease-in;
+    }
+    70% {
+      left: 50%;
+      top: 21%;
+      -webkit-animation-timing-function: ease-in;
+    }
+    78% {
+      left: 50%;
+      top: 50%;
+      -webkit-animation-timing-function: ease-in;
+    }
+    84% {
+      left: 50%;
+      top: 21%;
+      -webkit-animation-timing-function: ease-in;
+    }
+    90% {
+      left: 50%;
+      top: 50%;
+      -webkit-animation-timing-function: ease-in;
     }
     100% {
-      offset-distance: 100%;
+      left: 47.2%;
+      top: 45.5%;
+      -webkit-animation-timing-function: ease-in;
     }
   }
+
   /* Common base */
   .firstText,
   .secondText,
@@ -59,20 +132,20 @@ import { Icon } from "astro-icon/components";
 
   /* Hello: fade up and scale out */
   .firstText {
-    animation: firstTextAnim 2s ease-in-out forwards;
-    animation-delay: 0s;
+    animation: firstTextAnim 1s ease-in-out forwards;
+    animation-delay: 5s;
   }
 
   /* We Are: scale in, scale out */
   .secondText {
-    animation: secondTextAnim 2s ease-in-out forwards;
-    animation-delay: 2s;
+    animation: secondTextAnim 1s ease-in-out forwards;
+    animation-delay: 6s;
   }
 
   /* Pixolo: fade and stay visible */
   .pixolo {
     animation: pixoloAnim 2s ease-in-out forwards;
-    animation-delay: 4s;
+    animation-delay: 7s;
   }
 
   /* Keyframes */
