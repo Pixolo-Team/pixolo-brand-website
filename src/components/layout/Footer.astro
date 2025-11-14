@@ -30,12 +30,12 @@ const {
 ---
 
 <!-- Footer Container -->
-<div class="flex flex-col px-6 pt-24 pb-8 bg-n-50 items-center justify-center">
+<div class="flex flex-col px-6 pt-24 pb-8 bg-n-50 md:w-[834px] mx-auto ">
   <footer>
     <!-- Header Section -->
-    <div class="flex flex-col gap-4">
-      <Icon name={headerIcon} class="w-11 h-11" />
-      <p class="font-normal text-2xl leading-tight tracking-[-0.04em]">
+    <div class="flex flex-col gap-4 md:gap-5 md:w-[506px]">
+      <Icon name={headerIcon} class="w-11 h-11 md:w-14" />
+      <p class="font-normal text-2xl leading-tight tracking-[-0.04em] md:text-4xl">
         {headerText}
       </p>
     </div>
@@ -43,7 +43,7 @@ const {
     <!-- Logo Cta Wrap -->
 
     <!-- Container -->
-    <div class="flex flex-col pt-32 gap-8 ">
+    <div class="flex flex-col pt-32 gap-8 md:pt-40 md:gap-9">
       <!-- Tool Badge -->
       <div class="flex justify-end">
         <div class="rotate-[-9.53deg] ">
@@ -51,10 +51,10 @@ const {
         </div>
       </div>
       <!-- Logo with text only and message -->
-      <div class="flex flex-col gap-6">
-        <Icon name={logoIcon} class="w-[327px] h-[111px] self-center" />
+      <div class="flex flex-col gap-6 md:gap-8">
+        <Icon name={logoIcon} class="w-[327px] h-[111px] self-center md:w-3xl md:h-[246.25px] " />
         <p
-          class="text-base font-normal leading-[1.25em] self-center text-center">
+          class="text-base font-normal leading-[1.25em] self-center text-center md:text-xl md:font-normal">
           {logoMessage}
         </p>
       </div>
@@ -66,20 +66,20 @@ const {
     </div>
 
     <!-- Bottom Section Wrap -->
-    <div class="flex flex-col gap-3.5">
-      <div class="flex pt-6 gap-6 justify-center">
+    <div class="flex flex-col gap-3.5 md:gap-4">
+      <div class="flex pt-6 gap-6 justify-center md:pt-10">
         {
           socialLinks.map((link: string) => (
-            <div class="flex flex-col w-10 rounded-[34px] h-10 p-2.5 border border-n-500 items-center justify-center">
-              <Icon name={link} />
+            <div class="flex flex-col w-10 rounded-full h-10 p-2.5 border border-n-500 items-center justify-center md:gap-2 md:p-3 md:w-14 md:h-14">
+              <Icon name={link} class="w-5 h-[20.01px] md:w-7 md:h-[28.01px]" />
             </div>
           ))
         }
       </div>
       <!-- Copyright -->
-      <div class="flex gap-1 justify-center">
-        <Icon name={bottomIcon} class="self-center" />
-        <span>{bottomText}</span>
+      <div class="flex gap-1 justify-center md:gap-1.5">
+        <Icon name={bottomIcon} class="self-center md:w-4 md:h-4" />
+        <span class="text-xs leading-[1.25em] tracking-[0.02em]">{bottomText}</span>
       </div>
     </div>
   </footer>
