@@ -14,17 +14,19 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
 
 <!-- Container for label and dropdown -->
 <div
-  class="flex gap-3 items-center border-b border-n-300 pb-2.5 text-sm font-medium md:text-base lg:text-lg"
+  class="border-n-300 flex items-center gap-3 border-b pb-2.5 text-sm font-medium md:text-base lg:text-lg"
 >
   <!-- Displays the label passed as prop -->
   <label for={id}>{label}</label>
 
   <!-- Dropdown menu -->
-  <div class="flex p-3 rounded-[40px] bg-n-950/10 text-xs font-normal gap-3">
+  <div
+    class="bg-n-950/10 flex cursor-pointer gap-3 rounded-[40px] p-3 text-xs font-normal"
+  >
     <select
       name={name}
       id={id}
-      class="appearance-none focus:border-none outline-none"
+      class="appearance-none outline-none focus:border-none"
     >
       <!-- Adds each option passed as prop in dropdown -->
       {
@@ -36,6 +38,6 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
       }
     </select>
     <!-- Custom icon for dropdown -->
-    <Icon name={iconName} class="self-center size-3.5" />
+    <Icon name={iconName} class="size-3.5 self-center" />
   </div>
 </div>

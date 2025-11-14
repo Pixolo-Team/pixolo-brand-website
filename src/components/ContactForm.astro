@@ -15,24 +15,28 @@ const subjectOptions = [
 ];
 ---
 
-<div class="flex gap-10 py-24 px-6 h-full items-center justify-center w-full">
+<div class="flex h-full w-full items-center justify-center gap-10 px-6 py-24">
   <div
-    class="flex flex-col rounded-3xl gap-4 bg-n-50 border-n-400 border md:w-[680px] lg:w-[800px] overflow-hidden"
+    class="bg-n-50 border-n-400 flex w-full flex-col gap-4 overflow-hidden rounded-3xl border md:w-[680px] lg:w-[800px]"
   >
     <!-- Title Bar -->
-    <div class="flex gap-1.5 py-3 px-6 bg-n-400 w-full lg:py-4 lg:px-11">
+    <div
+      class="bg-n-400 flex w-full gap-1.5 px-6 py-3 md:gap-2 md:px-7 lg:px-11 lg:py-4"
+    >
       <!-- 3 Buttons -->
-      <div class="size-3 bg-[#C45E52] rounded-full"></div>
-      <div class="size-3 bg-[#CAA144] rounded-full"></div>
-      <div class="size-3 bg-n-500 rounded-full"></div>
+      <div class="size-3 cursor-pointer rounded-full bg-[#C45E52] md:size-4">
+      </div>
+      <div class="size-3 cursor-pointer rounded-full bg-[#CAA144] md:size-4">
+      </div>
+      <div class="bg-n-500 size-3 cursor-pointer rounded-full md:size-4"></div>
     </div>
 
     <!-- Form Container -->
-    <form class="flex flex-col p-5 gap-5 items-start md:px-7 md:pb-6 md:pt-7">
+    <form class="flex flex-col items-start gap-5 p-5 md:px-7 md:py-7">
       <!-- Input Wrapper -->
-      <div class="flex flex-col gap-5 md:gap-6 w-full">
+      <div class="flex w-full flex-col gap-5 md:gap-6">
         <!-- Email To  -->
-        <div class="flex gap-4 w-full relative md:gap-3 lg:gap-4">
+        <div class="relative flex w-full gap-4 md:gap-3 lg:gap-4">
           <InputField
             label="To"
             name="emailTo"
@@ -40,16 +44,14 @@ const subjectOptions = [
             type="text"
             showPlaceholder={false}
           />
-          <!-- For mobiles -->
-          <div class="absolute left-8 -top-2 md:hidden">
-            <Chip iconName="pixolo-logo" text="Pixolo" />
-          </div>
+
           <!-- For tablets and desktops -->
-          <div
-            class="absolute left-10 -top-2 hidden md:flex md:gap-3 md:items-center lg:flex lg:gap-3 lg:p-2"
-          >
+          <div class="absolute -top-2 left-10 md:flex md:items-center md:gap-4">
+            <!-- Chip component -->
             <Chip iconName="pixolo-logo" text="Pixolo Technologies" />
-            <p class="md:text-sm lg:text-xs font-medium">
+
+            <!-- Email -->
+            <p class="hidden font-medium md:flex md:text-sm lg:text-xs">
               (business@pixolotechnologies.com)
             </p>
           </div>

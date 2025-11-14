@@ -27,13 +27,13 @@ const {
 ---
 
 <!-- Container for input field and error message -->
-<div class="flex flex-col gap-3 w-full">
+<div class="flex w-full flex-col gap-3">
   <!-- Container for label and Input -->
   <div
-    class="flex gap-3 items-center border-b border-n-300 pb-3 focus-within:border-n-900 md:gap-4 md:pb-4"
+    class="border-n-300 focus-within:border-n-900 flex items-center gap-3 border-b pb-3 md:gap-4 md:pb-4"
   >
     <!-- Label for the input field -->
-    <label for={id} class="text-sm md:text-base lg:text-lg font-medium"
+    <label for={id} class="text-sm font-medium md:text-base lg:text-base"
       >{label}</label
     >
 
@@ -44,7 +44,7 @@ const {
       placeholder={showPlaceholder ? placeholder : undefined}
       name={name}
       required={required}
-      class="focus:border-none outline-none placeholder-n-600"
+      class="placeholder-n-600 text-sm outline-none focus:border-none lg:text-base"
     />
   </div>
 
@@ -58,7 +58,7 @@ const {
             <Icon name="error-icon" />
 
             {/* Error message */}
-            <p class="font-normal text-xs md:text-sm text-red-600">{msg}</p>
+            <p class="text-xs font-normal text-red-600 md:text-sm">{msg}</p>
           </div>
         ))}
       </div>
