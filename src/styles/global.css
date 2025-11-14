@@ -180,3 +180,31 @@ body {
     --color-n-950: #ffffff;
   }
 }
+
+/* Hide scrollbar for all browsers */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 8px; /* scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-blue-500); /* scrollbar handle color */
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blue-600); /* hover color */
+}
