@@ -10,20 +10,20 @@ const { href } = Astro.props as Props;
 ---
 
 <!-- Whatsapp Button -->
-<div
-  class="group flex justify-center items-center w-fit rounded-full size-20 p-6 hover:px-8 bg-n-800/20 absolute transition-all duration-800 cursor-pointer border border-n-950"
->
-  <!-- Whatsapp Icon -->
-  <Icon name="whatsapp-logo" class="size-8" />
-
-  <!-- Button Text -->
+<a href={href} class="block w-fit">
   <div
-    class="whitespace-nowrap overflow-hidden opacity-0 max-w-0 group-hover:flex flex-col w-fit group-hover:ml-2.5 gap-0.5 transition-all duration-800 ease-in-out group-hover:max-w-[250px] group-hover:opacity-100"
+    class="group flex justify-center items-center w-fit rounded-full size-20 p-6 hover:px-8 bg-n-800/20 absolute transition-all duration-800 cursor-pointer border border-n-950"
   >
-    <!-- Anchor tag for whatsapp button and took href as props -->
-    <a href={href}>
+    <!-- Whatsapp Icon -->
+    <Icon name="whatsapp-logo" class="size-8" />
+
+    <!-- Button Text -->
+    <div
+      class="whitespace-nowrap overflow-hidden opacity-0 max-w-0 group-hover:flex flex-col w-fit group-hover:ml-2.5 gap-0.5 transition-all duration-800 ease-in-out group-hover:max-w-[250px] group-hover:opacity-100"
+    >
+      <!-- Anchor tag for whatsapp button and took href as props -->
       <p class="text-lg font-medium text-n-950 leading-[22px]">Whatsapp</p>
       <p class="text-xs font-medium text-n-950">Let's Connect</p>
-    </a>
+    </div>
   </div>
-</div>
+</a>
