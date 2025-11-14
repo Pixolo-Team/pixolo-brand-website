@@ -1,20 +1,29 @@
 ---
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
+
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props as Props;
 ---
 
 <!-- Whatsapp Button -->
 <div
-  class="group flex justify-center items-center w-fit rounded-[61px] p-6 md:py-6 md:px-8 bg-n-800/20 absolute transition-all duration-300 cursor-pointer"
+  class="group flex justify-center items-center w-fit rounded-full size-20 p-6 hover:px-8 bg-n-800/20 absolute transition-all duration-800 cursor-pointer border border-n-950"
 >
   <!-- Whatsapp Icon -->
   <Icon name="whatsapp-logo" class="size-8" />
 
   <!-- Button Text -->
   <div
-    class="whitespace-nowrap overflow-hidden opacity-0 max-w-0 group-hover:flex flex-col w-fit group-hover:ml-2.5 gap-0.5 transition-all duration-300 ease-in-out group-hover:max-w-[250px] group-hover:opacity-100"
+    class="whitespace-nowrap overflow-hidden opacity-0 max-w-0 group-hover:flex flex-col w-fit group-hover:ml-2.5 gap-0.5 transition-all duration-800 ease-in-out group-hover:max-w-[250px] group-hover:opacity-100"
   >
-    <p class="text-lg font-medium text-n-950 leading-[22px]">Whatsapp</p>
-    <p class="text-xs font-medium text-n-950">Let's Connect</p>
+    <!-- Anchor tag for whatsapp button and took href as props -->
+    <a href={href}>
+      <p class="text-lg font-medium text-n-950 leading-[22px]">Whatsapp</p>
+      <p class="text-xs font-medium text-n-950">Let's Connect</p>
+    </a>
   </div>
 </div>
