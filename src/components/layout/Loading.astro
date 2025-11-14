@@ -7,16 +7,13 @@ import { Icon } from "astro-icon/components";
   class="fixed z-[999] flex h-screen w-screen flex-col items-center justify-center bg-n-50 overflow-hidden text-center transition-opacity duration-700"
 >
   <div class="relative flex items-center justify-center w-full h-full">
-    <svg
-      class="absolute z-[9999] ball -left-[14%] top-[18%]"
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx="10" cy="10" r="10" fill="white"></circle>
+    <svg width="969" height="350" viewBox="0 0 969 350" fill="none" xmlns="http://www.w3.org/2000/svg"
+    class="absolute z-[9999] -left-[14%] top-[18%] h-full w-full">
+      <path id="anim-path" d="M968.5 300.5L957 0.5V300.5L961.5 0.5V300.5C961.5 300.5 881.5 0.5 822.5 0.5C763.5 0.5 701.5 349.5 636.5 349.5C571.5 349.5 556 0.5 488.5 0.5C421 0.5 355.5 349.5 291.5 349.5C227.5 349.5 182.5 0.5 117 0.5C51.5 0.5 7 349.5 -65 349.5C-137 349.5 -149 0.5 -149 0.5" stroke="white"/>
+      <circle offsetPath="#anim-path" id="ball" cy="259.5" r="10" fill="white"/>
     </svg>
+
+
     <!-- Step 1: Hello -->
     <p class="firstText text-n-950 text-5xl font-regular">Hello</p>
 
@@ -28,6 +25,7 @@ import { Icon } from "astro-icon/components";
       <Icon name="pixolo" class="w-full h-full" />
     </div>
 
+    <!-- Loader Number -->
     <div class="absolute bottom-[4%] right-[12%]">
       <p id="progress-label" class="text-n-950 text-5xl text-right font-bold">
         0%
@@ -36,10 +34,8 @@ import { Icon } from "astro-icon/components";
   </div>
 </section>
 <style>
-  .ball {
-    offset-path: path(
-      "M-149 0.5C-149 0.5 -136.866 349.5 -64.0604 349.5C8.74496 349.5 53.7427 0.5 119.975 0.5C186.208 0.5 231.711 349.5 296.427 349.5C361.143 349.5 427.376 0.5 495.631 0.5C563.886 0.5 579.559 349.5 645.286 349.5C711.013 349.5 773.707 0.5 833.367 0.5C893.027 0.5 960 300.5 960 300.5V0.5L969.371 300.5L981 0.5"
-    );
+  #ball {
+    offset-path: path(#anim-path);
     offset-rotate: auto;
     animation: moveBall 5s ease-in-out forwards;
   }
@@ -92,35 +88,35 @@ import { Icon } from "astro-icon/components";
     }
     100% {
       opacity: 0;
-      transform: scale(0);
+      transform: scaleX(0);
     }
   }
 
   @keyframes secondTextAnim {
     0% {
       opacity: 0;
-      transform: scale(0);
+      transform: scaleX(0);
     }
     15%,
     85% {
       opacity: 1;
-      transform: scale(1);
+      transform: scaleX(1);
     }
     100% {
       opacity: 0;
-      transform: scale(0);
+      transform: scaleX(0);
     }
   }
 
   @keyframes pixoloAnim {
     0% {
       opacity: 0;
-      transform: scale(0);
+      transform: scaleX(0);
     }
     15%,
     100% {
       opacity: 1;
-      transform: scale(1);
+      transform: scaleX(1);
     }
   }
 </style>
@@ -135,7 +131,7 @@ import { Icon } from "astro-icon/components";
     label.textContent = Math.floor(progress) + "%";
   }
 
-  // Start fake progress but stop before 100%
+  /** Start fake progress but stop before 100% */
   function startFakeProgress() {
     fakeInterval = setInterval(() => {
       if (progress < 90) {
@@ -146,7 +142,7 @@ import { Icon } from "astro-icon/components";
     }, 120);
   }
 
-  // When animations complete, then finish to 100%
+  /** When animations complete, then finish to 100% */
   function finishProgress() {
     clearInterval(fakeInterval);
 
@@ -163,6 +159,7 @@ import { Icon } from "astro-icon/components";
     }, 30);
   }
 
+  // Start the Fake progress to < 100%
   startFakeProgress();
 
   // Total animation duration = 2s + 2s + 2s = 6s
@@ -172,9 +169,9 @@ import { Icon } from "astro-icon/components";
   }, 6000);
 
   // Optional: if the window loads earlier, still ensure finish runs
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      finishProgress();
-    }, 6000);
-  });
+  // window.addEventListener("load", () => {
+  //   setTimeout(() => {
+  //     finishProgress();
+  //   }, 6000);
+  // });
 </script>
