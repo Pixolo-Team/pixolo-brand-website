@@ -12,14 +12,14 @@ const { href } = Astro.props as Props;
 <!-- Whatsapp Button -->
 <a
   href={href}
-  class="group flex justify-center items-center rounded-full p-4 py-8 lg:p-6 bg-n-800/20 absolute transition-all duration-800 cursor-pointer border border-n-950 h-12 lg:h-20"
+  class="group flex justify-center items-center rounded-full p-5 lg:p-6 bg-n-800/20 absolute transition-all duration-800 cursor-pointer border border-n-950 h-16 lg:h-20"
 >
   <!-- Whatsapp Icon -->
-  <Icon name="whatsapp-logo" class="size-8" />
+  <Icon name="whatsapp-logo" class="size-6 lg:size-8" />
 
   <!-- Button Text -->
   <div
-    class="whitespace-nowrap overflow-hidden opacity-0 max-w-0 w-fit group-hover:md:ml-2.5 gap-0.5 transition-all duration-800 ease-in-out md:group-hover:max-w-[250px] group-hover:opacity-100"
+    class="whitespace-nowrap overflow-hidden opacity-0 max-w-0 group-hover:md:ml-2.5 transition-all duration-800 ease-in-out md:group-hover:max-w-[250px] group-hover:opacity-100"
   >
     <p class="text-lg font-medium text-n-950 leading-[22px]">Whatsapp</p>
     <p class="text-xs font-medium text-n-950">Let's Connect</p>
