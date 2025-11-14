@@ -36,21 +36,21 @@ const contactSectionData = {
 
 <section>
   <div
-    class="container mx-auto flex flex-col gap-11 px-6 py-16 md:py-24 lg:gap-20 lg:py-20"
+    class="container mx-auto flex flex-col gap-11 md:gap-16 px-6 py-16 md:py-24 lg:gap-20 lg:py-20"
   >
     <!-- Section Header -->
-    <div class="flex flex-col items-center gap-6 lg:gap-7">
+    <div class="flex flex-col items-center gap-5 lg:gap-7">
       <!-- Tool Badge component -->
       <ToolBadge title={contactSectionData.badgeTitle} />
 
       <!-- Header Content -->
-      <div class="flex flex-col gap-3.5 text-center lg:gap-4">
+      <div class="flex flex-col gap-3 text-center lg:gap-4">
         <!-- Heading -->
-        <p class="text-n-950 text-3xl font-medium lg:text-7xl">
+        <p class="text-n-950 text-3xl font-medium md:text-5xl lg:text-7xl">
           {contactSectionData.heading}
         </p>
         <!-- Subheading -->
-        <p class="text-n-950 text-base font-medium lg:text-xl">
+        <p class="text-n-950 text-sm md:text-lg font-medium lg:text-xl">
           {contactSectionData.subheading}
         </p>
       </div>
@@ -71,12 +71,12 @@ const contactSectionData = {
 
                 {/* Contact info */}
                 <div class="flex w-[60%] flex-col gap-0.5">
-                  <p class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl">
+                  <p class="text-n-700 text-xs font-bold  md:text-sm lg:text-xl">
                     {item.title}
                   </p>
                   <p
                     class:list={[
-                      "text-n-900 text-sm font-semibold sm:text-lg",
+                      "text-n-900 text-sm font-semibold md:text-lg",
                       item.id === "mail" ? "truncate" : "",
                     ]}
                   >
@@ -98,7 +98,7 @@ const contactSectionData = {
       <div
         class="bg-n-100 hover:bg-n-200 flex w-full flex-col justify-between gap-5 rounded-4xl p-6 sm:flex-row lg:w-[520px]"
       >
-        <div class="flex flex-col gap-5">
+        <div class="flex flex-col gap-5 md:gap-9">
           <div class="flex flex-col gap-2.5">
             <!-- Icon wrapper -->
             <div
@@ -125,17 +125,16 @@ const contactSectionData = {
 
           <!-- Address with right arrow icon -->
           <div class="flex items-center gap-5">
-            <p class="text-xs font-semibold sm:text-base">
+            <p class="text-xs font-semibold md:text-sm">
               {contactSectionData.location.address}
             </p>
-            <Icon name="right-arrow" />
+            <Icon name="right-arrow" class={"size-5"} />
           </div>
         </div>
 
-        <Tooltip text="View in map" position="center">
-          
+        <Tooltip text="View in map" position="center" classes="lg:flex-1">
           <!-- Map View -->
-          <div class="border-n-950 overflow-hidden rounded-4xl border md:w-[40%] lg:w-full lg:flex-1">
+          <div class="border-n-950 overflow-hidden rounded-4xl border md:w-[40%] lg:w-full md:flex-1 ">
             <iframe
               src={contactSectionData.location.mapUrl}
               width="100%"
@@ -146,7 +145,8 @@ const contactSectionData = {
               class="w-full border-0">
             </iframe>
           </div>
-        </Tooltip>
+        </Tooltip> 
+
       </div>
     </div>
   </div>

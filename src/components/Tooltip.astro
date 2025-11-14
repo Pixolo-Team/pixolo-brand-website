@@ -2,12 +2,13 @@
 interface Props {
   text: string;
   position?: "top" | "bottom" | "left" | "right" | "center";
+  classes?: string;
 }
 
-const { text, position = "top" } = Astro.props;
+const { text, position = "top", classes = "" } = Astro.props;
 ---
 
-<div class="group relative inline-flex flex-1">
+<div class=`group relative inline-flex ${classes}`>
   <slot />
 
   <!-- Tooltip text -->
