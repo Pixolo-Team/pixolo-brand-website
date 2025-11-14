@@ -18,7 +18,7 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
   <label for={id}>{label}</label>
 
   <!-- Dropdown menu -->
-  <div class="flex p-3 rounded-[40px] bg-n-950/10 text-sm font-medium gap-3">
+  <div class="flex p-3 rounded-[40px] bg-n-950/10 text-sm font-normal gap-3">
     <select
       name={name}
       id={id}
@@ -33,6 +33,6 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
       }
     </select>
     <!-- Custom icon for dropdown -->
-    <Icon name={iconName} />
+    <Icon name={iconName} class="self-center" />
   </div>
 </div>

@@ -29,9 +29,9 @@ const {
 <div class="flex flex-col gap-3 w-full">
   <!-- Container for label and Input -->
   <div
-    class="flex gap-3 items-center border-b border-n-300 pb-2 focus-within:border-n-900 md:gap-4">
+    class="flex gap-3 items-center border-b border-n-300 pb-4 focus-within:border-n-900 md:gap-4 md:pb-4">
     <!-- Label for the input field -->
-    <label for={id} class="text-sm md:text-base font-medium">{label}</label>
+    <label for={id} class="text-sm md:text-base lg:text-lg font-medium">{label}</label>
 
     <!-- Input field that sets type, id , placeholder, name and required attributes from props -->
     <input
@@ -40,7 +40,7 @@ const {
       placeholder={showPlaceholder ? placeholder : undefined}
       name={name}
       required={required}
-      class="focus:border-none outline-none"
+      class="focus:border-none outline-none placeholder-n-600"
     />
   </div>
 

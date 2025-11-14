@@ -15,9 +15,9 @@ const subjectOptions = [
 ];
 ---
 
-<div class="flex-col gap-10 py-24 px-6">
+<div class="flex gap-10 py-24 px-6 h-full items-center justify-center w-full">
   <form
-    class="flex flex-col rounded-3xl bg-n-50 border-n-400 border md:max-w-[680px] lg:max-w-[800px] overflow-hidden">
+    class="flex flex-col rounded-3xl gap-4 bg-n-50 border-n-400 border md:w-[680px] lg:w-[800px] overflow-hidden">
     <!-- Title Bar -->
     <div class="flex gap-2 py-3 px-6 bg-n-400 w-full lg:py-4 lg:px-11">
       <!-- 3 Buttons -->
@@ -31,7 +31,7 @@ const subjectOptions = [
       <!-- Input Wrapper -->
       <div class="flex flex-col gap-5 md:gap-6 w-full">
         <!-- Email To  -->
-        <div class="flex gap-4 w-full relative md:gap-3">
+        <div class="flex gap-4 w-full relative md:gap-3 lg:gap-4">
           <InputField
             label="To"
             name="emailTo"
@@ -45,9 +45,9 @@ const subjectOptions = [
           </div>
           <!-- For tablets and desktops -->
           <div
-            class="absolute left-10 -top-2 hidden md:flex md:gap-4 md:items-center">
+            class="absolute left-10 -top-2 hidden md:flex md:gap-3 md:items-center lg:flex lg:gap-3 lg:p-2">
             <Chip iconName="pixolo-logo" text="Pixolo Technologies" />
-            <p class="text-sm font-normal">(business@pixolotechnologies.com)</p>
+            <p class="md:text-sm lg:text-xs font-medium">(business@pixolotechnologies.com)</p>
           </div>
         </div>
 
@@ -96,6 +96,7 @@ const subjectOptions = [
           placeholder="Say something about your project..."
           name="additionalNote"
           id="additionalNote"
+          
         />
       </div>
       <!-- SendMessage Button -->
