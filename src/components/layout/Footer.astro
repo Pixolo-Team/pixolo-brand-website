@@ -54,10 +54,12 @@ const {
         </div>
       </div>
       <!-- Logo with text only and message -->
-      <div class="flex flex-col gap-6 md:gap-8">
-        <Icon name={logoIcon} class="self-center text-n-950 w-[327px] h-[111px] md:h-[246.25px] md:w-[768px] lg:w-[945px] lg:h-[303px]" />
+      <div class="flex flex-col gap-6 md:gap-8 justify-center items-center">
+        <div class="flex  w-[327px] h-[111px] md:h-[246.25px] md:w-[768px] lg:w-[945px] lg:h-[303px]">
+        <Icon name={logoIcon} class="text-n-950 w-full h-full" />
+        </div>
         <p
-          class="text-n-950 text-base font-normal leading-[1.25em] self-center text-center md:text-xl md:font-normal lg:text-xl">
+          class="text-n-950 text-base font-normal leading-[1.25em] text-center md:text-xl md:font-normal lg:text-xl">
           {logoMessage}
         </p>
       </div>
