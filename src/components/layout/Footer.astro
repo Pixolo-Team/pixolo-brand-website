@@ -18,7 +18,7 @@ export interface props {
 }
 
 const {
-  socialLinks = ["instagram", "linkedin"],
+  socialLinks = ["instagram", "linkedin", "instagram", "linkedin"],
   headerIcon = "logo-only",
   headerText = "Every line of code we write carries our story of curiosity, courage, and a shared laugh between deadlines.",
   toolBadgeText = "Make the Logo Bigger",
@@ -30,12 +30,12 @@ const {
 ---
 
 <!-- Footer Container -->
-<div>
+<div class="flex flex-col px-6 pt-24 pb-8 bg-n-50 items-center justify-center">
   <footer>
     <!-- Header Section -->
-    <div>
-      <Icon name={headerIcon} />
-      <p>
+    <div class="flex flex-col gap-4">
+      <Icon name={headerIcon} class="w-11 h-11" />
+      <p class="font-normal text-2xl leading-tight tracking-[-0.04em]">
         {headerText}
       </p>
     </div>
@@ -43,34 +43,42 @@ const {
     <!-- Logo Cta Wrap -->
 
     <!-- Container -->
-    <div>
+    <div class="flex flex-col pt-32 gap-8 ">
       <!-- Tool Badge -->
-      <ToolBadge text={toolBadgeText} />
-
+      <div class="flex justify-end">
+        <div class="rotate-[-9.53deg] ">
+          <ToolBadge text={toolBadgeText} />
+        </div>
+      </div>
       <!-- Logo with text only and message -->
-      <div>
-        <Icon name={logoIcon} />
-        <p>{logoMessage}</p>
+      <div class="flex flex-col gap-6">
+        <Icon name={logoIcon} class="w-[327px] h-[111px] self-center" />
+        <p
+          class="text-base font-normal leading-[1.25em] self-center text-center">
+          {logoMessage}
+        </p>
       </div>
 
       <!-- Bottom CTA -->
+       <div class="self-center">
       <BottomCTA />
+      </div>
     </div>
 
     <!-- Bottom Section Wrap -->
-    <div>
-      <div>
+    <div class="flex flex-col gap-3.5">
+      <div class="flex pt-6 gap-6 justify-center">
         {
           socialLinks.map((link: string) => (
-            <div>
-              {" "}
+            <div class="flex flex-col w-10 rounded-[34px] h-10 p-2.5 border border-n-500 items-center justify-center">
               <Icon name={link} />
             </div>
           ))
         }
       </div>
-      <div>
-        <Icon name={bottomIcon} />
+      <!-- Copyright -->
+      <div class="flex gap-1 justify-center">
+        <Icon name={bottomIcon} class="self-center" />
         <span>{bottomText}</span>
       </div>
     </div>
