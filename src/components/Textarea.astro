@@ -29,8 +29,11 @@ const {
     name={name}
     placeholder={showPlaceholder ? placeholder : undefined}
     id={id}
+    rows="1"
     required={required}
     class="focus:border-none outline-none placeholder-n-600 resize-none placeholder:text-sm placeholder:font-normal text-sm"
   ></textarea>
+
+  <!-- Textarea increase/decrease icon -->
   <Icon name={iconName} class="self-end" />
 </div>
