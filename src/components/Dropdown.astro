@@ -17,7 +17,9 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
   class="border-n-300 flex items-center gap-3 border-b pb-2.5 text-sm font-medium md:text-base lg:text-lg"
 >
   <!-- Displays the label passed as prop -->
-  <label for={id}>{label}</label>
+  <label for={id} class="text-sm font-medium md:text-base lg:text-lg"
+    >{label}</label
+  >
 
   <!-- Dropdown menu -->
   <div
