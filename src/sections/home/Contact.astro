@@ -36,7 +36,7 @@ const contactSectionData = {
 
 <section>
   <div
-    class="container mx-auto flex flex-col gap-11 md:gap-16 px-6 py-16 md:py-24 lg:gap-20 lg:py-20"
+    class="container mx-auto flex flex-col gap-11 md:gap-16 px-6 py-16 md:py-24 lg:gap-20 lg:py-28"
   >
     <!-- Section Header -->
     <div class="flex flex-col items-center gap-5 lg:gap-7">
@@ -71,12 +71,12 @@ const contactSectionData = {
 
                 {/* Contact info */}
                 <div class="flex w-[60%] flex-col gap-0.5">
-                  <p class="text-n-700 text-xs font-bold  md:text-sm lg:text-xl">
+                  <p class="text-n-700 text-xs font-bold md:text-sm lg:text-base">
                     {item.title}
                   </p>
                   <p
                     class:list={[
-                      "text-n-900 text-sm font-semibold md:text-lg",
+                      "text-n-900 text-sm font-semibold md:text-lg lg:text-xl",
                       item.id === "mail" ? "truncate" : "",
                     ]}
                   >
@@ -106,7 +106,7 @@ const contactSectionData = {
             >
               <Icon
                 name={contactSectionData.location.icon}
-                class="size-5 sm:size-6"
+                class="size-5 sm:size-6 lg:size-7"
               />
             </div>
 
@@ -117,7 +117,7 @@ const contactSectionData = {
               >
                 {contactSectionData.location.title}
               </p>
-              <p class="text-n-900 text-sm font-semibold sm:text-lg">
+              <p class="text-n-900 text-sm font-normal sm:text-lg">
                 {contactSectionData.location.subtitle}
               </p>
             </div>
