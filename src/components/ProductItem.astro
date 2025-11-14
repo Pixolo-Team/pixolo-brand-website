@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon/components";
+import ProductIcon from "./ProductIcon.astro";
+
+interface Props {
+  companyLogo?: string;
+  companyName?: string;
+  productImage?: string;
+  productdescription?: string;
+}
+
+const {
+  companyLogo = "zizo",
+  companyName = "zizo",
+  productImage = "product-image",
+  productdescription = "A smart football team management app that helps coaches, players, and clubs organize matches, track stats, and manage their teams seamlessly.",
+} = Astro.props as Props;
+---
+
+<!-- Product Item -->
+<div>
+  <!-- Logo Container -->
+  <div>
+    <Icon name={companyLogo} />
+    <p>{companyName}</p>
+  </div>
+
+  <!-- Product Image -->
+  <img src={`/images/${productImage}.png`} alt="" />
+
+  <!-- Content -->
+  <div>
+    <!-- Description -->
+    {productdescription}
+
+    <!-- Button for more information -->
+    <div>
+      <ProductIcon externalLinkIcon="external-link-icon" />
+    </div>
+  </div>
+</div>
