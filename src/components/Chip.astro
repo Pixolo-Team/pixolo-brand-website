@@ -11,9 +11,9 @@ const { iconName, text } = Astro.props;
 ---
 
 <!--Container for icon and text-->
-<div class="flex gap-3 p-2 rounded-lg bg-n-950/10 items-center">
+<div class="flex gap-2 p-2 rounded-lg bg-n-950/10 items-center">
   <!-- Display the icon passed as prop -->
-  <Icon name={iconName} class=" w-5 md:w-6" />
+  <Icon name={iconName} class="size-5" />
 
   <!-- Display the text passed as prop -->
   <p class="text-xs leading-none font-medium">{text}</p>

@@ -16,18 +16,19 @@ const subjectOptions = [
 ---
 
 <div class="flex gap-10 py-24 px-6 h-full items-center justify-center w-full">
-  <form
-    class="flex flex-col rounded-3xl gap-4 bg-n-50 border-n-400 border md:w-[680px] lg:w-[800px] overflow-hidden">
+  <div
+    class="flex flex-col rounded-3xl gap-4 bg-n-50 border-n-400 border md:w-[680px] lg:w-[800px] overflow-hidden"
+  >
     <!-- Title Bar -->
-    <div class="flex gap-2 py-3 px-6 bg-n-400 w-full lg:py-4 lg:px-11">
+    <div class="flex gap-1.5 py-3 px-6 bg-n-400 w-full lg:py-4 lg:px-11">
       <!-- 3 Buttons -->
-      <div class="w-4 h-4 bg-[#C45E52] rounded-full"></div>
-      <div class="w-4 h-4 bg-[#CAA144] rounded-full"></div>
-      <div class="w-4 h-4 bg-n-500 rounded-full"></div>
+      <div class="size-3 bg-[#C45E52] rounded-full"></div>
+      <div class="size-3 bg-[#CAA144] rounded-full"></div>
+      <div class="size-3 bg-n-500 rounded-full"></div>
     </div>
 
     <!-- Form Container -->
-    <div class="flex flex-col p-5 gap-5 items-start md:px-7 md:pb-6 md:pt-7">
+    <form class="flex flex-col p-5 gap-5 items-start md:px-7 md:pb-6 md:pt-7">
       <!-- Input Wrapper -->
       <div class="flex flex-col gap-5 md:gap-6 w-full">
         <!-- Email To  -->
@@ -40,14 +41,17 @@ const subjectOptions = [
             showPlaceholder={false}
           />
           <!-- For mobiles -->
-          <div class="absolute left-10 -top-2 md:hidden">
+          <div class="absolute left-8 -top-2 md:hidden">
             <Chip iconName="pixolo-logo" text="Pixolo" />
           </div>
           <!-- For tablets and desktops -->
           <div
-            class="absolute left-10 -top-2 hidden md:flex md:gap-3 md:items-center lg:flex lg:gap-3 lg:p-2">
+            class="absolute left-10 -top-2 hidden md:flex md:gap-3 md:items-center lg:flex lg:gap-3 lg:p-2"
+          >
             <Chip iconName="pixolo-logo" text="Pixolo Technologies" />
-            <p class="md:text-sm lg:text-xs font-medium">(business@pixolotechnologies.com)</p>
+            <p class="md:text-sm lg:text-xs font-medium">
+              (business@pixolotechnologies.com)
+            </p>
           </div>
         </div>
 
@@ -74,7 +78,7 @@ const subjectOptions = [
           placeholder="your phone number"
           id="phoneNo"
           required={true}
-          isError={true}
+          isError={false}
           errorMessages={[
             "This field is required.",
             "This doesn’t look like a phone number.",
@@ -96,13 +100,12 @@ const subjectOptions = [
           placeholder="Say something about your project..."
           name="additionalNote"
           id="additionalNote"
-          
         />
       </div>
       <!-- SendMessage Button -->
       <div class="self-end">
         <RoundedButton buttonText="Send Message" />
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

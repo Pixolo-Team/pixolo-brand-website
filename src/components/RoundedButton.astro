@@ -1,22 +1,25 @@
 ---
 // STYLES //
-import { Icon } from "astro-icon/components";
 import "../styles/global.css";
+
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
 
 const { buttonText, leftIcon, rightIcon } = Astro.props;
 ---
 
 <!-- Rounded Button -->
 <button
-  class="flex gap-1 px-5 py-3 rounded-4xl text-n-100 bg-n-950 md:px-6 md:py-4 md:gap-2 lg:px-7">
+  class="flex gap-1 px-5 py-3 rounded-4xl text-n-100 bg-n-950 md:px-6 md:py-4 md:gap-2 lg:px-7"
+>
   <!--Left icon of Rounded Button  -->
-  {leftIcon && <Icon name={leftIcon}/>}
+  {leftIcon && <Icon name={leftIcon} />}
 
   <!-- Rounded Button Text -->
-  <p>
+  <p class="font-medium text-sm">
     {buttonText}
   </p>
 
   <!-- Right Icon Of Rounded Button -->
-  {rightIcon && <Icon name={rightIcon}/>}
+  {rightIcon && <Icon name={rightIcon} />}
 </button>

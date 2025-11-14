@@ -1,4 +1,5 @@
 ---
+// COMPONENTS //
 import { Icon } from "astro-icon/components";
 
 export interface Props {
@@ -29,9 +30,12 @@ const {
 <div class="flex flex-col gap-3 w-full">
   <!-- Container for label and Input -->
   <div
-    class="flex gap-3 items-center border-b border-n-300 pb-4 focus-within:border-n-900 md:gap-4 md:pb-4">
+    class="flex gap-3 items-center border-b border-n-300 pb-4 focus-within:border-n-900 md:gap-4 md:pb-4"
+  >
     <!-- Label for the input field -->
-    <label for={id} class="text-sm md:text-base lg:text-lg font-medium">{label}</label>
+    <label for={id} class="text-sm md:text-base lg:text-lg font-medium"
+      >{label}</label
+    >
 
     <!-- Input field that sets type, id , placeholder, name and required attributes from props -->
     <input
@@ -47,11 +51,14 @@ const {
   <!-- Check if isError is true show the error message -->
   {
     isError && (
-      <div class="flex flex-col gap-3">
+      <div class="flex flex-col gap-2.5 md:gap-3">
         {errorMessages.map((msg) => (
-          <div class="flex gap-1.5">
+          <div class="flex gap-1.5 md:gap-2">
+            {/* Error icon */}
             <Icon name="error-icon" />
-            <p class="font-normal text-sm text-red-600">{msg}</p>
+
+            {/* Error message */}
+            <p class="font-normal text-xs md:text-sm text-red-600">{msg}</p>
           </div>
         ))}
       </div>
