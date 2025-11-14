@@ -196,6 +196,6 @@ body {
 @layer utilities{
   .animate-fadeInUp
   {
-    animation: fadeInUp 2s ease-out both;
+    animation: fadeInUp 1s ease-out both;
   }
 }
