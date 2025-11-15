@@ -2,6 +2,7 @@
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
 
+// Define props interface
 export interface Props {
   options: string[];
   label: string;
@@ -9,28 +10,41 @@ export interface Props {
   id: string;
   iconName: string;
 }
+
+// Destructure props with default values
 const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
 ---
 
+<!-- Dropdown container with label -->
 <div
   class="border-n-300 flex items-center gap-3 border-b pb-2.5 text-sm font-medium md:text-base lg:text-lg"
 >
-  <!-- Displays the label passed as prop -->
+  <!-- Label for dropdown -->
   <label for={id} class="text-sm font-medium md:text-base lg:text-lg">
     {label}
   </label>
 
-  <!-- Dropdown menu -->
+  <!-- Dropdown menu wrapper -->
   <div
     id="dropdown"
     class="bg-n-950/10 hover:border-n-950 relative flex cursor-pointer gap-3 rounded-[40px] border border-transparent p-3 text-xs font-medium"
+    role="combobox"
+    aria-expanded="false"
+    aria-haspopup="listbox"
+    aria-controls="dropdown-options"
   >
-    <!-- Trigger -->
-    <div id="dropdown-trigger" class="flex items-center gap-3 select-none">
+    <!-- Dropdown trigger button -->
+    <div
+      id="dropdown-trigger"
+      class="flex items-center gap-3 select-none"
+      tabindex="0"
+    >
+      <!-- Selected option text -->
       <span id="dropdown-selected" class="font-semibold capitalize">
         {options[0] || "Select"}
       </span>
 
+      <!-- Dropdown arrow icon -->
       <Icon
         name={iconName}
         id="dropdown-arrow"
@@ -38,16 +52,19 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
       />
     </div>
 
-    <!-- Dropdown list -->
+    <!-- Dropdown options list -->
     <ul
       id="dropdown-options"
+      role="listbox"
       class="border-n-500 bg-n-950 absolute top-[100%] left-0 z-10 mt-2 hidden w-full min-w-[200px] overflow-hidden rounded-3xl border"
     >
       {
         options.map((opt) => (
           <li
+            role="option"
             class="text-n-100 hover:bg-n-900 cursor-pointer px-6 py-3 font-normal"
             data-value={opt}
+            tabindex="0"
           >
             {opt}
           </li>
@@ -64,36 +81,84 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
     const list = document.getElementById("dropdown-options");
     const arrow = document.getElementById("dropdown-arrow");
     const selectedText = document.getElementById("dropdown-selected");
+    const hiddenInput = document.getElementById("selectedSubject");
 
-    if (!trigger || !list || !arrow) return;
+    if (!trigger || !list || !arrow || !selectedText) return;
+
+    // Set initial value to hidden input
+    if (hiddenInput) {
+      hiddenInput.value = selectedText.textContent.trim();
+    }
 
     // Toggle dropdown open/close
     trigger.addEventListener("click", (e) => {
       e.stopPropagation();
-      list.classList.toggle("hidden");
-      arrow.classList.toggle("rotate-180");
+      const isOpen = !list.classList.contains("hidden");
+
+      if (isOpen) {
+        closeDropdown();
+      } else {
+        openDropdown();
+      }
+    });
+
+    // Keyboard navigation
+    trigger.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " " || e.key === "ArrowDown") {
+        e.preventDefault();
+        openDropdown();
+      } else if (e.key === "Escape") {
+        e.preventDefault();
+        closeDropdown();
+      }
     });
 
     // Select an option
     list.querySelectorAll("li").forEach((item) => {
       item.addEventListener("click", (e) => {
         e.stopPropagation();
+        selectOption(item);
+      });
 
-        // Update selected label
-        selectedText.textContent = item.dataset.value;
-
-        // Close dropdown
-        list.classList.add("hidden");
-        arrow.classList.remove("rotate-180");
+      // Keyboard support for options
+      item.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          selectOption(item);
+        }
       });
     });
 
     // Close dropdown on outside click
     document.addEventListener("click", (e) => {
       if (!dropdown.contains(e.target)) {
-        list.classList.add("hidden");
-        arrow.classList.remove("rotate-180");
+        closeDropdown();
       }
     });
+
+    function openDropdown() {
+      list.classList.remove("hidden");
+      arrow.classList.add("rotate-180");
+    }
+
+    function closeDropdown() {
+      list.classList.add("hidden");
+      arrow.classList.remove("rotate-180");
+    }
+
+    function selectOption(item) {
+      const value = item.dataset.value;
+
+      // Update selected label
+      selectedText.textContent = value;
+
+      // Update hidden input if exists
+      if (hiddenInput) {
+        hiddenInput.value = value;
+      }
+
+      // Close dropdown
+      closeDropdown();
+    }
   });
 </script>
