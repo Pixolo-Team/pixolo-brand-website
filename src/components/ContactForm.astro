@@ -15,28 +15,44 @@ const subjectOptions = [
 ];
 ---
 
-<!-- Backdrop with Contact form -->
+<!-- Backdrop with Contact form modal -->
 <div
-  class="invisible fixed inset-0 flex h-screen w-full items-center justify-center gap-10 bg-transparent px-6 py-24 opacity-0"
+  class="invisible fixed inset-0 z-50 flex h-screen w-full items-center justify-center gap-10 bg-black/50 px-6 py-24 opacity-0 transition-opacity duration-300"
   id="backdrop-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="contact-form-title"
 >
   <!-- Contact Form wrapper -->
   <div
-    class="bg-n-50 border-n-400 z-20 flex w-full flex-col overflow-hidden rounded-3xl border md:w-[680px] lg:w-[800px]"
+    class="bg-n-50 border-n-400 z-20 flex w-full flex-col overflow-hidden rounded-3xl border px-6 py-6 md:w-[680px] md:px-0 md:py-0 lg:w-[800px]"
   >
     <!-- Title Bar -->
     <div
-      class="bg-n-400 flex w-full gap-1.5 px-6 py-3 md:gap-2 md:px-7 lg:px-11 lg:py-4"
+      class="bg-n-400 flex w-full gap-1.5 px-0 py-0 md:gap-2 md:px-7 md:py-3 lg:px-11 lg:py-4"
     >
-      <!-- 3 Buttons -->
-      <div id="close-btn" class="size-3 rounded-full bg-[#C45E52] md:size-4">
+      <!-- 3 Buttons (macOS style window controls) -->
+      <div
+        id="close-btn"
+        class="size-3 cursor-pointer rounded-full bg-[#C45E52] md:size-4"
+        role="button"
+        tabindex="0"
+        aria-label="Close contact form"
+      >
       </div>
       <div class="size-3 rounded-full bg-[#CAA144] md:size-4"></div>
       <div class="bg-n-500 size-3 rounded-full md:size-4"></div>
     </div>
 
     <!-- Form Container -->
-    <form class="flex flex-col items-start gap-5 p-5 md:px-7 md:py-7">
+    <form
+      action="#"
+      method="POST"
+      class="flex flex-col items-start gap-5 p-5 md:px-7 md:py-7"
+      id="contact-form"
+    >
+      <h2 id="contact-form-title" class="sr-only">Contact Form</h2>
+
       <!-- Input Wrapper -->
       <div class="flex w-full flex-col gap-5 md:gap-6">
         <!-- Email To  -->
@@ -49,6 +65,11 @@ const subjectOptions = [
             isDisabled={true}
             showPlaceholder={false}
           />
+          <input
+            type="hidden"
+            name="emailToAddress"
+            value="business@pixolotechnologies.com"
+          />
 
           <!-- For tablets and desktops -->
           <div
@@ -57,7 +78,7 @@ const subjectOptions = [
             <!-- Chip component -->
             <Chip iconName="pixolo-logo" text="Pixolo Technologies" />
 
-            <!-- Email -->
+            <!-- Email address display -->
             <p class="hidden font-normal md:flex md:text-sm">
               (business@pixolotechnologies.com)
             </p>
@@ -102,6 +123,8 @@ const subjectOptions = [
           options={subjectOptions}
           iconName="dropdown-icon"
         />
+        <!-- Hidden input to store selected dropdown value -->
+        <input type="hidden" name="selectedSubject" id="selectedSubject" />
 
         <!-- Additional Note -->
         <Textarea
@@ -120,25 +143,53 @@ const subjectOptions = [
 </div>
 
 <script is:inline>
-  const backdrop = document.getElementById("backdrop-modal");
-  const closeBtn = document.getElementById("close-btn");
+  document.addEventListener("DOMContentLoaded", function () {
+    const backdrop = document.getElementById("backdrop-modal");
+    const closeBtn = document.getElementById("close-btn");
 
-  // OPEN
-  window.addEventListener("open-contact-modal", () => {
-    backdrop.classList.remove("opacity-0", "invisible");
-    backdrop.classList.add("opacity-100", "visible");
+    if (!backdrop || !closeBtn) {
+      console.warn(
+        "ContactForm: Required elements not found. Modal functionality may not work.",
+      );
+      return;
+    }
+
+    // OPEN MODAL
+    window.addEventListener("open-contact-modal", () => {
+      backdrop.classList.remove("opacity-0", "invisible");
+      backdrop.classList.add("opacity-100", "visible");
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = "hidden";
+    });
+
+    // CLOSE BUTTON - with click handler
+    closeBtn.addEventListener("click", closeModal);
+
+    // CLOSE BUTTON - with keyboard handler
+    closeBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        closeModal();
+      }
+    });
+
+    // CLICK BACKDROP ONLY (not the form box)
+    backdrop.addEventListener("click", (e) => {
+      if (e.target === backdrop) closeModal();
+    });
+
+    // ESC KEY to close modal
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && backdrop.classList.contains("visible")) {
+        closeModal();
+      }
+    });
+
+    function closeModal() {
+      backdrop.classList.remove("opacity-100", "visible");
+      backdrop.classList.add("opacity-0", "invisible");
+      // Restore body scroll when modal is closed
+      document.body.style.overflow = "";
+    }
   });
-
-  // CLOSE BUTTON
-  closeBtn?.addEventListener("click", closeModal);
-
-  // CLICK BACKDROP ONLY (not the form box)
-  backdrop?.addEventListener("click", (e) => {
-    if (e.target === backdrop) closeModal();
-  });
-
-  function closeModal() {
-    backdrop.classList.remove("opacity-100", "visible");
-    backdrop.classList.add("opacity-0", "invisible");
-  }
 </script>
