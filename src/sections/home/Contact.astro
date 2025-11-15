@@ -36,7 +36,7 @@ const contactSectionData = {
 
 <section>
   <div
-    class="container mx-auto flex flex-col gap-11 md:gap-16 px-6 py-16 md:py-24 lg:gap-20 lg:py-28"
+    class="container mx-auto flex flex-col gap-11 px-6 py-16 md:gap-16 md:py-24 lg:gap-20 lg:py-28"
   >
     <!-- Section Header -->
     <div class="flex flex-col items-center gap-5 lg:gap-7">
@@ -50,7 +50,7 @@ const contactSectionData = {
           {contactSectionData.heading}
         </p>
         <!-- Subheading -->
-        <p class="text-n-950 text-sm md:text-lg font-medium lg:text-xl">
+        <p class="text-n-950 text-sm font-medium md:text-lg lg:text-xl">
           {contactSectionData.subheading}
         </p>
       </div>
@@ -62,7 +62,7 @@ const contactSectionData = {
         {
           contactSectionData.contactCards.map((item) => (
             // Contact Card
-            <div class="hover:bg-n-200 bg-n-100 flex w-full items-end justify-between gap-5 rounded-4xl px-6 py-5">
+            <a class="hover:bg-n-200 bg-n-100 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5">
               <div class="flex max-w-[80%] items-center gap-5">
                 {/* Icon wrapper */}
                 <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]">
@@ -89,14 +89,15 @@ const contactSectionData = {
               <Tooltip text="Copy" position="top">
                 <Icon name="copy" class="size-5 cursor-pointer" />
               </Tooltip>
-            </div>
+            </a>
           ))
         }
       </div>
 
       <!-- Location -->
-      <div
-        class="bg-n-100 hover:bg-n-200 flex w-full flex-col justify-between gap-5 rounded-4xl p-6 sm:flex-row lg:w-[520px]"
+      <a
+        target="_blank"
+        class="group bg-n-100 hover:bg-n-200 flex w-full cursor-pointer flex-col justify-between gap-5 rounded-4xl p-6 sm:flex-row lg:w-[520px]"
       >
         <div class="flex flex-col gap-5 md:gap-9">
           <div class="flex flex-col gap-2.5">
@@ -134,7 +135,9 @@ const contactSectionData = {
 
         <Tooltip text="View in map" position="center" classes="lg:flex-1">
           <!-- Map View -->
-          <div class="border-n-950 overflow-hidden rounded-4xl border md:w-[40%] lg:w-full md:flex-1 ">
+          <div
+            class="border-n-950 overflow-hidden rounded-4xl border md:w-[40%] md:flex-1 lg:w-full"
+          >
             <iframe
               src={contactSectionData.location.mapUrl}
               width="100%"
@@ -142,12 +145,12 @@ const contactSectionData = {
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              class="w-full border-0">
+              class="w-full border-0"
+            >
             </iframe>
           </div>
-        </Tooltip> 
-
-      </div>
+        </Tooltip>
+      </a>
     </div>
   </div>
 </section>
