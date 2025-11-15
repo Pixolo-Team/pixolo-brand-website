@@ -12,34 +12,88 @@ export interface Props {
 const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
 ---
 
-<!-- Container for label and dropdown -->
 <div
   class="border-n-300 flex items-center gap-3 border-b pb-2.5 text-sm font-medium md:text-base lg:text-lg"
 >
   <!-- Displays the label passed as prop -->
-  <label for={id} class="text-sm font-medium md:text-base lg:text-lg"
-    >{label}</label
-  >
+  <label for={id} class="text-sm font-medium md:text-base lg:text-lg">
+    {label}
+  </label>
 
   <!-- Dropdown menu -->
   <div
-    class="bg-n-950/10 hover:border-n-950 flex cursor-pointer gap-3 rounded-[40px] border border-transparent p-3 text-xs font-medium"
+    id="dropdown"
+    class="bg-n-950/10 hover:border-n-950 relative flex cursor-pointer gap-3 rounded-[40px] border border-transparent p-3 text-xs font-medium"
   >
-    <select
-      name={name}
-      id={id}
-      class="appearance-none outline-none focus:border-none"
+    <!-- Trigger -->
+    <div id="dropdown-trigger" class="flex items-center gap-3 select-none">
+      <span id="dropdown-selected" class="font-semibold capitalize">
+        {options[0] || "Select"}
+      </span>
+
+      <Icon
+        name={iconName}
+        id="dropdown-arrow"
+        class="text-n-600 size-3.5 transition-transform duration-200"
+      />
+    </div>
+
+    <!-- Dropdown list -->
+    <ul
+      id="dropdown-options"
+      class="border-n-500 bg-n-950 absolute top-[100%] left-0 z-10 mt-2 hidden w-full min-w-[200px] overflow-hidden rounded-3xl border"
     >
-      <!-- Adds each option passed as prop in dropdown -->
       {
-        options.map((opt: string) => (
-          <option value={opt} class="bg-n-900 text-n-100">
+        options.map((opt) => (
+          <li
+            class="text-n-100 hover:bg-n-900 cursor-pointer px-6 py-3 font-normal"
+            data-value={opt}
+          >
             {opt}
-          </option>
+          </li>
         ))
       }
-    </select>
-    <!-- Custom icon for dropdown -->
-    <Icon name={iconName} class="size-3.5 self-center" />
+    </ul>
   </div>
 </div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const dropdown = document.getElementById("dropdown");
+    const trigger = document.getElementById("dropdown-trigger");
+    const list = document.getElementById("dropdown-options");
+    const arrow = document.getElementById("dropdown-arrow");
+    const selectedText = document.getElementById("dropdown-selected");
+
+    if (!trigger || !list || !arrow) return;
+
+    // Toggle dropdown open/close
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      list.classList.toggle("hidden");
+      arrow.classList.toggle("rotate-180");
+    });
+
+    // Select an option
+    list.querySelectorAll("li").forEach((item) => {
+      item.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        // Update selected label
+        selectedText.textContent = item.dataset.value;
+
+        // Close dropdown
+        list.classList.add("hidden");
+        arrow.classList.remove("rotate-180");
+      });
+    });
+
+    // Close dropdown on outside click
+    document.addEventListener("click", (e) => {
+      if (!dropdown.contains(e.target)) {
+        list.classList.add("hidden");
+        arrow.classList.remove("rotate-180");
+      }
+    });
+  });
+</script>
