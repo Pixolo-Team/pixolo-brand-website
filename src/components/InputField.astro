@@ -12,6 +12,7 @@ export interface Props {
   showPlaceholder?: boolean;
   errorMessages?: string[];
   isError?: boolean;
+  isDisabled?: boolean;
 }
 const {
   label = "",
@@ -23,6 +24,7 @@ const {
   showPlaceholder = true,
   errorMessages = [],
   isError = false,
+  isDisabled = false,
 } = Astro.props;
 ---
 
@@ -39,12 +41,13 @@ const {
 
     <!-- Input field that sets type, id , placeholder, name and required attributes from props -->
     <input
+      disabled={isDisabled}
       type={type}
       id={id}
       placeholder={showPlaceholder ? placeholder : undefined}
       name={name}
       required={required}
-      class="placeholder-n-600 text-sm outline-none focus:border-none lg:text-base"
+      class="placeholder-n-600 flex-1 text-sm outline-none focus:border-none lg:text-base"
     />
   </div>
 
@@ -53,12 +56,14 @@ const {
     isError && (
       <div class="flex flex-col gap-2.5 md:gap-3">
         {errorMessages.map((msg) => (
-          <div class="flex gap-1.5 md:gap-2">
+          <div class="flex items-center gap-1.5 md:gap-2">
             {/* Error icon */}
-            <Icon name="error-icon" />
+            <Icon name="error-icon" class="size-4" />
 
             {/* Error message */}
-            <p class="text-xs font-normal text-red-600 md:text-sm">{msg}</p>
+            <p class="text-xs leading-[17px] font-normal text-red-600 md:text-sm lg:text-base">
+              {msg}
+            </p>
           </div>
         ))}
       </div>

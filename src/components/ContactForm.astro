@@ -15,20 +15,24 @@ const subjectOptions = [
 ];
 ---
 
-<div class="flex h-full w-full items-center justify-center gap-10 px-6 py-24">
+<!-- Backdrop with Contact form -->
+<div
+  class="invisible fixed inset-0 flex h-screen w-full items-center justify-center gap-10 bg-transparent px-6 py-24 opacity-0"
+  id="backdrop-modal"
+>
+  <!-- Contact Form wrapper -->
   <div
-    class="bg-n-50 border-n-400 flex w-full flex-col overflow-hidden rounded-3xl border md:w-[680px] lg:w-[800px]"
+    class="bg-n-50 border-n-400 z-20 flex w-full flex-col overflow-hidden rounded-3xl border md:w-[680px] lg:w-[800px]"
   >
     <!-- Title Bar -->
     <div
       class="bg-n-400 flex w-full gap-1.5 px-6 py-3 md:gap-2 md:px-7 lg:px-11 lg:py-4"
     >
       <!-- 3 Buttons -->
-      <div class="size-3 cursor-pointer rounded-full bg-[#C45E52] md:size-4">
+      <div id="close-btn" class="size-3 rounded-full bg-[#C45E52] md:size-4">
       </div>
-      <div class="size-3 cursor-pointer rounded-full bg-[#CAA144] md:size-4">
-      </div>
-      <div class="bg-n-500 size-3 cursor-pointer rounded-full md:size-4"></div>
+      <div class="size-3 rounded-full bg-[#CAA144] md:size-4"></div>
+      <div class="bg-n-500 size-3 rounded-full md:size-4"></div>
     </div>
 
     <!-- Form Container -->
@@ -42,6 +46,7 @@ const subjectOptions = [
             name="emailTo"
             id="emailTo"
             type="text"
+            isDisabled={true}
             showPlaceholder={false}
           />
 
@@ -111,3 +116,27 @@ const subjectOptions = [
     </form>
   </div>
 </div>
+
+<script is:inline>
+  const backdrop = document.getElementById("backdrop-modal");
+  const closeBtn = document.getElementById("close-btn");
+
+  // OPEN
+  window.addEventListener("open-contact-modal", () => {
+    backdrop.classList.remove("opacity-0", "invisible");
+    backdrop.classList.add("opacity-100", "visible");
+  });
+
+  // CLOSE BUTTON
+  closeBtn?.addEventListener("click", closeModal);
+
+  // CLICK BACKDROP ONLY (not the form box)
+  backdrop?.addEventListener("click", (e) => {
+    if (e.target === backdrop) closeModal();
+  });
+
+  function closeModal() {
+    backdrop.classList.remove("opacity-100", "visible");
+    backdrop.classList.add("opacity-0", "invisible");
+  }
+</script>
