@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 const { icon = "building.svg", text = "Powering Ideas into Impact" } =
   Astro.props;
 ---
@@ -9,7 +11,15 @@ const { icon = "building.svg", text = "Powering Ideas into Impact" } =
 >
   <!-- Blue Circle with Logo -->
   <div class="bg-blue-500 rounded-3xl p-2 md:gap-2.5">
-    <img src={`/icons/${icon}`} alt="Logo" class="size-3 md:size-4 lg:size-6" />
+    <Image
+      src={`/icons/${icon}`}
+      alt="Logo"
+      width={24}
+      height={24}
+      class="size-3 md:size-4 lg:size-6"
+      loading="lazy"
+      decoding="async"
+    />
   </div>
 
   <!-- Tool Badge Text -->
