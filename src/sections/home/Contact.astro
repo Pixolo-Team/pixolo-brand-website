@@ -84,10 +84,13 @@ const contactSectionData = {
                   </p>
                 </div>
               </div>
-
               {/* Tooltip with copy icon */}
               <Tooltip text="Copy" position="top">
-                <Icon name="copy" class="size-5 cursor-pointer" />
+                <Icon
+                  name="copy"
+                  class="size-5 cursor-pointer"
+                  onclick={`copyToClipboard(${item.value})`}
+                />
               </Tooltip>
             </a>
           ))
@@ -154,3 +157,9 @@ const contactSectionData = {
     </div>
   </div>
 </section>
+<script is:inline>
+  // Function to copy text to clipboard
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text);
+  }
+</script>
