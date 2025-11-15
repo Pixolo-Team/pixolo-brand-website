@@ -1,5 +1,4 @@
 ---
-
 // OTHERS //
 import BrandLogo from "./BrandLogo.astro";
 import MenuBar from "./MenuBar.astro";
@@ -11,18 +10,18 @@ const menuItems = [
   { name: "Careers", url: "/careers" },
   { name: "Portfolio", url: "/portfolio" },
 ];
-
 ---
 
 <!-- Navbar Display -->
-<header class="flex justify-between items-center px-3 relative z-10">
-    <BrandLogo/>
-    <div class="hidden md:block">
-    <MenuBar items={menuItems}/>
-    </div>
-    <div class="hidden md:block">
-      <RoundedButton
-        buttonText="Contact Us"
+<header class="relative z-10 flex items-center justify-between px-3">
+  <BrandLogo />
+  <div class="hidden md:block">
+    <MenuBar items={menuItems} />
+  </div>
+  <div class="hidden md:block">
+    <RoundedButton
+      buttonText="Contact Us"
+      onClick="window.dispatchEvent(new CustomEvent('open-contact-modal'))"
     />
-    </div>
+  </div>
 </header>

@@ -1,0 +1,39 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  name: string;
+  id: string;
+  placeholder?: string;
+  required?: boolean;
+  showPlaceholder?: boolean;
+  iconName: string;
+}
+const {
+  iconName,
+  placeholder = "",
+  name = "",
+  id = "",
+  required = false,
+  showPlaceholder = true,
+} = Astro.props;
+---
+
+<!-- Container for textarea and icon -->
+<div
+  class="border-n-300 focus-within:border-n-900 flex w-full flex-col gap-11 border-b pb-2"
+>
+  <!-- Textarea and Icon -->
+  <textarea
+    name={name}
+    placeholder={showPlaceholder ? placeholder : undefined}
+    id={id}
+    rows="1"
+    required={required}
+    class="placeholder-n-600 resize-none text-sm outline-none placeholder:font-normal focus:border-none lg:text-base"
+  ></textarea>
+
+  <!-- Textarea increase/decrease icon -->
+  <Icon name={iconName} class="self-end" />
+</div>
