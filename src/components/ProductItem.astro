@@ -3,38 +3,51 @@ import { Icon } from "astro-icon/components";
 import ProductIcon from "./ProductIcon.astro";
 
 interface Props {
-  companyLogo?: string;
-  companyName?: string;
-  productImage?: string;
-  productdescription?: string;
+  companyLogo: string;
+  productImage: string;
+  productdescriptionStart: string;
+  productdescriptionBold: string;
+  productdescriptionEnd: string;
 }
 
 const {
   companyLogo = "zizo",
-  companyName = "zizo",
   productImage = "product-image",
-  productdescription = "A smart football team management app that helps coaches, players, and clubs organize matches, track stats, and manage their teams seamlessly.",
+  productdescriptionStart = "A smart football team management app that",
+  productdescriptionBold = "helps coaches, players, and clubs",
+  productdescriptionEnd = "organize matches, track stats, and manage their teams seamlessly.",
 } = Astro.props as Props;
 ---
 
 <!-- Product Item -->
-<div>
+<div class="flex flex-col border border-b-[0.4px] py-7 gap-3 bg-n-950 w-full">
   <!-- Logo Container -->
-  <div>
-    <Icon name={companyLogo} />
-    <p>{companyName}</p>
+  <div class="gap-2.5 flex">
+    <img src={`/images/${companyLogo}.png`} alt="" />
   </div>
 
   <!-- Product Image -->
-  <img src={`/images/${productImage}.png`} alt="" />
+  <img
+    src={`/images/${productImage}.png`}
+    alt=""
+    class="rounded-[25px] w-full"
+  />
 
   <!-- Content -->
-  <div>
+  <div class="flex gap-6 w-full">
     <!-- Description -->
-    {productdescription}
+    <p class="font-normal text-xs leading-normal text-n-700 w-[255px]">
+      {productdescriptionStart}
+      <span class="font-bold text-[#CAD5E2]">
+        {productdescriptionBold}
+      </span>
+      {productdescriptionEnd}
+    </p>
 
     <!-- Button for more information -->
-    <div>
+    <div
+      class="bg-linear-to-r from-[#4254D4] to-[#8B77F3] rounded-[100px] size-12 flex justify-center items-center self-center absolute right-0"
+    >
       <ProductIcon externalLinkIcon="external-link-icon" />
     </div>
   </div>
