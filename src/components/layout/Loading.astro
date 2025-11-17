@@ -7,16 +7,9 @@ import { Icon } from "astro-icon/components";
   class="fixed z-[999] flex h-screen w-screen flex-col items-center justify-center bg-n-50 overflow-hidden text-center transition-opacity duration-700"
 >
   <div class="relative flex items-center justify-center w-full h-full">
-    <svg
-      class="ball"
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx="10" cy="10" r="6" fill="white"></circle>
-    </svg>
+
+    <!-- Ball -->
+     <div class="ball bg-blue-500"></div>
 
     <!-- Step 1: Hello -->
     <p class="firstText text-n-950 text-5xl font-regular">Hello</p>
@@ -42,82 +35,129 @@ import { Icon } from "astro-icon/components";
   .ball {
     position: absolute;
     left: 14%;
+    height: 15px;
+    width: 15px;
+    border-radius: 20px;
 
     animation:
-      bounce 8s ease-in-out 1 forwards,
-      movement 12s ease-in-out 8s 1 forwards;
+      bounceUpDown 7.2s ease forwards,
+      movement 7.2s ease forwards;
   }
 
-  @keyframes bounce {
+  @keyframes bounceUpDown {
+    0% {
+      top: 50%;
+      animation-timing-function: ease-out;
+      transform: scaleY(0.6);
+    }
+    11.11% {
+      top: 21%;
+      animation-timing-function: ease-in;
+      transform: scaleY(1.4);
+    }
+    16.67% {
+      top: 50%;
+      animation-timing-function: ease-out;
+      transform: scaleY(0.6);
+    }
+    27.78% {
+      top: 21%;
+      animation-timing-function: ease-in;
+      transform: scaleY(1.4);
+    }
+    33.33% {
+      top: 50%;
+      animation-timing-function: ease-out;
+      transform: scaleY(0.6);
+    }
+    44.44% {
+      top: 16%;
+      animation-timing-function: ease-in;
+      transform: scaleY(1.4);
+    }
+    50% {
+      top: 50%;
+      animation-timing-function: ease-out;
+      transform: scaleY(0.6);
+    }
+    63.89% {
+      top: 16%;
+      animation-timing-function: ease-in;
+      transform: scaleY(1.4);
+    }
+    69.44% {
+      top: 50%;
+      animation-timing-function: ease-out;
+      transform: scaleY(0.6);
+    }
+    83.33% {
+      top: 16%;
+      animation-timing-function: ease-in;
+      transform: scaleY(1.4);
+    }
+    88.89% {
+      top: 50%;
+      animation-timing-function: ease-out;
+      transform: scaleY(0.6);
+    }
+    97% {
+      top: 40%;
+      animation-timing-function: ease-in;
+      transform: scaleY(1.4);
+    }
+    100% {
+      top: calc(50% - 45px);
+      transform: scaleY(1);
+    }
+  }
+
+  @keyframes movement {
     0% {
       left: 0%;
-      top: 50%;
-      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
     }
-    8% {
+    11.11% {
       left: 8%;
-      top: 21%;
-      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-out;
     }
-    16% {
+    16.67% {
       left: 17%;
-      top: 50%;
-      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
     }
-    24% {
+    27.78% {
       left: 27%;
-      top: 21%;
-      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-out;
     }
-    32% {
+    33.33% {
       left: 35%;
-      top: 50%;
-      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
     }
-    40% {
+    44.44% {
       left: 45%;
-      top: 21%;
-      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-out;
     }
-    48% {
+    50% {
       left: 50%;
-      top: 50%;
-      -webkit-animation-timing-function: ease-in;
     }
-    56% {
+    63.89% {
       left: 50%;
-      top: 21%;
-      -webkit-animation-timing-function: ease-in;
     }
-    62% {
+    69.44% {
       left: 50%;
-      top: 50%;
-      -webkit-animation-timing-function: ease-in;
     }
-    70% {
+    83.33% {
       left: 50%;
-      top: 21%;
-      -webkit-animation-timing-function: ease-in;
     }
-    78% {
+    88.89% {
       left: 50%;
-      top: 50%;
-      -webkit-animation-timing-function: ease-in;
     }
-    84% {
-      left: 50%;
-      top: 21%;
-      -webkit-animation-timing-function: ease-in;
-    }
-    90% {
-      left: 50%;
-      top: 50%;
-      -webkit-animation-timing-function: ease-in;
+    97% {
+      left: calc(50% - 10px);
+      background-color: var(--color-blue-500);
     }
     100% {
       left: calc(50% - 24px);
-      top: calc(50% - 40px);
-      -webkit-animation-timing-function: ease-in;
+      background-color: var(--color-n-950);
     }
   }
 
@@ -126,69 +166,63 @@ import { Icon } from "astro-icon/components";
   .secondText,
   .pixolo {
     position: absolute;
-    opacity: 0;
     transform-origin: center;
   }
 
   /* Hello: fade up and scale out */
   .firstText {
-    animation: firstTextAnim 1s ease-in-out forwards;
-    animation-delay: 5s;
+    animation: firstTextAnim 3.6s ease-in forwards;
   }
 
   /* We Are: scale in, scale out */
   .secondText {
-    animation: secondTextAnim 1s ease-in-out forwards;
-    animation-delay: 6s;
+    transform: scaleX(0);
+    animation: secondTextAnim 1.4s ease-in-out forwards;
+    animation-delay: 3.6s;
   }
 
   /* Pixolo: fade and stay visible */
   .pixolo {
-    animation: pixoloAnim 2s ease-in-out forwards;
-    animation-delay: 7s;
+    transform: scaleX(0);
+    animation: pixoloAnim 1s ease-in forwards;
+    animation-delay: 5s;
   }
 
   /* Keyframes */
   @keyframes firstTextAnim {
     0% {
       opacity: 0;
-      transform: translateY(20px) scale(1);
+      transform: translateY(20px) scaleX(1);
     }
     15%,
-    85% {
+    95% {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0) scaleX(1);
     }
     100% {
-      opacity: 0;
-      transform: scaleX(0);
+      transform: translateY(0) scaleX(0);
     }
   }
 
   @keyframes secondTextAnim {
     0% {
-      opacity: 0;
       transform: scaleX(0);
     }
-    15%,
-    85% {
-      opacity: 1;
+    5%,
+    94% {
       transform: scaleX(1);
     }
     100% {
-      opacity: 0;
       transform: scaleX(0);
     }
   }
 
   @keyframes pixoloAnim {
     0% {
-      opacity: 0;
       transform: scaleX(0);
     }
-    15%,
+    8%,
     100% {
-      opacity: 1;
       transform: scaleX(1);
     }
   }
