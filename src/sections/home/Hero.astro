@@ -17,26 +17,28 @@ const heroSubText = "Smart builds. Good vibes. Great stories.";
 <!-- Hero Section Start -->
 <section>
   <div
-    class="container relative flex flex-col items-center justify-center px-6 py-36 gap-9 overflow-hidden text-center md:py-40 mx-auto md:px-0"
+    class="container relative flex flex-col items-center justify-center px-6 py-36 gap-9 overflow-hidden text-center md:py-40 mx-auto md:px-0 lg:pt-72 lg:pb-60"
   >
     <!-- Top-left floating 3D ball -->
     <img
       src={ballPrimarySrc}
       alt="3d ball primary"
-      class="absolute top-[102px] left-6 w-9 md:w-16"
+      class="absolute top-[102px] left-6 w-9 md:w-16 md:top-[380px] md:left-[50px] lg:w-20 lg:top-[660px] lg:left-80"
     />
     <!-- Bottom-right floating 3D ball (rotated) -->
     <img
       src={ballSecondarySrc}
       alt="3d ball secondary"
-      class="absolute bottom-[220px] right-[38px] w-5 rotate-[-20deg]"
+      class="absolute bottom-[220px] right-[38px] w-5 md:w-11 rotate-[-20deg] md:right-[200px] md:bottom-40 lg:right-[550px]"
     />
 
     <!-- Hero Text Wrapper -->
-    <div class="flex flex-col items-center justify-center gap-3 xl:w-full">
+    <div
+      class="flex flex-col items-center justify-center gap-3 md:gap-0 xl:w-full"
+    >
       <!--  Line 1: “We’re the Geeks” -->
       <p
-        class="text-3xl font-normal leading-none tracking-[-2%] text-n-50 md:text-7xl xl:text-8xl"
+        class="text-3xl font-normal leading-none tracking-[-2%] text-n-950 md:text-7xl xl:text-8xl"
       >
         {heroTitle[0]}
         <span class="font-bold">{heroTitle[1]}</span>
@@ -44,28 +46,28 @@ const heroSubText = "Smart builds. Good vibes. Great stories.";
 
       <!--  Line 2: “behind your [icon] next” -->
       <p
-        class="text-3xl font-normal leading-tight tracking-[-2%] text-n-50 text-center flex justify-center items-center md:text-7xl text-nowrap xl:text-8xl"
+        class="text-3xl font-normal leading-tight tracking-[-2%] text-n-950 text-center flex justify-center items-center md:text-7xl text-nowrap xl:text-8xl"
       >
         <!--  -->
         <span>{heroTitle[2]}</span>
         <img
           src={iconCode}
           alt="3d-code-icon"
-          class="inline-block w-[56px] h-[36.2px] align-middle md:w-[173px] md:h-[118.3px] xl:w-60 xl:h-[155.14px]"
+          class="inline-block w-14 align-middle md:w-44 xl:w-60"
         />
         <span>{heroTitle[3]}</span>
       </p>
 
       <!--  Line 3: “Big Tech Story.” -->
       <p
-        class="text-3xl font-bold leading-none tracking-[-0.02em] text-n-50 md:text-7xl xl:text-8xl"
+        class="text-3xl font-semibold leading-none tracking-[-0.02em] text-n-950 md:text-7xl xl:text-8xl"
       >
         {heroTitle[4]}
       </p>
     </div>
     <!-- Subtext -->
     <p
-      class="text-sm font-medium leading-loose text-center bg-gradient-to-r from-[#6654D4] to-[#8B77F3] bg-clip-text text-transparent md:text-xl xl:text-2xl"
+      class="text-sm font-medium z-10 leading-loose text-center bg-linear-to-r from-[#6654D4] to-[#8B77F3] bg-clip-text text-transparent md:text-xl xl:text-2xl"
     >
       {heroSubText}
     </p>
