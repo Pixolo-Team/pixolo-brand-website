@@ -7,23 +7,23 @@ import ToolBadge from "../ToolBadge.astro";
 import BottomCTA from "../BottomCTA.astro";
 
 const footerDetails = {
-  socialLinks: ["instagram", "linkedin", "instagram", "linkedin"],
   headerIcon: "logo-only",
   headerText:
     "Every line of code we write carries our story of curiosity, courage, and a shared laugh between deadlines.",
   toolBadgeText: "Make the Logo Bigger",
   logoIcon: "text-only-logo",
   logoMessage: "We code better than we socialize. It’s your move.",
+  menuFooter: ["Home", "About", "Service", "Career", "Contact"],
+  socialLinks: ["instagram", "linkedin", "instagram", "linkedin"],
   bottomIcon: "copyright",
   bottomText: "2025",
-  menuFooter: ["Home", "About", "Service", "Career", "Contact"],
 };
 ---
 
 <!-- Footer Container -->
 <footer class="bg-n-50">
   <div
-    class="container flex flex-col mx-auto px-6 pt-24 pb-8 md:pt-32 md:pb-9 md:px-0 lg:pt-36 lg:pb-10">
+    class="container flex flex-col mx-auto px-6 pt-24 pb-8 md:pt-32 md:pb-9 lg:pt-36 lg:pb-10">
     <!-- Header Section :Logo + Tagline  -->
     <div
       class="flex flex-col items-start gap-4 md:gap-5 md:items-start lg:gap-6">
@@ -34,7 +34,7 @@ const footerDetails = {
       />
       <!-- Tagline -->
       <p
-        class="font-normal text-2xl leading-tight text-n-950 tracking-[-4%] md:text-4xl lg:text-5xl">
+        class="font-normal text-2xl leading-tight text-n-950 tracking-tight md:text-4xl lg:text-5xl">
         {footerDetails.headerText}
       </p>
     </div>
@@ -44,7 +44,7 @@ const footerDetails = {
       <!-- Tool Badge -->
       <div class="flex justify-center relative">
         <div
-          class="rotate-[-9.53deg] absolute right-5 bottom-0 md:right-30 lg:right-90">
+          class="rotate-[-9.53deg] absolute right-5 bottom-0 md:right-30 lg:right-40 xl:right-60 2xl:right-90">
           <ToolBadge icon={"building"} text={footerDetails.toolBadgeText} />
         </div>
       </div>
@@ -92,7 +92,7 @@ const footerDetails = {
               <div class="flex flex-col justify-center items-center w-10 rounded-full h-10 p-2.5 border border-n-500 md:gap-2 md:p-3 md:w-14 md:h-14 hover:bg-n-200">
                 <Icon
                   name={link}
-                  class="text-n-700 size-5 self-center md:size-7 "
+                  class="text-n-700 size-5 self-center md:size-7"
                 />
               </div>
             ))
@@ -102,7 +102,7 @@ const footerDetails = {
       <!-- Copyright -->
       <div class="flex gap-1 justify-center items-center md:gap-1.5">
         <Icon name={footerDetails.bottomIcon} class="self-center w-4 h-4" />
-        <span class="text-xs text-n-700 leading-[125%] tracking-[2%]"
+        <span class="text-xs text-n-700 leading-[125%] tracking-[0.02em]"
           >{footerDetails.bottomText}</span
         >
       </div>
