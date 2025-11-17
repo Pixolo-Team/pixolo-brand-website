@@ -21,10 +21,12 @@ const socialLinks = ["instagram", "linkedin", "instagram", "linkedin"],
 <!-- Footer Container -->
 <footer class="bg-n-50">
   <div
-    class="flex flex-col mx-auto px-6 pt-24 pb-8 md:w-3xl md:pt-32 md:pb-9 md:px-0 lg:w-5xl xl:w-7xl 2xl:w-[1536px] lg:pt-36 lg:pb-10 lg:px-0">
+    class="flex flex-col mx-auto px-6 pt-24 pb-8 md:w-3xl md:pt-32 md:pb-9 md:px-0 lg:w-5xl xl:w-7xl 2xl:w-[1536px] lg:pt-36 lg:pb-10 lg:px-0"
+  >
     <!-- Header Section :Logo + Tagline  -->
     <div
-      class="flex flex-col items-start gap-4 md:gap-5 md:items-start md:max-w-3xl lg:gap-6">
+      class="flex flex-col items-start gap-4 md:gap-5 md:items-start md:max-w-3xl lg:gap-6"
+    >
       <!-- Logo -->
       <Icon
         name={headerIcon}
@@ -32,7 +34,8 @@ const socialLinks = ["instagram", "linkedin", "instagram", "linkedin"],
       />
       <!-- Tagline -->
       <p
-        class="font-normal text-2xl leading-tight text-n-950 tracking-[-0.04em] md:text-4xl lg:text-5xl">
+        class="font-normal text-2xl leading-tight text-n-950 tracking-[-0.04em] md:text-4xl lg:text-5xl"
+      >
         {headerText}
       </p>
     </div>
@@ -42,21 +45,25 @@ const socialLinks = ["instagram", "linkedin", "instagram", "linkedin"],
       <!-- Tool Badge -->
       <div class="flex justify-center relative">
         <div
-          class="rotate-[-9.53deg] absolute left-1/2 -translate-x-1 bottom-0 md:right-10 md:translate-x-0 lg:right-7 lg:translate-x-0">
-          <ToolBadge text={toolBadgeText} />
+          class="rotate-[-9.53deg] absolute left-1/2 -translate-x-1 bottom-0 md:right-10 md:translate-x-0 lg:right-7 lg:translate-x-0"
+        >
+          <ToolBadge icon={"building"} text={toolBadgeText} />
         </div>
       </div>
       <!-- Main Logo and message -->
       <div
-        class="self-center flex flex-col gap-6 md:gap-8 justify-center items-center">
+        class="self-center flex flex-col gap-6 md:gap-8 justify-center items-center"
+      >
         <!-- Responsive logo block -->
         <div
-          class="flex w-[327px] h-[111px] md:h-[246.25px] md:w-3xl lg:w-[945px] lg:h-[303px]">
+          class="flex w-[327px] h-[111px] md:h-[246.25px] md:w-3xl lg:w-[945px] lg:h-[303px]"
+        >
           <Icon name={logoIcon} class="text-n-950 w-fit h-full" />
         </div>
         <!-- Message under logo -->
         <p
-          class="text-n-950 text-base font-normal leading-[125%] text-center md:text-xl md:font-normal lg:text-xl">
+          class="text-n-950 text-base font-normal leading-[125%] text-center md:text-xl md:font-normal lg:text-xl"
+        >
           {logoMessage}
         </p>
       </div>
