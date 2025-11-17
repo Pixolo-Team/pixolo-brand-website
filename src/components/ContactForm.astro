@@ -25,11 +25,11 @@ const subjectOptions = [
 >
   <!-- Contact Form wrapper -->
   <div
-    class="bg-n-50 border-n-400 z-20 flex w-full flex-col overflow-hidden rounded-3xl border px-6 py-6 md:w-[680px] md:px-0 md:py-0 lg:w-[800px]"
+    class="bg-n-50 border-n-400 z-20 flex w-full flex-col overflow-hidden rounded-3xl border md:w-[680px] lg:w-[800px]"
   >
     <!-- Title Bar -->
     <div
-      class="bg-n-400 flex w-full gap-1.5 px-0 py-0 md:gap-2 md:px-7 md:py-3 lg:px-11 lg:py-4"
+      class="bg-n-400 flex w-full gap-1.5 px-6 py-3 md:gap-2 md:px-7 lg:px-11 lg:py-4"
     >
       <!-- 3 Buttons (macOS style window controls) -->
       <div
@@ -51,8 +51,6 @@ const subjectOptions = [
       class="flex flex-col items-start gap-5 p-5 md:px-7 md:py-7"
       id="contact-form"
     >
-      <h2 id="contact-form-title" class="sr-only">Contact Form</h2>
-
       <!-- Input Wrapper -->
       <div class="flex w-full flex-col gap-5 md:gap-6">
         <!-- Email To  -->
@@ -64,11 +62,6 @@ const subjectOptions = [
             type="text"
             isDisabled={true}
             showPlaceholder={false}
-          />
-          <input
-            type="hidden"
-            name="emailToAddress"
-            value="business@pixolotechnologies.com"
           />
 
           <!-- For tablets and desktops -->
@@ -123,8 +116,6 @@ const subjectOptions = [
           options={subjectOptions}
           iconName="dropdown-icon"
         />
-        <!-- Hidden input to store selected dropdown value -->
-        <input type="hidden" name="selectedSubject" id="selectedSubject" />
 
         <!-- Additional Note -->
         <Textarea
@@ -149,7 +140,7 @@ const subjectOptions = [
 
     if (!backdrop || !closeBtn) {
       console.warn(
-        "ContactForm: Required elements not found. Modal functionality may not work.",
+        "ContactForm: Required elements not found. Modal functionality may not work."
       );
       return;
     }
