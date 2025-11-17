@@ -2,6 +2,7 @@
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
 
+// Define props interface with all field properties
 export interface Props {
   label: string;
   name: string;
@@ -14,6 +15,8 @@ export interface Props {
   isError?: boolean;
   isDisabled?: boolean;
 }
+
+// Destructure props with default values
 const {
   label = "",
   placeholder = "",
@@ -30,7 +33,7 @@ const {
 
 <!-- Container for input field and error message -->
 <div class="flex w-full flex-col gap-3">
-  <!-- Container for label and Input -->
+  <!-- Container for label and Input with bottom border -->
   <div
     class="border-n-300 focus-within:border-n-900 flex items-center gap-3 border-b pb-3 md:gap-4 md:pb-4"
   >
@@ -39,7 +42,7 @@ const {
       >{label}</label
     >
 
-    <!-- Input field that sets type, id , placeholder, name and required attributes from props -->
+    <!-- Input field with dynamic attributes from props -->
     <input
       disabled={isDisabled}
       type={type}
@@ -51,7 +54,7 @@ const {
     />
   </div>
 
-  <!-- Check if isError is true show the error message -->
+  <!-- Error messages display section -->
   {
     isError && (
       <div class="flex flex-col gap-2.5 md:gap-3">
@@ -60,7 +63,7 @@ const {
             {/* Error icon */}
             <Icon name="error-icon" class="size-4" />
 
-            {/* Error message */}
+            {/* Error message text */}
             <p class="text-xs leading-[17px] font-normal text-red-600 md:text-sm lg:text-base">
               {msg}
             </p>

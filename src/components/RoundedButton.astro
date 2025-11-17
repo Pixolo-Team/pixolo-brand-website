@@ -11,6 +11,7 @@ interface Props {
   leftIcon?: string;
   rightIcon?: string;
   onClick?: string;
+  type?: "button" | "submit" | "reset";
 }
 
 // Default values
@@ -19,16 +20,18 @@ const {
   leftIcon = "",
   rightIcon = "",
   onClick = "",
+  type = "submit",
 } = Astro.props;
 ---
 
 <!-- Rounded Button -->
 <button
+  type={type}
   onclick={onClick}
   class="text-n-100 bg-n-950 flex cursor-pointer gap-1 rounded-4xl px-5 py-3 md:gap-1.5 md:px-6 md:py-3.5 lg:gap-2 lg:px-7 lg:py-4"
 >
-  <!--Left icon of Rounded Button  -->
-  {leftIcon !== "" && <Icon name={leftIcon} />}
+  <!-- Left icon of Rounded Button -->
+  {leftIcon !== "" && <Icon name={leftIcon} class="size-4" />}
 
   <!-- Rounded Button Text -->
   <p class="text-sm font-medium">
@@ -36,5 +39,5 @@ const {
   </p>
 
   <!-- Right Icon Of Rounded Button -->
-  {rightIcon !== "" && <Icon name={rightIcon} />}
+  {rightIcon !== "" && <Icon name={rightIcon} class="size-4" />}
 </button>
