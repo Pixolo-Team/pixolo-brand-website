@@ -6,96 +6,102 @@ import { Icon } from "astro-icon/components";
 import ToolBadge from "../ToolBadge.astro";
 import BottomCTA from "../BottomCTA.astro";
 
-export interface props {
-  socialLinks: string[];
-  headerIcon: string;
-  headerText: string;
-  toolBadgeText: string;
-  logoIcon: string;
-  logoMessage: string;
-  bottomIcon: string;
-  bottomText: string;
-  menuFooter:string[]
-}
-
-const {
-  socialLinks = ["instagram", "linkedin", "instagram", "linkedin"],
+const socialLinks = ["instagram", "linkedin", "instagram", "linkedin"],
   headerIcon = "logo-only",
-  headerText = "Every line of code we write carries our story of curiosity, courage, and a shared laugh between deadlines.",
+  headerText =
+    "Every line of code we write carries our story of curiosity, courage, and a shared laugh between deadlines.",
   toolBadgeText = "Make the Logo Bigger",
   logoIcon = "text-only-logo",
   logoMessage = "We code better than we socialize. It’s your move.",
   bottomIcon = "copyright",
   bottomText = "2025",
-  menuFooter=["Home","About","Service","Career","Contact"]
-} = Astro.props;
+  menuFooter = ["Home", "About", "Service", "Career", "Contact"];
 ---
 
 <!-- Footer Container -->
- 
-<div class="flex flex-col bg-n-50 w-full mx-auto" >
-  <footer class="flex flex-col px-6 pt-24 pb-8  md:pt-32 md:pb-9 lg:pt-36 lg:pb-10 ">
-    <!-- Header Section -->
-    <div class="flex flex-col gap-4 md:gap-5 md:max-w-[768px] lg:max-w-[1920px] lg:gap-6">
-      <Icon name={headerIcon} class="w-11 h-11 md:w-14 md:h-14 lg:w-16 lg:h-16"  />
-      <p class="font-normal text-2xl leading-tight text-n-950 tracking-[-0.04em] md:text-4xl lg:text-5xl">
+<footer class="bg-n-50">
+  <div
+    class="flex flex-col mx-auto px-6 pt-24 pb-8 md:w-3xl md:pt-32 md:pb-9 md:px-0 lg:w-5xl xl:w-7xl 2xl:w-[1536px] lg:pt-36 lg:pb-10 lg:px-0">
+    <!-- Header Section :Logo + Tagline  -->
+    <div
+      class="flex flex-col items-start gap-4 md:gap-5 md:items-start md:max-w-3xl lg:gap-6">
+      <!-- Logo -->
+      <Icon
+        name={headerIcon}
+        class="w-11 h-11 md:w-14 md:h-14 lg:w-16 lg:h-16"
+      />
+      <!-- Tagline -->
+      <p
+        class="font-normal text-2xl leading-tight text-n-950 tracking-[-0.04em] md:text-4xl lg:text-5xl">
         {headerText}
       </p>
     </div>
 
-    <!-- Logo Cta Wrap -->
-
-    <!-- Container -->
-    <div class="flex flex-col pt-32 gap-8 md:pt-40 md:gap-9 lg:gap-10 lg:pt-48 ">
+    <!-- Logo Cta Area -->
+    <div class="flex flex-col pt-32 gap-8 md:pt-40 md:gap-9 lg:gap-10 lg:pt-48">
       <!-- Tool Badge -->
       <div class="flex justify-center relative">
-        <div class="rotate-[-9.53deg] absolute right-2 -bottom-2 md:right-10 lg:right-85">
+        <div
+          class="rotate-[-9.53deg] absolute left-1/2 -translate-x-1 bottom-0 md:right-10 md:translate-x-0 lg:right-7 lg:translate-x-0">
           <ToolBadge text={toolBadgeText} />
         </div>
       </div>
-      <!-- Logo with text only and message -->
-      <div class="flex flex-col gap-6 md:gap-8 justify-center items-center">
-        <div class="flex  w-[327px] h-[111px] md:h-[246.25px] md:w-[768px] lg:w-[945px] lg:h-[303px]">
-        <Icon name={logoIcon} class="text-n-950 w-full h-full" />
+      <!-- Main Logo and message -->
+      <div
+        class="self-center flex flex-col gap-6 md:gap-8 justify-center items-center">
+        <!-- Responsive logo block -->
+        <div
+          class="flex w-[327px] h-[111px] md:h-[246.25px] md:w-3xl lg:w-[945px] lg:h-[303px]">
+          <Icon name={logoIcon} class="text-n-950 w-fit h-full" />
         </div>
+        <!-- Message under logo -->
         <p
-          class="text-n-950 text-base font-normal leading-[1.25em] text-center md:text-xl md:font-normal lg:text-xl">
+          class="text-n-950 text-base font-normal leading-[125%] text-center md:text-xl md:font-normal lg:text-xl">
           {logoMessage}
         </p>
       </div>
 
       <!-- Bottom CTA -->
-       <div class="self-center">
-      <BottomCTA />
+      <div class="self-center">
+        <BottomCTA />
       </div>
     </div>
 
-    <!-- Bottom Section Wrap -->
+    <!-- Bottom Section : Navigation , social links and copyright -->
     <div class="flex flex-col gap-3.5 md:gap-4">
       <div class="flex pt-6 gap-6 justify-center md:pt-10 lg:justify-between">
-        <!-- Menu Footer -->
+        <!-- Desktop Footer Menu -->
         <div class="hidden lg:flex lg:gap-7">
           {
-            menuFooter.map((menu:string)=>(<p class="flex gap-10 text-lg leading-[1em] tracking-[0.02em] text-n-700 self-center hover:rounded-3xl hover:bg-n-200 py-2 px-4 ">{menu}</p>))
+            menuFooter.map((menu: string) => (
+              <p class="flex gap-10 text-lg leading-[100%] tracking-[2%] text-n-700 self-center hover:rounded-3xl hover:bg-n-200 py-2 px-4 ">
+                {menu}
+              </p>
+            ))
           }
         </div>
-        <!-- Social Links -->
+        <!-- Social Icons -->
         <div class="flex gap-6 lg:gap-7">
-        {
-          socialLinks.map((link: string) => (
-            <div class="flex flex-col w-10 rounded-full h-10 p-2.5 border border-n-500 md:gap-2 md:p-3 md:w-14 md:h-14">
-              <Icon name={link} class="w-5 h-[20.01px] md:w-7 md:h-[28.01px]" />
-            </div>
-          ))
-        }
+          {
+            socialLinks.map((link: string) => (
+              // Social icon wrapper
+              <div class="flex flex-col justify-center items-center w-10 rounded-full h-10 p-2.5 border border-n-500 md:gap-2 md:p-3 md:w-14 md:h-14 hover:bg-n-200">
+                <Icon
+                  name={link}
+                  class="text-n-700 w-5 h-[20.01px] self-center md:w-7 md:h-[28.01px] "
+                />
+              </div>
+            ))
+          }
         </div>
       </div>
       <!-- Copyright -->
-      <div class="flex gap-1 justify-center md:gap-1.5">
-        <Icon name={bottomIcon} class="self-center md:w-4 md:h-4" />
-        <span class="text-xs leading-[1.25em] tracking-[0.02em]">{bottomText}</span>
+      <div class="flex gap-1 justify-center items-center md:gap-1.5">
+        <Icon name={bottomIcon} class="self-center w-4 h-4" />
+        <span class="text-xs text-n-700 leading-[125%] tracking-[2%]"
+          >{bottomText}</span
+        >
       </div>
     </div>
-  </footer>
-</div>
-
+  </div>
+</footer>
