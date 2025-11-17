@@ -1,54 +1,72 @@
 ---
 import { Icon } from "astro-icon/components";
-import ProductIcon from "./ProductIcon.astro";
+import Image from "astro/components/Image.astro";
 
 interface Props {
   companyLogo: string;
   productImage: string;
+  productName: string;
   productdescriptionStart: string;
   productdescriptionBold: string;
   productdescriptionEnd: string;
+  href: string;
 }
 
 const {
-  companyLogo = "zizo",
-  productImage = "product-image",
+  companyLogo = "zizo.png",
+  productImage = "product-image.png",
+  productName = "product-name",
   productdescriptionStart = "A smart football team management app that",
   productdescriptionBold = "helps coaches, players, and clubs",
   productdescriptionEnd = "organize matches, track stats, and manage their teams seamlessly.",
+  href = "/",
 } = Astro.props as Props;
 ---
 
 <!-- Product Item -->
-<div class="flex flex-col border border-b-[0.4px] py-7 gap-3 bg-n-950 w-full">
+<div
+  class="flex flex-col lg:flex-row border-b-[0.4px] md:border-b-[0.6px] lg:border-b-[0.8px] border-n-950 py-7 gap-3 md:gap-3.5 w-full lg:gap-20"
+>
   <!-- Logo Container -->
-  <div class="gap-2.5 flex">
-    <img src={`/images/${companyLogo}.png`} alt="" />
+  <div class="gap-2.5 flex shrink-0 lg:w-2xl">
+    <Image
+      src={`/images/products/${companyLogo}`}
+      alt={`${companyLogo} logo`}
+      width={180}
+      height={63}
+      class="md:w-[250px] md:h-[87px]"
+    />
   </div>
 
   <!-- Product Image -->
-  <img
-    src={`/images/${productImage}.png`}
-    alt=""
-    class="rounded-[25px] w-full"
+  <Image
+    src={`/images/products/${productImage}`}
+    alt={`${productName}`}
+    width={327}
+    height={140}
+    class="rounded-[25px] w-full lg:hidden object-contain"
   />
 
   <!-- Content -->
-  <div class="flex gap-6 w-full">
+  <div class="flex gap-6 md:gap-16 w-full lg:gap-16 lg:w-2xl">
     <!-- Description -->
-    <p class="font-normal text-xs leading-normal text-n-700 w-[255px]">
+    <p class="font-normal text-xs md:text-base leading-normal text-n-700">
       {productdescriptionStart}
-      <span class="font-bold text-[#CAD5E2]">
+      <span class="font-bold text-xs md:text-base text-n-700">
         {productdescriptionBold}
       </span>
       {productdescriptionEnd}
     </p>
 
-    <!-- Button for more information -->
-    <div
-      class="bg-linear-to-r from-[#4254D4] to-[#8B77F3] rounded-[100px] size-12 flex justify-center items-center self-center absolute right-0"
+    <!-- Link for more information -->
+    <a
+      href={href}
+      class="bg-linear-to-r from-[#4254D4] to-[#8B77F3] rounded-[100px] size-12 md:size-20 flex justify-center items-center self-center shrink-0"
+      aria-label="View more information"
     >
-      <ProductIcon externalLinkIcon="external-link-icon" />
-    </div>
+      <div class="size-[18px] md:size-[30px]">
+        <Icon name="external-link-icon" class="w-full h-full" />
+      </div>
+    </a>
   </div>
 </div>
