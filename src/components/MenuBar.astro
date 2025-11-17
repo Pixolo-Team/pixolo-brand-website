@@ -1,0 +1,40 @@
+---
+interface MenuItem {
+  name: string;
+  url: string;
+}
+
+const { items = [] }: { items?: MenuItem[] } = Astro.props;
+
+// Get current path for highlighting active menu item
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="bg-n-100 rounded-4xl px-9 py-4">
+  <ul class="flex gap-10">
+    <!-- Loop through menu items -->
+    {
+      items.map((item: MenuItem) => {
+        const isActive = currentPath === item.url;
+        return (
+          <li>
+            <a
+              href={item.url}
+              class={`relative text-n-950 leading-tight text-base font-medium transition-colors duration-200 ${
+                isActive ? "text-blue-600" : "hover:text-blue-600"
+              }`}
+            >
+              {/* Text wrapper with z-index to stay above the active indicator */}
+              <span class="relative z-10">{item.name}</span>
+
+              {/* Active state indicator - only rendered for current page */}
+              {isActive && (
+                <span class="absolute top-1/2 -right-[12px] -translate-y-1/2 w-[25px] h-[25px] bg-blue-500 rounded-full z-0 opacity-80 pointer-events-none" />
+              )}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
