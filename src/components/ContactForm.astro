@@ -145,10 +145,11 @@ const subjectOptions = [
       return;
     }
 
-    // OPEN MODAL
+    // Opens Modal
     window.addEventListener("open-contact-modal", () => {
       backdrop.classList.remove("opacity-0", "invisible");
       backdrop.classList.add("opacity-100", "visible");
+
       // Prevent body scroll when modal is open
       document.body.style.overflow = "hidden";
     });
@@ -156,29 +157,23 @@ const subjectOptions = [
     // CLOSE BUTTON - with click handler
     closeBtn.addEventListener("click", closeModal);
 
-    // CLOSE BUTTON - with keyboard handler
-    closeBtn.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        closeModal();
-      }
-    });
-
-    // CLICK BACKDROP ONLY (not the form box)
+    // Click backdrop only (not the form box)
     backdrop.addEventListener("click", (e) => {
       if (e.target === backdrop) closeModal();
     });
 
-    // ESC KEY to close modal
+    // ESC key to close modal
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && backdrop.classList.contains("visible")) {
         closeModal();
       }
     });
 
+    /** Closes the modal by toggling visibility classes */
     function closeModal() {
       backdrop.classList.remove("opacity-100", "visible");
       backdrop.classList.add("opacity-0", "invisible");
+
       // Restore body scroll when modal is closed
       document.body.style.overflow = "";
     }

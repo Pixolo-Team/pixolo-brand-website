@@ -83,6 +83,7 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
     const selectedText = document.getElementById("dropdown-selected");
     const hiddenInput = document.getElementById("selectedSubject");
 
+    // Ensure required DOM elements exist
     if (!trigger || !list || !arrow || !selectedText) return;
 
     // Set initial value to hidden input
@@ -102,30 +103,11 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
       }
     });
 
-    // Keyboard navigation
-    trigger.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " " || e.key === "ArrowDown") {
-        e.preventDefault();
-        openDropdown();
-      } else if (e.key === "Escape") {
-        e.preventDefault();
-        closeDropdown();
-      }
-    });
-
     // Select an option
     list.querySelectorAll("li").forEach((item) => {
       item.addEventListener("click", (e) => {
         e.stopPropagation();
         selectOption(item);
-      });
-
-      // Keyboard support for options
-      item.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          selectOption(item);
-        }
       });
     });
 
@@ -136,16 +118,19 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
       }
     });
 
+    /** Opens the dropdown list by removing hidden class and rotates the arrow icon */
     function openDropdown() {
       list.classList.remove("hidden");
       arrow.classList.add("rotate-180");
     }
 
+    /** Closes the dropdown list by adding hidden class and resets the arrow rotation */
     function closeDropdown() {
       list.classList.add("hidden");
       arrow.classList.remove("rotate-180");
     }
 
+    /** Handles selection of a dropdown option */
     function selectOption(item) {
       const value = item.dataset.value;
 
