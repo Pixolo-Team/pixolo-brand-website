@@ -6,34 +6,36 @@ import { Icon } from "astro-icon/components";
 import ToolBadge from "../ToolBadge.astro";
 import BottomCTA from "../BottomCTA.astro";
 
-const socialLinks = ["instagram", "linkedin", "instagram", "linkedin"],
-  headerIcon = "logo-only",
-  headerText =
+const footerDetails = {
+  socialLinks: ["instagram", "linkedin", "instagram", "linkedin"],
+  headerIcon: "logo-only",
+  headerText:
     "Every line of code we write carries our story of curiosity, courage, and a shared laugh between deadlines.",
-  toolBadgeText = "Make the Logo Bigger",
-  logoIcon = "text-only-logo",
-  logoMessage = "We code better than we socialize. It’s your move.",
-  bottomIcon = "copyright",
-  bottomText = "2025",
-  menuFooter = ["Home", "About", "Service", "Career", "Contact"];
+  toolBadgeText: "Make the Logo Bigger",
+  logoIcon: "text-only-logo",
+  logoMessage: "We code better than we socialize. It’s your move.",
+  bottomIcon: "copyright",
+  bottomText: "2025",
+  menuFooter: ["Home", "About", "Service", "Career", "Contact"],
+};
 ---
 
 <!-- Footer Container -->
 <footer class="bg-n-50">
   <div
-    class="container flex flex-col mx-auto px-6 pt-24 pb-8 md:pt-32 md:pb-9 md:px-0 lg:pt-36 lg:pb-10 lg:px-0">
+    class="container flex flex-col mx-auto px-6 pt-24 pb-8 md:pt-32 md:pb-9 md:px-0 lg:pt-36 lg:pb-10">
     <!-- Header Section :Logo + Tagline  -->
     <div
-      class="flex flex-col items-start gap-4 md:gap-5 md:items-start md:max-w-3xl lg:gap-6">
+      class="flex flex-col items-start gap-4 md:gap-5 md:items-start lg:gap-6">
       <!-- Logo -->
       <Icon
-        name={headerIcon}
+        name={footerDetails.headerIcon}
         class="w-11 h-11 md:w-14 md:h-14 lg:w-16 lg:h-16"
       />
       <!-- Tagline -->
       <p
         class="font-normal text-2xl leading-tight text-n-950 tracking-[-4%] md:text-4xl lg:text-5xl">
-        {headerText}
+        {footerDetails.headerText}
       </p>
     </div>
 
@@ -42,22 +44,24 @@ const socialLinks = ["instagram", "linkedin", "instagram", "linkedin"],
       <!-- Tool Badge -->
       <div class="flex justify-center relative">
         <div
-          class="rotate-[-9.53deg] absolute right-5 -translate-x-1 bottom-0 md:right-30 md:translate-x-0 lg:right-90 lg:translate-x-0">
-          <ToolBadge icon={"building"} text={toolBadgeText} />
+          class="rotate-[-9.53deg] absolute right-5 bottom-0 md:right-30 lg:right-90">
+          <ToolBadge icon={"building"} text={footerDetails.toolBadgeText} />
         </div>
       </div>
       <!-- Main Logo and message -->
       <div
         class="self-center flex flex-col gap-6 md:gap-8 justify-center items-center">
         <!-- Responsive logo block -->
-        <div
-          class="flex w-[327px] h-[111px] md:h-[246.25px] md:w-3xl lg:w-[945px] lg:h-[303px]">
-          <Icon name={logoIcon} class="text-n-950 w-fit h-full" />
+        <div class="flex w-full lg:w-[945px]">
+          <Icon
+            name={footerDetails.logoIcon}
+            class="text-n-950 w-full h-full"
+          />
         </div>
         <!-- Message under logo -->
         <p
           class="text-n-950 text-base font-normal leading-[125%] text-center md:text-xl md:font-normal lg:text-xl">
-          {logoMessage}
+          {footerDetails.logoMessage}
         </p>
       </div>
 
@@ -73,7 +77,7 @@ const socialLinks = ["instagram", "linkedin", "instagram", "linkedin"],
         <!-- Desktop Footer Menu -->
         <div class="hidden lg:flex lg:gap-7">
           {
-            menuFooter.map((menu: string) => (
+            footerDetails.menuFooter.map((menu: string) => (
               <p class="flex gap-10 text-lg leading-[100%] tracking-[2%] text-n-700 self-center hover:rounded-3xl hover:bg-n-200 py-2 px-4 ">
                 {menu}
               </p>
@@ -83,12 +87,12 @@ const socialLinks = ["instagram", "linkedin", "instagram", "linkedin"],
         <!-- Social Icons -->
         <div class="flex gap-6 lg:gap-7">
           {
-            socialLinks.map((link: string) => (
+            footerDetails.socialLinks.map((link: string) => (
               // Social icon wrapper
               <div class="flex flex-col justify-center items-center w-10 rounded-full h-10 p-2.5 border border-n-500 md:gap-2 md:p-3 md:w-14 md:h-14 hover:bg-n-200">
                 <Icon
                   name={link}
-                  class="text-n-700 w-5 h-[20.01px] self-center md:w-7 md:h-[28.01px] "
+                  class="text-n-700 size-5 self-center md:size-7 "
                 />
               </div>
             ))
@@ -97,9 +101,9 @@ const socialLinks = ["instagram", "linkedin", "instagram", "linkedin"],
       </div>
       <!-- Copyright -->
       <div class="flex gap-1 justify-center items-center md:gap-1.5">
-        <Icon name={bottomIcon} class="self-center w-4 h-4" />
+        <Icon name={footerDetails.bottomIcon} class="self-center w-4 h-4" />
         <span class="text-xs text-n-700 leading-[125%] tracking-[2%]"
-          >{bottomText}</span
+          >{footerDetails.bottomText}</span
         >
       </div>
     </div>
