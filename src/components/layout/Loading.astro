@@ -1,5 +1,9 @@
 ---
-import { Icon } from "astro-icon/components";
+// COMPONENTS //
+import { Image } from "astro:assets";
+
+// SVG's //
+import pixolo from "@/../public/images/loader/pixolo.svg";
 ---
 
 <section
@@ -7,9 +11,8 @@ import { Icon } from "astro-icon/components";
   class="fixed z-[999] flex h-screen w-screen flex-col items-center justify-center bg-n-50 overflow-hidden text-center transition-opacity duration-700"
 >
   <div class="relative flex items-center justify-center w-full h-full">
-
     <!-- Ball -->
-     <div class="ball bg-blue-500"></div>
+    <div class="ball bg-blue-500"></div>
 
     <!-- Step 1: Hello -->
     <p class="firstText text-n-950 text-5xl font-regular">Hello</p>
@@ -19,8 +22,7 @@ import { Icon } from "astro-icon/components";
 
     <!-- Step 3: Pixolo -->
     <div class="pixolo flex gap-1 items-center justify-center">
-      <Icon name="pixolo-icon" class="w-[101px] h-[101px]" />
-      <Icon name="pixolo" class="w-full h-[68px]" />
+      <Image src={pixolo} alt="Pixolo" />
     </div>
 
     <!-- Loader Number -->
@@ -106,7 +108,7 @@ import { Icon } from "astro-icon/components";
       transform: scaleY(1.4);
     }
     100% {
-      top: calc(50% - 45px);
+      top: calc(50% - 40px);
       transform: scaleY(1);
     }
   }
@@ -152,11 +154,11 @@ import { Icon } from "astro-icon/components";
       left: 50%;
     }
     97% {
-      left: calc(50% - 10px);
+      left: 50%;
       background-color: var(--color-blue-500);
     }
     100% {
-      left: calc(50% - 24px);
+      left: calc(50% - 2px);
       background-color: var(--color-n-950);
     }
   }
@@ -230,6 +232,7 @@ import { Icon } from "astro-icon/components";
 
 <script is:inline>
   const label = document.getElementById("progress-label");
+  const loader = document.getElementById("loading-screen");
 
   let progress = 0;
   let fakeInterval;
@@ -260,8 +263,14 @@ import { Icon } from "astro-icon/components";
         updateUI();
       } else {
         clearInterval(complete);
-        loader.classList.add("fade-out");
-        setTimeout(() => loader.remove(), 700);
+
+        // Wait some time before fadeout
+        setTimeout(() => {
+          loader.classList.add("fade-out");
+
+          // Remove after fade-out animation
+          setTimeout(() => loader.remove(), 700);
+        }, 1500);
       }
     }, 30);
   }
@@ -269,16 +278,8 @@ import { Icon } from "astro-icon/components";
   // Start the Fake progress to < 100%
   startFakeProgress();
 
-  // Total animation duration = 2s + 2s + 2s = 6s
   // Wait 6s, then finish progress
   setTimeout(() => {
     finishProgress();
   }, 6000);
-
-  // Optional: if the window loads earlier, still ensure finish runs
-  // window.addEventListener("load", () => {
-  //   setTimeout(() => {
-  //     finishProgress();
-  //   }, 6000);
-  // });
 </script>
