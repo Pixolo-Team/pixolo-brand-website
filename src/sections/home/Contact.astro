@@ -29,7 +29,7 @@ const contactSectionData = {
     address: "G Block BKC, Mumbai",
     icon: "location",
     mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.975084087423!2d72.8677285752373!3d19.06646435212271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c90de1e0bffb%3A0x289f99b1f86ad34!2sG%20Block%20BKC%2C%20Mumbai!5e0!3m2!1sen!2sin!4v1730992500000!5m2!1sen!2sin",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.328989964494!2d72.91125677570571!3d19.093217982114897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c701ef4e7985%3A0x469b01839abb0a3d!2sPixolo%20Mobile%20Application%20Makers!5e0!3m2!1sen!2sin!4v1763470429399!5m2!1sen!2sin",
   },
 };
 ---
@@ -89,7 +89,7 @@ const contactSectionData = {
                 <Icon
                   name="copy"
                   class="size-5 cursor-pointer"
-                  onclick={`copyToClipboard(${item.value})`}
+                  onclick={`copyToClipboard('${item.value}')`}
                 />
               </Tooltip>
             </a>
@@ -99,7 +99,9 @@ const contactSectionData = {
 
       <!-- Location -->
       <a
+        href={"https://maps.app.goo.gl/nwxgMMYa6qUVBjke6"}
         target="_blank"
+        rel="noopener noreferrer"
         class="group bg-n-100 hover:bg-n-200 flex w-full cursor-pointer flex-col justify-between gap-5 rounded-4xl p-6 sm:flex-row lg:w-[520px]"
       >
         <div class="flex flex-col gap-5 md:gap-9">
