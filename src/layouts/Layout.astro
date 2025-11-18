@@ -47,8 +47,8 @@ import Loading from "@/components/layout/Loading.astro";
 </style>
 
 <script is:inline>
-  // const loader = document.querySelector("#loading-screen");
-  // const hasLoadedBefore = sessionStorage.getItem("indexLoaderShown");
+  const loader = document.querySelector("#loading-screen");
+  const hasLoadedBefore = sessionStorage.getItem("indexLoaderShown");
 
   if (hasLoadedBefore && loader) {
     // skip instantly if already loaded
@@ -56,4 +56,35 @@ import Loading from "@/components/layout/Loading.astro";
   } else {
     loader.style.display = "flex";
   }
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Select all elements that should animate when visible
+    const animatedElements = document.querySelectorAll(
+      ".anim-fade-up-quick, .anim-fade-in-up, .anim-fade-in-right"
+    );
+
+    // Create a new Intersection Observer to detect when elements appear in the viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Check if the element is currently visible in the viewport
+          if (entry.isIntersecting) {
+            // Add the visible class to trigger CSS animation
+            entry.target.classList.add("anim-visible");
+
+            // Stop observing the element after animation triggers once
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+
+      // Trigger the animation when 20% of the element is visible
+      { threshold: 0.18 }
+    );
+
+    // Observe each selected element
+    animatedElements.forEach((el) => observer.observe(el));
+  });
 </script>
