@@ -1,59 +1,106 @@
 ---
-import RoundedButton from "./RoundedButton.astro";
+// COMPONENTS //
 import { Icon } from "astro-icon/components";
 
-interface MenuItem {
-  name: string;
-  url: string;
+// OTHERS //
+import BrandLogo from "./BrandLogo.astro";
+import RoundedButton from "./RoundedButton.astro";
+
+interface Props {
+  menuItems: { name: string; url: string }[];
 }
 
-const items: MenuItem[] = [
-  { name: "Home", url: "/" },
-  { name: "About", url: "/about" },
-  { name: "Careers", url: "/careers" },
-  { name: "Portfolio", url: "/portfolio" },
-];
-
-const variant = "default";
+const { menuItems = [] } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
-<section
-  class="absolute top-0 left-0 bg-n-50 z-99 h-screen w-full flex flex-col py-5 px-6 md:hidden"
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-50 hidden bg-n-50 opacity-0 transition-opacity duration-300 ease-in-out lg:hidden"
+  aria-hidden="true"
 >
-  <!-- Logo at top -->
-  <div class="flex justify-between items-center">
-    <a href="/">
-      <img src={`/brand-logo/${variant}.png`} alt="Brand Logo" />
-    </a>
-    <!-- Close Icon -->
-    <div class="flex justify-center items-center size-14 bg-n-100 rounded-full">
-      <Icon name="close" />
+  <div class="container mx-auto flex flex-col justify-between py-5 px-6 h-full">
+    <!-- Logo + Close Button -->
+    <div class="flex justify-between items-center">
+      <BrandLogo width={140} />
+
+      <button
+        id="mobile-menu-close"
+        class="flex justify-center items-center size-14 bg-n-100 rounded-full"
+        aria-label="Close mobile menu"
+        type="button"
+      >
+        <Icon name="close" />
+      </button>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="flex flex-col flex-1 gap-6 leading-tight pt-28">
+      {
+        menuItems.map((item) => {
+          const isActive = currentPath === item.url;
+          return (
+            <a
+              href={item.url}
+              class={`font-normal text-4xl transition-colors leading-tight ${
+                isActive ? "text-n-950" : "text-n-500"
+              }`}
+            >
+              {item.name}
+            </a>
+          );
+        })
+      }
+    </div>
+
+    <!-- Bottom Buttons -->
+    <div class="justify-center flex flex-row gap-2.5">
+      <RoundedButton buttonText="Call" />
+      <RoundedButton buttonText="Whatsapp" />
     </div>
   </div>
+</div>
 
-  <!-- Menu items vertically centered -->
-  <div class="flex flex-col flex-1 pt-28 gap-6 leading-tight">
-    {
-      items.map((item) => {
-        const isActive = currentPath === item.url;
-        return (
-          <a
-            href={item.url}
-            class={`font-normal text-4xl transition-colors ${
-              isActive ? "text-n-950" : "text-n-500"
-            }`}
-          >
-            {item.name}
-          </a>
-        );
-      })
-    }
-  </div>
+<script>
+  const openBtn = document.getElementById("open-mobile-menu-button");
+  const closeBtn = document.getElementById("mobile-menu-close");
+  const menu = document.getElementById("mobile-menu");
 
-  <!-- Bottom fixed buttons -->
-  <div class="justify-center px-7 py-4 flex flex-row gap-2.5">
-    <RoundedButton buttonText="Call" />
-    <RoundedButton buttonText="Whatsapp" />
-  </div>
-</section>
+  const OPEN_CLOSE_MS = 300; // matches transition duration
+
+  /** OPEN MOBILE MENU */
+  const openMobileMenu = () => {
+    if (!menu) return;
+
+    menu.classList.remove("hidden");
+    requestAnimationFrame(() => {
+      menu.classList.remove("opacity-0");
+      menu.classList.add("opacity-100");
+    });
+
+    menu.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  /** CLOSE MOBILE MENU */
+  const closeMobileMenu = () => {
+    if (!menu) return;
+
+    menu.classList.remove("opacity-100");
+    menu.classList.add("opacity-0");
+
+    setTimeout(() => {
+      menu.classList.add("hidden");
+      menu.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }, OPEN_CLOSE_MS);
+  };
+
+  openBtn?.addEventListener("click", openMobileMenu);
+  closeBtn?.addEventListener("click", closeMobileMenu);
+
+  // Close on clicking menu links
+  menu?.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", closeMobileMenu);
+  });
+</script>

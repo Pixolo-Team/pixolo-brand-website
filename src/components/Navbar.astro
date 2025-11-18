@@ -1,10 +1,10 @@
 ---
-
-// OTHERS //
-import BrandLogo from "./BrandLogo.astro";
-import MenuBar from "./MenuBar.astro";
-import MobileMenu from "./MobileMenu.astro";
-import RoundedButton from "./RoundedButton.astro";
+// COMPONENTS //
+import BrandLogo from "@/components/BrandLogo.astro";
+import MenuBar from "@/components/MenuBar.astro";
+import RoundedButton from "@/components/RoundedButton.astro";
+import MobileMenu from "@/components/MobileMenu.astro";
+import { Icon } from "astro-icon/components";
 
 const menuItems = [
   { name: "Home", url: "/", isActive: true },
@@ -12,19 +12,30 @@ const menuItems = [
   { name: "Careers", url: "/careers" },
   { name: "Portfolio", url: "/portfolio" },
 ];
-
 ---
 
-<!-- Navbar Display -->
-<header class="flex justify-between items-center px-3 relative z-10">
-  <MobileMenu></MobileMenu>
-    <BrandLogo/>
-    <div class="hidden md:block">
-    <MenuBar items={menuItems}/>
-    </div>
-    <div class="hidden md:block">
-      <RoundedButton
-        buttonText="Contact Us"
-    />
-    </div>
+<header
+  class="container mx-auto flex justify-between items-center p-6 lg:p-4 relative z-20
+  bg-linear-to-b from-[#020617C4] via-[#020617A1] to-transparent"
+>
+  <BrandLogo width={140} />
+
+  <div class="hidden lg:block">
+    <MenuBar items={menuItems} />
+  </div>
+
+  <div class="hidden lg:block">
+    <RoundedButton buttonText="Contact Us" />
+  </div>
+
+  <!-- Mobile Hamburger -->
+  <Icon
+    id="open-mobile-menu-button"
+    aria-label="Open menu button"
+    name="hamburger"
+    class="block lg:hidden text-n-950 size-6 cursor-pointer"
+  />
 </header>
+
+<!-- Mobile Menu -->
+<MobileMenu menuItems={menuItems} />
