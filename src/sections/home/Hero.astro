@@ -17,13 +17,13 @@ const heroDetails = {
 <!-- Hero Section Start -->
 <section>
   <div
-    class="container relative flex flex-col items-center justify-center px-6 py-36 gap-9 overflow-hidden text-center md:py-40 mx-auto lg:pt-72 lg:pb-60"
+    class="container relative flex flex-col items-center justify-center px-6 py-36 gap-9 overflow-hidden text-center mx-auto md:py-52 lg:py-40 xl:pt-56 2xl:pt-72"
   >
     <!-- Top-left floating 3D ball -->
     <Image
       src={Ball}
       alt="3d ball primary"
-      class="floating-icon absolute top-[20%] sm:left-[20%] left-6 w-9 md:w-16 md:top-[380px] md:left-[50px] lg:w-20 lg:top-[65%] lg:left-[16%] 2xl:left-[20%]"
+      class="floating-icon absolute top-[22%] sm:left-[20%] left-6 w-9 md:w-16 md:top-[380px] md:left-[50px] lg:w-20 lg:top-[65%] lg:left-[16%] 2xl:left-[20%]"
       style="animation-duration: 5s"
     />
     <!-- Bottom-right floating 3D ball (rotated) -->
@@ -42,9 +42,12 @@ const heroDetails = {
       <p
         class="text-3xl font-normal leading-none tracking-[-2%] text-n-950 md:text-7xl xl:text-8xl"
       >
-        {heroDetails.title[0]}
-
-        <span class="font-bold">{heroDetails.title[1]}</span>
+        <span class="word-container" data-animate-word>
+          {heroDetails.title[0]}
+        </span>
+        <span class="word-container font-bold" data-animate-word>
+          {heroDetails.title[1]}
+        </span>
       </p>
 
       <!--  Line 2: “behind your” -->
@@ -52,7 +55,9 @@ const heroDetails = {
         class="text-3xl font-normal leading-tight tracking-[-2%] text-n-950 text-center flex justify-center items-center md:text-7xl text-nowrap xl:text-8xl"
       >
         <!-- Line 3: "next" -->
-        <span>{heroDetails.title[2]}</span>
+        <span class="word-container" data-animate-word>
+          {heroDetails.title[2]}
+        </span>
 
         <!-- Tag icon -->
         <Image
@@ -61,14 +66,18 @@ const heroDetails = {
           class="floating-icon inline-block w-14 align-middle md:w-44 xl:w-60"
           style={"animation-duration: 5s"}
         />
-        <span>{heroDetails.title[3]}</span>
+        <span class="word-container" data-animate-word>
+          {heroDetails.title[3]}
+        </span>
       </p>
 
       <!--  Line 4: “Big Tech Story.” -->
       <p
         class="text-3xl font-semibold leading-none tracking-[-0.02em] text-n-950 md:text-7xl xl:text-8xl"
       >
-        {heroDetails.title[4]}
+        <span class="word-container" data-animate-word>
+          {heroDetails.title[4]}
+        </span>
       </p>
     </div>
     <!-- Subtext -->
@@ -96,4 +105,41 @@ const heroDetails = {
     animation: float 6s ease-in-out infinite;
     will-change: transform;
   }
+  .word-container {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(100%);
+    transition:
+      opacity 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: 0ms; /* This will be set by JS */
+  }
+
+  /* This class is added by JS to trigger the final state */
+  .word-container.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
 </style>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Select all words
+    const wordContainers = document.querySelectorAll("[data-animate-word]");
+    let delay = 0;
+    const wordDelay = 120; // 120ms delay between each word
+
+    wordContainers.forEach((wordContainer) => {
+      // Apply the CSS transition-delay to each word
+      wordContainer.style.transitionDelay = `${delay}ms`;
+      // Increment delay for the next word
+      delay += wordDelay;
+    });
+
+    // Start the animation after a brief moment to ensure all delays are set
+    setTimeout(() => {
+      wordContainers.forEach((container) => {
+        container.classList.add("is-visible");
+      });
+    }, 50);
+  });
+</script>
