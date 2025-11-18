@@ -23,10 +23,12 @@ const footerDetails = {
 <!-- Footer Container -->
 <footer class="bg-n-50">
   <div
-    class="container flex flex-col mx-auto px-6 pt-24 pb-8 md:pt-32 md:pb-9 lg:pt-36 lg:pb-10">
+    class="container flex flex-col mx-auto px-6 pt-24 pb-8 md:pt-32 md:pb-9 lg:pt-36 lg:pb-10"
+  >
     <!-- Header Section :Logo + Tagline  -->
     <div
-      class="flex flex-col items-start gap-4 md:w-[506px] lg:w-[996px] md:gap-5 md:items-start lg:gap-6">
+      class="flex flex-col items-start gap-4 w-full md:w-[75%] lg:w-[68%] md:gap-5 md:items-start lg:gap-6"
+    >
       <!-- Logo -->
       <Icon
         name={footerDetails.headerIcon}
@@ -34,23 +36,27 @@ const footerDetails = {
       />
       <!-- Tagline -->
       <p
-        class="font-normal text-2xl leading-tight text-n-950 tracking-[-0.04em] md:text-4xl lg:text-5xl">
+        class="font-normal text-2xl leading-tight text-n-950 tracking-[-4%] md:text-4xl lg:text-5xl"
+      >
         {footerDetails.headerText}
       </p>
     </div>
 
     <!-- Logo Cta Area -->
-    <div class="flex flex-col pt-32 gap-8 md:pt-40 md:gap-9 lg:gap-10 lg:pt-48">
+    <div
+      class="relative flex flex-col pt-32 gap-8 md:pt-40 md:gap-9 lg:gap-10 lg:pt-48"
+    >
       <!-- Tool Badge -->
-      <div class="flex justify-center relative">
-        <div
-          class="rotate-[-9.53deg] absolute right-5 -bottom-1.5 md:right-30 lg:right-40 xl:right-60 2xl:right-90">
-          <ToolBadge icon={"building"} text={footerDetails.toolBadgeText} />
-        </div>
+      <div
+        class="-rotate-9 absolute right-0 top-16 md:top-[18%] sm:right-[70px] lg:top-[18%] lg:right-[14%] xl:right-[20%] 2xl:right-[26%]"
+      >
+        <ToolBadge icon={"building"} text={footerDetails.toolBadgeText} />
       </div>
       <!-- Main Logo and message -->
       <div
-        class="self-center w-full flex flex-col gap-6 md:gap-8 justify-center items-center">
+        class="self-center w-full flex flex-col gap-6 md:gap-8 justify-center items-center"
+        ›
+      >
         <!-- Responsive logo block -->
         <div class="flex w-full lg:w-[945px]">
           <Icon
@@ -60,7 +66,8 @@ const footerDetails = {
         </div>
         <!-- Message under logo -->
         <p
-          class="text-n-950 text-base font-light leading-[125%] text-center md:text-xl md:font-normal lg:text-xl">
+          class="text-n-950 text-base font-normal leading-tight text-center md:text-xl lg:text-xl"
+        >
           {footerDetails.logoMessage}
         </p>
       </div>
@@ -80,7 +87,8 @@ const footerDetails = {
             footerDetails.menuFooter.map((menu: string) => (
               <a
                 href="/"
-                class="flex gap-7 text-lg leading-[100%] tracking-[0.02em] text-n-700 self-center hover:rounded-3xl hover:bg-n-200 py-2 px-4 ">
+                class="flex gap-7 text-lg leading-[100%] tracking-[0.02em] text-n-700 self-center hover:rounded-3xl hover:bg-n-200 py-2 px-4 "
+              >
                 {menu}
               </a>
             ))
@@ -95,7 +103,8 @@ const footerDetails = {
                 href="/"
                 rel="noopener noreferrer"
                 aria-label={link}
-                class="flex flex-col justify-center items-center w-10 rounded-full h-10 p-2.5 border border-n-500 md:gap-2 md:p-3 md:w-14 md:h-14 lg:size-16 hover:bg-n-200">
+                class="flex flex-col justify-center items-center w-10 rounded-full h-10 p-2.5 border border-n-500 md:gap-2 md:p-3 md:w-14 md:h-14 lg:size-16 hover:bg-n-200"
+              >
                 <Icon
                   name={link}
                   class="text-n-700 size-5 self-center md:size-7"
