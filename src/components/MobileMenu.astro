@@ -17,17 +17,17 @@ const currentPath = Astro.url.pathname;
 
 <div
   id="mobile-menu"
-  class="fixed inset-0 z-50 hidden bg-n-50 opacity-0 transition-opacity duration-300 ease-in-out lg:hidden"
+  class="bg-n-50 fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300 ease-in-out lg:hidden"
   aria-hidden="true"
 >
-  <div class="container mx-auto flex flex-col justify-between py-5 px-6 h-full">
+  <div class="container mx-auto flex h-full flex-col justify-between px-6 py-5">
     <!-- Logo + Close Button -->
-    <div class="flex justify-between items-center">
+    <div class="flex items-center justify-between">
       <BrandLogo width={140} />
 
       <button
         id="mobile-menu-close"
-        class="flex justify-center items-center size-14 bg-n-100 rounded-full"
+        class="bg-n-100 flex size-14 items-center justify-center rounded-full"
         aria-label="Close mobile menu"
         type="button"
       >
@@ -36,14 +36,14 @@ const currentPath = Astro.url.pathname;
     </div>
 
     <!-- Menu Items -->
-    <div class="flex flex-col flex-1 gap-6 leading-tight pt-28">
+    <div class="flex flex-1 flex-col gap-6 pt-28 leading-tight">
       {
         menuItems.map((item) => {
           const isActive = currentPath === item.url;
           return (
             <a
               href={item.url}
-              class={`font-normal text-4xl transition-colors leading-tight ${
+              class={`text-4xl leading-tight font-normal transition-colors ${
                 isActive ? "text-n-950" : "text-n-500"
               }`}
             >
@@ -55,7 +55,7 @@ const currentPath = Astro.url.pathname;
     </div>
 
     <!-- Bottom Buttons -->
-    <div class="justify-center flex flex-row gap-2.5">
+    <div class="flex flex-row justify-center gap-2.5">
       <RoundedButton buttonText="Call" />
       <RoundedButton buttonText="Whatsapp" />
     </div>
