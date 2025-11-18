@@ -1,17 +1,17 @@
 ---
-const ballPrimarySrc = "/3d-ball-1.svg";
-const ballSecondarySrc = "/3d-ball-1.svg";
-const iconCode = "/3d-code-icon.svg";
+// COMPONENTS //
+import { Image } from "astro:assets";
 
-const heroTitle = [
-  "We’re the",
-  "Geeks",
-  "behind your",
-  "next",
-  "Big Tech Story.",
-];
+// SVG's //
+import Ball from "@/assets/3d-ball.svg";
+import TagIcon from "@/assets/3d-tag.svg";
 
-const heroSubText = "Smart builds. Good vibes. Great stories.";
+const heroDetails = {
+  balls: "/3d-ball-1.svg",
+  icon: "/3d-code-icon.svg",
+  title: ["We’re the", "Geeks", "behind your", "next", "Big Tech Story."],
+  subText: "Smart builds. Good vibes. Great stories.",
+};
 ---
 
 <!-- Hero Section Start -->
@@ -20,16 +20,18 @@ const heroSubText = "Smart builds. Good vibes. Great stories.";
     class="container relative flex flex-col items-center justify-center px-6 py-36 gap-9 overflow-hidden text-center md:py-40 mx-auto md:px-0 lg:pt-72 lg:pb-60"
   >
     <!-- Top-left floating 3D ball -->
-    <img
-      src={ballPrimarySrc}
+    <Image
+      src={Ball}
       alt="3d ball primary"
-      class="absolute top-[102px] left-6 w-9 md:w-16 md:top-[380px] md:left-[50px] lg:w-20 lg:top-[660px] lg:left-80"
+      class="floating-icon absolute top-[102px] left-6 w-9 md:w-16 md:top-[380px] md:left-[50px] lg:w-20 lg:top-[660px] lg:left-80"
+      style="animation-duration: 5s"
     />
     <!-- Bottom-right floating 3D ball (rotated) -->
-    <img
-      src={ballSecondarySrc}
+    <Image
+      src={Ball}
       alt="3d ball secondary"
-      class="absolute bottom-[220px] right-[38px] w-5 md:w-11 rotate-[-20deg] md:right-[200px] md:bottom-40 lg:right-[550px]"
+      class="floating-icon absolute bottom-[220px] right-[38px] w-5 md:w-11 rotate-[-20deg] md:right-[200px] md:bottom-40 lg:right-[550px]"
+      style="animation-duration: 4s"
     />
 
     <!-- Hero Text Wrapper -->
@@ -40,37 +42,58 @@ const heroSubText = "Smart builds. Good vibes. Great stories.";
       <p
         class="text-3xl font-normal leading-none tracking-[-2%] text-n-950 md:text-7xl xl:text-8xl"
       >
-        {heroTitle[0]}
-        <span class="font-bold">{heroTitle[1]}</span>
+        {heroDetails.title[0]}
+
+        <span class="font-bold">{heroDetails.title[1]}</span>
       </p>
 
-      <!--  Line 2: “behind your [icon] next” -->
+      <!--  Line 2: “behind your” -->
       <p
         class="text-3xl font-normal leading-tight tracking-[-2%] text-n-950 text-center flex justify-center items-center md:text-7xl text-nowrap xl:text-8xl"
       >
-        <!--  -->
-        <span>{heroTitle[2]}</span>
-        <img
-          src={iconCode}
+        <!-- Line 3: "next" -->
+        <span>{heroDetails.title[2]}</span>
+
+        <!-- Tag icon -->
+        <Image
+          src={TagIcon}
           alt="3d-code-icon"
-          class="inline-block w-14 align-middle md:w-44 xl:w-60"
+          class="floating-icon inline-block w-14 align-middle md:w-44 xl:w-60"
+          style={"animation-duration: 5s"}
         />
-        <span>{heroTitle[3]}</span>
+        <span>{heroDetails.title[3]}</span>
       </p>
 
-      <!--  Line 3: “Big Tech Story.” -->
+      <!--  Line 4: “Big Tech Story.” -->
       <p
         class="text-3xl font-semibold leading-none tracking-[-0.02em] text-n-950 md:text-7xl xl:text-8xl"
       >
-        {heroTitle[4]}
+        {heroDetails.title[4]}
       </p>
     </div>
     <!-- Subtext -->
     <p
       class="text-sm font-medium z-10 leading-loose text-center bg-linear-to-r from-[#6654D4] to-[#8B77F3] bg-clip-text text-transparent md:text-xl xl:text-2xl"
     >
-      {heroSubText}
+      {heroDetails.subText}
     </p>
   </div>
 </section>
-<!-- Hero Section End -->
+<style>
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .floating-icon {
+    animation: float 6s ease-in-out infinite;
+    will-change: transform;
+  }
+</style>
