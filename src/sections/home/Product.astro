@@ -1,0 +1,89 @@
+---
+import Image from "astro/components/Image.astro";
+import ToolBadge from "../../components/ToolBadge.astro";
+import ProductItem from "../../components/ProductItem.astro";
+
+const productDetails = {
+  productIcon: "product-icon",
+  toolBadgeText: "Our in-house creations.",
+  textWrapperBuiltWith: "Built with",
+  titleWrapperImage: "title-wrapper-image.png",
+  titleWrapperAlt: "Title Wrapper Image",
+  textWrapperByPixolo: "by Pixolo",
+  titleWrapperMessage: "Where our creativity meets real-world impact.",
+  products: [
+    {
+      companyLogo: "zizo.png",
+      productImage: "product-image.png",
+      productName: "product-name",
+      productdescriptionStart: "A smart football team management app that",
+      productdescriptionBold: "helps coaches, players, and clubs",
+      productdescriptionEnd:
+        "organize matches, track stats, and manage their teams seamlessly.",
+      href: "/",
+    },
+    {
+      companyLogo: "zizo.png",
+      productImage: "product-image.png",
+      productName: "product-name",
+      productdescriptionStart: "A smart football team management app that",
+      productdescriptionBold: "helps coaches, players, and clubs",
+      productdescriptionEnd:
+        "organize matches, track stats, and manage their teams seamlessly.",
+      href: "/",
+    },
+    {
+      companyLogo: "zizo.png",
+      productImage: "product-image.png",
+      productName: "product-name",
+      productdescriptionStart: "A smart football team management app that",
+      productdescriptionBold: "helps coaches, players, and clubs",
+      productdescriptionEnd:
+        "organize matches, track stats, and manage their teams seamlessly.",
+      href: "/",
+    },
+  ],
+};
+---
+
+<!-- Product Section -->
+<section class="flex flex-col">
+  <!-- Container -->
+  <div class="flex flex-col justify-center items-center px-6 py-40 gap-12">
+    <!-- Header -->
+    <div class="flex flex-col justify-center items-center gap-6">
+      <!-- Tool Badge -->
+      <ToolBadge
+        icon={productDetails.productIcon}
+        ,
+        text={productDetails.toolBadgeText}
+      />
+      <!-- Title Wrapper -->
+      <div class="flex flex-col justify-center items-center gap-5">
+        <!-- Heading -->
+        <div class="flex flex-wrap justify-center items-center gap-1.5">
+          <p class="font-normal text-4xl tracking-[-2%] text-n-950">
+            {productDetails.textWrapperBuiltWith}
+          </p>
+          <Image
+            src={`/images/products/${productDetails.titleWrapperImage}`}
+            alt={productDetails.titleWrapperAlt}
+            width={67}
+            height={50}
+          />
+          <p class="font-normal text-4xl tracking-[-2%] text-n-950">
+            {productDetails.textWrapperByPixolo}
+          </p>
+        </div>
+        <!-- Message -->
+        <p class="font-medium text-sm leading-normal text-n-950 text-center">
+          {productDetails.titleWrapperMessage}
+        </p>
+      </div>
+    </div>
+    <!-- Products -->
+    <div>
+      {productDetails.products.map((product) => <ProductItem {...product} />)}
+    </div>
+  </div>
+</section>
