@@ -7,6 +7,7 @@ const clientLogos = [
   { clientName: "reliance-digital.svg", alt: "Reliance Digital" },
   { clientName: "times-of-india.svg", alt: "Times Of India" },
   { clientName: "ceat.svg", alt: "Ceat" },
+  { clientName: "pango.svg", alt: "Pango" },
   { clientName: "eighty-days.svg", alt: "Eighty Days" },
   { clientName: "too-yumm.svg", alt: "Too Yumm" },
   {
@@ -14,12 +15,8 @@ const clientLogos = [
     alt: "Sai International School",
   },
   { clientName: "zizo.svg", alt: "Zizo" },
-  { clientName: "ceat.svg", alt: "Ceat" },
-  { clientName: "reliance-digital.svg", alt: "Reliance Digital" },
   { clientName: "skorost-united.svg", alt: "Skorost United" },
   { clientName: "fcb.svg", alt: "Fcb" },
-  { clientName: "times-of-india.svg", alt: "Times Of India" },
-  { clientName: "times-of-india.svg", alt: "Times Of India" },
 ];
 ---
 
@@ -37,7 +34,7 @@ const clientLogos = [
         <ToolBadge icon="building" text="Powering Ideas into Impact" />
       </div>
       <p
-        class="text-n-950 text-2xl w-full font-bold leading-tight text-center md:text-3xl lg:text-5xl"
+        class="anim-fade-in-up text-n-950 text-2xl w-full font-bold leading-tight text-center md:text-3xl lg:text-5xl"
       >
         Brands that believe in our code
       </p>
@@ -48,11 +45,11 @@ const clientLogos = [
       <!-- Loop Through Client Logos -->
       {
         clientLogos.map((logo) => (
-          <div class="w-[100px] h-[54px] md:w-[200px] md:h-[108px] lg:w-[260px] lg:h-[141px] flex justify-center items-center">
+          <div class="anim-fade-in-up w-[100px] h-[54px] md:w-[200px] md:h-[108px] lg:w-[260px] lg:h-[141px] flex justify-center items-center py-4">
             <img
               src={`/icons/${logo.clientName}`}
               alt={`${logo.alt}`}
-              class="object-contain max-h-full md:!max-w-[150px] md:max-h-[70px] lg:max-h-[90px] lg:!max-w-[200px] w-full"
+              class="w-full h-full"
             />
           </div>
         ))
