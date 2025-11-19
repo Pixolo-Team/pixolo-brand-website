@@ -43,7 +43,7 @@ const currentPath = Astro.url.pathname;
           return (
             <a
               href={item.url}
-              class={`text-4xl leading-tight font-normal transition-colors ${
+              class={`nav-link hidden-pos text-4xl leading-tight font-normal transition-colors ${
                 isActive ? "text-n-950" : "text-n-500"
               }`}
             >
@@ -67,17 +67,64 @@ const currentPath = Astro.url.pathname;
     class="right-20px absolute top-28 -right-30 size-48 -rotate-30"
   />
 </div>
+<style>
+  .nav-link.hidden-pos {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  /* Open animation */
+  @keyframes nav-link-in {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .nav-link.start {
+    animation: nav-link-in 0.3s ease forwards;
+  }
+
+  /* Close animation */
+  @keyframes nav-link-out {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+  }
+
+  .nav-link.reverse {
+    animation: nav-link-out 0.3s ease forwards;
+  }
+</style>
 
 <script>
   const openBtn = document.getElementById("open-mobile-menu-button");
   const closeBtn = document.getElementById("mobile-menu-close");
   const menu = document.getElementById("mobile-menu");
 
-  const OPEN_CLOSE_MS = 300; // matches transition duration
-
   /** OPEN MOBILE MENU */
   const openMobileMenu = () => {
     if (!menu) return;
+
+    const links = menu.querySelectorAll("a.nav-link");
+
+    // Restart animation properly
+    links.forEach((link, index) => {
+      link.classList.add("opacity-0");
+      link.classList.remove("reverse");
+      link.classList.remove("hidden-pos");
+      link.classList.add("start");
+      link.style.animationDelay = `${index * 0.1}s`;
+    });
 
     menu.classList.remove("hidden");
     requestAnimationFrame(() => {
@@ -93,14 +140,28 @@ const currentPath = Astro.url.pathname;
   const closeMobileMenu = () => {
     if (!menu) return;
 
-    menu.classList.remove("opacity-100");
-    menu.classList.add("opacity-0");
+    const links = menu.querySelectorAll("a.nav-link");
+
+    links.forEach((link, index) => {
+      link.classList.remove("opacity-0");
+      link.classList.remove("start");
+      link.classList.add("reverse");
+      link.style.animationDelay = `${(links.length - 1 - index) * 0.1}s`;
+    });
+
+    // Time for for the animation to get over
+    const lastDelay = (links.length - 1) * 100; // in ms
+    const totalTime = lastDelay + 300;
 
     setTimeout(() => {
       menu.classList.add("hidden");
       menu.setAttribute("aria-hidden", "true");
+
+      // Reset reverse class
+      links.forEach((link) => link.classList.remove("reverse"));
+
       document.body.style.overflow = "";
-    }, OPEN_CLOSE_MS);
+    }, totalTime);
   };
 
   openBtn?.addEventListener("click", openMobileMenu);
