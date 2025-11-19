@@ -12,7 +12,7 @@ const {
 ---
 
 <div
-  class="bg-n-100 flex flex-col justify-between py-14 pr-14 pl-6 rounded-4xl w-full h-[311px] md:h-[380px] lg:max-h-[428px]">
+  class="bg-n-100 flex flex-col justify-between py-14 pr-14 pl-6 rounded-4xl w-full h-[311px] md:h-[380px] lg:max-h-[428px] lg:h-full">
   <!-- Card Header -->
   <div class="flex flex-col gap-2">
     <!-- Card Number -->
@@ -23,5 +23,5 @@ const {
     <p class="font-medium text-3xl leading-tight text-n-950 md:text-4xl">{cardTitle}</p>
   </div>
   <!-- Card message -->
-  <p class="text-sm leading-tight text-n-700 font-normal md:text-base">{cardMessage}</p>
+  <p class="text-sm leading-tight text-n-700 font-normal max-w-[247px] max-h-[54px] md:text-base md:max-w-[294px] md:max-h[60px] lg:max-w-[261px] ">{cardMessage}</p>
 </div>
