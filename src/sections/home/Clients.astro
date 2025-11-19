@@ -1,23 +1,14 @@
 ---
 // COMPONENTS //
-import ToolBadge from "../../components/ToolBadge.astro";
+import ToolBadge from "@/components/ToolBadge.astro";
 
-// Array Of Objects Containing Client Logos
-const clientLogos = [
-  { clientName: "reliance-digital.svg", alt: "Reliance Digital" },
-  { clientName: "times-of-india.svg", alt: "Times Of India" },
-  { clientName: "ceat.svg", alt: "Ceat" },
-  { clientName: "pango.svg", alt: "Pango" },
-  { clientName: "eighty-days.svg", alt: "Eighty Days" },
-  { clientName: "too-yumm.svg", alt: "Too Yumm" },
-  {
-    clientName: "sai-international-school.svg",
-    alt: "Sai International School",
-  },
-  { clientName: "zizo.svg", alt: "Zizo" },
-  { clientName: "skorost-united.svg", alt: "Skorost United" },
-  { clientName: "fcb.svg", alt: "Fcb" },
-];
+// DATA //
+import { clients } from "@/data/clients";
+
+const clientDetails = {
+  badgeTitle: "Powering Ideas into Impact",
+  title: "Brands that believe in our code",
+};
 ---
 
 <!-- Clients Section -->
@@ -30,13 +21,16 @@ const clientLogos = [
     <div
       class="flex flex-col flex-wrap m-auto gap-6 w-full justify-center items-center lg:gap-7"
     >
+      <!-- ToolBadge component -->
       <div class="flex justify-center">
-        <ToolBadge icon="building" text="Powering Ideas into Impact" />
+        <ToolBadge icon="building" text={clientDetails.badgeTitle} />
       </div>
+
+      <!-- Title -->
       <p
         class="anim-fade-in-up text-n-950 text-2xl w-full font-bold leading-tight text-center md:text-3xl lg:text-5xl"
       >
-        Brands that believe in our code
+        {clientDetails.title}
       </p>
     </div>
 
@@ -44,12 +38,12 @@ const clientLogos = [
     <div class="flex flex-wrap justify-center items-center gap-6">
       <!-- Loop Through Client Logos -->
       {
-        clientLogos.map((logo) => (
-          <div class="anim-fade-in-up w-[100px] h-[54px] md:w-[200px] md:h-[108px] lg:w-[260px] lg:h-[141px] flex justify-center items-center py-4">
+        clients.map((client) => (
+          <div class="anim-fade-in-up w-[100px] h-[54px] md:w-[200px] md:h-[108px] lg:w-[260px] lg:h-[141px] flex justify-center items-center">
             <img
-              src={`/icons/${logo.clientName}`}
-              alt={`${logo.alt}`}
-              class="w-full h-full"
+              src={`/images/${client.clientName}`}
+              alt={`${client.alt}`}
+              class="object-contain max-w-24 max-h-10 md:max-w-[150px] md:max-h-[70px] lg:max-h-[90px] lg:max-w-[200px]"
             />
           </div>
         ))
