@@ -36,7 +36,7 @@ const currentPath = Astro.url.pathname;
     </div>
 
     <!-- Menu Items -->
-    <div class="flex flex-1 flex-col gap-6 pt-28 leading-tight">
+    <div class="flex flex-1 flex-col gap-6 pt-28 leading-tight z-10">
       {
         menuItems.map((item) => {
           const isActive = currentPath === item.url;
@@ -66,6 +66,12 @@ const currentPath = Astro.url.pathname;
     name={"pixolo-icon"}
     class="right-20px absolute top-28 -right-30 size-48 -rotate-30"
   />
+
+  <!-- Circle at back of the links -->
+  <div
+    class="absolute size-[500px] rounded-full bg-n-500 left-[-75%] opacity-5 top-[10%]"
+  >
+  </div>
 </div>
 <style>
   .nav-link.hidden-pos {
