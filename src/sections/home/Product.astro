@@ -23,7 +23,7 @@ const productDetails = {
       href: "/",
     },
     {
-      companyLogo: "zizo.png",
+      companyLogo: "configo.png",
       productImage: "product-image.png",
       productName: "product-name",
       productdescriptionStart: "A smart football team management app that",
@@ -33,7 +33,7 @@ const productDetails = {
       href: "/",
     },
     {
-      companyLogo: "zizo.png",
+      companyLogo: "weddin-go.png",
       productImage: "product-image.png",
       productName: "product-name",
       productdescriptionStart: "A smart football team management app that",
@@ -42,6 +42,16 @@ const productDetails = {
         "organize matches, track stats, and manage their teams seamlessly.",
       href: "/",
     },
+    {
+      companyLogo: "neevo-design-system.png",
+      productImage: "product-image.png",
+      productName: "product-name",
+      productdescriptionStart: "A smart football team management app that",
+      productdescriptionBold: "helps coaches, players, and clubs",
+      productdescriptionEnd:
+        "organize matches, track stats, and manage their teams seamlessly.",
+      href: "/",
+    }
   ],
 };
 ---
@@ -49,7 +59,9 @@ const productDetails = {
 <!-- Product Section -->
 <section class="flex flex-col justify-center items-center">
   <!-- Container -->
-  <div class="flex flex-col justify-center items-center px-6 md:px-10 lg:px-14 py-40 lg:32 gap-12 md:gap-16 lg:gap-20 container">
+  <div
+    class="flex flex-col justify-center items-center px-6 md:px-10 lg:px-14 py-40 lg:32 gap-12 md:gap-16 lg:gap-20 container"
+  >
     <!-- Header -->
     <div class="flex flex-col justify-center items-center gap-6 lg:gap-7">
       <!-- Tool Badge -->
@@ -62,7 +74,9 @@ const productDetails = {
       <div class="flex flex-col justify-center items-center gap-5 lg:gap-6">
         <!-- Heading -->
         <div class="flex flex-wrap justify-center items-center gap-1.5">
-          <p class="font-normal text-4xl md:text-6xl lg:text-7xl tracking-[-2%] text-n-950">
+          <p
+            class="font-normal text-4xl md:text-6xl lg:text-7xl tracking-[-2%] text-n-950"
+          >
             {productDetails.textWrapperBuiltWith}
           </p>
           <Image
@@ -70,14 +84,18 @@ const productDetails = {
             alt={productDetails.titleWrapperAlt}
             width={67}
             height={50}
-            class = "md:w-[101px] md:h-[76px] lg:w-[118px] lg:h-[88px]"
+            class="md:w-[101px] md:h-[76px] lg:w-[118px] lg:h-[88px]"
           />
-          <p class="font-normal text-4xl md:text-6xl lg:text-7xl tracking-[-2%] text-n-950">
+          <p
+            class="font-normal text-4xl md:text-6xl lg:text-7xl tracking-[-2%] text-n-950"
+          >
             {productDetails.textWrapperByPixolo}
           </p>
         </div>
         <!-- Message -->
-        <p class="font-medium text-sm md:text-lg lg:text-2xl leading-normal text-n-950 text-center">
+        <p
+          class="font-medium text-sm md:text-lg lg:text-2xl leading-normal text-n-950 text-center"
+        >
           {productDetails.titleWrapperMessage}
         </p>
       </div>
