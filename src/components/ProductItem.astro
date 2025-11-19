@@ -25,7 +25,7 @@ const {
 
 <!-- Product Item -->
 <div
-  class="flex flex-col lg:flex-row border-b-[0.4px] md:border-b-[0.6px] lg:border-b-[0.8px] border-n-950 py-7 gap-3 md:gap-3.5 w-full lg:gap-20"
+  class="flex flex-col lg:flex-row lg:justify-between border-b-[0.4px] md:border-b-[0.6px] lg:border-b-[0.8px] border-n-950 py-7 gap-3 md:gap-3.5 w-full lg:gap-20"
 >
   <!-- Logo Container -->
   <div class="gap-2.5 flex shrink-0 lg:w-2xl">
@@ -61,12 +61,10 @@ const {
     <!-- Link for more information -->
     <a
       href={href}
-      class="bg-linear-to-r from-[#4254D4] to-[#8B77F3] rounded-[100px] size-12 md:size-20 flex justify-center items-center self-center shrink-0"
+      class="bg-linear-to-r from-[#4254D4] to-[#8B77F3] rounded-full size-12 md:size-20 flex justify-center items-center self-center shrink-0"
       aria-label="View more information"
     >
-      <div class="size-[18px] md:size-[30px]">
-        <Icon name="external-link-icon" class="w-full h-full" />
-      </div>
+    <Icon name="external-link-icon" class="size-[18px] md:size-[30px]" />
     </a>
   </div>
 </div>
