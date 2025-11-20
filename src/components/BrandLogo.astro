@@ -1,8 +1,39 @@
 ---
-const { variant = "default" } = Astro.props;
+// COMPONENTS //
+import { Image } from "astro:assets";
+
+// Define props
+interface Props {
+  variant?: "default" | "white" | "black";
+  classes?: string;
+  width?: number;
+  height?: number;
+}
+
+const {
+  variant = "default",
+  width = 120,
+  height = 120,
+  classes = "",
+} = Astro.props;
+
+const logos = {
+  default: "/brand-logo/default.png",
+  white: "/brand-logo/white.png",
+  black: "/brand-logo/dark.png",
+};
+
+const selectedLogo = logos[variant];
 ---
 
 <!-- Brand Logo -->
 <a href="/">
-  <img src={`brand-logo/${variant}.png`} alt="Brand Logo" />
+  <Image
+    src={selectedLogo}
+    alt="Brand Logo"
+    width={width}
+    height={height}
+    class={classes}
+    loading={"lazy"}
+  />
 </a>
