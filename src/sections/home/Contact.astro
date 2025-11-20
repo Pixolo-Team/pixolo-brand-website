@@ -1,37 +1,11 @@
 ---
 // COMPONENTS //
-import ToolBadge from "../../components/ToolBadge.astro";
+import ToolBadge from "@/components/ToolBadge.astro";
 import { Icon } from "astro-icon/components";
-import Tooltip from "../../components/Tooltip.astro";
+import Tooltip from "@/components/Tooltip.astro";
 
-// Contact data for mapping
-const contactSectionData = {
-  badgeTitle: "Collaborate with Pixolo",
-  heading: "Come say Hi! 👋",
-  subheading: "Your vision deserves the right team — let’s start there.",
-  contactCards: [
-    {
-      id: "phone",
-      title: "Call / Text Us",
-      value: "9768941186",
-      icon: "phone",
-    },
-    {
-      id: "mail",
-      title: "Drop a Email",
-      value: "hello@pixolotechnologies.com",
-      icon: "mail",
-    },
-  ],
-  location: {
-    title: "Our Space",
-    subtitle: "Where ideas meet code",
-    address: "G Block BKC, Mumbai",
-    icon: "location",
-    mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.328989964494!2d72.91125677570571!3d19.093217982114897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c701ef4e7985%3A0x469b01839abb0a3d!2sPixolo%20Mobile%20Application%20Makers!5e0!3m2!1sen!2sin!4v1763470429399!5m2!1sen!2sin",
-  },
-};
+// DATA //
+import { contactSectionData } from "@/data/contacts";
 ---
 
 <section>
@@ -41,7 +15,7 @@ const contactSectionData = {
     <!-- Section Header -->
     <div class="flex flex-col items-center gap-5 lg:gap-7">
       <!-- Tool Badge component -->
-      <ToolBadge title={contactSectionData.badgeTitle} />
+      <ToolBadge icon="building" text={contactSectionData.badgeTitle} />
 
       <!-- Header Content -->
       <div class="flex flex-col gap-3 text-center lg:gap-4">
@@ -60,27 +34,33 @@ const contactSectionData = {
     <div class="flex flex-col justify-center gap-3.5 lg:flex-row">
       <div class="flex w-full flex-col gap-3.5 lg:w-[440px]">
         {
-          contactSectionData.contactCards.map((item) => (
+          contactSectionData.contactCards.map((contactSectionItem) => (
             // Contact Card
-            <a class="hover:bg-n-200 bg-n-100 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5">
+            <a
+              href={contactSectionItem.link}
+              class="hover:bg-n-200 bg-n-100 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5"
+            >
               <div class="flex max-w-[80%] items-center gap-5">
                 {/* Icon wrapper */}
                 <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]">
-                  <Icon name={item.icon} class="size-5 sm:size-6" />
+                  <Icon
+                    name={contactSectionItem.icon}
+                    class="size-5 sm:size-6"
+                  />
                 </div>
 
                 {/* Contact info */}
                 <div class="flex w-[60%] flex-col gap-0.5">
                   <p class="text-n-700 text-xs font-bold md:text-sm lg:text-base">
-                    {item.title}
+                    {contactSectionItem.title}
                   </p>
                   <p
                     class:list={[
                       "text-n-900 text-sm font-semibold md:text-lg lg:text-xl",
-                      item.id === "mail" ? "truncate" : "",
+                      contactSectionItem.id === "mail" ? "truncate" : "",
                     ]}
                   >
-                    {item.value}
+                    {contactSectionItem.value}
                   </p>
                 </div>
               </div>
@@ -89,7 +69,7 @@ const contactSectionData = {
                 <Icon
                   name="copy"
                   class="size-5 cursor-pointer"
-                  onclick={`copyToClipboard('${item.value}')`}
+                  onclick={`event.preventDefault(); copyToClipboard('${contactSectionItem.value}')`}
                 />
               </Tooltip>
             </a>
@@ -99,7 +79,7 @@ const contactSectionData = {
 
       <!-- Location -->
       <a
-        href={"https://maps.app.goo.gl/nwxgMMYa6qUVBjke6"}
+        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactSectionData.location.address)}`}
         target="_blank"
         rel="noopener noreferrer"
         class="group bg-n-100 hover:bg-n-200 flex w-full cursor-pointer flex-col justify-between gap-5 rounded-4xl p-6 sm:flex-row lg:w-[520px]"
@@ -108,7 +88,7 @@ const contactSectionData = {
           <div class="flex flex-col gap-2.5">
             <!-- Icon wrapper -->
             <div
-              class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
+              class="flex size-11 items-center justify-center rounded-full bg-gradient-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
             >
               <Icon
                 name={contactSectionData.location.icon}
@@ -160,7 +140,7 @@ const contactSectionData = {
   </div>
 </section>
 <script is:inline>
-  // Function to copy text to clipboard
+  /** Function to copy text to clipboard */
   function copyToClipboard(text) {
     navigator.clipboard.writeText(text);
   }
