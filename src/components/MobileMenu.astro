@@ -65,7 +65,7 @@ const currentPath = Astro.url.pathname;
   <div class="float-wrapper">
     <Icon
       name={"pixolo-icon"}
-      class="pixolo-logo-anim right-20px absolute top-28 -right-30 size-48 -rotate-30"
+      class="pixolo-logo-anim right-20px absolute top-[20%] right-[40%] size-48 -rotate-30 transition-all"
     />
   </div>
 
@@ -154,15 +154,15 @@ const currentPath = Astro.url.pathname;
   /* Wrapper rotates in a circle */
   @keyframes circular-float {
     0% {
-      transform: rotate(0deg) translate3d(80px, 20px, 0) rotate(0deg);
+      transform: rotate(0deg) translateX(280px) rotate(0deg);
     }
     100% {
-      transform: rotate(360deg) translateX(120px) rotate(-360deg);
+      transform: rotate(360deg) translateX(280px) rotate(360deg);
     }
   }
 
   .pixolo-logo-anim {
-    animation: circular-float 20s linear infinite;
+    animation: circular-float 50s linear infinite;
   }
 </style>
 
