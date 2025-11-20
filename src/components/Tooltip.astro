@@ -8,7 +8,7 @@ interface Props {
 const { text, position = "top", classes = "" } = Astro.props;
 ---
 
-<div class=`group relative inline-flex ${classes}`>
+<div class={`group relative inline-flex ${classes}`}>
   <slot />
 
   <!-- Tooltip text -->
