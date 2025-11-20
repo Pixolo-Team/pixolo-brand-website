@@ -17,17 +17,17 @@ const currentPath = Astro.url.pathname;
 
 <div
   id="mobile-menu"
-  class="bg-n-50 fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300 ease-in-out lg:hidden"
+  class="fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300 ease-in-out lg:hidden"
   aria-hidden="true"
 >
-  <div class="container mx-auto flex h-full flex-col justify-between px-6 py-5">
+  <div class="container mx-auto flex h-full flex-col justify-between px-6 py-6">
     <!-- Logo + Close Button -->
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between z-10">
       <BrandLogo width={140} />
 
       <button
         id="mobile-menu-close"
-        class="bg-n-100 flex size-14 items-center justify-center rounded-full"
+        class="bg-n-100 flex size-10 items-center justify-center rounded-full"
         aria-label="Close mobile menu"
         type="button"
       >
@@ -62,18 +62,45 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <!-- Floating Pixolo logo icon -->
-  <Icon
-    name={"pixolo-icon"}
-    class="right-20px absolute top-28 -right-30 size-48 -rotate-30"
-  />
+  <div class="float-wrapper">
+    <Icon
+      name={"pixolo-icon"}
+      class="pixolo-logo-anim right-20px absolute top-28 -right-30 size-48 -rotate-30"
+    />
+  </div>
 
   <!-- Circle at back of the links -->
   <div
-    class="absolute size-[500px] rounded-full bg-n-500 left-[-75%] opacity-5 top-[10%]"
+    class="back-circle-anim absolute size-[500px] transition-all rounded-full bg-n-800 left-[-80%] opacity-5 top-[10%]"
   >
   </div>
 </div>
 <style>
+  #mobile-menu {
+    position: fixed;
+    overflow: hidden; /* So before-circle does not overflow */
+  }
+
+  #mobile-menu::before {
+    content: "";
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    background: var(--color-n-50);
+    border-radius: 50%;
+    top: 12px;
+    right: 12px;
+    transition: all;
+    transform: scale(0);
+    transition: transform 0.7s ease-in-out;
+    transform-origin: center;
+    z-index: 0;
+  }
+
+  /* When menu becomes visible */
+  #mobile-menu.menu-open::before {
+    transform: scale(26);
+  }
   .nav-link.hidden-pos {
     opacity: 0;
     transform: translateX(-20px);
@@ -110,6 +137,33 @@ const currentPath = Astro.url.pathname;
   .nav-link.reverse {
     animation: nav-link-out 0.3s ease forwards;
   }
+
+  @keyframes float-circle {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(120%, 20%, 0);
+    }
+  }
+  .back-circle-anim {
+    transition: all;
+    animation: float-circle 5s ease-in-out infinite alternate;
+  }
+
+  /* Wrapper rotates in a circle */
+  @keyframes circular-float {
+    0% {
+      transform: rotate(0deg) translate3d(80px, 20px, 0) rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg) translateX(120px) rotate(-360deg);
+    }
+  }
+
+  .pixolo-logo-anim {
+    animation: circular-float 20s linear infinite;
+  }
 </style>
 
 <script>
@@ -122,6 +176,7 @@ const currentPath = Astro.url.pathname;
     if (!menu) return;
 
     const links = menu.querySelectorAll("a.nav-link");
+    menu.classList.remove("hidden");
 
     // Restart animation properly
     links.forEach((link, index) => {
@@ -136,6 +191,7 @@ const currentPath = Astro.url.pathname;
     requestAnimationFrame(() => {
       menu.classList.remove("opacity-0");
       menu.classList.add("opacity-100");
+      menu.classList.add("menu-open");
     });
 
     menu.setAttribute("aria-hidden", "false");
@@ -154,6 +210,9 @@ const currentPath = Astro.url.pathname;
       link.classList.add("reverse");
       link.style.animationDelay = `${(links.length - 1 - index) * 0.1}s`;
     });
+
+    // reverse circle
+    menu.classList.remove("menu-open");
 
     // Time for for the animation to get over
     const lastDelay = (links.length - 1) * 100; // in ms
@@ -177,4 +236,27 @@ const currentPath = Astro.url.pathname;
   menu?.querySelectorAll("a").forEach((a) => {
     a.addEventListener("click", closeMobileMenu);
   });
+</script>
+<script>
+  const logo = document.querySelector(".pixolo-logo-anim");
+
+  function randomFloat() {
+    if (!logo) return;
+
+    // Get viewport dimensions
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    // Safe random positions so it doesn’t jump fully off-screen
+    const x = Math.random() * (vw * 0.6) - vw * 0.3; // range: -30% to +30%
+    const y = Math.random() * (vh * 0.6) - vh * 0.3; // range: -30% to +30%
+
+    logo.style.transform = `translate(${x}px, ${y}px)`;
+  }
+
+  // Move initially
+  randomFloat();
+
+  // Move every 4 seconds
+  setInterval(randomFloat, 4000);
 </script>
