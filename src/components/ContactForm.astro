@@ -6,13 +6,9 @@ import InputField from "./InputField.astro";
 import RoundedButton from "./RoundedButton.astro";
 import Textarea from "./Textarea.astro";
 
-// Array to store the dropdown menu
-const subjectOptions = [
-  "Mobile App Development",
-  "Web Development",
-  "Project Planning",
-  "UX Design",
-];
+// DATA //
+import { dropdownOptionData } from "@/data/dropdown";
+
 ---
 
 <!-- Backdrop with Contact form modal -->
@@ -46,10 +42,12 @@ const subjectOptions = [
 
     <!-- Form Container -->
     <form
+      id="contact-form"
       action="#"
       method="POST"
+      novalidate
       class="flex flex-col items-start gap-5 p-5 md:px-7 md:py-7"
-      id="contact-form"
+
     >
       <!-- Input Wrapper -->
       <div class="flex w-full flex-col gap-5 md:gap-6">
@@ -80,32 +78,20 @@ const subjectOptions = [
 
         <!-- Email From -->
         <InputField
-          label="From"
-          type="email"
-          name="emailFrom"
-          placeholder="your@email.com"
           id="emailFrom"
-          required={true}
-          isError={false}
-          errorMessages={[
-            "This doesn’t look like an email address.",
-            "This field is required.",
-          ]}
+          name="emailFrom"
+          type="email"
+          label="From"
+          placeholder="your@email.com"
         />
 
         <!-- Phone Number -->
         <InputField
-          label="Phone No"
-          type="tel"
-          name="phoneNo"
-          placeholder="your phone number"
           id="phoneNo"
-          required={true}
-          isError={false}
-          errorMessages={[
-            "This field is required.",
-            "This doesn’t look like a phone number.",
-          ]}
+          name="phoneNo"
+          type="tel"
+          label="Phone No"
+          placeholder="your phone number"
         />
 
         <!-- Subjects Dropdown  -->
@@ -113,7 +99,7 @@ const subjectOptions = [
           label="Subject"
           name="Subject"
           id="Subject"
-          options={subjectOptions}
+          options={dropdownOptionData}
           iconName="dropdown-icon"
         />
 
@@ -179,3 +165,94 @@ const subjectOptions = [
     }
   });
 </script>
+
+<script is:inline>
+  /** Function to Validate Email Field */
+  function validateEmailField() {
+    const email = document.getElementById("emailFrom");
+    const requiredBox = document.getElementById("emailFrom-required");
+    const invalidBox = document.getElementById("emailFrom-invalid");
+
+    const value = email.value.trim();
+
+    // Hide both errors first
+    requiredBox.classList.add("hidden");
+    invalidBox.classList.add("hidden");
+
+     // Check for an empty value
+    if (value === "") {
+      requiredBox.classList.remove("hidden");
+      return false;
+    }
+
+    // Check for correct email format
+    const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    if (!isValid) {
+      invalidBox.classList.remove("hidden");
+      return false;
+    }
+
+    return true;
+  }
+
+  /** Function to Validate Phone number Field */
+  function validatePhoneField() {
+    const phone = document.getElementById("phoneNo");
+    const requiredBox = document.getElementById("phoneNo-required");
+    const invalidBox = document.getElementById("phoneNo-invalid");
+
+    const value = phone.value.trim();
+
+    // Hide both errors first
+    requiredBox.classList.add("hidden");
+    invalidBox.classList.add("hidden");
+
+    // Check for an empty value
+    if (value === "") {
+      requiredBox.classList.remove("hidden");
+      return false;
+    }
+
+    // Check for correct phone format
+    const isValid = /^[0-9]{10}$/.test(value);
+    if (!isValid) {
+      invalidBox.classList.remove("hidden");
+      return false;
+    }
+
+    return true;
+  }
+
+  // Master validator
+  const validators = [
+    validateEmailField,
+    validatePhoneField,
+    // Add more validation functions here later
+  ];
+
+  /** Form Submit Handler Runs all validators in the list and Stops submission if any validator fails */
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contact-form");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      let allValid = true;
+
+     // Run all validator functions in the validators array
+      validators.forEach((fn) => {
+        if (!fn()) allValid = false;
+      });
+
+      if (!allValid) return;
+
+      // TODO: Remove later
+      console.log("Form Submitted!");
+    });
+  });
+</script>
+
+
+
+
+
