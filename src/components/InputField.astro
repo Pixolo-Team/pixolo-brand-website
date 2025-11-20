@@ -4,29 +4,23 @@ import { Icon } from "astro-icon/components";
 
 // Define props interface with all field properties
 export interface Props {
-  label: string;
-  name: string;
   id: string;
+  name: string;
+  label: string;
   placeholder?: string;
   type?: astroHTML.JSX.HTMLInputTypeAttribute;
-  required?: boolean;
   showPlaceholder?: boolean;
-  errorMessages?: string[];
-  isError?: boolean;
   isDisabled?: boolean;
 }
 
 // Destructure props with default values
 const {
+  id = "",
+  name = "",
   label = "",
   placeholder = "",
-  name = "",
-  id = "",
   type = "text",
-  required = false,
   showPlaceholder = true,
-  errorMessages = [],
-  isError = false,
   isDisabled = false,
 } = Astro.props;
 ---
@@ -42,34 +36,29 @@ const {
       >{label}</label
     >
 
-    <!-- Input field with dynamic attributes from props -->
     <input
-      disabled={isDisabled}
-      type={type}
       id={id}
-      placeholder={showPlaceholder ? placeholder : undefined}
       name={name}
-      required={required}
+      placeholder={showPlaceholder ? placeholder : undefined}
+      type={type}
+      disabled={isDisabled}
       class="placeholder-n-600 flex-1 text-sm outline-none focus:border-none lg:text-base"
     />
   </div>
 
-  <!-- Error messages display section -->
-  {
-    isError && (
-      <div class="flex flex-col gap-2.5 md:gap-3">
-        {errorMessages.map((msg) => (
-          <div class="flex items-center gap-1.5 md:gap-2">
-            {/* Error icon */}
-            <Icon name="error-icon" class="size-4" />
+  <!-- Error Messages (always present, hidden by default) -->
+  <div id={`${id}-required`} class="hidden flex items-center gap-1.5 md:gap-2">
+    {/* Error icon */}
+    <Icon name="error-icon" class="size-4" />
+     {/* Empty Error message text */}
+    <p class="text-xs leading-[17px] font-normal text-red-600 md:text-sm lg:text-base">This field is required.</p>
+  </div>
 
-            {/* Error message text */}
-            <p class="text-xs leading-[17px] font-normal text-red-600 md:text-sm lg:text-base">
-              {msg}
-            </p>
-          </div>
-        ))}
-      </div>
-    )
-  }
+  <div id={`${id}-invalid`} class="hidden flex items-center gap-1.5 md:gap-2">
+    {/* Error icon */}
+    <Icon name="error-icon" class="size-4" />
+
+    <!-- Invalid Error message text -->
+    <p class="text-xs leading-[17px] font-normal text-red-600 md:text-sm lg:text-base">This doesn’t look like a valid {type}.</p>
+  </div>
 </div>
