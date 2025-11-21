@@ -14,7 +14,9 @@ const { href = "", extraClasses = "" } = Astro.props as Props;
 <a
   href={href}
   target="_blank"
-  class={`group flex justify-center items-center rounded-full p-5 lg:p-6 bg-n-800/20 transition-all duration-800 cursor-pointer border border-n-950 h-16 lg:h-20 ${extraClasses}`}
+  rel="noopener noreferrer"
+  class={`group flex justify-center items-center rounded-full p-5 lg:p-6 bg-n-800/20 transition-all duration-800 border border-n-950 h-16 lg:h-20 ${extraClasses}`}
+  aria-label="Contact us on WhatsApp"
 >
   <!-- Whatsapp Icon -->
   <Icon name="whatsapp-logo" class="size-6 lg:size-8" />
@@ -23,7 +25,7 @@ const { href = "", extraClasses = "" } = Astro.props as Props;
   <div
     class="whitespace-nowrap overflow-hidden opacity-0 max-w-0 group-hover:md:ml-2.5 transition-all duration-800 ease-in-out md:group-hover:max-w-[250px] group-hover:opacity-100"
   >
-    <p class="text-lg font-medium text-n-950 leading-[22px]">Whatsapp</p>
+    <p class="text-lg font-medium text-n-950 leading-[22px]">WhatsApp</p>
     <p class="text-xs font-medium text-n-950">Let's Connect</p>
   </div>
 </a>
