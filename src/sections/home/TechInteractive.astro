@@ -1,0 +1,60 @@
+---
+// COMPONENTS //
+import TechBadge from "../../components/TechBadge.astro";
+import ToolBadge from "../../components/ToolBadge.astro";
+
+const headerDetails = {
+  badgeDetails: {
+    techInteractiveIcon: "tech-interactive-icon",
+    badgeText: "Immersive technology",
+  },
+  headerText:
+    "Behind every badge here, there’s a story we built with someone like you.",
+};
+
+const statsWrapper = ["30 apps", "30 websites", "3000 screens", "2000 flows"];
+---
+
+<!-- Tech Interactive Section -->
+<section class="flex justify-center items-center bg-n-50">
+  <!-- Container -->
+  <div
+    class="container flex flex-col justify-center items-center gap-36 md:gap-32 px-6 md:px-0 pt-16 md:pt-36 pb-72 md:pb-96 lg:pt-36 lg:pb-96"
+  >
+    <!-- Header -->
+    <div
+      class="flex flex-col justify-center items-center gap-6 lg:gap-7 md:px-16 lg:px-56"
+    >
+      <!-- Tool Badge -->
+      <ToolBadge
+        icon={headerDetails.badgeDetails.techInteractiveIcon}
+        text={headerDetails.badgeDetails.badgeText}
+      />
+
+      <!-- headerTitle -->
+      <p
+        class="font-medium text-2xl md:text-4xl lg:text-5xl leading-tight text-n-950 text-center"
+      >
+        {headerDetails.headerText}
+      </p>
+    </div>
+
+    <!-- Stats Wrapper -->
+    <div class="flex flex-col flex-wrap w-fit">
+      {
+        statsWrapper.map((statText) => (
+          <p class="font-medium text-4xl md:text-6xl lg:text-7xl leading-tight tracking-[-4%] text-n-950 text-center">
+            {statText}
+          </p>
+        ))
+      }
+    </div>
+
+    <!-- Tech Badge -->
+    <TechBadge
+      techBadgeIcon="mongo"
+      techBadgeText="Mongo"
+      backgroundColor="bg-green-700"
+    />
+  </div>
+</section>
