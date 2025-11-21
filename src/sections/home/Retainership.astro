@@ -2,28 +2,10 @@
 // COMPONENTS //
 import RetainershipCard from "../../components/RetainershipCard.astro";
 import RetainershipEmployeeCard from "../../components/RetainershipEmployeeCard.astro";
+import StepItem from "../../components/StepItem.astro";
 ---
 
 <RetainershipCard />
-<RetainershipCard
-  cardNo="2"
-  ,
-  cardTitle="Developers"
-  ,
-  cardMessage="Our developers are specialists in creating innovative solutions to meet your needs."
-/>
-<RetainershipCard
-  cardNo="3"
-  ,
-  cardTitle="Project Manager"
-  ,
-  cardMessage="Experienced project managers ensure that everything runs smoothly and efficiently."
-/>
-<RetainershipCard
-  cardNo="4"
-  ,
-  cardTitle="Product Owners"
-  ,
-  cardMessage="Our marketing specialists help you reach your target audience with tailored strategies."
-/>
 <RetainershipEmployeeCard />
+<StepItem />
+<StepItem orientation="right to left" number="02" messageHeader="Sign one simple contract" message="No hiring, HR, or paperwork hassles, we handle it all."/>
