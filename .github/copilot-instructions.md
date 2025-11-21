@@ -210,9 +210,8 @@ The `.github/PULL_REQUEST_TEMPLATE.md` defines expected quality standards:
 - No unused/commented code
 - Images optimized
 - Use Tailwind/Theme tokens
-- ESLint 0 errors (note: no ESLint configured currently)
-- SonarLint clean
 - Local build runs successfully
+- SonarLint clean (if available in your IDE)
 
 **Design/QC Review:**
 - Match Figma designs visually
@@ -257,7 +256,10 @@ When making changes, always verify the build succeeds and consider these quality
 
 **Adding styles:**
 1. Use Tailwind utility classes (preferred)
-2. Reference CSS variables: `bg-n-50`, `text-n-950`, `bg-blue-500`
+2. Reference CSS variables:
+   - Neutral: `bg-n-50`, `text-n-950`
+   - Blue: `bg-blue-500`, `text-blue-700`
+   - Violet: `bg-violet-500`, `text-violet-700`
 3. For global styles, add to `src/styles/global.css`
 4. For animations, add to `src/styles/animations.css`
 
