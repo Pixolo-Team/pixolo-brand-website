@@ -1,59 +1,11 @@
 ---
+// COMPONENTS //
 import Image from "astro/components/Image.astro";
 import ToolBadge from "../../components/ToolBadge.astro";
 import ProductItem from "../../components/ProductItem.astro";
 
-const productDetails = {
-  productIcon: "product-icon",
-  toolBadgeText: "Our in-house creations.",
-  textWrapperBuiltWith: "Built with",
-  titleWrapperImage: "title-wrapper-image.png",
-  titleWrapperAlt: "Title Wrapper Image",
-  textWrapperByPixolo: "by Pixolo",
-  titleWrapperMessage: "Where our creativity meets real-world impact.",
-  products: [
-    {
-      companyLogo: "zizo.png",
-      productImage: "product-image.png",
-      productName: "product-name",
-      productdescriptionStart: "A smart football team management app that",
-      productdescriptionBold: "helps coaches, players, and clubs",
-      productdescriptionEnd:
-        "organize matches, track stats, and manage their teams seamlessly.",
-      href: "/",
-    },
-    {
-      companyLogo: "configo.png",
-      productImage: "product-image.png",
-      productName: "product-name",
-      productdescriptionStart: "A smart football team management app that",
-      productdescriptionBold: "helps coaches, players, and clubs",
-      productdescriptionEnd:
-        "organize matches, track stats, and manage their teams seamlessly.",
-      href: "/",
-    },
-    {
-      companyLogo: "weddin-go.png",
-      productImage: "product-image.png",
-      productName: "product-name",
-      productdescriptionStart: "A smart football team management app that",
-      productdescriptionBold: "helps coaches, players, and clubs",
-      productdescriptionEnd:
-        "organize matches, track stats, and manage their teams seamlessly.",
-      href: "/",
-    },
-    {
-      companyLogo: "neevo-design-system.png",
-      productImage: "product-image.png",
-      productName: "product-name",
-      productdescriptionStart: "A smart football team management app that",
-      productdescriptionBold: "helps coaches, players, and clubs",
-      productdescriptionEnd:
-        "organize matches, track stats, and manage their teams seamlessly.",
-      href: "/",
-    }
-  ],
-};
+// DATA //
+import { productData } from "../../data/product.ts";
 ---
 
 <!-- Product Section -->
@@ -66,9 +18,8 @@ const productDetails = {
     <div class="flex flex-col justify-center items-center gap-6 lg:gap-7">
       <!-- Tool Badge -->
       <ToolBadge
-        icon={productDetails.productIcon}
-        ,
-        text={productDetails.toolBadgeText}
+        icon={productData.productIcon}
+        text={productData.toolBadgeText}
       />
       <!-- Title Wrapper -->
       <div class="flex flex-col justify-center items-center gap-5 lg:gap-6">
@@ -77,11 +28,11 @@ const productDetails = {
           <p
             class="font-normal text-4xl md:text-6xl lg:text-7xl tracking-[-2%] text-n-950"
           >
-            {productDetails.textWrapperBuiltWith}
+            {productData.textWrapperBuiltWith}
           </p>
           <Image
-            src={`/images/products/${productDetails.titleWrapperImage}`}
-            alt={productDetails.titleWrapperAlt}
+            src={`/images/products/${productData.titleWrapperImage}`}
+            alt={productData.titleWrapperAlt}
             width={67}
             height={50}
             class="md:w-[101px] md:h-[76px] lg:w-[118px] lg:h-[88px]"
@@ -89,20 +40,20 @@ const productDetails = {
           <p
             class="font-normal text-4xl md:text-6xl lg:text-7xl tracking-[-2%] text-n-950"
           >
-            {productDetails.textWrapperByPixolo}
+            {productData.textWrapperByPixolo}
           </p>
         </div>
         <!-- Message -->
         <p
           class="font-medium text-sm md:text-lg lg:text-2xl leading-normal text-n-950 text-center"
         >
-          {productDetails.titleWrapperMessage}
+          {productData.titleWrapperMessage}
         </p>
       </div>
     </div>
     <!-- Products -->
     <div>
-      {productDetails.products.map((product) => <ProductItem {...product} />)}
+      {productData.products.map((product) => <ProductItem {...product} />)}
     </div>
   </div>
 </section>
