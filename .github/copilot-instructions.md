@@ -19,7 +19,7 @@ This is the brand website for Pixolo Technologies, built with Astro 5.15.3 and T
 npm install
 ```
 
-This takes approximately 30-40 seconds and installs 389+ packages. The project does NOT commit lock files (package-lock.json is in .gitignore).
+This takes approximately 30-40 seconds and installs 389+ packages. Lock files (package-lock.json) are not tracked in git per .gitignore, so npm will generate a fresh lock file on install.
 
 ### Available Commands
 
@@ -74,7 +74,7 @@ After making code changes:
 - **Warning (expected):** Vite warning about unused imports from "@astrojs/internal-helpers/remote" in node_modules - this is safe to ignore
 - **TypeScript checking:** The project does NOT have `@astrojs/check` installed, so `astro check` will fail. TypeScript checking is not part of the validation workflow.
 - **No tests:** There are no test files or test infrastructure in this project
-- **No linting:** No ESLint, Prettier, or other linting tools are configured
+- **No automated linting:** No ESLint or Prettier configured. The PR template mentions SonarLint which is an IDE plugin, not a build step.
 
 ## Project Architecture
 
