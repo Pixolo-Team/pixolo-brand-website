@@ -19,7 +19,7 @@ This is the brand website for Pixolo Technologies, built with Astro 5.15.3 and T
 npm install
 ```
 
-This takes approximately 30-40 seconds and installs 389+ packages. Lock files (package-lock.json) are not tracked in git per .gitignore, so npm will generate a fresh lock file on install.
+This takes approximately 30-40 seconds and installs 389+ packages. Lock files are in .gitignore (marked as optional), so npm will generate package-lock.json locally during install.
 
 ### Available Commands
 
@@ -282,7 +282,7 @@ When adding dependencies:
 2. Check compatibility with Astro 5.x
 3. Update imports in code
 4. Test build immediately
-5. Note that lock files are gitignored
+5. Note that lock files are in .gitignore (optional, will be generated locally)
 
 ## Trust These Instructions
 
