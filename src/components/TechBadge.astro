@@ -1,0 +1,30 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  techBadgeIcon: string;
+  techBadgeText?: string;
+  backgroundColor: string;
+}
+
+const {
+  techBadgeIcon = "mongo",
+  techBadgeText = "Mongo",
+  backgroundColor = "bg-green-700",
+} = Astro.props;
+---
+
+<!-- Tech Tool Badge Component -->
+<div
+  class={`flex p-2.5 md:p-3 lg:p-2.5 gap-1.5 lg:gap-4 rounded-4xl ${backgroundColor} ${techBadgeText ? "px-3.5 md:px-6 lg:px-7" : "rounded-full"}`}
+>
+  <!-- Tech Badge Icon -->
+  <Icon name={techBadgeIcon} />
+  <!-- Tech Badge Text -->
+  <p
+    class="text-sm md:text-base font-medium lg:text-xl leading-tight text-n-950"
+  >
+    {techBadgeText}
+  </p>
+</div>
