@@ -48,7 +48,7 @@ import { footerData } from "@/data/footer";
         ›
       >
         <!-- Responsive logo block -->
-        <div class="flex w-full lg:w-[945px]">
+        <div id="footerLogo" class="flex w-full lg:w-[945px]">
           <Icon name="pixolo-logo-text" class="text-n-950 w-full h-full" />
         </div>
         <!-- Message under logo -->
@@ -132,3 +132,25 @@ import { footerData } from "@/data/footer";
     height: 100%;
   }
 </style>
+<script>
+  // Select logo element
+  const logo = document.getElementById("footerLogo");
+
+  // Scroll-driven scale
+  scroll(
+    (progress) => {
+      // Ease the scroll progress
+      const eased = transform(progress, [0, 1], [0, 1], {
+        easing: "ease-in-out",
+      });
+
+      // Map eased progress to scale 0.7 → 1.0
+      const scale = 0.7 + eased * 0.3;
+      logo.style.transform = `scale(${scale})`;
+    },
+    {
+      target: logo,
+      offset: ["start end", "end center"],
+    }
+  );
+</script>
