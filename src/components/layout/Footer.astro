@@ -91,7 +91,7 @@ import { footerData } from "@/data/footer";
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={socialItem.iconName}
-                class="flex flex-col justify-center items-center w-10 rounded-full h-10 p-2.5 border border-n-500 md:gap-2 md:p-3 md:w-14 md:h-14 lg:size-16 hover:bg-n-200"
+                class="social-fill relative overflow-hidden flex flex-col justify-center items-center w-10 rounded-full h-10 p-2.5 border border-n-500 md:gap-2 md:p-3 md:w-14 md:h-14 lg:size-16 "
               >
                 {/* Social icon */}
                 <Icon
@@ -115,3 +115,20 @@ import { footerData } from "@/data/footer";
     </div>
   </div>
 </footer>
+<style>
+  .social-fill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 0%;
+    top: 0;
+    left: 0;
+    background: var(--color-n-300);
+    transition: height 0.5s ease-in-out;
+    z-index: -1;
+  }
+
+  .social-fill:hover::before {
+    height: 100%;
+  }
+</style>
