@@ -1,1 +1,3 @@
+echo "🔥 PRE-COMMIT HOOK RUNNING..."
+
 npx lint-staged
