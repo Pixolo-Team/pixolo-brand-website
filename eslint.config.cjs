@@ -5,9 +5,11 @@ const prettier = require("eslint-plugin-prettier");
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
 module.exports = [
+  // ---------------------------------------------------------
   // JS + TS
+  // ---------------------------------------------------------
   {
-    files: ["**/*.ts", "**/*.js"],
+    files: ["**/*.{js,ts}"],
     languageOptions: {
       parser: tsParser,
       ecmaVersion: "latest",
@@ -23,17 +25,32 @@ module.exports = [
     },
   },
 
-  // Astro integration
-  {
-    files: ["**/*.astro"],
-    processor: astro.processors[".astro"],
-  },
+  // ---------------------------------------------------------
+  // Astro recommended config (flat)
+  // Inject DIRECTLY — NO "extends"
+  // ---------------------------------------------------------
+  ...astro.configs["flat/recommended"],
 
-  // Script tags inside .astro files
+  // ---------------------------------------------------------
+  // Script blocks inside Astro files
+  // ---------------------------------------------------------
   {
-    files: ["*.astro/*.ts"],
+    files: ["**/*.astro/*.ts"],
     languageOptions: {
       parser: tsParser,
+    },
+  },
+
+  // ---------------------------------------------------------
+  // Prettier check for all Astro files
+  // ---------------------------------------------------------
+  {
+    files: ["**/*.astro"],
+    plugins: {
+      prettier,
+    },
+    rules: {
+      "prettier/prettier": "error",
     },
   },
 ];

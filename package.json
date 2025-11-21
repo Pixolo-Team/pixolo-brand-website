@@ -12,9 +12,12 @@
     "format": "prettier --write ."
   },
   "lint-staged": {
-    "*.{js,ts,astro,json,css,md}": [
-      "prettier --write",
-      "eslint --fix"
+    "**/*.{js,ts,astro}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{json,css,md}": [
+      "prettier --write"
     ]
   },
   "dependencies": {

@@ -1,3 +1,3 @@
-echo "🔥 AWESOME ! LET US CHECK IF YOUR CODE IS PIXOLO STANDARDS"
+echo "AWESOME ! Let us check for 🔵 PIXOLO 🔵 standards"
 
 npx lint-staged
