@@ -1,0 +1,134 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+import ToolBadge from "@/components/ToolBadge.astro";
+import BottomCTA from "@/components/BottomCTA.astro";
+
+// DATA //
+import { MENU } from "@/data/menu";
+import { footerData } from "@/data/footer";
+---
+
+<!-- Footer section -->
+<footer>
+  <!-- Container -->
+  <div
+    class="container flex flex-col mx-auto px-6 pt-24 pb-8 md:pt-32 md:pb-9 lg:pt-36 lg:pb-10"
+  >
+    <!-- Header Section :Logo + Tagline  -->
+    <div
+      class="flex flex-col items-start gap-4 w-full md:w-[75%] lg:w-[68%] md:gap-5 md:items-start lg:gap-6"
+    >
+      <!-- Logo -->
+      <Icon
+        name="pixolo-logo-icon"
+        class="w-11 h-11 md:w-14 md:h-14 lg:w-16 lg:h-16"
+      />
+      <!-- Tagline -->
+      <p
+        class="font-normal text-2xl leading-tight text-n-950 tracking-[-4%] md:text-4xl lg:text-5xl"
+      >
+        {footerData.headerText}
+      </p>
+    </div>
+
+    <!-- Logo Cta Area -->
+    <div
+      class="relative flex flex-col pt-32 gap-8 md:pt-40 md:gap-9 lg:gap-10 lg:pt-48"
+    >
+      <!-- Tool Badge -->
+      <div
+        class="-rotate-9 absolute right-0 top-16 md:top-[18%] sm:right-[70px] lg:top-[18%] lg:right-[14%] xl:right-[20%] 2xl:right-[26%]"
+      >
+        <ToolBadge icon={"building"} text={footerData.toolBadgeText} />
+      </div>
+      <!-- Main Logo and message -->
+      <div
+        class="self-center w-full flex flex-col gap-6 md:gap-8 justify-center items-center"
+        ›
+      >
+        <!-- Responsive logo block -->
+        <div class="flex w-full lg:w-[945px]">
+          <Icon name="pixolo-logo-text" class="text-n-950 w-full h-full" />
+        </div>
+        <!-- Message under logo -->
+        <p
+          class="text-n-950 text-base font-normal leading-tight text-center md:text-xl lg:text-xl"
+        >
+          {footerData.logoMessage}
+        </p>
+      </div>
+
+      <!-- Bottom CTA -->
+      <div class="self-center">
+        <BottomCTA />
+      </div>
+    </div>
+
+    <!-- Bottom Section : Navigation , social links and copyright -->
+    <div class="flex flex-col gap-3.5 md:gap-4">
+      <div class="flex pt-6 gap-6 justify-center md:pt-10 lg:justify-between">
+        <!-- Footer Menu -->
+        <div class="hidden lg:flex lg:gap-7">
+          {
+            MENU.map((menuItem) => (
+              <a
+                href={menuItem.url}
+                class="flex gap-7 text-lg leading-[100%] tracking-[0.02em] text-n-700 self-center hover:rounded-3xl hover:bg-n-200 py-2 px-4 "
+              >
+                {menuItem.name}
+              </a>
+            ))
+          }
+        </div>
+        <!-- Social media wrapper -->
+        <div class="flex gap-4 md:gap-6 lg:gap-7">
+          {
+            footerData.socialLinks.map((socialItem) => (
+              // Link to social media
+              <a
+                href={socialItem.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={socialItem.iconName}
+                class="social-fill relative overflow-hidden flex flex-col justify-center items-center w-10 rounded-full h-10 p-2.5 border border-n-500 md:gap-2 md:p-3 md:w-14 md:h-14 lg:size-16 "
+              >
+                {/* Social icon */}
+                <Icon
+                  name={socialItem.iconName}
+                  class="text-n-700 size-5 self-center md:size-7"
+                />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <!-- Copyright wrapper -->
+      <div class="flex gap-1 justify-center items-center md:gap-1.5">
+        <!-- Copyright icon -->
+        <Icon name="copyright" class="self-center w-4 h-4" />
+        <!-- Current year -->
+        <span class="text-xs text-n-700 leading-[125%] tracking-[0.02em]"
+          >{new Date().getFullYear()}</span
+        >
+      </div>
+    </div>
+  </div>
+</footer>
+<style>
+  .social-fill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 0%;
+    top: 0;
+    left: 0;
+    background: var(--color-n-300);
+    transition: height 0.5s ease-in-out;
+    z-index: -1;
+  }
+
+  .social-fill:hover::before {
+    height: 100%;
+  }
+</style>
