@@ -27,9 +27,6 @@
     "tailwindcss": "^4.1.16"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "astro": "^5.15.3",
-=======
     "@typescript-eslint/eslint-plugin": "^8.47.0",
     "@typescript-eslint/parser": "^8.47.0",
     "astro": "^5.15.3",
@@ -39,7 +36,6 @@
     "eslint-plugin-prettier": "^5.5.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
->>>>>>> development
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.1"
