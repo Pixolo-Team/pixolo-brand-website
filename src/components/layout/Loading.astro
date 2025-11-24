@@ -3,33 +3,31 @@
 import { Image } from "astro:assets";
 
 // SVG's //
-import pixolo from "@/../public/images/loader/pixolo.svg";
+import pixolo from "@/public/images/loader/pixolo.svg";
 ---
 
 <section
   id="loading-screen"
-  class="fixed z-[999] flex h-screen w-screen flex-col items-center justify-center bg-n-50 overflow-hidden text-center transition-opacity duration-700"
+  class="bg-n-50 fixed z-[999] flex h-screen w-screen flex-col items-center justify-center overflow-hidden text-center transition-opacity duration-700"
 >
-  <div class="relative flex items-center justify-center w-full h-full">
+  <div class="relative flex h-full w-full items-center justify-center">
     <!-- Ball -->
     <div class="ball bg-blue-500"></div>
 
     <!-- Step 1: Hello -->
-    <p class="firstText text-n-950 text-5xl font-regular">Hello</p>
+    <p class="firstText text-n-950 font-regular text-5xl">Hello</p>
 
     <!-- Step 2: We are -->
-    <p class="secondText text-n-950 text-5xl font-regular">We are</p>
+    <p class="secondText text-n-950 font-regular text-5xl">We are</p>
 
     <!-- Step 3: Pixolo -->
-    <div class="pixolo flex gap-1 items-center justify-center">
+    <div class="pixolo flex items-center justify-center gap-1">
       <Image src={pixolo} alt="Pixolo" />
     </div>
 
     <!-- Loader Number -->
-    <div class="absolute bottom-[4%] right-[12%]">
-      <p id="progress-label" class="text-n-950 text-5xl text-right font-bold">
-        0%
-      </p>
+    <div class="absolute right-[12%] bottom-[4%]">
+      <p id="progress-label" class="text-n-950 text-right text-5xl font-bold">0%</p>
     </div>
   </div>
 </section>
