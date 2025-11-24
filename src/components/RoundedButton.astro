@@ -2,7 +2,7 @@
 // STYLES //
 import "../styles/global.css";
 
-const { buttonText, leftIcon, rightIcon } = Astro.props;
+const { buttonText, leftIcon, rightIcon, textClass } = Astro.props;
 ---
 
 <!-- Rounded Button -->
@@ -13,7 +13,7 @@ const { buttonText, leftIcon, rightIcon } = Astro.props;
   {leftIcon && <img src={`/icons/${rightIcon}.svg`} alt={`${leftIcon}`} class="size-4 lg:size-6" />}
 
   <!-- Rounded Button Text -->
-  <p>
+  <p class={textClass}>
     {buttonText}
   </p>
 

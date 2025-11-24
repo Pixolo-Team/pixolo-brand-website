@@ -1,0 +1,60 @@
+---
+// COMPONENTS //
+import RoundedButton from "./RoundedButton.astro";
+
+interface Props {
+  badgeText?: string;
+  mainText?: string;
+  buttonText?: string;
+}
+
+const {
+  badgeText = "+44",
+  mainText = "Work with the most trusted people who aim for perfection",
+  buttonText = "Contact Us",
+} = Astro.props as Props;
+
+const images = Array(4).fill("/3d-ball-1.svg");
+---
+
+<!-- Slab Component -->
+<section>
+  <!-- pfps-w-text -->
+  <div>
+    <!-- pfps-w-number -->
+    <div class="flex h-[51px] w-[233px] items-center gap-3">
+      <!-- pfp-wrapper -->
+      <div class="flex h-[51px] w-[180px] items-center">
+        {
+          images.map((img, index) => (
+            <img
+              src={img}
+              alt={`Profile ${index + 1}`}
+              class={`h-[51px] w-[51px] rounded-full ${index > 0 && "-ml-4"}`}
+            />
+          ))
+        }
+      </div>
+
+      <!-- +44 Badge -->
+      <span
+        class="font-neometric text-text-xl flex h-[25px] w-[41px] items-center justify-center font-normal text-white"
+      >
+        {badgeText}
+      </span>
+    </div>
+
+    <!-- Main Text -->
+    <p class="font-neometric text-text-xl text-n-950 h-[75px] w-[287px] font-medium">
+      {mainText}
+    </p>
+
+    <!-- CTA Button -->
+    <div>
+      <RoundedButton
+        buttonText={buttonText}
+        textClass="w-[91px] h-[19px] font-neometric font-medium text-text-base leading-[100%] text-center text-n-50"
+      />
+    </div>
+  </div>
+</section>
