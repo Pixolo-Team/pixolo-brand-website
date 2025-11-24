@@ -1,4 +1,4 @@
-export const productData = {
+export const productDetails = {
   productIcon: "product-icon",
   toolBadgeText: "Our in-house creations.",
   textWrapperBuiltWith: "Built with",
@@ -9,41 +9,41 @@ export const productData = {
   products: [
     {
       companyLogo: "zizo.png",
-      productImage: "product-image.png",
-      productName: "Zizo",
-      productdescriptionStart: "A smart football team management app that",
-      productdescriptionBold: "helps coaches, players, and clubs",
-      productdescriptionEnd:
+      imageName: "product-image.png",
+      Name: "Zizo",
+      descriptionStart: "A smart football team management app that",
+      descriptionBold: "helps coaches, players, and clubs",
+      descriptionEnd:
         "organize matches, track stats, and manage their teams seamlessly.",
       href: "/",
     },
     {
       companyLogo: "configo.png",
-      productImage: "product-image.png",
-      productName: "Configo",
-      productdescriptionStart: "A smart football team management app that",
-      productdescriptionBold: "helps coaches, players, and clubs",
-      productdescriptionEnd:
+      imageName: "product-image.png",
+      Name: "Configo",
+      descriptionStart: "A smart football team management app that",
+      descriptionBold: "helps coaches, players, and clubs",
+      descriptionEnd:
         "organize matches, track stats, and manage their teams seamlessly.",
       href: "/",
     },
     {
       companyLogo: "weddin-go.png",
-      productImage: "product-image.png",
-      productName: "WeddinGo",
-      productdescriptionStart: "A smart football team management app that",
-      productdescriptionBold: "helps coaches, players, and clubs",
-      productdescriptionEnd:
+      imageName: "product-image.png",
+      Name: "WeddinGo",
+      descriptionStart: "A smart football team management app that",
+      descriptionBold: "helps coaches, players, and clubs",
+      descriptionEnd:
         "organize matches, track stats, and manage their teams seamlessly.",
       href: "/",
     },
     {
       companyLogo: "neevo-design-system.png",
-      productImage: "product-image.png",
-      productName: "Neevo Design System",
-      productdescriptionStart: "A smart football team management app that",
-      productdescriptionBold: "helps coaches, players, and clubs",
-      productdescriptionEnd:
+      imageName: "product-image.png",
+      Name: "Neevo Design System",
+      descriptionStart: "A smart football team management app that",
+      descriptionBold: "helps coaches, players, and clubs",
+      descriptionEnd:
         "organize matches, track stats, and manage their teams seamlessly.",
       href: "/",
     },

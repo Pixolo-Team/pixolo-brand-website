@@ -5,7 +5,7 @@ import ToolBadge from "../../components/ToolBadge.astro";
 import ProductItem from "../../components/ProductItem.astro";
 
 // DATA //
-import { productData } from "../../data/product.ts";
+import { productDetails } from "../../data/product.ts";
 ---
 
 <!-- Product Section -->
@@ -18,42 +18,54 @@ import { productData } from "../../data/product.ts";
     <div class="flex flex-col justify-center items-center gap-6 lg:gap-7">
       <!-- Tool Badge -->
       <ToolBadge
-        icon={productData.productIcon}
-        text={productData.toolBadgeText}
+        icon={productDetails.productIcon}
+        text={productDetails.toolBadgeText}
       />
       <!-- Title Wrapper -->
       <div class="flex flex-col justify-center items-center gap-5 lg:gap-6">
         <!-- Heading -->
-        <div class="flex flex-wrap justify-center items-center gap-1.5">
+        <div class="flex flex-wrap justify-center items-end gap-1.5">
           <p
-            class="font-normal text-4xl md:text-6xl lg:text-7xl tracking-[-2%] text-n-950"
+            class="font-normal text-4xl md:text-6xl lg:text-7xl tracking-tight text-n-950 vertical-alignment-middle horizontal-alignment-center"
           >
-            {productData.textWrapperBuiltWith}
+            {productDetails.textWrapperBuiltWith}
           </p>
           <Image
-            src={`/images/products/${productData.titleWrapperImage}`}
-            alt={productData.titleWrapperAlt}
+            src={`/images/products/${productDetails.titleWrapperImage}`}
+            alt={productDetails.titleWrapperAlt}
             width={67}
             height={50}
             class="md:w-[101px] md:h-[76px] lg:w-[118px] lg:h-[88px]"
           />
           <p
-            class="font-normal text-4xl md:text-6xl lg:text-7xl tracking-[-2%] text-n-950"
+            class="font-normal text-4xl md:text-6xl lg:text-7xl tracking-tight text-n-950 vertical-alignment-middle horizontal-alignment-center"
           >
-            {productData.textWrapperByPixolo}
+            {productDetails.textWrapperByPixolo}
           </p>
         </div>
         <!-- Message -->
         <p
           class="font-medium text-sm md:text-lg lg:text-2xl leading-normal text-n-950 text-center"
         >
-          {productData.titleWrapperMessage}
+          {productDetails.titleWrapperMessage}
         </p>
       </div>
     </div>
     <!-- Products -->
     <div>
-      {productData.products.map((product) => <ProductItem {...product} />)}
+      {
+        productDetails.products.map((product) => (
+          <ProductItem
+            companyLogo={product.companyLogo}
+            imageName={product.imageName}
+            Name={product.Name}
+            descriptionStart={product.descriptionStart}
+            descriptionBold={product.descriptionBold}
+            descriptionEnd={product.descriptionEnd}
+            href={product.href}
+          />
+        ))
+      }
     </div>
   </div>
 </section>
