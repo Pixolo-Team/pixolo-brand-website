@@ -1,16 +1,45 @@
 ---
 // COMPONENTS //
-import RetainershipCard from "../../components/RetainershipCard.astro";
-import RetainershipEmployeeCard from "../../components/RetainershipEmployeeCard.astro";
-import StepItem from "../../components/StepItem.astro";
+import RetainershipCard from "@/components/RetainershipCard.astro";
+import RetainershipEmployeeCard from "@/components/RetainershipEmployeeCard.astro";
+import StepItem from "@/components/StepItem.astro";
 ---
 
-<RetainershipCard />
-<RetainershipEmployeeCard />
-<StepItem />
+<!-- Retainership Cards -->
+<RetainershipCard
+  number="1"
+  title="Designer"
+  message="We provide the best of the best designer. We would love to share you more details."
+/>
+<RetainershipCard
+  number="2"
+  title="Developers"
+  message="Our developers are specialists in creating innovative solutions to meet your needs."
+/>
+<RetainershipCard
+  number="3"
+  title="Project Manager"
+  message="Experienced project managers ensure that everything runs smoothly and efficiently."
+/>
+<RetainershipCard
+  number="4"
+  title="Product Owners"
+  message="Our marketing specialists help you reach your target audience with tailored strategies."
+/>
+
+<!-- Employee Card -->
+<RetainershipEmployeeCard
+  image="employee-image.jpg"
+  name="Deven Bhagtani"
+  position="UX Designer"
+  salary="Rs.10,000"
+  experience="4 Years"
+/>
+
+<!-- Step Item -->
 <StepItem
-  direction="rtl"
-  number="02"
-  messageHeader="Sign one simple contract"
-  message="No hiring, HR, or paperwork hassles, we handle it all."
+  number="01"
+  title="Tell us what you need"
+  description="We understand your project and match you with the right expert."
+  direction="left to right"
 />

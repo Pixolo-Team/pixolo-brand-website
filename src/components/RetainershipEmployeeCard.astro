@@ -5,24 +5,15 @@ import { Image } from "astro:assets";
 
 interface props {
   image: string;
-  imageAlt: string;
   name: string;
   position: string;
-  employeeSalary: string;
+  salary: string;
   experience: string;
 }
 
-const {
-  image = "employee-image.jpg",
-  imageAlt = "Employee Image",
-  name = "Deven Bhagtani",
-  position = "UX Designer",
-  employeeSalary = "Rs.10,000",
-  experience = "4 Years",
-} = Astro.props as props;
-const startingFrom = "Starting from";
-const experienceTitle = "Experience: ";
-const arrowIcon = "arrow-icon";
+const { image, name, position, salary, experience } = Astro.props as props;
+
+const imageAlt = `${name} - a retainership employee at Pixolo`;
 ---
 
 <div
@@ -30,7 +21,6 @@ const arrowIcon = "arrow-icon";
 >
   <!-- Employee Details -->
   <div class="bg-n-100 flex flex-col gap-4 rounded-3xl p-5 md:flex-row">
-    <!-- Employee Image -->
     <Image
       src={`/images/retainership/${image}`}
       alt={imageAlt}
@@ -38,15 +28,13 @@ const arrowIcon = "arrow-icon";
       height={193}
       class="w-full rounded-2xl md:h-[193px] md:w-[200px]"
     />
+
     <!-- Employee Content -->
     <div class="flex flex-col gap-8 md:gap-24">
-      <!-- Name + Position -->
       <div class="flex flex-col gap-1">
-        <!-- Employee Name -->
         <p class="text-n-950 text-xl leading-tight font-bold md:text-2xl">
           {name}
         </p>
-        <!-- Employee Position -->
         <p class="text-n-700 text-sm leading-tight font-medium md:text-base">
           {position}
         </p>
@@ -54,25 +42,24 @@ const arrowIcon = "arrow-icon";
 
       <!-- Price Wrapper -->
       <div class="flex items-center justify-between">
-        <!-- Price details -->
         <div class="flex flex-col">
-          <p class="text-n-700 text-sm leading-tight font-medium md:text-base">
-            {startingFrom}
-          </p>
+          <p class="text-n-700 text-sm leading-tight font-medium md:text-base">Starting from</p>
           <p class="text-n-700 text-base leading-tight font-medium md:text-lg">
-            {employeeSalary}
+            {salary}
           </p>
         </div>
+
         <!-- CTA Icon -->
         <a href="/" aria-label={`View details for ${name}`}>
-          <Icon name={arrowIcon} />
+          <Icon name="arrow-icon" />
         </a>
       </div>
     </div>
   </div>
+
   <!-- Experience Details -->
   <div class="text-center text-sm leading-tight md:text-base">
-    <span class="font-normal">{experienceTitle}</span>
+    <span class="font-normal">Experience:</span>
     <span class="font-medium">{experience}</span>
   </div>
 </div>
