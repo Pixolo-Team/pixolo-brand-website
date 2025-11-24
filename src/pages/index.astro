@@ -1,5 +1,6 @@
 ---
 // OTHERS //
+import ProjectCard from "@/components/ProjectCard.astro";
 import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
@@ -12,4 +13,10 @@ import Service from "@/sections/home/Service.astro";
   <Clients />
   <Service />
   <Contact />
+  <ProjectCard
+    logo="icons/reliance-digital.svg"
+    title="E-commerce Platform for Local Brands"
+    subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+    chips={["Product Design", "App Development", "Dashboard Design"]}
+  />
 </Layout>

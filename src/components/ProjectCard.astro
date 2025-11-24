@@ -1,0 +1,43 @@
+---
+// COMPONENTS
+import RoundedButton from "./RoundedButton.astro";
+import Badge from "./Badge.astro";
+
+// PROPS
+const { logo, title, subtitle, chips = [] } = Astro.props;
+---
+
+<!-- Main Project Tile -->
+<div class="">
+  <!-- Project Content -->
+  <div class="">
+    <!-- Logo -->
+    <div class="">
+      <img src={logo} alt="logo" />
+    </div>
+
+    <!-- Project Details Wrapper -->
+    <div class="">
+      <!-- Project Details -->
+      <div class="">
+        <!-- Chip Wrapper -->
+        <div class="">
+          <!-- Portfolio Chip -->
+          {chips.map((chipText: string) => <Badge badgeText={chipText} />)}
+        </div>
+
+        <!-- Title Details -->
+        <div class="">
+          <!-- Title -->
+          <p>{title}</p>
+
+          <!-- Subtitle -->
+          <p>{subtitle}</p>
+        </div>
+      </div>
+
+      <!-- Rounded Button -->
+      <RoundedButton buttonText={"View Case Study"} leftIcon={""} rightIcon={""} />
+    </div>
+  </div>
+</div>
