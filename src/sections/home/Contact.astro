@@ -68,8 +68,8 @@ import { contactSectionData } from "@/data/contacts";
               <Tooltip text="Copy" position="top">
                 <Icon
                   name="copy"
-                  class="size-5 cursor-pointer"
-                  onclick={`event.preventDefault(); copyToClipboard('${contactSectionItem.value}')`}
+                  class="size-5 cursor-pointer copy-btn"
+                  data-copy={contactSectionItem.value}
                 />
               </Tooltip>
             </a>
@@ -139,9 +139,9 @@ import { contactSectionData } from "@/data/contacts";
     </div>
   </div>
 </section>
-<script is:inline>
-  /** Function to copy text to clipboard */
-  function copyToClipboard(text) {
-    navigator.clipboard.writeText(text);
-  }
+
+<script>
+  import { initCopyButtons } from "@/scripts/contact-copy";
+
+  document.addEventListener("DOMContentLoaded", initCopyButtons);
 </script>
