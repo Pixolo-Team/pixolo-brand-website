@@ -3,54 +3,43 @@
 import ServiceItem from "../../components/ServiceItem.astro";
 import ToolBadge from "../../components/ToolBadge.astro";
 
-const serviceItems = [
-  {
-    imageName: "service-image",
-    title: "Design",
-    tags: ["Website", "Mobile", "UI", "App"],
-  },
-  {
-    imageName: "service-image",
-    title: "Web & Mobile Apps",
-    tags: ["Website", "Mobile", "UI", "App"],
-  },
-  {
-    imageName: "service-image",
-    title: "Technology",
-    tags: ["Website", "Mobile", "UI", "App"],
-  },
-];
+// DATA
+import { services } from "../../data/services";
+
+const serviceDetails = {
+  badgeTitle: "Services we offer",
+  title: "We deliver client-focused solutions that drive results and build lasting partnerships.",
+};
 ---
 
 <!-- Service Section -->
 <section class="bg-n-50">
   <!-- Container -->
   <div
-    class="flex flex-col flex-wrap justify-center items-center mx-auto container px-6 py-16 md:py-28 lg:my-36 gap-12 md:gap-16 lg:gap-20 w-full"
+    class="container mx-auto flex w-full flex-col flex-wrap items-center justify-center gap-12 px-6 py-16 md:gap-16 md:px-0 md:py-28 lg:gap-20 lg:px-8 lg:py-36"
   >
     <!-- Section Header -->
-    <div class="gap-6 lg:gap-7 flex flex-col flex-wrap relative">
+    <div class="relative flex flex-col flex-wrap gap-6 lg:gap-7">
       <!-- Tool Badge -->
-      <div class="flex justify-center items-center self-start">
-        <ToolBadge icon="service-icon.svg" text="Services we offer" />
+      <div class="flex items-center justify-center self-start">
+        <ToolBadge icon="service-icon" text={serviceDetails.badgeTitle} />
       </div>
 
       <!-- Text -->
       <p
-        class="text-3xl md:text-5xl lg:text-6xl font-normal leading-tight text-n-950 w-fit"
+        class="anim-fade-in-right text-n-950 w-fit text-2xl leading-tight font-normal md:text-5xl lg:text-6xl"
       >
-        We deliver client-focused solutions that drive results and build lasting
-        partnerships.
+        {serviceDetails.title}
       </p>
     </div>
 
     <!-- Content Wrap -->
     <div
-      class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-11 md:gap-16 lg:gap-12 w-full mx-auto"
+      class="mx-auto grid w-full grid-cols-1 gap-11 md:gap-16 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-20 2xl:grid-cols-3"
     >
       {
-        // Iterating over an array of objects  - serviceItems
-        serviceItems.map((serviceItem) => (
+        // Iterating over an array of objects  - services
+        services.map((serviceItem) => (
           <ServiceItem
             imageName={serviceItem.imageName}
             title={serviceItem.title}
