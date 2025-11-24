@@ -1,19 +1,19 @@
 ---
-const { ctaText, svgName } = Astro.props
-const iconPath = `/icons/${svgName}.svg`
+const { ctaText, svgName } = Astro.props;
+const iconPath = `/icons/${svgName}.svg`;
 ---
+
 <div>
+  <!-- CTA  -->
+  <div
+    class="text-n-950 bg-n-800/20 flex w-fit items-center justify-center gap-3 rounded-4xl py-2 pr-2 pl-7"
+  >
+    <!-- CTA Text -->
+    <p class="text-lg font-medium">{ctaText}</p>
 
-    <!-- CTA  -->
-    <div class="w-fit flex items-center justify-center py-2 pr-2 pl-7 gap-3 rounded-4xl  text-n-950 bg-n-800/20">
-        <!-- CTA Text -->
-        <p class="text-lg font-medium">{ctaText}</p>
-
-        <!-- Icon -->
-        <div class="w-12 h-12 bg-n-950 flex items-center justify-center rounded-full  ">
-            <img src={iconPath} alt=`${svgName} Icon` >
-        </div> 
-        
+    <!-- Icon -->
+    <div class="bg-n-950 flex h-12 w-12 items-center justify-center rounded-full">
+      <img src={iconPath} alt=`${svgName} Icon` />
     </div>
-
+  </div>
 </div>

@@ -1,7 +1,7 @@
-import { siteInfo } from "./siteInfo";
+import { siteInfo } from "./site-info";
 
 // Contacts data that can be reused across the application
-export const contactSectionData = {
+export const contactSectionDetails = {
   badgeTitle: "Collaborate with Pixolo",
   heading: "Come say Hi! 👋",
   subheading: "Your vision deserves the right team — let’s start there.",
@@ -10,15 +10,15 @@ export const contactSectionData = {
     {
       id: "phone",
       title: "Call / Text Us",
-      value: siteInfo.phone.value,
-      link: siteInfo.phone.link,
+      value: siteInfo.contact.phone[0].value,
+      link: siteInfo.contact.phone[0].link,
       icon: "phone",
     },
     {
       id: "mail",
       title: "Drop a Email",
-      value: siteInfo.email.value,
-      link: siteInfo.email.link,
+      value: siteInfo.contact.email[0].value,
+      link: siteInfo.contact.email[0].link,
       icon: "mail",
     },
   ],
@@ -26,9 +26,9 @@ export const contactSectionData = {
   location: {
     title: "Our Space",
     subtitle: "Where ideas meet code",
-    address: siteInfo.address.value,
+    address: siteInfo.contact.address.value,
     icon: "location",
-    mapUrl: siteInfo.address.mapUrl,
-    mapSearchUrl: siteInfo.address.mapSearchUrl,
+    mapUrl: siteInfo.contact.address.mapUrl,
+    mapSearchUrl: siteInfo.contact.address.mapSearchUrl,
   },
 };
