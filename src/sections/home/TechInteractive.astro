@@ -1,7 +1,7 @@
 ---
 // COMPONENTS //
-import TechBadge from "../../components/TechBadge.astro";
-import ToolBadge from "../../components/ToolBadge.astro";
+import TechBadge from "@/components/TechBadge.astro";
+import ToolBadge from "@/components/ToolBadge.astro";
 
 const headerDetails = {
   badgeDetails: {
@@ -31,7 +31,7 @@ const statsWrapper = ["30 apps", "30 websites", "3000 screens", "2000 flows"];
         text={headerDetails.badgeDetails.badgeText}
       />
 
-      <!-- headerTitle -->
+      <!-- Header Title -->
       <p
         class="font-medium text-2xl md:text-4xl lg:text-5xl leading-tight text-n-950 text-center"
       >
@@ -51,10 +51,6 @@ const statsWrapper = ["30 apps", "30 websites", "3000 screens", "2000 flows"];
     </div>
 
     <!-- Tech Badge -->
-    <TechBadge
-      techBadgeIcon="mongo"
-      techBadgeText="Mongo"
-      backgroundColor="bg-green-700"
-    />
+    <TechBadge icon="mongo" text="Mongo" backgroundColor="bg-green-700" />
   </div>
 </section>
