@@ -2,10 +2,10 @@
 interface props {
   number: string;
   title: string;
-  message: string;
+  description: string;
 }
 
-const { number, title, message } = Astro.props as props;
+const { number, title, description } = Astro.props as props;
 ---
 
 <div
@@ -13,7 +13,7 @@ const { number, title, message } = Astro.props as props;
 >
   <!-- Header -->
   <div class="flex flex-col gap-2">
-
+    
     <!-- Number -->
     <p class="text-n-950 text-3xl leading-tight font-medium tracking-[-0.07em] md:text-4xl">
       {number}
@@ -25,6 +25,6 @@ const { number, title, message } = Astro.props as props;
     </p>
   </div>
 
-  <!-- Message -->
-  <p class="text-n-700 text-sm leading-tight font-normal">{message}</p>
+  <!-- Description -->
+  <p class="text-n-700 text-sm leading-tight font-normal">{description}</p>
 </div>
