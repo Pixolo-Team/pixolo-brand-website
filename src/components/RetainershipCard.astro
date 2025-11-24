@@ -1,0 +1,30 @@
+---
+interface props {
+  number: string;
+  title: string;
+  message: string;
+}
+const {
+  number = "1",
+  title = "Designer",
+  message = "We provide the best of the best designer. We would love to share you more details.",
+} = Astro.props as props;
+---
+
+<div
+  class="bg-n-100 flex flex-col justify-between py-14 pr-14 pl-6 rounded-4xl gap-4 w-full min-h-[311px] md:min-h-[380px] md:gap-25 lg:max-h-[428px] lg:h-full hover:bg-gradient-to-br from-(--blue-500) to-[#8B77F3]">
+  <!-- Card Header -->
+  <div class="flex flex-col gap-2">
+    <!-- Card Number -->
+    <p
+      class="font-medium text-3xl leading-tight tracking-[-0.07em] text-n-950 md:text-4xl">
+      {number}
+    </p>
+    <!-- Card Title -->
+    <p class="font-medium text-3xl leading-tight text-n-950 md:text-4xl">
+      {title}
+    </p>
+  </div>
+  <!-- Card message -->
+  <p class="text-sm leading-tight text-n-700 font-normal">{message}</p>
+</div>
