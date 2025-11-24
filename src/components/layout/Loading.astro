@@ -228,55 +228,7 @@ import pixolo from "@/../public/images/loader/pixolo.svg";
   }
 </style>
 
-<script is:inline>
-  const label = document.getElementById("progress-label");
-
-  let progress = 0;
-  let fakeInterval;
-
-  function updateUI() {
-    label.textContent = Math.floor(progress) + "%";
-  }
-
-  /** Start fake progress but stop before 100% */
-  function startFakeProgress() {
-    fakeInterval = setInterval(() => {
-      if (progress < 90) {
-        progress += Math.random() * 3;
-        if (progress > 90) progress = 90;
-        updateUI();
-      }
-    }, 120);
-  }
-
-  /** When animations complete, then finish to 100% */
-  function finishProgress() {
-    clearInterval(fakeInterval);
-
-    const complete = setInterval(() => {
-      if (progress < 100) {
-        progress += 2;
-        if (progress > 100) progress = 100;
-        updateUI();
-      } else {
-        clearInterval(complete);
-
-        // Wait some time before fadeout
-        setTimeout(() => {
-          loader.classList.add("fade-out");
-
-          // Remove after fade-out animation
-          setTimeout(() => loader.remove(), 700);
-        }, 1500);
-      }
-    }, 30);
-  }
-
-  // Start the Fake progress to < 100%
-  startFakeProgress();
-
-  // Wait 6s, then finish progress
-  setTimeout(() => {
-    finishProgress();
-  }, 6000);
+<script>
+  import { initLoader } from "@/scripts/loader";
+  initLoader();
 </script>
