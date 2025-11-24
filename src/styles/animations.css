@@ -1,0 +1,29 @@
+/* =========================
+   Animation Classes
+   ========================= */
+
+/* Fade in Right animation */
+.anim-fade-in-right {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.8s ease-in-out;
+}
+
+/* Fade in Up animation */
+.anim-fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-in-out;
+}
+
+/* Fade in Up quick animation */
+.anim-fade-up-quick {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-out;
+}
+
+.anim-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}

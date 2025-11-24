@@ -1,11 +1,11 @@
 ---
-    const { badgeText } = Astro.props;
+const { badgeText } = Astro.props;
 ---
 
 <!-- Tool Badge For Service-->
-<div class="rounded-3xl border border-n-800 py-2.5 px-4">
-    <!-- Badge Text -->
-    <p class="text-xs md:text-base lg:text-lg leading-tight text-n-950">
-        { badgeText }
-    </p>
+<div class="border-n-800 rounded-3xl border px-4 py-2.5">
+  <!-- Badge Text -->
+  <p class="text-n-950 text-xs leading-tight md:text-base lg:text-lg">
+    {badgeText}
+  </p>
 </div>
