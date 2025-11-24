@@ -13,7 +13,7 @@ interface props {
 
 const { image, name, position, salary, experience } = Astro.props as props;
 
-const imageAlt = `${name} - a retainership employee at Pixolo`;
+
 ---
 
 <div
@@ -23,7 +23,7 @@ const imageAlt = `${name} - a retainership employee at Pixolo`;
   <div class="bg-n-100 flex flex-col gap-4 rounded-3xl p-5 md:flex-row">
     <Image
       src={`/images/retainership/${image}`}
-      alt={imageAlt}
+      alt={`${name} - a retainership employee at Pixolo`}
       width={287}
       height={193}
       class="w-full rounded-2xl md:h-[193px] md:w-[200px]"
