@@ -4,40 +4,45 @@ import RoundedButton from "./RoundedButton.astro";
 import Badge from "./Badge.astro";
 
 // PROPS
-const { logo, title, subtitle, chips = [] } = Astro.props;
+const { backgroundColor, imageConfigs, logoConfigs, title, subtitle, chips = [] } = Astro.props;
 ---
 
 <!-- Main Project Tile -->
-<div class="">
+<div class=`rounded-[42px] bg-[${backgroundColor}]`>
   <!-- Project Content -->
-  <div class="">
+  <div class="flex flex-col gap-6 px-5 py-6">
     <!-- Logo -->
     <div class="">
-      <img src={logo} alt="logo" />
+      <img src={logoConfigs?.src} alt={logoConfigs?.name} class=`${logoConfigs?.classes}` />
     </div>
 
     <!-- Project Details Wrapper -->
-    <div class="">
+    <div class="flex flex-col gap-5">
       <!-- Project Details -->
-      <div class="">
+      <div class="flex flex-col gap-5">
         <!-- Chip Wrapper -->
-        <div class="">
+        <div class="flex flex-wrap gap-2">
           <!-- Portfolio Chip -->
           {chips.map((chipText: string) => <Badge badgeText={chipText} />)}
         </div>
 
         <!-- Title Details -->
-        <div class="">
+        <div class="text-n-950 flex flex-col gap-4">
           <!-- Title -->
-          <p>{title}</p>
+          <p class="text-2xl leading-tight font-semibold">{title}</p>
 
           <!-- Subtitle -->
-          <p>{subtitle}</p>
+          <p class="text-sm leading-tight font-normal">{subtitle}</p>
         </div>
       </div>
 
       <!-- Rounded Button -->
       <RoundedButton buttonText={"View Case Study"} leftIcon={""} rightIcon={""} />
     </div>
+  </div>
+
+  <!-- Image -->
+  <div class="hidden">
+    <img src={imageConfigs?.src} alt={imageConfigs?.name} class=`${imageConfigs?.classes}` />
   </div>
 </div>
