@@ -26,39 +26,40 @@ const arrowIcon = "arrow-icon";
 ---
 
 <div
-  class="flex flex-col rounded-3xl pb-2 gap-2 bg-gradient-to-r from-(--blue-500) to-[#8B77F3] md:gap-3 md:pb-3">
+  class="flex flex-col gap-2 rounded-3xl bg-gradient-to-r from-(--blue-500) to-[#8B77F3] pb-2 md:gap-3 md:pb-3"
+>
   <!-- Employee Details -->
-  <div class="bg-n-100 flex flex-col rounded-3xl p-5 gap-4 md:flex-row">
+  <div class="bg-n-100 flex flex-col gap-4 rounded-3xl p-5 md:flex-row">
     <!-- Employee Image -->
     <Image
       src={`/images/retainership/${image}`}
       alt={imageAlt}
       width={287}
       height={193}
-      class="rounded-2xl w-full md:w-[200px] md:h-[193px]"
+      class="w-full rounded-2xl md:h-[193px] md:w-[200px]"
     />
     <!-- Employee Content -->
     <div class="flex flex-col gap-8 md:gap-24">
       <!-- Name + Position -->
       <div class="flex flex-col gap-1">
         <!-- Employee Name -->
-        <p class="text-n-950 text-xl font-bold leading-tight md:text-2xl">
+        <p class="text-n-950 text-xl leading-tight font-bold md:text-2xl">
           {name}
         </p>
         <!-- Employee Position -->
-        <p class="text-n-700 text-sm font-medium leading-tight md:text-base">
+        <p class="text-n-700 text-sm leading-tight font-medium md:text-base">
           {position}
         </p>
       </div>
 
       <!-- Price Wrapper -->
-      <div class="flex justify-between items-center">
+      <div class="flex items-center justify-between">
         <!-- Price details -->
         <div class="flex flex-col">
-          <p class="font-medium text-sm text-n-700 leading-tight md:text-base">
+          <p class="text-n-700 text-sm leading-tight font-medium md:text-base">
             {startingFrom}
           </p>
-          <p class="font-medium text-base text-n-700 leading-tight md:text-lg">
+          <p class="text-n-700 text-base leading-tight font-medium md:text-lg">
             {employeeSalary}
           </p>
         </div>
@@ -70,7 +71,7 @@ const arrowIcon = "arrow-icon";
     </div>
   </div>
   <!-- Experience Details -->
-  <div class="text-center leading-tight text-sm md:text-base">
+  <div class="text-center text-sm leading-tight md:text-base">
     <span class="font-normal">{experienceTitle}</span>
     <span class="font-medium">{experience}</span>
   </div>
