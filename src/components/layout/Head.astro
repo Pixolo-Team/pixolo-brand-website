@@ -1,0 +1,20 @@
+---
+// DATA //
+const {
+  title = "My Astro Website",
+  description = "Welcome to my new Astro site!",
+  ogImage = "https://www.example.com/_astro/seo-banner.BZD7kegZ.webp",
+  ogUrl = "http://www.example.com/",
+} = Astro.props;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+
+<!-- Open Graph tags -->
+<meta property="og:title" content={title} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={ogUrl} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:alt" content={title} />

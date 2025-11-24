@@ -1,14 +1,28 @@
 ---
 // STYLES //
-import "../styles/global.css";
+import "@/styles/global.css";
 
 // COMPONENTS //
-import Navbar from "../components/Navbar.astro";
+import Header from "@/components/layout/Header.astro";
+import Meta from "@/components/layout/Meta.astro";
+
+// DATA //
+import site from "@/data/meta/site.json";
+
+const { meta = {} } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Metadata -->
+    <Meta
+      title={meta.title}
+      description={meta.description}
+      image={meta.image}
+      noIndex={meta.noIndex}
+    />
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="color-scheme" content="light dark" />
@@ -28,7 +42,8 @@ import Navbar from "../components/Navbar.astro";
   </head>
   <body>
     <div class="fixed top-0 left-0 z-50 w-full">
-      <Navbar />
+      <!-- Header -->
+      <Header />
     </div>
     <slot />
   </body>

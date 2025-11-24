@@ -3,8 +3,8 @@
 import { Icon } from "astro-icon/components";
 
 // OTHERS //
-import BrandLogo from "./BrandLogo.astro";
-import RoundedButton from "./RoundedButton.astro";
+import BrandLogo from "@/components/BrandLogo.astro";
+import RoundedButton from "@/components/RoundedButton.astro";
 
 // Define props
 interface Props {
@@ -55,9 +55,9 @@ const currentPath = Astro.url.pathname;
     </div>
 
     <!-- Bottom Buttons -->
-    <div class="flex flex-row justify-center gap-2.5">
-      <RoundedButton buttonText="Call" />
-      <RoundedButton buttonText="Whatsapp" />
+    <div class="flex flex-row justify-center gap-2.5 z-10">
+      <RoundedButton buttonText="Call" variant="secondary" />
+      <RoundedButton buttonText="Whatsapp" variant="secondary" />
     </div>
   </div>
 
@@ -84,8 +84,8 @@ const currentPath = Astro.url.pathname;
   #mobile-menu::before {
     content: "";
     position: fixed;
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     background: var(--color-n-50);
     border-radius: 50%;
     top: 12px;
