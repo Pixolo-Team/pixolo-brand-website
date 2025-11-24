@@ -20,7 +20,7 @@ const currentPath = Astro.url.pathname;
           <li>
             <a
               href={item.url}
-              class={`relative text-n-950 leading-tight text-base font-medium transition-colors duration-200 ${
+              class={`text-n-950 relative text-base leading-tight font-medium transition-colors duration-200 ${
                 isActive ? "text-blue-600" : "hover:text-blue-600"
               }`}
             >
@@ -29,7 +29,7 @@ const currentPath = Astro.url.pathname;
 
               {/* Active state indicator - only rendered for current page */}
               {isActive && (
-                <span class="absolute top-1/2 -right-[12px] -translate-y-1/2 w-[25px] h-[25px] bg-blue-500 rounded-full z-0 opacity-80 pointer-events-none" />
+                <span class="pointer-events-none absolute top-1/2 -right-[12px] z-0 h-[25px] w-[25px] -translate-y-1/2 rounded-full bg-blue-500 opacity-80" />
               )}
             </a>
           </li>
