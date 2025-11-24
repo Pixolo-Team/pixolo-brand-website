@@ -10,7 +10,7 @@
 
   // Tailwind class sorting from Prettier plugin
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
 
   // In case someone installs other formatters
