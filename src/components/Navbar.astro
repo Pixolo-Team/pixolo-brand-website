@@ -1,0 +1,24 @@
+---
+// OTHERS //
+import BrandLogo from "./BrandLogo.astro";
+import MenuBar from "./MenuBar.astro";
+import RoundedButton from "./RoundedButton.astro";
+
+const menuItems = [
+  { name: "Home", url: "/", isActive: true },
+  { name: "About", url: "/about" },
+  { name: "Careers", url: "/careers" },
+  { name: "Portfolio", url: "/portfolio" },
+];
+---
+
+<!-- Navbar Display -->
+<header class="relative z-10 flex items-center justify-between px-3">
+  <BrandLogo />
+  <div class="hidden md:block">
+    <MenuBar items={menuItems} />
+  </div>
+  <div class="hidden md:block">
+    <RoundedButton buttonText="Contact Us" />
+  </div>
+</header>

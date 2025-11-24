@@ -1,8 +1,6 @@
 ---
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
-
-// OTHERS //
 import BrandLogo from "@/components/BrandLogo.astro";
 import RoundedButton from "@/components/RoundedButton.astro";
 
@@ -22,7 +20,7 @@ const currentPath = Astro.url.pathname;
 >
   <div class="container mx-auto flex h-full flex-col justify-between px-6 py-6">
     <!-- Logo + Close Button -->
-    <div class="flex items-center justify-between z-10">
+    <div class="z-10 flex items-center justify-between">
       <BrandLogo width={140} />
 
       <button
@@ -36,7 +34,7 @@ const currentPath = Astro.url.pathname;
     </div>
 
     <!-- Menu Items -->
-    <div class="flex flex-1 flex-col gap-6 pt-28 leading-tight z-10">
+    <div class="z-10 flex flex-1 flex-col gap-6 pt-28 leading-tight">
       {
         menuItems.map((item) => {
           const isActive = currentPath === item.url;
@@ -55,7 +53,7 @@ const currentPath = Astro.url.pathname;
     </div>
 
     <!-- Bottom Buttons -->
-    <div class="flex flex-row justify-center gap-2.5 z-10">
+    <div class="z-10 flex flex-row justify-center gap-2.5">
       <RoundedButton buttonText="Call" variant="secondary" />
       <RoundedButton buttonText="Whatsapp" variant="secondary" />
     </div>
@@ -71,7 +69,7 @@ const currentPath = Astro.url.pathname;
 
   <!-- Circle at back of the links -->
   <div
-    class="back-circle-anim absolute size-[500px] transition-all rounded-full bg-n-800 left-[-80%] opacity-5 top-[10%]"
+    class="back-circle-anim bg-n-800 absolute top-[10%] left-[-80%] size-[500px] rounded-full opacity-5 transition-all"
   >
   </div>
 </div>

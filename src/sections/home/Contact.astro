@@ -1,0 +1,139 @@
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ToolBadge.astro";
+import { Icon } from "astro-icon/components";
+import Tooltip from "@/components/Tooltip.astro";
+
+// DATA //
+import { contactSectionDetails } from "@/data/contact";
+---
+
+<section>
+  <div
+    class="container mx-auto flex flex-col gap-11 px-6 py-16 md:gap-16 md:px-0 md:py-24 lg:gap-20 lg:px-6 lg:py-28"
+  >
+    <!-- Section Header -->
+    <div class="flex flex-col items-center gap-5 lg:gap-7">
+      <!-- Tool Badge component -->
+      <ToolBadge icon="building" text={contactSectionDetails.badgeTitle} />
+
+      <!-- Header Content -->
+      <div class="flex flex-col gap-3 text-center lg:gap-4">
+        <!-- Heading -->
+        <p class="text-n-950 text-3xl font-medium md:text-5xl lg:text-7xl">
+          {contactSectionDetails.heading}
+        </p>
+        <!-- Subheading -->
+        <p class="text-n-950 text-sm font-medium md:text-lg lg:text-xl">
+          {contactSectionDetails.subheading}
+        </p>
+      </div>
+    </div>
+
+    <!-- Content wrap -->
+    <div class="flex flex-col justify-center gap-3.5 lg:flex-row">
+      <div class="flex w-full flex-col gap-3.5 lg:w-[440px]">
+        {
+          contactSectionDetails.contactCards.map((contactSectionItem) => (
+            // Contact Card
+            <a
+              href={contactSectionItem.link}
+              class="hover:bg-n-200 bg-n-100 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5"
+            >
+              <div class="flex max-w-[80%] items-center gap-5">
+                {/* Icon wrapper */}
+                <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-(--blue-500) to-[#8B77F3] sm:size-16 lg:size-[74px]">
+                  <Icon name={contactSectionItem.icon} class="size-5 sm:size-6" />
+                </div>
+
+                {/* Contact info */}
+                <div class="flex w-[60%] flex-col gap-0.5">
+                  <p class="text-n-700 text-xs font-bold md:text-sm lg:text-base">
+                    {contactSectionItem.title}
+                  </p>
+                  <p
+                    class:list={[
+                      "text-n-900 text-sm font-semibold md:text-lg lg:text-xl",
+                      contactSectionItem.id === "mail" ? "truncate" : "",
+                    ]}
+                  >
+                    {contactSectionItem.value}
+                  </p>
+                </div>
+              </div>
+              {/* Tooltip with copy icon */}
+              <Tooltip text="Copy" position="top">
+                <Icon
+                  name="copy"
+                  class="copy-btn size-5 cursor-pointer"
+                  data-copy={contactSectionItem.value}
+                />
+              </Tooltip>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Location -->
+      <a
+        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactSectionDetails.location.address)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group bg-n-100 hover:bg-n-200 flex w-full cursor-pointer flex-col justify-between gap-5 rounded-4xl p-6 sm:flex-row lg:w-[520px]"
+      >
+        <div class="flex flex-col gap-5 md:gap-9">
+          <div class="flex flex-col gap-2.5">
+            <!-- Icon wrapper -->
+            <div
+              class="flex size-11 items-center justify-center rounded-full bg-gradient-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
+            >
+              <Icon name={contactSectionDetails.location.icon} class="size-5 sm:size-6 lg:size-7" />
+            </div>
+
+            <!-- Location content -->
+            <div class="flex flex-col gap-0.5">
+              <p class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl">
+                {contactSectionDetails.location.title}
+              </p>
+              <p class="text-n-900 text-sm font-normal sm:text-lg">
+                {contactSectionDetails.location.subtitle}
+              </p>
+            </div>
+          </div>
+
+          <!-- Address with right arrow icon -->
+          <div class="flex items-center gap-5">
+            <p class="text-xs font-semibold md:text-sm lg:text-base">
+              {contactSectionDetails.location.address}
+            </p>
+            <Icon name="right-arrow" class={"size-5"} />
+          </div>
+        </div>
+
+        <Tooltip text="View in map" position="center" classes="lg:flex-1">
+          <!-- Map View -->
+          <div
+            class="border-n-950 overflow-hidden rounded-4xl border md:w-[40%] md:flex-1 lg:w-full"
+          >
+            <iframe
+              src={contactSectionDetails.location.mapUrl}
+              width="100%"
+              height="100%"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="w-full border-0"
+            >
+            </iframe>
+          </div>
+        </Tooltip>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initCopyButtons } from "@/scripts/contact-copy";
+
+  document.addEventListener("DOMContentLoaded", initCopyButtons);
+</script>
