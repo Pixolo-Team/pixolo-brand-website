@@ -6,7 +6,6 @@ import Tooltip from "@/components/Tooltip.astro";
 
 // DATA //
 import { contactSectionDetails } from "@/data/contact";
-
 ---
 
 <section>
@@ -44,10 +43,7 @@ import { contactSectionDetails } from "@/data/contact";
               <div class="flex max-w-[80%] items-center gap-5">
                 {/* Icon wrapper */}
                 <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-(--blue-500) to-[#8B77F3] sm:size-16 lg:size-[74px]">
-                  <Icon
-                    name={contactSectionItem.icon}
-                    class="size-5 sm:size-6"
-                  />
+                  <Icon name={contactSectionItem.icon} class="size-5 sm:size-6" />
                 </div>
 
                 {/* Contact info */}
@@ -69,7 +65,7 @@ import { contactSectionDetails } from "@/data/contact";
               <Tooltip text="Copy" position="top">
                 <Icon
                   name="copy"
-                  class="size-5 cursor-pointer copy-btn"
+                  class="copy-btn size-5 cursor-pointer"
                   data-copy={contactSectionItem.value}
                 />
               </Tooltip>
@@ -91,17 +87,12 @@ import { contactSectionDetails } from "@/data/contact";
             <div
               class="flex size-11 items-center justify-center rounded-full bg-gradient-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
             >
-              <Icon
-                name={contactSectionDetails.location.icon}
-                class="size-5 sm:size-6 lg:size-7"
-              />
+              <Icon name={contactSectionDetails.location.icon} class="size-5 sm:size-6 lg:size-7" />
             </div>
 
             <!-- Location content -->
             <div class="flex flex-col gap-0.5">
-              <p
-                class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl"
-              >
+              <p class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl">
                 {contactSectionDetails.location.title}
               </p>
               <p class="text-n-900 text-sm font-normal sm:text-lg">
