@@ -61,9 +61,8 @@ import Loading from "@/components/layout/Loading.astro";
 
 <script is:inline>
   const loader = document.querySelector("#loading-screen");
-  const hasLoadedBefore = sessionStorage.getItem("indexLoaderShown");
 
-  if (hasLoadedBefore && loader) {
+  if (loader) {
     // skip instantly if already loaded
     loader.style.display = "flex";
   } else {
