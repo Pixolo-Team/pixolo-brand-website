@@ -1,23 +1,33 @@
 ---
 // COMPONENTS //
-import RetainershipCard from "../../components/RetainershipCard.astro";
-import RetainershipEmployeeCard from "../../components/RetainershipEmployeeCard.astro";
+import RetainershipCard from "@/components/RetainershipCard.astro";
+import RetainershipEmployeeCard from "@/components/RetainershipEmployeeCard.astro";
 ---
 
-<RetainershipCard />
 <RetainershipCard
-  cardNo="2"
-  cardTitle="Developers"
-  cardMessage="Our developers are specialists in creating innovative solutions to meet your needs."
+  number="1"
+  title="Designer"
+  message="We provide the best of the best designer. We would love to share you more details."
 />
 <RetainershipCard
-  cardNo="3"
-  cardTitle="Project Manager"
-  cardMessage="Experienced project managers ensure that everything runs smoothly and efficiently."
+  number="2"
+  title="Developers"
+  message="Our developers are specialists in creating innovative solutions to meet your needs."
 />
 <RetainershipCard
-  cardNo="4"
-  cardTitle="Product Owners"
-  cardMessage="Our marketing specialists help you reach your target audience with tailored strategies."
+  number="3"
+  title="Project Manager"
+  message="Experienced project managers ensure that everything runs smoothly and efficiently."
 />
-<RetainershipEmployeeCard />
+<RetainershipCard
+  number="4"
+  title="Product Owners"
+  message="Our marketing specialists help you reach your target audience with tailored strategies."
+/>
+<RetainershipEmployeeCard
+  image="employee-image.jpg"
+  name="Deven Bhagtani"
+  position="UX Designer"
+  salary="Rs.10,000"
+  experience="4 Years"
+/>

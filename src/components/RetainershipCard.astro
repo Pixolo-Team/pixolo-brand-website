@@ -4,27 +4,27 @@ interface props {
   title: string;
   message: string;
 }
-const {
-  number = "1",
-  title = "Designer",
-  message = "We provide the best of the best designer. We would love to share you more details.",
-} = Astro.props as props;
+
+const { number, title, message } = Astro.props as props;
 ---
 
 <div
-  class="bg-n-100 flex flex-col justify-between py-14 pr-14 pl-6 rounded-4xl gap-4 w-full min-h-[311px] md:min-h-[380px] md:gap-25 lg:max-h-[428px] lg:h-full hover:bg-gradient-to-br from-(--blue-500) to-[#8B77F3]">
+  class="bg-n-100 flex min-h-[311px] w-full flex-col justify-between gap-4 rounded-4xl from-(--blue-500) to-[#8B77F3] py-14 pr-14 pl-6 hover:bg-gradient-to-br md:min-h-[380px] md:gap-25 lg:h-full lg:max-h-[428px]"
+>
   <!-- Card Header -->
   <div class="flex flex-col gap-2">
+    
     <!-- Card Number -->
-    <p
-      class="font-medium text-3xl leading-tight tracking-[-0.07em] text-n-950 md:text-4xl">
+    <p class="text-n-950 text-3xl leading-tight font-medium tracking-[-0.07em] md:text-4xl">
       {number}
     </p>
+
     <!-- Card Title -->
-    <p class="font-medium text-3xl leading-tight text-n-950 md:text-4xl">
+    <p class="text-n-950 text-3xl leading-tight font-medium md:text-4xl">
       {title}
     </p>
   </div>
+
   <!-- Card message -->
-  <p class="text-sm leading-tight text-n-700 font-normal">{message}</p>
+  <p class="text-n-700 text-sm leading-tight font-normal">{message}</p>
 </div>
