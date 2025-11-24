@@ -1,13 +1,13 @@
 ---
 interface props {
-  cardNo: string;
-  cardTitle: string;
-  cardMessage: string;
+  number: string;
+  title: string;
+  message: string;
 }
 const {
-  cardNo = "1",
-  cardTitle = "Designer",
-  cardMessage = "We provide the best of the best designer. We would love to share you more details.",
+  number = "1",
+  title = "Designer",
+  message = "We provide the best of the best designer. We would love to share you more details.",
 } = Astro.props as props;
 ---
 
@@ -18,13 +18,13 @@ const {
     <!-- Card Number -->
     <p
       class="font-medium text-3xl leading-tight tracking-[-0.07em] text-n-950 md:text-4xl">
-      {cardNo}
+      {number}
     </p>
     <!-- Card Title -->
     <p class="font-medium text-3xl leading-tight text-n-950 md:text-4xl">
-      {cardTitle}
+      {title}
     </p>
   </div>
   <!-- Card message -->
-  <p class="text-sm leading-tight text-n-700 font-normal">{cardMessage}</p>
+  <p class="text-sm leading-tight text-n-700 font-normal">{message}</p>
 </div>

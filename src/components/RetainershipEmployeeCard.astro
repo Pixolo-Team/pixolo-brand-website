@@ -8,7 +8,7 @@ interface props {
   imageAlt: string;
   name: string;
   position: string;
-  employeeSalary: string;
+  salary: string;
   experience: string;
 }
 
@@ -17,12 +17,9 @@ const {
   imageAlt = "Employee Image",
   name = "Deven Bhagtani",
   position = "UX Designer",
-  employeeSalary = "Rs.10,000",
+  salary = "Rs.10,000",
   experience = "4 Years",
 } = Astro.props as props;
-const startingFrom = "Starting from";
-const experienceTitle = "Experience: ";
-const arrowIcon = "arrow-icon";
 ---
 
 <div
@@ -56,22 +53,22 @@ const arrowIcon = "arrow-icon";
         <!-- Price details -->
         <div class="flex flex-col">
           <p class="font-medium text-sm text-n-700 leading-tight md:text-base">
-            {startingFrom}
+            Starting from
           </p>
           <p class="font-medium text-base text-n-700 leading-tight md:text-lg">
-            {employeeSalary}
+            {salary}
           </p>
         </div>
         <!-- CTA Icon -->
         <a href="/" aria-label={`View details for ${name}`}>
-          <Icon name={arrowIcon} />
+          <Icon name="arrow-icon" />
         </a>
       </div>
     </div>
   </div>
   <!-- Experience Details -->
   <div class="text-center leading-tight text-sm md:text-base">
-    <span class="font-normal">{experienceTitle}</span>
+    <span class="font-normal">Experience:</span>
     <span class="font-medium">{experience}</span>
   </div>
 </div>
