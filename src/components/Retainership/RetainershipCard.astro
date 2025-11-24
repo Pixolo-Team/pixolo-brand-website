@@ -2,10 +2,10 @@
 interface props {
   number: string;
   title: string;
-  message: string;
+  description: string;
 }
 
-const { number, title, message } = Astro.props as props;
+const { number, title, description } = Astro.props as props;
 ---
 
 <div
@@ -25,6 +25,6 @@ const { number, title, message } = Astro.props as props;
     </p>
   </div>
 
-  <!-- Message -->
-  <p class="text-n-700 text-sm leading-tight font-normal">{message}</p>
+  <!-- Description -->
+  <p class="text-n-700 text-sm leading-tight font-normal">{description}</p>
 </div>
