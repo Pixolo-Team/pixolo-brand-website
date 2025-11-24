@@ -3,22 +3,22 @@ interface props {
   number: string;
   messageHeader: string;
   message: string;
-  orientation: string;
+  direction: "ltr" | "rtl";
 }
 const {
   number = "01",
   messageHeader = "Tell us what you need",
   message = "We understand your project and match you with the right expert.",
-  orientation = "left to right",
+  direction = "left to right",
 } = Astro.props as props;
 ---
 
 <!-- Step Item -->
 <div
-  class={`flex gap-6 w-full items-center max-w-[327px] md:max-w-3xl lg:max-w-[1424px] md:gap-10 lg:gap-16 ${orientation === "right to left" ? "flex-row-reverse" : "flex-row"}`}>
+  class={`flex gap-6 w-full items-center max-w-[327px] md:max-w-3xl lg:max-w-[1424px] md:gap-10 lg:gap-16 ${direction === "rtl" ? "flex-row-reverse" : "flex-row"}`}>
   <!-- Step number -->
   <p
-    class={`font-normal text-5xl leading-tight text-n-950 grow  md:text-7xl lg:text-8xl ${orientation === "right to left" ? "text-left" : "text-right"}`}>
+    class={`font-normal text-5xl leading-tight text-n-950 grow md:text-7xl lg:text-8xl ${direction === "rtl" ? "text-left" : "text-right"}`}>
     {number}
   </p>
   <!-- Ellipse -->
@@ -28,12 +28,12 @@ const {
     class="flex flex-col gap-3 shrink-0 md:gap-5 max-w-[180px] md:max-w-[335px] lg:max-w-[639px]">
     <!-- Message Header -->
     <p
-      class={`font-bold text-2xl leading-tight text-n-950 md:text-3xl lg:text-5xl lg:font-medium ${orientation === "right to left" ? "text-right" : "text-left"}`}>
+      class={`font-bold text-2xl leading-tight text-n-950 md:text-3xl lg:text-5xl lg:font-medium ${direction === "rtl" ? "text-right" : "text-left"}`}>
       {messageHeader}
     </p>
     <!-- Message -->
     <p
-      class={`font-normal text-sm leading-tight text-n-950 md:text-base lg:text-2xl ${orientation === "right to left" ? "text-right" : "text-left"}`}>
+      class={`font-normal text-sm leading-tight text-n-950 md:text-base lg:text-2xl ${direction === "rtl" ? "text-right" : "text-left"}`}>
       {message}
     </p>
   </div>
