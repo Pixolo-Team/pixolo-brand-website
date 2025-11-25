@@ -1,6 +1,5 @@
 ---
 // OTHERS //
-import ProjectCard from "@/components/portfolio/ProjectCard.astro";
 import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
@@ -13,20 +12,4 @@ import Service from "@/sections/home/Service.astro";
   <Clients />
   <Service />
   <Contact />
-  <ProjectCard
-    backgroundColor="#E90303"
-    imageConfigs={{
-      name: "",
-      src: "",
-      classes: "",
-    }}
-    logoConfigs={{
-      name: "reliance-logo",
-      src: "icons/reliance-digital.svg",
-      classes: "w-[256.47px] h-[73.4px] top-[13.19px]",
-    }}
-    title="E-commerce Platform for Local Brands"
-    subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
-    chips={["Product Design", "App Development", "Dashboard Design"]}
-  />
 </Layout>

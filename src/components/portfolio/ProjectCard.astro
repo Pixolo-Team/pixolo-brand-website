@@ -1,16 +1,8 @@
 ---
 interface Props {
   backgroundColor: string;
-  imageConfigs: {
-    name: string;
-    src: string;
-    classes: string;
-  };
-  logoConfigs: {
-    name: string;
-    src: string;
-    classes: string;
-  };
+  image: string;
+  logo: string;
   title: string;
   subtitle: string;
   chips: Array<string>;
@@ -21,7 +13,7 @@ import RoundedButton from "../RoundedButton.astro";
 import Chip from "./Chip.astro";
 
 // PROPS
-const { backgroundColor, imageConfigs, logoConfigs, title, subtitle, chips } = Astro.props;
+const { backgroundColor, image, logo, title, subtitle, chips } = Astro.props;
 ---
 
 <!-- Main Project Tile -->
@@ -29,8 +21,8 @@ const { backgroundColor, imageConfigs, logoConfigs, title, subtitle, chips } = A
   <!-- Project Content -->
   <div class="flex flex-col gap-6 px-5 py-6">
     <!-- Logo -->
-    <div class="">
-      <img src={logoConfigs?.src} alt={logoConfigs?.name} class=`${logoConfigs?.classes}` />
+    <div class="h-[111px] w-[295px]">
+      <img src={logo} alt="logo" class="top-[13.19px] h-[73.4px] w-[256.47px]" />
     </div>
 
     <!-- Project Details Wrapper -->
@@ -60,6 +52,6 @@ const { backgroundColor, imageConfigs, logoConfigs, title, subtitle, chips } = A
 
   <!-- Image -->
   <div class="hidden">
-    <img src={imageConfigs?.src} alt={imageConfigs?.name} class=`${imageConfigs?.classes}` />
+    <img src={image} alt="image" class="h-[644.41px] w-[617px]" />
   </div>
 </div>
