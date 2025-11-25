@@ -1,0 +1,42 @@
+---
+const imageSrc = "/images/blog-card.png";
+const category = "Designing";
+const date = "6th Nov 25";
+const title = "Get expert design advice to create experiences.";
+const author = "Omkar Mitake";
+---
+
+<!-- Card Wrapper -->
+<section class="text-white">
+  <!-- Image Section -->
+  <div>
+    <img src={imageSrc} alt={title} />
+  </div>
+
+  <!-- Content Section -->
+  <div>
+    <!-- Category + Date Row -->
+    <div>
+      <!-- Category Badge -->
+      <span>{category}</span>
+
+      <!-- Date with Icon -->
+      <div>
+        <!-- Calendar Icon -->
+        <svg></svg>
+        {date}
+      </div>
+    </div>
+
+    <!-- Title -->
+    <p>{title}</p>
+
+    <!-- Author + Link Row -->
+    <div>
+      <p>By: {author}</p>
+
+      <!-- Arrow Link -->
+      <a href="#">→</a>
+    </div>
+  </div>
+</section>
