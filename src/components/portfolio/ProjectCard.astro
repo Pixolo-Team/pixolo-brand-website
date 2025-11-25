@@ -17,8 +17,8 @@ interface Props {
 }
 
 // COMPONENTS
-import Badge from "../Badge.astro";
 import RoundedButton from "../RoundedButton.astro";
+import Chip from "./Chip.astro";
 
 // PROPS
 const { backgroundColor, imageConfigs, logoConfigs, title, subtitle, chips } = Astro.props;
@@ -40,7 +40,7 @@ const { backgroundColor, imageConfigs, logoConfigs, title, subtitle, chips } = A
         <!-- Chip Wrapper -->
         <div class="flex flex-wrap gap-2">
           <!-- Portfolio Chip -->
-          {chips?.map((chipText: string) => <Badge badgeText={chipText} />)}
+          {chips?.map((chipText: string) => <Chip chipText={chipText} />)}
         </div>
 
         <!-- Title Details -->
