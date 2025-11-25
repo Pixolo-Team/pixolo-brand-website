@@ -34,11 +34,7 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
     aria-controls="dropdown-options"
   >
     <!-- Dropdown trigger button -->
-    <div
-      id="dropdown-trigger"
-      class="flex items-center gap-3 select-none"
-      tabindex="0"
-    >
+    <div id="dropdown-trigger" class="flex items-center gap-3 select-none" tabindex="0">
       <!-- Selected option text -->
       <span id="dropdown-selected" class="font-semibold capitalize">
         {options[0] || "Select"}

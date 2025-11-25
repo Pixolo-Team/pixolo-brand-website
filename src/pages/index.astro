@@ -1,11 +1,14 @@
 ---
 // COMPONENTS //
-import RoundedButton from "../components/RoundedButton.astro";
-import BottomCTA from "../components/BottomCTA.astro";
-import ContactForm from "../components/ContactForm.astro";
+import ContactForm from "@/components/ContactForm.astro";
 
 // OTHERS //
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
+
+// SECTIONS //
+import Clients from "@/sections/home/Clients.astro";
+import Products from "@/sections/home/Products.astro";
+import Service from "@/sections/home/Service.astro";
 ---
 
 <Layout>
@@ -29,6 +32,9 @@ import Layout from "../layouts/Layout.astro";
     <!-- Start adding sections from below  -->
     <div class="relative z-10">
       <ContactForm />
+      <Clients />
+      <Service />
+      <Products />
     </div>
   </div>
 </Layout>

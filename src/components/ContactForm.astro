@@ -28,9 +28,7 @@ const subjectOptions = [
     class="bg-n-50 border-n-400 z-20 flex w-full flex-col overflow-hidden rounded-3xl border md:w-[680px] lg:w-[800px]"
   >
     <!-- Title Bar -->
-    <div
-      class="bg-n-400 flex w-full gap-1.5 px-6 py-3 md:gap-2 md:px-7 lg:px-11 lg:py-4"
-    >
+    <div class="bg-n-400 flex w-full gap-1.5 px-6 py-3 md:gap-2 md:px-7 lg:px-11 lg:py-4">
       <!-- 3 Buttons (macOS style window controls) -->
       <div
         id="close-btn"
@@ -65,16 +63,12 @@ const subjectOptions = [
           />
 
           <!-- For tablets and desktops -->
-          <div
-            class="absolute bottom-1.5 left-9 md:bottom-3 md:flex md:items-center md:gap-4"
-          >
+          <div class="absolute bottom-1.5 left-9 md:bottom-3 md:flex md:items-center md:gap-4">
             <!-- Chip component -->
             <Chip iconName="pixolo-logo" text="Pixolo Technologies" />
 
             <!-- Email address display -->
-            <p class="hidden font-normal md:flex md:text-sm">
-              (business@pixolotechnologies.com)
-            </p>
+            <p class="hidden font-normal md:flex md:text-sm">(business@pixolotechnologies.com)</p>
           </div>
         </div>
 
@@ -87,10 +81,7 @@ const subjectOptions = [
           id="emailFrom"
           required={true}
           isError={false}
-          errorMessages={[
-            "This doesn’t look like an email address.",
-            "This field is required.",
-          ]}
+          errorMessages={["This doesn’t look like an email address.", "This field is required."]}
         />
 
         <!-- Phone Number -->
@@ -102,10 +93,7 @@ const subjectOptions = [
           id="phoneNo"
           required={true}
           isError={false}
-          errorMessages={[
-            "This field is required.",
-            "This doesn’t look like a phone number.",
-          ]}
+          errorMessages={["This field is required.", "This doesn’t look like a phone number."]}
         />
 
         <!-- Subjects Dropdown  -->
@@ -139,9 +127,7 @@ const subjectOptions = [
     const closeBtn = document.getElementById("close-btn");
 
     if (!backdrop || !closeBtn) {
-      console.warn(
-        "ContactForm: Required elements not found. Modal functionality may not work."
-      );
+      console.warn("ContactForm: Required elements not found. Modal functionality may not work.");
       return;
     }
 
