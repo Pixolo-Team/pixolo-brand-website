@@ -1,9 +1,9 @@
 export const homeProductsDetails = {
-  productIcon: "product-icon",
+  toolBadgeIcon: "product-icon",
   toolBadgeText: "Our in-house creations.",
   titlePrefix: "Built with",
   titleIcon: "heart-outline-icon.png",
-  titleIconAlt: "Title Wrapper Image",
+  titleIconAlt: "Pixolo Products Heart",
   titleSuffix: "by Pixolo",
   subTitle: "Where our creativity meets real-world impact.",
 };
