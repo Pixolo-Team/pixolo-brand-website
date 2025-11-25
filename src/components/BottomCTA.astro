@@ -1,6 +1,6 @@
 ---
-const { ctaText, svgName } = Astro.props;
-const iconPath = `/icons/${svgName}.svg`;
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
 ---
 
 <div>
@@ -9,11 +9,11 @@ const iconPath = `/icons/${svgName}.svg`;
     class="text-n-950 bg-n-800/20 flex w-fit items-center justify-center gap-3 rounded-4xl py-2 pr-2 pl-7"
   >
     <!-- CTA Text -->
-    <p class="text-lg font-medium">{ctaText}</p>
+    <p class="text-lg font-medium">Tell us about your needs</p>
 
     <!-- Icon -->
     <div class="bg-n-950 flex h-12 w-12 items-center justify-center rounded-full">
-      <img src={iconPath} alt=`${svgName} Icon` />
+      <Icon name={"menu"} />
     </div>
   </div>
 </div>
