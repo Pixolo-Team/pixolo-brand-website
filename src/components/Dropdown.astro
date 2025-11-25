@@ -55,14 +55,14 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
       class="border-n-500 bg-n-950 absolute top-[100%] left-0 z-10 mt-2 hidden w-full min-w-[200px] overflow-hidden rounded-3xl border"
     >
       {
-        options.map((opt) => (
+        options.map((optionItem) => (
           <li
             role="option"
             class="text-n-100 hover:bg-n-900 cursor-pointer px-6 py-3 font-normal"
-            data-value={opt}
+            data-value={optionItem}
             tabindex="0"
           >
-            {opt}
+            {optionItem}
           </li>
         ))
       }
