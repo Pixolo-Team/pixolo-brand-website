@@ -4,6 +4,7 @@ import "@/styles/global.css";
 
 // COMPONENTS //
 import Navbar from "@/components/Navbar.astro";
+import Loading from "@/components/layout/Loading.astro";
 import Meta from "@/components/layout/Meta.astro";
 
 const { meta = {} } = Astro.props;
@@ -21,6 +22,8 @@ const { meta = {} } = Astro.props;
     />
   </head>
   <body>
+    <Loading />
+
     <!-- Top menu -->
     <div class="fixed top-3 left-0 z-50 w-full">
       <Navbar />
@@ -57,7 +60,6 @@ const { meta = {} } = Astro.props;
     height: 100%;
   }
 </style>
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // Select all elements that should animate when visible
