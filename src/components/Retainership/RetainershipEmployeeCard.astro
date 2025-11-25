@@ -19,6 +19,7 @@ const { image, name, position, salary, experience } = Astro.props as props;
 >
   <!-- Employee Details -->
   <div class="bg-n-100 flex flex-col gap-4 rounded-3xl p-5 md:flex-row">
+    <!-- Employee image -->
     <Image
       src={`/images/retainership/${image}`}
       alt={name}
@@ -38,18 +39,20 @@ const { image, name, position, salary, experience } = Astro.props as props;
         </p>
       </div>
 
-      <!-- Price Wrapper -->
+      <!-- Employee salary starting from -->
       <div class="flex items-center justify-between">
         <div class="flex flex-col">
           <p class="text-n-700 text-sm leading-tight font-medium md:text-base">Starting from</p>
+
+          <!-- Salary -->
           <p class="text-n-700 text-base leading-tight font-medium md:text-lg">
             {salary}
           </p>
         </div>
 
-        <!-- CTA Icon -->
+        <!-- CTA Right Arrow Icon -->
         <a href="/" aria-label={`View details for ${name}`}>
-          <Icon name="arrow-icon" />
+          <Icon name="right-arrow" class="size-[18px]" />
         </a>
       </div>
     </div>
