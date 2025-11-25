@@ -3,6 +3,7 @@
 import "@/styles/global.css";
 
 // COMPONENTS //
+import WhatsappButton from "@/components/WhatsappButton.astro";
 import Navbar from "@/components/Navbar.astro";
 import Loading from "@/components/layout/Loading.astro";
 import Meta from "@/components/layout/Meta.astro";
@@ -49,6 +50,12 @@ const { meta = {} } = Astro.props;
     <main class="relative z-10">
       <slot />
     </main>
+
+    <!-- Whatsapp button component -->
+    <WhatsappButton
+      href="https://wa.me/9768941186"
+      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-50"
+    />
   </body>
 </html>
 

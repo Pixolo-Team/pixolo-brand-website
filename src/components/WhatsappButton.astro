@@ -1,0 +1,31 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  href: string;
+  extraClasses?: string;
+}
+
+const { href = "", extraClasses = "" } = Astro.props as Props;
+---
+
+<!-- Whatsapp Button -->
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={`group flex justify-center items-center rounded-full p-5 lg:p-6 bg-n-800/20 transition-all duration-800 border border-n-950 h-16 lg:h-20 ${extraClasses}`}
+  aria-label="Contact us on WhatsApp"
+>
+  <!-- Whatsapp Icon -->
+  <Icon name="whatsapp-logo" class="size-6 lg:size-8" />
+
+  <!-- Button Text -->
+  <div
+    class="max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-800 ease-in-out group-hover:opacity-100 group-hover:md:ml-2.5 md:group-hover:max-w-[250px]"
+  >
+    <p class="text-n-950 text-lg leading-[22px] font-medium">WhatsApp</p>
+    <p class="text-n-950 text-xs font-medium">Let's Connect</p>
+  </div>
+</a>
