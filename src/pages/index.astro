@@ -1,19 +1,18 @@
 ---
-
 // OTHERS //
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
-import Clients from "../sections/home/Clients.astro";
-import Service from "../sections/home/Service.astro";
-
+import Clients from "@/sections/home/Clients.astro";
+import Products from "@/sections/home/Products.astro";
+import Service from "@/sections/home/Service.astro";
 ---
 
 <Layout>
   <div>
     <!-- Background Star Video -->
     <video
-      class="fixed top-0 left-0 w-full h-full object-cover bg-transparent -z-10"
+      class="fixed top-0 left-0 -z-10 h-full w-full bg-transparent object-cover"
       src="/videos/stars.mp4"
       autoplay
       muted
@@ -22,7 +21,7 @@ import Service from "../sections/home/Service.astro";
 
     <!-- Background Circle Gradient -->
     <div
-      class="fixed top-[30%] w-[885px] h-[885px] rounded-full left-1/2 -translate-x-1/2"
+      class="fixed top-[30%] left-1/2 h-[885px] w-[885px] -translate-x-1/2 rounded-full"
       style="background: linear-gradient(90deg, rgba(22, 125, 229, 0.36) 0%, rgba(95, 74, 200, 0.36) 92.31%);
 filter: blur(250px);"
     >
@@ -32,7 +31,7 @@ filter: blur(250px);"
     <div class="relative z-10">
       <Clients />
       <Service />
+      <Products />
     </div>
-
   </div>
 </Layout>
