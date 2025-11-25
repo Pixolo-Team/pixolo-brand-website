@@ -10,19 +10,19 @@ interface Props {
 
 // COMPONENTS
 import RoundedButton from "../RoundedButton.astro";
-import Chip from "./Chip.astro";
+import Badge from "./Badge.astro";
 
 // PROPS
 const { backgroundColor, image, logo, title, subtitle, chips } = Astro.props;
 ---
 
 <!-- Main Project Tile -->
-<div class=`rounded-[42px] bg-[${backgroundColor}]`>
+<div class=`rounded-[42px] ${backgroundColor}`>
   <!-- Project Content -->
   <div class="flex flex-col gap-6 px-5 py-6">
     <!-- Logo -->
-    <div class="h-[111px] w-[295px]">
-      <img src={logo} alt="logo" class="top-[13.19px] h-[73.4px] w-[256.47px]" />
+    <div class="h-[99.78px] w-[287px] content-center justify-start">
+      <img src={logo} alt="logo" class="top-[13.19px] h-[109.72px]" />
     </div>
 
     <!-- Project Details Wrapper -->
@@ -32,11 +32,11 @@ const { backgroundColor, image, logo, title, subtitle, chips } = Astro.props;
         <!-- Chip Wrapper -->
         <div class="flex flex-wrap gap-2">
           <!-- Portfolio Chip -->
-          {chips?.map((chipText: string) => <Chip chipText={chipText} />)}
+          {chips?.map((chipText: string) => <Badge badgeText={chipText} />)}
         </div>
 
         <!-- Title Details -->
-        <div class="text-n-950 flex flex-col gap-4">
+        <div class="text-n-50 flex flex-col gap-4">
           <!-- Title -->
           <p class="text-2xl leading-tight font-semibold">{title}</p>
 
