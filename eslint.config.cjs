@@ -5,6 +5,10 @@ const prettier = require("eslint-plugin-prettier");
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
 module.exports = [
+  // IGNORE
+  {
+    ignores: ["**/*.d.ts"],
+  },
   // ---------------------------------------------------------
   // JS + TS
   // ---------------------------------------------------------

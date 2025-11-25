@@ -1,0 +1,37 @@
+---
+interface Props {
+  image: string;
+  tabs: Array<string>;
+  title: string;
+  subtitle: string;
+}
+
+// COMPONENTS
+import RoundedButton from "../RoundedButton.astro";
+
+const { image, tabs, title, subtitle } = Astro.props;
+---
+
+<!-- Portfolio Article Card -->
+<div class="">
+  <!-- Image -->
+  <div class="">
+    <img src={image} alt="image" class="" />
+  </div>
+  <!-- Tabs -->
+  <div class="">
+    {
+      tabs.map(
+        (tabText) => tabText, // Portfolio Badge
+      )
+    }
+  </div>
+  <!-- Article Details -->
+  <div class="">
+    <!-- Title -->
+    <p class="">{title}</p>
+    <!-- Subtitle -->
+    <p class="">{subtitle}</p>
+  </div>
+  <RoundedButton buttonText="View Case Study" leftIcon="" rightIcon="" />
+</div>
