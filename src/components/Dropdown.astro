@@ -8,11 +8,10 @@ export interface Props {
   label: string;
   name: string;
   id: string;
-  iconName: string;
 }
 
 // Destructure props with default values
-const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
+const { options = [], label = "", name = "", id = "" } = Astro.props;
 ---
 
 <!-- Dropdown container with label -->
@@ -42,7 +41,7 @@ const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
 
       <!-- Dropdown arrow icon -->
       <Icon
-        name={iconName}
+        name={"dropdown-icon"}
         id="dropdown-arrow"
         class="text-n-600 size-3.5 transition-transform duration-200"
       />

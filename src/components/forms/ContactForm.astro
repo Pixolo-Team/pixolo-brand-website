@@ -1,12 +1,10 @@
 ---
 // COMPONENTS //
-import Chip from "@/components/forms/Chip.astro";
-
-// OTHERS //
-import Dropdown from "./Dropdown.astro";
-import InputField from "./InputField.astro";
-import RoundedButton from "./RoundedButton.astro";
-import Textarea from "./Textarea.astro";
+import Chip from "@/components/Chip.astro";
+import Dropdown from "@/components/Dropdown.astro";
+import InputField from "@/components/InputField.astro";
+import RoundedButton from "@/components/RoundedButton.astro";
+import Textarea from "@/components/Textarea.astro";
 
 // DATA //
 import { contactSubjectOptions } from "@/data/contact";
@@ -94,13 +92,7 @@ import { contactSubjectOptions } from "@/data/contact";
         />
 
         <!-- Subjects Dropdown  -->
-        <Dropdown
-          label="Subject"
-          name="Subject"
-          id="Subject"
-          options={contactSubjectOptions}
-          iconName="dropdown-icon"
-        />
+        <Dropdown label="Subject" name="Subject" id="Subject" options={contactSubjectOptions} />
 
         <!-- Additional Note -->
         <Textarea
