@@ -15,11 +15,11 @@ const { tabItems } = Astro.props;
   {
     tabItems.map((tabItem) => {
       return (
-        <div
+        <button
           class={`border-n-950 hover:bg-n-950 hover:text-n-100 mb-4 cursor-pointer rounded-4xl border px-4 py-2 ${tabItem.isActive ? "text-n-100 bg-n-950" : "text-n-950 "}`}
         >
           <p class="leading-light text-sm font-normal tracking-normal">{tabItem.name}</p>
-        </div>
+        </button>
       );
     })
   }
