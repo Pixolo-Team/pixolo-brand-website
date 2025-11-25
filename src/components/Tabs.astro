@@ -1,14 +1,22 @@
 ---
-const tabs = ["Sports", "Finance", "Digital", "Hybrid", "Augmented Reality"];
+interface Props {
+  tabItems: {
+    id: number;
+    name: string;
+    isActive: boolean;
+  }[];
+}
+
+const { tabItems } = Astro.props;
 ---
 
 <!-- Tab component -->
 <div class="flex flex-wrap justify-center gap-6">
   {
-    tabs.map((tab) => {
+    tabItems.map((tab) => {
       return (
         <div class="border-white-50 mb-4 rounded-full border px-4 py-2 text-white">
-          <p class="text-sm leading-[1.25] font-normal tracking-normal">{tab}</p>
+          <p class="text-sm leading-[1.25] font-normal tracking-normal">{tab.name}</p>
         </div>
       );
     })

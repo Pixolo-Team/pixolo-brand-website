@@ -1,0 +1,13 @@
+---
+import Tabs from "@/components/Tabs.astro";
+
+const tabItems = [
+  { id: 1, name: "Sports", isActive: true },
+  { id: 2, name: "Finance", isActive: false },
+  { id: 3, name: "Digital", isActive: false },
+  { id: 4, name: "Hybrid", isActive: false },
+  { id: 5, name: "Augmented Reality", isActive: false },
+];
+---
+
+<Tabs tabItems={tabItems} />
