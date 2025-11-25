@@ -58,15 +58,6 @@ import Loading from "@/components/layout/Loading.astro";
     height: 100%;
   }
 </style>
-
-<script is:inline>
-  const loader = document.querySelector("#loading-screen");
-
-  if (loader) {
-    loader.style.display = "flex";
-  }
-</script>
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // Select all elements that should animate when visible

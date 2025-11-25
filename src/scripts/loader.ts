@@ -1,4 +1,5 @@
-export function initLoader() {
+/** Function to initialize loader */
+export const initLoader = () => {
   const loader = document.getElementById("loading-screen");
   const label = document.getElementById("progress-label");
 
@@ -62,4 +63,4 @@ export function initLoader() {
   setTimeout(() => {
     finishProgress();
   }, 6000);
-}
+};
