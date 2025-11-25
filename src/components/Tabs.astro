@@ -13,12 +13,20 @@ const { tabItems } = Astro.props;
 <!-- Tab component -->
 <div class="flex flex-wrap justify-center gap-6">
   {
-    tabItems.map((tab) => {
-      return (
-        <div class="border-white-50 mb-4 rounded-full border px-4 py-2 text-white">
-          <p class="text-sm leading-[1.25] font-normal tracking-normal">{tab.name}</p>
-        </div>
-      );
+    tabItems.map((tabItem) => {
+      if (tabItem.isActive) {
+        return (
+          <div class="border-n-950 text-n-100 bg-n-950 mb-4 rounded-full border px-4 py-2 hover:cursor-pointer">
+            <p class="leading-light text-sm font-normal tracking-normal">{tabItem.name}</p>
+          </div>
+        );
+      } else {
+        return (
+          <div class="border-n-950 text-n-950 hover:bg-n-950 hover:text-n-100 mb-4 rounded-full border px-4 py-2 hover:cursor-pointer">
+            <p class="leading-light text-sm font-normal tracking-normal">{tabItem.name}</p>
+          </div>
+        );
+      }
     })
   }
 </div>
