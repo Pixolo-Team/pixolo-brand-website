@@ -2,43 +2,29 @@
 // COMPONENTS //
 import Image from "astro/components/Image.astro";
 import ToolBadge from "@/components/ToolBadge.astro";
-import ProductItem from "@/components/ProductItem.astro";
+import ProductItem from "@/components/products/ProductItem.astro";
 
 // DATA //
 import { homeProductsDetails, productItems } from "@/data/products";
-
 ---
 
 <!-- Product Section -->
-
-<section class="flex flex-col justify-center items-center">
-
+<section class="flex flex-col items-center justify-center">
   <!-- Container -->
-
   <div
-    class="flex flex-col justify-center items-center px-6 md:px-10 lg:px-14 py-40 lg:32 gap-12 md:gap-16 lg:gap-20 container"
+    class="lg:32 container flex flex-col items-center justify-center gap-12 px-6 py-40 md:gap-16 md:px-10 lg:gap-20 lg:px-14"
   >
-
     <!-- Header -->
-
-    <div class="flex flex-col justify-center items-center gap-6 lg:gap-7">
-
+    <div class="flex flex-col items-center justify-center gap-6 lg:gap-7">
       <!-- Tool Badge -->
-
-      <ToolBadge
-        icon={homeProductsDetails.productIcon}
-        text={homeProductsDetails.toolBadgeText}
-      />
+      <ToolBadge icon={homeProductsDetails.productIcon} text={homeProductsDetails.toolBadgeText} />
 
       <!-- Title Wrapper -->
-
-      <div class="flex flex-col justify-center items-center gap-5 lg:gap-6">
-
+      <div class="flex flex-col items-center justify-center gap-5 lg:gap-6">
         <!-- Heading -->
-
-        <div class="flex flex-wrap justify-center items-end gap-1.5">
+        <div class="flex flex-wrap items-end justify-center gap-1.5">
           <p
-            class="font-normal text-4xl md:text-6xl lg:text-7xl tracking-tight text-n-950 vertical-alignment-middle horizontal-alignment-center"
+            class="text-n-950 vertical-alignment-middle horizontal-alignment-center text-4xl font-normal tracking-tight md:text-6xl lg:text-7xl"
           >
             {homeProductsDetails.textWrapperBuiltWith}
           </p>
@@ -47,35 +33,30 @@ import { homeProductsDetails, productItems } from "@/data/products";
             alt={homeProductsDetails.titleWrapperAlt}
             width={67}
             height={50}
-            class="md:w-[101px] md:h-[76px] lg:w-[118px] lg:h-[88px]"
+            class="md:h-[76px] md:w-[101px] lg:h-[88px] lg:w-[118px]"
           />
           <p
-            class="font-normal text-4xl md:text-6xl lg:text-7xl tracking-tight text-n-950 vertical-alignment-middle horizontal-alignment-center"
+            class="text-n-950 vertical-alignment-middle horizontal-alignment-center text-4xl font-normal tracking-tight md:text-6xl lg:text-7xl"
           >
             {homeProductsDetails.textWrapperByPixolo}
           </p>
         </div>
 
         <!-- Message -->
-
-        <p
-          class="font-medium text-sm md:text-lg lg:text-2xl leading-normal text-n-950 text-center"
-        >
+        <p class="text-n-950 text-center text-sm leading-normal font-medium md:text-lg lg:text-2xl">
           {homeProductsDetails.titleWrapperMessage}
         </p>
       </div>
     </div>
 
     <!-- Products -->
-     
     <div>
       {
         productItems.map((product) => (
           <ProductItem
-            companyLogo={product.companyLogo}
-            companyName={product.companyName}
-            imageName={product.imageName}
-            name={product.name}
+            name={product.companyName}
+            logo={product.companyLogo}
+            image={product.imageName}
             description={product.description}
             href={product.href}
           />
