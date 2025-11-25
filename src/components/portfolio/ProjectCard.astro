@@ -1,11 +1,27 @@
 ---
+interface Props {
+  backgroundColor: string;
+  imageConfigs: {
+    name: string;
+    src: string;
+    classes: string;
+  };
+  logoConfigs: {
+    name: string;
+    src: string;
+    classes: string;
+  };
+  title: string;
+  subtitle: string;
+  chips: Array<string>;
+}
+
+// COMPONENTS
 import Badge from "../Badge.astro";
 import RoundedButton from "../RoundedButton.astro";
 
-// COMPONENTS
-
 // PROPS
-const { backgroundColor, imageConfigs, logoConfigs, title, subtitle, chips = [] } = Astro.props;
+const { backgroundColor, imageConfigs, logoConfigs, title, subtitle, chips } = Astro.props;
 ---
 
 <!-- Main Project Tile -->
@@ -24,7 +40,7 @@ const { backgroundColor, imageConfigs, logoConfigs, title, subtitle, chips = [] 
         <!-- Chip Wrapper -->
         <div class="flex flex-wrap gap-2">
           <!-- Portfolio Chip -->
-          {chips.map((chipText: string) => <Badge badgeText={chipText} />)}
+          {chips?.map((chipText: string) => <Badge badgeText={chipText} />)}
         </div>
 
         <!-- Title Details -->
