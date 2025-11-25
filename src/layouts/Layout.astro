@@ -1,9 +1,9 @@
 ---
 // STYLES //
-import "../styles/global.css";
+import "@/styles/global.css";
 
 // COMPONENTS //
-import Navbar from "../components/Navbar.astro";
+import Navbar from "@/components/Navbar.astro";
 ---
 
 <!doctype html>
@@ -17,6 +17,9 @@ import Navbar from "../components/Navbar.astro";
     <link rel="icon" href="/favicon-dark.png" media="(prefers-color-scheme: dark)" />
     <meta name="generator" content={Astro.generator} />
     <title>Pixolo Technologies</title>
+    <!-- Sitemap & Robots -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="robots" href="/robots.txt" />
   </head>
   <body>
     <!-- Top menu -->
