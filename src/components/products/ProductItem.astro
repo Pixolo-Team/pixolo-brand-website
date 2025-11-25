@@ -6,12 +6,12 @@ import Image from "astro/components/Image.astro";
 interface Props {
   name: string;
   logo: string;
-  image: string;
+  thumbnail: string;
   description: string;
   href: string;
 }
 
-const { name, logo, image, description, href } = Astro.props as Props;
+const { name, logo, thumbnail, description, href } = Astro.props as Props;
 ---
 
 <!-- Product Item -->
@@ -19,27 +19,27 @@ const { name, logo, image, description, href } = Astro.props as Props;
   class="border-n-950 flex w-full flex-col gap-3 border-b-[0.4px] py-7 md:gap-3.5 md:border-b-[0.6px] lg:flex-row lg:justify-between lg:gap-12 lg:border-b-[0.8px]"
 >
   <!-- Logo Container -->
-  <div class="flex gap-2.5 lg:w-1/2">
+  <div class="flex gap-2.5 lg:w-2/5">
     <Image
       src={`/images/products/${logo}`}
       alt={`${name} logo`}
       width={180}
       height={63}
-      class="md:h-[88px] md:w-[250px]"
+      class="object-contain md:h-[88px] md:w-[250px]"
     />
   </div>
 
   <!-- Product Image -->
   <Image
-    src={`/images/products/${image}`}
-    alt={`${name} image`}
+    src={`/images/products/${thumbnail}`}
+    alt={`${name} thumbnail`}
     width={327}
     height={140}
     class="h-[140px] w-full rounded-[25px] object-cover md:h-[209px] lg:hidden"
   />
 
   <!-- Content -->
-  <div class="flex w-full items-center justify-center gap-6 md:gap-16 lg:w-1/2 lg:gap-16">
+  <div class="flex w-full items-center justify-center gap-6 md:gap-16 lg:w-3/5 lg:gap-16">
     <!-- Description -->
     <p class="text-n-700 text-xs leading-normal font-normal md:text-base">
       {description}

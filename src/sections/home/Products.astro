@@ -21,30 +21,34 @@ import { homeProductsDetails, productItems } from "@/data/products";
 
       <!-- Title Wrapper -->
       <div class="flex flex-col items-center justify-center gap-5 lg:gap-6">
-        <!-- Heading -->
         <div class="flex flex-wrap items-end justify-center gap-1.5">
+          <!-- Title Prefix -->
           <p
             class="text-n-950 vertical-alignment-middle horizontal-alignment-center text-4xl font-normal tracking-tight md:text-6xl lg:text-7xl"
           >
-            {homeProductsDetails.textWrapperBuiltWith}
+            {homeProductsDetails.titlePrefix}
           </p>
+
+          <!-- Title Icon -->
           <Image
-            src={`/images/products/${homeProductsDetails.titleWrapperImage}`}
-            alt={homeProductsDetails.titleWrapperAlt}
+            src={`/images/products/${homeProductsDetails.titleIcon}`}
+            alt={homeProductsDetails.titleIconAlt}
             width={67}
             height={50}
             class="md:h-[76px] md:w-[101px] lg:h-[88px] lg:w-[118px]"
           />
+
+          <!-- Title Suffix -->
           <p
             class="text-n-950 vertical-alignment-middle horizontal-alignment-center text-4xl font-normal tracking-tight md:text-6xl lg:text-7xl"
           >
-            {homeProductsDetails.textWrapperByPixolo}
+            {homeProductsDetails.titleSuffix}
           </p>
         </div>
 
-        <!-- Message -->
+        <!-- Subtitle -->
         <p class="text-n-950 text-center text-sm leading-normal font-medium md:text-lg lg:text-2xl">
-          {homeProductsDetails.titleWrapperMessage}
+          {homeProductsDetails.subTitle}
         </p>
       </div>
     </div>
@@ -52,13 +56,13 @@ import { homeProductsDetails, productItems } from "@/data/products";
     <!-- Products -->
     <div>
       {
-        productItems.map((product) => (
+        productItems.map((productItem) => (
           <ProductItem
-            name={product.name}
-            logo={product.logo}
-            image={product.image}
-            description={product.description}
-            href={product.href}
+            name={productItem.name}
+            logo={productItem.logo}
+            thumbnail={productItem.thumbnail}
+            description={productItem.description}
+            href={productItem.href}
           />
         ))
       }
