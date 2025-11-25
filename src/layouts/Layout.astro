@@ -1,22 +1,24 @@
 ---
 // STYLES //
-import "../styles/global.css";
+import "@/styles/global.css";
 
 // COMPONENTS //
-import Navbar from "../components/Navbar.astro";
+import Navbar from "@/components/Navbar.astro";
+import Meta from "@/components/layout/Meta.astro";
+
+const { meta = {} } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="color-scheme" content="light dark" />
-    <link rel="icon" href="/favicon-light.png" media="(prefers-color-scheme: light)" />
-    <!-- Favicon for dark mode -->
-    <link rel="icon" href="/favicon-dark.png" media="(prefers-color-scheme: dark)" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Pixolo Technologies</title>
+    <!-- Metadata -->
+    <Meta
+      title={meta.title}
+      description={meta.description}
+      image={meta.image}
+      noIndex={meta.noIndex}
+    />
   </head>
   <body>
     <!-- Top menu -->
