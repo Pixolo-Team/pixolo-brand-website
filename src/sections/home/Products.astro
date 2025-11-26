@@ -1,0 +1,74 @@
+---
+// COMPONENTS //
+import Image from "astro/components/Image.astro";
+import ToolBadge from "@/components/ToolBadge.astro";
+import ProductItem from "@/components/products/ProductItem.astro";
+
+// DATA //
+import { homeProductsDetails, productItems } from "@/data/products";
+---
+
+<!-- Product Section -->
+<section class="flex flex-col items-center justify-center">
+  <!-- Container -->
+  <div
+    class="lg:32 container flex flex-col items-center justify-center gap-12 px-6 py-40 md:gap-16 md:px-10 lg:gap-20 lg:px-14"
+  >
+    <!-- Header -->
+    <div class="flex flex-col items-center justify-center gap-6 lg:gap-7">
+      <!-- Tool Badge -->
+      <ToolBadge
+        icon={homeProductsDetails.toolBadgeIcon}
+        text={homeProductsDetails.toolBadgeText}
+      />
+
+      <!-- Title Wrapper -->
+      <div class="flex flex-col items-center justify-center gap-5 lg:gap-6">
+        <div class="flex flex-wrap items-end justify-center gap-1.5">
+          <!-- Title Prefix -->
+          <p
+            class="text-n-950 vertical-alignment-middle horizontal-alignment-center text-4xl font-normal tracking-tight md:text-6xl lg:text-7xl"
+          >
+            {homeProductsDetails.titlePrefix}
+          </p>
+
+          <!-- Title Icon -->
+          <Image
+            src={`/images/products/${homeProductsDetails.titleIcon}`}
+            alt={homeProductsDetails.titleIconAlt}
+            width={67}
+            height={50}
+            class="md:h-[76px] md:w-[101px] lg:h-[88px] lg:w-[118px]"
+          />
+
+          <!-- Title Suffix -->
+          <p
+            class="text-n-950 vertical-alignment-middle horizontal-alignment-center text-4xl font-normal tracking-tight md:text-6xl lg:text-7xl"
+          >
+            {homeProductsDetails.titleSuffix}
+          </p>
+        </div>
+
+        <!-- Subtitle -->
+        <p class="text-n-950 text-center text-sm leading-normal font-medium md:text-lg lg:text-2xl">
+          {homeProductsDetails.subTitle}
+        </p>
+      </div>
+    </div>
+
+    <!-- Products -->
+    <div>
+      {
+        productItems.map((productItem) => (
+          <ProductItem
+            name={productItem.name}
+            logo={productItem.logo}
+            thumbnail={productItem.thumbnail}
+            description={productItem.description}
+            href={productItem.href}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,6 +1,6 @@
 ---
 // COMPONENTS //
-import ToolBadge from "../../components/ToolBadge.astro";
+import ToolBadge from "@/components/ToolBadge.astro";
 
 // Array Of Objects Containing Client Logos
 const clientLogos = [
@@ -24,35 +24,34 @@ const clientLogos = [
 ---
 
 <!-- Clients Section -->
-<section class="flex justify-center items-center">
+<section id="client-logos-section" class="flex items-center justify-center">
   <!-- Container -->
   <div
-    class="flex flex-col flex-wrap justify-center items-center gap-10 py-24 px-6 container md:py-32 md:px-6 md:gap-16 lg:py-32 lg:px-8 lg:gap-20"
+    class="container flex flex-col flex-wrap items-center justify-center gap-10 px-6 py-24 md:gap-16 md:px-6 md:py-32 lg:gap-20 lg:px-8 lg:py-32"
   >
     <!-- Header Wrapper -->
-    <div
-      class="flex flex-col flex-wrap m-auto gap-6 w-full justify-center items-center lg:gap-7"
-    >
-      <div class="flex justify-center">
+    <div class="m-auto flex w-full flex-col flex-wrap items-center justify-center gap-6 lg:gap-7">
+      <div class="tool-badge flex justify-center">
         <ToolBadge icon="building" text="Powering Ideas into Impact" />
       </div>
       <p
-        class="text-n-950 text-2xl w-full font-bold leading-tight text-center md:text-3xl lg:text-5xl"
+        id="header-text"
+        class="text-n-950 w-full text-center text-2xl leading-tight font-bold md:text-3xl lg:text-5xl"
       >
         Brands that believe in our code
       </p>
     </div>
 
     <!-- Client Logo Wrapper -->
-    <div class="flex flex-wrap justify-center items-center gap-6">
+    <div class="flex flex-wrap items-center justify-center gap-6">
       <!-- Loop Through Client Logos -->
       {
         clientLogos.map((logo) => (
-          <div class="w-[100px] h-[54px] md:w-[200px] md:h-[108px] lg:w-[260px] lg:h-[141px] flex justify-center items-center">
+          <div class="client-logo flex h-[54px] w-[100px] items-center justify-center md:h-[108px] md:w-[200px] lg:h-[141px] lg:w-[260px]">
             <img
               src={`/icons/${logo.clientName}`}
               alt={`${logo.alt}`}
-              class="object-contain max-h-full md:!max-w-[150px] md:max-h-[70px] lg:max-h-[90px] lg:!max-w-[200px] w-full"
+              class="max-h-full w-full object-contain md:max-h-[70px] md:max-w-[150px]! lg:max-h-[90px] lg:max-w-[200px]!"
             />
           </div>
         ))
@@ -60,3 +59,8 @@ const clientLogos = [
     </div>
   </div>
 </section>
+
+<script>
+  import { animateClientLogos } from "../../scripts/clients.ts";
+  animateClientLogos();
+</script>

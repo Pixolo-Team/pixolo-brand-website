@@ -1,0 +1,22 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+// Define props interface
+export interface Props {
+  iconName: string;
+  text: string;
+}
+
+// Destructure props
+const { iconName, text } = Astro.props;
+---
+
+<!-- Container for icon and text -->
+<div class="bg-n-950/10 flex items-center gap-2 rounded-lg p-2 lg:gap-3">
+  <!-- Display the icon passed as prop -->
+  <Icon name={iconName} class="size-5 md:size-6" />
+
+  <!-- Display the text passed as prop -->
+  <p class="text-xs leading-none font-medium lg:text-sm">{text}</p>
+</div>

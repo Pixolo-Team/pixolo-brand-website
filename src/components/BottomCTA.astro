@@ -1,26 +1,19 @@
 ---
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
-
-interface props {
-  icon: string;
-  text: string;
-}
-
-const { icon = "menu", text = "Tell us about your needs" } = Astro.props;
 ---
 
-<!-- CTA  -->
-<button
-  class="flex items-center justify-center py-2 pr-2 pl-7 gap-3 rounded-4xl text-n-950 bg-n-800/20"
->
-  <!-- CTA Text -->
-  <p class="text-sm self-center font-medium text-n-950 leading-none md:text-lg">
-    {text}
-  </p>
+<div>
+  <!-- CTA  -->
+  <div
+    class="text-n-950 bg-n-800/20 flex w-fit items-center justify-center gap-3 rounded-4xl py-2 pr-2 pl-7"
+  >
+    <!-- CTA Text -->
+    <p class="text-lg font-medium">Tell us about your needs</p>
 
-  <!-- Icon -->
-  <div class="w-12 h-12 bg-n-950 flex items-center justify-center rounded-full">
-    <Icon name={icon} />
+    <!-- Icon -->
+    <div class="bg-n-950 flex h-12 w-12 items-center justify-center rounded-full">
+      <Icon name={"menu"} />
+    </div>
   </div>
-</button>
+</div>
