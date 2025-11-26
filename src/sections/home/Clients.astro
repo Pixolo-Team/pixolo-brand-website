@@ -2,8 +2,8 @@
 // COMPONENTS //
 import ToolBadge from "@/components/ToolBadge.astro";
 
-// OTHERS //
-import { clientSectionDetails, clientsItems } from "@/data/clients";
+// DATA //
+import { clientSectionDetails, clientItems } from "@/data/clients";
 ---
 
 <!-- Clients Section -->
@@ -32,7 +32,7 @@ import { clientSectionDetails, clientsItems } from "@/data/clients";
     <div class="flex flex-wrap items-center justify-center gap-6">
       <!-- Loop Through Client Logos -->
       {
-        clientsItems.map((clientItem) => (
+        clientItems.map((clientItem) => (
           <div class="client-logo flex h-[54px] w-[100px] items-center justify-center md:h-[108px] md:w-[200px] lg:h-[141px] lg:w-[260px]">
             <img
               src={`/images/clients/${clientItem.darkImage}`}

@@ -5,7 +5,7 @@ export const clientSectionDetails = {
 };
 
 // Clients data that can be reused across the application
-export const clientsItems = [
+export const clientItems = [
   { name: "Reliance Digital", darkImage: "reliance.png", lightImage: "reliance.png" },
   { name: "Times Of India", darkImage: "times-of-india.png", lightImage: "times-of-india.png" },
   { name: "Ceat", darkImage: "ceat.png", lightImage: "ceat.png" },
