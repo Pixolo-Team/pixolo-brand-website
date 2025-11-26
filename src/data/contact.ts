@@ -32,3 +32,10 @@ export const contactSectionDetails = {
     mapSearchUrl: siteInfo.contact.address.mapSearchUrl,
   },
 };
+
+export const contactSubjectOptions = [
+  "Mobile App Development",
+  "Web Development",
+  "Project Planning",
+  "UX Design",
+];

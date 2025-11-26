@@ -1,43 +1,30 @@
 ---
 // COMPONENTS //
-import ToolBadge from "../../components/ToolBadge.astro";
+import ToolBadge from "@/components/ToolBadge.astro";
 
-// Array Of Objects Containing Client Logos
-const clientLogos = [
-  { clientName: "reliance-digital.svg", alt: "Reliance Digital" },
-  { clientName: "times-of-india.svg", alt: "Times Of India" },
-  { clientName: "ceat.svg", alt: "Ceat" },
-  { clientName: "eighty-days.svg", alt: "Eighty Days" },
-  { clientName: "too-yumm.svg", alt: "Too Yumm" },
-  {
-    clientName: "sai-international-school.svg",
-    alt: "Sai International School",
-  },
-  { clientName: "zizo.svg", alt: "Zizo" },
-  { clientName: "ceat.svg", alt: "Ceat" },
-  { clientName: "reliance-digital.svg", alt: "Reliance Digital" },
-  { clientName: "skorost-united.svg", alt: "Skorost United" },
-  { clientName: "fcb.svg", alt: "Fcb" },
-  { clientName: "times-of-india.svg", alt: "Times Of India" },
-  { clientName: "times-of-india.svg", alt: "Times Of India" },
-];
+// DATA //
+import { clientSectionDetails, clientItems } from "@/data/clients";
 ---
 
 <!-- Clients Section -->
-<section class="flex items-center justify-center">
+<section id="client-logos-section" class="flex items-center justify-center">
   <!-- Container -->
   <div
     class="container flex flex-col flex-wrap items-center justify-center gap-10 px-6 py-24 md:gap-16 md:px-6 md:py-32 lg:gap-20 lg:px-8 lg:py-32"
   >
     <!-- Header Wrapper -->
     <div class="m-auto flex w-full flex-col flex-wrap items-center justify-center gap-6 lg:gap-7">
-      <div class="flex justify-center">
-        <ToolBadge icon="building" text="Powering Ideas into Impact" />
+      <!-- ToolBadge component -->
+      <div class="tool-badge flex justify-center">
+        <ToolBadge icon="building" text={clientSectionDetails.badgeTitle} />
       </div>
+
+      <!-- Title -->
       <p
+        id="header-text"
         class="text-n-950 w-full text-center text-2xl leading-tight font-bold md:text-3xl lg:text-5xl"
       >
-        Brands that believe in our code
+        {clientSectionDetails.title}
       </p>
     </div>
 
@@ -45,12 +32,12 @@ const clientLogos = [
     <div class="flex flex-wrap items-center justify-center gap-6">
       <!-- Loop Through Client Logos -->
       {
-        clientLogos.map((logo) => (
-          <div class="flex h-[54px] w-[100px] items-center justify-center md:h-[108px] md:w-[200px] lg:h-[141px] lg:w-[260px]">
+        clientItems.map((clientItem) => (
+          <div class="client-logo flex h-[54px] w-[100px] items-center justify-center md:h-[108px] md:w-[200px] lg:h-[141px] lg:w-[260px]">
             <img
-              src={`/icons/${logo.clientName}`}
-              alt={`${logo.alt}`}
-              class="max-h-full w-full object-contain md:max-h-[70px] md:!max-w-[150px] lg:max-h-[90px] lg:!max-w-[200px]"
+              src={`/images/clients/${clientItem.darkImage}`}
+              alt={`${clientItem.name}`}
+              class="max-h-10 max-w-24 object-contain md:max-h-[70px] md:max-w-[150px] lg:max-h-[90px] lg:max-w-[200px]"
             />
           </div>
         ))
@@ -58,3 +45,8 @@ const clientLogos = [
     </div>
   </div>
 </section>
+
+<script>
+  import { animateClientLogos } from "../../scripts/clients.ts";
+  animateClientLogos();
+</script>

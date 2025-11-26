@@ -3,33 +3,48 @@
 import site from "@/data/meta/site.json";
 
 // PROPS //
-const { title, description, image, noIndex = false } = Astro.props;
+const { title, description, image, noIndex = false, keywords } = Astro.props;
 
 const metaTitle = title ? `${title} | ${site.siteName}` : site.defaultTitle;
 const metaDesc = description || site.defaultDescription;
 const metaImg = image || site.defaultImage;
+const metaKeywords = keywords || site.defaultKeywords;
 const canonical = `${site.siteUrl}${Astro.url.pathname}`;
 ---
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="color-scheme" content="light dark" />
 
+  <!-- Favicon for light mode -->
+  <link rel="icon" href="/favicon-light.png" media="(prefers-color-scheme: light)" />
+
+  <!-- Favicon for dark mode -->
+  <link rel="icon" href="/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+
+  <!-- Title -->
   <title>{metaTitle}</title>
+
+  <!-- Description -->
   <meta name="description" content={metaDesc} />
+
+  <!-- Keywords -->
+  <meta name="keywords" content={metaKeywords} />
+
   <meta name="viewport" content="width=device-width" />
+
   <!-- OG -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content={metaTitle} />
   <meta property="og:description" content={metaDesc} />
   <meta property="og:image" content={metaImg} />
   <meta property="og:url" content={canonical} />
+
   <!-- TWITTER -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content={site.twitterHandle} />
   <meta name="twitter:title" content={metaTitle} />
   <meta name="twitter:description" content={metaDesc} />
   <meta name="twitter:image" content={metaImg} />
-  <!--  -->
   {noIndex && <meta name="robots" content="noindex" />}
 </head>

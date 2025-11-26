@@ -22,5 +22,6 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "cSpell.words": ["retainership", "ceat", "skorost", "yumm", "zizo"]
 }
