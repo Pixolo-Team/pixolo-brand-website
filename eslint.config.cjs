@@ -9,6 +9,9 @@ module.exports = [
   // JS + TS
   // ---------------------------------------------------------
   {
+  ignores: [".astro/**", "node_modules/**", "dist/**"],
+  },
+  {
     files: ["**/*.{js,ts}"],
     languageOptions: {
       parser: tsParser,
