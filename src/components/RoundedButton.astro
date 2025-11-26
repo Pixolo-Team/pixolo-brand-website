@@ -2,37 +2,41 @@
 // STYLES //
 import "../styles/global.css";
 
-const { buttonText, leftIcon, rightIcon } = Astro.props;
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+// Define props
+interface Props {
+  buttonText?: string;
+  leftIcon?: string;
+  rightIcon?: string;
+  onClick?: string;
+  type?: "button" | "submit" | "reset";
+}
+
+// Default values
+const {
+  buttonText = "",
+  leftIcon = "",
+  rightIcon = "",
+  onClick = "",
+  type = "submit",
+} = Astro.props;
 ---
 
 <!-- Rounded Button -->
 <button
-  class="flex gap-1.5 lg:gap-2 px-5 py-3 rounded-4xl text-n-100 font-medium bg-n-950 md:px-6 md:py-3.5 lg:py-4 lg:px-7"
+  type={type}
+  class="text-n-100 bg-n-950 flex cursor-pointer gap-1 rounded-4xl px-5 py-3 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 md:gap-1.5 md:px-6 md:py-3.5 lg:gap-2 lg:px-7 lg:py-4"
 >
-  <!--Left icon of Rounded Button  -->
-  {
-    leftIcon && (
-      <img
-        src={`/icons/${rightIcon}.svg`}
-        alt={`${leftIcon}`}
-        class="size-4 lg:size-6"
-      />
-    )
-  }
+  <!-- Left icon of Rounded Button -->
+  {leftIcon !== "" && <Icon name={leftIcon} class="size-4" />}
 
   <!-- Rounded Button Text -->
-  <p>
+  <p class="text-sm font-medium">
     {buttonText}
   </p>
 
   <!-- Right Icon Of Rounded Button -->
-  {
-    rightIcon && (
-      <img
-        src={`/icons/${rightIcon}.svg`}
-        alt={`${rightIcon} `}
-        class="size-4 lg:size-6"
-      />
-    )
-  }
+  {rightIcon !== "" && <Icon name={rightIcon} class="size-4" />}
 </button>
