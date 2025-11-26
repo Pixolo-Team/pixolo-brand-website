@@ -1,0 +1,51 @@
+---
+// COMPONENTS //
+import BrandLogo from "@/components/BrandLogo.astro";
+import MenuBar from "@/components/MenuBar.astro";
+import RoundedButton from "@/components/RoundedButton.astro";
+import MobileMenu from "@/components/layout/MobileMenu.astro";
+import { Icon } from "astro-icon/components";
+
+// DATA //
+import { menuItems } from "@/data/menu";
+---
+
+<header
+  class="relative z-20 container mx-auto flex items-center justify-between bg-linear-to-b from-[#020617C4] via-[#020617A1] to-transparent p-6 lg:p-4"
+>
+  <!-- Brand logo Component -->
+  <a href="/">
+    <BrandLogo width={140} />
+  </a>
+
+  <!-- Menubar -->
+  <div class="hidden lg:block">
+    <MenuBar items={menuItems} />
+  </div>
+
+  <!-- Rounded Button component -->
+  <div class="hidden lg:block">
+    <RoundedButton buttonText="Contact Us" />
+  </div>
+
+  <!-- Mobile Hamburger -->
+  <Icon
+    id="open-mobile-menu-button"
+    aria-label="Open menu button"
+    name="hamburger"
+    class="text-n-950 block size-6 cursor-pointer lg:hidden"
+  />
+</header>
+
+<!-- Mobile Menu -->
+<MobileMenu menuItems={menuItems} />
+
+<script>
+  import { menuOpenCloseAnimation, animateMenu } from "@/scripts/menu";
+
+  /** Menu open close animation  */
+  menuOpenCloseAnimation();
+
+  /** Menu background logo animation  */
+  animateMenu();
+</script>

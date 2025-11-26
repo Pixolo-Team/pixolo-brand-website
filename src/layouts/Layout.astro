@@ -4,10 +4,10 @@ import "@/styles/global.css";
 
 // COMPONENTS //
 import WhatsappButton from "@/components/WhatsappButton.astro";
-import Navbar from "@/components/Navbar.astro";
 import Loading from "@/components/layout/Loading.astro";
 import Meta from "@/components/layout/Meta.astro";
 import Footer from "@/components/layout/Footer.astro";
+import Header from "@/components/layout/Header.astro";
 
 const { meta = {} } = Astro.props;
 ---
@@ -28,7 +28,7 @@ const { meta = {} } = Astro.props;
 
     <!-- Top menu -->
     <div class="fixed top-3 left-0 z-50 w-full">
-      <Navbar />
+      <Header />
     </div>
 
     <!-- Background Star Video -->

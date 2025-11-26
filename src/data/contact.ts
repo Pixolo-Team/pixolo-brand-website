@@ -1,4 +1,4 @@
-import { siteInfo } from "./site-info";
+import { siteInfo } from "@/data/site-info";
 
 // Contacts data that can be reused across the application
 export const contactSectionDetails = {
