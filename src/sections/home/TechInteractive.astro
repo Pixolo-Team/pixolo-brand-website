@@ -1,18 +1,11 @@
 ---
 // COMPONENTS //
-import TechBadge from "@/components/TechBadge.astro";
+import TechBadge from "@/components/tech-interactive/TechBadge.astro";
 import ToolBadge from "@/components/ToolBadge.astro";
 
-const headerDetails = {
-  badgeDetails: {
-    techInteractiveIcon: "tech-interactive-icon",
-    badgeText: "Immersive technology",
-  },
-  headerText:
-    "Behind every badge here, there’s a story we built with someone like you.",
-};
+// DATA //
+import { headerDetails, statsWrapper } from "@/data/tech-interactive";
 
-const statsWrapper = ["30 apps", "30 websites", "3000 screens", "2000 flows"];
 ---
 
 <!-- Tech Interactive Section -->
