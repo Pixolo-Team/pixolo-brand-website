@@ -11,11 +11,11 @@ const { number, title, description, direction } = Astro.props as props;
 
 <!-- Step Item -->
 <div
-  class={`flex gap-6 w-full items-center max-w-[327px] md:max-w-3xl lg:max-w-[1424px] md:gap-10 lg:gap-16 ${direction === "rtl" ? "flex-row-reverse" : "flex-row"}`}
+  class={`flex gap-6 w-full items-center max-w-[327px] md:max-w-3xl lg:max-w-[1424px] md:gap-10 lg:gap-16 ${direction === "rtl" ? "md:flex-row-reverse" : "md:flex-row"}`}
 >
   <!-- Step number -->
   <p
-    class={`font-normal text-5xl leading-tight text-n-950 grow md:text-7xl lg:text-8xl ${direction === "rtl" ? "text-left" : "text-right"}`}
+    class={`font-normal text-5xl leading-tight text-n-950 grow md:text-7xl lg:text-8xl ${direction === "rtl" ? "md:text-left" : "md:text-right"}`}
   >
     {number}
   </p>
@@ -23,7 +23,7 @@ const { number, title, description, direction } = Astro.props as props;
   <!-- Ellipse -->
   <div class="bg-n-700 h-[19px] w-[19px] shrink-0 rounded-full"></div>
 
-  <!-- Step Message -->
+  <!-- Step Information -->
   <div
     class="flex max-w-[180px] shrink-0 flex-col gap-3 md:max-w-[335px] md:gap-5 lg:max-w-[639px]"
   >
