@@ -4,12 +4,8 @@ import BrandLogo from "./BrandLogo.astro";
 import MenuBar from "./MenuBar.astro";
 import RoundedButton from "./RoundedButton.astro";
 
-const menuItems = [
-  { name: "Home", url: "/", isActive: true },
-  { name: "About", url: "/about" },
-  { name: "Careers", url: "/careers" },
-  { name: "Portfolio", url: "/portfolio" },
-];
+// DATA //
+import { menuItems } from "@/data/menu";
 ---
 
 <!-- Navbar Display -->
