@@ -3,12 +3,7 @@
 import ToolBadge from "@/components/ToolBadge.astro";
 
 // OTHERS //
-import { clients } from "public/images/clients/clients";
-
-const clientDetails = {
-  badgeTitle: "Powering Ideas into Impact",
-  title: "Brands that believe in our code",
-};
+import { clientSectionDetails, clientsItems } from "@/data/clients";
 ---
 
 <!-- Clients Section -->
@@ -21,7 +16,7 @@ const clientDetails = {
     <div class="m-auto flex w-full flex-col flex-wrap items-center justify-center gap-6 lg:gap-7">
       <!-- ToolBadge component -->
       <div class="tool-badge flex justify-center">
-        <ToolBadge icon="building" text={clientDetails.badgeTitle} />
+        <ToolBadge icon="building" text={clientSectionDetails.badgeTitle} />
       </div>
 
       <!-- Title -->
@@ -29,7 +24,7 @@ const clientDetails = {
         id="header-text"
         class="text-n-950 w-full text-center text-2xl leading-tight font-bold md:text-3xl lg:text-5xl"
       >
-        {clientDetails.title}
+        {clientSectionDetails.title}
       </p>
     </div>
 
@@ -37,11 +32,11 @@ const clientDetails = {
     <div class="flex flex-wrap items-center justify-center gap-6">
       <!-- Loop Through Client Logos -->
       {
-        clients.map((clientItem) => (
+        clientsItems.map((clientItem) => (
           <div class="client-logo flex h-[54px] w-[100px] items-center justify-center md:h-[108px] md:w-[200px] lg:h-[141px] lg:w-[260px]">
             <img
-              src={`/images/clients/${clientItem.clientName}`}
-              alt={`${clientItem.alt}`}
+              src={`/images/clients/${clientItem.darkImage}`}
+              alt={`${clientItem.name}`}
               class="max-h-10 max-w-24 object-contain md:max-h-[70px] md:max-w-[150px] lg:max-h-[90px] lg:max-w-[200px]"
             />
           </div>
