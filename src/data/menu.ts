@@ -1,8 +1,8 @@
 // CONSTANTS //
-import { URLS } from "@/infrastructure/constants/urls";
+import { URLS } from "@/infrastructure/constants/urls.ts";
 
 // Data for the menu
-export const MENU = [
+export const menuItems = [
   { name: "Home", url: URLS.HOME },
   { name: "About", url: URLS.ABOUT },
   { name: "Service", url: URLS.SERVICE },

@@ -5,8 +5,8 @@ import ToolBadge from "@/components/ToolBadge.astro";
 import BottomCTA from "@/components/BottomCTA.astro";
 
 // DATA //
-import { MENU } from "@/data/menu";
-import { footerData } from "@/data/footer";
+import { menuItems } from "@/data/menu";
+import { footerSectionDetails } from "@/data/footer";
 ---
 
 <!-- Footer section -->
@@ -23,7 +23,7 @@ import { footerData } from "@/data/footer";
       <p
         class="text-n-950 text-2xl leading-tight font-normal tracking-[-4%] md:text-4xl lg:text-5xl"
       >
-        {footerData.headerText}
+        {footerSectionDetails.headerText}
       </p>
     </div>
 
@@ -33,17 +33,17 @@ import { footerData } from "@/data/footer";
       <div
         class="absolute top-16 right-0 -rotate-9 sm:right-[70px] md:top-[18%] lg:top-[18%] lg:right-[14%] xl:right-[20%] 2xl:right-[26%]"
       >
-        <ToolBadge icon={"building"} text={footerData.toolBadgeText} />
+        <ToolBadge icon={"building"} text={footerSectionDetails.toolBadgeText} />
       </div>
       <!-- Main Logo and message -->
       <div class="flex w-full flex-col items-center justify-center gap-6 self-center md:gap-8">
         <!-- Responsive logo block -->
-        <div id="footerLogo" class="flex w-full lg:w-[945px]">
+        <div id="footerLogo" class="flex w-full origin-top lg:w-[945px]">
           <Icon name="pixolo-logo-text" class="text-n-950 h-full w-full" />
         </div>
         <!-- Message under logo -->
         <p class="text-n-950 text-center text-base leading-tight font-normal md:text-xl lg:text-xl">
-          {footerData.logoMessage}
+          {footerSectionDetails.tagline}
         </p>
       </div>
 
@@ -59,7 +59,7 @@ import { footerData } from "@/data/footer";
         <!-- Footer Menu -->
         <div class="hidden lg:flex lg:gap-7">
           {
-            MENU.map((menuItem) => (
+            menuItems.map((menuItem) => (
               <a
                 href={menuItem.url}
                 class="text-n-700 hover:bg-n-200 flex gap-7 self-center px-4 py-2 text-lg leading-[100%] tracking-[0.02em] hover:rounded-3xl"
@@ -72,7 +72,7 @@ import { footerData } from "@/data/footer";
         <!-- Social media wrapper -->
         <div class="flex gap-4 md:gap-6 lg:gap-7">
           {
-            footerData.socialLinks.map((socialItem) => (
+            footerSectionDetails.socialLinks.map((socialItem) => (
               // Link to social media
               <a
                 href={socialItem.link}
@@ -118,26 +118,6 @@ import { footerData } from "@/data/footer";
   }
 </style>
 <script>
-  import { scroll, transform } from "motion";
-
-  // Select logo element
-  const logo = document.getElementById("footerLogo");
-
-  // Scroll-driven scale
-  scroll(
-    (progress) => {
-      // Ease the scroll progress
-      const eased = transform(progress, [0, 1], [0, 1], {
-        easing: "ease-in-out",
-      });
-
-      // Map eased progress to scale 0.7 → 1.0
-      const scale = 0.7 + eased * 0.3;
-      logo.style.transform = `scale(${scale})`;
-    },
-    {
-      target: logo,
-      offset: ["start end", "end center"],
-    },
-  );
+  import { animateFooter } from "../../scripts/footer.ts";
+  animateFooter();
 </script>
