@@ -1,10 +1,11 @@
-// Clients data that can be reused across the application
+// Data for the Client Section (Header etc)
 export const clientSectionDetails = {
   badgeTitle: "Powering Ideas into Impact",
   title: "Brands that believe in our code",
 };
 
-export const clientsItems = [
+// Clients data that can be reused across the application
+export const clientItems = [
   { name: "Reliance Digital", darkImage: "reliance.png", lightImage: "reliance.png" },
   { name: "Times Of India", darkImage: "times-of-india.png", lightImage: "times-of-india.png" },
   { name: "Ceat", darkImage: "ceat.png", lightImage: "ceat.png" },
@@ -18,5 +19,5 @@ export const clientsItems = [
   },
   { name: "Zizo", darkImage: "zizo.png", lightImage: "zizo.png" },
   { name: "Skorost United", darkImage: "skorost.png", lightImage: "skorost.png" },
-  { name: "Fcb", darkImage: "fcb.png", lightImage: "fcb.png" },
+  { name: "FC Barcelona", darkImage: "fcb.png", lightImage: "fcb.png" },
 ];
