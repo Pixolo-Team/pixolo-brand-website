@@ -6,23 +6,23 @@ import RoundedButton from "@/components/RoundedButton.astro";
 import MobileMenu from "@/components/layout/MobileMenu.astro";
 import { Icon } from "astro-icon/components";
 
-const menuItems = [
-  { name: "Home", url: "/", isActive: true },
-  { name: "About", url: "/about" },
-  { name: "Careers", url: "/careers" },
-  { name: "Portfolio", url: "/portfolio" },
-];
+// DATA //
+import { menuItems } from "@/data/menu";
 ---
 
 <header
   class="relative z-20 container mx-auto flex items-center justify-between bg-linear-to-b from-[#020617C4] via-[#020617A1] to-transparent p-6 lg:p-4"
 >
-  <BrandLogo width={140} />
+  <!-- Brand logo Component -->
+  <a href="/">
+    <BrandLogo width={140} />
+  </a>
 
   <div class="hidden lg:block">
     <MenuBar items={menuItems} />
   </div>
 
+  <!-- Rounded Button component -->
   <div class="hidden lg:block">
     <RoundedButton buttonText="Contact Us" />
   </div>

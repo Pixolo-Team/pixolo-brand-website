@@ -21,8 +21,11 @@ const currentPath = Astro.url.pathname;
   <div class="container mx-auto flex h-full flex-col justify-between px-6 py-6">
     <!-- Logo + Close Button -->
     <div class="z-10 flex items-center justify-between">
-      <BrandLogo width={140} />
+      <a href="/">
+        <BrandLogo width={140} />
+      </a>
 
+      <!-- Close button -->
       <button
         id="mobile-menu-close"
         class="bg-n-100 flex size-10 items-center justify-center rounded-full"
@@ -36,16 +39,16 @@ const currentPath = Astro.url.pathname;
     <!-- Menu Items -->
     <div class="z-10 flex flex-1 flex-col gap-6 pt-28 leading-tight">
       {
-        menuItems.map((item) => {
-          const isActive = currentPath === item.url;
+        menuItems.map((menuItems) => {
+          const isActive = currentPath === menuItems.url;
           return (
             <a
-              href={item.url}
+              href={menuItems.url}
               class={`nav-link hidden-pos text-4xl leading-tight font-normal transition-colors ${
                 isActive ? "text-n-950" : "text-n-500"
               }`}
             >
-              {item.name}
+              {menuItems.name}
             </a>
           );
         })
@@ -163,98 +166,12 @@ const currentPath = Astro.url.pathname;
     animation: circular-float 50s linear infinite;
   }
 </style>
-
 <script>
-  const openBtn = document.getElementById("open-mobile-menu-button");
-  const closeBtn = document.getElementById("mobile-menu-close");
-  const menu = document.getElementById("mobile-menu");
+  import { menuOpenCloseAnimation, animateMenu } from "@/scripts/menu";
 
-  /** OPEN MOBILE MENU */
-  const openMobileMenu = () => {
-    if (!menu) return;
+  /** Menu open close animation  */
+  menuOpenCloseAnimation();
 
-    const links = menu.querySelectorAll("a.nav-link");
-    menu.classList.remove("hidden");
-
-    // Restart animation properly
-    links.forEach((link, index) => {
-      link.classList.add("opacity-0");
-      link.classList.remove("reverse");
-      link.classList.remove("hidden-pos");
-      link.classList.add("start");
-      link.style.animationDelay = `${index * 0.1}s`;
-    });
-
-    menu.classList.remove("hidden");
-    requestAnimationFrame(() => {
-      menu.classList.remove("opacity-0");
-      menu.classList.add("opacity-100");
-      menu.classList.add("menu-open");
-    });
-
-    menu.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  };
-
-  /** CLOSE MOBILE MENU */
-  const closeMobileMenu = () => {
-    if (!menu) return;
-
-    const links = menu.querySelectorAll("a.nav-link");
-
-    links.forEach((link, index) => {
-      link.classList.remove("opacity-0");
-      link.classList.remove("start");
-      link.classList.add("reverse");
-      link.style.animationDelay = `${(links.length - 1 - index) * 0.1}s`;
-    });
-
-    // reverse circle
-    menu.classList.remove("menu-open");
-
-    // Time for for the animation to get over
-    const lastDelay = (links.length - 1) * 100; // in ms
-    const totalTime = lastDelay + 300;
-
-    setTimeout(() => {
-      menu.classList.add("hidden");
-      menu.setAttribute("aria-hidden", "true");
-
-      // Reset reverse class
-      links.forEach((link) => link.classList.remove("reverse"));
-
-      document.body.style.overflow = "";
-    }, totalTime);
-  };
-
-  openBtn?.addEventListener("click", openMobileMenu);
-  closeBtn?.addEventListener("click", closeMobileMenu);
-
-  // Close on clicking menu links
-  menu?.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", closeMobileMenu);
-  });
-</script>
-<script>
-  const logo = document.querySelector(".pixolo-logo-anim");
-
-  function randomFloat() {
-    if (!logo) return;
-
-    // Get viewport dimensions
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-
-    // Safe random positions so it doesn’t jump fully off-screen
-    const x = Math.random() * (vw * 0.6) - vw * 0.3; // range: -30% to +30%
-    const y = Math.random() * (vh * 0.6) - vh * 0.3; // range: -30% to +30%
-
-    logo.style.transform = `translate(${x}px, ${y}px)`;
-  }
-
-  // Move initially
-  randomFloat();
-
-  // Move every 4 seconds
-  setInterval(randomFloat, 4000);
+  /** Menu background logo animation  */
+  animateMenu();
 </script>
