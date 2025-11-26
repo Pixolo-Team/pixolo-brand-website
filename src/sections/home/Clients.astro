@@ -2,8 +2,8 @@
 // COMPONENTS //
 import ToolBadge from "@/components/ToolBadge.astro";
 
-// DATA //
-import { clients } from "@/data/clients";
+// OTHERS //
+import { clients } from "public/images/clients/clients";
 
 const clientDetails = {
   badgeTitle: "Powering Ideas into Impact",
@@ -41,7 +41,7 @@ const clientDetails = {
         clients.map((client) => (
           <div class="anim-fade-in-up w-[100px] h-[54px] md:w-[200px] md:h-[108px] lg:w-[260px] lg:h-[141px] flex justify-center items-center">
             <img
-              src={`/images/${client.clientName}`}
+              src={`/images/clients/${client.clientName}`}
               alt={`${client.alt}`}
               class="object-contain max-w-24 max-h-10 md:max-w-[150px] md:max-h-[70px] lg:max-h-[90px] lg:max-w-[200px]"
             />
