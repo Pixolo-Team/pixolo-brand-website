@@ -89,28 +89,14 @@ After making code changes:
 │   ├── extensions.json             # Recommends astro-build.astro-vscode
 │   └── launch.json                 # Debug config for dev server
 ├── public/                         # Static assets (copied to dist/)
-│   ├── brand-logo/                 # PNG logos (default, dark, light)
 │   ├── fonts/                      # Neometric font family (.otf files)
-│   ├── icons/                      # SVG icons (20+ client/brand icons)
 │   ├── images/                     # PNG images
 │   ├── videos/                     # Video files (stars.mp4)
 │   ├── favicon-dark.png
 │   ├── favicon-light.png
 │   ├── favicon.svg
-│   └── 3d-ball-1.svg
 ├── src/
-│   ├── assets/                     # Build-time assets
-│   │   ├── astro.svg
-│   │   └── background.svg
 │   ├── components/                 # Reusable Astro components
-│   │   ├── Badge.astro
-│   │   ├── BottomCTA.astro
-│   │   ├── BrandLogo.astro
-│   │   ├── MenuBar.astro
-│   │   ├── Navbar.astro
-│   │   ├── RoundedButton.astro
-│   │   ├── ServiceItem.astro
-│   │   └── ToolBadge.astro
 │   ├── data/                       # TypeScript data files
 │   │   └── services.ts             # Services array export
 │   ├── icons/                      # Custom SVG icons for astro-icon
@@ -123,10 +109,6 @@ After making code changes:
 │   │   └── about.astro             # About page (empty placeholder)
 │   ├── sections/                   # Page sections
 │   │   └── home/
-│   │       ├── About.astro         # Empty file
-│   │       ├── Clients.astro
-│   │       ├── Hero.astro
-│   │       └── Service.astro
 │   └── styles/                     # Global styles
 │       ├── global.css              # Base styles, fonts, color variables
 │       └── animations.css          # Animation classes
