@@ -1,4 +1,5 @@
 ---
+// Interface Props
 interface props {
   number: string;
   title: string;
@@ -9,11 +10,10 @@ const { number, title, description } = Astro.props as props;
 ---
 
 <div
-  class="bg-n-100 flex min-h-[311px] w-full flex-col justify-between gap-4 rounded-4xl from-(--blue-500) to-[#8B77F3] py-14 pr-14 pl-6 hover:bg-gradient-to-br md:min-h-[380px] md:gap-25 lg:h-full lg:max-h-[428px]"
+  class="bg-n-100 flex min-h-[312px] w-full flex-col justify-between gap-4 rounded-4xl from-(--blue-500) to-[#8B77F3] py-14 pr-14 pl-6 hover:bg-gradient-to-br md:min-h-[380px] md:gap-25 lg:h-full lg:max-h-[428px]"
 >
   <!-- Header -->
   <div class="flex flex-col gap-2">
-    
     <!-- Number -->
     <p class="text-n-950 text-3xl leading-tight font-medium tracking-[-0.07em] md:text-4xl">
       {number}

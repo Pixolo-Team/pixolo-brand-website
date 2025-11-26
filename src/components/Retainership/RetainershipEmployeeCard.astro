@@ -19,16 +19,17 @@ const { image, name, position, salary, experience } = Astro.props as props;
 >
   <!-- Employee Details -->
   <div class="bg-n-100 flex flex-col gap-4 rounded-3xl p-5 md:flex-row">
+    <!-- Employee image -->
     <Image
       src={`/images/retainership/${image}`}
-      alt={`${name} - a retainership employee at Pixolo`}
-      width={287}
-      height={193}
-      class="w-full rounded-2xl md:h-[193px] md:w-[200px]"
+      alt={name}
+      width={288}
+      height={192}
+      class="h-48 w-full rounded-2xl object-cover md:w-[200px]"
     />
 
     <!-- Employee Content -->
-    <div class="flex flex-col gap-8 md:gap-24">
+    <div class="flex w-full flex-col gap-8 md:gap-24">
       <div class="flex flex-col gap-1">
         <p class="text-n-950 text-xl leading-tight font-bold md:text-2xl">
           {name}
@@ -38,18 +39,20 @@ const { image, name, position, salary, experience } = Astro.props as props;
         </p>
       </div>
 
-      <!-- Price Wrapper -->
+      <!-- Employee salary starting from -->
       <div class="flex items-center justify-between">
         <div class="flex flex-col">
           <p class="text-n-700 text-sm leading-tight font-medium md:text-base">Starting from</p>
+
+          <!-- Salary -->
           <p class="text-n-700 text-base leading-tight font-medium md:text-lg">
             {salary}
           </p>
         </div>
 
-        <!-- CTA Icon -->
+        <!-- CTA Right Arrow Icon -->
         <a href="/" aria-label={`View details for ${name}`}>
-          <Icon name="arrow-icon" />
+          <Icon name="right-arrow" class="size-[18px]" />
         </a>
       </div>
     </div>
