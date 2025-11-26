@@ -19,5 +19,5 @@ export const clientItems = [
   },
   { name: "Zizo", darkImage: "zizo.png", lightImage: "zizo.png" },
   { name: "Skorost United", darkImage: "skorost.png", lightImage: "skorost.png" },
-  { name: "Fcb", darkImage: "fcb.png", lightImage: "fcb.png" },
+  { name: "FC Barcelona", darkImage: "fcb.png", lightImage: "fcb.png" },
 ];
