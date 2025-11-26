@@ -39,3 +39,13 @@ import { menuItems } from "@/data/menu";
 
 <!-- Mobile Menu -->
 <MobileMenu menuItems={menuItems} />
+
+<script>
+  import { menuOpenCloseAnimation, animateMenu } from "@/scripts/menu";
+
+  /** Menu open close animation  */
+  menuOpenCloseAnimation();
+
+  /** Menu background logo animation  */
+  animateMenu();
+</script>
