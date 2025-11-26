@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 
 // Define props
 interface Props {
-  variant?: "default" | "white" | "black";
+  variant?: "default" | "light" | "dark";
   classes?: string;
   width?: number;
   height?: number;
@@ -14,21 +14,19 @@ const { variant = "default", width = 120, height = 120, classes = "" } = Astro.p
 
 const logos = {
   default: "/brand-logo/default.png",
-  white: "/brand-logo/white.png",
-  black: "/brand-logo/dark.png",
+  light: "/brand-logo/white.png",
+  dark: "/brand-logo/dark.png",
 };
 
 const selectedLogo = logos[variant];
 ---
 
 <!-- Brand Logo -->
-<a href="/">
-  <Image
-    src={selectedLogo}
-    alt="Brand Logo"
-    width={width}
-    height={height}
-    class={classes}
-    loading={"lazy"}
-  />
-</a>
+<Image
+  src={selectedLogo}
+  alt="Pixolo Logo"
+  width={width}
+  height={height}
+  class={classes}
+  loading={"lazy"}
+/>

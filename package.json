@@ -18,8 +18,7 @@
     ],
     "**/*.{json,css,md}": [
       "prettier --write"
-    ],
-    "!**/.*": []
+    ]
   },
   "dependencies": {
     "@astrojs/vercel": "^9.0.1",
