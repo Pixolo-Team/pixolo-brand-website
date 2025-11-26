@@ -5,16 +5,14 @@ import MenuBar from "./MenuBar.astro";
 import RoundedButton from "./RoundedButton.astro";
 
 // DATA //
-import { MENU } from "@/data/menu";
+import { menuItems } from "@/data/menu";
 ---
-
-enuItems
 
 <!-- Navbar Display -->
 <header class="relative z-10 flex items-center justify-between px-3">
   <BrandLogo />
   <div class="hidden md:block">
-    <MenuBar items={MENU} />
+    <MenuBar items={menuItems} />
   </div>menuItems
   <div class="hidden md:block">
     <RoundedButton buttonText="Contact Us" />
