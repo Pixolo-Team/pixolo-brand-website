@@ -1,11 +1,27 @@
 ---
-
+//COMPONENTS
+import ProjectCard from "@/components/portfolio/ProjectCard.astro";
 ---
 
 <!-- Portfolio Section -->
 <section>
   <!-- Container -->
-  <div class="">
-    <!-- Section Content -->
+  <div class="flex flex-col gap-20 px-6 py-16 lg:px-14 lg:py-52">
+    <ProjectCard
+      backgroundColor="bg-blue-500"
+      image="images/portfolio/project-card-image1.png"
+      logo="images/clients/too-yumm.png"
+      title="E-commerce Platform for Local Brands"
+      subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+      chips={["Product Design", "App Development", "Dashboard Design"]}
+    />
+    <ProjectCard
+      backgroundColor="bg-red-500"
+      image="images/portfolio/project-card-image2.png"
+      logo="images/clients/reliance.png"
+      title="E-commerce Platform for Local Brands"
+      subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+      chips={["Product Design", "App Development", "Dashboard Design"]}
+    />
   </div>
 </section>
