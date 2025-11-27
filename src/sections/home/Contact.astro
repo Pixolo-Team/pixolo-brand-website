@@ -5,7 +5,7 @@ import { Icon } from "astro-icon/components";
 import Tooltip from "@/components/Tooltip.astro";
 
 // DATA //
-import { contactSectionData } from "@/data/contacts";
+import { contactSectionDetails } from "@/data/contact";
 ---
 
 <section>
@@ -15,28 +15,26 @@ import { contactSectionData } from "@/data/contacts";
     <!-- Section Header -->
     <div class="flex flex-col items-center gap-5 lg:gap-7">
       <!-- Tool Badge component -->
-      <ToolBadge icon="building" text={contactSectionData.badgeTitle} />
+      <ToolBadge icon="building" text={contactSectionDetails.badgeTitle} />
 
       <!-- Header Content -->
       <div class="anim-fade-up-slow flex flex-col gap-3 text-center lg:gap-4">
         <!-- Heading -->
         <p class="text-n-950 text-3xl font-medium md:text-5xl lg:text-7xl">
-          {contactSectionData.heading}
+          {contactSectionDetails.heading}
         </p>
         <!-- Subheading -->
         <p class="text-n-950 text-sm font-medium md:text-lg lg:text-xl">
-          {contactSectionData.subheading}
+          {contactSectionDetails.subheading}
         </p>
       </div>
     </div>
 
     <!-- Content wrap -->
-    <div
-      class="anim-fade-up-slow flex flex-col justify-center gap-3.5 lg:flex-row"
-    >
+    <div class="anim-fade-up-slow flex flex-col justify-center gap-3.5 lg:flex-row">
       <div class="flex w-full flex-col gap-3.5 lg:w-[440px]">
         {
-          contactSectionData.contactCards.map((contactSectionItem) => (
+          contactSectionDetails.contactCards.map((contactSectionItem) => (
             // Contact Card
             <a
               href={contactSectionItem.link}
@@ -44,11 +42,8 @@ import { contactSectionData } from "@/data/contacts";
             >
               <div class="flex max-w-[80%] items-center gap-5">
                 {/* Icon wrapper */}
-                <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]">
-                  <Icon
-                    name={contactSectionItem.icon}
-                    class="size-5 sm:size-6"
-                  />
+                <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-(--blue-500) to-[#8B77F3] sm:size-16 lg:size-[74px]">
+                  <Icon name={contactSectionItem.icon} class="size-5 sm:size-6" />
                 </div>
 
                 {/* Contact info */}
@@ -70,8 +65,8 @@ import { contactSectionData } from "@/data/contacts";
               <Tooltip text="Copy" position="top">
                 <Icon
                   name="copy"
-                  class="size-5 cursor-pointer"
-                  onclick={`event.preventDefault(); copyToClipboard('${contactSectionItem.value}')`}
+                  class="copy-btn size-5 cursor-pointer"
+                  data-copy={contactSectionItem.value}
                 />
               </Tooltip>
             </a>
@@ -81,7 +76,7 @@ import { contactSectionData } from "@/data/contacts";
 
       <!-- Location -->
       <a
-        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactSectionData.location.address)}`}
+        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactSectionDetails.location.address)}`}
         target="_blank"
         rel="noopener noreferrer"
         class="group bg-n-100 hover:bg-n-200 flex w-full cursor-pointer flex-col justify-between gap-5 rounded-4xl p-6 sm:flex-row lg:w-[520px]"
@@ -92,21 +87,16 @@ import { contactSectionData } from "@/data/contacts";
             <div
               class="flex size-11 items-center justify-center rounded-full bg-gradient-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
             >
-              <Icon
-                name={contactSectionData.location.icon}
-                class="size-5 sm:size-6 lg:size-7"
-              />
+              <Icon name={contactSectionDetails.location.icon} class="size-5 sm:size-6 lg:size-7" />
             </div>
 
             <!-- Location content -->
             <div class="flex flex-col gap-0.5">
-              <p
-                class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl"
-              >
-                {contactSectionData.location.title}
+              <p class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl">
+                {contactSectionDetails.location.title}
               </p>
               <p class="text-n-900 text-sm font-normal sm:text-lg">
-                {contactSectionData.location.subtitle}
+                {contactSectionDetails.location.subtitle}
               </p>
             </div>
           </div>
@@ -114,7 +104,7 @@ import { contactSectionData } from "@/data/contacts";
           <!-- Address with right arrow icon -->
           <div class="flex items-center gap-5">
             <p class="text-xs font-semibold md:text-sm lg:text-base">
-              {contactSectionData.location.address}
+              {contactSectionDetails.location.address}
             </p>
             <Icon name="right-arrow" class={"size-5"} />
           </div>
@@ -126,7 +116,7 @@ import { contactSectionData } from "@/data/contacts";
             class="border-n-950 overflow-hidden rounded-4xl border md:w-[40%] md:flex-1 lg:w-full"
           >
             <iframe
-              src={contactSectionData.location.mapUrl}
+              src={contactSectionDetails.location.mapUrl}
               width="100%"
               height="100%"
               allowfullscreen=""
@@ -141,9 +131,9 @@ import { contactSectionData } from "@/data/contacts";
     </div>
   </div>
 </section>
-<script is:inline>
-  /** Function to copy text to clipboard */
-  function copyToClipboard(text) {
-    navigator.clipboard.writeText(text);
-  }
+
+<script>
+  import { initCopyButtons } from "@/scripts/contact-copy";
+
+  document.addEventListener("DOMContentLoaded", initCopyButtons);
 </script>

@@ -1,0 +1,156 @@
+---
+// COMPONENTS //
+import Chip from "@/components/Chip.astro";
+import Dropdown from "@/components/Dropdown.astro";
+import InputField from "@/components/InputField.astro";
+import RoundedButton from "@/components/RoundedButton.astro";
+import Textarea from "@/components/Textarea.astro";
+
+// DATA //
+import { contactSubjectOptions } from "@/data/contact";
+---
+
+<!-- Backdrop with Contact form modal -->
+<div
+  class="invisible fixed inset-0 z-50 flex h-screen w-full items-center justify-center gap-10 bg-black/50 px-6 py-24 opacity-0 transition-opacity duration-300"
+  id="backdrop-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="contact-form-title"
+>
+  <!-- Contact Form wrapper -->
+  <div
+    class="bg-n-50 border-n-400 z-20 flex w-full flex-col overflow-hidden rounded-3xl border md:w-[680px] lg:w-[800px]"
+  >
+    <!-- Title Bar -->
+    <div class="bg-n-400 flex w-full gap-1.5 px-6 py-3 md:gap-2 md:px-7 lg:px-11 lg:py-4">
+      <!-- 3 Buttons (macOS style window controls) -->
+      <div
+        id="close-btn"
+        class="size-3 cursor-pointer rounded-full bg-[#C45E52] md:size-4"
+        role="button"
+        tabindex="0"
+        aria-label="Close contact form"
+      >
+      </div>
+      <div class="size-3 rounded-full bg-[#CAA144] md:size-4"></div>
+      <div class="bg-n-500 size-3 rounded-full md:size-4"></div>
+    </div>
+
+    <!-- Form Container -->
+    <form
+      action="#"
+      method="POST"
+      class="flex flex-col items-start gap-5 p-5 md:px-7 md:py-7"
+      id="contact-form"
+    >
+      <!-- Input Wrapper -->
+      <div class="flex w-full flex-col gap-5 md:gap-6">
+        <!-- Email To  -->
+        <div class="relative flex w-full gap-4 md:gap-3 lg:gap-4">
+          <InputField
+            label="To"
+            name="emailTo"
+            id="emailTo"
+            type="text"
+            isDisabled={true}
+            showPlaceholder={false}
+          />
+
+          <!-- For tablets and desktops -->
+          <div class="absolute bottom-1.5 left-9 md:bottom-3 md:flex md:items-center md:gap-4">
+            <!-- Chip component -->
+            <Chip iconName="pixolo-logo" text="Pixolo Technologies" />
+
+            <!-- Email address display -->
+            <p class="hidden font-normal md:flex md:text-sm">(business@pixolotechnologies.com)</p>
+          </div>
+        </div>
+
+        <!-- Email From -->
+        <InputField
+          label="From"
+          type="email"
+          name="emailFrom"
+          placeholder="you@email.com"
+          id="emailFrom"
+          required={true}
+          isError={false}
+          errorMessages={["This doesn’t look like an email address.", "This field is required."]}
+        />
+
+        <!-- Phone Number -->
+        <InputField
+          label="Phone No"
+          type="tel"
+          name="phoneNo"
+          placeholder="your phone number"
+          id="phoneNo"
+          required={true}
+          isError={false}
+          errorMessages={["This field is required.", "This doesn’t look like a phone number."]}
+        />
+
+        <!-- Subjects Dropdown  -->
+        <Dropdown label="Subject" name="Subject" id="Subject" options={contactSubjectOptions} />
+
+        <!-- Additional Note -->
+        <Textarea
+          iconName="expand-icon"
+          placeholder="Say something about your project..."
+          name="additionalNote"
+          id="additionalNote"
+        />
+      </div>
+      <!-- SendMessage Button -->
+      <div class="self-end">
+        <RoundedButton buttonText="Send Message" type="button" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const backdrop = document.getElementById("backdrop-modal");
+    const closeBtn = document.getElementById("close-btn");
+
+    if (!backdrop || !closeBtn) {
+      console.warn("ContactForm: Required elements not found. Modal functionality may not work.");
+      return;
+    }
+
+    // Opens Modal
+    window.addEventListener("open-contact-modal", () => {
+      backdrop.classList.remove("opacity-0", "invisible");
+      backdrop.classList.add("opacity-100", "visible");
+
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = "hidden";
+    });
+
+    // CLOSE BUTTON - with click handler
+    closeBtn.addEventListener("click", closeModal);
+
+    // Click backdrop only (not the form box)
+    backdrop.addEventListener("click", (e) => {
+      if (e.target === backdrop) closeModal();
+    });
+
+    // ESC key to close modal
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && backdrop.classList.contains("visible")) {
+        closeModal();
+      }
+    });
+
+    /** Closes the modal by toggling visibility classes */
+    function closeModal() {
+      backdrop.classList.remove("opacity-100", "visible");
+      backdrop.classList.add("opacity-0", "invisible");
+
+      // Restore body scroll when modal is closed
+      document.body.style.overflow = "";
+    }
+  });
+</script>

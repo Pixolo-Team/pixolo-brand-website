@@ -1,35 +1,34 @@
 ---
 // STYLES //
-import "../styles/global.css";
+import "@/styles/global.css";
 
 // COMPONENTS //
-import Navbar from "../components/Navbar.astro";
+import WhatsappButton from "@/components/WhatsappButton.astro";
+import Loading from "@/components/layout/Loading.astro";
+import Meta from "@/components/layout/Meta.astro";
+import Footer from "@/components/layout/Footer.astro";
+import Header from "@/components/layout/Header.astro";
+
+const { meta = {} } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="color-scheme" content="light dark" />
-    <link
-      rel="icon"
-      href="/favicon-light.png"
-      media="(prefers-color-scheme: light)"
+    <!-- Metadata -->
+    <Meta
+      title={meta.title}
+      description={meta.description}
+      image={meta.image}
+      noIndex={meta.noIndex}
     />
-    <!-- Favicon for dark mode -->
-    <link
-      rel="icon"
-      href="/favicon-dark.png"
-      media="(prefers-color-scheme: dark)"
-    />
-    <meta name="generator" content={Astro.generator} />
-    <title>Pixolo Technologies</title>
   </head>
   <body>
+    <Loading />
+
     <!-- Top menu -->
-    <div class="fixed top-3 left-0 w-full z-50">
-      <Navbar />
+    <div class="fixed top-3 left-0 z-50 w-full">
+      <Header />
     </div>
 
     <!-- Background Star Video -->
@@ -52,6 +51,14 @@ import Navbar from "../components/Navbar.astro";
     <main class="relative z-10">
       <slot />
     </main>
+
+    <Footer />
+
+    <!-- Whatsapp button component -->
+    <WhatsappButton
+      href="https://wa.me/9768941186"
+      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-50"
+    />
   </body>
 </html>
 
@@ -63,12 +70,11 @@ import Navbar from "../components/Navbar.astro";
     height: 100%;
   }
 </style>
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // Select all elements that should animate when visible
     const animatedElements = document.querySelectorAll(
-      ".anim-fade-up-quick,  .anim-fade-up-slow, .anim-fade-in-up, .anim-fade-in-right"
+      ".anim-fade-up-quick, .anim-fade-up-slow, .anim-fade-in-up, .anim-fade-in-right",
     );
     // Create a new Intersection Observer to detect when elements appear in the viewport
     const observer = new IntersectionObserver(
@@ -86,7 +92,7 @@ import Navbar from "../components/Navbar.astro";
       },
 
       // Trigger the animation when 20% of the element is visible
-      { threshold: 0.18 }
+      { threshold: 0.18 },
     );
 
     // Observe each selected element
