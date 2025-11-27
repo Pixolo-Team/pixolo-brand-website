@@ -6,12 +6,8 @@ import { Image } from "astro:assets";
 import Ball from "@/assets/3d-ball.svg";
 import TagIcon from "@/assets/3d-tag.svg";
 
-const heroDetails = {
-  balls: "/3d-ball-1.svg",
-  icon: "/3d-code-icon.svg",
-  title: ["We’re the", "Geeks", "behind your", "next", "Big Tech Story."],
-  subText: "Smart builds. Good vibes. Great stories.",
-};
+// DATA //
+import { heroSectionDetails } from "@/data/hero";
 ---
 
 <!-- Hero Section Start -->
@@ -19,14 +15,14 @@ const heroDetails = {
   <div
     class="relative container mx-auto flex flex-col items-center justify-center gap-9 overflow-hidden px-6 py-36 text-center md:py-52 lg:py-40 xl:pt-52 2xl:pt-64 2xl:pb-52"
   >
-    <!-- Top-left floating 3D ball -->
+    <!-- Top-left floating marble -->
     <Image
       src={Ball}
       alt="3d ball primary"
       class="floating-icon absolute top-[22%] left-6 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
       style="animation-duration: 5s"
     />
-    <!-- Bottom-right floating 3D ball (rotated) -->
+    <!-- Bottom-right floating marble -->
     <Image
       src={Ball}
       alt="3d ball secondary"
@@ -36,28 +32,28 @@ const heroDetails = {
 
     <!-- Hero Text Wrapper -->
     <div class="flex flex-col items-center justify-center gap-3 md:gap-0 xl:w-full">
-      <!--  Line 1: “We’re the Geeks” -->
+      <!--  Title first line -->
       <p
         class="text-n-950 text-3xl leading-none font-normal tracking-tight md:text-7xl xl:text-8xl"
       >
         <span class="word-container" data-animate-word>
-          {heroDetails.title[0]}
+          {heroSectionDetails.title[0]}
         </span>
         <span class="word-container font-bold" data-animate-word>
-          {heroDetails.title[1]}
+          {heroSectionDetails.title[1]}
         </span>
       </p>
 
-      <!--  Line 2: “behind your” -->
+      <!--  Title second line -->
       <p
         class="text-n-950 flex items-center justify-center text-center text-3xl leading-tight font-normal tracking-tight text-nowrap md:text-7xl xl:text-8xl"
       >
-        <!-- Line 3: "next" -->
+        <!-- Title third line -->
         <span class="word-container" data-animate-word>
-          {heroDetails.title[2]}
+          {heroSectionDetails.title[2]}
         </span>
 
-        <!-- Tag icon -->
+        <!-- Tag logo -->
         <Image
           src={TagIcon}
           alt="3d-code-icon"
@@ -65,24 +61,25 @@ const heroDetails = {
           style={"animation-duration: 5s"}
         />
         <span class="word-container" data-animate-word>
-          {heroDetails.title[3]}
+          {heroSectionDetails.title[3]}
         </span>
       </p>
 
-      <!--  Line 4: “Big Tech Story.” -->
+      <!--  Title fourth line -->
       <p
         class="text-n-950 text-3xl leading-none font-semibold tracking-[-0.02em] md:text-7xl xl:text-8xl"
       >
         <span class="word-container" data-animate-word>
-          {heroDetails.title[4]}
+          {heroSectionDetails.title[4]}
         </span>
       </p>
     </div>
+
     <!-- Subtext -->
     <p
       class="z-10 bg-gradient-to-r from-[#6654D4] to-[#8B77F3] bg-clip-text text-center text-sm leading-loose font-medium text-transparent md:text-xl xl:text-2xl"
     >
-      {heroDetails.subText}
+      {heroSectionDetails.subText}
     </p>
   </div>
 </section>
