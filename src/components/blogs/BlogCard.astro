@@ -9,49 +9,51 @@ const author = "Omkar Mitake";
 ---
 
 <!-- Card Wrapper -->
-<div class="text-white">
+<div class="bg-n-900 flex h-[493px] w-[480px] flex-col gap-5 overflow-hidden rounded-2xl">
   <!-- Blog Image -->
-
-  <div>
-    <img src={imageSrc} alt={title} />
-  </div>
+  <img src={imageSrc} alt={title} class="h-[261px] w-full object-cover" />
 
   <!-- Blog Content -->
 
-  <div>
+  <div class="flex flex-col gap-4 p-4">
     <!-- Category + Date Row -->
 
-    <div>
+    <div class="flex items-center justify-between">
       <!-- Category Badge -->
-
-      <div>
-        <p>{category}</p>
+      <div class="bg-n-700 flex h-[32px] w-[114px] items-center justify-center rounded-3xl">
+        <p class="font-neometric text-n-50 text-base leading-tight font-normal tracking-normal">
+          {category}
+        </p>
       </div>
 
       <!-- Date with Icon -->
-
-      <div>
-        <!-- Calendar Icon -->
-
-        <Icon name="lucide:calendar" />
-
-        <p>{date}</p>
+      <div class="flex gap-2">
+        <Icon name="lucide:calendar" class="h-5 w-5 text-blue-500" />
+        <p
+          class="font-neometric text-n-50 self-end text-sm leading-tight font-normal tracking-normal"
+        >
+          {date}
+        </p>
       </div>
     </div>
 
     <!-- Title -->
 
-    <p>{title}</p>
+    <p class="font-neometric text-n-200 text-3xl leading-tight font-medium tracking-normal">
+      {title}
+    </p>
 
     <!-- Author + Link Row -->
 
-    <div>
+    <div
+      class="font-neometric text-n-400 flex items-center justify-between text-xl leading-tight font-normal tracking-normal"
+    >
       <p>By: {author}</p>
 
       <!-- Arrow Link -->
 
       <a href="#">
-        <Icon name="lucide:arrow-right" />
+        <Icon name="lucide:arrow-right" class="text-n-600 h-7 w-7" />
       </a>
     </div>
   </div>
