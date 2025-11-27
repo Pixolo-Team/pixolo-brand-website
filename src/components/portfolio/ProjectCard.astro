@@ -1,8 +1,63 @@
 ---
-//IMPORTS
+// COMPONENTS
+import RoundedButton from "../RoundedButton.astro";
+import Badge from "./Badge.astro";
+
+interface Props {
+  backgroundColor: string;
+  image: string;
+  logo: string;
+  title: string;
+  subtitle: string;
+  chips: Array<string>;
+}
+
+// PROPS
+const { backgroundColor, image, logo, title, subtitle, chips } = Astro.props;
 ---
 
-<!-- Project Card -->
-<div class="">
-  <!-- Project Card Content -->
+<!-- Main Project Tile -->
+<div class=`rounded-[42px] md:rounded-[64px] lg:flex lg:flex-row lg:gap-10 ${backgroundColor}`>
+  <!-- Project Content -->
+  <div class="flex flex-col gap-6 px-5 py-6 md:gap-8 md:p-10 lg:gap-[54px] lg:p-20">
+    <!-- Logo -->
+    <div class="h-[99.78px] w-[287px] content-center justify-start md:h-[111px] md:w-[320px]">
+      <img
+        src={logo}
+        alt="logo"
+        class="top-[13.19px] h-[109.72px] md:top-[14.67px] md:h-[81.66px]"
+      />
+    </div>
+
+    <!-- Project Details Wrapper -->
+    <div class="flex flex-col gap-5 md:gap-9 lg:gap-10">
+      <!-- Project Details -->
+      <div class="flex flex-col gap-5 md:gap-6 lg:gap-7">
+        <!-- Chip Wrapper -->
+        <div class="flex flex-wrap gap-2">
+          <!-- Portfolio Chip -->
+          {chips?.map((chipText: string) => <Badge badgeText={chipText} />)}
+        </div>
+
+        <!-- Title Details -->
+        <div class="text-n-50 flex flex-col gap-4 lg:gap-5">
+          <!-- Title -->
+          <p class="text-2xl leading-tight font-semibold md:text-[32px] lg:text-4xl">{title}</p>
+
+          <!-- Subtitle -->
+          <p class="text-sm leading-tight font-normal md:text-base lg:text-xl">{subtitle}</p>
+        </div>
+      </div>
+
+      <!-- Rounded Button -->
+      <div class="">
+        <RoundedButton buttonText={"View Case Study"} leftIcon={""} rightIcon={""} />
+      </div>
+    </div>
+  </div>
+
+  <!-- Image -->
+  <div class="hidden lg:block">
+    <img src={image} alt="image" class="h-[717.39px] w-[617px]" />
+  </div>
 </div>
