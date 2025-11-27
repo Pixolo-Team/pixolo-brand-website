@@ -1,5 +1,6 @@
 ---
 // COMPONENTS //
+import ThemeImage from "@/components/ThemeImage.astro";
 import ToolBadge from "@/components/ToolBadge.astro";
 
 // DATA //
@@ -34,9 +35,11 @@ import { clientSectionDetails, clientItems } from "@/data/clients";
       {
         clientItems.map((clientItem) => (
           <div class="client-logo flex h-[54px] w-[100px] items-center justify-center md:h-[108px] md:w-[200px] lg:h-[141px] lg:w-[260px]">
-            <img
-              src={`/images/clients/${clientItem.darkImage}`}
-              alt={`${clientItem.name}`}
+            {/* Image themed component */}
+            <ThemeImage
+              light={`/images/clients/${clientItem.lightImage}`}
+              dark={`/images/clients/${clientItem.darkImage}`}
+              alt={clientItem.name}
               class="max-h-10 max-w-24 object-contain md:max-h-[70px] md:max-w-[150px] lg:max-h-[90px] lg:max-w-[200px]"
             />
           </div>
