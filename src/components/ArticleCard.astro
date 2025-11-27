@@ -1,8 +1,39 @@
 ---
+// COMPONENTS
 
+import { Image } from "astro:assets";
+import RoundedButton from "./RoundedButton.astro";
+import Badge from "./Badge.astro";
+
+interface Props {
+  thumbnail: string;
+  chipItems: Array<string>;
+  title: string;
+  subtitle: string;
+  ctaText: string;
+}
+
+const { thumbnail, chipItems, title, subtitle, ctaText } = Astro.props;
 ---
 
 <!-- Article Card -->
-<div class="">
-  <!-- Article Card Content -->
+<div class="flex flex-col gap-4">
+  <!-- Thumbnail -->
+  <div class="relative">
+    <Image src={thumbnail} alt="thumbnail" width="327" height="222" class:list={"rounded-3xl"} />
+    <div class="absolute top-[164.54] left-[149]">
+      <RoundedButton buttonText="View Case Study" leftIcon="" rightIcon="" />
+    </div>
+  </div>
+  <!-- Tabs -->
+  <div class="flex flex-wrap gap-3">
+    {chipItems.map((chipItem) => <Badge badgeText={chipItem} />)}
+  </div>
+  <!-- Article Details -->
+  <div class="text-n-950 flex flex-col gap-3 leading-tight">
+    <!-- Title -->
+    <p class="text-2xl font-medium">{title}</p>
+    <!-- Subtitle -->
+    <p class="text-sm font-normal">{subtitle}</p>
+  </div>
 </div>
