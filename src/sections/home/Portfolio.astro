@@ -3,18 +3,64 @@
 import ArticleCard from "@/components/ArticleCard.astro";
 //OTHER
 import image from "../../../public/images/portfolio/article-card/image1.png";
+import RoundedButton from "@/components/RoundedButton.astro";
 ---
 
 <!-- Portfolio Section -->
 <section>
-  <!-- Container -->
-  <div class="px-6 py-16">
-    <ArticleCard
-      thumbnail={image}
-      chipItems={["Product Design", "App Development", "Dashboard Design"]}
-      title="E-commerce Platform for Local Brands"
-      subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
-      ctaText=""
-    />
+  <div class="flex flex-col items-center justify-center">
+    <!-- Container -->
+    <div
+      class="container flex flex-col items-center justify-center gap-20 px-6 py-16 md:gap-28 md:py-28 lg:gap-40 lg:px-14 lg:py-52"
+    >
+      <!-- CARDS -->
+      <div class="flex flex-col gap-16 md:gap-24">
+        <!-- CARDS WRAPPER -->
+        <div class="flex flex-wrap gap-24 md:gap-32">
+          <!-- ROW1 -->
+          <div class="flex flex-col gap-24 md:gap-32">
+            <ArticleCard
+              thumbnail={image}
+              chipItems={["Product Design", "App Development", "Dashboard Design"]}
+              title="E-commerce Platform for Local Brands"
+              subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+              buttonView="hidden"
+              ctaText=""
+            />
+            <ArticleCard
+              thumbnail={image}
+              chipItems={["Product Design", "App Development", "Dashboard Design"]}
+              title="E-commerce Platform for Local Brands"
+              subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+              buttonView="block"
+              ctaText=""
+            />
+          </div>
+          <!-- ROW2 -->
+          <div class="flex flex-col gap-24 md:gap-32">
+            <ArticleCard
+              thumbnail={image}
+              chipItems={["Product Design", "App Development", "Dashboard Design"]}
+              title="E-commerce Platform for Local Brands"
+              subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+              buttonView="block"
+              ctaText=""
+            />
+            <ArticleCard
+              thumbnail={image}
+              chipItems={["Product Design", "App Development", "Dashboard Design"]}
+              title="E-commerce Platform for Local Brands"
+              subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+              buttonView="block"
+              ctaText=""
+            />
+          </div>
+        </div>
+        <!-- BUTTON -->
+        <div class="self-center justify-self-center">
+          <RoundedButton buttonText="Load More Projects" leftIcon="" rightIcon="" />
+        </div>
+      </div>
+    </div>
   </div>
 </section>
