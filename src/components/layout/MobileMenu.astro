@@ -1,0 +1,177 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+import BrandLogo from "@/components/BrandLogo.astro";
+import RoundedButton from "@/components/RoundedButton.astro";
+
+// Define props
+interface Props {
+  menuItems: { name: string; url: string }[];
+}
+
+const { menuItems = [] } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300 ease-in-out lg:hidden"
+  aria-hidden="true"
+>
+  <div class="container mx-auto flex h-full flex-col justify-between px-6 py-6">
+    <!-- Logo + Close Button -->
+    <div class="z-10 flex items-center justify-between">
+      <a href="/">
+        <BrandLogo width={140} />
+      </a>
+
+      <!-- Close button -->
+      <button
+        id="mobile-menu-close"
+        class="bg-n-100 flex size-10 items-center justify-center rounded-full"
+        aria-label="Close mobile menu"
+        type="button"
+      >
+        <Icon name="close" />
+      </button>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="z-10 flex flex-1 flex-col gap-6 pt-28 leading-tight">
+      {
+        menuItems.map((menuItems) => {
+          const isActive = currentPath === menuItems.url;
+          return (
+            <a
+              href={menuItems.url}
+              class={`nav-link hidden-pos text-4xl leading-tight font-normal transition-colors ${
+                isActive ? "text-n-950" : "text-n-500"
+              }`}
+            >
+              {menuItems.name}
+            </a>
+          );
+        })
+      }
+    </div>
+
+    <!-- Bottom Buttons -->
+    <div class="z-10 flex flex-row justify-center gap-2.5">
+      <RoundedButton buttonText="Call" variant="secondary" />
+      <RoundedButton buttonText="Whatsapp" variant="secondary" />
+    </div>
+  </div>
+
+  <!-- Floating Pixolo logo icon -->
+  <div class="float-wrapper">
+    <Icon
+      name={"pixolo-icon"}
+      class="pixolo-logo-anim right-20px absolute top-[20%] right-[40%] size-48 -rotate-30 transition-all"
+    />
+  </div>
+
+  <!-- Circle at back of the links -->
+  <div
+    class="back-circle-anim bg-n-800 absolute top-[10%] left-[-80%] size-[500px] rounded-full opacity-5 transition-all"
+  >
+  </div>
+</div>
+<style>
+  #mobile-menu {
+    position: fixed;
+    overflow: hidden; /* So before-circle does not overflow */
+  }
+
+  #mobile-menu::before {
+    content: "";
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    background: var(--color-n-50);
+    border-radius: 50%;
+    top: 12px;
+    right: 12px;
+    transition: all;
+    transform: scale(0);
+    transition: transform 0.7s ease-in-out;
+    transform-origin: center;
+    z-index: 0;
+  }
+
+  /* When menu becomes visible */
+  #mobile-menu.menu-open::before {
+    transform: scale(26);
+  }
+  .nav-link.hidden-pos {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  /* Open animation */
+  @keyframes nav-link-in {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .nav-link.start {
+    animation: nav-link-in 0.3s ease forwards;
+  }
+
+  /* Close animation */
+  @keyframes nav-link-out {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+  }
+
+  .nav-link.reverse {
+    animation: nav-link-out 0.3s ease forwards;
+  }
+
+  @keyframes float-circle {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(120%, 20%, 0);
+    }
+  }
+  .back-circle-anim {
+    transition: all;
+    animation: float-circle 5s ease-in-out infinite alternate;
+  }
+
+  /* Wrapper rotates in a circle */
+  @keyframes circular-float {
+    0% {
+      transform: rotate(0deg) translateX(280px) rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg) translateX(280px) rotate(360deg);
+    }
+  }
+
+  .pixolo-logo-anim {
+    animation: circular-float 50s linear infinite;
+  }
+</style>
+<script>
+  import { menuOpenCloseAnimation, animateMenu } from "@/scripts/menu";
+
+  /** Menu open close animation  */
+  menuOpenCloseAnimation();
+
+  /** Menu background logo animation  */
+  animateMenu();
+</script>
