@@ -17,16 +17,17 @@ import { heroSectionDetails } from "@/data/hero";
   >
     <!-- Top-left floating marble -->
     <Image
+      id="big-marble"
       src={Ball}
-      alt="3d ball primary"
-      class="floating-icon absolute top-[22%] left-6 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
-      style="animation-duration: 5s"
+      alt="Big Marble"
+      class="absolute top-[22%] left-6 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
     />
     <!-- Bottom-right floating marble -->
     <Image
+      id="small-marble"
       src={Ball}
-      alt="3d ball secondary"
-      class="floating-icon absolute right-[10%] bottom-[46%] w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
+      alt="Small Marble"
+      class="absolute right-[10%] bottom-[46%] w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
       style="animation-duration: 4s"
     />
 
@@ -116,25 +117,10 @@ import { heroSectionDetails } from "@/data/hero";
     transform: translateX(0);
   }
 </style>
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    // Select all words
-    const wordContainers = document.querySelectorAll("[data-animate-word]");
-    let delay = 0;
-    const wordDelay = 120; // 120ms delay between each word
+<script>
+  import { animateHeroTitle, animateMarble } from "@/scripts/hero";
 
-    wordContainers.forEach((wordContainer) => {
-      // Apply the CSS transition-delay to each word
-      wordContainer.style.transitionDelay = `${delay}ms`;
-      // Increment delay for the next word
-      delay += wordDelay;
-    });
-
-    // Start the animation after a brief moment to ensure all delays are set
-    setTimeout(() => {
-      wordContainers.forEach((container) => {
-        container.classList.add("is-visible");
-      });
-    }, 50);
-  });
+  animateHeroTitle();
+  animateMarble("big-marble");
+  animateMarble("small-marble");
 </script>
