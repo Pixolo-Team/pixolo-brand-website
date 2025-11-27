@@ -1,12 +1,11 @@
 ---
 // COMPONENTS
-
 import { Image } from "astro:assets";
 import RoundedButton from "./RoundedButton.astro";
 import Badge from "./Badge.astro";
 
 interface Props {
-  thumbnail: string;
+  thumbnail: ImageMetadata;
   chipItems: Array<string>;
   title: string;
   subtitle: string;
@@ -21,7 +20,7 @@ const { thumbnail, chipItems, title, subtitle, ctaText } = Astro.props;
   <!-- Thumbnail -->
   <div class="relative">
     <Image src={thumbnail} alt="thumbnail" width="327" height="222" class:list={"rounded-3xl"} />
-    <div class="absolute top-[164.54] left-[149]">
+    <div class="absolute top-[164.54px] left-[149px]">
       <RoundedButton buttonText="View Case Study" leftIcon="" rightIcon="" />
     </div>
   </div>
