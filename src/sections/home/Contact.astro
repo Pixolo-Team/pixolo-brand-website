@@ -63,11 +63,13 @@ import { contactSectionDetails } from "@/data/contact";
               </div>
               {/* Tooltip with copy icon */}
               <Tooltip text="Copy" position="top">
-                <Icon
-                  name="copy"
-                  class="copy-btn size-5 cursor-pointer"
+                <span
+                  class="copy-btn relative flex size-5 cursor-pointer items-center justify-center"
                   data-copy={contactSectionItem.value}
-                />
+                >
+                  <Icon name="copy" class="icon-copy size-5" />
+                  <Icon name="check" class="icon-check hidden size-5" />
+                </span>
               </Tooltip>
             </a>
           ))
