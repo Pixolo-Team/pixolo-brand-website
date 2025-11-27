@@ -9,7 +9,7 @@ module.exports = [
   // JS + TS
   // ---------------------------------------------------------
   {
-  ignores: [".astro/**", "node_modules/**", "dist/**"],
+    ignores: ["/.astro/**", "node_modules/**", "dist/**", ".astro/**"],
   },
   {
     files: ["**/*.{js,ts}"],
