@@ -10,6 +10,6 @@ export default defineConfig({
   site: "https://www.pixolotechnologies.com",
   integrations: [icon()],
   vite: {
-    plugins: [tailwindcss(),sitemap()],
+    plugins: [tailwindcss(), sitemap()],
   },
 });

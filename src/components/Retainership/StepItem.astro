@@ -11,7 +11,7 @@ const { number, title, description, direction } = Astro.props as props;
 
 <!-- Step Item  -->
 <div
-  class={`flex gap-6 w-full items-center justify-center lg:gap-16 md:${direction === "rtl" ? "flex-row-reverse" : "flex-row"} md:gap-10`}
+  class={`flex gap-6 w-full items-center justify-center lg:gap-16 md:${direction === "rtl" && "flex-row-reverse"} md:gap-10`}
 >
   <!-- Step number -->
   <p
