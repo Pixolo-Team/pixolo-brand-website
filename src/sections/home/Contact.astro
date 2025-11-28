@@ -18,7 +18,7 @@ import { contactSectionDetails } from "@/data/contact";
       <ToolBadge icon="building" text={contactSectionDetails.badgeTitle} />
 
       <!-- Header Content -->
-      <div class="flex flex-col gap-3 text-center lg:gap-4">
+      <div class="anim-fade-up-slow flex flex-col gap-3 text-center lg:gap-4">
         <!-- Heading -->
         <p class="text-n-950 text-3xl font-medium md:text-5xl lg:text-7xl">
           {contactSectionDetails.heading}
@@ -31,7 +31,7 @@ import { contactSectionDetails } from "@/data/contact";
     </div>
 
     <!-- Content wrap -->
-    <div class="flex flex-col justify-center gap-3.5 lg:flex-row">
+    <div class="anim-fade-up-slow flex flex-col justify-center gap-3.5 lg:flex-row">
       <div class="flex w-full flex-col gap-3.5 lg:w-[440px]">
         {
           contactSectionDetails.contactCards.map((contactSectionItem) => (
@@ -63,11 +63,13 @@ import { contactSectionDetails } from "@/data/contact";
               </div>
               {/* Tooltip with copy icon */}
               <Tooltip text="Copy" position="top">
-                <Icon
-                  name="copy"
-                  class="copy-btn size-5 cursor-pointer"
+                <span
+                  class="copy-btn relative flex size-5 cursor-pointer items-center justify-center"
                   data-copy={contactSectionItem.value}
-                />
+                >
+                  <Icon name="copy" class="icon-copy size-5" />
+                  <Icon name="check" class="icon-check hidden size-5" />
+                </span>
               </Tooltip>
             </a>
           ))
