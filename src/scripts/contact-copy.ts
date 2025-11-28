@@ -1,4 +1,3 @@
-/** Initialize copy buttons */
 export const initCopyButtons = () => {
   const buttons = document.querySelectorAll<HTMLElement>(".copy-btn");
 
@@ -6,30 +5,28 @@ export const initCopyButtons = () => {
     const text = btn.dataset.copy;
     if (!text) return;
 
-    // Get both the Icons
     const copyIcon = btn.querySelector<HTMLElement>(".icon-copy");
     const checkIcon = btn.querySelector<HTMLElement>(".icon-check");
-
     if (!copyIcon || !checkIcon) return;
+
+    // Store timeout ID on the button element
+    let resetTimeout: number | undefined;
 
     btn.addEventListener("click", async (e) => {
       e.preventDefault();
-      e.stopPropagation();
-
-      // Copy Text
       await navigator.clipboard.writeText(text);
 
-      // Hide copy icon
       copyIcon.classList.add("hidden");
-      // Show check icon
       checkIcon.classList.remove("hidden");
 
-      // Auto-reset on setTimeout
-      setTimeout(() => {
-        // Hide copy icon
+      // Clear previous timeout if it exists
+      if (resetTimeout) clearTimeout(resetTimeout);
+
+      // Create new timeout
+      resetTimeout = window.setTimeout(() => {
         checkIcon.classList.add("hidden");
-        // Show copy icon
         copyIcon.classList.remove("hidden");
+        resetTimeout = undefined;
       }, 3000);
     });
   });
