@@ -17,10 +17,10 @@ const { backgroundColor, image, logo, title, subtitle, chipItems } = Astro.props
 ---
 
 <!-- Main Project Tile -->
-<div class=`rounded-[42px] md:rounded-[64px] lg:flex lg:flex-row lg:gap-10 ${backgroundColor}`>
+<div class=`rounded-[42px] md:rounded-[64px] xl:flex xl:flex-row xl:gap-10 ${backgroundColor}`>
   <!-- Project Content -->
   <div
-    class="flex w-[327px] flex-col gap-6 px-5 py-6 md:w-[720px] md:gap-8 md:p-10 lg:w-[767px] lg:gap-[54px] lg:p-20"
+    class="flex w-[327px] flex-col gap-6 px-5 py-6 md:w-[720px] md:gap-8 md:p-10 xl:w-[767px] xl:gap-[54px] xl:p-20"
   >
     <!-- Logo -->
     <div class="h-[99.78px] w-[287px] content-center justify-start md:h-[111px] md:w-[320px]">
@@ -28,9 +28,9 @@ const { backgroundColor, image, logo, title, subtitle, chipItems } = Astro.props
     </div>
 
     <!-- Project Details Wrapper -->
-    <div class="flex flex-col gap-5 md:gap-9 lg:gap-10">
+    <div class="flex flex-col gap-5 md:gap-9 xl:gap-10">
       <!-- Project Details -->
-      <div class="flex flex-col gap-5 md:gap-6 lg:gap-7">
+      <div class="flex flex-col gap-5 md:gap-6 xl:gap-7">
         <!-- Chip Wrapper -->
         <div class="flex flex-wrap gap-2">
           <!-- Portfolio Chip -->
@@ -38,12 +38,12 @@ const { backgroundColor, image, logo, title, subtitle, chipItems } = Astro.props
         </div>
 
         <!-- Title Details -->
-        <div class="text-n-950 flex flex-col gap-4 lg:gap-5">
+        <div class="text-n-950 flex flex-col gap-4 xl:gap-5">
           <!-- Title -->
-          <p class="text-2xl leading-tight font-semibold md:text-[32px] lg:text-4xl">{title}</p>
+          <p class="text-2xl leading-tight font-semibold md:text-[32px] xl:text-4xl">{title}</p>
 
           <!-- Subtitle -->
-          <p class="text-sm leading-tight font-normal md:text-base lg:text-xl">{subtitle}</p>
+          <p class="text-sm leading-tight font-normal md:text-base xl:text-xl">{subtitle}</p>
         </div>
       </div>
 
@@ -55,7 +55,7 @@ const { backgroundColor, image, logo, title, subtitle, chipItems } = Astro.props
   </div>
 
   <!-- Image -->
-  <div class="hidden h-[644.41px] w-[617px] lg:block">
+  <div class="hidden h-[644.41px] w-[617px] xl:block">
     <img src={image} alt="image" class="" />
   </div>
 </div>
