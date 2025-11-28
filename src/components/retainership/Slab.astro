@@ -1,0 +1,45 @@
+---
+// COMPONENTS //
+import RoundedButton from "@/components/RoundedButton.astro";
+
+interface Props {
+  count?: string;
+  title: string;
+  btnText: string;
+  images: string[];
+}
+
+const { count, title, btnText, images } = Astro.props as Props;
+---
+
+<section
+  class="flex w-full items-center justify-between rounded-[60px] bg-[#0E1525]/80 px-8 py-6 backdrop-blur-xl"
+>
+  <!-- LEFT SIDE (images + text) -->
+  <div class="flex items-center gap-8">
+    <!-- Avatars + Badge -->
+    <div class="flex items-center gap-3">
+      <!-- Avatars -->
+      <div class="flex items-center">
+        {
+          images.map((img, index) => (
+            <img
+              src={img}
+              alt={`Profile ${index + 1}`}
+              class={`h-[51px] w-[51px] rounded-full object-cover ${index > 0 ? "-ml-4" : ""}`}
+            />
+          ))
+        }
+      </div>
+
+      <!-- Badge -->
+      <span class="text-text-xl text-n-950">{count}</span>
+    </div>
+
+    <!-- Main text -->
+    <p class="text-text-xl text-n-950 font-medium">{title}</p>
+  </div>
+
+  <!-- CTA BUTTON -->
+  <RoundedButton buttonText={btnText} />
+</section>
