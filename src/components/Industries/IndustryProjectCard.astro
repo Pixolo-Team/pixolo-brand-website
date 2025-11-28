@@ -1,24 +1,27 @@
 ---
 import { Icon } from "astro-icon/components";
+
+const { cardItems } = Astro.props;
 ---
 
-<!-- Project Card -->
-<div class="flex flex-col gap-4">
-  <!-- Logo Container -->
-  <div class="border-n-500 bg-n-100 flex items-center justify-center rounded-4xl border p-20">
-    <img src="/images/industries/industry-project-card-logo.png" />
-  </div>
-  <!--Text-Icon-->
-  <div class="flex flex-row justify-around gap-9">
-    <!-- Card Text-->
-    <div>
-      <p class="lg:text-2xl; text-xl leading-[1.25] font-medium tracking-tighter">
-        Football Club Barcelona
-      </p>
+<!-- Project Card -->{
+  cardItems.map((cardItem: { text: unknown; image: string | null | undefined }) => (
+    // Logo Container
+    <div class="flex flex-col gap-4">
+      <div class="border-n-500 bg-n-100 justify-center rounded-4xl border p-20">
+        <img src={cardItem.image} />
+      </div>
+      {/* Text+Icon */}
+      <div class="flex flex-row items-center justify-between">
+        {/* Text */}
+        <p class="text-xl leading-[1.25] font-medium tracking-tighter lg:text-2xl">
+          {cardItem.text}
+        </p>
+        {/* Next arrow */}
+        <div class="h-6 w-6 md:h-7 md:w-7">
+          <Icon name="right-arrow" />
+        </div>
+      </div>
     </div>
-    <!-- Next Arrow-->
-    <div class="h-6 w-6 md:h-7 md:w-7">
-      <Icon name="right-arrow" />
-    </div>
-  </div>
-</div>
+  ))
+}
