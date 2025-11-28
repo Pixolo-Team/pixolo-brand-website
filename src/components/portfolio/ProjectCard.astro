@@ -9,17 +9,19 @@ interface Props {
   logo: string;
   title: string;
   subtitle: string;
-  chips: Array<string>;
+  chipItems: string[];
 }
 
 // PROPS
-const { backgroundColor, image, logo, title, subtitle, chips } = Astro.props;
+const { backgroundColor, image, logo, title, subtitle, chipItems } = Astro.props;
 ---
 
 <!-- Main Project Tile -->
 <div class=`rounded-[42px] md:rounded-[64px] lg:flex lg:flex-row lg:gap-10 ${backgroundColor}`>
   <!-- Project Content -->
-  <div class="flex flex-col gap-6 px-5 py-6 md:gap-8 md:p-10 lg:gap-[54px] lg:p-20">
+  <div
+    class="flex w-[327px] flex-col gap-6 px-5 py-6 md:w-[720px] md:gap-8 md:p-10 lg:w-[767px] lg:gap-[54px] lg:p-20"
+  >
     <!-- Logo -->
     <div class="h-[99.78px] content-center justify-start md:h-[111px] md:w-[320px]">
       <img
@@ -36,7 +38,7 @@ const { backgroundColor, image, logo, title, subtitle, chips } = Astro.props;
         <!-- Chip Wrapper -->
         <div class="flex flex-wrap gap-2">
           <!-- Portfolio Chip -->
-          {chips?.map((chipText: string) => <Badge badgeText={chipText} />)}
+          {chipItems?.map((chipItem: string) => <Badge text={chipItem} />)}
         </div>
 
         <!-- Title Details -->
