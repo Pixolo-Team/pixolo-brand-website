@@ -6,7 +6,7 @@ import Badge from "./Badge.astro";
 
 interface Props {
   thumbnail: ImageMetadata;
-  chipItems: Array<string>;
+  chipItems: string[];
   title: string;
   subtitle: string;
   ctaText: string;
@@ -35,7 +35,7 @@ const { thumbnail, chipItems, title, subtitle, buttonView, ctaText } = Astro.pro
   </div>
   <!-- Tabs -->
   <div class="flex flex-wrap gap-3">
-    {chipItems.map((chipItem) => <Badge badgeText={chipItem} />)}
+    {chipItems.map((chipItem) => <Badge text={chipItem} />)}
   </div>
   <!-- Article Details -->
   <div class="text-n-950 flex flex-col gap-3 leading-tight md:gap-3.5">
