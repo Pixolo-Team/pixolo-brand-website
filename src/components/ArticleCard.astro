@@ -1,8 +1,45 @@
 ---
+// COMPONENTS
+import { Image } from "astro:assets";
+import RoundedButton from "./RoundedButton.astro";
+import Badge from "./portfolio/Badge.astro";
 
+interface Props {
+  thumbnail: ImageMetadata;
+  chipItems: string[];
+  title: string;
+  subtitle: string;
+  ctaText: string;
+  buttonView: string;
+}
+
+const { thumbnail, chipItems, title, subtitle, buttonView, ctaText } = Astro.props;
 ---
 
 <!-- Article Card -->
-<div class="">
-  <!-- Article Card Content -->
+<div class="flex w-[327px] flex-col gap-4 md:w-[720px] md:gap-5 lg:w-[643px] lg:gap-6">
+  <!-- Thumbnail -->
+  <div class="relative">
+    <Image
+      src={thumbnail}
+      alt="thumbnail"
+      class:list={"h-[222px] w-[327px] rounded-3xl md:h-[349px] md:w-[720px] lg:w-[643px]"}
+    />
+    <div
+      class=`lg:${buttonView} absolute top-[164.54px] md:top-[276px] left-[149px] md:left-[527px] lg:left-[427px]`
+    >
+      <RoundedButton buttonText="View Case Study" leftIcon="" rightIcon="" />
+    </div>
+  </div>
+  <!-- Tabs -->
+  <div class="flex flex-wrap gap-3">
+    {chipItems.map((chipItem) => <Badge text={chipItem} />)}
+  </div>
+  <!-- Article Details -->
+  <div class="text-n-950 flex flex-col gap-3 leading-tight md:gap-3.5">
+    <!-- Title -->
+    <p class="text-2xl font-medium md:text-4xl lg:text-[40px]">{title}</p>
+    <!-- Subtitle -->
+    <p class="text-sm font-normal md:text-xl lg:text-2xl">{subtitle}</p>
+  </div>
 </div>
