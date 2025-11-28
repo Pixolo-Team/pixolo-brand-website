@@ -31,7 +31,7 @@ export const animateMarble = (elementId: string, containerId: string) => {
 
   if (!marble || !container) return;
 
-  const SPEED_PX_PER_SECOND = 15;
+  const SPEED_PX_PER_SECOND = 25;
   let posX = 0;
   let posY = 0;
   let direction = Math.random() * Math.PI * 2;
@@ -54,6 +54,8 @@ export const animateMarble = (elementId: string, containerId: string) => {
       minY: -originTop,
       maxY: containerRect.height - originTop - marbleRect.height,
     };
+
+    console.log(bounds);
   };
 
   // Calculate Bounds
@@ -94,6 +96,8 @@ export const animateMarble = (elementId: string, containerId: string) => {
       posY = bounds.maxY;
       direction = -direction;
     }
+
+    console.log(posY, bounds.maxY);
 
     // --- ⚡ Motion One animation update ---
     animate(marble, { x: posX, y: posY }, { duration: 0, easing: "linear" });
