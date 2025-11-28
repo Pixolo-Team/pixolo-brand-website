@@ -6,6 +6,16 @@ const prettier = require("eslint-plugin-prettier");
 /** @type {import("eslint").Linter.FlatConfig[]} */
 module.exports = [
   // ---------------------------------------------------------
+  // Global ignores
+  // ---------------------------------------------------------
+  {
+    ignores: [
+      "**/.astro/**", // Ignore Astro build/cache files
+      "**/node_modules/**",
+      "**/dist/**",
+    ],
+  },
+  // ---------------------------------------------------------
   // JS + TS
   // ---------------------------------------------------------
   {
@@ -35,7 +45,7 @@ module.exports = [
   // Script blocks inside Astro files
   // ---------------------------------------------------------
   {
-    files: ["**/*.astro/*.ts"],
+    files: ["**/.astro/.ts"],
     languageOptions: {
       parser: tsParser,
     },
