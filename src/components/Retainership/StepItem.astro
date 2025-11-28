@@ -29,14 +29,14 @@ const { number, title, description, direction } = Astro.props as props;
   >
     <!-- Title -->
     <p
-      class={`font-bold text-2xl leading-tight text-n-950 md:text-3xl lg:text-5xl lg:font-medium ${direction === "rtl" ? "text-right" : "text-left"}`}
+      class={`font-bold text-2xl leading-tight text-n-950 md:text-3xl lg:text-5xl lg:font-medium ${direction === "rtl" ? "md:text-right" : "md:text-left"}`}
     >
       {title}
     </p>
 
     <!-- Description -->
     <p
-      class={`font-normal text-sm leading-tight text-n-950 md:text-base lg:text-2xl ${direction === "rtl" ? "text-right" : "text-left"}`}
+      class={`font-normal text-sm leading-tight text-n-950 md:text-base lg:text-2xl ${direction === "rtl" ? "md:text-right" : "md:text-left"}`}
     >
       {description}
     </p>
