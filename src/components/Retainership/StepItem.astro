@@ -11,11 +11,12 @@ const { number, title, description, direction } = Astro.props as props;
 
 <!-- Step Item  -->
 <div
-  class={`flex gap-6 w-full items-center justify-center lg:gap-16 md:${direction === "rtl" && "flex-row-reverse"} md:gap-10`}
+  class={`flex gap-6 w-full items-center justify-center lg:gap-16 ${direction === "rtl" && "md:flex-row-reverse"}
+ md:gap-10`}
 >
   <!-- Step number -->
   <p
-    class={`max-w-20 flex-1 font-normal text-5xl leading-tight text-n-950 grow  text-right md:max-w-full md:${direction === "rtl" ? "text-left" : "text-right"} md:text-7xl lg:text-8xl`}
+    class={`max-w-20 flex-1 font-normal text-5xl leading-tight text-n-950 grow text-right md:max-w-full md:text-7xl lg:text-8xl ${direction === "rtl" ? "md:text-left" : "md:text-right"}`}
   >
     {number}
   </p>
@@ -25,7 +26,7 @@ const { number, title, description, direction } = Astro.props as props;
 
   <!-- Step Information -->
   <div
-    class={`flex flex-1 flex-col gap-3 w-full  text-left md:${direction === "rtl" ? "text-right" : "text-left"} md:gap-5`}
+    class={`flex flex-1 flex-col gap-3 w-full text-left md:gap-5 ${direction === "rtl" ? "md:text-right" : "md:text-left"}`}
   >
     <!-- Title -->
     <p class={"font-bold text-2xl leading-tight text-n-950 md:text-3xl lg:text-5xl lg:font-medium"}>
