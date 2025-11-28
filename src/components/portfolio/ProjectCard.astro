@@ -1,10 +1,10 @@
 ---
-// COMPONENTS
-import RoundedButton from "../RoundedButton.astro";
-import Badge from "./Badge.astro";
+// COMPONENTS //
+import RoundedButton from "@/components/RoundedButton.astro";
+import Badge from "@/components/portfolio/Badge.astro";
 
 interface Props {
-  backgroundColor: string;
+  brandColor: string;
   image: string;
   logo: string;
   title: string;
@@ -13,18 +13,16 @@ interface Props {
 }
 
 // PROPS
-const { backgroundColor, image, logo, title, subtitle, chipItems } = Astro.props;
+const { brandColor, image, logo, title, subtitle, chipItems } = Astro.props;
 ---
 
 <!-- Main Project Tile -->
-<div class=`rounded-[42px] md:rounded-[64px] xl:flex xl:flex-row xl:gap-10 ${backgroundColor}`>
+<div class=`rounded-[42px] md:rounded-[64px] xl:flex xl:flex-row xl:gap-10 ${brandColor}`>
   <!-- Project Content -->
-  <div
-    class="flex w-[327px] flex-col gap-6 px-5 py-6 md:w-[720px] md:gap-8 md:p-10 xl:w-[767px] xl:gap-[54px] xl:p-20"
-  >
+  <div class="flex flex-1 flex-col gap-6 px-5 py-6 md:gap-8 md:p-10 xl:gap-14 xl:p-20">
     <!-- Logo -->
-    <div class="h-[99.78px] w-[287px] content-center justify-start md:h-[111px] md:w-[320px]">
-      <img src={logo} alt="logo" class="" />
+    <div class="h-[98px] justify-start md:h-[110px]">
+      <img src={logo} alt="logo" class="h-full object-contain" />
     </div>
 
     <!-- Project Details Wrapper -->
@@ -40,7 +38,7 @@ const { backgroundColor, image, logo, title, subtitle, chipItems } = Astro.props
         <!-- Title Details -->
         <div class="text-n-950 flex flex-col gap-4 xl:gap-5">
           <!-- Title -->
-          <p class="text-2xl leading-tight font-semibold md:text-[32px] xl:text-4xl">{title}</p>
+          <p class="text-2xl leading-tight font-semibold md:text-3xl xl:text-4xl">{title}</p>
 
           <!-- Subtitle -->
           <p class="text-sm leading-tight font-normal md:text-base xl:text-xl">{subtitle}</p>
@@ -55,7 +53,7 @@ const { backgroundColor, image, logo, title, subtitle, chipItems } = Astro.props
   </div>
 
   <!-- Image -->
-  <div class="hidden h-[644.41px] w-[617px] xl:block">
-    <img src={image} alt="image" class="" />
+  <div class="hidden h-full w-[42%] self-end xl:block">
+    <img src={image} alt="image" class="h-full w-full" />
   </div>
 </div>
