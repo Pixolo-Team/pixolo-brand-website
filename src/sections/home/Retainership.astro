@@ -3,33 +3,149 @@
 import RetainershipCard from "@/components/retainership/RetainershipCard.astro";
 import RetainershipEmployeeCard from "@/components/retainership/RetainershipEmployeeCard.astro";
 import StepItem from "@/components/retainership/StepItem.astro";
+import RoundedButton from "@/components/RoundedButton.astro";
+import ToolBadge from "@/components/ToolBadge.astro";
+
+// DATA //
+import { retainershipDetails } from "../../data/retainership";
 ---
 
-<!-- Step Item -->
-<StepItem
-  number="01"
-  title="Tell us what you need"
-  description="We understand your project and match you with the right expert."
-  direction="ltr"
-/>
+<!-- Retainership Section -->
+<section class="flex flex-col items-center justify-center">
+  <!-- Container -->
+  <div
+    class="container flex flex-col items-center justify-center gap-40 px-6 py-40 md:gap-52 md:px-0 lg:gap-60 lg:px-14"
+  >
+    <!-- Retainership-steps -->
+    <div class="flex w-full flex-col gap-20 lg:gap-24">
+      <!-- Section header -->
+      <div class="flex w-full flex-col items-center gap-7">
+        <ToolBadge icon="building" text="Retainership Program" />
+        <p
+          class="text-n-950 text-center text-2xl leading-tight font-medium md:max-w-[65%] md:text-4xl lg:max-w-[874px] lg:text-6xl"
+        >
+          {retainershipDetails.headerText}
+        </p>
+      </div>
+      <!-- Steps with title -->
+      <div class="flex w-full flex-col items-center gap-10 md:gap-7">
+        <p class="text-n-950 text-center text-2xl leading-tight font-medium tracking-tight">
+          {retainershipDetails.stepsTitle}
+        </p>
+        <!-- Steps -->
+        <div class="flex flex-col md:gap-2.5">
+          <div class="flex flex-col items-center gap-48 md:gap-72">
+            <StepItem
+              number="01"
+              title="Tell us what you need"
+              description="We understand your project and match you with the right expert."
+              direction="ltr"
+            />
 
-<StepItem
-  number="02"
-  title="Sign one simple contract"
-  description="No hiring HR, or paperwork hassles - we handle it all."
-  direction="rtl"
-/>
+            <StepItem
+              number="02"
+              title="Sign one simple contract"
+              description="No hiring HR, or paperwork hassles - we handle it all."
+              direction="rtl"
+            />
+            <StepItem
+              number="03"
+              title="We manage everything"
+              description="From training and attendance to equipment and performance — all on us, fully transparent to you."
+              direction="ltr"
+            />
 
-<RetainershipCard
-  number="1"
-  title="Designer"
-  description="We provide the best of the best designer. We would love to share you more details."
-/>
+            <StepItem
+              number="04"
+              title="Work as one team"
+              description="Your expert works from our office, dedicated to your project — for as long as you need them."
+              direction="rtl"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
 
-<RetainershipEmployeeCard
-  image="employee-image.jpg"
-  name="Deven Bhagtani"
-  position="UX Designer"
-  salary="Rs.10,000"
-  experience="4 Years"
-/>
+    <!-- Retainership-content -->
+    <div class="flex w-full flex-col items-center gap-14 lg:gap-16">
+      <!-- Content heading -->
+      <p
+        class="text-n-950 w-full text-center text-xl leading-tight font-medium md:text-3xl lg:text-5xl"
+      >
+        {retainershipDetails.contentHeading}
+      </p>
+      <!-- Content wrapper -->
+      <div class="flex w-full flex-col items-center gap-20">
+        <!-- Cards with banner -->
+        <div class="flex w-full flex-col items-center gap-10">
+          <!-- Cards wrapper -->
+          <div
+            class="grid w-full place-items-center gap-5 self-center md:grid-cols-2 xl:grid-cols-4"
+          >
+            <RetainershipCard
+              number="1"
+              title="Designer"
+              description="We provide the best of the best designer. We would love to share you more details."
+            />
+            <RetainershipCard
+              number="2"
+              title="Developers"
+              description="Our developers are specialists in creating innovative solutions to meet your needs."
+            />
+            <RetainershipCard
+              number="3"
+              title="Project Manager"
+              description="Experienced project managers ensure that everything runs smoothly and efficiently."
+            />
+            <RetainershipCard
+              number="4"
+              title="Product Owners"
+              description="Our marketing specialists help you reach your target audience with tailored strategies."
+            />
+          </div>
+
+          <!-- TODO: To be added later -->
+          <div></div>
+        </div>
+        <!-- Employee cards with button -->
+        <div class="flex w-full flex-col items-center gap-14 md:gap-16">
+          <!-- Title with cards -->
+          <div class="flex w-full flex-col gap-7">
+            <p
+              class="n-950 text-lg leading-tight font-medium tracking-tight md:text-xl lg:text-2xl"
+            >
+              {retainershipDetails.employeeCardTitle}
+            </p>
+            <!-- Employee cards wrapper -->
+            <div class="grid w-full gap-6 lg:gap-4 xl:grid-cols-3">
+              <RetainershipEmployeeCard
+                image="employee-image.jpg"
+                name="Deven Bhagtani"
+                position="UX Designer"
+                salary="Rs.10,000"
+                experience="4 Years"
+              />
+              <RetainershipEmployeeCard
+                image="employee-image.jpg"
+                name="Deven Bhagtani"
+                position="UX Designer"
+                salary="Rs.10,000"
+                experience="4 Years"
+              />
+              <RetainershipEmployeeCard
+                image="employee-image.jpg"
+                name="Deven Bhagtani"
+                position="UX Designer"
+                salary="Rs.10,000"
+                experience="4 Years"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="w-fit">
+          <RoundedButton buttonText="Extend your Team Now" rightIcon="right-arrow" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
