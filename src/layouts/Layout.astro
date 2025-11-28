@@ -9,6 +9,9 @@ import Meta from "@/components/layout/Meta.astro";
 import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
 
+// DATA //
+import { siteInfo } from "@/data/site-info";
+
 const { meta = {} } = Astro.props;
 ---
 
@@ -27,7 +30,7 @@ const { meta = {} } = Astro.props;
     <Loading />
 
     <!-- Top menu -->
-    <div class="fixed top-3 left-0 z-50 w-full">
+    <div class="fixed top-0 left-0 z-50 w-full">
       <Header />
     </div>
 
@@ -56,8 +59,8 @@ const { meta = {} } = Astro.props;
 
     <!-- Whatsapp button component -->
     <WhatsappButton
-      href="https://wa.me/9768941186"
-      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-50"
+      href={`https://wa.me/${siteInfo.contact.phone[0].value}`}
+      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-40"
     />
   </body>
 </html>
