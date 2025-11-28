@@ -13,6 +13,7 @@ import { heroSectionDetails } from "@/data/hero";
 <!-- Hero Section Start -->
 <section>
   <div
+    id="hero-wrapper"
     class="relative container mx-auto flex flex-col items-center justify-center gap-9 overflow-hidden px-6 py-36 text-center md:py-52 lg:py-40 xl:pt-52 2xl:pt-64 2xl:pb-52"
   >
     <!-- Top-left floating marble -->
@@ -121,6 +122,6 @@ import { heroSectionDetails } from "@/data/hero";
   import { animateHeroTitle, animateMarble } from "@/scripts/hero";
 
   animateHeroTitle();
-  animateMarble("big-marble");
-  animateMarble("small-marble");
+  animateMarble("big-marble", "hero-wrapper");
+  animateMarble("small-marble", "hero-wrapper");
 </script>

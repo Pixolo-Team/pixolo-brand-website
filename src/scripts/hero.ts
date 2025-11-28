@@ -1,6 +1,4 @@
-// OTHERS //
 import { animate } from "motion";
-
 /** Function to add animations in Hero section */
 export const animateHeroTitle = () => {
   document.addEventListener("DOMContentLoaded", () => {
@@ -26,47 +24,85 @@ export const animateHeroTitle = () => {
   });
 };
 
-/** Animate floating marble using Motion One */
-export const animateMarble = (elementId: string) => {
-  // Get the marble element
+/** Animate floating marble inside its container with a constant speed (Motion One version) */
+export const animateMarble = (elementId: string, containerId: string) => {
   const marble = document.getElementById(elementId) as HTMLElement | null;
+  const container = document.getElementById(containerId) as HTMLElement | null;
 
-  if (!marble) return;
+  if (!marble || !container) return;
 
-  // Store the current X and Y position
-  let currentPositionX = 0;
-  let currentPositonY = 0;
+  const SPEED_PX_PER_SECOND = 15;
+  let posX = 0;
+  let posY = 0;
+  let direction = Math.random() * Math.PI * 2;
 
-  // Function to move the marble to a new random position
-  const float = () => {
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
+  // Walls
+  let bounds = { minX: 0, maxX: 0, minY: 0, maxY: 0 };
 
-    // Pick a random position within the screen
-    const nextPositionX = Math.random() * (screenWidth - 100) - (screenWidth / 2 - 50);
-    const nextPositionY = Math.random() * (screenHeight - 100) - (screenHeight / 2 - 50);
+  // Calcuate Bounds
+  const calcBounds = () => {
+    const containerRect = container.getBoundingClientRect();
+    const marbleRect = marble.getBoundingClientRect();
 
-    // Animate from current position → next position
-    animate(
-      marble,
-      {
-        x: [currentPositionX, nextPositionX],
-        y: [currentPositonY, nextPositionY],
-      },
-      {
-        duration: 4,
-        easing: "ease-in-out",
-      },
-    ).finished.then(() => {
-      // Save the new position as the current one
-      currentPositionX = nextPositionX;
-      currentPositonY = nextPositionY;
+    // Marble's initial top-left inside the container
+    const originLeft = marble.offsetLeft;
+    const originTop = marble.offsetTop;
 
-      // Repeat the animation
-      float();
-    });
+    bounds = {
+      minX: -originLeft,
+      maxX: containerRect.width - originLeft - marbleRect.width,
+      minY: -originTop,
+      maxY: containerRect.height - originTop - marbleRect.height,
+    };
   };
 
-  // Start the floating animation
-  float();
+  // Calculate Bounds
+  calcBounds();
+
+  // Calculate Bounds on resizing window
+  window.addEventListener("resize", calcBounds);
+
+  let lastTime = performance.now();
+
+  const step = (now: number) => {
+    const deltaSeconds = (now - lastTime) / 1000;
+    lastTime = now;
+
+    const vx = Math.cos(direction) * SPEED_PX_PER_SECOND;
+    const vy = Math.sin(direction) * SPEED_PX_PER_SECOND;
+
+    // Update Position Horizontal
+    posX += vx * deltaSeconds;
+
+    // Update Position Vertically
+    posY += vy * deltaSeconds;
+
+    // Wall bounce (perfect physics) - Horizontal walls
+    if (posX <= bounds.minX) {
+      posX = bounds.minX;
+      direction = Math.PI - direction;
+    } else if (posX >= bounds.maxX) {
+      posX = bounds.maxX;
+      direction = Math.PI - direction;
+    }
+
+    // Wall bounce (perfect physics) - Vertical walls
+    if (posY <= bounds.minY) {
+      posY = bounds.minY;
+      direction = -direction;
+    } else if (posY >= bounds.maxY) {
+      posY = bounds.maxY;
+      direction = -direction;
+    }
+
+    // --- ⚡ Motion One animation update ---
+    animate(marble, { x: posX, y: posY }, { duration: 0, easing: "linear" });
+
+    requestAnimationFrame(step);
+  };
+
+  requestAnimationFrame((now) => {
+    lastTime = now;
+    step(now);
+  });
 };
