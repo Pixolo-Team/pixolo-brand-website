@@ -24,11 +24,11 @@ const { image, name, websiteLink } = Astro.props as props;
   </div>
   <div class="flex items-center justify-between px-4">
     {/* Project Name */}
-    <p class="text-n-950 w-4/5 text-xl leading-tight font-medium tracking-tight lg:text-2xl">
+    <p class="text-n-950 w-full text-xl leading-tight font-medium tracking-tight lg:text-2xl">
       {name}
     </p>
 
     {/* Right arrow */}
-    <Icon name="right-arrow" class="text-n-950 size-6 md:size-7" />
+    {websiteLink && <Icon name="right-arrow" class="text-n-950 size-6 md:size-7" />}
   </div>
 </a>

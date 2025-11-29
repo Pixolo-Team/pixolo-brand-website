@@ -31,28 +31,20 @@ import { industriesSectionDetails } from "@/data/industries";
       </p>
     </div>
 
-    <div class="flex flex-col gap-6 md:items-center md:gap-7 lg:gap-9">
-      <!-- Tabs Component with Content -->
-      <div class="">
-        <Tabs tabItems={industriesSectionDetails.industriesTabItems}>
-          {
-            industriesSectionDetails.industriesTabItems.map((tab) => (
-              <div
-                data-tab-content-id={tab.id}
-                class="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-12 xl:grid-cols-3"
-              >
-                {industriesSectionDetails.industriesProjectsByTab[tab.id].map((project) => (
-                  <ProjectCard
-                    name={project.name}
-                    image={project.image}
-                    websiteLink={project.websiteLink}
-                  />
-                ))}
-              </div>
-            ))
-          }
-        </Tabs>
-      </div>
-    </div>
+    <!-- Tabs Component with Content -->
+    <Tabs tabItems={industriesSectionDetails.industriesTabItems}>
+      {
+        industriesSectionDetails.industriesTabItems.map((tab) => (
+          <div
+            data-tab-content-id={tab.id}
+            class="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-12 xl:grid-cols-3"
+          >
+            {industriesSectionDetails.industriesProjectsByTab[tab.id].map((project) => (
+              <ProjectCard name={project.name} image={project.image} />
+            ))}
+          </div>
+        ))
+      }
+    </Tabs>
   </div>
 </section>
