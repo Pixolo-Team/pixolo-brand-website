@@ -5,82 +5,81 @@ import Image from "astro/components/Image.astro";
 import { Icon } from "astro-icon/components";
 
 // DATA //
-import { clientDetails, clients } from "@/data/testimonials.ts";
+import { testimonialSectionDetails } from "@/data/testimonials.ts";
 
-const headingText = "What Our Clients Say";
-const quoteText =
-  "Working with Pixolo was unbelievable. He instantly understood our vision and translated it into a sleek, intuitive Website. The process felt effortless, and the results exceeded our expectations.";
+const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDetails;
+
+// Active index (you can change later for slider)
+const activeItem = testimonialItems[0]; // default first
 ---
 
-<!-- Testimonials Section -->
-<section class="flex items-center justify-center">
-  <!-- Container -->
+<section>
   <div
-    class="container mx-auto flex w-full flex-col items-center justify-center gap-10 px-6 py-20 md:gap-12 md:px-0 md:py-24 lg:gap-14 lg:py-28"
+    class="container mx-auto flex w-full flex-col items-center justify-center gap-10 px-6 py-20 md:gap-12 md:py-24 lg:gap-14 lg:py-28"
   >
-    <!-- Header Text -->
+    <!-- Header -->
     <div class="relative flex w-full flex-col gap-20 md:gap-28 lg:gap-36">
-      <!-- Header -->
       <div class="flex flex-col items-center justify-center gap-4 md:gap-5 lg:gap-6">
-        <!-- Tool Badge -->
-        <ToolBadge icon="comment" text="Voices of Trust" />
+        <!-- ToolBadge component -->
+        <ToolBadge icon={badgeIcon} text={badgeTitle} />
 
-        <!-- Heading Text -->
+        <!-- Title -->
         <p class="text-center text-2xl leading-tight font-medium md:text-4xl lg:text-6xl">
-          {headingText}
+          {title}
         </p>
       </div>
 
-      <Icon
-        name="commas"
-        class="absolute bottom-40 h-[31.11px] w-10 md:bottom-25 md:left-15 md:w-12 lg:bottom-20 lg:left-60 lg:h-[49.78px] lg:w-16"
-      />
-
-      <!-- Quote Text -->
+      <!-- Active Testimonial Text -->
       <div
-        class="font-regular text-n-950 mx-auto max-w-[327px] text-left text-base leading-normal md:max-w-[590px] md:text-center md:text-xl lg:max-w-210 lg:text-center lg:text-2xl"
+        class="font-regular text-n-950 relative mx-auto w-full text-left text-base leading-normal md:w-[72%] md:text-center md:text-xl lg:text-center lg:text-2xl xl:w-[55%]"
       >
-        {quoteText}
+        {activeItem.testimonial}
+        <!-- Inverted Commas -->
+        <Icon
+          name="commas"
+          class="absolute -top-[45px] left-1 size-10 sm:-top-[6%] sm:-left-[16%] md:-top-[10%] md:-left-[12%] md:size-12 lg:size-16"
+        />
       </div>
     </div>
 
-    <!-- Clients Wrapper -->
-    <div class="flex w-full justify-end gap-3 pr-0 md:gap-5 md:pr-0 lg:gap-6 lg:pr-64">
-      <!-- Client Details -->
+    <!-- Clients Profiles -->
+    <div class="flex w-full justify-end gap-3 md:gap-5 lg:gap-6 lg:pr-64">
+      <!-- Active Profile  -->
       <div
         class="bg-n-950 flex items-center justify-center gap-2.5 rounded-full py-0.5 pr-5 pl-1 md:gap-3.5 md:py-2 md:pr-6 md:pl-2 lg:gap-4 lg:py-2 lg:pr-6 lg:pl-2"
       >
-        <!-- Profile Picture -->
+        <!-- Profile image -->
         <Image
-          src={`/images/testimonials/${clientDetails.profilePicture}`}
-          alt={clientDetails.description}
+          src={activeItem.clientImage}
+          alt={activeItem.clientName}
           width={64}
           height={64}
-          class="size-9 rounded-full object-cover object-center md:size-14 lg:size-16"
+          class="size-9 rounded-full object-cover md:size-14 lg:size-16"
         />
 
-        <!-- Name Details -->
         <div class="text-n-100">
-          <!-- Client Name -->
-          <p class="text-sm leading-tight font-bold md:text-lg lg:text-xl">{clientDetails.name}</p>
+          <!-- Name -->
+          <p class="text-sm leading-tight font-bold md:text-lg lg:text-xl">
+            {activeItem.clientName}
+          </p>
 
-          <!-- Client Description -->
-          <p class="text-xs leading-tight md:text-sm lg:text-base">{clientDetails.description}</p>
+          <!-- Company -->
+          <p class="text-xs leading-tight md:text-sm lg:text-base">
+            {activeItem.brandName}
+          </p>
         </div>
       </div>
 
       <!-- Other Clients -->
       <div class="flex items-center justify-center gap-2.5 md:gap-3.5 lg:gap-4">
-        <!-- Iterating over an array of clients to get their profile pictures -->
         {
-          clients.map((client) => (
-            // Client Profile Picture
+          testimonialItems.map((testimonialItem) => (
             <Image
-              src={`/images/testimonials/${client.profilePicture}`}
-              alt={client.description}
+              src={testimonialItem.clientImage}
+              alt={testimonialItem.clientName}
               width={72}
               height={72}
-              class="size-9 rounded-full object-cover object-center md:size-14 lg:size-16"
+              class="size-9 rounded-full object-cover transition-all duration-600 hover:scale-125 hover:shadow-[0_0_21.7px_0_#2B7FFF] md:size-14 lg:size-16"
             />
           ))
         }
