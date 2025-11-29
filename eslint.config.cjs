@@ -15,7 +15,6 @@ module.exports = [
       "**/dist/**",
     ],
   },
-
   // ---------------------------------------------------------
   // JS + TS
   // ---------------------------------------------------------
@@ -46,7 +45,7 @@ module.exports = [
   // Script blocks inside Astro files
   // ---------------------------------------------------------
   {
-    files: ["**/*.astro/*.ts"],
+    files: ["**/.astro/.ts"],
     languageOptions: {
       parser: tsParser,
     },
