@@ -1,19 +1,55 @@
 ---
 // COMPONENTS //
 import ProjectCard from "@/components/Industries/ProjectCard.astro";
+import Tabs from "@/components/Tabs.astro";
+import ToolBadge from "@/components/ToolBadge.astro";
+
+// DATA //
+import { industriesSectionDetails } from "@/data/industries";
 ---
 
 <section>
-  <div class="container mx-auto flex">
-    <ProjectCard
-      websiteLink="/"
-      image="/images/industries/barcelona-brand-logo.png"
-      name="Football Club Barcelona"
-    />
-    <ProjectCard
-      websiteLink="/"
-      image="/images/industries/barcelona-brand-logo.png"
-      name="Football Club Barcelona"
-    />
+  <div class="container mx-auto flex flex-col gap-9 px-6 py-20 lg:gap-11 lg:px-6 lg:py-28">
+    <!-- Section Header -->
+    <div
+      class="m-auto flex w-full flex-col flex-wrap items-center justify-center gap-4 md:gap-5 lg:gap-6"
+    >
+      <!-- ToolBadge component -->
+      <div class="tool-badge flex justify-center">
+        <ToolBadge
+          icon={industriesSectionDetails.sectionHeader.badgeIcon}
+          text={industriesSectionDetails.sectionHeader.badgeTitle}
+        />
+      </div>
+
+      <!-- Title -->
+      <p
+        id="header-text"
+        class="text-n-950 w-full text-center text-2xl leading-tight font-medium md:text-4xl lg:text-6xl"
+      >
+        {industriesSectionDetails.sectionHeader.title}
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-6 md:items-center md:gap-7 lg:gap-9">
+      <!-- Tabs Component -->
+      <div class="scrollbar-hide overflow-x-auto whitespace-nowrap">
+        <Tabs tabItems={industriesSectionDetails.industriesTabItems} />
+      </div>
+
+      <!-- Projects -->
+      <div class="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-12 xl:grid-cols-3">
+        {
+          industriesSectionDetails.industriesProjects.map((projectItem) => (
+            // Project Card component
+            <ProjectCard
+              websiteLink={projectItem.websiteLink}
+              image={projectItem.image}
+              name={projectItem.name}
+            />
+          ))
+        }
+      </div>
+    </div>
   </div>
 </section>

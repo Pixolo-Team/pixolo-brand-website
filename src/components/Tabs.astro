@@ -3,7 +3,7 @@ interface Props {
   tabItems: {
     id: number;
     name: string;
-    isActive: boolean;
+    isActive?: boolean;
   }[];
 }
 
@@ -11,12 +11,13 @@ const { tabItems } = Astro.props;
 ---
 
 <!-- Tab component -->
-<div class="flex items-center gap-3.5 md:gap-5 lg:gap-6">
+<div id="tabs-container" class="flex items-center gap-3.5 md:gap-5 lg:gap-6">
   {
     tabItems.map((tabItem) => {
       return (
         // Tabitem
         <button
+          data-tab-id={tabItem.id}
           class={`border-n-950 hover:bg-n-950 hover:text-n-100 cursor-pointer rounded-4xl border px-4 py-2.5 ${tabItem.isActive ? "text-n-100 bg-n-950" : "text-n-950 "}`}
         >
           {/* Text */}
@@ -28,3 +29,10 @@ const { tabItems } = Astro.props;
     })
   }
 </div>
+
+<script>
+  // OTHERS //
+  import { addActiveTab } from "@/scripts/industries";
+
+  addActiveTab();
+</script>
