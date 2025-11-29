@@ -47,49 +47,7 @@ const activeTabId =
   </div>
 </div>
 
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const wrappers = document.querySelectorAll(".tabs-wrapper");
-
-    wrappers.forEach((wrapper) => {
-      const container = wrapper.querySelector("div[id]");
-      const panelList = wrapper.querySelectorAll("[data-tab-content-id]");
-
-      if (!container) return;
-
-      const initialActive = container
-        .querySelector("[data-tab-id].bg-n-950")
-        ?.getAttribute("data-tab-id");
-
-      // INIT — show selected tab only
-      panelList.forEach((panel) => {
-        panel.classList.toggle(
-          "hidden",
-          panel.getAttribute("data-tab-content-id") !== initialActive,
-        );
-      });
-
-      // EVENT: Handle tab switching
-      container.addEventListener("click", (event) => {
-        const btn = event.target.closest("button");
-        if (!btn || !container.contains(btn)) return;
-
-        const id = btn.getAttribute("data-tab-id");
-
-        // Update button styles
-        container.querySelectorAll("button").forEach((b) => {
-          const bId = b.getAttribute("data-tab-id");
-          b.classList.toggle("bg-n-950", bId === id);
-          b.classList.toggle("text-n-100", bId === id);
-          b.classList.toggle("text-n-950", bId !== id);
-        });
-
-        // Update content panels
-        panelList.forEach((panel) => {
-          const panelId = panel.getAttribute("data-tab-content-id");
-          panel.classList.toggle("hidden", panelId !== id);
-        });
-      });
-    });
-  });
+<script>
+  import { initTabs } from "@/scripts/tabs.ts";
+  initTabs();
 </script>
