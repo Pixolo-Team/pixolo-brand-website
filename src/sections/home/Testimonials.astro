@@ -1,1 +1,90 @@
-git
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ToolBadge.astro";
+import Image from "astro/components/Image.astro";
+import { Icon } from "astro-icon/components";
+
+// DATA //
+import { clientDetails, clients } from "@/data/testimonials.ts";
+
+const headingText = "What Our Clients Say";
+const quoteText =
+  "Working with Pixolo was unbelievable. He instantly understood our vision and translated it into a sleek, intuitive Website. The process felt effortless, and the results exceeded our expectations.";
+---
+
+<!-- Testimonials Section -->
+<section class="flex items-center justify-center">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex w-full flex-col items-center justify-center gap-10 px-6 py-20 md:gap-12 md:px-0 md:py-24 lg:gap-14 lg:py-28"
+  >
+    <!-- Header Text -->
+    <div class="relative flex w-full flex-col gap-20 md:gap-28 lg:gap-36">
+      <!-- Header -->
+      <div class="flex flex-col items-center justify-center gap-4 md:gap-5 lg:gap-6">
+        <!-- Tool Badge -->
+        <ToolBadge icon="comment" text="Voices of Trust" />
+
+        <!-- Heading Text -->
+        <p class="text-center text-2xl leading-tight font-medium md:text-4xl lg:text-6xl">
+          {headingText}
+        </p>
+      </div>
+
+      <Icon
+        name="commas"
+        class="absolute bottom-40 h-[31.11px] w-10 md:bottom-25 md:left-15 md:w-12 lg:bottom-20 lg:left-60 lg:h-[49.78px] lg:w-16"
+      />
+
+      <!-- Quote Text -->
+      <div
+        class="font-regular text-n-950 mx-auto max-w-[327px] text-left text-base leading-normal md:max-w-[590px] md:text-center md:text-xl lg:max-w-210 lg:text-center lg:text-2xl"
+      >
+        {quoteText}
+      </div>
+    </div>
+
+    <!-- Clients Wrapper -->
+    <div class="flex w-full justify-end gap-3 pr-0 md:gap-5 md:pr-0 lg:gap-6 lg:pr-64">
+      <!-- Client Details -->
+      <div
+        class="bg-n-950 flex items-center justify-center gap-2.5 rounded-full py-0.5 pr-5 pl-1 md:gap-3.5 md:py-2 md:pr-6 md:pl-2 lg:gap-4 lg:py-2 lg:pr-6 lg:pl-2"
+      >
+        <!-- Profile Picture -->
+        <Image
+          src={`/images/testimonials/${clientDetails.profilePicture}`}
+          alt={clientDetails.description}
+          width={64}
+          height={64}
+          class="size-9 rounded-full object-cover object-center md:size-14 lg:size-16"
+        />
+
+        <!-- Name Details -->
+        <div class="text-n-100">
+          <!-- Client Name -->
+          <p class="text-sm leading-tight font-bold md:text-lg lg:text-xl">{clientDetails.name}</p>
+
+          <!-- Client Description -->
+          <p class="text-xs leading-tight md:text-sm lg:text-base">{clientDetails.description}</p>
+        </div>
+      </div>
+
+      <!-- Other Clients -->
+      <div class="flex items-center justify-center gap-2.5 md:gap-3.5 lg:gap-4">
+        <!-- Iterating over an array of clients to get their profile pictures -->
+        {
+          clients.map((client) => (
+            // Client Profile Picture
+            <Image
+              src={`/images/testimonials/${client.profilePicture}`}
+              alt={client.description}
+              width={72}
+              height={72}
+              class="size-9 rounded-full object-cover object-center md:size-14 lg:size-16"
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
