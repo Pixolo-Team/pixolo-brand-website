@@ -1,27 +1,19 @@
 ---
-import IndustryProjectCard from "@/components/Industries/IndustryProjectCard.astro";
-
-const cardItems = [
-  {
-    id: 1,
-    image: "/images/industries/industry-project-card-logo.png",
-    text: "Football Club Barcelona",
-  },
-  {
-    id: 2,
-    image: "/images/industries/industry-project-card-logo.png",
-    text: "Zizo",
-  },
-  {
-    id: 3,
-    image: "/images/industries/industry-project-card-logo.png",
-    text: "Skrost United",
-  },
-];
+// COMPONENTS //
+import ProjectCard from "@/components/Industries/ProjectCard.astro";
 ---
 
 <section>
-  <div class="flex flex-col gap-10 md:flex-row md:gap-16 lg:gap-12">
-    <IndustryProjectCard cardItems={cardItems} />
+  <div class="container mx-auto flex">
+    <ProjectCard
+      websiteLink="/"
+      image="/images/industries/barcelona-brand-logo.png"
+      name="Football Club Barcelona"
+    />
+    <ProjectCard
+      websiteLink="/"
+      image="/images/industries/barcelona-brand-logo.png"
+      name="Football Club Barcelona"
+    />
   </div>
 </section>
