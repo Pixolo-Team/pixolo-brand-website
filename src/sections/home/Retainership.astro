@@ -1,150 +1,116 @@
 ---
 // COMPONENTS //
-import RetainershipCard from "@/components/retainership/RetainershipCard.astro";
-import RetainershipEmployeeCard from "@/components/retainership/RetainershipEmployeeCard.astro";
-import StepItem from "@/components/retainership/StepItem.astro";
+import RetainershipCard from "@/components/Retainership/RetainershipCard.astro";
+import RetainershipEmployeeCard from "@/components/Retainership/RetainershipEmployeeCard.astro";
+import StepItem from "@/components/Retainership/StepItem.astro";
 import RoundedButton from "@/components/RoundedButton.astro";
 import ToolBadge from "@/components/ToolBadge.astro";
 
 // DATA //
-import { retainershipDetails } from "../../data/retainership";
+import { retainershipDetails } from "@/data/retainership";
 ---
 
-<!-- Retainership Section -->
-<section class="flex flex-col items-center justify-center">
-  <!-- Container -->
+<section>
   <div
-    class="container flex flex-col items-center justify-center gap-40 px-6 py-40 md:gap-52 md:px-0 lg:gap-60 lg:px-14"
+    class="container mx-auto flex flex-col items-center justify-center gap-40 px-6 py-40 md:gap-52 md:px-0 lg:gap-60 lg:px-14"
   >
-    <!-- Retainership-steps -->
-    <div class="flex w-full flex-col gap-20 lg:gap-24">
-      <!-- Section header -->
+    <!-- Top Half Section -->
+    <div class="flex w-full flex-col items-center gap-20 lg:gap-24">
+      <!-- Section Header -->
       <div class="flex w-full flex-col items-center gap-7">
-        <ToolBadge icon="building" text="Retainership Program" />
+        <!-- Tool badge component -->
+        <ToolBadge icon={retainershipDetails.badgeIcon} text={retainershipDetails.badgeTitle} />
+
+        <!-- Section Title -->
         <p
           class="text-n-950 text-center text-2xl leading-tight font-medium md:max-w-[65%] md:text-4xl lg:max-w-[874px] lg:text-6xl"
         >
-          {retainershipDetails.headerText}
+          {retainershipDetails.title}
         </p>
       </div>
-      <!-- Steps with title -->
+
+      <!-- Steps Title -->
       <div class="flex w-full flex-col items-center gap-10 md:gap-7">
         <p class="text-n-950 text-center text-2xl leading-tight font-medium tracking-tight">
           {retainershipDetails.stepsTitle}
         </p>
-        <!-- Steps -->
-        <div class="flex flex-col md:gap-2.5">
-          <div class="flex flex-col items-center gap-48 md:gap-72">
-            <StepItem
-              number="01"
-              title="Tell us what you need"
-              description="We understand your project and match you with the right expert."
-              direction="ltr"
-            />
 
-            <StepItem
-              number="02"
-              title="Sign one simple contract"
-              description="No hiring HR, or paperwork hassles - we handle it all."
-              direction="rtl"
-            />
-            <StepItem
-              number="03"
-              title="We manage everything"
-              description="From training and attendance to equipment and performance — all on us, fully transparent to you."
-              direction="ltr"
-            />
-
-            <StepItem
-              number="04"
-              title="Work as one team"
-              description="Your expert works from our office, dedicated to your project — for as long as you need them."
-              direction="rtl"
-            />
-          </div>
+        <!-- Steps Items -->
+        <div
+          class="before:bg-n-300 relative flex flex-col items-center gap-48 before:absolute before:top-0 before:left-1/2 before:-z-1 before:h-full before:w-1.5 before:-translate-x-1/2 before:rounded-full md:gap-72"
+        >
+          {
+            retainershipDetails.stepItems.map((step) => (
+              <StepItem
+                number={step.number}
+                title={step.title}
+                description={step.description}
+                direction={step.direction}
+              />
+            ))
+          }
         </div>
       </div>
     </div>
 
-    <!-- Retainership-content -->
+    <!-- Bottom Half Section -->
     <div class="flex w-full flex-col items-center gap-14 lg:gap-16">
-      <!-- Content heading -->
+      <!-- Cards Main Title -->
       <p
-        class="text-n-950 w-full text-center text-xl leading-tight font-medium md:text-3xl lg:text-5xl"
+        class="text-n-950 w-full text-center text-xl leading-tight font-medium md:text-3xl lg:w-[80%] lg:text-5xl"
       >
         {retainershipDetails.contentHeading}
       </p>
-      <!-- Content wrapper -->
-      <div class="flex w-full flex-col items-center gap-20">
-        <!-- Cards with banner -->
-        <div class="flex w-full flex-col items-center gap-10">
-          <!-- Cards wrapper -->
-          <div
-            class="grid w-full place-items-center gap-5 self-center md:grid-cols-2 xl:grid-cols-4"
-          >
-            <RetainershipCard
-              number="1"
-              title="Designer"
-              description="We provide the best of the best designer. We would love to share you more details."
-            />
-            <RetainershipCard
-              number="2"
-              title="Developers"
-              description="Our developers are specialists in creating innovative solutions to meet your needs."
-            />
-            <RetainershipCard
-              number="3"
-              title="Project Manager"
-              description="Experienced project managers ensure that everything runs smoothly and efficiently."
-            />
-            <RetainershipCard
-              number="4"
-              title="Product Owners"
-              description="Our marketing specialists help you reach your target audience with tailored strategies."
-            />
-          </div>
 
-          <!-- TODO: To be added later -->
-          <div></div>
+      <div class="flex w-full flex-col items-center gap-20">
+        <!-- Retainership Cards -->
+        <div class="flex w-full flex-col items-center gap-10">
+          <div class="grid w-full place-items-center gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {
+              retainershipDetails.retainershipCardItems.map((card) => (
+                <RetainershipCard
+                  number={card.number}
+                  title={card.title}
+                  description={card.description}
+                />
+              ))
+            }
+          </div>
         </div>
-        <!-- Employee cards with button -->
+
+        <!-- Employee Cards -->
         <div class="flex w-full flex-col items-center gap-14 md:gap-16">
-          <!-- Title with cards -->
           <div class="flex w-full flex-col gap-7">
+            <!-- Employee Cards Title -->
             <p
-              class="n-950 text-lg leading-tight font-medium tracking-tight md:text-xl lg:text-2xl"
+              class="text-n-950 text-lg leading-tight font-medium tracking-tight md:text-xl lg:text-2xl"
             >
               {retainershipDetails.employeeCardTitle}
             </p>
-            <!-- Employee cards wrapper -->
+
+            <!-- Employee Card Component -->
             <div class="grid w-full gap-6 lg:gap-4 xl:grid-cols-3">
-              <RetainershipEmployeeCard
-                image="employee-image.jpg"
-                name="Deven Bhagtani"
-                position="UX Designer"
-                salary="Rs.10,000"
-                experience="4 Years"
-              />
-              <RetainershipEmployeeCard
-                image="employee-image.jpg"
-                name="Deven Bhagtani"
-                position="UX Designer"
-                salary="Rs.10,000"
-                experience="4 Years"
-              />
-              <RetainershipEmployeeCard
-                image="employee-image.jpg"
-                name="Deven Bhagtani"
-                position="UX Designer"
-                salary="Rs.10,000"
-                experience="4 Years"
-              />
+              {
+                retainershipDetails.employeeCardItems.map((emp) => (
+                  <RetainershipEmployeeCard
+                    image={emp.image}
+                    name={emp.name}
+                    position={emp.position}
+                    salary={emp.salary}
+                    experience={emp.experience}
+                  />
+                ))
+              }
             </div>
           </div>
         </div>
-        <div class="w-fit">
-          <RoundedButton buttonText="Extend your Team Now" rightIcon="right-arrow" />
-        </div>
+
+        <!-- Extend Team Button -->
+        <RoundedButton
+          buttonText="Extend your Team Now"
+          rightIcon="right-arrow"
+          variant="tertiary"
+        />
       </div>
     </div>
   </div>
