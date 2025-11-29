@@ -12,18 +12,19 @@ const { image, name, websiteLink } = Astro.props as props;
 ---
 
 <!-- Industry Project Card -->
-<a href={websiteLink} class="flex w-full flex-col gap-3 md:gap-4 lg:max-w-[480px]">
-  <!-- Project Image -->
+<a href={websiteLink} class="group flex h-full w-full flex-col gap-3 md:gap-4">
   <div
-    class="border-n-500 hover:bg-n-100 flex justify-center rounded-4xl border p-20 lg:px-36 lg:py-28"
+    class="border-n-500 hover:bg-n-100 hover:border-n-100 flex transform-gpu items-center justify-center overflow-hidden rounded-4xl border p-20 transition-colors duration-200 ease-in-out"
   >
-    <!-- Brand Project image -->
-    <img src={image} alt={name} class="w-full" />
+    <img
+      src={image}
+      alt={name}
+      class="h-36 w-full transform-gpu object-contain transition-transform duration-300 ease-out will-change-transform group-hover:scale-105 md:h-48"
+    />
   </div>
-
-  <div class="flex items-center justify-between">
+  <div class="flex items-center justify-between px-4">
     {/* Project Name */}
-    <p class="text-n-950 text-xl leading-tight font-medium tracking-tight lg:text-2xl">
+    <p class="text-n-950 w-4/5 text-xl leading-tight font-medium tracking-tight lg:text-2xl">
       {name}
     </p>
 

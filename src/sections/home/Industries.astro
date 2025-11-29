@@ -1,6 +1,6 @@
 ---
 // COMPONENTS //
-import ProjectCard from "@/components/Industries/ProjectCard.astro";
+import ProjectCard from "@/components/industries/ProjectCard.astro";
 import Tabs from "@/components/Tabs.astro";
 import ToolBadge from "@/components/ToolBadge.astro";
 
@@ -32,23 +32,26 @@ import { industriesSectionDetails } from "@/data/industries";
     </div>
 
     <div class="flex flex-col gap-6 md:items-center md:gap-7 lg:gap-9">
-      <!-- Tabs Component -->
-      <div class="scrollbar-hide overflow-x-auto whitespace-nowrap">
-        <Tabs tabItems={industriesSectionDetails.industriesTabItems} />
-      </div>
-
-      <!-- Projects -->
-      <div class="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-12 xl:grid-cols-3">
-        {
-          industriesSectionDetails.industriesProjects.map((projectItem) => (
-            // Project Card component
-            <ProjectCard
-              websiteLink={projectItem.websiteLink}
-              image={projectItem.image}
-              name={projectItem.name}
-            />
-          ))
-        }
+      <!-- Tabs Component with Content -->
+      <div class="">
+        <Tabs tabItems={industriesSectionDetails.industriesTabItems}>
+          {
+            industriesSectionDetails.industriesTabItems.map((tab) => (
+              <div
+                data-tab-content-id={tab.id}
+                class="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-12 xl:grid-cols-3"
+              >
+                {industriesSectionDetails.industriesProjectsByTab[tab.id].map((project) => (
+                  <ProjectCard
+                    name={project.name}
+                    image={project.image}
+                    websiteLink={project.websiteLink}
+                  />
+                ))}
+              </div>
+            ))
+          }
+        </Tabs>
       </div>
     </div>
   </div>
