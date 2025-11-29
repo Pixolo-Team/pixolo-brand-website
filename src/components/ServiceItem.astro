@@ -10,7 +10,7 @@ interface Props {
 }
 
 const {
-  imageName = "service-image",
+  imageName = "/images/services/product-planning.jpg",
   title = "Design",
   tags = ["Website", "Mobile", "UI", "App"],
 } = Astro.props as Props;
@@ -19,15 +19,13 @@ const {
 <!-- Service Item -->
 <div class="flex w-full cursor-pointer flex-col gap-4 md:gap-6 lg:gap-7 2xl:max-w-[500px]">
   <!-- Service Image -->
-  <div
-    class="flex w-full items-center justify-center overflow-hidden rounded-4xl bg-blue-200 py-12 md:px-16 md:py-20 lg:px-24 lg:py-28"
-  >
+  <div class="border-n-300 h-[400px] w-full overflow-hidden rounded-4xl border md:h-[450px]">
     <Image
-      src={`/images/${imageName}.png`}
+      src={imageName}
       alt={title}
-      width={288}
-      height={288}
-      class="w-[288px] transition-transform duration-500 ease-in-out hover:scale-[1.3]"
+      width={490}
+      height={450}
+      class="h-full w-full object-cover transition-transform duration-500 ease-in-out hover:scale-[1.3]"
       loading="lazy"
       decoding="async"
     />
@@ -41,7 +39,7 @@ const {
     </p>
 
     <!-- Tool Badges -->
-    <div class="flex flex-wrap gap-2.5 md:gap-4 lg:gap-5">
+    <div class="flex flex-wrap gap-2.5">
       <!-- Iterating Over A String Array - tags -->
       {tags.map((tag) => <Badge badgeText={tag} />)}
     </div>
