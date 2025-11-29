@@ -30,6 +30,7 @@ export const testimonialSectionDetails = {
     {
       clientImage: "/images/testimonials/sarah-profile-image.jpg",
       clientName: "Sarah Luprich",
+      isActive: true,
       brandName: "EyeCatcher",
       testimonial:
         "Working with Pixolo was unbelievable. He instantly understood our vision and translated it into a sleek, intuitive Website. The process felt effortless, and the results exceeded our expectations.",
