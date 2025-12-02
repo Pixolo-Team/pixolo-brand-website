@@ -1,24 +1,31 @@
 ---
-const label = "Code & Culture";
-const heading = "Stories and trends shaping how technology connects us.";
-const loadMoreButton = "Load More Blogs";
+import { Icon } from "astro-icon/components";
+import { blogSectionText } from "@/data/blogs-section";
+
+const { label, heading, loadMoreButton } = blogSectionText;
 ---
 
 <!-- Blogs Section -->
-<section>
-  <div class="bg-n-950 container gap-16 px-6 py-20">
+<section class="container mx-auto">
+  <div class="bg-n-950 gap-16 px-6 py-20">
     <div class="flex flex-col items-start gap-4">
-      <div class="border-n-50 flex items-center gap-2.5 rounded-3xl border-1 py-2 pr-4 pl-2">
+      <div class="border-n-50 flex items-center gap-2.5 rounded-3xl border py-2 pr-4 pl-2">
         <!-- Comment Icon -->
-        <img src="/src/icons/comment.svg" alt="comment icon" class="h-7 w-7" />
+        <Icon name="comment" class="h-7 w-7" />
         <!-- Labels -->
-        <p class="text-n-100 text-center text-xs leading-none font-medium tracking-normal">
+        <p
+          class="text-n-100 text-center text-xs leading-none font-medium tracking-normal sm:text-base lg:text-lg"
+        >
           {label}
         </p>
       </div>
 
       <!-- Heading -->
-      <p class="text-n-50 text-xl leading-tight font-normal tracking-tighter">{heading}</p>
+      <p
+        class="text-n-50 text-2xl leading-tight font-normal tracking-tighter sm:text-4xl lg:text-6xl"
+      >
+        {heading}
+      </p>
     </div>
 
     <!-- Blog Cards and Add More Button -->
@@ -29,7 +36,10 @@ const loadMoreButton = "Load More Blogs";
       </div>
 
       <!-- Load More Button -->
-      <button class="border-n-500 text-n-50 gap-1.5 rounded-4xl border px-6 py-3.5"
+      <button
+        type="button"
+        aria-label="Load more blog posts"
+        class="border-n-500 text-n-50 hover:bg-n-800 focus:ring-n-400 gap-1.5 rounded-4xl border px-6 py-3.5 text-sm transition-colors focus:ring-2 focus:outline-none md:px-8 lg:py-4 lg:text-base"
         >{loadMoreButton}</button
       >
     </div>
