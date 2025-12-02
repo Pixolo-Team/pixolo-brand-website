@@ -1,16 +1,15 @@
 ---
 //COMPONENTS
 import ArticleCard from "@/components/ArticleCard.astro";
-//OTHER
-import image1 from "../../public/images/portfolio/article-card/Image1.jpg";
 ---
 
 <div class="flex justify-center">
   <ArticleCard
-    thumbnail={image1}
+    thumbnail="./images/portfolio/default-project.jpg"
+    brandName="reliance"
     chipItems={["Product Design", "App Development", "Dashboard Design"]}
     title="E-commerce Platform for Local Brands"
     subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
-    ctaText=""
+    ctaText="View Case Study"
   />
 </div>
