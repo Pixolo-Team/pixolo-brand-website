@@ -3,26 +3,28 @@
 import RoundedButton from "@/components/RoundedButton.astro";
 import Badge from "@/components/portfolio/Badge.astro";
 
+// DEFINE PROPS //
 interface Props {
   brandColor: string;
+  brandName: string;
   image: string;
   logo: string;
   title: string;
   subtitle: string;
-  chipItems: string[];
+  badges: string[];
 }
 
-// PROPS
-const { brandColor, image, logo, title, subtitle, chipItems } = Astro.props;
+// PROPS //
+const { brandColor, brandName, image, logo, title, subtitle, badges } = Astro.props as Props;
 ---
 
 <!-- Main Project Tile -->
-<div class=`rounded-[42px] md:rounded-[64px] xl:flex xl:flex-row xl:gap-10 ${brandColor}`>
+<div class={`rounded-[42px] md:rounded-[64px] xl:flex xl:flex-row xl:gap-10 ${brandColor}`}>
   <!-- Project Content -->
   <div class="flex flex-1 flex-col gap-6 px-5 py-6 md:gap-8 md:p-10 xl:gap-14 xl:p-20">
     <!-- Logo -->
     <div class="h-[98px] justify-start md:h-[110px]">
-      <img src={logo} alt="logo" class="h-full object-contain" />
+      <img src={logo} alt={`${brandName} logo`} class="h-full object-contain" />
     </div>
 
     <!-- Project Details Wrapper -->
@@ -32,7 +34,7 @@ const { brandColor, image, logo, title, subtitle, chipItems } = Astro.props;
         <!-- Chip Wrapper -->
         <div class="flex flex-wrap gap-2">
           <!-- Portfolio Chip -->
-          {chipItems?.map((chipItem: string) => <Badge text={chipItem} />)}
+          {badges?.map((badgeText) => <Badge text={badgeText} />)}
         </div>
 
         <!-- Title Details -->
@@ -46,7 +48,7 @@ const { brandColor, image, logo, title, subtitle, chipItems } = Astro.props;
       </div>
 
       <!-- Rounded Button -->
-      <div class="">
+      <div>
         <RoundedButton buttonText={"View Case Study"} />
       </div>
     </div>
@@ -54,6 +56,6 @@ const { brandColor, image, logo, title, subtitle, chipItems } = Astro.props;
 
   <!-- Image -->
   <div class="hidden h-full w-[42%] self-end xl:block">
-    <img src={image} alt="image" class="h-full w-full" />
+    <img src={image} alt=`${brandName} Project Screenshot` class="h-full w-full" />
   </div>
 </div>

@@ -1,5 +1,10 @@
 ---
-const { text } = Astro.props;
+// DEFINE PROPS //
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props as Props;
 ---
 
 <!-- Badge -->
