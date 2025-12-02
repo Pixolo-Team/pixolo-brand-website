@@ -1,7 +1,7 @@
 ---
 // COMPONENTS
 import { Image } from "astro:assets";
-import RoundedButton from "./RoundedButton.astro";
+import RoundedButton from "@/components/RoundedButton.astro";
 import Badge from "./portfolio/Badge.astro";
 
 interface Props {
@@ -10,10 +10,9 @@ interface Props {
   title: string;
   subtitle: string;
   ctaText: string;
-  isButtonVisible: boolean;
 }
 
-const { thumbnail, chipItems, title, subtitle, isButtonVisible, ctaText } = Astro.props;
+const { thumbnail, chipItems, title, subtitle, ctaText } = Astro.props;
 ---
 
 <!-- Article Card -->
@@ -26,9 +25,7 @@ const { thumbnail, chipItems, title, subtitle, isButtonVisible, ctaText } = Astr
       class="h-[222px] w-[327px] rounded-3xl md:h-[349px] md:w-[720px] lg:w-[643px]"
     />
     <div
-      class={isButtonVisible === true
-        ? "xl:block absolute top-[164.54px] md:top-[276px] left-[149px] md:left-[527px] lg:left-[427px]"
-        : "xl:hidden absolute top-[164.54px] md:top-[276px] left-[149px] md:left-[527px] lg:left-[427px]"}
+      class="absolute right-[15px] bottom-[16.46px] md:right-[22px] md:bottom-[28px] lg:right-[19px] lg:bottom-[47px]"
     >
       <RoundedButton buttonText="View Case Study" />
     </div>
@@ -40,7 +37,7 @@ const { thumbnail, chipItems, title, subtitle, isButtonVisible, ctaText } = Astr
   <!-- Article Details -->
   <div class="text-n-950 flex flex-col gap-3 leading-tight md:gap-3.5">
     <!-- Title -->
-    <p class="text-2xl font-medium md:text-4xl lg:text-[40px]">{title}</p>
+    <p class="text-2xl font-medium md:text-4xl">{title}</p>
     <!-- Subtitle -->
     <p class="text-sm font-normal md:text-xl lg:text-2xl">{subtitle}</p>
   </div>
