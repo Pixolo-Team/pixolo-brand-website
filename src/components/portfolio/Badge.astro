@@ -1,9 +1,14 @@
 ---
-const { text } = Astro.props;
+// DEFINE PROPS //
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props as Props;
 ---
 
 <!-- Badge -->
-<div class="border-n-950 rounded-3xl border px-2.5 py-2 md:px-3 md:py-2.5">
+<div class="border-n-950 gap-2.5 rounded-3xl border px-2.5 py-2 md:px-3 md:py-2.5">
   <!-- Badge Text -->
   <p class="text-n-950 text-center text-xs leading-tight font-medium md:text-base">
     {text}
