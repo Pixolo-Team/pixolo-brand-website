@@ -10,7 +10,7 @@ module.exports = [
   // ---------------------------------------------------------
   {
     ignores: [
-      "**/.astro/**", // Ignore Astro build/cache files
+      "**/*.astro/**", // Ignore Astro build/cache files
       "**/node_modules/**",
       "**/dist/**",
     ],

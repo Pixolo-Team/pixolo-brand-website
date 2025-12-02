@@ -1,5 +1,6 @@
 ---
-import ArrowIcon from "@/icons/right-arrow.svg";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 interface Props {
   imageSrc: string;
@@ -7,16 +8,24 @@ interface Props {
   date: string;
   title: string;
   author: string;
+  href: string;
 }
 
-const { imageSrc, category, date, title, author } = Astro.props;
+const { imageSrc, category, date, title, author, href } = Astro.props;
 ---
 
 <!-- Card Wrapper -->
-<div class="bg-n-900 flex flex-col overflow-hidden rounded-3xl">
+<div class="bg-n-900 flex flex-auto flex-col overflow-hidden rounded-3xl">
   <!-- Blog Image -->
   <div class="overflow-hidden">
-    <img src={imageSrc} alt={title} class="h-auto w-full object-cover" />
+    <Image
+      src={imageSrc}
+      alt={title}
+      width={480}
+      height={278}
+      class="h-auto w-full object-cover"
+      loading="lazy"
+    />
   </div>
 
   <!-- Blog Content -->
@@ -32,7 +41,7 @@ const { imageSrc, category, date, title, author } = Astro.props;
 
       <!-- Date with Icon -->
       <div class="flex items-center gap-2">
-        <img src="src/icons/calendar.svg" alt="calendar" class="h-5 w-5" />
+        <Icon name="calendar" class="h-5 w-5" />
         <p class="text-n-50 text-sm leading-tight font-normal tracking-normal">
           {date}
         </p>
@@ -51,8 +60,8 @@ const { imageSrc, category, date, title, author } = Astro.props;
       </p>
 
       <!-- Arrow Link -->
-      <a href="#">
-        <ArrowIcon class="text-n-50 h-7 w-7" />
+      <a href={href} aria-label={`Read more about ${title}`}>
+        <Icon name="right-arrow" class="text-n-50 h-7 w-7" />
       </a>
     </div>
   </div>
