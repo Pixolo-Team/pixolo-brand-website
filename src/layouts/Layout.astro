@@ -12,7 +12,7 @@ import Header from "@/components/layout/Header.astro";
 // DATA //
 import { siteInfo } from "@/data/site-info";
 
-const { meta = {} } = Astro.props;
+const { meta = {}, showLoader = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -27,7 +27,8 @@ const { meta = {} } = Astro.props;
     />
   </head>
   <body>
-    <Loading />
+    <!-- Show Loader only if asked for it by parent -->
+    {showLoader && <Loading />}
 
     <!-- Top menu -->
     <div class="fixed top-0 left-0 z-50 w-full">
