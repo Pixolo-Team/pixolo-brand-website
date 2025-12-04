@@ -1,0 +1,57 @@
+---
+// COMPONENTS //
+import RoundedButton from "@/components/RoundedButton.astro";
+import Badge from "@/components/portfolio/Badge.astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  thumbnail: string;
+  brandName: string;
+  chipItems: string[];
+  title: string;
+  subtitle: string;
+  ctaText: string;
+}
+
+const {
+  thumbnail = "default-project",
+  brandName,
+  chipItems,
+  title,
+  subtitle,
+  ctaText,
+} = Astro.props as Props;
+---
+
+<!-- Article Card -->
+<div class="flex flex-col gap-4 md:gap-5 lg:gap-6">
+  <!-- Thumbnail -->
+  <div class="relative w-[327px] md:w-[720px] lg:w-[643px]">
+    <Image
+      src={thumbnail}
+      alt=`Thumbnail image for ${brandName}`
+      width={327}
+      height={222}
+      class="h-full w-full rounded-3xl"
+    />
+    <div
+      class="absolute right-[15px] bottom-[16.46px] md:right-[22px] md:bottom-[28px] lg:right-[19px] lg:bottom-[47px]"
+    >
+      <RoundedButton buttonText={ctaText} />
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="flex flex-wrap gap-3">
+    {chipItems.map((chipItem) => <Badge text={chipItem} />)}
+  </div>
+
+  <!-- Article Details -->
+  <div class="text-n-950 flex flex-col gap-3 leading-tight md:gap-3.5">
+    <!-- Title -->
+    <p class="text-2xl font-medium md:text-4xl">{title}</p>
+
+    <!-- Subtitle -->
+    <p class="text-sm font-normal md:text-xl lg:text-2xl">{subtitle}</p>
+  </div>
+</div>
