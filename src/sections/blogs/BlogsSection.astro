@@ -1,20 +1,23 @@
 ---
 import { Icon } from "astro-icon/components";
 import { blogSectionText } from "@/data/blogs-section";
+import BlogCard from "@/components/blogs/BlogCard.astro";
 
-const { label, heading, loadMoreButton } = blogSectionText;
+const { label, heading, loadMoreButton, cards } = blogSectionText;
 ---
 
 <!-- Blogs Section -->
-<section class="container mx-auto">
-  <div class="bg-n-950 gap-16 px-6 py-20">
-    <div class="flex flex-col items-start gap-4">
-      <div class="border-n-50 flex items-center gap-2.5 rounded-3xl border py-2 pr-4 pl-2">
+<section class="mx-auto">
+  <div class="bg-n-50 flex flex-col gap-16 px-6 py-20 md:gap-20 lg:gap-24">
+    <div class="flex flex-col items-start gap-4 md:gap-5 lg:gap-6">
+      <div
+        class="border-n-950 flex items-center gap-2.5 rounded-3xl border py-2 pr-4 pl-2 md:gap-3 lg:gap-4"
+      >
         <!-- Comment Icon -->
         <Icon name="comment" class="h-7 w-7" />
         <!-- Labels -->
         <p
-          class="text-n-100 text-center text-xs leading-none font-medium tracking-normal sm:text-base lg:text-lg"
+          class="text-n-900 text-center text-xs leading-none font-medium tracking-normal md:text-base lg:text-lg"
         >
           {label}
         </p>
@@ -22,7 +25,7 @@ const { label, heading, loadMoreButton } = blogSectionText;
 
       <!-- Heading -->
       <p
-        class="text-n-50 text-2xl leading-tight font-normal tracking-tighter sm:text-4xl lg:text-6xl"
+        class="text-n-950 text-2xl leading-tight font-normal tracking-tighter md:text-4xl lg:text-6xl"
       >
         {heading}
       </p>
@@ -31,15 +34,41 @@ const { label, heading, loadMoreButton } = blogSectionText;
     <!-- Blog Cards and Add More Button -->
     <div class="flex flex-col items-center gap-16">
       <!-- Blog Cards Wrapper -->
-      <div class="flex flex-col gap-12">
+      <div class="grid w-full grid-cols-1 gap-12 md:grid-cols-2 md:gap-7 lg:grid-cols-3 lg:gap-12">
         <!-- Blog Cards -->
+        {
+          cards
+            .slice(0, 3)
+            .map((card) => (
+              <BlogCard
+                imageSrc={card.imageSrc}
+                category={card.category}
+                date={card.date}
+                title={card.title}
+                author={card.author}
+                href={card.href}
+              />
+            ))
+        }
+
+        <!-- Tablet only: 4th card  -->
+        <div class="hidden md:block lg:hidden">
+          <BlogCard
+            imageSrc={cards[3].imageSrc}
+            category={cards[3].category}
+            date={cards[3].date}
+            title={cards[3].title}
+            author={cards[3].author}
+            href={cards[3].href}
+          />
+        </div>
       </div>
 
       <!-- Load More Button -->
       <button
         type="button"
         aria-label="Load more blog posts"
-        class="border-n-500 text-n-50 hover:bg-n-800 focus:ring-n-400 gap-1.5 rounded-4xl border px-6 py-3.5 text-sm transition-colors focus:ring-2 focus:outline-none md:px-8 lg:py-4 lg:text-base"
+        class="border-n-500 text-n-950 hover:bg-n-800 focus:ring-n-400 flex gap-1.5 rounded-4xl border px-6 py-3.5 text-sm transition-colors focus:ring-2 focus:outline-none md:px-8 lg:gap-2 lg:px-7 lg:py-4 lg:text-base"
         >{loadMoreButton}</button
       >
     </div>
