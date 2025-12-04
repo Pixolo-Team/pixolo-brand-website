@@ -1,0 +1,23 @@
+---
+import CaseStudyCard from "@/components/casestudy/CaseStudyCard.astro";
+const caseStudiesItems = [
+  {
+    title: "Simplifying Team Management for Coaches and Players",
+    image: "/images/casestudies/casestudyimage.png",
+  },
+  {
+    title: "Bridging Figma to Code Seamlessly in VS Code",
+    image: "/images/casestudies/casestudyimage.png",
+  },
+  {
+    title: "Making Billing Smarter for Startups",
+    image: "/images/casestudies/casestudyimage.png",
+  },
+];
+---
+
+<section class="px-6 py-16">
+  <div class="flex flex-col gap-10 lg:flex-row">
+    <CaseStudyCard caseStudiesItems={caseStudiesItems} />
+  </div>
+</section>

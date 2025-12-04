@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { caseStudiesItems } = Astro.props;
+---
+
+{
+  caseStudiesItems.map(
+    (item: {
+      image: string | null | undefined;
+      title: unknown;
+      icon: { src: string | null | undefined };
+    }) => (
+      <div class="flex flex-col gap-3.5">
+        {/* Image Container */}
+        <div class="relative w-full">
+          <img src={item.image} class="w-full rounded-4xl" />
+
+          {/* Icon overlay with circular background */}
+          <div class="absolute right-9 bottom-7 flex items-center justify-center rounded-full bg-blue-500 p-4">
+            <Icon name="external-link-icon" class="h-6 w-6" />
+          </div>
+        </div>
+
+        <div>
+          {/* Text */}
+          <p class="text-xl leading-[1.25] font-medium tracking-normal md:text-2xl">{item.title}</p>
+        </div>
+      </div>
+    ),
+  )
+}
