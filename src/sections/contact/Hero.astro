@@ -1,0 +1,43 @@
+---
+import ToolBadge from "@/components/ToolBadge.astro";
+import { Image } from "astro:assets";
+---
+
+<!-- Hero Section for Contact Page -->
+<section>
+  <div
+    class="container m-auto flex flex-col items-center gap-5 px-6 py-28 text-center md:gap-3.5 md:px-4 md:py-40 lg:pt-72 lg:pb-60"
+  >
+    <!-- ToolBadge -->
+    <ToolBadge icon="comment" text="Want to know more?" />
+
+    <!-- Title content -->
+    <div>
+      <!-- Top line -->
+      <div class="text-n-950 flex items-center md:gap-9">
+        <!-- Bold Title -->
+        <p class="text-4xl font-semibold leading-tight md:text-7xl lg:text-8xl">Get in touch</p>
+        <!-- Image -->
+        <Image
+          class="hidden w-36 md:block lg:w-48"
+          width={1}
+          height={1}
+          src="/images/products/hero-title.png"
+          alt="hero-title-image"
+        />
+      </div>
+    </div>
+
+    <!-- Bottom content -->
+    <div>
+      <div class="flex flex-col gap-5 md:gap-3.5 lg:gap-4">
+        <p class="text-4xl leading-tight md:text-7xl lg:text-8xl">We're just a message away.</p>
+        <p
+          class="bg-gradient-to-r from-[#4254D4] to-[#8B77F3] bg-clip-text text-sm leading-tight font-medium text-transparent md:text-xl lg:text-2xl"
+        >
+          Let's create something amazing together.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
