@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 interface Props {
@@ -15,17 +14,10 @@ const { imageSrc, category, date, title, author, href } = Astro.props;
 ---
 
 <!-- Card Wrapper -->
-<div class="bg-n-900 flex flex-auto flex-col overflow-hidden rounded-3xl">
+<div class="bg-n-200 flex flex-auto flex-col overflow-hidden rounded-3xl">
   <!-- Blog Image -->
   <div class="overflow-hidden">
-    <Image
-      src={imageSrc}
-      alt={title}
-      width={480}
-      height={278}
-      class="h-auto w-full object-cover"
-      loading="lazy"
-    />
+    <img src={imageSrc} alt={title} class="h-auto w-full" loading="lazy" />
   </div>
 
   <!-- Blog Content -->
@@ -33,8 +25,8 @@ const { imageSrc, category, date, title, author, href } = Astro.props;
     <!-- Category + Date Row -->
     <div class="flex justify-between">
       <!-- Category Badge -->
-      <div class="bg-n-700 rounded-3xl px-4 py-1.5">
-        <p class="text-n-50 text-sm leading-tight font-normal tracking-normal sm:text-base">
+      <div class="bg-n-300 rounded-3xl px-4 py-1.5">
+        <p class="text-n-950 text-sm leading-tight font-normal tracking-normal sm:text-base">
           {category}
         </p>
       </div>
@@ -42,26 +34,26 @@ const { imageSrc, category, date, title, author, href } = Astro.props;
       <!-- Date with Icon -->
       <div class="flex items-center gap-2">
         <Icon name="calendar" class="h-5 w-5" />
-        <p class="text-n-50 text-sm leading-tight font-normal tracking-normal">
+        <p class="text-n-950 text-sm leading-tight font-normal tracking-normal">
           {date}
         </p>
       </div>
     </div>
 
     <!-- Title -->
-    <p class="text-n-200 text-lg leading-tight font-medium tracking-normal sm:text-2xl lg:text-3xl">
+    <p class="text-n-800 text-lg leading-tight font-medium tracking-normal sm:text-2xl lg:text-3xl">
       {title}
     </p>
 
     <!-- Author + Link Row -->
     <div class="flex items-center justify-between">
-      <p class="text-n-400 text-sm leading-tight font-normal tracking-normal sm:text-lg lg:text-xl">
+      <p class="text-n-600 text-sm leading-tight font-normal tracking-normal sm:text-lg lg:text-xl">
         By: {author}
       </p>
 
       <!-- Arrow Link -->
       <a href={href} aria-label={`Read more about ${title}`}>
-        <Icon name="right-arrow" class="text-n-50 h-7 w-7" />
+        <Icon name="right-arrow" class="h-7 w-7" />
       </a>
     </div>
   </div>
