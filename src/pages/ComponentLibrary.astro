@@ -1,6 +1,7 @@
 ---
 //COMPONENTS
 import ArticleCard from "@/components/ArticleCard.astro";
+import ProjectCard from "@/components/portfolio/ProjectCard.astro";
 ---
 
 <div class="flex justify-center">
@@ -11,5 +12,15 @@ import ArticleCard from "@/components/ArticleCard.astro";
     title="E-commerce Platform for Local Brands"
     subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
     ctaText="View Case Study"
+
+
+  <ProjectCard
+    brandColor="bg-red-500"
+    brandName="Reliance"
+    image="images/portfolio/reliance-brand-image.png"
+    logo="images/portfolio/reliance-logo.png"
+    title="E-commerce Platform for Local Brands"
+    subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+    badges={["Product Design", "App Development", "Dashboard Design"]}
   />
 </div>
