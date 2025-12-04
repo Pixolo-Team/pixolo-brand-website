@@ -1,5 +1,4 @@
 ---
-// COMPONENTS //
 import { Icon } from "astro-icon/components";
 
 interface Props {
@@ -8,15 +7,23 @@ interface Props {
 }
 
 const { icon = "building", text = "" } = Astro.props;
+
+// Check if the icon string looks like a path to an image
+const isImage = icon.endsWith(".png") || icon.endsWith(".jpg") || icon.endsWith(".svg");
 ---
 
-<!-- Tool Badge -->
 <div
   class="border-n-950 flex h-fit w-fit gap-2.5 rounded-3xl border pt-1.5 pr-4 pb-1.5 pl-1.5 sm:gap-2.5 md:gap-3 lg:gap-4 lg:rounded-4xl lg:pr-5"
 >
   <!-- Blue Circle with Logo -->
   <div class="rounded-3xl bg-blue-500 p-2 md:gap-2.5">
-    <Icon name={icon} class="size-3 md:size-4 lg:size-6" />
+    {
+      isImage ? (
+        <img src={icon} alt={text} class="size-3 md:size-4 lg:size-6" />
+      ) : (
+        <Icon name={icon} class="size-3 md:size-4 lg:size-6" />
+      )
+    }
   </div>
 
   <!-- Tool Badge Text -->

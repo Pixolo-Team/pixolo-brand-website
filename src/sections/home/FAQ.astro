@@ -1,0 +1,91 @@
+---
+import ToolBadge from "@/components/ToolBadge.astro";
+import Tabs from "@/components/Tabs.astro";
+
+/* Data source */
+
+const data = {
+  badge: {
+    text: "Clarity Starts Here",
+    icon: "/images/Vector.png",
+  },
+
+  heading: "Everything You Need to Know, All in One Place",
+
+  tabs: [
+    { label: "General" },
+    { label: "Specific" },
+    { label: "Pricing" },
+    { label: "General" },
+    { label: "Specific" },
+    { label: "Pricing" },
+  ],
+
+  faqs: [
+    {
+      question: "What Services Do You Offer?",
+      answer: "We provide end-to-end digital solutions including design and development.",
+      isOpen: true,
+    },
+    {
+      question: "How Long Does A Typical Project Take?",
+      answer: "Most projects take between 3 to 12 weeks depending on complexity.",
+      isOpen: false,
+    },
+    {
+      question: "How Do I Contact Customer Support?",
+      answer: "You can reach us via email, phone, or live chat.",
+      isOpen: false,
+    },
+  ],
+};
+
+const { badge, heading, tabs, faqs } = data;
+---
+
+<section class="flex flex-col gap-12 px-6 py-16">
+  <!-- Section Header (Centered) -->
+  <div class="flex flex-col items-center gap-3.5 text-center">
+    <ToolBadge text={badge.text} icon={badge.icon} />
+    <p class="text-3xl leading-tight">{heading}</p>
+  </div>
+
+  <!-- FAQ Content -->
+  <div class="flex flex-col gap-5">
+    <!-- Tabs Wrap -->
+    <div class="flex gap-3">
+      <Tabs
+        tabItems={tabs.map((tab, i) => ({
+          id: i,
+          name: tab.label,
+          isActive: i === 0, // first tab active by default
+        }))}
+      />
+    </div>
+
+    <!-- Quick Answer Wrap -->
+    <div class="flex flex-col">
+      {
+        faqs.map((faq) => (
+          <div class="flex flex-col gap-3.5 border-b-[0.8px] px-2 py-8">
+            <div class="flex items-center justify-between">
+              <div class="gap-3.5 px-2.5 pt-8 pb-4 text-base leading-tight">{faq.question}</div>
+
+              <img
+                src={faq.isOpen ? "/images/Cross.png" : "/images/Plus.png"}
+                alt={faq.isOpen ? "Close" : "Open"}
+                class="w-3.5"
+              />
+            </div>
+
+            {faq.isOpen && (
+              <div class="text-n-700 flex flex-col gap-2 pb-6 text-xs">
+                <div class="pr-5 pl-2.5">{faq.answer}</div>
+              </div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
