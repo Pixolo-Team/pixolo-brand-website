@@ -1,9 +1,13 @@
 ---
+// External libraries
 import { Icon } from "astro-icon/components";
-import { blogSectionText } from "@/data/blogs-section";
+
+// Project Components
 import BlogCard from "@/components/blogs/BlogCard.astro";
 
-const { label, heading, loadMoreButton, cards } = blogSectionText;
+// Project Data
+import { blogSectionDetails } from "@/data/blogs";
+import { blogItems } from "@/data/blogs";
 ---
 
 <!-- Blogs Section -->
@@ -14,12 +18,17 @@ const { label, heading, loadMoreButton, cards } = blogSectionText;
         class="border-n-950 flex items-center gap-2.5 rounded-3xl border py-2 pr-4 pl-2 md:gap-3 lg:gap-4"
       >
         <!-- Comment Icon -->
-        <Icon name="comment" class="h-7 w-7" />
+        <div
+          class="flex h-7 w-7 items-center justify-center gap-2.5 rounded-3xl bg-blue-500 p-2 md:h-8 md:w-8 lg:h-10 lg:w-10"
+        >
+          <Icon name="comment" class="h-7 w-7" />
+        </div>
+
         <!-- Labels -->
         <p
-          class="text-n-900 text-center text-xs leading-none font-medium tracking-normal md:text-base lg:text-lg"
+          class="text-n-900 self-center text-center text-xs leading-none font-medium tracking-normal md:text-base lg:text-lg"
         >
-          {label}
+          {blogSectionDetails.label}
         </p>
       </div>
 
@@ -27,7 +36,7 @@ const { label, heading, loadMoreButton, cards } = blogSectionText;
       <p
         class="text-n-950 text-2xl leading-tight font-normal tracking-tighter md:text-4xl lg:text-6xl"
       >
-        {heading}
+        {blogSectionDetails.heading}
       </p>
     </div>
 
@@ -37,7 +46,7 @@ const { label, heading, loadMoreButton, cards } = blogSectionText;
       <div class="grid w-full grid-cols-1 gap-12 md:grid-cols-2 md:gap-7 lg:grid-cols-3 lg:gap-12">
         <!-- Blog Cards -->
         {
-          cards
+          blogItems
             .slice(0, 3)
             .map((card) => (
               <BlogCard
@@ -54,12 +63,12 @@ const { label, heading, loadMoreButton, cards } = blogSectionText;
         <!-- Tablet only: 4th card  -->
         <div class="hidden md:block lg:hidden">
           <BlogCard
-            imageSrc={cards[3].imageSrc}
-            category={cards[3].category}
-            date={cards[3].date}
-            title={cards[3].title}
-            author={cards[3].author}
-            href={cards[3].href}
+            imageSrc={blogItems[3].imageSrc}
+            category={blogItems[3].category}
+            date={blogItems[3].date}
+            title={blogItems[3].title}
+            author={blogItems[3].author}
+            href={blogItems[3].href}
           />
         </div>
       </div>
@@ -69,7 +78,7 @@ const { label, heading, loadMoreButton, cards } = blogSectionText;
         type="button"
         aria-label="Load more blog posts"
         class="border-n-500 text-n-950 hover:bg-n-800 focus:ring-n-400 flex gap-1.5 rounded-4xl border px-6 py-3.5 text-sm transition-colors focus:ring-2 focus:outline-none md:px-8 lg:gap-2 lg:px-7 lg:py-4 lg:text-base"
-        >{loadMoreButton}</button
+        >{blogSectionDetails.loadMoreButton}</button
       >
     </div>
   </div>
