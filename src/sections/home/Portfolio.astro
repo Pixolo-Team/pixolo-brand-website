@@ -1,9 +1,128 @@
 ---
-
+//COMPONENTS //
+import ArticleCard from "@/components/ArticleCard.astro";
+import ProjectCard from "@/components/portfolio/ProjectCard.astro";
+import RoundedButton from "@/components/RoundedButton.astro";
+import ToolBadge from "@/components/ToolBadge.astro";
+import { Image } from "astro:assets";
 ---
 
 <!-- Portfolio Section -->
 <section>
-  <!-- Container -->
-  <div class=""></div>
+  <div class="flex flex-col items-center justify-center">
+    <!-- Container -->
+    <div
+      class="relative container flex flex-col items-center justify-center gap-20 px-6 py-16 md:gap-28 md:py-28 lg:gap-40 lg:px-14 lg:py-52"
+    >
+      <!-- Header -->
+      <div class="flex flex-col items-center justify-center gap-5 md:gap-6 lg:gap-7">
+        <ToolBadge icon={"service-icon"} text={"Portfolio"} />
+        <div
+          class="flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-8xl"
+        >
+          <p class="">Building Digital Experiences That</p>
+          <p class="text-purple-500">Perform</p>
+        </div>
+      </div>
+
+      <!-- Absolute images -->
+      <div class="">
+        <div
+          class="absolute top-[221px] left-[32px] md:top-[269px] md:left-[49px] lg:top-[369px] lg:left-[147.77px]"
+        >
+          <Image
+            src="/images/portfolio/3d-ball-1.png"
+            alt={"3d big ball image"}
+            width={50.68}
+            height={48}
+            class={"w-full"}
+          />
+        </div>
+        <div
+          class="absolute top-[266.59px] left-[276.47px] md:top-[334px] md:left-[643px] lg:top-[434px] lg:left-[741.77px]"
+        >
+          <Image
+            src="/images/portfolio/3d-ball-2.png"
+            alt={"3d small ball iamge"}
+            width={28}
+            height={26.52}
+            class={"w-full"}
+          />
+        </div>
+      </div>
+
+      <!-- Tile Wrapper -->
+      <div class="h-[1168.81px]">
+        <div class="relative">
+          <ProjectCard
+            brandColor="bg-red-500"
+            brandName="Reliance"
+            image="images/portfolio/reliance-brand-image.png"
+            logo="images/portfolio/reliance-logo.png"
+            title="E-commerce Platform for Local Brands"
+            subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+            badges={["Product Design", "App Development", "Dashboard Design"]}
+          />
+          <div class="absolute top-[524.41px]">
+            <ProjectCard
+              brandColor="bg-red-500"
+              brandName="Reliance"
+              image="images/portfolio/reliance-brand-image.png"
+              logo="images/portfolio/reliance-logo.png"
+              title="E-commerce Platform for Local Brands"
+              subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+              badges={["Product Design", "App Development", "Dashboard Design"]}
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- CARDS -->
+      <div class="flex flex-col items-center justify-center gap-16 md:gap-24">
+        <!-- CARDS WRAPPER -->
+        <div class="flex flex-wrap items-center justify-center gap-24 md:gap-32">
+          <!-- ROW1 -->
+          <div class="flex flex-col gap-24 md:gap-32 xl:flex-row">
+            <ArticleCard
+              thumbnail="/images/portfolio/default-project.jpg"
+              brandName="reliance"
+              chipItems={["Product Design", "App Development", "Dashboard Design"]}
+              title="E-commerce Platform for Local Brands"
+              subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+              ctaText="View Case Study"
+            />
+            <ArticleCard
+              thumbnail="/images/portfolio/default-project.jpg"
+              brandName="reliance"
+              chipItems={["Product Design", "App Development", "Dashboard Design"]}
+              title="E-commerce Platform for Local Brands"
+              subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+              ctaText="View Case Study"
+            />
+          </div>
+          <!-- ROW2 -->
+          <div class="flex flex-col gap-24 md:gap-32 xl:flex-row">
+            <ArticleCard
+              thumbnail="/images/portfolio/default-project.jpg"
+              brandName="reliance"
+              chipItems={["Product Design", "App Development", "Dashboard Design"]}
+              title="E-commerce Platform for Local Brands"
+              subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+              ctaText="View Case Study"
+            />
+            <ArticleCard
+              thumbnail="/images/portfolio/default-project.jpg"
+              brandName="reliance"
+              chipItems={["Product Design", "App Development", "Dashboard Design"]}
+              title="E-commerce Platform for Local Brands"
+              subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+              ctaText="View Case Study"
+            />
+          </div>
+        </div>
+        <!-- BUTTON -->
+        <RoundedButton variant="secondary" buttonText="Load More Projects" />
+      </div>
+    </div>
+  </div>
 </section>
