@@ -14,19 +14,19 @@ const { imageSrc, category, date, title, author, href } = Astro.props;
 ---
 
 <!-- Card Wrapper -->
-<div class="bg-n-200 flex flex-auto flex-col overflow-hidden rounded-3xl">
+<div class="bg-n-100 hover:bg-n-200 flex flex-auto flex-col overflow-hidden rounded-3xl">
   <!-- Blog Image -->
   <div class="overflow-hidden">
     <img src={imageSrc} alt={title} class="h-auto w-full" loading="lazy" />
   </div>
 
   <!-- Blog Content -->
-  <div class="flex flex-col gap-5 p-4">
+  <div class="flex flex-col gap-5 p-4 md:p-5 lg:gap-6 lg:p-6">
     <!-- Category + Date Row -->
     <div class="flex justify-between">
       <!-- Category Badge -->
       <div class="bg-n-300 rounded-3xl px-4 py-1.5">
-        <p class="text-n-950 text-sm leading-tight font-normal tracking-normal sm:text-base">
+        <p class="text-n-950 text-sm leading-tight font-normal tracking-normal md:text-base">
           {category}
         </p>
       </div>
@@ -41,13 +41,13 @@ const { imageSrc, category, date, title, author, href } = Astro.props;
     </div>
 
     <!-- Title -->
-    <p class="text-n-800 text-lg leading-tight font-medium tracking-normal sm:text-2xl lg:text-3xl">
+    <p class="text-n-800 text-lg leading-tight font-medium tracking-normal md:text-2xl lg:text-3xl">
       {title}
     </p>
 
     <!-- Author + Link Row -->
     <div class="flex items-center justify-between">
-      <p class="text-n-600 text-sm leading-tight font-normal tracking-normal sm:text-lg lg:text-xl">
+      <p class="text-n-600 text-sm leading-tight font-normal tracking-normal md:text-lg lg:text-xl">
         By: {author}
       </p>
 
