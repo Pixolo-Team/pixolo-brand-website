@@ -1,0 +1,79 @@
+---
+import ToolBadge from "@/components/ToolBadge.astro";
+import Tabs from "@/components/Tabs.astro";
+import FaqItem from "@/components/FaqItem.astro";
+
+/* Data source */
+
+const data = {
+  badge: {
+    text: "Clarity Starts Here",
+  },
+
+  heading: "Everything You Need to Know, All in One Place",
+
+  tabs: [
+    { label: "General" },
+    { label: "Specific" },
+    { label: "Pricing" },
+    { label: "General" },
+    { label: "Specific" },
+    { label: "Pricing" },
+  ],
+
+  faqs: [
+    {
+      question: "What Services Do You Offer?",
+      answer: "We provide end-to-end digital solutions including design and development.",
+      isOpen: false,
+    },
+    {
+      question: "How Long Does A Typical Project Take?",
+      answer: "Most projects take between 3 to 12 weeks depending on complexity.",
+      isOpen: false,
+    },
+    {
+      question: "How Do I Contact Customer Support?",
+      answer: "You can reach us via email, phone, or live chat.",
+      isOpen: false,
+    },
+  ],
+};
+
+const { badge, heading, tabs, faqs } = data;
+---
+
+<section class="flex flex-col gap-12 px-6 py-16 md:gap-14 md:py-24 lg:gap-16 lg:py-28">
+  <!-- Section Header (Centered) -->
+  <div class="flex flex-col items-center gap-3.5 text-center md:gap-6">
+    <ToolBadge text={badge.text} icon={"service-icon"} />
+    <p class="text-n-950 text-3xl leading-tight md:text-5xl lg:text-6xl">{heading}</p>
+  </div>
+
+  <!-- FAQ Content -->
+  <div class="flex flex-col gap-5 md:gap-11">
+    <!-- Tabs Wrap -->
+    <div class="flex w-full justify-start gap-3 md:gap-5 lg:justify-center lg:gap-7">
+      <div class="w-fit">
+        <Tabs
+          tabItems={tabs.map((tab, i) => ({
+            id: i,
+            name: tab.label,
+            isActive: i === 0,
+          }))}
+        />
+      </div>
+    </div>
+
+    <!-- Quick Answer Wrap -->
+    <div class="flex flex-col">
+      {
+        faqs.map((faq, index) => (
+          <FaqItem question={faq.question} answer={faq.answer} isOpen={faq.isOpen} index={index} />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script type="module" src="/src/scripts/faqToggle.ts"></script>
