@@ -1,0 +1,87 @@
+---
+import Ball from "@/assets/3d-ball.svg";
+import Image from "astro/components/Image.astro";
+---
+
+<section id="contact-section">
+  <!-- Decorative balls -->
+  <Image id="3d-ball-1" src={Ball} alt="Big Marble" />
+  <Image id="3d-ball-2" src={Ball} alt="Big Marble" />
+
+  <!-- Main container -->
+  <div id="container">
+    <!-- Header -->
+    <div id="section-header">
+      <div class="c-tool-badge">
+        <div class="c-icon" aria-hidden="true"></div>
+        <p>Powering Ideas into Impact</p>
+      </div>
+
+      <p>We’d love to hear from you</p>
+    </div>
+
+    <!-- Contact details -->
+    <div id="contact-details">
+      <!-- Phone -->
+      <div id="contact-details-phone">
+        <div id="phone">
+          <div id="content">
+            <div id="phone-icon" class="c-icon" aria-hidden="true"></div>
+            <div id="details">
+              <p>Call / Text Us</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div id="contact-details-email">
+        <p>email</p>
+      </div>
+
+      <!-- Location -->
+      <div id="contact-details-location">
+        <p>location</p>
+      </div>
+    </div>
+
+    <!-- Contact form wrapper -->
+    <div id="contact-fill-wrap">
+      <!-- Left text block -->
+      <div class="fixedwidth-text-wrap">
+        <p>Lets</p>
+        <p>get in</p>
+        <p>Touch !</p>
+      </div>
+
+      <!-- Form -->
+      <form id="contact-form">
+        <!-- Input fields -->
+        <div id="details-fill">
+          <div id="name">
+            <p>NAME</p>
+          </div>
+
+          <div id="phone-number">
+            <p>phone-number</p>
+          </div>
+
+          <div id="e-mail">
+            <p>e-mail</p>
+          </div>
+
+          <div id="message">
+            <p>message</p>
+          </div>
+        </div>
+
+        <!-- Button -->
+        <div class="c-rounded-button">
+          <div class="c-icon" aria-hidden="true"></div>
+          <p id="button-text">button-text</p>
+          <div class="c-icon" aria-hidden="true"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
