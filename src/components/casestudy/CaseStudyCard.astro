@@ -1,0 +1,36 @@
+---
+//COMPONENTS//
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+const { id, title, image } = Astro.props;
+---
+
+<a>
+  <div class="flex flex-col gap-3.5 hover:cursor-pointer hover:text-blue-200">
+    {/* Image Container */}
+    <div class="relative w-full">
+      <Image
+        src={`/images/case-studies/${image}`}
+        width={100}
+        height={100}
+        alt={`caseStudyImage`}
+        class="w-full rounded-4xl"
+      />
+
+      {/* Icon */}
+      <div
+        class="lg:hover:bg-n-950 lg:hover:text-n-50 lg:text-n-950 hidden lg:absolute lg:right-50 lg:bottom-38 lg:block lg:flex lg:items-center lg:justify-center lg:rounded-full lg:bg-blue-500 lg:p-5"
+      >
+        <Icon name="external-link-icon" class="lg:h-7 lg:w-7" />
+      </div>
+    </div>
+
+    <div>
+      {/* Text */}
+      <p class="text-xl leading-[1.25] font-medium tracking-normal md:text-2xl lg:text-3xl">
+        {title}
+      </p>
+    </div>
+  </div>
+</a>
