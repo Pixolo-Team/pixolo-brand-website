@@ -7,9 +7,6 @@ interface Props {
 }
 
 const { icon = "building", text = "" } = Astro.props;
-
-// Check if the icon string looks like a path to an image
-const isImage = icon.endsWith(".png") || icon.endsWith(".jpg") || icon.endsWith(".svg");
 ---
 
 <div
@@ -17,13 +14,7 @@ const isImage = icon.endsWith(".png") || icon.endsWith(".jpg") || icon.endsWith(
 >
   <!-- Blue Circle with Logo -->
   <div class="rounded-3xl bg-blue-500 p-2 md:gap-2.5">
-    {
-      isImage ? (
-        <img src={icon} alt={text} class="size-3 md:size-4 lg:size-6" />
-      ) : (
-        <Icon name={icon} class="size-3 md:size-4 lg:size-6" />
-      )
-    }
+    <Icon name={icon} class="size-3 md:size-4 lg:size-6" />
   </div>
 
   <!-- Tool Badge Text -->
