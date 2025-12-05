@@ -20,42 +20,42 @@ import { Image } from "astro:assets";
         <div
           class="flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-8xl"
         >
-          <p class="">Building Digital Experiences That</p>
-          <p class="text-purple-500">Perform</p>
+          <p class="text-balance">Building Digital Experiences That</p>
+          <p class="bg-linear-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent">
+            Perform
+          </p>
         </div>
       </div>
 
       <!-- Absolute images -->
-      <div class="">
-        <div
-          class="absolute top-[221px] left-[32px] md:top-[269px] md:left-[49px] lg:top-[369px] lg:left-[147.77px]"
-        >
-          <Image
-            src="/images/portfolio/3d-ball-1.png"
-            alt={"3d big ball image"}
-            width={50.68}
-            height={48}
-            class={"w-full"}
-          />
-        </div>
-        <div
-          class="absolute top-[266.59px] left-[276.47px] md:top-[334px] md:left-[643px] lg:top-[434px] lg:left-[741.77px]"
-        >
-          <Image
-            src="/images/portfolio/3d-ball-2.png"
-            alt={"3d small ball iamge"}
-            width={28}
-            height={26.52}
-            class={"w-full"}
-          />
-        </div>
+      <div
+        class="absolute top-[221px] left-[32px] md:top-[381px] md:left-[73px] lg:top-[577px] lg:left-[440.27px]"
+      >
+        <Image
+          src="/images/portfolio/3d-ball-1.png"
+          alt={"3d big ball image"}
+          width={50.68}
+          height={48}
+          class={"w-full"}
+        />
+      </div>
+      <div
+        class="absolute top-[266.59px] left-[276.47px] md:top-[446px] md:left-[667px] lg:top-[642px] lg:left-[1034.27px]"
+      >
+        <Image
+          src="/images/portfolio/3d-ball-2.png"
+          alt={"3d small ball iamge"}
+          width={28}
+          height={26.52}
+          class={"w-full"}
+        />
       </div>
 
       <!-- Tile Wrapper -->
-      <div class="h-[1168.81px]">
+      <div class="h-[799.27px] md:h-[888.85px] xl:h-[1168.81px]">
         <div class="relative">
           <ProjectCard
-            brandColor="bg-red-500"
+            brandColor="bg-blue-500"
             brandName="Reliance"
             image="images/portfolio/reliance-brand-image.png"
             logo="images/portfolio/reliance-logo.png"
@@ -63,7 +63,7 @@ import { Image } from "astro:assets";
             subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
             badges={["Product Design", "App Development", "Dashboard Design"]}
           />
-          <div class="absolute top-[524.41px]">
+          <div class="absolute top-[346.24px] md:top-[384.43px] xl:top-[524.41px]">
             <ProjectCard
               brandColor="bg-red-500"
               brandName="Reliance"
