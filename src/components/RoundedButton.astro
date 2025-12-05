@@ -9,7 +9,7 @@ interface Props {
   rightIcon?: string;
   onClick?: string;
   type?: "button" | "submit" | "reset";
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "outline";
 }
 
 // Default values
@@ -26,6 +26,7 @@ const {
 const variants = {
   primary: "bg-n-950 text-n-100",
   secondary: "bg-n-200 text-n-700",
+  outline: "border border-n-950 text-n-950",
 };
 ---
 
