@@ -4,7 +4,7 @@ export const blogSectionDetails = {
   loadMoreButton: "Load More Blogs",
 };
 
-export const blogItems = [
+export const blogItemCard = [
   {
     imageSrc: "/images/blogs/blog-card.jpg",
     category: "Design",

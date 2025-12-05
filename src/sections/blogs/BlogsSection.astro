@@ -1,13 +1,11 @@
 ---
-// External libraries
+// COMPONENTS //
 import { Icon } from "astro-icon/components";
-
-// Project Components
 import BlogCard from "@/components/blogs/BlogCard.astro";
 
-// Project Data
+// DATA //
 import { blogSectionDetails } from "@/data/blogs";
-import { blogItems } from "@/data/blogs";
+import { blogItemCard } from "@/data/blogs";
 ---
 
 <!-- Blogs Section -->
@@ -46,31 +44,17 @@ import { blogItems } from "@/data/blogs";
       <div class="grid w-full grid-cols-1 gap-12 md:grid-cols-2 md:gap-7 lg:grid-cols-3 lg:gap-12">
         <!-- Blog Cards -->
         {
-          blogItems
-            .slice(0, 3)
-            .map((card) => (
-              <BlogCard
-                imageSrc={card.imageSrc}
-                category={card.category}
-                date={card.date}
-                title={card.title}
-                author={card.author}
-                href={card.href}
-              />
-            ))
+          blogItemCard.map((card) => (
+            <BlogCard
+              imageSrc={card.imageSrc}
+              category={card.category}
+              date={card.date}
+              title={card.title}
+              author={card.author}
+              href={card.href}
+            />
+          ))
         }
-
-        <!-- Tablet only: 4th card  -->
-        <div class="hidden md:block lg:hidden">
-          <BlogCard
-            imageSrc={blogItems[3].imageSrc}
-            category={blogItems[3].category}
-            date={blogItems[3].date}
-            title={blogItems[3].title}
-            author={blogItems[3].author}
-            href={blogItems[3].href}
-          />
-        </div>
       </div>
 
       <!-- Load More Button -->
