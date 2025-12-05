@@ -15,7 +15,9 @@ const { imageSrc, category, date, title, author, href } = Astro.props;
 ---
 
 <!-- Card Wrapper -->
-<div class="bg-n-100 hover:bg-n-200 flex flex-auto flex-col overflow-hidden rounded-3xl">
+<div
+  class="bg-n-100 hover:bg-n-200 flex flex-auto cursor-pointer flex-col overflow-hidden rounded-3xl"
+>
   <!-- Blog Image -->
   <div class="overflow-hidden">
     <img src={imageSrc} alt={title} class="h-auto w-full" loading="lazy" />
