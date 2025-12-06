@@ -13,6 +13,11 @@ import Header from "@/components/layout/Header.astro";
 import { siteInfo } from "@/data/site-info";
 
 const { meta = {}, showLoader = false } = Astro.props;
+
+interface Props {
+  meta: any;
+  showLoader: boolean;
+}
 ---
 
 <!doctype html>

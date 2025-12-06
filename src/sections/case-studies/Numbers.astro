@@ -1,15 +1,8 @@
 ---
 // COMPONENTS //
-import ClientNumbers from "@/components/ClientNumbers.astro";
+import ClientNumbers from "@/components/case-studies/ClientNumber.astro";
 
-// DATA
-// Create a new data file after consulting
-const clientNumberItem = [
-  { title: "Faster Onboarding", value: "3X" },
-  { title: "Improved User Retention", value: "25%" },
-  { title: "Customer Support", value: "24/7" },
-  { title: "Higher Conversion Rates", value: "15%" },
-];
+import { clientNumberItem } from "@/data/case-studies/1";
 ---
 
 <!-- Client in numbers Section -->
@@ -26,7 +19,7 @@ const clientNumberItem = [
       </h1>
       <!-- Description -->
       <p class="text-n-800 leading-tight md:text-xl lg:text-2xl">
-        We focus on the metrics that truly reflects our value. Here's a snapshot of the results that
+        We focus on the metrics that truly reflect our value. Here's a snapshot of the results that
         drive our success.
       </p>
     </div>
