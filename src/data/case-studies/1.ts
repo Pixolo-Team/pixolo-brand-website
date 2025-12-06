@@ -1,4 +1,4 @@
-export const clientNumberItem = [
+export const clientNumbers = [
   { title: "Faster Onboarding", value: "3X" },
   { title: "Improved User Retention", value: "25%" },
   { title: "Customer Support", value: "24/7" },

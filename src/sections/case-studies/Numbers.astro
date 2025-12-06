@@ -2,7 +2,7 @@
 // COMPONENTS //
 import ClientNumbers from "@/components/case-studies/ClientNumber.astro";
 
-import { clientNumberItem } from "@/data/case-studies/1";
+import { clientNumbers } from "@/data/case-studies/1";
 ---
 
 <!-- Client in numbers Section -->
@@ -29,7 +29,11 @@ import { clientNumberItem } from "@/data/case-studies/1";
       class="anim-fade-in-up grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-9"
     >
       <!-- Iterate through Data -->
-      {clientNumberItem.map((item) => <ClientNumbers title={item.title} value={item.value} />)}
+      {
+        clientNumbers.map((clientNumberItem) => (
+          <ClientNumbers title={clientNumberItem.title} value={clientNumberItem.value} />
+        ))
+      }
     </div>
   </div>
 </section>
