@@ -12,12 +12,12 @@ import Header from "@/components/layout/Header.astro";
 // DATA //
 import { siteInfo } from "@/data/site-info";
 
-const { meta = {}, showLoader = false } = Astro.props;
-
 interface Props {
   meta: any;
   showLoader: boolean;
 }
+
+const { meta = {}, showLoader = false } = Astro.props;
 ---
 
 <!doctype html>

@@ -101,8 +101,6 @@ export const animateMarble = (elementId: string, containerId: string) => {
       direction = -direction;
     }
 
-    console.log(posY, bounds.maxY);
-
     // --- ⚡ Motion One animation update ---
     animate(marble, { x: posX, y: posY, rotate: rotation }, { duration: 0, easing: "linear" });
 
