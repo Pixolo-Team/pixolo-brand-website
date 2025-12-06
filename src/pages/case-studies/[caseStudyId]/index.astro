@@ -1,0 +1,24 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { caseStudyId: "1" } },
+    { params: { caseStudyId: "2" } },
+    { params: { caseStudyId: "3" } },
+  ];
+}
+
+const { caseStudyId } = Astro.params;
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+
+// SECTIONS //
+import Numbers from "@/sections/case-studies/Numbers.astro";
+
+// DATA //
+import clientNumberItem from "@/data/case-studies/1";
+---
+
+<Layout>
+  <Numbers />
+</Layout>
