@@ -1,0 +1,242 @@
+---
+/* assets & components */
+import Ball from "@/assets/3d-ball.svg";
+import Image from "astro/components/Image.astro";
+
+import ToolBadge from "@/components/ToolBadge.astro";
+import { Icon } from "astro-icon/components";
+import Tooltip from "@/components/Tooltip.astro";
+
+import InputField from "@/components/InputField.astro";
+import Dropdown from "@/components/Dropdown.astro";
+import Textarea from "@/components/Textarea.astro";
+import RoundedButton from "@/components/RoundedButton.astro";
+import ContactFormModal from "@/components/forms/ContactForm.astro";
+/* data */
+import { contactSectionDetails, contactFormDetails } from "@/data/contact";
+---
+
+<section id="contact-section" class="text-n-50 py-12 md:py-20">
+  {/* Decorative balls (position with CSS/utility in your stylesheet) */}
+  <Image id="3d-ball-1" src={Ball} alt="3d ball" class="absolute top-16 left-8 h-[38px] w-[38px]" />
+  <Image
+    id="3d-ball-2"
+    src={Ball}
+    alt="3d ball"
+    class="absolute top-[260px] right-8 h-[59px] w-[59px]"
+  />
+
+  <div class="relative container mx-auto max-w-[327px] px-6 md:px-0">
+    {/* Header - "Want to know more?" + "We'd love to hear from you" */}
+    <div class="flex flex-col items-center gap-4">
+      {/* top tool badge */}
+      <ToolBadge icon="building" text={contactFormDetails.badgeTitle} />
+
+      {/* heading */}
+      <p class="text-n-50 text-center text-3xl leading-[1.05] font-medium md:text-5xl">
+        {contactFormDetails.heading}
+      </p>
+
+      {/* subheading */}
+      <p class="text-n-400 text-center text-sm md:text-lg">{contactFormDetails.subheading}</p>
+    </div>
+
+    {/* Contact cards (stacked) - after header */}
+    <div class="mt-8 flex flex-col gap-4 md:mt-10">
+      {
+        contactSectionDetails.contactCards.map((card) => {
+          const tooltipText =
+            card.id === "phone" ? "Call" : card.id === "mail" ? "Email" : "Location";
+          return (
+            <a
+              href={card.link}
+              class="flex items-center justify-between gap-4 rounded-[28px] bg-[rgba(255,255,255,0.04)] px-5 py-4 hover:bg-[rgba(255,255,255,0.06)]"
+            >
+              <div class="flex max-w-[80%] items-center gap-4">
+                {/* circular icon */}
+                <div class="flex h-[54px] w-[54px] items-center justify-center rounded-full bg-linear-to-r from-[#6C6AF2] to-[#8B77F3] shadow-sm">
+                  <Icon name={card.icon} class="text-n-50 size-6" />
+                </div>
+
+                {/* title + value */}
+                <div class="flex w-[60%] flex-col">
+                  <p class="font-neometric text-n-700 text-xs font-extrabold md:text-sm">
+                    {card.title}
+                  </p>
+                  <p class="text-n-50 max-w-[180px] truncate text-sm font-semibold md:text-lg">
+                    {card.value}
+                  </p>
+                </div>
+              </div>
+
+              {/* Right-side control: copy button for phone/mail, arrow for others */}
+              {card.id === "phone" || card.id === "mail" ? (
+                <Tooltip text="Copy" position="top">
+                  <span
+                    class="copy-btn text-n-300 flex h-8 w-8 items-center justify-center rounded-full bg-[rgba(255,255,255,0.02)] p-1 hover:bg-[rgba(255,255,255,0.04)]"
+                    data-copy={card.value}
+                  >
+                    <Icon name="copy" class="icon-copy text-n-300 size-[26px]" />
+                    <Icon name="check" class="icon-check hidden size-[26px]" />
+                  </span>
+                </Tooltip>
+              ) : (
+                <Icon name="right-arrow" class="text-n-300 size-5" />
+              )}
+            </a>
+          );
+        })
+      }
+
+      {/* Location card */}
+      <a
+        href={contactSectionDetails.location.mapUrl}
+        class="flex items-center justify-between gap-4 rounded-[28px] bg-[rgba(255,255,255,0.04)] px-5 py-4 hover:bg-[rgba(255,255,255,0.06)]"
+      >
+        <div class="flex max-w-[80%] items-center gap-4">
+          {/* circular icon */}
+          <div
+            class="flex h-[54px] w-[54px] items-center justify-center rounded-full bg-linear-to-r from-[#6C6AF2] to-[#8B77F3] shadow-sm"
+          >
+            <Icon name={contactSectionDetails.location.icon} class="text-n-50 size-[26px]" />
+          </div>
+
+          {/* title + value */}
+          <div class="flex w-[60%] flex-col">
+            <p class="font-neometric text-n-700 text-xs font-extrabold md:text-sm">
+              {contactSectionDetails.location.title}
+            </p>
+            <p class="text-n-50 max-w-[180px] truncate text-sm font-semibold md:text-lg">
+              {contactSectionDetails.location.address}
+            </p>
+          </div>
+        </div>
+
+        {/* right arrow for location */}
+        <Icon name="right-arrow" class="text-n-300 size-5" />
+      </a>
+    </div>
+
+    {/* Hero big text - split lines to match figma */}
+    <div class="mt-10 md:mt-12">
+      <div class="relative">
+        <p
+          class="font-neometric text-n-50 text-[72px] leading-tight font-normal tracking-[-0.07em] md:text-[96px]"
+        >
+          Lets
+        </p>
+        <p
+          class="font-neometric text-n-50 -mt-2 text-[72px] leading-tight font-normal tracking-[-0.07em] md:-mt-3 md:text-[96px]"
+        >
+          get in
+        </p>
+        <p
+          class="font-neometric text-n-50 -mt-2 text-[72px] leading-tight font-normal tracking-[-0.07em] md:-mt-3 md:text-[96px]"
+        >
+          Touch !
+        </p>
+
+        {/* small decorative balls inline with hero text (nudge positions) */}
+        <Image
+          src={Ball}
+          alt="ball"
+          class="absolute top-3 left-[110px] h-[59px] w-[59px] md:left-[140px] md:h-[59px] md:w-[59px]"
+        />
+        <Image
+          src={Ball}
+          alt="ball"
+          class="absolute top-[86px] left-[34px] h-[59px] w-[59px] md:top-[108px] md:left-10 md:h-[59px] md:w-[59px]"
+        />
+      </div>
+    </div>
+
+    {/* Inline form (stacked) — two-column labels + underline inputs to match Figma */}
+    <form class="mt-20 flex flex-col gap-5 md:mt-24" aria-label="Contact form">
+      <!-- NAME -->
+      <div class="flex items-center gap-4">
+        <label for="name" class="font-neometric text-n-600 w-20 text-sm leading-tight font-medium"
+          >NAME</label
+        >
+        <div class="border-n-300 flex-1 border-b pb-6">
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            class="placeholder-n-600 w-full bg-transparent text-sm outline-none"
+            placeholder="Enter your full name"
+          />
+        </div>
+      </div>
+
+      <!-- PHONE NUMBER -->
+      <div class="flex items-center gap-4">
+        <label for="phone" class="font-neometric text-n-600 w-20 text-sm leading-tight font-medium"
+          >PHONE NUMBER</label
+        >
+        <div class="border-n-300 flex-1 border-b pb-6">
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            required
+            class="placeholder-n-600 w-full bg-transparent text-sm outline-none"
+            placeholder="Enter your phone number"
+          />
+        </div>
+      </div>
+
+      <!-- E-MAIL -->
+      <div class="flex items-center gap-4">
+        <label for="email" class="font-neometric text-n-600 w-20 text-sm leading-tight font-medium"
+          >E-MAIL</label
+        >
+        <div class="border-n-300 flex-1 border-b pb-6">
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            class="placeholder-n-600 w-full truncate bg-transparent text-sm outline-none"
+            placeholder="Enter your email address"
+          />
+        </div>
+      </div>
+
+      <!-- MESSAGE -->
+      <div class="flex items-start gap-4">
+        <label
+          for="message"
+          class="font-neometric text-n-600 w-20 pt-2 text-sm leading-tight font-medium"
+          >MESSAGE</label
+        >
+        <div class="border-n-300 flex-1 border-b pb-6">
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            required
+            class="placeholder-n-600 w-full resize-none bg-transparent text-sm outline-none"
+            placeholder="Write your message..."></textarea>
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <div class="mt-6 flex justify-end">
+        <div class="origin-right scale-90 transform">
+          <RoundedButton
+            buttonText={contactFormDetails.buttonText ?? "Contact Us"}
+            type="button"
+            onClick="window.dispatchEvent(new Event('open-contact-modal'))"
+            variant="secondary"
+          />
+        </div>
+      </div>
+    </form>
+
+    {
+      /* Include modal ContactForm so it exists in DOM (the modal will open when event is dispatched) */
+    }
+    <ContactFormModal />
+  </div>
+</section>
