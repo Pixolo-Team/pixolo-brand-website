@@ -4,3 +4,22 @@ export const clientNumbers = [
   { title: "Customer Support", value: "24/7" },
   { title: "Higher Conversion Rates", value: "15%" },
 ];
+
+export const clientVisions = [
+  {
+    title: "Fast Loading",
+    description: "Pages laod instantly, keeping visitors engaged instead of frustrated",
+  },
+  {
+    title: "Mobile Optimization",
+    description: "Seamless experience across all devices, ensuring accessibility on the go%",
+  },
+  {
+    title: "User-Friendly Interface",
+    description: "Intuitive design that enhances navigation and reduces bounce rates",
+  },
+  {
+    title: "SEO Friendly",
+    description: "Built with SEO best practices to improve visibility in search engine",
+  },
+];

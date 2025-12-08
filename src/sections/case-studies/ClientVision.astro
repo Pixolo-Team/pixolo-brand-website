@@ -1,0 +1,64 @@
+---
+// COMPONENTS //
+import Image from "astro/components/Image.astro";
+
+import ClientImage from "@/data/case-studies/1/client-barcelona-club.jpg";
+---
+
+<section>
+  <!-- Container -->
+  <div class="flex flex-col gap-7 px-6 py-14">
+    <!-- Page Title -->
+    <p>The Client's Vision</p>
+    <div class="flex flex-col gap-10">
+      <!-- Client Image -->
+      <Image class="w-full" width={192} height={192} src={ClientImage} alt="barcelona club " />
+
+      <div class="flex flex-col gap-9">
+        <!-- 1st Point -->
+        <div class="flex">
+          <p class="text-3xl leading-normal">01</p>
+          <div class="flex flex-col gap-1 text-end leading-tight">
+            <p class="border-n-700 border-b-1 py-1 pr-0 text-xl">Fast Loading</p>
+            <p class="text-xs">
+              Pages load instanly, keeping visitors engaged instead of frustrated
+            </p>
+          </div>
+        </div>
+
+        <!-- 2nd Point -->
+        <div class="flex">
+          <p class="text-3xl leading-normal">02</p>
+          <div class="flex flex-col gap-1 text-end leading-tight">
+            <p class="border-n-700 border-b-1 py-1 pr-0 text-xl">Mobile Optimization</p>
+            <p class="text-xs">
+              Seamless experience across all devices, ensuring accessibility on the go
+            </p>
+          </div>
+        </div>
+
+        <!-- 3rd Point -->
+        <div class="flex">
+          <p class="text-3xl leading-normal">03</p>
+          <div class="flex flex-col gap-1 text-end leading-tight">
+            <p class="border-n-700 border-b-1 py-1 pr-0 text-xl">User-Friendly Interface</p>
+            <p class="text-xs">
+              Intuitive design that enhances navigation and reduces bounce rates
+            </p>
+          </div>
+        </div>
+
+        <!-- 4th Point -->
+        <div class="flex">
+          <p class="text-3xl leading-normal">04</p>
+          <div class="flex flex-col gap-1 text-end leading-tight">
+            <p class="border-n-700 border-b-1 py-1 pr-0 text-xl">SEO Friendly</p>
+            <p class="text-xs">
+              Built with SEO best practices to improve visibility in search engine
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
