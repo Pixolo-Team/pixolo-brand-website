@@ -21,16 +21,14 @@ const { title, description, issue, stat } = Astro.props;
     {title}
   </p>
 
-  <div class="flex flex-col gap-3">
-    <!-- Issue Description -->
-    <p class="leading-tight font-normal">{description}</p>
+  <!-- Issue Description -->
+  <p class="mb-1.5 leading-tight font-normal md:mb-0">{description}</p>
 
-    <!-- Stat Box -->
-    <div
-      class="bg-n-200 flex flex-col items-center gap-1 rounded-2xl px-9 py-2 leading-tight md:gap-2 md:rounded-[100px] md:px-11 md:py-6 lg:gap-2 lg:px-11 lg:py-7"
-    >
-      <p>{issue}</p>
-      <p class="text-2xl leading-tight md:text-3xl lg:text-5xl">{stat}</p>
-    </div>
+  <!-- Stat Box -->
+  <div
+    class="bg-n-200 flex flex-col items-center gap-1 rounded-2xl px-9 py-2 leading-tight md:gap-2 md:rounded-[100px] md:px-11 md:py-6 lg:gap-2 lg:px-11 lg:py-7"
+  >
+    <p>{issue}</p>
+    <p class="text-2xl leading-tight md:text-3xl lg:text-5xl">{stat}</p>
   </div>
 </div>
