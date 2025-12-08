@@ -1,0 +1,27 @@
+---
+// COMPONENTS //
+import ClientIssues from "@/components/case-studies/ClientIssue.astro";
+
+// DATA //
+import { clientIssues } from "@/data/case-studies/1";
+---
+
+<section>
+  <!-- Container -->
+  <div class="flex flex-col gap-11 px-6 py-16">
+    <!-- Issue Component -->
+    <div class="flex flex-col gap-5">
+      <!-- Iterating through data -->
+      {
+        clientIssues.map((clientIssueItem) => (
+          <ClientIssues
+            title={clientIssueItem.title}
+            description={clientIssueItem.description}
+            issue={clientIssueItem.issue}
+            stat={clientIssueItem.stat}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
