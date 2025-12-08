@@ -11,34 +11,35 @@ import InputField from "@/components/InputField.astro";
 import Dropdown from "@/components/Dropdown.astro";
 import Textarea from "@/components/Textarea.astro";
 import RoundedButton from "@/components/RoundedButton.astro";
+import WhatsappButton from "@/components/WhatsappButton.astro";
 import ContactFormModal from "@/components/forms/ContactForm.astro";
 /* data */
 import { contactSectionDetails, contactFormDetails } from "@/data/contact";
+
+// helper: phone value for WhatsApp link
+const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "phone")?.value || "";
 ---
 
 <section id="contact-section" class="text-n-50 py-12 md:py-20">
-  {/* Decorative balls (position with CSS/utility in your stylesheet) */}
-  <Image id="3d-ball-1" src={Ball} alt="3d ball" class="absolute top-16 left-8 h-[38px] w-[38px]" />
+  {/* Decorative balls (reuse hero marble spec & animation) */}
   <Image
-    id="3d-ball-2"
+    id="contact-big-marble"
     src={Ball}
-    alt="3d ball"
-    class="absolute top-[260px] right-8 h-[59px] w-[59px]"
+    alt="big marble"
+    class="absolute top-[22%] left-6 w-[59.13px] sm:left-[20%] md:top-[380px] md:left-[50px] md:w-[59.13px] lg:top-[65%] lg:left-[16%] lg:w-[59.13px]"
+  />
+  <Image
+    id="contact-small-marble"
+    src={Ball}
+    alt="small marble"
+    class="absolute right-[10%] bottom-[46%] w-[38.01px] rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-[38.01px] lg:right-[35%]"
   />
 
-  <div class="relative container mx-auto max-w-[327px] px-6 md:px-0">
+  <div id="contact-wrapper" class="relative container mx-auto max-w-[327px] px-6 md:px-0">
     {/* Header - "Want to know more?" + "We'd love to hear from you" */}
     <div class="flex flex-col items-center gap-4">
       {/* top tool badge */}
       <ToolBadge icon="building" text={contactFormDetails.badgeTitle} />
-
-      {/* heading */}
-      <p class="text-n-50 text-center text-3xl leading-[1.05] font-medium md:text-5xl">
-        {contactFormDetails.heading}
-      </p>
-
-      {/* subheading */}
-      <p class="text-n-400 text-center text-sm md:text-lg">{contactFormDetails.subheading}</p>
     </div>
 
     {/* Contact cards (stacked) - after header */}
@@ -50,7 +51,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
           return (
             <a
               href={card.link}
-              class="flex items-center justify-between gap-4 rounded-[28px] bg-[rgba(255,255,255,0.04)] px-5 py-4 hover:bg-[rgba(255,255,255,0.06)]"
+              class="bg-n-50/5 hover:bg-n-50/6 flex items-center justify-between gap-4 rounded-[28px] px-5 py-4"
             >
               <div class="flex max-w-[80%] items-center gap-4">
                 {/* circular icon */}
@@ -73,7 +74,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
               {card.id === "phone" || card.id === "mail" ? (
                 <Tooltip text="Copy" position="top">
                   <span
-                    class="copy-btn text-n-300 flex h-8 w-8 items-center justify-center rounded-full bg-[rgba(255,255,255,0.02)] p-1 hover:bg-[rgba(255,255,255,0.04)]"
+                    class="bg-n-50/2 hover:bg-n-50/4 text-n-300 flex h-8 w-8 items-center justify-center rounded-full p-1"
                     data-copy={card.value}
                   >
                     <Icon name="copy" class="icon-copy text-n-300 size-[26px]" />
@@ -91,7 +92,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
       {/* Location card */}
       <a
         href={contactSectionDetails.location.mapUrl}
-        class="flex items-center justify-between gap-4 rounded-[28px] bg-[rgba(255,255,255,0.04)] px-5 py-4 hover:bg-[rgba(255,255,255,0.06)]"
+        class="bg-n-50/5 hover:bg-n-50/6 flex items-center justify-between gap-4 rounded-[28px] px-5 py-4"
       >
         <div class="flex max-w-[80%] items-center gap-4">
           {/* circular icon */}
@@ -120,33 +121,15 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
     {/* Hero big text - split lines to match figma */}
     <div class="mt-10 md:mt-12">
       <div class="relative">
-        <p
-          class="font-neometric text-n-50 text-[72px] leading-tight font-normal tracking-[-0.07em] md:text-[96px]"
-        >
+        <p class="font-neometric text-n-50 text-8xl leading-[125%] font-normal tracking-[-0.07em]">
           Lets
         </p>
-        <p
-          class="font-neometric text-n-50 -mt-2 text-[72px] leading-tight font-normal tracking-[-0.07em] md:-mt-3 md:text-[96px]"
-        >
+        <p class="font-neometric text-n-50 text-8xl leading-[125%] font-normal tracking-[-0.07em]">
           get in
         </p>
-        <p
-          class="font-neometric text-n-50 -mt-2 text-[72px] leading-tight font-normal tracking-[-0.07em] md:-mt-3 md:text-[96px]"
-        >
+        <p class="font-neometric text-n-50 text-8xl leading-[125%] font-normal tracking-[-0.07em]">
           Touch !
         </p>
-
-        {/* small decorative balls inline with hero text (nudge positions) */}
-        <Image
-          src={Ball}
-          alt="ball"
-          class="absolute top-3 left-[110px] h-[59px] w-[59px] md:left-[140px] md:h-[59px] md:w-[59px]"
-        />
-        <Image
-          src={Ball}
-          alt="ball"
-          class="absolute top-[86px] left-[34px] h-[59px] w-[59px] md:top-[108px] md:left-10 md:h-[59px] md:w-[59px]"
-        />
       </div>
     </div>
 
@@ -171,9 +154,9 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
 
       <!-- PHONE NUMBER -->
       <div class="flex items-center gap-4">
-        <label for="phone" class="font-neometric text-n-600 w-20 text-sm leading-tight font-medium"
-          >PHONE NUMBER</label
-        >
+        <label for="phone" class="font-neometric text-n-600 w-20 text-sm leading-tight font-medium">
+          <span class="block">PHONE</span><span class="block">NUMBER</span>
+        </label>
         <div class="border-n-300 flex-1 border-b pb-6">
           <input
             id="phone"
@@ -214,16 +197,16 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
           <textarea
             id="message"
             name="message"
-            rows="4"
+            rows="2"
             required
             class="placeholder-n-600 w-full resize-none bg-transparent text-sm outline-none"
             placeholder="Write your message..."></textarea>
         </div>
       </div>
 
-      <!-- Submit button -->
-      <div class="mt-6 flex justify-end">
-        <div class="origin-right scale-90 transform">
+      <!-- Submit button with WhatsApp quick action -->
+      <div class="relative mt-6 flex items-end justify-start">
+        <div class="scale-95 transform">
           <RoundedButton
             buttonText={contactFormDetails.buttonText ?? "Contact Us"}
             type="button"
@@ -231,12 +214,14 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
             variant="secondary"
           />
         </div>
+
+        <div class="absolute -right-3 -bottom-3">
+          <WhatsappButton href={`https://wa.me/${phoneContact}`} extraClasses="p-2 h-12 w-12" />
+        </div>
       </div>
     </form>
 
-    {
-      /* Include modal ContactForm so it exists in DOM (the modal will open when event is dispatched) */
-    }
+    {/* Contact form modal component */}
     <ContactFormModal />
   </div>
 </section>
