@@ -26,3 +26,28 @@ export const aboutClient = {
     ],
   },
 };
+
+export const toolUsed = [
+  {
+    icon: "/images/case-studies/1/tool-logo.png",
+    title: "Figma",
+    description: "We used Figma to design and prototype the project efficiently.",
+  },
+  {
+    icon: "/images/case-studies/1/tool-logo.png",
+    title: "Sketch",
+    description:
+      "Sketch allowed us to create vector graphics and collaborate with the team seamlessly",
+  },
+  {
+    icon: "/images/case-studies/1/tool-logo.png",
+    title: "Adobe XD",
+    description: "Adobe XD provided powerful tools for interactive prototypes and user testing",
+  },
+  {
+    icon: "/images/case-studies/1/tool-logo.png",
+    title: "InVision",
+    description:
+      "InVision facilitated our design handoff and feedback processes, enhancing communication.",
+  },
+];
