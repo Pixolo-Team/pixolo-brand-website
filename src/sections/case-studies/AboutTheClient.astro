@@ -3,9 +3,7 @@
 import ToolBadge from "@/components/ToolBadge.astro";
 import { Image } from "astro:assets";
 
-import ClientImage1 from "@/assets/images/case-study-consumption/client-barcelona-logo.png";
-import ClientImage2 from "@/assets/images/case-study-consumption/client-barcelona-app.png";
-import ClientImage3 from "@/assets/images/case-study-consumption/client-barcelona-player.png";
+import { aboutClient } from "@/data/case-studies/1";
 ---
 
 <section>
@@ -15,7 +13,7 @@ import ClientImage3 from "@/assets/images/case-study-consumption/client-barcelon
     <!-- Toolbadge & Page Title -->
     <div class="flex flex-col items-center gap-4 lg:gap-5">
       <!-- Toolbadge -->
-      <ToolBadge icon="package" text="Our Clients at a Glance" />
+      <ToolBadge icon="package" text="Our Client at a Glance" />
       <!-- Page Title -->
       <h1 class="text-center text-3xl font-medium md:text-5xl lg:text-6xl">
         Our Client at a Glance
@@ -27,22 +25,22 @@ import ClientImage3 from "@/assets/images/case-study-consumption/client-barcelon
       <!-- Top Content : Client Title & Description -->
       <div class="lg:gap- flex flex-col gap-4 lg:flex-row">
         <!-- Title: Client Name -->
-        <h2 class="text-2xl font-medium md:text-4xl lg:w-[30%]">Football Club Barcelona</h2>
+        <h2 class="text-2xl font-medium md:text-4xl lg:w-[30%]">
+          {aboutClient.aboutPointers[0].title}
+        </h2>
         <!-- Work Description -->
         <p class="text-n-800 text-sm md:text-xl lg:flex-1">
-          An app centred around providing users with a complete experience of Conscient Football
-          tournaments which includes the fixtures, results, groups and an activity room. Users can
-          post photos, upload status and use for downloading images and videos of various matches.
+          {aboutClient.aboutPointers[0].description}
         </p>
       </div>
       <!-- Bottom Content-->
       <div class="flex flex-col gap-4 lg:flex-row">
         <!-- Title -->
-        <h2 class="text-2xl font-medium md:text-4xl lg:w-[30%]">Brand Background</h2>
+        <h2 class="text-2xl font-medium md:text-4xl lg:w-[30%]">
+          {aboutClient.aboutPointers[1].title}
+        </h2>
         <p class="text-n-800 text-sm md:text-xl lg:flex-1">
-          The Barcelona Football Academy delivers elite football training inspired by top European
-          methodologies. Designed for young players worldwide, the academy focuses on skill
-          development, discipline, and long-term growth across all levels.
+          {aboutClient.aboutPointers[1].description}
         </p>
       </div>
     </div>
@@ -54,7 +52,7 @@ import ClientImage3 from "@/assets/images/case-study-consumption/client-barcelon
         class="rounded-3xl md:rounded-4xl lg:w-[60%] lg:rounded-[60px]"
         width={930}
         height={482}
-        src={ClientImage1}
+        src={aboutClient.aboutImages.mainImage}
         alt="decorative illustration"
       />
       <!-- Bottom Images -->
@@ -63,14 +61,14 @@ import ClientImage3 from "@/assets/images/case-study-consumption/client-barcelon
           class="flex-1 rounded-3xl md:rounded-4xl lg:rounded-[60px]"
           width={100}
           height={200}
-          src={ClientImage2}
+          src={aboutClient.aboutImages.otherImages[0]}
           alt="decorative illustration"
         />
         <Image
           class="flex-1 rounded-3xl md:rounded-4xl lg:rounded-[60px]"
           width={100}
           height={200}
-          src={ClientImage3}
+          src={aboutClient.aboutImages.otherImages[1]}
           alt="decorative illustration"
         />
       </div>
