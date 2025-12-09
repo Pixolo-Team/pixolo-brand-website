@@ -3,11 +3,8 @@
 import Image from "astro/components/Image.astro";
 import ClientVision from "@/components/case-studies/ClientVision.astro";
 
-// IMAGES //
-import ClientImage from "@/data/case-studies/1/client-fcbarcelona-club.jpg";
-
 // DATA //
-import { clientVisions } from "@/data/case-studies/1";
+import { clientVisionSection } from "@/data/case-studies/1";
 ---
 
 <section>
@@ -17,13 +14,19 @@ import { clientVisions } from "@/data/case-studies/1";
     <p class="text-center text-3xl lg:text-4xl">The Client's Vision</p>
     <div class="flex flex-col gap-10 md:gap-12 lg:flex-row lg:items-center lg:gap-14">
       <!-- Client Image -->
-      <Image class="w-full rounded-3xl lg:rounded-[60px]" src={ClientImage} alt="barcelona club " />
+      <Image
+        class="w-full rounded-3xl lg:rounded-[60px]"
+        width={800}
+        height={800}
+        src={clientVisionSection.mainImage}
+        alt={clientVisionSection.imageAlt}
+      />
 
       <!-- Client Vision Component -->
       <div class="flex w-full flex-col items-center gap-9 lg:gap-10">
         <!-- Iterating through Data -->
         {
-          clientVisions.map((clientVisionItem, index) => (
+          clientVisionSection.clientVisions.map((clientVisionItem, index) => (
             <ClientVision
               title={clientVisionItem.title}
               description={clientVisionItem.description}
