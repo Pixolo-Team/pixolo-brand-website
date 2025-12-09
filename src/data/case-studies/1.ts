@@ -26,9 +26,8 @@ export const clientVisionSection = {
       title: "SEO Friendly",
       description: "Built with SEO best practices to improve visibility in search engine",
     },
-  ]
-}
-
+  ],
+};
 
 export const clientSolutions = [
   {
@@ -70,7 +69,7 @@ export const clientSolutions = [
     title: "Streamlined User Onboarding Process",
     description:
       "We simplified the onboarding experience to help new users get started quickly and confidently with intuitive tutorials.",
-  }
+  },
 ];
 
 export const clientIssues = [
@@ -115,3 +114,33 @@ export const aboutClient = {
     ],
   },
 };
+
+export const solutionNumbers = [
+  {
+    title: "Project Timeline",
+    description:
+      "The project carried a firm deadline, pushing the team to stay aligned and deliver on time",
+    issue: "Time taken",
+    stat: "125 Hrs",
+  },
+  {
+    title: "Phase 1",
+    description:
+      "Initial planning and research took place, establishing the framework for the project.",
+    issue: "Time taken",
+    stat: "50 Hrs",
+  },
+  {
+    title: "Phase 2",
+    description: "Development and implementation, where the core features were built and tested.",
+    issue: "Time taken",
+    stat: "75 Hrs",
+  },
+  {
+    title: "Phase 3",
+    description:
+      "Final review and adjustments, ensuring everything met the quality standards before the launch.",
+    issue: "Time taken",
+    stat: "30 Hrs",
+  },
+];
