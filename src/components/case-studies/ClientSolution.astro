@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  index: string;
+}
+
+const { title = "Header", description = "Data", index } = Astro.props;
+---
+
+<!-- Client Solution Data Component -->
+<div
+  class="text-n-950 border-n-500 leading tight lg: flex flex-col gap-3 rounded-3xl border px-4 pt-4 pb-5 md:gap-5 md:px-6 md:pt-6 md:pb-7 lg:gap-9 lg:rounded-4xl lg:px-8 lg:pt-8 lg:pb-16"
+>
+  <!-- Index Number -->
+  <p class="md:tex text-4xl lg:text-8xl">
+    {index}
+  </p>
+  <div class="flex flex-col md:gap-3 lg:gap-6">
+    <!-- Solution Title -->
+    <p class="md:text-xl lg:text-3xl">{title}</p>
+
+    <!-- Solution Description -->
+    <p class="text-n-700 hidden md:block lg:text-2xl">{description}</p>
+  </div>
+</div>
