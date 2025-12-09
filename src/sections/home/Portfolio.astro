@@ -200,14 +200,16 @@ const articleCardDetails = [
             articleCardDetails.map((row) => (
               <div class="flex flex-col gap-24 md:gap-32 xl:flex-row">
                 {row.map((card) => (
-                  <ArticleCard
-                    thumbnail={card.thumbnail}
-                    brandName={card.brandName}
-                    chipItems={card.chipItems}
-                    title={card.title}
-                    subtitle={card.subtitle}
-                    ctaText={card.ctaText}
-                  />
+                  <div class="flex-1">
+                    <ArticleCard
+                      thumbnail={card.thumbnail}
+                      brandName={card.brandName}
+                      chipItems={card.chipItems}
+                      title={card.title}
+                      subtitle={card.subtitle}
+                      ctaText={card.ctaText}
+                    />
+                  </div>
                 ))}
               </div>
             ))
