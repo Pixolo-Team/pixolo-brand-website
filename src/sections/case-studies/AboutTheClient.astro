@@ -1,9 +1,11 @@
 ---
 // COMPONENTS //
-import SectionHeader from "@/components/case-studies/SectionHeader.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
 import { Image } from "astro:assets";
 
+// DATA //
 import { aboutClient } from "@/data/case-studies/1";
+
 ---
 
 <section>
@@ -19,28 +21,22 @@ import { aboutClient } from "@/data/case-studies/1";
 
     <!-- Content Part -->
     <div class="flex flex-col gap-7 md:gap-12">
-      <!-- Top Content : Client Title & Description -->
-      <div class="lg:gap- flex flex-col gap-4 lg:flex-row">
+
+      <!-- Iterating About the client Data -->
+      {aboutClient.aboutPointers.map((aboutPointersItem) => (
+      <div class="flex flex-col gap-4 lg:flex-row">
         <!-- Title: Client Name -->
         <h2 class="text-2xl font-medium md:text-4xl lg:w-[30%]">
-          {aboutClient.aboutPointers[0].title}
+          {aboutPointersItem.title}
         </h2>
         <!-- Work Description -->
         <p class="text-n-800 text-sm md:text-xl lg:flex-1">
-          {aboutClient.aboutPointers[0].description}
+          {aboutPointersItem.description}
         </p>
       </div>
-      <!-- Bottom Content-->
-      <div class="flex flex-col gap-4 lg:flex-row">
-        <!-- Title -->
-        <h2 class="text-2xl font-medium md:text-4xl lg:w-[30%]">
-          {aboutClient.aboutPointers[1].title}
-        </h2>
-        <p class="text-n-800 text-sm md:text-xl lg:flex-1">
-          {aboutClient.aboutPointers[1].description}
-        </p>
-      </div>
+      ))}
     </div>
+    
 
     <!-- Images Section -->
     <div class="flex flex-col gap-4 lg:flex-row lg:gap-5">
