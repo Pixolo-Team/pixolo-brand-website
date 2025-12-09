@@ -20,30 +20,28 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
 const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "phone")?.value || "";
 ---
 
-<section id="contact-section" class="text-n-50 py-12 md:py-20">
-  {/* Decorative balls (reuse hero marble spec & animation) */}
-  <Image
-    id="contact-big-marble"
-    src={Ball}
-    alt="big marble"
-    class="absolute top-[22%] left-6 w-[59.13px] sm:left-[20%] md:top-[380px] md:left-[50px] md:w-[59.13px] lg:top-[65%] lg:left-[16%] lg:w-[59.13px]"
-  />
-  <Image
-    id="contact-small-marble"
-    src={Ball}
-    alt="small marble"
-    class="absolute right-[10%] bottom-[46%] w-[38.01px] rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-[38.01px] lg:right-[35%]"
-  />
-
-  <div id="contact-wrapper" class="relative container mx-auto max-w-[327px] px-6 md:px-0">
+<section id="contact-section" class="relative flex flex-col py-12 md:py-20 lg:px-0 lg:py-32">
+  <div id="contact-wrapper" class="container mx-auto max-w-[327px] px-6 md:px-0 lg:max-w-[1536px]">
     {/* Header - "Want to know more?" + "We'd love to hear from you" */}
-    <div class="flex flex-col items-center gap-4">
+    <div class="text-n-950 flex w-full flex-col items-center gap-4 md:gap-5 lg:gap-6">
       {/* top tool badge */}
-      <ToolBadge icon="building" text={contactFormDetails.badgeTitle} />
+      <ToolBadge
+        icon="building"
+        text={contactFormDetails.badgeTitle}
+        class:list={"text-n-950 md:text-base"}
+      />
+      {/* subtitle text */}
+      <p
+        class="font-neometric text-n-950 text-center text-3xl leading-[125%] font-medium md:text-4xl lg:text-6xl"
+      >
+        {contactFormDetails.heading}
+      </p>
     </div>
 
     {/* Contact cards (stacked) - after header */}
-    <div class="mt-8 flex flex-col gap-4 md:mt-10">
+    <div
+      class="mt-8 flex w-full flex-col gap-4 md:mt-10 md:gap-16 lg:mx-auto lg:flex-row lg:items-center lg:justify-center lg:gap-9"
+    >
       {
         contactSectionDetails.contactCards.map((card) => {
           const tooltipText =
@@ -51,12 +49,12 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
           return (
             <a
               href={card.link}
-              class="bg-n-50/5 hover:bg-n-50/6 flex items-center justify-between gap-4 rounded-[28px] px-5 py-4"
+              class="bg-n-950/5 hover:bg-n-950/6 flex items-center justify-between gap-4 rounded-[28px] px-5 py-4"
             >
               <div class="flex max-w-[80%] items-center gap-4">
                 {/* circular icon */}
                 <div class="flex h-[54px] w-[54px] items-center justify-center rounded-full bg-linear-to-r from-[#6C6AF2] to-[#8B77F3] shadow-sm">
-                  <Icon name={card.icon} class="text-n-50 size-6" />
+                  <Icon name={card.icon} class="text-n-950 size-6" />
                 </div>
 
                 {/* title + value */}
@@ -64,7 +62,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
                   <p class="font-neometric text-n-700 text-xs font-extrabold md:text-sm">
                     {card.title}
                   </p>
-                  <p class="text-n-50 max-w-[180px] truncate text-sm font-semibold md:text-lg">
+                  <p class="text-n-950 max-w-[180px] truncate text-sm font-semibold md:text-lg">
                     {card.value}
                   </p>
                 </div>
@@ -74,7 +72,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
               {card.id === "phone" || card.id === "mail" ? (
                 <Tooltip text="Copy" position="top">
                   <span
-                    class="bg-n-50/2 hover:bg-n-50/4 text-n-300 flex h-8 w-8 items-center justify-center rounded-full p-1"
+                    class="bg-n-950/2 hover:bg-n-950/4 text-n-300 flex h-8 w-8 items-center justify-center rounded-full p-1"
                     data-copy={card.value}
                   >
                     <Icon name="copy" class="icon-copy text-n-300 size-[26px]" />
@@ -92,14 +90,14 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
       {/* Location card */}
       <a
         href={contactSectionDetails.location.mapUrl}
-        class="bg-n-50/5 hover:bg-n-50/6 flex items-center justify-between gap-4 rounded-[28px] px-5 py-4"
+        class="bg-n-950/5 hover:bg-n-950/6 flex items-center justify-between gap-4 rounded-[28px] px-5 py-4"
       >
         <div class="flex max-w-[80%] items-center gap-4">
           {/* circular icon */}
           <div
             class="flex h-[54px] w-[54px] items-center justify-center rounded-full bg-linear-to-r from-[#6C6AF2] to-[#8B77F3] shadow-sm"
           >
-            <Icon name={contactSectionDetails.location.icon} class="text-n-50 size-[26px]" />
+            <Icon name={contactSectionDetails.location.icon} class="text-n-950 size-[26px]" />
           </div>
 
           {/* title + value */}
@@ -107,7 +105,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
             <p class="font-neometric text-n-700 text-xs font-extrabold md:text-sm">
               {contactSectionDetails.location.title}
             </p>
-            <p class="text-n-50 max-w-[180px] truncate text-sm font-semibold md:text-lg">
+            <p class="text-n-950 max-w-[180px] truncate text-sm font-semibold md:text-lg">
               {contactSectionDetails.location.address}
             </p>
           </div>
@@ -118,110 +116,104 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
       </a>
     </div>
 
-    {/* Hero big text - split lines to match figma */}
-    <div class="mt-10 md:mt-12">
-      <div class="relative">
-        <p class="font-neometric text-n-50 text-8xl leading-[125%] font-normal tracking-[-0.07em]">
+    {/* Fill area: heading (fixed width) + form (fills) - laptop layout */}
+    <div class="contact-fill-wrap mt-10 text-wrap lg:flex lg:flex-row lg:gap-48 lg:pt-9 lg:pb-9">
+      {/* Decorative balls positioned relative to section */}
+      <div class="fixedwidth-text-wrap w-full lg:w-[724px]">
+        <p
+          class="font-neometric text-n-950 text-8xl leading-tight font-normal tracking-tight md:leading-none md:tracking-tight"
+        >
           Lets
         </p>
-        <p class="font-neometric text-n-50 text-8xl leading-[125%] font-normal tracking-[-0.07em]">
+        <Image
+          id="contact-big-marble"
+          src={Ball}
+          alt="big marble"
+          class="pointer-events-none absolute top-[35%] left-[15%] w-[59.13px]"
+        />
+        <Image
+          id="contact-small-marble"
+          src={Ball}
+          alt="small marble"
+          class="pointer-events-none absolute top-[55%] right-[8%] w-[38.01px] rotate-[-20deg]"
+        />
+        <p
+          class="font-neometric text-n-950 text-8xl leading-tight font-normal tracking-tight md:text-right md:leading-tight md:tracking-tight"
+        >
           get in
         </p>
-        <p class="font-neometric text-n-50 text-8xl leading-[125%] font-normal tracking-[-0.07em]">
-          Touch !
+        <p
+          class="font-neometric text-n-950 text-8xl leading-tight font-normal tracking-tight md:leading-relaxed md:tracking-tight"
+        >
+          Touch!
         </p>
       </div>
+
+      {/* Form using InputField components */}
+      <div class="form-fill w-full lg:flex-1">
+        <form class="mt-20 flex flex-col gap-5 md:gap-11 lg:gap-12" aria-label="Contact form">
+          <!-- NAME -->
+          <div class="md:gap-8 md:pb-9">
+            <InputField
+              label="NAME"
+              name="name"
+              id="name"
+              type="text"
+              required={true}
+              placeholder="NAME"
+            />
+          </div>
+
+          <!-- PHONE NUMBER -->
+          <div class="md:gap-8 md:pb-9">
+            <InputField
+              label="PHONE NUMBER"
+              name="phone"
+              id="phone"
+              type="tel"
+              required={true}
+              placeholder="PHONE NUMBER"
+            />
+          </div>
+
+          <!-- E-MAIL -->
+          <div class="md:gap-8 md:pb-9">
+            <InputField
+              label="E-MAIL"
+              name="email"
+              id="email"
+              type="email"
+              required={true}
+              placeholder="E-MAIL"
+            />
+          </div>
+
+          <!-- MESSAGE -->
+          <div class="md:gap-8 md:pb-9">
+            <InputField
+              label="MESSAGE"
+              name="message"
+              id="message"
+              type="text"
+              required={true}
+              placeholder="MESSAGE"
+            />
+          </div>
+
+          <!-- Submit button-->
+          <div class="relative mt-6 flex items-end justify-start">
+            <div class="scale-95 transform">
+              <RoundedButton
+                buttonText={"Contact Us"}
+                type="button"
+                onClick="window.dispatchEvent(new Event('open-contact-modal'))"
+                variant="secondary"
+                class:list={"bg-n-950 text-n-50"}
+              />
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-
-    {/* Inline form (stacked) — two-column labels + underline inputs to match Figma */}
-    <form class="mt-20 flex flex-col gap-5 md:mt-24" aria-label="Contact form">
-      <!-- NAME -->
-      <div class="flex items-center gap-4">
-        <label for="name" class="font-neometric text-n-600 w-20 text-sm leading-tight font-medium"
-          >NAME</label
-        >
-        <div class="border-n-300 flex-1 border-b pb-6">
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            class="placeholder-n-600 w-full bg-transparent text-sm outline-none"
-            placeholder="Enter your full name"
-          />
-        </div>
-      </div>
-
-      <!-- PHONE NUMBER -->
-      <div class="flex items-center gap-4">
-        <label for="phone" class="font-neometric text-n-600 w-20 text-sm leading-tight font-medium">
-          <span class="block">PHONE</span><span class="block">NUMBER</span>
-        </label>
-        <div class="border-n-300 flex-1 border-b pb-6">
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            required
-            class="placeholder-n-600 w-full bg-transparent text-sm outline-none"
-            placeholder="Enter your phone number"
-          />
-        </div>
-      </div>
-
-      <!-- E-MAIL -->
-      <div class="flex items-center gap-4">
-        <label for="email" class="font-neometric text-n-600 w-20 text-sm leading-tight font-medium"
-          >E-MAIL</label
-        >
-        <div class="border-n-300 flex-1 border-b pb-6">
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            class="placeholder-n-600 w-full truncate bg-transparent text-sm outline-none"
-            placeholder="Enter your email address"
-          />
-        </div>
-      </div>
-
-      <!-- MESSAGE -->
-      <div class="flex items-start gap-4">
-        <label
-          for="message"
-          class="font-neometric text-n-600 w-20 pt-2 text-sm leading-tight font-medium"
-          >MESSAGE</label
-        >
-        <div class="border-n-300 flex-1 border-b pb-6">
-          <textarea
-            id="message"
-            name="message"
-            rows="2"
-            required
-            class="placeholder-n-600 w-full resize-none bg-transparent text-sm outline-none"
-            placeholder="Write your message..."></textarea>
-        </div>
-      </div>
-
-      <!-- Submit button with WhatsApp quick action -->
-      <div class="relative mt-6 flex items-end justify-start">
-        <div class="scale-95 transform">
-          <RoundedButton
-            buttonText={contactFormDetails.buttonText ?? "Contact Us"}
-            type="button"
-            onClick="window.dispatchEvent(new Event('open-contact-modal'))"
-            variant="secondary"
-          />
-        </div>
-
-        <div class="absolute -right-3 -bottom-3">
-          <WhatsappButton href={`https://wa.me/${phoneContact}`} extraClasses="p-2 h-12 w-12" />
-        </div>
-      </div>
-    </form>
-
-    {/* Contact form modal component */}
-    <ContactFormModal />
   </div>
 </section>
