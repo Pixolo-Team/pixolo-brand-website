@@ -1,0 +1,21 @@
+---
+// COMPONENTS //
+import ClientSolution from "@/components/case-studies/ClientSolution.astro";
+
+// DATA //
+import { clientSolutions } from "@/data/case-studies/1";
+---
+
+<section>
+  <div>
+    {
+      clientSolutions.map((clientSolutionItem, clientSolutionIndex) => (
+        <ClientSolution
+          title={clientSolutionItem.title}
+          description={clientSolutionItem.description}
+          index={String(clientSolutionIndex + 1).padStart(2, "0")}
+        />
+      ))
+    }
+  </div>
+</section>
