@@ -16,7 +16,7 @@ export const clientVisionSection = {
     },
     {
       title: "Mobile Optimization",
-      description: "Seamless experience across all devices, ensuring accessibility on the go%",
+      description: "Seamless experience across all devices, ensuring accessibility on the go",
     },
     {
       title: "User-Friendly Interface",
