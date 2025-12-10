@@ -6,6 +6,7 @@ import Image from "astro/components/Image.astro";
 import ToolBadge from "@/components/ToolBadge.astro";
 import { Icon } from "astro-icon/components";
 import Tooltip from "@/components/Tooltip.astro";
+import ContactCard from "@/components/ContactCard.astro";
 
 import InputField from "@/components/InputField.astro";
 import Dropdown from "@/components/Dropdown.astro";
@@ -43,77 +44,25 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
       class="mt-8 flex w-full flex-col gap-4 md:mt-10 md:gap-16 lg:mx-auto lg:flex-row lg:items-center lg:justify-center lg:gap-9"
     >
       {
-        contactSectionDetails.contactCards.map((card) => {
-          const tooltipText =
-            card.id === "phone" ? "Call" : card.id === "mail" ? "Email" : "Location";
-          return (
-            <a
-              href={card.link}
-              class="bg-n-950/5 hover:bg-n-950/6 flex items-center justify-between gap-4 rounded-[28px] px-5 py-4"
-            >
-              <div class="flex max-w-[80%] items-center gap-4">
-                {/* circular icon */}
-                <div class="flex h-[54px] w-[54px] items-center justify-center rounded-full bg-linear-to-r from-[#6C6AF2] to-[#8B77F3] shadow-sm">
-                  <Icon name={card.icon} class="text-n-950 size-6" />
-                </div>
-
-                {/* title + value */}
-                <div class="flex w-[60%] flex-col">
-                  <p class="font-neometric text-n-700 text-xs font-extrabold md:text-sm">
-                    {card.title}
-                  </p>
-                  <p class="text-n-950 max-w-[180px] truncate text-sm font-semibold md:text-lg">
-                    {card.value}
-                  </p>
-                </div>
-              </div>
-
-              {/* Right-side control: copy button for phone/mail, arrow for others */}
-              {card.id === "phone" || card.id === "mail" ? (
-                <Tooltip text="Copy" position="top">
-                  <span
-                    class="bg-n-950/2 hover:bg-n-950/4 text-n-300 flex h-8 w-8 items-center justify-center rounded-full p-1"
-                    data-copy={card.value}
-                  >
-                    <Icon name="copy" class="icon-copy text-n-300 size-[26px]" />
-                    <Icon name="check" class="icon-check hidden size-[26px]" />
-                  </span>
-                </Tooltip>
-              ) : (
-                <Icon name="right-arrow" class="text-n-300 size-5" />
-              )}
-            </a>
-          );
-        })
+        contactSectionDetails.contactCards.map((card) => (
+          <ContactCard
+            icon={card.icon}
+            title={card.title}
+            value={card.value}
+            type={card.id}
+            link={card.link}
+          />
+        ))
       }
 
       {/* Location card */}
-      <a
-        href={contactSectionDetails.location.mapUrl}
-        class="bg-n-950/5 hover:bg-n-950/6 flex items-center justify-between gap-4 rounded-[28px] px-5 py-4"
-      >
-        <div class="flex max-w-[80%] items-center gap-4">
-          {/* circular icon */}
-          <div
-            class="flex h-[54px] w-[54px] items-center justify-center rounded-full bg-linear-to-r from-[#6C6AF2] to-[#8B77F3] shadow-sm"
-          >
-            <Icon name={contactSectionDetails.location.icon} class="text-n-950 size-[26px]" />
-          </div>
-
-          {/* title + value */}
-          <div class="flex w-[60%] flex-col">
-            <p class="font-neometric text-n-700 text-xs font-extrabold md:text-sm">
-              {contactSectionDetails.location.title}
-            </p>
-            <p class="text-n-950 max-w-[180px] truncate text-sm font-semibold md:text-lg">
-              {contactSectionDetails.location.address}
-            </p>
-          </div>
-        </div>
-
-        {/* right arrow for location */}
-        <Icon name="right-arrow" class="text-n-300 size-5" />
-      </a>
+      <ContactCard
+        icon={contactSectionDetails.location.icon}
+        title={contactSectionDetails.location.title}
+        value={contactSectionDetails.location.address}
+        type="location"
+        link={contactSectionDetails.location.mapUrl}
+      />
     </div>
 
     {/* Fill area: heading (fixed width) + form (fills) - laptop layout */}

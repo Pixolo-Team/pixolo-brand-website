@@ -1,0 +1,52 @@
+---
+import { Icon } from "astro-icon/components";
+import Tooltip from "@/components/Tooltip.astro";
+
+const {
+  icon,
+  title,
+  value,
+  link = "#",
+  type = "location",
+} = Astro.props as {
+  icon: string;
+  title: string;
+  value: string;
+  link?: string;
+  type?: string;
+};
+---
+
+<a
+  href={link}
+  class="bg-n-950/5 hover:bg-n-950/6 flex items-center justify-between gap-4 rounded-[28px] px-5 py-4"
+>
+  <div class="flex max-w-[80%] items-center gap-4">
+    <div
+      class="flex h-[54px] w-[54px] items-center justify-center rounded-full bg-linear-to-r from-[#6C6AF2] to-[#8B77F3] shadow-sm"
+    >
+      <Icon name={icon} class="text-n-950 size-6" />
+    </div>
+
+    <div class="flex w-[60%] flex-col">
+      <p class="font-neometric text-n-700 text-xs font-extrabold md:text-sm">{title}</p>
+      <p class="text-n-950 max-w-[180px] truncate text-sm font-semibold md:text-lg">{value}</p>
+    </div>
+  </div>
+
+  {
+    type === "phone" || type === "mail" ? (
+      <Tooltip text="Copy" position="top">
+        <span
+          class="bg-n-950/2 hover:bg-n-950/4 text-n-300 flex h-8 w-8 items-center justify-center rounded-full p-1"
+          data-copy={value}
+        >
+          <Icon name="copy" class="icon-copy text-n-300 size-[26px]" />
+          <Icon name="check" class="icon-check hidden size-[26px]" />
+        </span>
+      </Tooltip>
+    ) : (
+      <Icon name="right-arrow" class="text-n-300 size-5" />
+    )
+  }
+</a>
