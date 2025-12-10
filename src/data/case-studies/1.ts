@@ -26,9 +26,8 @@ export const clientVisionSection = {
       title: "SEO Friendly",
       description: "Built with SEO best practices to improve visibility in search engine",
     },
-  ]
-}
-
+  ],
+};
 
 export const clientSolutions = [
   {
@@ -70,7 +69,7 @@ export const clientSolutions = [
     title: "Streamlined User Onboarding Process",
     description:
       "We simplified the onboarding experience to help new users get started quickly and confidently with intuitive tutorials.",
-  }
+  },
 ];
 
 export const clientIssues = [
@@ -115,3 +114,9 @@ export const aboutClient = {
     ],
   },
 };
+
+export const clientGalleryImages = [
+  { imagePath: "/images/case-studies/1/client-gallery-image1.jpg" },
+  { imagePath: "/images/case-studies/1/client-gallery-image1.jpg" },
+  { imagePath: "/images/case-studies/1/client-gallery-image1.jpg" },
+];
