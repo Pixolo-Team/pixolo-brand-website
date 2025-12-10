@@ -26,9 +26,8 @@ export const clientVisionSection = {
       title: "SEO Friendly",
       description: "Built with SEO best practices to improve visibility in search engine",
     },
-  ]
-}
-
+  ],
+};
 
 export const clientSolutions = [
   {
@@ -70,7 +69,7 @@ export const clientSolutions = [
     title: "Streamlined User Onboarding Process",
     description:
       "We simplified the onboarding experience to help new users get started quickly and confidently with intuitive tutorials.",
-  }
+  },
 ];
 
 export const clientIssues = [
@@ -114,4 +113,12 @@ export const aboutClient = {
       "/images/case-studies/1/client-barcelona-player.jpg",
     ],
   },
+};
+
+export const clientTestimonial = {
+  clientImage: "/images/case-studies/1/client-testimonial-image.jpg",
+  clientName: "Elon Musk",
+  clientRole: "Ceo, Tesla",
+  clientMessage:
+    "“Pixolo took the time to truly understand our vision and transformed it into something even more refined, impactful, and elevated. Pixolo took the time to truly understand our vision and transformed it into something even more refined, impactful, and elevated.”",
 };
