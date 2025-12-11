@@ -10,7 +10,7 @@ interface Props {
   brandName: string;
   chipItems: string[];
   title: string;
-  subtitle: string;
+  subtitle?: string;
   ctaText: string;
 }
 
@@ -45,11 +45,6 @@ const {
     </div>
   </div>
 
-  <!-- Tabs -->
-  <div class="flex flex-wrap gap-3">
-    {chipItems.map((chipItem) => <Badge text={chipItem} />)}
-  </div>
-
   <!-- Article Details -->
   <div class="text-n-950 flex flex-col gap-3 leading-tight md:gap-3.5">
     <!-- Title -->
@@ -57,5 +52,10 @@ const {
 
     <!-- Subtitle -->
     <p class="text-sm font-normal md:text-xl lg:text-2xl">{subtitle}</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="flex flex-wrap gap-3">
+    {chipItems.map((chipItem) => <Badge text={chipItem} />)}
   </div>
 </div>
