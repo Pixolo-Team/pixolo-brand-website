@@ -19,10 +19,11 @@ import { clientTestimonial } from "@/data/case-studies/1";
     />
 
     <!-- Testimonial Content -->
-    <div class="flex flex-col items-center gap-8 md:gap-12 lg:flex-row lg:gap-14">
+    <div class="flex flex-col items-center gap-8 md:gap-12 md:px-10 lg:flex-row lg:gap-14">
       <!-- Client Testimonial Image -->
       <Image
-        class="rounded-3xl md:rounded-4xl lg:rounded-[60px]"
+        id="client-testimonial-image"
+        class="lg:anim-fade-in-right rounded-3xl md:rounded-4xl lg:rounded-[60px]"
         width={700}
         height={700}
         src={clientTestimonial.clientImage}
@@ -32,7 +33,7 @@ import { clientTestimonial } from "@/data/case-studies/1";
       <!-- Client Testimonial Text -->
       <div class="flex flex-col gap-5 md:gap-8 lg:justify-center lg:gap-20">
         <!-- Client Name & Role -->
-        <div class="flex flex-col gap-1 leading-tight md:gap-2">
+        <div id="client-info" class="flex flex-col gap-1 leading-tight opacity-0 md:gap-2">
           <p class="text-n-950 text-3xl font-semibold md:text-5xl">
             {clientTestimonial.clientName}
           </p>
@@ -41,7 +42,8 @@ import { clientTestimonial } from "@/data/case-studies/1";
 
         <!-- Client Message -->
         <p
-          class="text-n-800 after:bg-n-500 relative text-sm leading-normal tracking-wide after:mx-auto after:mt-9 after:block after:h-[0.7px] after:w-50 md:text-xl md:after:mt-14 md:after:w-[350px] lg:text-2xl"
+          id="client-message"
+          class="text-n-800 after:bg-n-500 relative text-sm leading-normal tracking-wide opacity-0 after:mx-auto after:mt-9 after:block after:h-[0.7px] after:w-50 md:text-xl md:after:mt-14 md:after:w-[350px] lg:text-2xl"
         >
           {clientTestimonial.clientMessage}
         </p>

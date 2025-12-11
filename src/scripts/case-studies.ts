@@ -47,3 +47,21 @@ export const animateNumbersAfterSolution = () => {
     },
   );
 };
+
+/**Animate the Client Testimonial Image  */
+inView("#client-testimonial-image", () => {
+  // Client Image Slide from Left
+  animate(
+    "#client-testimonial-image",
+    { x: [-100, 0], opacity: [0, 1] },
+    { duration: 0.4, delay: 0.8 },
+  ).finished.then(() => {
+    // Animate Client Name & Title
+    animate("#client-info", { x: [100, 0], opacity: [0, 1] }, { duration: 0.4 }).finished.then(
+      () => {
+        // Animate Client Message
+        animate("#client-message", { x: [100, 0], opacity: [0, 1] }, { duration: 0.4 });
+      },
+    );
+  });
+});
