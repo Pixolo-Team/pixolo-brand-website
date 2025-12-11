@@ -1,7 +1,9 @@
 ---
+// COMPONENTS //
 import { Icon } from "astro-icon/components";
 import Tooltip from "@/components/Tooltip.astro";
 
+// PROPS //
 const {
   icon,
   title,
@@ -17,9 +19,12 @@ const {
 };
 ---
 
+<!-- MARKUP -->
 <a
   href={link}
-  class="bg-n-950/5 hover:bg-n-950/6 flex items-center justify-between gap-4 rounded-[28px] px-5 py-4"
+  target={type === "location" ? "_blank" : undefined}
+  rel={type === "location" ? "noopener noreferrer" : undefined}
+  class="bg-n-950/5 hover:bg-n-950/10 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5 transition-colors duration-300"
 >
   <div class="flex max-w-[80%] items-center gap-4">
     <div
@@ -38,7 +43,7 @@ const {
     type === "phone" || type === "mail" ? (
       <Tooltip text="Copy" position="top">
         <span
-          class="bg-n-950/2 hover:bg-n-950/4 text-n-300 flex h-8 w-8 items-center justify-center rounded-full p-1"
+          class="copy-btn bg-n-950/2 hover:bg-n-950/4 text-n-300 flex h-8 w-8 items-center justify-center rounded-full p-1"
           data-copy={value}
         >
           <Icon name="copy" class="icon-copy text-n-300 size-[26px]" />
