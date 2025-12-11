@@ -3,6 +3,7 @@
 import SectionHeader from "@/components/SectionHeader.astro";
 import Image from "astro/components/Image.astro";
 
+// DATA //
 import { clientTestimonial } from "@/data/case-studies/1";
 ---
 
@@ -25,7 +26,7 @@ import { clientTestimonial } from "@/data/case-studies/1";
         width={700}
         height={700}
         src={clientTestimonial.clientImage}
-        alt="Pixolo Client"
+        alt={clientTestimonial.clientName}
       />
 
       <!-- Client Testimonial Text -->
