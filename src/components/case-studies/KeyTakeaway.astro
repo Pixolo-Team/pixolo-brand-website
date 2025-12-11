@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  index: string;
+}
+
+const { title, description, index } = Astro.props;
+---
+
+<div class="flex w-full justify-between gap-3 md:gap-5 lg:gap-11">
+  <!-- Title & Learning -->
+  <div class="flex flex-1 flex-col gap-2 leading-tight md:gap-3 lg:gap-4">
+    <!-- Title -->
+    <p class="border-n-700 w-full border-b md:py-3 md:text-3xl lg:text-4xl">
+      {title}
+    </p>
+
+    <!-- Description -->
+    <p class="text-n-700 hidden whitespace-pre-line md:block md:text-base lg:text-xl">
+      {description}
+    </p>
+  </div>
+
+  <!-- Index -->
+  <p class="text-3xl leading-tight tracking-[-0.04em] md:text-8xl">{index}</p>
+</div>
