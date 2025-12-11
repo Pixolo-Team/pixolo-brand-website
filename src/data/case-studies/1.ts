@@ -120,3 +120,33 @@ export const clientGalleryImages = [
   { imagePath: "/images/case-studies/1/client-gallery-image1.jpg" },
   { imagePath: "/images/case-studies/1/client-gallery-image1.jpg" },
 ];
+
+export const solutionNumbers = [
+  {
+    title: "Project Timeline",
+    description:
+      "The project carried a firm deadline, pushing the team to stay aligned and deliver on time",
+    issue: "Time taken",
+    stat: "125 Hrs",
+  },
+  {
+    title: "Phase 1",
+    description:
+      "Initial planning and research took place, establishing the framework for the project.",
+    issue: "Time taken",
+    stat: "50 Hrs",
+  },
+  {
+    title: "Phase 2",
+    description: "Development and implementation, where the core features were built and tested.",
+    issue: "Time taken",
+    stat: "75 Hrs",
+  },
+  {
+    title: "Phase 3",
+    description:
+      "Final review and adjustments, ensuring everything met the quality standards before the launch.",
+    issue: "Time taken",
+    stat: "30 Hrs",
+  },
+];
