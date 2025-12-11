@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 type Img = ImageMetadata | string;
 
 interface Props {
+  light: Img;
   dark: Img;
   alt: string;
   class?: string;
@@ -11,26 +12,36 @@ interface Props {
   height?: number;
 }
 
-const { dark, alt, class: className, width, height } = Astro.props;
+const { light, dark, alt, class: className, width, height } = Astro.props;
 
 // Utility to check if it's ImageMetadata (local import)
 const isMeta = (img: Img): img is ImageMetadata => typeof img === "object" && "src" in img;
 ---
 
-{
-  isMeta(dark) ? (
-    // If it's an imported image object
-    <Image src={dark} alt={alt} class={className} width={width} height={height} />
-  ) : (
-    // If it's a string path
-    <img
-      src={dark}
-      alt={alt}
-      class={className}
-      width={width}
-      height={height}
-      loading="lazy"
-      decoding="async"
-    />
-  )
-}
+<picture>
+  <!-- Dark mode source -->
+  {
+    isMeta(dark) ? (
+      <source srcset={dark.src} media="(prefers-color-scheme: dark)" />
+    ) : (
+      <source srcset={dark} media="(prefers-color-scheme: dark)" />
+    )
+  }
+
+  <!-- Light mode (default) -->
+  {
+    isMeta(light) ? (
+      <Image src={light} alt={alt} class={className} width={width} height={height} />
+    ) : (
+      <img
+        src={light}
+        alt={alt}
+        class={className}
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+      />
+    )
+  }
+</picture>

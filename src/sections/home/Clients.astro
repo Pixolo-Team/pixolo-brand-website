@@ -37,6 +37,7 @@ import { clientSectionDetails, clientItems } from "@/data/clients";
           <div class="client-logo flex h-[54px] w-[100px] items-center justify-center md:h-[108px] md:w-[200px] lg:h-[141px] lg:w-[260px]">
             {/* Image themed component */}
             <ThemeImage
+              light={`/images/clients/${clientItem.darkImage}`}
               dark={`/images/clients/${clientItem.darkImage}`}
               alt={clientItem.name}
               class="max-h-10 max-w-24 object-contain md:max-h-[70px] md:max-w-[150px] lg:max-h-[90px] lg:max-w-[200px]"
