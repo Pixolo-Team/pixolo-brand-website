@@ -3,21 +3,21 @@ const { question, answer, isOpen, index } = Astro.props;
 ---
 
 <div
-  class="text-n-700 flex flex-col gap-3.5 border-t-[0.8px] border-b-[0.8px] px-2 py-8 md:py-12 lg:px-2.5 lg:py-14"
+  class="group text-n-700 flex cursor-pointer flex-col gap-3.5 border-t-[0.8px] border-b-[0.8px] px-2 py-8 md:py-12 lg:px-2.5 lg:py-14"
+  data-faq-toggle={index}
 >
   <div class="flex items-center justify-between">
     <div
-      class="gap-3.5 px-2.5 pt-8 pb-4 text-base leading-tight md:text-2xl lg:text-3xl lg:hover:text-4xl"
+      class="gap-3.5 px-2.5 pt-8 pb-4 text-base leading-tight md:text-2xl lg:text-3xl lg:group-hover:text-4xl"
     >
       {question}
     </div>
 
     <img
       id={`faq-icon-${index}`}
-      data-faq-toggle={index}
       src="/images/Plus.png"
       alt="Toggle"
-      class="w-3.5 transition-transform duration-300"
+      class="w-5 cursor-pointer transition-all duration-300 lg:group-hover:w-6"
     />
   </div>
 

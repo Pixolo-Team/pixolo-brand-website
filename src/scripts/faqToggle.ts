@@ -2,10 +2,12 @@
 document.addEventListener("click", (e) => {
   const target = e.target as HTMLElement;
 
-  // Only proceed if a FAQ toggle was clicked
-  if (!target.dataset.faqToggle) return;
+  // Find the closest FAQ wrapper
+  const wrapper = target.closest("[data-faq-toggle]") as HTMLElement | null;
+  if (!wrapper) return;
 
-  const id = target.dataset.faqToggle;
+  // Get the matched ID from the wrapper
+  const id = wrapper.dataset.faqToggle;
 
   // Get the FAQ answer and icon elements
   const answer = document.getElementById(`faq-answer-${id}`);
