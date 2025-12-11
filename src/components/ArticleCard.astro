@@ -25,9 +25,9 @@ const {
 ---
 
 <!-- Article Card -->
-<div class=`flex flex-col gap-4 md:gap-5 lg:gap-6 group`>
+<div class=`flex flex-col gap-4 md:gap-5 lg:gap-6 group anim-fade-in-up`>
   <!-- Thumbnail -->
-  <div class="relative">
+  <div class="anim-fade-up-quick relative">
     <Image
       src={thumbnail}
       alt=`Thumbnail image for ${brandName}`
@@ -46,7 +46,7 @@ const {
   </div>
 
   <!-- Article Details -->
-  <div class="text-n-950 flex flex-col gap-3 leading-tight md:gap-3.5">
+  <div class="text-n-950 anim-fade-in-up flex flex-col gap-3 leading-tight md:gap-3.5">
     <!-- Title -->
     <p class="text-2xl font-medium md:text-4xl">{title}</p>
 
@@ -55,7 +55,7 @@ const {
   </div>
 
   <!-- Tabs -->
-  <div class="flex flex-wrap gap-3">
+  <div class="anim-fade-in-up flex flex-wrap gap-3">
     {chipItems.map((chipItem) => <Badge text={chipItem} />)}
   </div>
 </div>
