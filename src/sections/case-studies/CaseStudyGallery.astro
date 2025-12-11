@@ -52,14 +52,14 @@ import { clientGalleryImages } from "@/data/case-studies/1";
       >
         <!-- Previous Button -->
         <button
-          class="prev-btn bg-n-100 flex size-9 rotate-180 items-center justify-center rounded-full md:size-10 lg:size-16"
+          class="prev-btn bg-n-50 hover:bg-n-100 flex size-9 rotate-180 items-center justify-center rounded-full md:size-10 lg:size-16"
         >
           <Icon name={icon} class="size-3 md:size-4 lg:size-6" />
         </button>
 
         <!-- Next Button -->
         <button
-          class="next-btn bg-n-100 flex size-9 items-center justify-center rounded-full md:size-10 lg:size-16"
+          class="next-btn bg-n-50 hover:bg-n-100 flex size-9 items-center justify-center rounded-full md:size-10 lg:size-16"
         >
           <Icon name={icon} class="size-3 md:size-4 lg:size-6" />
         </button>
@@ -73,7 +73,7 @@ import { clientGalleryImages } from "@/data/case-studies/1";
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const viewport = document.querySelector("#embla-cs-gallery-slider");
-    const caseStudiesGallerySlider = EmblaCarousel(viewport, { loop: false });
+    const caseStudiesGallerySlider = EmblaCarousel(viewport, { loop: true });
 
     document.querySelector(".prev-btn").onclick = () => caseStudiesGallerySlider.scrollPrev();
     document.querySelector(".next-btn").onclick = () => caseStudiesGallerySlider.scrollNext();
