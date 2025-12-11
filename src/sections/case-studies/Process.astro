@@ -1,0 +1,24 @@
+---
+import SectionHeader from "@/components/SectionHeader.astro";
+
+import { processSteps } from "@/data/case-studies/1";
+---
+
+<section>
+  <div class="container m-auto flex flex-col gap-12 px-6 py-24">
+    <SectionHeader
+      sectionTitle="Creating Human-Centered Experiences"
+      badgeIcon="package"
+      badgeText="Crafting The Journey"
+    />
+
+    <div class="flex flex-col gap-6">
+      <p class="mb-12 text-center text-sm text-gray-400 md:mb-16 md:text-base">Our Process</p>
+
+      <div class="relative">
+        <div class="relative flex flex-col"></div>
+        <div class="bg-n-800 absolute top-9 bottom-9 left-1/2 w-[2px]"></div>
+      </div>
+    </div>
+  </div>
+</section>

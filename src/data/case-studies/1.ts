@@ -144,3 +144,26 @@ export const solutionNumbers = [
     stat: "30 Hrs",
   },
 ];
+
+export const processSteps = [
+  {
+    title: "Research",
+    description:
+      "We focus on the metrics that truly reflect our value. Here's a snapshot of the results that drive our success.",
+  },
+  {
+    title: "Discovery",
+    description:
+      "We focus on the metrics that truly reflect our value. Here's a snapshot of the results that drive our success.",
+  },
+  {
+    title: "Testing",
+    description:
+      "We focus on the metrics that truly reflect our value. Here's a snapshot of the results that drive our success.",
+  },
+  {
+    title: "Insight Phase",
+    description:
+      "We focus on the metrics that truly reflect our value. Here's a snapshot of the results that drive our success.",
+  },
+];
