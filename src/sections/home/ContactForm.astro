@@ -25,9 +25,9 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
 ---
 
 <section id="contact-section" class="relative flex flex-col py-12 md:py-20 lg:px-0 lg:py-32">
-  <div id="contact-wrapper" class="container mx-auto max-w-[327px] px-6 md:px-0 lg:max-w-[1536px]">
+  <div id="contact-wrapper" class="container mx-auto px-6 md:px-0 lg:max-w-[1536px]">
     {/* Header - "Want to know more?" + "We'd love to hear from you" */}
-    <div class="text-n-950 flex w-full flex-col items-center gap-5 lg:gap-6">
+    <div class="anim-fade-up-slow text-n-950 flex w-full flex-col items-center gap-5 lg:gap-6">
       {/* top tool badge */}
       <ToolBadge
         icon="building"
@@ -48,7 +48,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
     >
       {
         contactSectionDetails.contactCards.map((card) => (
-          <div class="w-full lg:max-w-sm">
+          <div class="anim-fade-in-right w-full lg:max-w-sm">
             <ContactCard
               icon={card.icon}
               title={card.title}
@@ -61,7 +61,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
       }
 
       {/* Location card */}
-      <div class="w-full lg:max-w-sm">
+      <div class="anim-fade-in-right w-full lg:max-w-sm">
         <ContactCard
           icon={contactSectionDetails.location.icon}
           title={contactSectionDetails.location.title}
@@ -77,7 +77,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
       {/* Decorative balls positioned relative to section - Fixed width wrapper */}
       <div class="fixedwidth-text-wrap relative w-full lg:w-[724px]">
         <p
-          class="font-neometric text-n-950 text-8xl leading-tight font-normal tracking-tight md:leading-none md:tracking-tight"
+          class="font-neometric text-n-950 text-left text-8xl leading-tight font-normal tracking-tight md:leading-none md:tracking-tight lg:text-[200px]"
         >
           Lets
         </p>
@@ -94,12 +94,12 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
           class="pointer-events-none absolute top-16 -right-3 -z-10 w-[38.01px] rotate-[-20deg] md:top-20 md:-right-6 lg:top-[55%] lg:right-[8%]"
         />
         <p
-          class="font-neometric text-n-950 text-8xl leading-tight font-normal tracking-tight md:text-right md:leading-tight md:tracking-tight"
+          class="font-neometric text-n-950 text-right text-8xl leading-tight font-normal tracking-tight md:text-right md:leading-tight md:tracking-tight lg:text-right lg:text-[200px]"
         >
           get in
         </p>
         <p
-          class="font-neometric text-n-950 text-8xl leading-tight font-normal tracking-tight md:leading-relaxed md:tracking-tight"
+          class="font-neometric text-n-950 text-left text-8xl leading-tight font-normal tracking-tight md:leading-relaxed md:tracking-tight lg:text-[200px]"
         >
           Touch!
         </p>
@@ -109,7 +109,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
       <div class="form-fill w-full lg:flex-1">
         <form class="mt-20 flex flex-col gap-5 md:gap-11 lg:gap-12" aria-label="Contact form">
           <!-- NAME -->
-          <div class="md:gap-8 md:pb-9">
+          <div class="anim-fade-up-slow md:gap-8 md:pb-9">
             <InputField
               label="NAME"
               name="name"
@@ -121,7 +121,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
           </div>
 
           <!-- PHONE NUMBER -->
-          <div class="md:gap-8 md:pb-9">
+          <div class="anim-fade-up-slow md:gap-8 md:pb-9">
             <InputField
               label="PHONE NUMBER"
               name="phone"
@@ -133,7 +133,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
           </div>
 
           <!-- E-MAIL -->
-          <div class="md:gap-8 md:pb-9">
+          <div class="anim-fade-up-slow md:gap-8 md:pb-9">
             <InputField
               label="E-MAIL"
               name="email"
@@ -145,7 +145,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
           </div>
 
           <!-- MESSAGE -->
-          <div class="md:gap-8 md:pb-9">
+          <div class="anim-fade-up-slow md:gap-8 md:pb-9">
             <InputField
               label="MESSAGE"
               name="message"
@@ -157,7 +157,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
           </div>
 
           <!-- Submit button-->
-          <div class="relative mt-6 flex items-end justify-start">
+          <div class="anim-fade-up-slow relative mt-6 flex items-end justify-start">
             <div class="scale-95 transform">
               <RoundedButton
                 buttonText={"Contact Us"}
@@ -176,7 +176,6 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
 
 <script>
   import { initializeCopyButtons, initializeFormValidation } from "@/scripts/contact-form";
-
   document.addEventListener("DOMContentLoaded", () => {
     initializeFormValidation();
     initializeCopyButtons();

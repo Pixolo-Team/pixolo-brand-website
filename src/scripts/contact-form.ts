@@ -1,5 +1,6 @@
 // FORM VALIDATION & INITIALIZATION SCRIPT //
 
+// DATA //
 import { formErrors } from "@/data/errors";
 
 /**
