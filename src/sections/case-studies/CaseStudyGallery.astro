@@ -21,14 +21,18 @@ import { clientGalleryImages } from "@/data/case-studies/1";
     />
 
     <!-- Image Slideshow -->
-    <div class="embla relative flex flex-col gap-3">
-      <div class="embla__viewport overflow-hidden rounded-2xl md:rounded-4xl lg:rounded-[60px]">
-        <!-- SLIDE CONTAINER -->
-        <div class="embla__container flex">
-          <!-- Iterating through Data -->
+    <div class="caseStudiesGallerySlider relative flex flex-col gap-3">
+      <div
+        id="embla-cs-gallery-slider"
+        class="overflow-hidden rounded-2xl md:rounded-4xl lg:rounded-[60px]"
+      >
+        <!-- Embla Slide Container -->
+        <div class="flex">
+          <!-- Iterating through Data & Embla Slides-->
           {
             clientGalleryImages.map((clientGalleryImageItem) => (
-              <div class="embla__slide flex-none basis-full">
+              // TODO: Fix the Alt prop value below //
+              <div class="flex-none basis-full">
                 <Image
                   class="h-auto w-full rounded-3xl md:rounded-4xl lg:rounded-[60px]"
                   width={700}
@@ -68,10 +72,10 @@ import { clientGalleryImages } from "@/data/case-studies/1";
 <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>;
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const viewport = document.querySelector(".embla__viewport");
-    const embla = EmblaCarousel(viewport, { loop: false });
+    const viewport = document.querySelector("#embla-cs-gallery-slider");
+    const caseStudiesGallerySlider = EmblaCarousel(viewport, { loop: false });
 
-    document.querySelector(".prev-btn").onclick = () => embla.scrollPrev();
-    document.querySelector(".next-btn").onclick = () => embla.scrollNext();
+    document.querySelector(".prev-btn").onclick = () => caseStudiesGallerySlider.scrollPrev();
+    document.querySelector(".next-btn").onclick = () => caseStudiesGallerySlider.scrollNext();
   });
 </script>
