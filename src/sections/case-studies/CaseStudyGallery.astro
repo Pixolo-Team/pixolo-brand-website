@@ -52,14 +52,14 @@ import { clientGalleryImages } from "@/data/case-studies/1";
       >
         <!-- Previous Button -->
         <button
-          class="prev-btn bg-n-50 hover:bg-n-100 flex size-9 rotate-180 items-center justify-center rounded-full md:size-10 lg:size-16"
+          class="prev-btn arrowbtn-fill bg-n-50 flex size-9 items-center justify-center rounded-full md:size-10 lg:size-16"
         >
-          <Icon name={icon} class="size-3 md:size-4 lg:size-6" />
+          <Icon name={icon} class="size-3 rotate-180 md:size-4 lg:size-6" />
         </button>
 
         <!-- Next Button -->
         <button
-          class="next-btn bg-n-50 hover:bg-n-100 flex size-9 items-center justify-center rounded-full md:size-10 lg:size-16"
+          class="next-btn arrowbtn-fill bg-n-50 flex size-9 items-center justify-center rounded-full md:size-10 lg:size-16"
         >
           <Icon name={icon} class="size-3 md:size-4 lg:size-6" />
         </button>
@@ -79,3 +79,26 @@ import { clientGalleryImages } from "@/data/case-studies/1";
     document.querySelector(".next-btn").onclick = () => caseStudiesGallerySlider.scrollNext();
   });
 </script>
+
+<!-- Slider Arrows Hover Animation -->
+<style>
+  .arrowbtn-fill {
+    position: relative;
+    overflow: hidden;
+    z-index: 20;
+  }
+
+  .arrowbtn-fill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 0%;
+    background: var(--color-n-300);
+    transition: height 0.5s ease-in-out;
+    z-index: -1;
+  }
+
+  .arrowbtn-fill:hover::before {
+    height: 100%;
+  }
+</style>
