@@ -1,4 +1,5 @@
 ---
+// COMPONENTS //
 import Image from "astro/components/Image.astro";
 
 interface Props {
@@ -6,8 +7,6 @@ interface Props {
   toolTitle: string;
   toolDescription: string;
 }
-
-import { toolUsed } from "@/data/case-studies/1";
 
 const { toolIcon, toolTitle, toolDescription } = Astro.props;
 ---
@@ -24,7 +23,7 @@ const { toolIcon, toolTitle, toolDescription } = Astro.props;
       width={56}
       height={56}
       src={toolIcon}
-      alt="Pixolo Tool"
+      alt={toolTitle}
     />
     <!-- Tool Title -->
     <p class="text-sm font-medium text-nowrap md:text-xl">{toolTitle}</p>

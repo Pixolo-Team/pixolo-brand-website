@@ -115,7 +115,7 @@ export const aboutClient = {
   },
 };
 
-export const toolUsed = [
+export const toolsUsed = [
   {
     icon: "/images/case-studies/1/tool-logo.png",
     title: "Figma",
@@ -137,6 +137,9 @@ export const toolUsed = [
     title: "InVision",
     description:
       "InVision facilitated our design handoff and feedback processes, enhancing communication.",
+  },
+];
+
 export const solutionNumbers = [
   {
     title: "Project Timeline",

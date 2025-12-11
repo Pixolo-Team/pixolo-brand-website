@@ -3,7 +3,7 @@
 import ToolUsed from "@/components/case-studies/ToolUsed.astro";
 
 // DATA //
-import { toolUsed } from "@/data/case-studies/1";
+import { toolsUsed } from "@/data/case-studies/1";
 ---
 
 <section>
@@ -15,7 +15,7 @@ import { toolUsed } from "@/data/case-studies/1";
     <!-- Iterating through Data -->
     <div class="flex flex-col gap-4 md:gap-9 lg:grid lg:grid-cols-2">
       {
-        toolUsed.map((toolUsedItem) => (
+        toolsUsed.map((toolUsedItem) => (
           <ToolUsed
             toolIcon={toolUsedItem.icon}
             toolTitle={toolUsedItem.title}
