@@ -1,14 +1,13 @@
 ---
-// COMPONENTS //
 import SectionHeader from "@/components/SectionHeader.astro";
 import KeyTakeaway from "@/components/case-studies/KeyTakeaway.astro";
 
-// DATA //
 import { keyTakeaways } from "@/data/case-studies/1";
 ---
 
 <section>
   <div
+    id="key-takeaway-header"
     class="container m-auto flex flex-col gap-10 px-6 py-16 md:gap-11 md:py-24 lg:gap-16 lg:py-28"
   >
     <SectionHeader
@@ -21,13 +20,20 @@ import { keyTakeaways } from "@/data/case-studies/1";
       <!-- Iterating through Data -->
       {
         keyTakeaways.map((keyTakeawayItem, keyTakeawayindex) => (
-          <KeyTakeaway
-            title={keyTakeawayItem.title}
-            description={keyTakeawayItem.description}
-            index={String(keyTakeawayindex + 1).padStart(2, "0")}
-          />
+          <div id="learning-item-card">
+            <KeyTakeaway
+              title={keyTakeawayItem.title}
+              description={keyTakeawayItem.description}
+              index={String(keyTakeawayindex + 1).padStart(2, "0")}
+            />
+          </div>
         ))
       }
     </div>
   </div>
 </section>
+
+<script>
+  import { animateKeyTakeawayCard } from "@/scripts/case-studies";
+  animateKeyTakeawayCard();
+</script>
