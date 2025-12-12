@@ -1,27 +1,47 @@
+/** Function to initialize the scroll line animation */
 export const initScrollLine = () => {
-  const timeline = document.querySelector(".scroll-line") as HTMLElement | null;
-  if (!timeline) return;
+  // Get scroll line element
+  const scrollLine = document.querySelector(".scroll-line") as HTMLElement | null;
+  if (!scrollLine) return;
 
-  const MIN_FILL = 0; // % minimum fill at start
+  // Initially Filled percentage
+  const initailFill = 0;
+  let frameRequested = false; // for requestAnimationFrame optimization
 
-  const update = () => {
-    const rect = timeline.getBoundingClientRect();
-    const winH = window.innerHeight;
+  const updateFill = () => {
+    // Get the position and height of the scroll line element relative to the viewport
+    const { top, height } = scrollLine.getBoundingClientRect();
 
-    const viewportCenter = winH / 2;
-    const timelineTop = rect.top;
-    const timelineHeight = rect.height;
+    // Vertical center of the viewport
+    const viewportCenter = window.innerHeight / 2;
 
-    let progress = (viewportCenter - timelineTop) / timelineHeight;
-    let clamped = Math.max(0, Math.min(progress, 1));
+    // Calculate how far the viewport center has passed the top of the scroll line
+    const progress = (viewportCenter - top) / height;
 
-    const finalFill = Math.max(clamped * 100, MIN_FILL);
+    // Clamp the progress between 0 and 1 to avoid overflows
+    const clamped = Math.max(0, Math.min(progress, 1));
 
-    timeline.style.setProperty("--fill-height", `${finalFill}%`);
+    // Convert to a percentage and ensure it's at least the initial fill
+    const fill = Math.max(clamped * 100, initailFill);
+
+    // Update the CSS variable --fill-height
+    scrollLine.style.setProperty("--fill-height", `${fill}%`);
+    frameRequested = false;
   };
 
-  window.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", update);
+  const onScrollOrResize = () => {
+    // Check if an update frame has already been requested
+    if (!frameRequested) {
+      // Mark that a frame has been queued
+      frameRequested = true;
 
-  update(); // initial fill
+      // Schedule the `updateFill` function to run on the next animation frame
+      requestAnimationFrame(updateFill);
+    }
+  };
+
+  window.addEventListener("scroll", onScrollOrResize, { passive: true });
+  window.addEventListener("resize", onScrollOrResize);
+
+  updateFill();
 };
