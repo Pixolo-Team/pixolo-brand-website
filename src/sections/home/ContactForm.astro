@@ -30,11 +30,11 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
 
 <section
   id="contact-section"
-  class="relative flex flex-col py-12 md:px-8 md:py-20 lg:px-0 lg:py-32"
+  class="relative flex flex-col py-12 md:px-8 md:py-20 xl:px-0 xl:py-32"
 >
-  <div id="contact-wrapper" class="container mx-auto px-6 md:px-0 lg:max-w-[1536px]">
+  <div id="contact-wrapper" class="container mx-auto px-6 md:px-0 xl:max-w-[1536px]">
     {/* Header - "Want to know more?" + "We'd love to hear from you" */}
-    <div class="anim-fade-up-slow text-n-950 flex w-full flex-col items-center gap-5 lg:gap-6">
+    <div class="anim-fade-up-slow text-n-950 flex w-full flex-col items-center gap-5 xl:gap-6">
       {/* top tool badge */}
       <ToolBadge
         icon="comment"
@@ -43,7 +43,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
       />
       {/* subtitle text */}
       <p
-        class="font-neometric text-n-950 text-center text-3xl leading-[125%] font-medium md:text-4xl lg:text-6xl"
+        class="font-neometric text-n-950 text-center text-3xl leading-[125%] font-medium md:text-4xl xl:text-6xl"
       >
         {contactFormDetails.heading}
       </p>
@@ -51,11 +51,11 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
 
     {/* Contact cards (stacked) - after header */}
     <div
-      class="mt-8 flex w-full flex-col items-center justify-center gap-4 md:mt-10 md:gap-9 lg:mx-auto lg:flex-row lg:items-center lg:justify-center lg:gap-6"
+      class="mt-8 flex w-full flex-col items-center justify-center gap-4 md:mt-10 md:gap-9 xl:mx-auto xl:flex-row xl:items-center xl:justify-center xl:gap-6"
     >
       {
         contactSectionDetails.contactCards.map((card) => (
-          <div class="anim-fade-in-right w-full md:max-w-xs lg:max-w-sm">
+          <div class="anim-fade-in-right w-full md:max-w-xs xl:max-w-sm">
             <ContactCard
               icon={card.icon}
               title={card.title}
@@ -68,7 +68,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
       }
 
       {/* Location card */}
-      <div class="anim-fade-in-right w-full md:max-w-xs lg:max-w-sm">
+      <div class="anim-fade-in-right w-full md:max-w-xs xl:max-w-sm">
         <ContactCard
           icon={contactSectionDetails.location.icon}
           title={contactSectionDetails.location.title}
@@ -114,7 +114,7 @@ const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "ph
 
       {/* Form using InputField components */}
       <div class="form-fill w-full xl:flex-1">
-        <form class="mt-20 flex flex-col gap-5 md:gap-11 lg:gap-12" aria-label="Contact form">
+        <form class="mt-20 flex flex-col gap-5 md:gap-11 xl:gap-12" aria-label="Contact form">
           <!-- NAME -->
           <div class="anim-fade-up-slow md:gap-8 md:pb-9">
             <InputField
