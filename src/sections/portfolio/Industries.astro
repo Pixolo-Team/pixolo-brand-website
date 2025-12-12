@@ -1,0 +1,101 @@
+---
+import { industries } from "src/data/portfolio/industries.ts";
+import IndustryCard from "src/components/portfolio/IndustryCard.astro";
+import { Icon } from "astro-icon/components";
+
+const pillText = "Crafted Experiences";
+const heading = "Industries Driving Our Impact";
+---
+
+<section>
+  <div
+    class="container mx-auto flex flex-col justify-center gap-9 px-6 py-16 md:gap-12 md:p-24 lg:gap-14 lg:p-28"
+  >
+    <div class="flex flex-col items-center gap-3.5 text-center md:gap-4 lg:gap-3.5">
+      <div
+        class="border-n-950 flex items-center gap-2.5 rounded-3xl border py-1.5 pr-4 pl-1.5 md:gap-3 lg:gap-4 lg:pr-5"
+      >
+        <div
+          class="flex h-7 w-7 items-center justify-center gap-10 rounded-3xl bg-blue-500 p-2 md:h-8 md:w-8 lg:h-10 lg:w-10"
+        >
+          <Icon name="comment" />
+        </div>
+        <p
+          class="text-n-900 text-center text-xs leading-none font-medium tracking-normal md:text-base lg:text-lg"
+        >
+          {pillText}
+        </p>
+      </div>
+
+      <p
+        class="text-n-950 text-3xl leading-tight font-normal tracking-[-2%] md:text-5xl lg:text-6xl"
+      >
+        {heading}
+      </p>
+    </div>
+
+    <div class="group relative flex flex-col gap-8 md:gap-10 lg:items-end">
+      <div
+        id="industry-slider"
+        class="hide-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto md:gap-8 lg:flex lg:snap-x"
+      >
+        {
+          industries.map((item) => (
+            /* Added 'flex justify-center' to centering the card inside the slide */
+
+            <div class="flex min-w-[100%] snap-start justify-center md:min-w-[70%] lg:min-w-[33.333%]">
+              <IndustryCard title={item.title} image={item.image} tags={item.tags} />
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="text-n-700 flex justify-center gap-9 self-end text-xl md:px-5 lg:px-6">
+        <div
+          class="hover:border-n-700 flex items-center justify-center gap-10 rounded-full border border-transparent p-1 transition"
+        >
+          <button id="slide-prev" aria-label="Previous Slide">
+            <Icon name="right-arrow" class="h-5 w-5 w-6 rotate-180 md:h-6" />
+          </button>
+        </div>
+
+        <div
+          class="hover:border-n-700 flex items-center justify-center gap-10 rounded-full border border-transparent p-1 transition"
+        >
+          <button id="slide-next" aria-label="Next Slide">
+            <Icon name="right-arrow" class="h-5 w-5 w-6 md:h-6" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Chrome, Safari, Edge */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Firefox */
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
+</style>
+<script>
+  const slider = document.getElementById("industry-slider");
+  const prevBtn = document.getElementById("slide-prev");
+  const nextBtn = document.getElementById("slide-next");
+
+  if (slider && prevBtn && nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      const scrollAmount = slider.clientWidth;
+      slider.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
+
+    prevBtn.addEventListener("click", () => {
+      const scrollAmount = slider.clientWidth;
+      slider.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    });
+  }
+</script>
