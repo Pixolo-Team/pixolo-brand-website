@@ -1,4 +1,4 @@
-// initTestimonials.js
+/** Initializes the testimonial slider and updates content on avatar interaction */
 export const initTestimonials = () => {
   document.addEventListener("DOMContentLoaded", () => {
     const avatars = document.querySelectorAll("[data-testimonial-index]");
@@ -8,16 +8,17 @@ export const initTestimonials = () => {
 
     if (!avatars.length || !quoteEl || !nameEl || !companyEl) return;
 
-    // Extract all testimonial data from dataset attributes
+    // Extract testimonial data from each avatar
     const items = Array.from(avatars).map((avatar) => ({
       quote: avatar.dataset.testimonialQuote,
       name: avatar.dataset.testimonialName,
       company: avatar.dataset.testimonialCompany,
     }));
 
+    // Default active index = 0 (first testimonial)
     let activeIndex = 0;
 
-    /** Update UI whenever activeIndex changes */
+    /** Updates testimonial UI whenever activeIndex changes */
     const updateUI = () => {
       avatars.forEach((avatar, i) => {
         const isActive = i === activeIndex;
@@ -33,7 +34,7 @@ export const initTestimonials = () => {
       companyEl.textContent = items[activeIndex].company;
     };
 
-    /** Avatar click listeners */
+    /** Activates clicked avatar */
     avatars.forEach((avatar) => {
       avatar.addEventListener("click", () => {
         activeIndex = Number(avatar.dataset.testimonialIndex);
@@ -41,6 +42,7 @@ export const initTestimonials = () => {
       });
     });
 
+    // Initialize UI with first testimonial active
     updateUI();
   });
 };

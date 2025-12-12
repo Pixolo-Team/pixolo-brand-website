@@ -1,26 +1,3 @@
-// Client Details
-export const clientDetails = {
-  profilePicture: "client-one.jpg",
-  name: "Sarah Luprich",
-  description: "EyeCatcher",
-};
-
-// Clients that trust in us
-export const clients = [
-  {
-    profilePicture: "client-one.jpg",
-    description: "This is profile picture of our client",
-  },
-  {
-    profilePicture: "client-two.jpg",
-    description: "This is profile picture of our client",
-  },
-  {
-    profilePicture: "client-one.jpg",
-    description: "This is profile picture of our client",
-  },
-];
-
 export const testimonialSectionDetails = {
   badgeIcon: "comment",
   badgeTitle: "Voices of Trust",
@@ -30,7 +7,6 @@ export const testimonialSectionDetails = {
     {
       clientImage: "/images/testimonials/sarah-profile-image.jpg",
       clientName: "Sarah Luprich",
-      isActive: true,
       brandName: "EyeCatcher",
       testimonial:
         "Working with Pixolo was unbelievable. He instantly understood our vision and translated it into a sleek, intuitive Website. The process felt effortless, and the results exceeded our expectations.",
