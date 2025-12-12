@@ -15,24 +15,27 @@ import { processSteps } from "@/data/case-studies/1";
     <div class="flex flex-col gap-6">
       <p class="text-n-800 text-center text-lg md:text-xl">Our Process</p>
 
-      <div class="relative h-[500px]">
+      <div class="relative h-[500px] md:h-[800px]">
         <!-- Vertical Line - 8% from left on mobile, centered on desktop -->
         <div
           class="bg-n-800 absolute top-0 bottom-0 left-[8%] w-0.5 md:left-1/2 md:-translate-x-1/2"
         >
         </div>
         <!-- Dots Container - Positioned to match the line -->
-        <div class="absolute top-0 bottom-0 left-[8%] flex flex-col justify-between md:left-1/2">
+        <div
+          class="absolute top-0 bottom-0 left-[8%] flex flex-col justify-between gap-32 md:left-1/2 md:gap-40"
+        >
           <!-- Dot 1 (Active) - Centered on line -->
 
           {
             processSteps.map((processStepItem, processStepIndex) => (
               <div class="flex gap-12">
                 <div class="bg-n-800 relative size-5 -translate-x-1/2 rounded-full" />
-                <div class="relative -top-1.5 flex gap-4 leading-tight">
+                <div class="relative -top-1.5 flex gap-4 leading-tight md:flex-row-reverse">
                   <p class="text-[28px]">{processStepIndex + 1}</p>
                   <p class="text-[28px] font-medium">{processStepItem.title}</p>
                 </div>
+                <p class="hidden md:block md:text-lg">{processStepItem.description}</p>
               </div>
             ))
           }
