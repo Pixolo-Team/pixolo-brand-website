@@ -1,16 +1,12 @@
 ---
 // COMPONENTS //
-import { Icon } from "astro-icon/components";
+import ToolBadge from "src/components/ToolBadge.astro";
 import { Image } from "astro:assets";
 
 // SVG's //
 import Ball3D from "src/assets/3d-ball.svg";
-
-const tagTitle = "Crafted Highlights";
-const mainHeading = "A show case of the work that defines our creativity and craft";
-const subHeading = "A dynamic showcase where every build sparks innovation";
-
-export { tagTitle, mainHeading, subHeading };
+import { portfolioHero } from "src/data/portfolio/hero.ts";
+const { tagTitle, mainHeading, subHeading } = portfolioHero;
 ---
 
 <!-- Hero Section -->
@@ -18,38 +14,22 @@ export { tagTitle, mainHeading, subHeading };
   <!-- Container -->
   <div class="relative container mx-auto px-6 py-24 text-center md:gap-9 md:py-40 lg:gap-12">
     <!-- 3D Ball -->
-    <div class="absolute inset-0 z-[-1]">
-      <div
-        class="absolute top-[278px] left-[65px] h-9 w-9 md:top-[400px] md:left-[200px] md:h-16 md:h-20 md:w-16 md:w-20 xl:top-[330px] xl:left-[120px]"
-      >
-        <Image src={Ball3D} alt={"3d big ball image"} class={"w-full"} />
-      </div>
-      <div
-        class="absolute top-[145px] left-[252.47px] h-5 w-5 rotate-[-22.29deg] md:top-[450px] md:left-[780px] md:h-11 md:h-12 md:w-11 md:w-12 xl:top-[300px] xl:left-[1200px]"
-      >
-        <Image src={Ball3D} alt={"3d small ball image"} class={"w-full"} />
-      </div>
+    <div
+      class="absolute inset-0 top-[278px] left-[65px] z-[-1] h-9 w-9 md:top-[400px] md:left-[200px] md:h-15 md:h-20 lg:w-16 lg:w-20 xl:top-[330px] xl:left-[120px]"
+    >
+      <Image src={Ball3D} alt={"3d big ball image"} class={"w-full"} />
+    </div>
+    <div
+      class="absolute inset-0 top-[145px] left-[252.47px] z-[-1] h-5 w-5 rotate-[-22.29deg] md:top-[450px] md:left-[780px] md:h-10 md:h-12 lg:w-11 lg:w-12 xl:top-[300px] xl:left-[1200px]"
+    >
+      <Image src={Ball3D} alt={"3d small ball image"} class={"w-full"} />
     </div>
 
     <!-- Content -->
     <div class="flex flex-col items-center gap-8 md:gap-9 lg:gap-10">
-      <!-- Pill -->
-      <div
-        class="border-n-950 flex items-center gap-2.5 rounded-3xl border py-1.5 pr-4 pl-1.5 md:gap-3 lg:gap-4 lg:pr-5"
-      >
-        <!-- Comment Icon -->
-        <div
-          class="flex h-7 w-7 items-center justify-center gap-10 rounded-3xl bg-blue-500 p-2 md:h-8 md:w-8 lg:h-10 lg:w-10"
-        >
-          <Icon name="comment" />
-        </div>
-
-        <!-- Tag Title -->
-        <p
-          class="text-n-900 text-center text-xs leading-none font-medium tracking-normal md:text-base lg:text-lg"
-        >
-          {tagTitle}
-        </p>
+      <!-- Tool Badge -->
+      <div class="flex flex-col items-center gap-8 md:gap-9 lg:gap-10">
+        <ToolBadge icon="comment" text={tagTitle} />
       </div>
 
       <!-- Headings -->
