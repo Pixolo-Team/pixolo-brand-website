@@ -24,7 +24,7 @@ const {
   href={link}
   target={type === "location" ? "_blank" : undefined}
   rel={type === "location" ? "noopener noreferrer" : undefined}
-  class="bg-n-950/5 hover:bg-n-950/10 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5 transition-colors duration-300"
+  class="bg-n-100 hover:bg-n-200 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5 transition-colors duration-300"
 >
   <div class="flex max-w-[80%] items-center gap-4">
     <div
@@ -43,15 +43,18 @@ const {
     type === "phone" || type === "mail" ? (
       <Tooltip text="Copy" position="top">
         <span
-          class="copy-btn bg-n-950/2 hover:bg-n-950/4 text-n-300 flex h-8 w-8 items-center justify-center rounded-full p-1"
+          class="copy-btn bg-n-950/2 hover:bg-n-950/4 flex h-8 w-8 items-center justify-center rounded-full p-1 transition-colors duration-300"
           data-copy={value}
         >
-          <Icon name="copy" class="icon-copy text-n-300 size-[26px]" />
-          <Icon name="check" class="icon-check hidden size-[26px]" />
+          <Icon name="copy" class="icon-copy text-n-950 size-[26px] hover:text-blue-500" />
+          <Icon name="check" class="icon-check hidden size-[26px] text-blue-500" />
         </span>
       </Tooltip>
     ) : (
-      <Icon name="right-arrow" class="text-n-300 size-5" />
+      <Icon
+        name="right-arrow"
+        class="text-n-950 size-5 transition-colors duration-300 hover:text-blue-500"
+      />
     )
   }
 </a>
