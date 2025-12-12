@@ -1,0 +1,61 @@
+---
+// COMPONENTS //
+import { Image } from "astro:assets";
+import Badge from "../Badge.astro";
+import RoundedButton from "../RoundedButton.astro";
+
+//PROPS//
+interface Props {
+  projectName: string;
+  image: string;
+  mainTitle: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  badgeItems: string[];
+  ctaText1: string;
+  ctaText2: string;
+}
+
+const { projectName, image, mainTitle, title, subtitle, date, badgeItems, ctaText1, ctaText2 } =
+  Astro.props as Props;
+---
+
+<!-- Project Card -->
+<div class="flex flex-col gap-7">
+  <!-- Project Card Image -->
+  <Image
+    src={`/images/${image}.jpg`}
+    alt={`Image for ${projectName}`}
+    width={327}
+    height={238}
+    class="h-full w-full rounded-3xl"
+  />
+
+  <!-- Content -->
+  <div class="flex flex-col gap-8">
+    <!-- Details Wrap -->
+    <div class="flex flex-col gap-7">
+      <!-- Header -->
+      <div class="flex flex-col gap-2">
+        <p class="text-n-950 text-2xl leading-tight font-normal">{mainTitle}</p>
+        <div class="flex flex-wrap gap-2">
+          {badgeItems.map((badgeItem) => <Badge badgeText={badgeItem} />)}
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="flex flex-col gap-4">
+        <p class="text-n-700 text-sm leading-tight font-medium">{title}</p>
+        <p class="text-n-600 text-xs leading-tight font-normal">{subtitle}</p>
+        <p class="text-n-700 text-xs leading-tight font-normal">{date}</p>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex flex-row gap-3.5">
+      <RoundedButton buttonText={ctaText1} onClick={""} />
+      <RoundedButton buttonText={ctaText2} onClick={""} variant="secondary" />
+    </div>
+  </div>
+</div>
