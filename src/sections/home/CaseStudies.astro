@@ -1,45 +1,33 @@
 ---
+//COMPONENT//
 import CaseStudyCard from "@/components/casestudy/CaseStudyCard.astro";
 import ToolBadge from "@/components/ToolBadge.astro";
 
-const caseStudiesItems = [
-  {
-    id: 1,
-    title: "Simplifying Team Management for Coaches and Players",
-    image: "default.jpg",
-  },
-  {
-    id: 2,
-    title: "Bridging Figma to Code Seamlessly in VS Code",
-    image: "default.jpg",
-  },
-  {
-    id: 3,
-    title: "Making Billings Simpler for Startups",
-    image: "default.jpg",
-  },
-];
+//DATA//
+import { caseStudies } from "@/data/case-studies";
 ---
 
-<section class="flex flex-col gap-12 px-6 py-16">
-  {/* Header Section */}
-  <div class="flex flex-col gap-2.5">
-    <div class="flex justify-center">
-      <ToolBadge icon="puzzle-icon" text="Case Studies" />
+<section>
+  <container class="flex flex-col gap-12 px-6 py-16">
+    {/* Header Section */}
+    <div class="flex flex-col gap-2.5">
+      <div class="flex justify-center">
+        <ToolBadge icon="puzzle-icon" text="Case Studies" />
+      </div>
+      <p
+        class="flex justify-center text-center text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-6xl"
+      >
+        Smart Solutions to Real Challenges.
+      </p>
     </div>
-    <p
-      class="flex justify-center text-center text-2xl leading-[1.25] font-medium tracking-normal md:text-4xl lg:text-6xl"
-    >
-      Smart Solutions to Real Challenges.
-    </p>
-  </div>
 
-  {/* Case Studies card */}
-  <div class="flex flex-col gap-10 lg:flex-row">
-    {
-      caseStudiesItems.map((item) => (
-        <CaseStudyCard id={item.id} title={item.title} image={item.image} />
-      ))
-    }
-  </div>
+    {/* Case Studies card */}
+    <div class="flex flex-col gap-10 lg:flex-row">
+      {
+        caseStudies.caseStudiesItems.map((item) => (
+          <CaseStudyCard id={item.id} title={item.title} image={item.image} />
+        ))
+      }
+    </div>
+  </container>
 </section>
