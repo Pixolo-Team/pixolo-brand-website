@@ -131,38 +131,37 @@ const articleCardDetails = [
       <!-- Header -->
       <div class="relative flex flex-col items-center justify-center gap-5 md:gap-6 lg:gap-7">
         <ToolBadge icon={"service-icon"} text={"Portfolio"} />
+        <!-- Header Text -->
         <div
-          class="flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-8xl"
+          class="z-10 flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-8xl"
         >
           <p class="text-balance">Building Digital Experiences That</p>
-          <div class="relative">
-            <p class="bg-linear-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent">
-              Perform
-            </p>
-            <!-- Absolute images -->
-            <div
-              class="absolute top-[6.81px] left-[8px] md:top-[50.57px] md:left-[49px] xl:top-[49px] xl:left-[384.27px]"
-            >
-              <Image
-                src="/images/portfolio/3d-ball-1.png"
-                alt={"3d big ball image"}
-                width={50.68}
-                height={48}
-                class={"w-full"}
-              />
-            </div>
-            <div
-              class="absolute top-[52.4px] left-[252.47px] md:top-[115.57px] md:left-[643px] xl:top-[114px] xl:left-[978.27px]"
-            >
-              <Image
-                src="/images/portfolio/3d-ball-2.png"
-                alt={"3d small ball iamge"}
-                width={28}
-                height={26.52}
-                class={"w-full"}
-              />
-            </div>
-          </div>
+          <p class="bg-linear-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent">
+            Perform
+          </p>
+        </div>
+        <!-- Absolute images -->
+        <div
+          class="absolute top-[157px] left-[8px] z-0 md:top-[269px] md:left-[49px] lg:top-[369px] lg:left-[384.27px]"
+        >
+          <Image
+            src="/images/portfolio/3d-ball-1.png"
+            alt={"3d big ball image"}
+            width={50.68}
+            height={48}
+            class={"w-full"}
+          />
+        </div>
+        <div
+          class="absolute top-[202.59px] left-[252.47px] z-0 md:top-[334px] md:left-[643px] lg:top-[434px] lg:left-[978.27px]"
+        >
+          <Image
+            src="/images/portfolio/3d-ball-2.png"
+            alt={"3d small ball iamge"}
+            width={28}
+            height={26.52}
+            class={"w-full"}
+          />
         </div>
       </div>
 
