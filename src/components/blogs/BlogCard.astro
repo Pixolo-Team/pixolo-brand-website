@@ -1,9 +1,9 @@
 ---
+// STYLES //
+import ThemeImage from "../ThemeImage.astro";
+
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
-
-import { Image } from "astro/components"; // Astro's built-in Image component
-import ThemeImage from "../ThemeImage.astro";
 
 interface Props {
   imageSrc: string;
@@ -23,9 +23,7 @@ const { imageSrc, category, date, title, author, href } = Astro.props;
 >
   <!-- Blog Image -->
   <div class="overflow-hidden">
-    <div class="overflow-hidden">
-      <ThemeImage light={imageSrc} dark={imageSrc} alt={title} class="h-auto w-full" />
-    </div>
+    <ThemeImage light={imageSrc} dark={imageSrc} alt={title} class="h-auto w-full" />
   </div>
 
   <!-- Blog Content -->
