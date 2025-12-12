@@ -2,10 +2,11 @@
 // COMPONENTS //
 import BlogCard from "@/components/blogs/BlogCard.astro";
 import ToolBadge from "@/components/ToolBadge.astro";
+import RoundedButton from "src/components/RoundedButton.astro";
 
 // DATA //
 import { blogSectionDetails } from "@/data/blogs";
-import { blogItemCard } from "@/data/blogs";
+import { blogItems } from "@/data/blogs";
 ---
 
 <!-- Blogs Section -->
@@ -29,7 +30,7 @@ import { blogItemCard } from "@/data/blogs";
       <div class="grid w-full grid-cols-1 gap-12 md:grid-cols-2 md:gap-7 lg:grid-cols-3 lg:gap-12">
         <!-- Blog Cards -->
         {
-          blogItemCard.map((card) => (
+          blogItems.map((card) => (
             <BlogCard
               imageSrc={card.imageSrc}
               category={card.category}
@@ -43,13 +44,19 @@ import { blogItemCard } from "@/data/blogs";
       </div>
 
       <!-- Load More Button -->
-      <button
+      <RoundedButton
+        buttonText={blogSectionDetails.loadMoreButton}
+        onClick="window.location.href='/404'"
+        type="button"
+        variant="tertiary"
+      />
+      <!-- <button
         type="button"
         aria-label="Load more blog posts"
         onclick="window.location.href='/404'"
         class="border-n-500 text-n-950 flex cursor-pointer gap-1.5 rounded-4xl border px-6 py-3.5 text-sm md:px-8 lg:gap-2 lg:px-7 lg:py-4 lg:text-base"
         >{blogSectionDetails.loadMoreButton}</button
-      >
+      > -->
     </div>
   </div>
 </section>
