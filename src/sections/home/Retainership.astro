@@ -36,9 +36,7 @@ import { retainershipDetails } from "@/data/retainership";
         </p>
 
         <!-- Steps Items -->
-        <div
-          class="before:bg-n-300 relative flex flex-col items-center gap-48 before:absolute before:top-0 before:left-28 before:-z-1 before:h-full before:w-1.5 before:-translate-x-1/2 before:rounded-full md:gap-72 md:before:left-1/2"
-        >
+        <div class="scroll-line relative flex flex-col items-center gap-48 md:gap-72">
           {
             retainershipDetails.stepItems.map((step) => (
               <StepItem
@@ -115,3 +113,48 @@ import { retainershipDetails } from "@/data/retainership";
     </div>
   </div>
 </section>
+
+<style>
+  .scroll-line::before,
+  .scroll-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 6px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+  }
+
+  .scroll-line::before {
+    left: 112px;
+    height: 100%;
+    background: #2f354c;
+    z-index: -2;
+  }
+
+  .scroll-line::after {
+    left: 112px;
+    height: var(--fill-height, 0%);
+    background: linear-gradient(var(--blue-500), #8b77f3);
+    z-index: -1;
+    transition: height 150ms linear;
+  }
+
+  @media (min-width: 768px) {
+    .scroll-line::before {
+      left: 50%;
+    }
+
+    .scroll-line::after {
+      left: 50%;
+    }
+  }
+</style>
+
+<script>
+  import { initScrollLine } from "@/scripts/retainership.ts";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initScrollLine();
+  });
+</script>
