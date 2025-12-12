@@ -1,0 +1,41 @@
+---
+interface props {
+  number: string;
+  title: string;
+  description: string;
+  direction: "ltr" | "rtl";
+}
+
+const { number, title, description, direction } = Astro.props as props;
+---
+
+<!-- Step Item  -->
+<div
+  class={`flex gap-6 w-full items-center justify-center lg:gap-16 ${direction === "rtl" && "md:flex-row-reverse"}
+ md:gap-10`}
+>
+  <!-- Step number -->
+  <p
+    class={`max-w-20 flex-1 font-normal text-5xl leading-tight text-n-950 grow text-right md:max-w-full md:text-7xl lg:text-8xl ${direction === "rtl" ? "md:text-left" : "md:text-right"}`}
+  >
+    {number}
+  </p>
+
+  <!-- Ellipse -->
+  <div class="bg-n-700 size-4 rounded-full lg:size-5"></div>
+
+  <!-- Step Information -->
+  <div
+    class={`flex flex-1 flex-col gap-3 w-full text-left md:gap-5 ${direction === "rtl" ? "md:text-right" : "md:text-left"}`}
+  >
+    <!-- Title -->
+    <p class={"font-bold text-2xl leading-tight text-n-950 md:text-3xl lg:text-5xl lg:font-medium"}>
+      {title}
+    </p>
+
+    <!-- Description -->
+    <p class={"font-normal text-sm leading-tight text-n-950 md:text-base lg:text-2xl"}>
+      {description}
+    </p>
+  </div>
+</div>

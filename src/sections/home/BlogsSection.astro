@@ -1,7 +1,7 @@
 ---
 // COMPONENTS //
-import { Icon } from "astro-icon/components";
 import BlogCard from "@/components/blogs/BlogCard.astro";
+import ToolBadge from "@/components/ToolBadge.astro";
 
 // DATA //
 import { blogSectionDetails } from "@/data/blogs";
@@ -12,23 +12,8 @@ import { blogItemCard } from "@/data/blogs";
 <section>
   <div class="container mx-auto flex flex-col gap-16 px-6 py-20 md:gap-20 md:py-28 lg:gap-24">
     <div class="flex flex-col items-start gap-4 md:gap-5 lg:gap-6">
-      <div
-        class="border-n-950 flex items-center gap-2.5 rounded-3xl border py-2 pr-4 pl-2 md:gap-3 lg:gap-4"
-      >
-        <!-- Comment Icon -->
-        <div
-          class="flex h-7 w-7 items-center justify-center gap-2.5 rounded-3xl bg-blue-500 p-2 md:h-8 md:w-8 lg:h-10 lg:w-10"
-        >
-          <Icon name="comment" class="h-7 w-7" />
-        </div>
-
-        <!-- Labels -->
-        <p
-          class="text-n-900 self-center text-center text-xs leading-none font-medium tracking-normal md:text-base lg:text-lg"
-        >
-          {blogSectionDetails.label}
-        </p>
-      </div>
+      <!-- Tool Badge -->
+      <ToolBadge icon={"comment"} text={blogSectionDetails.badgeTitle} />
 
       <!-- Heading -->
       <p

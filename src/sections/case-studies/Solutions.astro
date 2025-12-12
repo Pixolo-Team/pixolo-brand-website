@@ -1,0 +1,35 @@
+---
+// COMPONENTS //
+import ClientSolution from "@/components/case-studies/ClientSolution.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+
+// DATA //
+import { clientSolutions } from "@/data/case-studies/1";
+---
+
+<section>
+  <div
+    class="container m-auto flex flex-col gap-10 px-6 pt-16 pb-14 md:gap-12 md:pt-28 md:pb-20 lg:gap-16 lg:pt-36 lg:pb-28"
+  >
+
+    <!-- Toolbadge & Page Title -->
+    <SectionHeader
+      sectionTitle="Smart, precise solutions for every challenge"
+      badgeIcon="package"
+      badgeText="Our Solutions"
+    />
+
+    <!-- Solution Cards -->
+    <div class="flex flex-col gap-3 md:gap-4 lg:grid lg:grid-cols-2 lg:gap-9">
+      {
+        clientSolutions.map((clientSolutionItem, clientSolutionIndex) => (
+          <ClientSolution
+            title={clientSolutionItem.title}
+            description={clientSolutionItem.description}
+            index={String(clientSolutionIndex + 1).padStart(2, "0")}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

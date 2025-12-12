@@ -5,4 +5,5 @@ export const URLS = {
   SERVICE: "/service",
   CAREER: "/careers",
   CONTACT: "/contact",
+  PORTFOLIO: "/portfolio",
 };

@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky",
-    "lint": "eslint . --ext .js,.ts,.astro   --ignore-pattern '**/.astro/**'   --ignore-pattern 'node_modules/**'   --ignore-pattern 'dist/**'",
+    "lint": "eslint . --ext .js,.ts,.astro",
     "format": "prettier --write ."
   },
   "lint-staged": {

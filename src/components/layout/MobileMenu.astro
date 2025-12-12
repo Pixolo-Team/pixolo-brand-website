@@ -4,6 +4,9 @@ import { Icon } from "astro-icon/components";
 import BrandLogo from "@/components/BrandLogo.astro";
 import RoundedButton from "@/components/RoundedButton.astro";
 
+// DATA //
+import { siteInfo } from "@/data/site-info";
+
 // Define props
 interface Props {
   menuItems: { name: string; url: string }[];
@@ -57,8 +60,12 @@ const currentPath = Astro.url.pathname;
 
     <!-- Bottom Buttons -->
     <div class="z-10 flex flex-row justify-center gap-2.5">
-      <RoundedButton buttonText="Call" variant="secondary" />
-      <RoundedButton buttonText="Whatsapp" variant="secondary" />
+      <a href={siteInfo.contact.phone[0].link}>
+        <RoundedButton buttonText="Call" variant="secondary" />
+      </a>
+      <a href={`https://wa.me/${siteInfo.contact.phone[0].value}`}>
+        <RoundedButton buttonText="Whatsapp" variant="secondary" />
+      </a>
     </div>
   </div>
 

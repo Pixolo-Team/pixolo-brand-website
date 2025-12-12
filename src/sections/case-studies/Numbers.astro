@@ -1,0 +1,40 @@
+---
+// COMPONENTS //
+import ClientNumbers from "@/components/case-studies/ClientNumber.astro";
+
+// DATA //
+import { clientNumbers } from "@/data/case-studies/1";
+---
+
+<!-- Client in numbers Section -->
+<section class="pt-20">
+  <!-- Container -->
+  <div
+    class="container m-auto flex flex-col items-center justify-center gap-7 p-5 md:px-12 md:pt-10 md:pb-16 lg:gap-16 lg:pt-10 lg:pb-20"
+  >
+    <!-- Title Content -->
+    <div class="anim-fade-in-right flex flex-col gap-3.5 md:flex-row md:gap-16 lg:gap-40">
+      <!-- Title -->
+      <h1 class="text-n-950 text-2xl leading-tight font-medium md:text-3xl lg:text-4xl">
+        By the Numbers
+      </h1>
+      <!-- Description -->
+      <p class="text-n-800 leading-tight md:text-xl lg:text-2xl">
+        We focus on the metrics that truly reflect our value. Here's a snapshot of the results that
+        drive our success.
+      </p>
+    </div>
+
+    <!-- Numbers Component -->
+    <div
+      class="anim-fade-in-up grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-9"
+    >
+      <!-- Iterate through Data -->
+      {
+        clientNumbers.map((clientNumberItem) => (
+          <ClientNumbers title={clientNumberItem.title} value={clientNumberItem.value} />
+        ))
+      }
+    </div>
+  </div>
+</section>
