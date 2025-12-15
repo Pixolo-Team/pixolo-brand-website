@@ -66,12 +66,7 @@ export function initLoadMore(config: LoadMoreConfig) {
 
   // Handle resize
   window.addEventListener("resize", () => {
-    const prevState = getDeviceState();
-    const newState = getDeviceState();
-
-    if (prevState !== newState) {
-      setInitialVisibleCount();
-      updateVisibility();
-    }
+    setInitialVisibleCount();
+    updateVisibility();
   });
 }
