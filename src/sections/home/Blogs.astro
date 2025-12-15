@@ -1,6 +1,7 @@
 ---
 // COMPONENTS //
 import BlogCard from "@/components/blogs/BlogCard.astro";
+import RoundedButton from "@/components/RoundedButton.astro";
 import ToolBadge from "@/components/ToolBadge.astro";
 
 // DATA //
@@ -25,29 +26,63 @@ import { blogSectionDetails } from "@/data/blogs";
     <!-- Blog Cards and Add More Button -->
     <div class="flex flex-col items-center gap-16">
       <!-- Blog Cards Wrapper -->
-      <div class="grid w-full grid-cols-1 gap-12 md:grid-cols-2 md:gap-7 lg:grid-cols-3 lg:gap-12">
+      <div
+        id="blog-cards-container"
+        class="grid w-full grid-cols-1 gap-12 md:grid-cols-2 md:gap-7 lg:grid-cols-3 lg:gap-12"
+      >
         <!-- Blog Cards -->
         {
           blogSectionDetails.blogItems.map((blogItem) => (
-            <BlogCard
-              imageSrc={blogItem.imageSrc}
-              category={blogItem.category}
-              date={blogItem.date}
-              title={blogItem.title}
-              author={blogItem.author}
-              href={blogItem.href}
-            />
+            <div class="blog-card-item hidden">
+              <BlogCard
+                imageSrc={blogItem.imageSrc}
+                category={blogItem.category}
+                date={blogItem.date}
+                title={blogItem.title}
+                author={blogItem.author}
+                href={blogItem.href}
+              />
+            </div>
           ))
         }
       </div>
 
       <!-- Load More Button -->
-      <!-- <RoundedButton
+      <RoundedButton
+        id="load-more-btn"
         buttonText={blogSectionDetails.loadMoreButton}
-        onClick="window.location.href='/404'"
         type="button"
         variant="tertiary"
-      /> -->
+      />
     </div>
   </div>
 </section>
+
+<script>
+  import { initLoadMore } from "@/scripts/load-more";
+
+  // Setup Load More
+  function setupBlogs() {
+    initLoadMore({
+      containerId: "blog-cards-container",
+      loadMoreBtnId: "load-more-btn",
+      cardClass: "blog-card-item",
+      initialVisible: {
+        desktop: 3,
+        tablet: 4,
+        mobile: 3,
+      },
+      incrementConfig: {
+        desktop: 3,
+        tablet: 4,
+        mobile: 3,
+      },
+    });
+  }
+
+  // Run on load
+  setupBlogs();
+
+  // Re-run on View Transitions navigation
+  document.addEventListener("astro:page-load", setupBlogs);
+</script>
