@@ -19,16 +19,19 @@ export const animateRetainershipSection = () => {
   });
 
   inView(".step-item", (step) => {
+    const paragraphs = step.querySelectorAll("p");
+    if (!paragraphs.length) return;
+
     animate(
-      step?.querySelectorAll("p"),
+      paragraphs,
       {
-        opacity: [0, 1],
-        x: [40, 0],
+        opacity: 1,
+        transform: "translateX(0)",
       },
       {
         duration: 0.8,
         delay: stagger(0.12),
-        easing: "ease-out",
+        easing: "linear",
       },
     );
   });

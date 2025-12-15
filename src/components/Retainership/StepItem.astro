@@ -39,3 +39,11 @@ const { number, title, description, direction } = Astro.props as props;
     </p>
   </div>
 </div>
+
+<style>
+  .step-item p {
+    transform: translateX(40px);
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+</style>
