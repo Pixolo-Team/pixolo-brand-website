@@ -14,6 +14,7 @@ export interface LoadMoreConfig {
   };
 }
 
+/** Get device state */
 export const getDeviceState = () => {
   const width = window.innerWidth;
   if (width >= 1024) return "desktop";
@@ -21,6 +22,7 @@ export const getDeviceState = () => {
   return "mobile";
 };
 
+/** Initialize load more */
 export function initLoadMore(config: LoadMoreConfig) {
   const container = document.getElementById(config.containerId);
   const loadMoreBtn = document.getElementById(config.loadMoreBtnId);
@@ -37,6 +39,7 @@ export function initLoadMore(config: LoadMoreConfig) {
     visibleCount = config.initialVisible[state];
   };
 
+  /** Update visibility */
   const updateVisibility = () => {
     cards.forEach((card, index) => {
       if (index < visibleCount) card.classList.remove("hidden");
@@ -61,7 +64,7 @@ export function initLoadMore(config: LoadMoreConfig) {
     updateVisibility();
   });
 
-  // Handle resize — optional but recommended
+  // Handle resize
   window.addEventListener("resize", () => {
     const prevState = getDeviceState();
     const newState = getDeviceState();
