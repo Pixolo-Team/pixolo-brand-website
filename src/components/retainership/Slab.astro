@@ -12,12 +12,14 @@ interface Props {
 const { count, title, btnText, images } = Astro.props as Props;
 ---
 
-<section
-  class="flex w-full items-center justify-between rounded-[60px] bg-[#0E1525]/80 px-8 py-6 backdrop-blur-xl"
+<div
+  class="bg-n-100 flex w-full flex-col items-start justify-between gap-9 rounded-[32px] px-5 py-10 backdrop-blur-xl md:gap-7 md:py-7 lg:flex-row lg:items-center lg:p-3"
 >
-  <!-- LEFT SIDE (images + text) -->
-  <div class="flex items-center gap-8">
-    <!-- Avatars + Badge -->
+  <!-- Left Side (images + text) -->
+  <div
+    class="flex flex-1 flex-col items-start gap-4 md:gap-5 lg:flex-row lg:items-center lg:gap-16"
+  >
+    <!-- Avatars + Count -->
     <div class="flex items-center gap-3">
       <!-- Avatars -->
       <div class="flex items-center">
@@ -26,20 +28,20 @@ const { count, title, btnText, images } = Astro.props as Props;
             <img
               src={img}
               alt={`Profile ${index + 1}`}
-              class={`h-[51px] w-[51px] rounded-full object-cover ${index > 0 ? "-ml-4" : ""}`}
+              class={`size-12 rounded-full object-cover ${index > 0 ? "-ml-2" : ""}`}
             />
           ))
         }
       </div>
 
-      <!-- Badge -->
-      <span class="text-text-xl text-n-950">{count}</span>
+      <!-- Count -->
+      <span class="text-n-950 text-xl leading-tight font-normal">{count}</span>
     </div>
 
-    <!-- Main text -->
-    <p class="text-text-xl text-n-950 font-medium">{title}</p>
+    <!-- Title -->
+    <p class="text-n-950 text-xl leading-tight font-medium">{title}</p>
   </div>
 
-  <!-- CTA BUTTON -->
+  <!-- CTA Button -->
   <RoundedButton buttonText={btnText} />
-</section>
+</div>
