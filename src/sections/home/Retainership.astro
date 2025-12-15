@@ -2,6 +2,7 @@
 // COMPONENTS //
 import RetainershipCard from "@/components/Retainership/RetainershipCard.astro";
 import RetainershipEmployeeCard from "@/components/Retainership/RetainershipEmployeeCard.astro";
+import Slab from "@/components/Retainership/Slab.astro";
 import StepItem from "@/components/Retainership/StepItem.astro";
 import RoundedButton from "@/components/RoundedButton.astro";
 import ToolBadge from "@/components/ToolBadge.astro";
@@ -74,6 +75,13 @@ import { retainershipDetails } from "@/data/retainership";
               ))
             }
           </div>
+
+          <!-- Slab component -->
+          <Slab
+            title={retainershipDetails.slab.title}
+            images={retainershipDetails.slab.images}
+            btnText={retainershipDetails.slab.btnText}
+          />
         </div>
 
         <!-- Employee Cards -->

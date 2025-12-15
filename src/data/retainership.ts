@@ -66,6 +66,20 @@ export const retainershipDetails = {
     },
   ],
 
+  // Slab component details
+  slab: {
+    title: "Work with the most trusted people who aim for perfection",
+    images: [
+      "/images/retainership/avatar-1.png",
+      "/images/retainership/avatar-2.png",
+      "/images/retainership/avatar-1.png",
+      "/images/retainership/avatar-2.png",
+      "/images/retainership/avatar-1.png",
+      "/images/retainership/avatar-2.png",
+    ],
+    btnText: "Contact Us",
+  },
+
   // Employee card details
   employeeCardItems: [
     {

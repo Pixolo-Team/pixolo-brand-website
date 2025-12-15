@@ -54,8 +54,6 @@ export const animateMarble = (elementId: string, containerId: string) => {
       minY: -originTop,
       maxY: containerRect.height - originTop - marbleRect.height,
     };
-
-    console.log(bounds);
   };
 
   // Calculate Bounds
@@ -96,8 +94,6 @@ export const animateMarble = (elementId: string, containerId: string) => {
       posY = bounds.maxY;
       direction = -direction;
     }
-
-    console.log(posY, bounds.maxY);
 
     // --- ⚡ Motion One animation update ---
     animate(marble, { x: posX, y: posY }, { duration: 0, easing: "linear" });
