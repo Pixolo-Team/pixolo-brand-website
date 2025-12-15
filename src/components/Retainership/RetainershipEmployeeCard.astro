@@ -21,15 +21,15 @@ const { image, name, position, salary, experience } = Astro.props as props;
   <div class="bg-n-100 flex flex-col gap-4 rounded-3xl p-5 md:flex-row">
     <!-- Employee image -->
     <Image
-      src={`/images/retainership/${image}`}
+      src={image}
       alt={name}
       width={288}
       height={192}
-      class="h-48 w-full rounded-2xl object-cover md:w-[200px]"
+      class="h-48 w-full rounded-2xl object-cover transition-all duration-900 hover:scale-[1.1] md:w-[200px]"
     />
 
     <!-- Employee Content -->
-    <div class="flex w-full flex-col gap-8 md:gap-24">
+    <div class="flex w-full cursor-pointer flex-col justify-between gap-8 md:gap-24">
       <div class="flex flex-col gap-1">
         <p class="text-n-950 text-xl leading-tight font-bold md:text-2xl">
           {name}
@@ -51,7 +51,7 @@ const { image, name, position, salary, experience } = Astro.props as props;
         </div>
 
         <!-- CTA Right Arrow Icon -->
-        <a href="/" aria-label={`View details for ${name}`}>
+        <a href="" aria-label={`View details for ${name}`}>
           <Icon name="right-arrow" class="size-[18px]" />
         </a>
       </div>
