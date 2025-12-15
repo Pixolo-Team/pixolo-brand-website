@@ -4,12 +4,14 @@ import RoundedButton from "@/components/RoundedButton.astro";
 import Image from "astro/components/Image.astro";
 
 interface Props {
-  count?: string;
   title: string;
   btnText: string;
   images: string[];
 }
-const { count, title, btnText, images } = Astro.props as Props;
+const { title, btnText, images } = Astro.props as Props;
+
+const maxVisible = 4;
+const badgeCount = Math.max(0, images.length - maxVisible);
 ---
 
 <div
@@ -24,20 +26,26 @@ const { count, title, btnText, images } = Astro.props as Props;
       <!-- Avatars -->
       <div class="flex items-center">
         {
-          images.map((img, index) => (
-            <Image
-              src={img}
-              alt={`Profile ${index + 1}`}
-              width={50}
-              height={50}
-              class={`size-[50px] rounded-full object-cover ${index > 0 ? "-ml-4" : ""}`}
-            />
-          ))
+          images
+            .slice(0, maxVisible)
+            .map((imageItem, imageItemIndex) => (
+              <Image
+                src={imageItem}
+                alt={`Profile ${imageItemIndex + 1}`}
+                width={50}
+                height={50}
+                class={`size-[50px] rounded-full object-cover ${imageItemIndex > 0 ? "-ml-2" : ""}`}
+              />
+            ))
         }
       </div>
 
       <!-- Badge count -->
-      <span class="text-n-950 text-xl leading-tight font-normal">{count}</span>
+      {
+        badgeCount > 0 && (
+          <span class="text-n-950 text-xl leading-tight font-normal">+{badgeCount}</span>
+        )
+      }
     </div>
 
     <!-- Title -->
