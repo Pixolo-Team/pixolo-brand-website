@@ -28,3 +28,10 @@ const { number, title, description } = Astro.props as props;
   <!-- Description -->
   <p class="text-n-700 text-sm leading-tight font-normal">{description}</p>
 </div>
+<style>
+  .retainership-card {
+    transform: translateX(40px);
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+</style>

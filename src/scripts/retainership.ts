@@ -18,8 +18,8 @@ export const animateRetainershipSection = () => {
     );
   });
 
-  inView(".step-item", (step) => {
-    const paragraphs = step.querySelectorAll("p");
+  inView(".step-item", (stepItem) => {
+    const paragraphs = stepItem.querySelectorAll("p");
     if (!paragraphs.length) return;
 
     animate(
@@ -39,16 +39,28 @@ export const animateRetainershipSection = () => {
   inView(".retainership-cards", (retainershipCards) => {
     animate(
       retainershipCards?.querySelectorAll(".retainership-card"),
-      { x: ["50px", 0], opacity: [0, 1] },
-      { duration: 0.8, delay: stagger(0.12) },
+      {
+        opacity: 1,
+        transform: "translateX(0)",
+      },
+      {
+        duration: 0.8,
+        delay: stagger(0.12),
+      },
     );
   });
 
   inView(".employee-cards", (employeeCards) => {
     animate(
-      employeeCards?.querySelectorAll("#employee-card"),
-      { y: ["50px", 0], opacity: [0, 1] },
-      { duration: 0.8, delay: stagger(0.12) },
+      employeeCards?.querySelectorAll(".employee-card"),
+      {
+        opacity: 1,
+        transform: "translateY(0)",
+      },
+      {
+        duration: 0.8,
+        delay: stagger(0.12),
+      },
     );
   });
 };
