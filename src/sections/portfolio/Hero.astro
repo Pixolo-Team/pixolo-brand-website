@@ -4,7 +4,7 @@ import ToolBadge from "src/components/ToolBadge.astro";
 import { Image } from "astro:assets";
 
 // SVG's //
-import Ball3D from "src/assets/3d-ball.svg";
+import Ball from "src/assets/3d-ball.svg";
 import { portfolioHero } from "src/data/portfolio/hero.ts";
 const { tagTitle, mainHeading, subHeading } = portfolioHero;
 ---
@@ -12,18 +12,24 @@ const { tagTitle, mainHeading, subHeading } = portfolioHero;
 <!-- Hero Section -->
 <section>
   <!-- Container -->
-  <div class="relative container mx-auto px-6 py-24 text-center md:gap-9 md:py-40 lg:gap-12">
+  <div
+    id="hero-wrapper"
+    class="relative container mx-auto px-6 py-24 text-center md:gap-9 md:py-40 lg:gap-12"
+  >
     <!-- 3D Ball -->
-    <div
-      class="absolute inset-0 top-[278px] left-[65px] z-[-1] h-9 w-9 md:top-[400px] md:left-[200px] md:h-15 md:h-20 lg:w-16 lg:w-20 xl:top-[330px] xl:left-[120px]"
-    >
-      <Image src={Ball3D} alt={"3d big ball image"} class={"w-full"} />
-    </div>
-    <div
-      class="absolute inset-0 top-[145px] left-[252.47px] z-[-1] h-5 w-5 rotate-[-22.29deg] md:top-[450px] md:left-[780px] md:h-10 md:h-12 lg:w-11 lg:w-12 xl:top-[300px] xl:left-[1200px]"
-    >
-      <Image src={Ball3D} alt={"3d small ball image"} class={"w-full"} />
-    </div>
+    <Image
+      id="big-marble"
+      src={Ball}
+      alt="Big Marble"
+      class="absolute top-[278px] left-[65px] z-[-1] h-9 w-9 md:top-[400px] md:left-[200px] md:h-15 md:w-20 lg:h-16 lg:w-20 xl:top-[330px] xl:left-[120px]"
+    />
+
+    <Image
+      id="small-marble"
+      src={Ball}
+      alt="Small Marble"
+      class="absolute top-[145px] left-[252.47px] z-[-1] h-5 w-5 rotate-[-22.29deg] md:top-[450px] md:left-[780px] md:h-10 md:w-12 lg:h-11 lg:w-12 xl:top-[300px] xl:left-[1200px]"
+    />
 
     <!-- Content -->
     <div class="flex flex-col items-center gap-8 md:gap-9 lg:gap-10">
@@ -49,3 +55,11 @@ const { tagTitle, mainHeading, subHeading } = portfolioHero;
     </div>
   </div>
 </section>
+
+<script>
+  import { animateHeroTitle, animateMarble } from "@/scripts/hero";
+
+  animateHeroTitle();
+  animateMarble("big-marble", "hero-wrapper");
+  animateMarble("small-marble", "hero-wrapper");
+</script>
