@@ -1,6 +1,6 @@
 ---
 // COMPONENTS //
-import IndustryCard from "src/components/portfolio/IndustryCard.astro";
+import ServiceItem from "@/components/ServiceItem.astro";
 import { Icon } from "astro-icon/components";
 import ToolBadge from "src/components/ToolBadge.astro";
 
@@ -42,7 +42,7 @@ const heading = "Industries Driving Our Impact";
         {
           industries.map((item) => (
             <div class="flex min-w-[100%] snap-start justify-center md:min-w-[70%] lg:min-w-[33.333%]">
-              <IndustryCard title={item.title} image={item.image} tags={item.tags} />
+              <ServiceItem title={item.title} imageName={item.image} tags={item.tags} />
             </div>
           ))
         }
