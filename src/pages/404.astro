@@ -37,37 +37,38 @@ import ToolBadge from "@/components/ToolBadge.astro";
 </style>
 
 <Layout>
-  <main
-    class="relative container m-auto flex min-h-screen flex-col items-center justify-start overflow-hidden px-6 pt-10 text-center"
-  >
-    <!-- Badge -->
-    <div class="absolute top-5 left-3 rotate-[-13.99deg]">
-      <ToolBadge icon="alert" text="404 vibes only" />
-    </div>
+  <section>
+    <!-- Main Container -->
+    <div
+      class="relative container mx-auto flex min-h-screen flex-col items-center justify-center gap-14 overflow-hidden px-6 pt-20 pb-14 text-center md:gap-20 md:px-24 md:pt-36 md:pb-24 lg:gap-20 lg:px-64 lg:pt-64 lg:pb-24"
+    >
+      <!-- 404 Vibes Badge -->
+      <div class="absolute top-7 right-0 rotate-[-13.99deg] md:top-[63px] md:left-[47px]">
+        <ToolBadge icon="alert" text="404 vibes only" />
+      </div>
 
-    <!-- Astronaut Left -->
-    <img
-      src="/images/astronaut.png"
-      alt="astronaut"
-      class="floating absolute top-[204px] left-0 h-auto w-12 md:top-[394.13px] md:w-28"
-    />
+      <!-- Astronaut (Left) -->
+      <img
+        src="/images/astronaut.png"
+        alt="astronaut"
+        class="absolute top-[204px] left-0 h-auto w-12 md:top-1/2 md:left-12 md:w-28 md:-translate-y-1/2"
+      />
 
-    <!-- Astronaut Right -->
-    <img
-      src="/images/astronaut.png"
-      alt="astronaut"
-      class="floating absolute top-[325px] right-6 h-auto w-6 md:w-9"
-    />
+      <!-- Astronaut (Right) -->
+      <img
+        src="/images/astronaut.png"
+        alt="astronaut"
+        class="absolute top-[325px] right-6 h-auto w-6 md:top-[65%] md:right-12 md:w-9"
+      />
 
-    <div class="flex flex-col gap-14 md:gap-20">
-      <!-- 404 -->
+      <!-- 404 Image -->
       <img
         src="/images/404.png"
         alt="404"
-        class="floating mx-auto mt-13 h-[124.47px] w-[327px] md:top-[63px] md:left-3.5 md:h-[219px] md:w-xl lg:h-[295px] lg:w-[775px]"
+        class="floating mx-auto w-[269px] md:w-[576px] lg:w-[775px]"
       />
 
-      <!-- Text -->
+      <!-- Text Content -->
       <div class="contact-fill-wrap flex flex-col gap-7 leading-tight text-wrap md:gap-8">
         <h2 class="text-n-950 flex justify-center text-2xl font-bold md:text-3xl lg:text-4xl">
           “Captain, something weird just happened… again.”
@@ -80,17 +81,17 @@ import ToolBadge from "@/components/ToolBadge.astro";
           </p>
         </div>
       </div>
-    </div>
 
-    <!-- Button -->
-    <div class="mt-10 px-4">
-      <a
-        href="/"
-        class="group relative inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 font-bold text-white transition-all hover:-translate-y-1 hover:bg-blue-700 hover:shadow-2xl active:scale-95"
-      >
-        <span class="mr-2 text-xl group-hover:animate-bounce">🚀</span>
-        Abort Mission & Teleport Home
-      </a>
+      <!-- CTA Button -->
+      <div class="mt-10 px-4">
+        <a
+          href="/"
+          class="group relative inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 font-bold text-white transition-all hover:-translate-y-1 hover:bg-blue-700 hover:shadow-2xl active:scale-95"
+        >
+          <span class="mr-2 text-xl group-hover:animate-bounce">🚀</span>
+          Abort Mission & Teleport Home
+        </a>
+      </div>
     </div>
-  </main>
+  </section>
 </Layout>
