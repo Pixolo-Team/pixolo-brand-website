@@ -73,12 +73,13 @@ import { articleCardDetails } from "@/data/portfolio.ts";
           articleCardDetails.map((row) => (
             <div class="flex flex-col gap-24 md:gap-32 xl:flex-row">
               {row.map((card) => (
-                <div class="flex-1">
+                <div class="anim-fade-in-up flex-1">
                   <ArticleCard
                     thumbnail={card.thumbnail}
                     brandName={card.brandName}
                     chipItems={card.chipItems}
                     title={card.title}
+                    animateClass={card.animateClass}
                     ctaText={card.ctaText}
                   />
                 </div>
