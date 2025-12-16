@@ -5,18 +5,18 @@ import { Image } from "astro:assets";
 
 // SVG's //
 import Ball from "src/assets/3d-ball.svg";
+
+// DATA //
 import { portfolioHeroDetails } from "src/data/portfolio/hero.ts";
-const { badgeTitle, title, subHeading } = portfolioHeroDetails;
 ---
 
 <!-- Hero Section -->
 <section>
-  <!-- Container -->
   <div
     id="hero-wrapper"
     class="relative container mx-auto px-6 py-24 text-center md:gap-9 md:py-40 lg:gap-12"
   >
-    <!-- 3D Ball -->
+    <!-- Large 3D Ball  -->
     <Image
       id="big-marble"
       src={Ball}
@@ -24,6 +24,7 @@ const { badgeTitle, title, subHeading } = portfolioHeroDetails;
       class="absolute top-[278px] left-[65px] z-[-1] h-9 w-9 md:top-[400px] md:left-[200px] md:h-15 md:w-20 lg:h-16 lg:w-20 xl:top-[330px] xl:left-[120px]"
     />
 
+    <!-- Small 3D Ball -->
     <Image
       id="small-marble"
       src={Ball}
@@ -35,21 +36,21 @@ const { badgeTitle, title, subHeading } = portfolioHeroDetails;
     <div class="flex flex-col items-center gap-8 md:gap-9 lg:gap-10">
       <!-- Tool Badge -->
       <div class="flex flex-col items-center gap-8 md:gap-9 lg:gap-10">
-        <ToolBadge icon="comment" text={badgeTitle} />
+        <ToolBadge icon="comment" text={portfolioHeroDetails.badgeTitle} />
       </div>
 
       <!-- Headings -->
       <div class="flex flex-col gap-3.5 lg:gap-7">
-        <!-- Main heading -->
+        <!-- Title -->
         <p class="text-3xl leading-tight font-medium tracking-[-1] md:text-5xl lg:text-7xl">
-          {title}
+          {portfolioHeroDetails.title}
         </p>
 
-        <!-- Subheading -->
+        <!-- SubTitle -->
         <p
-          class="bg-[linear-gradient(90deg,var(--blue-500)_0%,var(--blue-300)_100%))] bg-clip-text text-sm leading-tight tracking-normal text-transparent md:text-lg lg:text-2xl"
+          class="bg-[linear-gradient(90deg,var(--blue-500)_0%,var(--blue-300)_100%)] bg-clip-text text-sm leading-tight tracking-normal text-transparent md:text-lg lg:text-2xl"
         >
-          {subHeading}
+          {portfolioHeroDetails.subTitle}
         </p>
       </div>
     </div>
