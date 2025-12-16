@@ -4,19 +4,15 @@ import { Icon } from "astro-icon/components";
 import Tooltip from "@/components/Tooltip.astro";
 
 // PROPS //
-const {
-  icon,
-  title,
-  value,
-  link = "#",
-  type = "location",
-} = Astro.props as {
+interface Props {
   icon: string;
   title: string;
   value: string;
   link?: string;
   type?: string;
-};
+}
+
+const { icon = "", title = "", value = "", link = "#", type = "location" } = Astro.props as Props;
 ---
 
 <!-- MARKUP -->
@@ -34,7 +30,7 @@ const {
     </div>
 
     <div class="flex w-[60%] flex-col">
-      <p class="font-neometric text-n-700 text-xs font-extrabold md:text-sm">{title}</p>
+      <p class="text-n-700 text-xs font-extrabold md:text-sm">{title}</p>
       <p class="text-n-950 max-w-[180px] truncate text-sm font-semibold md:text-lg">{value}</p>
     </div>
   </div>
