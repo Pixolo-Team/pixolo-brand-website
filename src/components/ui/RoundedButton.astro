@@ -7,6 +7,7 @@ interface Props {
   buttonText?: string;
   leftIcon?: string;
   rightIcon?: string;
+  id?: string;
   onClick?: string;
   type?: "button" | "submit" | "reset";
   variant?: "primary" | "secondary" | "tertiary";
@@ -20,6 +21,7 @@ const {
   onClick = "",
   type = "submit",
   variant = "primary",
+  id,
 } = Astro.props;
 
 // Variant classes
@@ -32,6 +34,7 @@ const variants = {
 
 <!-- Rounded Button -->
 <button
+  id={id}
   type={type}
   onclick={onClick}
   class={`flex items-center gap-1.5 cursor-pointer rounded-4xl px-5 py-3 md:px-6 md:py-3.5 lg:gap-2 lg:py-4 lg:px-7  

@@ -3,7 +3,7 @@
 import "@/styles/global.css";
 
 // COMPONENTS //
-import WhatsappButton from "@/components/WhatsappButton.astro";
+import WhatsappButton from "@/components/ui/WhatsappButton.astro";
 import Loading from "@/components/layout/Loading.astro";
 import Meta from "@/components/layout/Meta.astro";
 import Footer from "@/components/layout/Footer.astro";
@@ -12,11 +12,16 @@ import Header from "@/components/layout/Header.astro";
 // DATA //
 import { siteInfo } from "@/data/site-info";
 
-const { meta = {} } = Astro.props;
+interface Props {
+  meta: any;
+  showLoader: boolean;
+}
+
+const { meta = {}, showLoader = false } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <!-- Metadata -->
     <Meta
@@ -27,6 +32,7 @@ const { meta = {} } = Astro.props;
     />
   </head>
   <body>
+    <!-- Show Loader -->
     <Loading />
 
     <!-- Top menu -->
@@ -77,9 +83,8 @@ const { meta = {} } = Astro.props;
   document.addEventListener("DOMContentLoaded", () => {
     // Select all elements that should animate when visible
     const animatedElements = document.querySelectorAll(
-      ".anim-fade-up-quick, .anim-fade-in-up, .anim-fade-in-right",
+      ".anim-fade-up-quick, .anim-fade-up-slow, .anim-fade-in-up, .anim-fade-in-right",
     );
-
     // Create a new Intersection Observer to detect when elements appear in the viewport
     const observer = new IntersectionObserver(
       (entries) => {
