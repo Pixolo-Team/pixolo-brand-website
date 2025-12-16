@@ -21,33 +21,33 @@ const { logo, title, description, visitButton, showProjectButton } = projectCons
 <!-- Project Consumption Hero Section -->
 <section>
   <!-- Container -->
-  <div id="hero-wrapper" class="container flex flex-col items-center gap-14 px-6 py-24">
+  <div id="hero-wrapper" class="relative container flex flex-col items-center gap-14 px-6 py-24 md:pt-40 md:pb-28 md:gap-16 lg:pt-80 lg:pb-36 lg:gap-20">
     <!-- 3D Ball -->
     <Image
       id="big-marble"
       src={Ball}
       alt="Big Marble"
-      class="absolute top-[278px] left-[65px] z-[-1] h-9 w-9 md:top-[400px] md:left-[200px] md:h-15 md:w-20 lg:h-16 lg:w-20 xl:top-[330px] xl:left-[120px]"
+      class="absolute top-[278px] left-[65px] z-[-1] h-9 w-9 md:top-[400px] md:left-[200px] md:h-15 md:w-16 lg:h-18 lg:w-20 xl:top-[330px] xl:left-[120px]"
     />
 
     <Image
       id="small-marble"
       src={Ball}
       alt="Small Marble"
-      class="absolute top-[145px] left-[252.47px] z-[-1] h-5 w-5 rotate-[-22.29deg] md:top-[450px] md:left-[780px] md:h-10 md:w-12 lg:h-11 lg:w-12 xl:top-[300px] xl:left-[1200px]"
+      class="absolute top-[145px] left-[252.47px] z-[-1] h-5 w-5 rotate-[-22.29deg] md:top-[450px] md:left-[780px] md:h-11 md:w-12 lg:h-11 lg:w-12 xl:top-[300px] xl:left-[1200px]"
     />
 
     <!-- Header -->
-    <div class="flex flex-col items-center gap-8 text-center">
+    <div class="flex flex-col items-center gap-8 text-center md:gap-10 lg:gap-11">
       <!-- Heading -->
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 md:gap-5 lg:gap-8">
         <!-- Logo -->
-        <ThemeImage light={logo} dark={logo} alt={title} class="h-9 w-9" />
+        <ThemeImage light={logo} dark={logo} alt={title} class="h-9 w-9 md:h-10 md:w-10 lg:h-12 lg:w-12" />
         <!-- Title -->
-        <p class="text-2xl leading-tight font-normal tracking-normal">{title}</p>
+        <p class="text-2xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl">{title}</p>
       </div>
       <!-- Description -->
-      <p class="text-3xl leading-tight font-medium tracking-normal">{description}</p>
+      <p class="text-3xl leading-tight font-medium tracking-normal md:text-5xl lg:text-6xl">{description}</p>
     </div>
     <!-- Buttons -->
     <div class="flex gap-3.5">

@@ -7,11 +7,11 @@ export const projectConsumptionHero = {
   
   visitButton: {
     label: "Visit Website",
-    href: "https://www.fcbarcelona.com"
+    href: "window.location.href='/404'"
   },
   
   showProjectButton: {
     label: "Show Project",
-    href: "/projects/fc-barcelona"
+    href: "window.location.href='/404'"
   }
 };
