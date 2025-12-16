@@ -8,21 +8,32 @@ import RoundedButton from "../RoundedButton.astro";
 interface Props {
   projectName: string;
   image: string;
-  mainTitle: string;
   title: string;
-  subtitle: string;
+  descriptionTitle: string;
+  descriptionSubtitle: string;
   date: string;
   badgeItems: string[];
   ctaText1: string;
   ctaText2: string;
+  cardClass?: string;
 }
 
-const { projectName, image, mainTitle, title, subtitle, date, badgeItems, ctaText1, ctaText2 } =
-  Astro.props as Props;
+const {
+  projectName,
+  image,
+  title,
+  descriptionTitle,
+  descriptionSubtitle,
+  date,
+  badgeItems,
+  ctaText1,
+  ctaText2,
+  cardClass = "flex-col md:flex-row",
+} = Astro.props as Props;
 ---
 
 <!-- Project Card -->
-<div class="flex flex-col gap-7">
+<div class=`flex gap-7 lg:gap-12 ${cardClass}`>
   <!-- Project Card Image -->
   <Image
     src={`/images/${image}.jpg`}
@@ -33,27 +44,31 @@ const { projectName, image, mainTitle, title, subtitle, date, badgeItems, ctaTex
   />
 
   <!-- Content -->
-  <div class="flex flex-col gap-8">
+  <div class="flex flex-col justify-between gap-8 md:gap-20 lg:gap-40">
     <!-- Details Wrap -->
-    <div class="flex flex-col gap-7">
+    <div class="flex flex-col gap-7 lg:gap-8">
       <!-- Header -->
-      <div class="flex flex-col gap-2">
-        <p class="text-n-950 text-2xl leading-tight font-normal">{mainTitle}</p>
-        <div class="flex flex-wrap gap-2">
+      <div class="flex flex-col gap-2 md:gap-3">
+        <p class="text-n-950 text-2xl leading-tight font-normal md:text-3xl lg:text-4xl">{title}</p>
+        <div class="flex flex-wrap gap-2 md:gap-2.5">
           {badgeItems.map((badgeItem) => <Badge badgeText={badgeItem} />)}
         </div>
       </div>
 
       <!-- About -->
-      <div class="flex flex-col gap-4">
-        <p class="text-n-700 text-sm leading-tight font-medium">{title}</p>
-        <p class="text-n-600 text-xs leading-tight font-normal">{subtitle}</p>
-        <p class="text-n-700 text-xs leading-tight font-normal">{date}</p>
+      <div class="flex flex-col gap-4 md:gap-6 lg:gap-7">
+        <p class="text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg">
+          {descriptionTitle}
+        </p>
+        <p class="text-n-600 text-xs leading-tight font-normal md:text-sm lg:text-base">
+          {descriptionSubtitle}
+        </p>
+        <p class="text-n-700 text-xs leading-tight font-normal md:text-sm">{date}</p>
       </div>
     </div>
 
     <!-- Buttons -->
-    <div class="flex flex-row gap-3.5">
+    <div class="flex flex-row gap-3.5 md:gap-4">
       <RoundedButton buttonText={ctaText1} onClick={""} />
       <RoundedButton buttonText={ctaText2} onClick={""} variant="secondary" />
     </div>
