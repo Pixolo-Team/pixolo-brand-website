@@ -13,7 +13,7 @@ import { retainershipDetails } from "@/data/retainership";
 
 <section id="retainership-section">
   <div
-    class="container mx-auto flex flex-col items-center justify-center gap-40 overflow-hidden px-6 py-40 md:gap-52 md:px-0 lg:gap-60 lg:px-14"
+    class="container mx-auto flex flex-col items-center justify-center gap-40 overflow-hidden px-6 py-40 md:gap-52 lg:gap-60 lg:px-14"
   >
     <!-- Top Half Section -->
     <div class="flex w-full flex-col items-center gap-20 lg:gap-24">
@@ -42,12 +42,12 @@ import { retainershipDetails } from "@/data/retainership";
         <!-- Steps Items -->
         <div class="scroll-line relative flex flex-col items-center gap-48 md:gap-72">
           {
-            retainershipDetails.stepItems.map((step) => (
+            retainershipDetails.stepItems.map((step, stepIndex) => (
               <StepItem
                 number={step.number}
                 title={step.title}
                 description={step.description}
-                direction={step.direction}
+                direction={stepIndex % 2 === 0 ? "ltr" : "rtl"}
               />
             ))
           }
@@ -167,6 +167,9 @@ import { retainershipDetails } from "@/data/retainership";
 <script>
   import { animateRetainershipSection, initScrollLine } from "@/scripts/retainership.ts";
 
+  // ANimate Retainership Section
   animateRetainershipSection();
+
+  // Vertical Scroll Progress
   initScrollLine();
 </script>

@@ -14,27 +14,23 @@ export const retainershipDetails = {
       number: "01",
       title: "Tell us what you need",
       description: "We understand your project and match you with the right expert.",
-      direction: "ltr",
     },
     {
       number: "02",
       title: "Sign one simple contract",
       description: "No hiring HR, or paperwork hassles - we handle it all.",
-      direction: "rtl",
     },
     {
       number: "03",
       title: "We manage everything",
       description:
         "From training and attendance to equipment and performance — all on us, fully transparent to you.",
-      direction: "ltr",
     },
     {
       number: "04",
       title: "Work as one team",
       description:
         "Your expert works from our office, dedicated to your project — for as long as you need them.",
-      direction: "rtl",
     },
   ],
 
