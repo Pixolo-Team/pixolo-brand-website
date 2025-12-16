@@ -2,218 +2,90 @@
 //COMPONENTS //
 import ArticleCard from "@/components/ArticleCard.astro";
 import ProjectCard from "@/components/portfolio/ProjectCard.astro";
-import RoundedButton from "@/components/RoundedButton.astro";
 import ToolBadge from "@/components/ToolBadge.astro";
 import { Image } from "astro:assets";
 
 // DATA //
-const articleCardDetails = [
-  [
-    {
-      thumbnail: "/images/portfolio/eightydays-image.jpg",
-      brandName: "Eightydays",
-      chipItems: [
-        "Mobile App Development",
-        "Backend Development",
-        "Admin Panel",
-        "Payment Integration",
-        "AI Wrapper",
-        "Chat Module",
-        "API Architecture",
-        "Brand Website",
-      ],
-      title: "Eightydays – Full Travel Tech Ecosystem",
-      subtitle:
-        "A full-stack travel platform built from scratch. We designed the mobile experience, developed the backend, set up a clean and simple admin panel, and plugged in chat, payments, and an AI-powered trip planner. Everything works together as one connected ecosystem.",
-      ctaText: "View Case Study",
-    },
-    {
-      thumbnail: "/images/portfolio/richmonks-image.jpg",
-      brandName: "RichMonks",
-      chipItems: [
-        "UI/UX Design",
-        "Web App Development",
-        "Mobile App Development",
-        "Admin Dashboard",
-        "Product Architecture",
-        "Brand Website",
-        "API Integration",
-      ],
-      title: "RichMonks – Algorithmic F&O Trading Platform",
-      subtitle:
-        "RichMonks is a system-first trading platform built around the founder’s core F&O strategy. We designed and built the entire ecosystem website, app, and admin, so traders can follow structured rules instead of reacting to market chaos. It reads live NSE data, tracks market sentiment, highlights top gainers and losers, and surfaces green/blue/red stock categories in real time. The result is a disciplined trading experience driven by logic, not noise.",
-      ctaText: "View Case Study",
-    },
-  ],
-  [
-    {
-      thumbnail: "/images/portfolio/sunali-classes-image.jpg",
-      brandName: "Sunali’s Classes",
-      chipItems: [
-        "EdTech",
-        "UI/UX Design",
-        "Mobile App Development",
-        "Backend Systems",
-        "Admin Panel",
-        "Learning Analytics",
-        "Product Strategy",
-      ],
-      title: "Sunali’s Classes – Smart Learning Ecosystem",
-      subtitle:
-        "A multi-product edtech suite built from scratch: the INQ app for doubt-solving, QG for automated question paper generation, and Lwinq, a smart learning system with analytics and progress tracking. Built to scale across student batches and teachers.",
-      ctaText: "View Case Study",
-    },
-    {
-      thumbnail: "/images/portfolio/pango-image.jpg",
-      brandName: "Pango",
-      chipItems: [
-        "UI/UX Design",
-        "Product Planning",
-        "Mobile App Development",
-        "Backend API",
-        "Admin Panel",
-        "Automation",
-        "Health Tech",
-        "Custom Algorithm Development (Diet Maker)",
-      ],
-      title: "Pango – Health & Nutrition Platform",
-      subtitle:
-        "We built Pango from zero to a full ecosystem—mobile app, backend API, admin tools, and Altius, a dedicated diet-making engine. The platform simplifies nutrition planning, customer management, and real-time updates for fitness clients.",
-      ctaText: "View Case Study",
-    },
-  ],
-  [
-    {
-      thumbnail: "/images/portfolio/default-project.jpg",
-      brandName: "Gobindgarh Fort",
-      chipItems: [
-        "Game Development",
-        "Kiosk App",
-        "UI/UX Design",
-        "Interactive Media",
-        "On-Site Deployment",
-        "Tourism Tech",
-        "Creative Technology",
-      ],
-      title: "Gobindgarh Fort – Interactive Gaming & Kiosk Experience",
-      subtitle:
-        "A complete visitor-engagement experience for a heritage site. We designed and built three interactive games and a touchscreen kiosk app installed at the fort. Blending culture with technology to create an immersive attraction.",
-      ctaText: "View Case Study",
-    },
-    {
-      thumbnail: "/images/portfolio/default-project.jpg",
-      brandName: "Custom AI Research Project",
-      chipItems: [
-        "Machine Learning",
-        "AI Model Training",
-        "Frontend Interface",
-        "Data Processing",
-        "R&D",
-        "Product Prototyping",
-        "Custom Dashboard",
-      ],
-      title: "AI Research Platform – Model Training + Interface",
-      subtitle:
-        "A custom AI project where we trained the ML model, built the full inference pipeline, and created a simple, intuitive interface to test and visualize results. Demonstrates Pixolo’s capability in hands-on AI research and engineering.",
-      ctaText: "View Case Study",
-    },
-  ],
-];
+import { projectCardDetails } from "@/data/portfolio.ts";
+import { articleCardDetails } from "@/data/portfolio.ts";
 ---
 
 <!-- Portfolio Section -->
 <section>
-  <div class="flex flex-col items-center justify-center">
-    <!-- Container -->
-    <div
-      class="container flex flex-col items-center justify-center gap-20 px-6 py-16 md:gap-28 md:py-28 lg:gap-40 lg:px-14 lg:py-52"
-    >
-      <!-- Header -->
-      <div class="relative flex flex-col items-center justify-center gap-5 md:gap-6 lg:gap-7">
-        <ToolBadge icon={"service-icon"} text={"Portfolio"} />
-        <!-- Header Text -->
-        <div
-          class="z-10 flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-8xl"
-        >
-          <p class="text-balance">Building Digital Experiences That</p>
-          <p class="bg-linear-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent">
-            Perform
-          </p>
-        </div>
-        <!-- Absolute images -->
-        <div
-          class="absolute top-[157px] left-[8px] z-0 md:top-[269px] md:left-[49px] lg:top-[369px] lg:left-[384.27px]"
-        >
-          <Image
-            src="/images/portfolio/3d-ball-1.png"
-            alt={"3d big ball image"}
-            width={50.68}
-            height={48}
-            class={"w-full"}
-          />
-        </div>
-        <div
-          class="absolute top-[202.59px] left-[252.47px] z-0 md:top-[334px] md:left-[643px] lg:top-[434px] lg:left-[978.27px]"
-        >
-          <Image
-            src="/images/portfolio/3d-ball-2.png"
-            alt={"3d small ball iamge"}
-            width={28}
-            height={26.52}
-            class={"w-full"}
-          />
-        </div>
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-20 px-6 py-16 md:gap-28 md:py-28 lg:gap-40 lg:px-14 lg:py-52"
+  >
+    <!-- Header -->
+    <div class="relative flex flex-col items-center justify-center gap-5 md:gap-6 lg:gap-7">
+      <ToolBadge icon={"service-icon"} text={"Portfolio"} />
+      <!-- Header Text -->
+      <div
+        class="z-10 flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-8xl"
+      >
+        <p class="text-balance">Building Digital Experiences That</p>
+        <p class="bg-linear-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent">
+          Perform
+        </p>
       </div>
+      <!-- Absolute images -->
+      <Image
+        src="/3d-ball-1.svg"
+        alt={"3d big ball image"}
+        width={50.68}
+        height={48}
+        class={"w-[50.68px] h-[48px] md:w-[84.47px] md:h-[80px] absolute top-[157px] left-[8px] z-0 md:top-[269px] md:left-[49px] lg:top-[369px] lg:left-[384.27px]"}
+      />
+      <Image
+        src="/3d-ball-1.svg"
+        alt={"3d small ball iamge"}
+        width={28}
+        height={26.52}
+        class={"w-[28px] h-[26.52px] md:w-[48px] md:h-[45.46px] absolute top-[202.59px] left-[252.47px] z-0 md:top-[334px] md:left-[643px] lg:top-[434px] lg:left-[978.27px]"}
+      />
+    </div>
 
-      <!-- Tile Wrapper -->
-      <div class="flex flex-col">
-        <div class="z-0">
-          <ProjectCard
-            brandColor="bg-blue-500"
-            brandName="Too Yumm"
-            image="images/portfolio/too-yumm-brand-image.png"
-            logo="images/portfolio/too-yumm-logo.png"
-            title="E-commerce Platform for Local Brands"
-            subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
-            badges={["Product Design", "App Development", "Dashboard Design"]}
-          />
-        </div>
-        <div class="z-10 mt-[-120px] md:mt-[-195.66px] xl:mt-[-120px]">
-          <ProjectCard
-            brandColor="bg-red-500"
-            brandName="Reliance"
-            image="images/portfolio/reliance-brand-image.png"
-            logo="images/portfolio/reliance-logo.png"
-            title="E-commerce Platform for Local Brands"
-            subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
-            badges={["Product Design", "App Development", "Dashboard Design"]}
-          />
-        </div>
-      </div>
+    <!-- Tile Wrapper -->
+    <div class="flex flex-col">
+      {
+        projectCardDetails.map((card, index) => (
+          <div class={index == 0 ? "z-0" : "z-10 mt-[-120px] md:mt-[-195.66px] xl:mt-[-120px]"}>
+            <ProjectCard
+              brandColor={card.brandColor}
+              brandName={card.brandName}
+              image={card.image}
+              logo={card.logo}
+              title={card.title}
+              subtitle={card.subtitle}
+              badges={card.badges}
+            />
+          </div>
+        ))
+      }
+    </div>
 
-      <!-- CARDS -->
-      <div class="flex flex-col items-center justify-center gap-16 md:gap-24">
-        <!-- CARDS WRAPPER -->
-        <div class="flex flex-wrap items-center justify-center gap-24 md:gap-32">
-          <!-- ROWS -->
-          {
-            articleCardDetails.map((row) => (
-              <div class="flex flex-col gap-24 md:gap-32 xl:flex-row">
-                {row.map((card) => (
-                  <div class="flex-1">
-                    <ArticleCard
-                      thumbnail={card.thumbnail}
-                      brandName={card.brandName}
-                      chipItems={card.chipItems}
-                      title={card.title}
-                      ctaText={card.ctaText}
-                    />
-                  </div>
-                ))}
-              </div>
-            ))
-          }
-        </div>
+    <!-- CARDS -->
+    <div class="flex flex-col items-center justify-center gap-16 md:gap-24">
+      <!-- CARDS WRAPPER -->
+      <div class="flex flex-wrap items-center justify-center gap-24 md:gap-32">
+        <!-- ROWS -->
+        {
+          articleCardDetails.map((row) => (
+            <div class="flex flex-col gap-24 md:gap-32 xl:flex-row">
+              {row.map((card) => (
+                <div class="flex-1">
+                  <ArticleCard
+                    thumbnail={card.thumbnail}
+                    brandName={card.brandName}
+                    chipItems={card.chipItems}
+                    title={card.title}
+                    ctaText={card.ctaText}
+                  />
+                </div>
+              ))}
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>
