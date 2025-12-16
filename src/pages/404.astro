@@ -38,50 +38,59 @@ import ToolBadge from "@/components/ToolBadge.astro";
 
 <Layout>
   <main
-    class="relative container m-auto flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center"
+    class="relative container m-auto flex min-h-screen flex-col items-center justify-start overflow-hidden px-6 pt-10 text-center"
   >
-    <!-- 404 Vibes Badge -->
-    <div class="absolute top-55 left-90 rotate-[-13.99deg]">
+    <!-- Badge -->
+    <div class="absolute top-5 left-3 rotate-[-13.99deg]">
       <ToolBadge icon="alert" text="404 vibes only" />
     </div>
-    <!-- LEFT Astronaut -->
-    <div class="relative gap-20">
+
+    <!-- Astronaut Left -->
+    <img
+      src="/images/astronaut.png"
+      alt="astronaut"
+      class="floating absolute top-[204px] left-0 h-auto w-12 md:top-[394.13px] md:w-28"
+    />
+
+    <!-- Astronaut Right -->
+    <img
+      src="/images/astronaut.png"
+      alt="astronaut"
+      class="floating absolute top-[325px] right-6 h-auto w-6 md:w-9"
+    />
+
+    <div class="flex flex-col gap-14 md:gap-20">
+      <!-- 404 -->
       <img
-        src="/images/astronaut.png"
-        alt="astronaut"
-        class="floating absolute top-1/2 -left-50 h-[143.1px] -translate-y-1/2 rotate-[39.27deg]"
+        src="/images/404.png"
+        alt="404"
+        class="floating mx-auto mt-13 h-[124.47px] w-[327px] md:top-[63px] md:left-3.5 md:h-[219px] md:w-xl lg:h-[295px] lg:w-[775px]"
       />
 
-      <!-- RIGHT Astronaut -->
-      <img
-        src="/images/astronaut.png"
-        alt="astronaut"
-        class="floating absolute top-1/2 -right-50 h-[44.72px] rotate-[27.76deg]"
-      />
-      <!-- 404 Image -->
-      <img src="/images/404.png" alt="404" class="floating m-auto w-[540px]" />
-
-      <!-- Text Content -->
-      <div class="mx-auto mt-10 max-w-2xl space-y-4 px-6 leading-tight">
-        <h2 class="text-3xl font-bold text-white sm:text-4xl">
+      <!-- Text -->
+      <div class="contact-fill-wrap flex flex-col gap-7 leading-tight text-wrap md:gap-8">
+        <h2 class="text-n-950 flex justify-center text-2xl font-bold md:text-3xl lg:text-4xl">
           “Captain, something weird just happened… again.”
         </h2>
-        <p class="text-n-800 text-lg font-normal sm:text-xl">
-          Oops! You've ventured into the digital void. The page you are looking for has apparently
-          escaped into another dimension.
-        </p>
-      </div>
 
-      <!-- Button -->
-      <div class="mt-12">
-        <a
-          href="/"
-          class="group relative inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-4 font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-2xl focus:ring-4 focus:ring-blue-300 focus:outline-none active:scale-95"
-        >
-          <span class="mr-2 text-2xl group-hover:animate-bounce">🚀</span>
-          Abort Mission & Teleport Home
-        </a>
+        <div class="text-align-center flex h-full items-center justify-center">
+          <p class="text-n-700 text-sm font-normal md:text-2xl">
+            Oops! You've ventured into the digital void. The page you are looking for has apparently
+            escaped into another dimension.
+          </p>
+        </div>
       </div>
+    </div>
+
+    <!-- Button -->
+    <div class="mt-10 px-4">
+      <a
+        href="/"
+        class="group relative inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 font-bold text-white transition-all hover:-translate-y-1 hover:bg-blue-700 hover:shadow-2xl active:scale-95"
+      >
+        <span class="mr-2 text-xl group-hover:animate-bounce">🚀</span>
+        Abort Mission & Teleport Home
+      </a>
     </div>
   </main>
 </Layout>
