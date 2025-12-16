@@ -1,0 +1,76 @@
+---
+// STYLES //
+import ThemeImage from "@/components/ui/ThemeImage.astro";
+
+// COMPONENTS //
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+
+// OTHERS //
+import { animateHeroTitle, animateMarble } from "@/scripts/hero";
+
+// SVG's //
+import Ball from "src/assets/3d-ball.svg";
+
+// DATA //
+import { projectConsumptionHero } from "src/data/portfolio/project-consumption.ts";
+import { Image } from "astro:assets";
+
+const { logo, title, description, visitButton, showProjectButton } = projectConsumptionHero;
+---
+
+<!-- Project Consumption Hero Section -->
+<section>
+  <!-- Container -->
+  <div id="hero-wrapper" class="container flex flex-col items-center gap-14 px-6 py-24">
+    <!-- 3D Ball -->
+    <Image
+      id="big-marble"
+      src={Ball}
+      alt="Big Marble"
+      class="absolute top-[278px] left-[65px] z-[-1] h-9 w-9 md:top-[400px] md:left-[200px] md:h-15 md:w-20 lg:h-16 lg:w-20 xl:top-[330px] xl:left-[120px]"
+    />
+
+    <Image
+      id="small-marble"
+      src={Ball}
+      alt="Small Marble"
+      class="absolute top-[145px] left-[252.47px] z-[-1] h-5 w-5 rotate-[-22.29deg] md:top-[450px] md:left-[780px] md:h-10 md:w-12 lg:h-11 lg:w-12 xl:top-[300px] xl:left-[1200px]"
+    />
+
+    <!-- Header -->
+    <div class="flex flex-col items-center gap-8 text-center">
+      <!-- Heading -->
+      <div class="flex items-center gap-4">
+        <!-- Logo -->
+        <ThemeImage light={logo} dark={logo} alt={title} class="h-9 w-9" />
+        <!-- Title -->
+        <p class="text-2xl leading-tight font-normal tracking-normal">{title}</p>
+      </div>
+      <!-- Description -->
+      <p class="text-3xl leading-tight font-medium tracking-normal">{description}</p>
+    </div>
+    <!-- Buttons -->
+    <div class="flex gap-3.5">
+      <RoundedButton
+        buttonText={visitButton.label}
+        onClick={visitButton.href}
+        type="button"
+        variant="primary"
+      />
+      <RoundedButton
+        buttonText={showProjectButton.label}
+        onClick={showProjectButton.href}
+        type="button"
+        variant="secondary"
+      />
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animateHeroTitle, animateMarble } from "@/scripts/hero";
+
+  animateHeroTitle();
+  animateMarble("big-marble", "hero-wrapper");
+  animateMarble("small-marble", "hero-wrapper");
+</script>
