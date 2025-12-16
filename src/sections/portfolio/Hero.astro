@@ -5,8 +5,8 @@ import { Image } from "astro:assets";
 
 // SVG's //
 import Ball from "src/assets/3d-ball.svg";
-import { portfolioHero } from "src/data/portfolio/hero.ts";
-const { tagTitle, mainHeading, subHeading } = portfolioHero;
+import { portfolioHeroDetails } from "src/data/portfolio/hero.ts";
+const { badgeTitle, title, subHeading } = portfolioHeroDetails;
 ---
 
 <!-- Hero Section -->
@@ -35,14 +35,14 @@ const { tagTitle, mainHeading, subHeading } = portfolioHero;
     <div class="flex flex-col items-center gap-8 md:gap-9 lg:gap-10">
       <!-- Tool Badge -->
       <div class="flex flex-col items-center gap-8 md:gap-9 lg:gap-10">
-        <ToolBadge icon="comment" text={tagTitle} />
+        <ToolBadge icon="comment" text={badgeTitle} />
       </div>
 
       <!-- Headings -->
       <div class="flex flex-col gap-3.5 lg:gap-7">
         <!-- Main heading -->
         <p class="text-3xl leading-tight font-medium tracking-[-1] md:text-5xl lg:text-7xl">
-          {mainHeading}
+          {title}
         </p>
 
         <!-- Subheading -->
