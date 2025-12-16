@@ -14,8 +14,17 @@ document.addEventListener("click", (e) => {
   const icon = document.getElementById(`faq-icon-${id}`);
   if (!answer || !icon) return;
 
-  // Toggle visibility of the answer and rotate the icon
   const isHidden = answer.classList.contains("hidden");
+  // 🔹 CLOSE ALL OTHER FAQS (ADDED)
+  document.querySelectorAll("[id^='faq-answer-']").forEach((el) => {
+    if (el !== answer) el.classList.add("hidden");
+  });
+
+  document.querySelectorAll("[id^='faq-icon-']").forEach((el) => {
+    if (el !== icon) el.classList.remove("rotate-[-45deg]");
+  });
+
+  // Toggle current FAQ
   if (isHidden) {
     answer.classList.remove("hidden");
     icon.classList.add("rotate-[-45deg]");

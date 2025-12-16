@@ -8,7 +8,7 @@ const { question, answer, isOpen, index } = Astro.props;
 >
   <div class="flex items-center justify-between">
     <div
-      class="gap-3.5 px-2.5 pt-8 pb-4 text-base leading-tight md:text-2xl lg:text-3xl lg:group-hover:text-4xl"
+      class="gap-3.5 px-2.5 pt-8 pb-4 text-base leading-tight md:text-2xl lg:text-3xl lg:group-hover:scale-105 lg:group-hover:transform"
     >
       {question}
     </div>
@@ -17,7 +17,7 @@ const { question, answer, isOpen, index } = Astro.props;
       id={`faq-icon-${index}`}
       src="/images/Plus.png"
       alt="Toggle"
-      class="w-5 cursor-pointer transition-all duration-300 lg:group-hover:w-6"
+      class="w-5 cursor-pointer transition-all duration-300 lg:group-hover:scale-105 lg:group-hover:transform"
     />
   </div>
 
