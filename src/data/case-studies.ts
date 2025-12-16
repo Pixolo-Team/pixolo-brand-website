@@ -1,5 +1,6 @@
 export const caseStudySectionDetails = {
   title: "Smart Solutions to Real Challenges.",
+  badgeDetails: "Case Studies",
 };
 
 export const caseStudiesItems = [
