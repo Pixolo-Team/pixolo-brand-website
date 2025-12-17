@@ -12,47 +12,64 @@ interface Props {
   type?: string;
 }
 
-const { icon = "", title = "", value = "", link = "#", type = "location" } = Astro.props as Props;
+const { icon, title, value, link, type = "location" } = Astro.props as Props;
+
+const isCopyable = type === "phone" || type === "mail";
+const isExternal = type === "location";
 ---
 
-<!-- MARKUP -->
+<!-- Contact Card component -->
 <a
   href={link}
-  target={type === "location" ? "_blank" : undefined}
-  rel={type === "location" ? "noopener noreferrer" : undefined}
-  class="bg-n-100 hover:bg-n-200 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5 transition-colors duration-300 md:w-[440px] xl:h-[114px]"
+  target={isExternal ? "_blank" : undefined}
+  rel={isExternal ? "noopener noreferrer" : undefined}
+  class="bg-n-100 hover:bg-n-200 flex w-full cursor-pointer items-end justify-between gap-4 rounded-4xl px-5 py-4 transition-colors duration-300 lg:gap-5 lg:px-6 lg:py-5"
 >
-  <div class="flex max-w-[80%] items-center gap-2">
+  <!-- Left side: Icon + text -->
+  <div class="flex items-center gap-3.5 md:gap-4">
     <div
-      class="md :w-[64px] flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-r from-[#6C6AF2] to-[#8B77F3] shadow-sm xl:h-[74px] xl:w-[74px]"
+      class="flex size-14 items-center justify-center rounded-4xl bg-linear-to-r from-[#6C6AF2] to-[#8B77F3] shadow-sm md:size-[64px] lg:size-[74px]"
     >
-      <Icon name={icon} class="text-n-950 size-6" />
+      <!-- Icon -->
+      <Icon name={icon} class="text-n-950 size-7" />
     </div>
 
     <div class="flex w-[60%] flex-col">
-      <p class="text-n-700 text-xs font-extrabold md:text-sm xl:text-base xl:font-semibold">
+      <!-- Title -->
+      <p class="text-n-700 text-xs font-bold md:text-sm lg:text-base">
         {title}
       </p>
-      <p
-        class="text-n-950 max-w-[180px] truncate text-sm font-semibold md:text-lg xl:text-xl xl:font-bold"
-      >
+
+      <!-- Value -->
+      <p class="text-n-950 max-w-[180px] truncate text-sm font-semibold md:text-lg lg:text-xl">
         {value}
       </p>
     </div>
   </div>
 
+  <!-- Right side: Action Icons -->
   {
-    type === "phone" || type === "mail" ? (
+    isCopyable ? (
       <Tooltip text="Copy" position="top">
         <span
-          class="copy-btn bg-n-950/2 hover:bg-n-950/4 flex h-8 w-8 items-center justify-center rounded-full p-0.5 transition-colors duration-300"
+          class="copy-btn flex size-5 cursor-pointer items-center justify-center transition-colors duration-300"
           data-copy={value}
         >
-          <Icon name="copy" class="icon-copy text-n-950 size-5 hover:text-blue-500" />
-          <Icon name="check" class="icon-check hidden size-5 text-blue-500" />
+          {/* Copy Icon */}
+          <Icon
+            name="copy"
+            class="icon-copy size-5 transition-colors duration-300 hover:text-blue-500"
+          />
+
+          {/* Success Icon (shown after copy) */}
+          <Icon
+            name="check"
+            class="icon-check hidden size-5 transition-colors duration-300 hover:text-blue-500"
+          />
         </span>
       </Tooltip>
     ) : (
+      // Navigation arrow
       <Icon
         name="right-arrow"
         class="text-n-950 size-5 transition-colors duration-300 hover:text-blue-500"

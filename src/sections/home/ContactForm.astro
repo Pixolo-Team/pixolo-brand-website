@@ -2,184 +2,148 @@
 // COMPONENTS //
 import Image from "astro/components/Image.astro";
 import ToolBadge from "@/components/ToolBadge.astro";
-import { Icon } from "astro-icon/components";
-import Tooltip from "@/components/Tooltip.astro";
 import ContactCard from "@/components/ContactCard.astro";
 import InputField from "@/components/InputField.astro";
-import Dropdown from "@/components/Dropdown.astro";
-import Textarea from "@/components/Textarea.astro";
 import RoundedButton from "@/components/RoundedButton.astro";
-
-// OTHERS //
-// import {
-//   initializeFormValidation,
-//   initializeCopyButtons,
-//   initializeFormSubmission,
-// } from "@/scripts/contact-form";
 
 // SVG's //
 import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { contactSectionDetails, contactFormDetails } from "@/data/contact";
-
-// HELPERS //
-// Helper: phone value for WhatsApp link
-const phoneContact = contactSectionDetails.contactCards.find((c) => c.id === "phone")?.value || "";
 ---
 
-<section
-  id="contact-section"
-  class="relative flex flex-col py-12 md:px-8 md:py-20 xl:px-0 xl:py-32"
->
-  <div id="contact-wrapper" class="container mx-auto px-6 md:px-0 xl:max-w-[1536px]">
-    {/* Header - "Want to know more?" + "We'd love to hear from you" */}
+<section id="contact-section" class="relative">
+  <div
+    id="contact-wrapper"
+    class="container mx-auto flex flex-col gap-14 px-6 py-24 md:gap-20 md:py-28 xl:px-0 xl:py-32"
+  >
+    <!-- Section header -->
     <div class="anim-fade-up-slow text-n-950 flex w-full flex-col items-center gap-5 xl:gap-6">
-      {/* top tool badge */}
+      <!--  Tool badge component -->
       <ToolBadge
         icon="comment"
         text={contactFormDetails.badgeTitle}
         class:list={"text-n-950 md:text-base"}
       />
-      {/* subtitle text */}
+      <!-- Title -->
       <p class="text-n-950 text-center text-3xl leading-tight font-medium md:text-4xl xl:text-6xl">
         {contactFormDetails.heading}
       </p>
     </div>
 
-    {/* Contact cards (stacked) - after header */}
-    <div
-      class="mt-8 flex w-full flex-col items-center justify-center gap-4 md:mt-10 md:gap-7 md:gap-9 xl:mx-auto xl:flex-row xl:items-center xl:justify-center xl:gap-20"
-    >
-      {
-        contactSectionDetails.contactCards.map((card) => (
-          <div class="anim-fade-in-right w-full md:max-w-xs xl:max-w-sm">
-            <ContactCard
-              icon={card.icon}
-              title={card.title}
-              value={card.value}
-              type={card.id}
-              link={card.link}
-            />
-          </div>
-        ))
-      }
+    <div class="flex flex-col gap-8 md:gap-9">
+      <!-- Contact cards -->
+      <div
+        class="flex w-full flex-col items-center justify-center gap-4 md:gap-8 lg:gap-9 xl:mx-auto xl:flex-row xl:items-center xl:justify-center"
+      >
+        {
+          contactSectionDetails.contactCards.map((card) => (
+            <div class="anim-fade-in-right w-full md:w-[440px]">
+              <ContactCard
+                icon={card.icon}
+                title={card.title}
+                value={card.value}
+                type={card?.id}
+                link={card.link}
+              />
+            </div>
+          ))
+        }
 
-      {/* Location card */}
-      <div class="anim-fade-in-right w-full md:max-w-xs xl:max-w-sm">
-        <ContactCard
-          icon={contactSectionDetails.location.icon}
-          title={contactSectionDetails.location.title}
-          value={contactSectionDetails.location.address}
-          type="location"
-          link={contactSectionDetails.location.mapSearchUrl}
-        />
-      </div>
-    </div>
-
-    {/* Fill area: heading (fixed width 724px) + form (fills) - laptop layout */}
-    <div class="contact-fill-wrap mt-10 gap-20 md:gap-24 xl:flex xl:flex-row xl:gap-16 xl:p-9">
-      {/* Decorative balls positioned relative to section - Fixed width wrapper */}
-      <div class="relative w-full xl:w-[724px] xl:gap-46">
-        <p
-          class="text-n-950 xl:letter-spacing-tight text-left text-8xl leading-[125%] tracking-tight md:text-[150px] md:leading-[100%] md:tracking-tight xl:text-[200px]"
-        >
-          Lets
-        </p>
-        <Image
-          id="contact-big-marble"
-          src={Ball}
-          alt="big marble"
-          class="pointer-events-none absolute top-8 left-12 -z-10 w-[59.13px] md:top-12 md:left-20 xl:top-[35%] xl:left-[15%]"
-        />
-        <Image
-          id="contact-small-marble"
-          src={Ball}
-          alt="small marble"
-          class="pointer-events-none absolute top-16 -right-3 -z-10 w-[38.01px] rotate-[-20deg] md:top-20 md:-right-6 xl:top-[55%] xl:right-[8%]"
-        />
-        <p
-          class="text-n-950 xl:letter-spacing-tight text-right text-8xl leading-[125%] tracking-tight md:text-right md:text-[150px] md:leading-[150%] md:tracking-tight xl:text-right xl:text-[200px]"
-        >
-          get in
-        </p>
-        <p
-          class="text-n-950 xl:letter-spacing-tight text-left text-8xl leading-[125%] tracking-tight md:text-[150px] md:leading-[150%] md:tracking-tight xl:text-[200px]"
-        >
-          Touch&nbsp;!
-        </p>
+        <!-- Location card -->
+        <div class="anim-fade-in-right w-full md:w-[440px]">
+          <ContactCard
+            icon={contactSectionDetails.location.icon}
+            title={contactSectionDetails.location.title}
+            value={contactSectionDetails.location.address}
+            type="location"
+            link={contactSectionDetails.location.mapSearchUrl}
+          />
+        </div>
       </div>
 
-      {/* Form using InputField components */}
-      <div class="form-fill w-full xl:flex-1">
+      <!-- Content + Form -->
+      <div
+        class="contact-fill-wrap flex flex-col items-center gap-20 md:gap-24 lg:py-9 xl:flex xl:flex-row xl:gap-48"
+      >
+        <!-- Decorative text -->
+        <div
+          class="text-n-950 relative w-full text-8xl leading-tight tracking-tight md:text-[150px] md:leading-[100%] xl:w-[724px] xl:text-[200px]"
+        >
+          <p class="-mb-7 text-left md:mb-4">Lets</p>
+          <p class="-mb-7 text-right md:mb-4 xl:text-right">get in</p>
+          <p class="text-left">Touch&nbsp;!</p>
+
+          <!-- Decorative Marbles -->
+          <Image
+            id="contact-big-marble"
+            src={Ball}
+            alt="big marble"
+            class="pointer-events-none absolute top-8 left-12 -z-10 w-[59.13px] md:top-12 md:left-20 xl:top-[35%] xl:left-[15%]"
+          />
+          <Image
+            id="contact-small-marble"
+            src={Ball}
+            alt="small marble"
+            class="pointer-events-none absolute top-16 -right-3 -z-10 w-[38.01px] rotate-[-20deg] md:top-20 md:-right-6 xl:top-[55%] xl:right-[8%]"
+          />
+        </div>
+
+        <!-- Contact Form -->
         <form
-          class="xl:pd-36 mt-20 flex flex-col gap-14 md:gap-11 xl:gap-12"
+          class="form-fill flex w-full flex-col gap-11 xl:flex-1 xl:gap-12"
           aria-label="Contact form"
         >
-          <!-- NAME -->
-          <div class="anim-fade-up-slow pb-3 md:gap-8 md:pb-9">
+          <div class="flex flex-col gap-14">
+            <!-- Name Input field -->
             <InputField
-              label=""
               name="name"
               id="name"
               type="text"
               required={true}
               placeholder="NAME"
               showPlaceholder={true}
-              labelClass="text-n-600 text-sm leading-[125%] font-medium xl:text-20px md:text-18px"
-              inputClass="pb-3 xl:pb-8 md:pb-9"
+              extraClasses="pb-6 md:pb-9 lg:pb-8"
             />
-          </div>
 
-          <!-- PHONE NUMBER -->
-          <div class="anim-fade-up-slow pb-6 md:gap-8 md:pb-9">
+            <!-- Phone Number Input field -->
             <InputField
-              label=""
               name="phone"
               id="phone"
               type="tel"
               required={true}
               placeholder="PHONE NUMBER"
               showPlaceholder={true}
-              labelClass="text-n-600 text-sm leading-[125%] font-medium xl:text-20px md:text-18px"
-              inputClass="pb-3  xl:pb-4"
+              extraClasses="pb-6 md:pb-9 lg:pb-8"
             />
-          </div>
 
-          <!-- E-MAIL -->
-          <div class="anim-fade-up-slow pb-3 md:gap-8 md:pb-9">
+            <!-- E-mail Input field  -->
             <InputField
-              label=""
               name="email"
               id="email"
               type="email"
               required={true}
               placeholder="E-MAIL"
               showPlaceholder={true}
-              labelClass="text-n-600 text-sm leading-[125%] font-medium xl:text-20px md:text-18px"
-              inputClass="pb-3  xl:pb-4"
+              extraClasses="pb-6 md:pb-9 lg:pb-8"
             />
-          </div>
 
-          <!-- MESSAGE -->
-          <div class="anim-fade-up-slow pb-3 md:gap-8 md:pb-9">
+            <!-- Message Input field -->
             <InputField
-              label=""
               name="message"
               id="message"
               type="text"
               required={true}
               placeholder="MESSAGE"
               showPlaceholder={true}
-              labelClass="text-n-600 text-sm leading-[125%] font-medium xl:text-20px md:text-18px"
-              inputClass="pb-3 xl:pb-4"
+              extraClasses="pb-6 md:pb-9 lg:pb-8"
             />
           </div>
 
           <!-- Submit button-->
-          <div
-            class="anim-fade-up-slow relative mt-11 flex items-end justify-end md:gap-11 xl:gap-12"
-          >
+          <div class="self-end">
+            <!-- Rounded Button component -->
             <RoundedButton
               buttonText="Contact Us"
               type="button"
