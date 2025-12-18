@@ -8,9 +8,11 @@ import Loading from "@/components/layout/Loading.astro";
 import Meta from "@/components/layout/Meta.astro";
 import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
+import ContactForm from "@/components/forms/ContactForm.astro";
 
 // DATA //
 import { siteInfo } from "@/data/site-info";
+import BottomCTA from "@/components/ui/BottomCTA.astro";
 
 interface Props {
   meta: any;
@@ -70,6 +72,13 @@ const { meta = {}, showLoader = false } = Astro.props;
       href={`https://wa.me/${siteInfo.contact.phone[0].value}`}
       extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-40"
     />
+
+    <!-- Bottom CTA -->
+    <div class="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 md:bottom-10">
+      <BottomCTA />
+    </div>
+
+    <ContactForm />
   </body>
 </html>
 
