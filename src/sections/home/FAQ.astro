@@ -106,37 +106,46 @@ const data = {
 const { badge, heading, tabs, faqs } = data;
 ---
 
-<section class="flex flex-col gap-12 px-6 py-16 md:gap-14 md:py-24 lg:gap-16 lg:py-28">
-  <!-- Section Header (Centered) -->
-  <div class="flex flex-col items-center gap-3.5 text-center md:gap-6">
-    <ToolBadge text={badge.text} icon={"service-icon"} />
-    <p class="text-n-950 text-3xl leading-tight md:text-5xl lg:text-6xl">{heading}</p>
-  </div>
-
-  <!-- FAQ Content -->
-  <div class="flex flex-col gap-5 md:gap-11">
-    <!-- Tabs Wrap -->
-    <div class="mx-auto flex w-full justify-center gap-3 md:gap-5 lg:justify-center lg:gap-7">
-      <div class="min-w-0">
-        <Tabs
-          tabItems={tabs.map((tab, i) => ({
-            id: i,
-            name: tab.label,
-            isActive: i === 0,
-          }))}
-        />
-      </div>
+<section>
+  <div
+    class="container flex max-w-none flex-col gap-12 px-6 py-16 md:gap-14 md:py-24 lg:gap-16 lg:py-28"
+  >
+    <!-- Section Header (Centered) -->
+    <div class="flex flex-col items-center gap-3.5 text-center md:gap-6">
+      <ToolBadge text={badge.text} icon={"service-icon"} />
+      <p class="text-n-950 text-3xl leading-tight md:text-5xl lg:text-6xl">{heading}</p>
     </div>
 
-    <!-- Quick Answer Wrap -->
-    <div class="flex flex-col">
-      {
-        faqs.map((faq, index) => (
-          <FaqItem question={faq.question} answer={faq.answer} isOpen={faq.isOpen} index={index} />
-        ))
-      }
+    <!-- FAQ Content -->
+    <div class="flex flex-col gap-5 md:gap-11">
+      <!-- Tabs Wrap -->
+      <div class="mx-auto flex w-full justify-center gap-3 md:gap-5 lg:justify-center lg:gap-7">
+        <div class="min-w-0">
+          <Tabs
+            tabItems={tabs.map((tab, i) => ({
+              id: i,
+              name: tab.label,
+              isActive: i === 0,
+            }))}
+          />
+        </div>
+      </div>
+
+      <!-- Quick Answer Wrap -->
+      <div class="flex flex-col">
+        {
+          faqs.map((faq, index) => (
+            <FaqItem
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={faq.isOpen}
+              index={index}
+            />
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
 
-<script type="module" src="/src/scripts/faqToggle.ts"></script>
+<script src="/src/scripts/faqToggle.ts"></script>

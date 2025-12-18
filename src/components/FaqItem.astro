@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const { question, answer, isOpen, index } = Astro.props;
 ---
 
@@ -13,10 +15,9 @@ const { question, answer, isOpen, index } = Astro.props;
       {question}
     </div>
 
-    <img
+    <Icon
+      name="plus"
       id={`faq-icon-${index}`}
-      src="/images/Plus.png"
-      alt="Toggle"
       class="w-5 cursor-pointer transition-transform duration-300 lg:group-hover:scale-105"
     />
   </div>
