@@ -1,0 +1,59 @@
+---
+// COMPONENTS //
+import RoundedButton from "@/components/RoundedButton.astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  id: number;
+  title: string;
+  badgeText1: string;
+  badgeText2: string;
+  date: string;
+  btnOneText: string;
+  btnTwoText: string;
+  image: string;
+}
+
+const { id, title, badgeText1, badgeText2, date, btnOneText, btnTwoText, image } =
+  Astro.props as Props;
+---
+
+<div class="flex flex-col gap-2.5 p-2 md:gap-4 lg:gap-6">
+  <div>
+    <!-- image -->
+    <Image
+      src={`/images/miniprojects/${image}`}
+      class="h-full w-full rounded-3xl"
+      width={100}
+      height={100}
+      alt={title}
+    />
+  </div>
+  <div class="flex flex-col gap-7">
+    <!-- Content wrap -->
+    <div class="flex flex-col gap-4">
+      <!-- About wrap -->
+      <div class="flex flex-col gap-2">
+        <!-- Header-section -->
+        <p>{title}</p>
+        <div class="flex flex-row gap-1.5">
+          <!-- ToolBadge wrap -->
+          <div class="border-n-800 rounded-3xl border px-2.5 py-1 text-center">
+            <!-- Badge Text -->
+            <p class="text-n-950 text-xs leading-tight md:text-sm">{badgeText1}</p>
+          </div>
+          <div class="border-n-800 rounded-3xl border px-2.5 py-1 text-center">
+            <!-- Badge Text -->
+            <p class="text-n-950 text-xs leading-tight md:text-sm">{badgeText2}</p>
+          </div>
+        </div>
+      </div>
+      <p>{date}</p>
+    </div>
+    <div class="flex flex-row gap-3.5">
+      <!--Cta wrap  -->
+      <RoundedButton buttonText={btnOneText} />
+      <RoundedButton buttonText={btnTwoText} />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+---
+// COMPONENTS //
+import MiniProjectCard from "@/components/portfolio/MiniProjectCard.astro";
+
+const miniProjectCardsDetails = [
+  {
+    title: "Football Club Barcelona",
+    badgeText1: "Online Course",
+    badgeText2: "Online Course",
+    date: "27 June 2024",
+    btnOneText: "visit Website",
+    btnTwoText: "Show Project",
+    image: "default.jpg",
+  },
+  {
+    title: "Football Club Barcelona",
+    badgeText1: "Online Course",
+    badgeText2: "Online Course",
+    date: "27 June 2024",
+    btnOneText: "visit Website",
+    btnTwoText: "Show Project",
+    image: "default.jpg",
+  },
+];
+---
+
+<section>
+  <div class="container mx-auto flex flex-row gap-10">
+    {
+      miniProjectCardsDetails.map((card, index) => (
+        <MiniProjectCard
+          id={index}
+          title={card.title}
+          badgeText1={card.badgeText1}
+          badgeText2={card.badgeText2}
+          date={card.date}
+          btnOneText={card.btnOneText}
+          btnTwoText={card.btnTwoText}
+          image={card.image}
+        />
+      ))
+    }
+  </div>
+</section>
