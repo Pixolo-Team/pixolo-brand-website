@@ -1,0 +1,28 @@
+---
+interface Props {
+  poster: string;
+  name: string;
+  role: string;
+}
+
+const { poster, name, role } = Astro.props as Props;
+---
+
+<section>
+  <!-- Media / Video wrapper -->
+  <div>
+    <!-- Video preview -->
+    <video poster={poster} preload="metadata"></video>
+
+    <!-- Play button -->
+    <button type="button" aria-label="Play video">
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Name & role -->
+  <div>
+    <p>{name}</p>
+    <p>{role}</p>
+  </div>
+</section>
