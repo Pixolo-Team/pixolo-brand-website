@@ -3,7 +3,7 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div>
+<button id="open-contact-modal" class="cursor-pointer">
   <!-- CTA  -->
   <div
     class="text-n-950 bg-n-800/20 flex w-fit items-center justify-center gap-3 rounded-4xl py-2 pr-2 pl-7"
@@ -16,4 +16,22 @@ import { Icon } from "astro-icon/components";
       <Icon name={"menu"} />
     </div>
   </div>
-</div>
+</button>
+
+<script>
+  // Listen for a click
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    // Ensure the target is an HTMLElement
+    if (!(target instanceof HTMLElement)) return;
+    // Check if the click happened inside the CTA
+    const ctaButton = target.closest("#open-contact-modal");
+
+    // If the click is not on the CTA, do nothing
+    if (!ctaButton) return;
+
+    // Dispatch a custom event to open the contact modal
+    window.dispatchEvent(new Event("open-contact-modal"));
+  });
+</script>
