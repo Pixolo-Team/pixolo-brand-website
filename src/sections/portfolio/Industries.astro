@@ -32,21 +32,20 @@ import { portfolioIndustryDetails } from "src/data/portfolio/industries.ts";
     <!-- Cards and arrows -->
     <div class="group relative flex flex-col gap-8 md:gap-10 lg:items-end">
       <!-- Cards -->
-      <div
-        id="industry-slider"
-        class="hide-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto md:gap-8 lg:flex lg:snap-x"
-      >
-        {
-          portfolioIndustryDetails.industryItems.map((industryItem) => (
-            <div class="flex min-w-[100%] snap-start justify-center md:min-w-[70%] lg:min-w-[33.333%]">
-              <ServiceItem
-                title={industryItem.title}
-                imageName={industryItem.image}
-                tags={industryItem.tags}
-              />
-            </div>
-          ))
-        }
+      <div id="industry-slider" class="embla__viewport hide-scrollbar overflow-hidden">
+        <div class="embla__container flex gap-6 md:gap-8">
+          {
+            portfolioIndustryDetails.industryItems.map((industryItem) => (
+              <div class="flex flex-[0_0_100%] justify-center md:flex-[0_0_70%] lg:flex-[0_0_30%]">
+                <ServiceItem
+                  title={industryItem.title}
+                  imageName={industryItem.image}
+                  tags={industryItem.tags}
+                />
+              </div>
+            ))
+          }
+        </div>
       </div>
 
       <!-- Arrows -->
@@ -55,18 +54,10 @@ import { portfolioIndustryDetails } from "src/data/portfolio/industries.ts";
   </div>
 </section>
 
-<!-- Hiding horizontal scroll -->
-<style>
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
 
-  .hide-scrollbar {
-    scrollbar-width: none;
-  }
-</style>
 
 <!-- Button working logic -->
+<script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
 <script>
   import "src/scripts/industries.ts";
 </script>

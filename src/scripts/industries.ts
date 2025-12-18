@@ -1,15 +1,21 @@
-const slider = document.getElementById("industry-slider");
-const prevBtn = document.getElementById("slide-prev");
-const nextBtn = document.getElementById("slide-next");
+import EmblaCarousel from "embla-carousel";
 
-if (slider && prevBtn && nextBtn) {
-  nextBtn.addEventListener("click", () => {
-    const scrollAmount = slider.clientWidth;
-    slider.scrollBy({ left: scrollAmount, behavior: "smooth" });
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.getElementById("industry-slider");
+  const prevBtn = document.getElementById("slide-prev");
+  const nextBtn = document.getElementById("slide-next");
 
-  prevBtn.addEventListener("click", () => {
-    const scrollAmount = slider.clientWidth;
-    slider.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-  });
-}
+  if (slider && prevBtn && nextBtn) {
+    const embla = EmblaCarousel(slider, {
+      loop: false,
+    });
+
+    nextBtn.addEventListener("click", () => {
+      embla.scrollNext();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      embla.scrollPrev();
+    });
+  }
+});
