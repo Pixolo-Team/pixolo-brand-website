@@ -1,0 +1,103 @@
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+import { clientHero } from "@/data/case-studies/1";
+---
+
+<section>
+  <div
+    class="container mx-auto flex flex-col items-center justify-start gap-8 px-6 py-14 md:gap-14 md:py-16 lg:gap-16 lg:py-24"
+  >
+    <!--ToolBadge-->
+    <div class="flex flex-col items-center justify-start gap-6 md:gap-6 lg:gap-7">
+      <ToolBadge icon="package" text="UX Case Study" />
+
+      <!-- Main Heading Content -->
+      <div class="flex flex-col items-center justify-start gap-4 md:gap-4 lg:gap-5">
+        <div class="anim-fade-in-right flex items-center justify-center gap-5 md:gap-7 lg:gap-8">
+          <Image
+            src={clientHero.titleImagePath}
+            alt={clientHero.mainImageAlt}
+            width={56}
+            height={57}
+            class="h-9 w-9 md:h-12 md:w-12 lg:h-14 lg:w-14"
+          />
+          <div
+            class="text-n-950 text-start text-3xl leading-tight font-medium md:text-5xl lg:text-6xl"
+          >
+            {clientHero.title}
+          </div>
+        </div>
+        <div class="text-n-950 text-center leading-tight md:text-2xl lg:px-56 lg:text-3xl">
+          {clientHero.description}
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Image with Custom Cursor -->
+    <div class="anim-fade-in-up relative w-full" id="main-image-container">
+      <Image
+        src={clientHero.mainImagePath}
+        alt={clientHero.mainImageAlt}
+        width={1536}
+        height={616}
+        class="w-full flex-1 cursor-none rounded-3xl object-cover md:h-80 md:rounded-4xl lg:h-[616px] lg:rounded-[60px]"
+        id="main-image"
+      />
+
+      <!-- Custom Cursor -->
+      <div
+        id="custom-cursor"
+        class="pointer-events-none fixed z-50 hidden flex-col items-center justify-center gap-3"
+      >
+        <Image
+          src="/images/case-studies/1/cursor.svg"
+          alt="Cursor"
+          width={20}
+          height={30}
+          class="h-7 w-5"
+        />
+        <div class="bg-n-50 inline-flex items-center justify-center rounded-3xl px-4 py-2.5">
+          <div class="text-n-950 text-center text-base leading-5 font-normal whitespace-nowrap">
+            Visit Website
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const mainImage = document.getElementById("main-image");
+  const customCursor = document.getElementById("custom-cursor");
+  const container = document.getElementById("main-image-container");
+
+  if (mainImage && customCursor && container) {
+    mainImage.addEventListener("mouseenter", () => {
+      customCursor.classList.remove("hidden");
+      customCursor.classList.add("flex");
+      document.body.style.cursor = "none";
+    });
+
+    // Hide custom cursor and restore default cursor on leave
+    mainImage.addEventListener("mouseleave", () => {
+      customCursor.classList.add("hidden");
+      customCursor.classList.remove("flex");
+      document.body.style.cursor = "auto";
+    });
+
+    // Update custom cursor position
+    mainImage.addEventListener("mousemove", (e) => {
+      customCursor.style.left = e.clientX + "px";
+      customCursor.style.top = e.clientY + "px";
+    });
+
+    //Make the image clickable
+    mainImage.addEventListener("click", () => {
+      // TODO: Add your website URL here
+      window.open("https://", "_blank");
+    });
+  }
+</script>

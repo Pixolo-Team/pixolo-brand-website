@@ -1,3 +1,13 @@
+export const clientHero = {
+  title: "FC Barcelona",
+  description:
+    "A full digital overhaul that unified experience across 3 continents. A full digital overhaul that unified experience across 3 continents.",
+  titleImagePath: "/images/case-studies/1/client-barcelona-hero-title.png",
+  titleImageAlt: "FC Barcelona Logo",
+  mainImagePath: "/images/case-studies/1/client-fcbarcelona-hero.jpg",
+  mainImageAlt: "FC Barcelona Image",
+};
+
 export const clientNumbers = [
   { title: "Faster Onboarding", value: "3X" },
   { title: "Improved User Retention", value: "25%" },
