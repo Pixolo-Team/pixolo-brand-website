@@ -1,0 +1,31 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+---
+
+<section>
+  <div class="container mx-auto px-6 py-16 lg:px-0">
+    <div
+      class="group relative aspect-video w-full overflow-hidden rounded-3xl md:h-[400px] lg:h-[580px]"
+    >
+      <!-- Video Player -->
+      <iframe
+        id="youtube-iframe"
+        class="h-full w-full object-contain"
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;
+web-share"
+        allowfullscreen></iframe>
+
+      <!-- Custom Play Button Overlay -->
+      <div
+        id="play-overlay"
+        class="text-n-950 lg:bg-n-50 absolute right-1/2 bottom-1/2 z-1 flex size-6 translate-1/2 cursor-pointer items-center justify-center rounded-full outline -outline-offset-1 transition-opacity duration-300 md:right-11 md:bottom-11 md:size-12 lg:right-12 lg:bottom-14 lg:size-14 lg:outline-0"
+      >
+        <Icon name="play-icon" class="size-2 md:size-3.5" />
+      </div>
+    </div>
+  </div>
+</section>
