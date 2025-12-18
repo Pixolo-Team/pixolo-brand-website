@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 
 // Define props interface with all field properties
 export interface Props {
-  label: string;
+  label?: string;
   name: string;
   id: string;
   placeholder?: string;
@@ -14,6 +14,7 @@ export interface Props {
   errorMessages?: string[];
   isError?: boolean;
   isDisabled?: boolean;
+  extraClasses?: string;
 }
 
 // Destructure props with default values
@@ -28,17 +29,24 @@ const {
   errorMessages = [],
   isError = false,
   isDisabled = false,
+  extraClasses = "",
 } = Astro.props;
 ---
 
 <!-- Container for input field and error message -->
-<div class="flex w-full flex-col gap-3">
+<div class:list={`flex w-full flex-col gap-3`}>
   <!-- Container for label and Input with bottom border -->
   <div
-    class="border-n-300 focus-within:border-n-900 flex items-center gap-3 border-b pb-3 md:gap-4 md:pb-4"
+    class={`border-n-300 focus-within:border-n-900 flex items-center gap-3 border-b pb-3 md:gap-4 md:pb-4 ${extraClasses}`}
   >
     <!-- Label for the input field -->
-    <!-- <label for={id} class="text-sm font-medium md:text-base lg:text-lg">{label}</label> -->
+    {
+      label !== "" && (
+        <label for={id} class="text-sm font-medium md:text-base lg:text-lg">
+          {label}
+        </label>
+      )
+    }
 
     <!-- Input field with dynamic attributes from props -->
     <input
@@ -48,7 +56,9 @@ const {
       placeholder={showPlaceholder ? placeholder : undefined}
       name={name}
       required={required}
-      class={`placeholder-n-600 flex-1 text-sm outline-none focus:border-none lg:text-base ${isDisabled ? " opacity-50 cursor-not-allowed" : ""}`}
+      class:list={[
+        `placeholder-n-600 flex-1 text-sm outline-none focus:border-none lg:text-base ${isDisabled ? "cursor-not-allowed opacity-50" : ""}`,
+      ]}
     />
   </div>
 
