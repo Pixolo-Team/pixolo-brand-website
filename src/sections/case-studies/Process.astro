@@ -1,6 +1,7 @@
 ---
 // COMPONENTS //
 import SectionHeader from "@/components/SectionHeader.astro";
+import ClientProcessTimeline from "@/components/case-studies/ClientProcessTimeline.astro";
 
 // DATA //
 import { processSteps } from "@/data/case-studies/1";
@@ -17,37 +18,12 @@ import { processSteps } from "@/data/case-studies/1";
     />
 
     <!-- Main Contetnt -->
-    <div class="flex flex-col gap-6">
+    <div class="flex flex-col items-center gap-6">
       <p class="text-n-800 text-center text-lg md:text-xl">Our Process</p>
 
-      <div class="relative h-[500px] md:h-[800px]">
-        <!-- Vertical Line  -->
-        <div
-          class="bg-n-800 absolute top-0 bottom-0 left-[8%] w-0.5 md:left-1/2 md:-translate-x-1/2"
-        >
-        </div>
-        <!-- Dots Container -->
-        <div
-          class="absolute top-0 bottom-0 left-[8%] flex flex-col justify-between gap-32 md:left-1/2 md:gap-40"
-        >
-          {
-            processSteps.map((processStepItem, processStepIndex) => (
-              <div class="relative flex items-center gap-10">
-                <div class="flex gap-12 md:absolute md:right-[350px] md:flex-row-reverse">
-                  <div class="bg-n-800 relative size-5 -translate-x-1/2 rounded-full" />
-                  <div class="relative -top-1.5 flex gap-4 leading-tight md:flex-row-reverse">
-                    {/* Title & Number */}
-                    <p class="text-[28px]">{processStepIndex + 1}</p>
-                    <p class="text-[28px] font-medium">{processStepItem.title}</p>
-                  </div>
-                </div>
-                {/* Process Description */}
-                <p class="hidden md:block md:pl-9 md:text-lg">{processStepItem.description}</p>
-              </div>
-            ))
-          }
-        </div>
-      </div>
+      <ClientProcessTimeline height={300} stepCount={processSteps.length} />
     </div>
   </div>
 </section>
+
+

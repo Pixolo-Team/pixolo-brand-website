@@ -1,0 +1,44 @@
+---
+interface Props {
+  height: number;
+  stepCount: number;
+}
+
+const { height, stepCount } = Astro.props;
+---
+
+<div
+  id="outer-line"
+  class="bg-n-950 relative h-[var(--timeline-height)] w-2 overflow-hidden"
+  style={`--timeline-height: ${height * stepCount}px`}
+>
+  <div id="internal-line" class="h-2.5 w-2 bg-red-500"></div>
+</div>
+
+<script>
+  window.onload = () => {
+    const internalLine = document.getElementById("internal-line");
+    const outerLine = document.getElementById("outer-line");
+    const triggerPositionTop = window.innerHeight / 4;
+    const internalLineHeight = internalLine.style.height;
+
+    // console.log(internalLineHeight);
+    const outerLinePosition = outerLine?.getBoundingClientRect();
+    // console.log(outerLinePosition.height);
+
+    window.addEventListener("scroll", () => {
+      const position = internalLine.getBoundingClientRect();
+      console.log(triggerPositionTop, position.top, outerLinePosition.height);
+      let progress = ((triggerPositionTop - position.top) / outerLinePosition.height) * 100;
+      progress = progress < 0 ? 0 : progress > 100 ? 100 : progress;
+      let innerLineHeight = (progress * 116) / 100;
+      internalLine.style.transform = "scaleY(" + innerLineHeight + ")";
+      console.log(innerLineHeight);
+      console.log(progress);
+      //   if (position.top < halfScreenHeight) {
+      //     console.log("Top:", position.top);
+      //     console.log("Bottom:", position.bottom);
+      //   }
+    });
+  };
+</script>
