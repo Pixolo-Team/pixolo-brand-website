@@ -6,41 +6,49 @@ import RoundedButton from "../RoundedButton.astro";
 
 //PROPS//
 interface Props {
-  projectName: string;
+  name: string;
   image: string;
   title: string;
-  descriptionTitle: string;
-  descriptionSubtitle: string;
+  subtitle: string;
+  description: string;
   date: string;
   badgeItems: string[];
-  ctaText1: string;
-  ctaText2: string;
-  cardClass?: string;
+  btnOneText: string;
+  btnTwoText: string;
+  view?: string;
+  animate?: string;
 }
 
 const {
-  projectName,
+  name,
   image,
   title,
-  descriptionTitle,
-  descriptionSubtitle,
+  subtitle,
+  description,
   date,
   badgeItems,
-  ctaText1,
-  ctaText2,
-  cardClass = "flex-col md:flex-row",
+  btnOneText,
+  btnTwoText,
+  view = "grid",
+  animate = "anim-fade-in-up",
 } = Astro.props as Props;
 ---
 
 <!-- Project Card -->
-<div class=`flex gap-7 lg:gap-12 ${cardClass}`>
+<div
+  class={view == "grid"
+    ? `flex gap-7 lg:gap-12 flex-col md:flex-row`
+    : `flex gap-7 lg:gap-12 flex-col`}
+>
   <!-- Project Card Image -->
   <Image
     src={`/images/${image}.jpg`}
-    alt={`Image for ${projectName}`}
+    alt={`Image for ${name}`}
     width={327}
     height={238}
-    class="h-full w-full rounded-3xl"
+    class={view == "grid"
+      ? `h-full w-full md:w-[370px] md:h-[400px] xl:w-[744px] xl:h-[498px] rounded-3xl ${animate}`
+      : `h-full w-full rounded-3xl ${animate}`}
   />
 
   <!-- Content -->
@@ -49,28 +57,38 @@ const {
     <div class="flex flex-col gap-7 lg:gap-8">
       <!-- Header -->
       <div class="flex flex-col gap-2 md:gap-3">
-        <p class="text-n-950 text-2xl leading-tight font-normal md:text-3xl lg:text-4xl">{title}</p>
-        <div class="flex flex-wrap gap-2 md:gap-2.5">
+        <p
+          class=`text-n-950 text-2xl leading-tight font-normal md:text-3xl lg:text-4xl ${animate} delay-800`
+        >
+          {title}
+        </p>
+        <div class=`flex flex-wrap gap-2 md:gap-2.5 ${animate} delay-1000`>
           {badgeItems.map((badgeItem) => <Badge badgeText={badgeItem} />)}
         </div>
       </div>
 
       <!-- About -->
       <div class="flex flex-col gap-4 md:gap-6 lg:gap-7">
-        <p class="text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg">
-          {descriptionTitle}
+        <p
+          class=`text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg ${animate} delay-1400`
+        >
+          {subtitle}
         </p>
-        <p class="text-n-600 text-xs leading-tight font-normal md:text-sm lg:text-base">
-          {descriptionSubtitle}
+        <p
+          class=`text-n-600 text-xs leading-tight font-normal md:text-sm lg:text-base ${animate} delay-1600`
+        >
+          {description}
         </p>
-        <p class="text-n-700 text-xs leading-tight font-normal md:text-sm">{date}</p>
+        <p class=`text-n-700 text-xs leading-tight font-normal md:text-sm ${animate} delay-1800`>
+          {date}
+        </p>
       </div>
     </div>
 
     <!-- Buttons -->
-    <div class="flex flex-row gap-3.5 md:gap-4">
-      <RoundedButton buttonText={ctaText1} onClick={""} />
-      <RoundedButton buttonText={ctaText2} onClick={""} variant="secondary" />
+    <div class=`flex flex-row gap-3.5 md:gap-4 ${animate} delay-2400`>
+      <RoundedButton buttonText={btnOneText} onClick={""} />
+      <RoundedButton buttonText={btnTwoText} onClick={""} variant="secondary" />
     </div>
   </div>
 </div>

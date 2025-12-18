@@ -3,16 +3,18 @@
 import ProjectCard from "@/components/portfolio-showcase/ProjectCard.astro";
 ---
 
-<div class="flex flex-col items-center justify-center gap-4 px-10">
+<div class="container mx-auto flex flex-col items-center justify-center gap-4">
   <ProjectCard
-    projectName={"default-project"}
+    name={"default-project"}
     image={"default-showcase-project-image"}
     title={"Sai International School"}
-    descriptionTitle={"A Fintech Project"}
-    descriptionSubtitle={"Sai International School is known for its strong academic foundation, modern learning environment, and a holistic approach that blends education, values, and real-world skills."}
+    subtitle={"A Fintech Project"}
+    description={"Sai International School is known for its strong academic foundation, modern learning environment, and a holistic approach that blends education, values, and real-world skills."}
     date={"July 2024"}
     badgeItems={["Website", "Mobile App", "Laptop"]}
-    ctaText1={"View Website"}
-    ctaText2={"Show Project"}
+    btnOneText={"View Website"}
+    btnTwoText={"Show Project"}
+    view={"grid"}
+    animate={"anim-fade-in-up"}
   />
 </div>
