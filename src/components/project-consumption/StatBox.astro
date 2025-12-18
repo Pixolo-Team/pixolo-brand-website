@@ -1,0 +1,46 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  index: number;
+  total: number;
+}
+
+const { value, label, index, total } = Astro.props;
+---
+
+<!-- Stat Box -->
+<div
+  class="relative flex flex-col gap-4 px-5 py-4 md:gap-5 md:px-9 md:py-5 lg:pt-6 lg:pr-14 lg:pb-9 lg:pl-9"
+>
+  <!-- Right dashed border -->
+  <span
+    class:list={[
+      "text-n-500 pointer-events-none absolute top-0 right-0 hidden h-full w-px",
+      index % 2 === 0 ? "md:block" : "md:hidden",
+      index % 4 !== 3 ? "lg:block" : "lg:hidden",
+    ]}
+    style="background: repeating-linear-gradient(
+      to bottom,
+      currentColor 0 6px,
+      transparent 6px 12px
+    );"
+  ></span>
+
+  <!-- Bottom dashed border -->
+  <span
+    class:list={["text-n-500 pointer-events-none absolute bottom-0 left-0 h-px w-full"]}
+    style="background: repeating-linear-gradient(
+      to right,
+      currentColor 0 6px,
+      transparent 6px 12px
+    );"
+  ></span>
+  <!-- Content -->
+  <p class="text-n-950 text-4xl leading-tight font-normal tracking-[-2%] md:text-5xl lg:text-6xl">
+    {value}
+  </p>
+  <p class="text-n-700 text-sm leading-tight font-normal tracking-normal md:text-base lg:text-lg">
+    {label}
+  </p>
+</div>

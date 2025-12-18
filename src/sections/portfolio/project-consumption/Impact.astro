@@ -1,0 +1,39 @@
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import StatBox from "src/components/project-consumption/StatBox.astro";
+
+// DATA //
+import { impactContent } from "src/data/portfolio/project-consumption/impact";
+---
+
+<!-- Impact Section -->
+<section>
+  <!-- Container -->
+  <div class="md:-gap-16 container mx-auto flex flex-col gap-10 px-6 py-20 md:py-24 lg:py-28">
+    <!-- Tool Badge and Heading -->
+    <div class="flex flex-col items-center gap-3.5 md:gap-4">
+      <!-- Tool Badge -->
+      <ToolBadge icon={impactContent.badgeIcon} text={impactContent.badgeText} />
+      <!-- Heading -->
+      <p
+        class="text-center text-3xl leading-tight font-normal tracking-[-2%] md:text-4xl lg:text-5xl"
+      >
+        {impactContent.heading}
+      </p>
+    </div>
+    <!-- StatsRows -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      {
+        impactContent.stats.map((stat, index) => (
+          <StatBox
+            value={stat.value}
+            label={stat.label}
+            index={index}
+            total={impactContent.stats.length}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
