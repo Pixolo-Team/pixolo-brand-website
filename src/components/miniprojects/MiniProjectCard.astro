@@ -1,0 +1,39 @@
+---
+import ToolBadge from "../ToolBadge.astro";
+import Badge from "../Badge.astro";
+import RoundedButton from "../RoundedButton.astro";
+---
+
+<div class="flex flex-col gap-2.5 p-2 md:gap-4 lg:gap-6">
+  <div>
+    <!-- image -->
+    <img src="/images/miniprojects/default.jpg" class="rounded-3xl" />
+  </div>
+  <div class="flex flex-col gap-7">
+    <!-- Content wrap -->
+    <div class="flex flex-col gap-4">
+      <!-- about wrap -->
+      <div class="flex flex-col gap-2">
+        <!-- Header-section -->
+        <p>Football Club Barcelona</p>
+        <div class="flex flex-row gap-1.5">
+          <!-- toolBadge wrap -->
+          <div class="border-n-800 rounded-3xl border px-2.5 py-1 text-center">
+            <!-- Badge Text -->
+            <p class="text-n-950 text-xs leading-tight md:text-sm">Online Course</p>
+          </div>
+          <div class="border-n-800 rounded-3xl border px-2.5 py-1 text-center">
+            <!-- Badge Text -->
+            <p class="text-n-950 text-xs leading-tight md:text-sm">Online Course</p>
+          </div>
+        </div>
+      </div>
+      <p>27 June 2024</p>
+    </div>
+    <div class="flex flex-row gap-3.5">
+      <!--cta wrap  -->
+      <RoundedButton buttonText="visit Website" />
+      <RoundedButton buttonText="Show Project" />
+    </div>
+  </div>
+</div>
