@@ -10,9 +10,11 @@ interface Props {
 const { poster, name, role } = Astro.props as Props;
 ---
 
-<div class="flex w-full flex-col gap-4">
+<div class="flex w-full flex-col gap-4 md:flex-row md:gap-7 xl:flex-col xl:gap-5">
   <!-- Media / Video wrapper -->
-  <div class="relative h-[220px] w-full overflow-hidden rounded-3xl">
+  <div
+    class="relative aspect-4/5 w-full overflow-hidden rounded-3xl md:aspect-auto md:h-[520px] xl:aspect-2/1"
+  >
     <!-- Video preview -->
     <video poster={poster} preload="metadata" class="h-full w-full object-cover"></video>
 
@@ -20,18 +22,18 @@ const { poster, name, role } = Astro.props as Props;
     <button
       type="button"
       aria-label="Play video"
-      class="bg-n-800 absolute right-3 bottom-3 flex size-12 items-center justify-center rounded-full"
+      class="border-n-950 xl:bg-n-800 absolute right-3 bottom-3 flex size-10 items-center justify-center rounded-full border md:right-5 md:bottom-5 md:size-14 md:border-2 xl:border-0"
     >
-      <Icon name="whatsapp-logo" class="text-n-50 size-4" />
+      <Icon name="play" class="text-n-950 size-3 md:size-[17.16px]" />
     </button>
   </div>
 
   <!-- Name & role -->
-  <div class="flex flex-col gap-1">
-    <p class="text-n-950 text-lg leading-[125%] font-medium">
+  <div class="flex flex-col gap-0.5 md:justify-center xl:px-5">
+    <p class="text-n-950 text-2xl leading-[125%] font-medium md:text-3xl">
       {name}
     </p>
-    <p class="text-n-700 text-sm leading-[125%] font-normal">
+    <p class="text-n-700 text-base leading-[125%] font-normal md:text-xl">
       {role}
     </p>
   </div>
