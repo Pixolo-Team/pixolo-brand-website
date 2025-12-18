@@ -49,7 +49,10 @@ const { brandColor, brandName, image, logo, title, subtitle, badges } = Astro.pr
 
       <!-- Rounded Button -->
       <div>
-        <RoundedButton buttonText={"View Case Study"} />
+        <RoundedButton
+          buttonText={"View Case Study"}
+          onClick={'window.location.href = "http://localhost:4321/404"'}
+        />
       </div>
     </div>
   </div>
