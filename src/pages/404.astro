@@ -4,61 +4,47 @@ import ToolBadge from "@/components/ToolBadge.astro";
 ---
 
 <style>
-  /* Floating animation for astronauts */
   @keyframes float {
     0% {
-      transform: translateY(0px);
+      transform: translateY(0);
     }
     50% {
       transform: translateY(-15px);
     }
     100% {
-      transform: translateY(0px);
+      transform: translateY(0);
     }
   }
 
   .floating {
     animation: float 4s ease-in-out infinite;
   }
-
-  /* Slow rotation effect */
-  @keyframes rotate-slow {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  .rotating {
-    animation: rotate-slow 20s linear infinite;
-  }
 </style>
 
 <Layout>
   <section>
-    <!-- Main Container -->
     <div
-      class="relative container mx-auto flex min-h-screen flex-col items-center justify-center gap-14 overflow-hidden px-6 pt-20 pb-14 text-center md:gap-20 md:px-24 md:pt-36 md:pb-24 lg:gap-20 lg:px-64 lg:pt-64 lg:pb-24"
+      class="relative container mx-auto flex min-h-screen max-w-[1440px] flex-col items-center gap-14 px-5 px-6 pt-20 pb-14 text-center md:gap-20 md:px-12 md:pt-36 lg:px-0 lg:pt-64"
     >
       <!-- 404 Vibes Badge -->
-      <div class="absolute top-7 right-0 rotate-[-13.99deg] md:top-[63px] md:left-[47px]">
+      <div
+        class="absolute top-3.5 left-0 rotate-[-14deg] md:top-20 md:right-auto md:left-10 lg:top-45 lg:left-70"
+      >
         <ToolBadge icon="alert" text="404 vibes only" />
       </div>
 
-      <!-- Astronaut (Left) -->
+      <!-- Astronaut Left -->
       <img
         src="/images/astronaut.png"
         alt="astronaut"
-        class="absolute top-[204px] left-0 h-auto w-12 md:top-1/2 md:left-12 md:w-28 md:-translate-y-1/2"
+        class="absolute top-[220px] left-0 w-10 md:top-1/2 md:left-10 md:w-24 md:-translate-y-1/2"
       />
 
-      <!-- Astronaut (Right) -->
+      <!-- Astronaut Right -->
       <img
         src="/images/astronaut.png"
         alt="astronaut"
-        class="absolute top-[325px] right-6 h-auto w-6 md:top-[65%] md:right-12 md:w-9"
+        class="absolute top-[340px] right-5 w-6 md:top-[65%] md:right-10 md:w-9"
       />
 
       <!-- 404 Image -->
@@ -68,25 +54,27 @@ import ToolBadge from "@/components/ToolBadge.astro";
         class="floating mx-auto w-[269px] md:w-[576px] lg:w-[775px]"
       />
 
-      <!-- Text Content -->
-      <div class="contact-fill-wrap flex flex-col gap-7 leading-tight text-wrap md:gap-8">
-        <h2 class="text-n-950 flex justify-center text-2xl font-bold md:text-3xl lg:text-4xl">
+      <!-- Text -->
+      <div class="flex flex-col gap-7 md:gap-8">
+        <h2
+          class="text-n-950 mx-auto text-2xl leading-tight font-bold md:text-3xl lg:max-w-[620px] lg:text-4xl"
+        >
           “Captain, something weird just happened… again.”
         </h2>
 
-        <div class="text-align-center flex h-full items-center justify-center">
-          <p class="text-n-700 text-sm font-normal md:text-2xl">
-            Oops! You've ventured into the digital void. The page you are looking for has apparently
-            escaped into another dimension.
-          </p>
-        </div>
+        <p
+          class="text-n-700 mx-auto text-sm leading-tight font-normal md:max-w-[720px] md:text-2xl lg:max-w-[860px] lg:text-balance"
+        >
+          Oops! You've ventured into the digital void. The page you are looking for has apparently
+          escaped into another dimension.
+        </p>
       </div>
 
-      <!-- CTA Button -->
-      <div class="mt-10 px-4">
+      <!-- CTA -->
+      <div class="mt-10">
         <a
           href="/"
-          class="group relative inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 font-bold text-white transition-all hover:-translate-y-1 hover:bg-blue-700 hover:shadow-2xl active:scale-95"
+          class="group inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 font-bold text-white transition-all hover:-translate-y-1 hover:bg-blue-700 hover:shadow-2xl active:scale-95"
         >
           <span class="mr-2 text-xl group-hover:animate-bounce">🚀</span>
           Abort Mission & Teleport Home
