@@ -1,0 +1,57 @@
+---
+import ToolBadge from "@/components/ToolBadge.astro";
+import { Image } from "astro:assets";
+---
+
+<section>
+  <div
+    class="container mx-auto flex flex-col gap-7 px-6 py-16 md:gap-12 md:py-24 lg:gap-16 lg:py-28"
+  >
+    <div class="flex flex-col items-center gap-3 md:gap-4">
+      <ToolBadge icon="service-icon" text="Summary" />
+      <p
+        class="font-regular text-center text-3xl leading-tight tracking-tight md:text-4xl lg:text-5xl"
+      >
+        Inside the Build: A Clear and Creative Project Walkthrough
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-6 md:gap-9 lg:flex-row lg:gap-14">
+      <div>
+        <Image
+          src="/images/projectintroduction/upscale_image.jpg"
+          width={100}
+          height={100}
+          alt={"Upscale_image"}
+          class="h-full w-full rounded-3xl"
+        />
+      </div>
+      <div class="flex flex-col gap-7 md:gap-10 lg:gap-20">
+        <div class="gap-1 md:gap-2 lg:gap-2.5">
+          <h3 class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
+            About this project
+          </h3>
+          <p class="text-sm leading-normal font-normal md:text-lg">
+            FC Barcelona is a legendary football club known for its winning spirit, iconic players,
+            and dynamic, attacking style of play. Inspired by a strong culture and global fanbase,
+            the club continues to set standards in modern football.
+          </p>
+        </div>
+        <div class="gap-1 md:gap-2 lg:gap-2.5">
+          <h3 class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
+            Target Audience
+          </h3>
+          <p class="text-sm leading-normal font-normal md:text-lg">
+            Kids and GenZ who loves football
+          </p>
+        </div>
+        <div class="gap-1 md:gap-2 lg:gap-2.5">
+          <h3 class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">Purpose</h3>
+          <p class="text-sm leading-normal font-normal">
+            To help kids and parents their performance
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
