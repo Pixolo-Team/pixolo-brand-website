@@ -1,0 +1,20 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { portfolioId: "1" } },
+    { params: { portfolioId: "2" } },
+    { params: { portfolioId: "3" } },
+  ];
+}
+
+const { portfolioId } = Astro.params;
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+
+// SECTIONS //
+import Impact from "@/sections/portfolio/project-consumption/Impact.astro";
+---
+
+<Layout>
+  <Impact />
+</Layout>

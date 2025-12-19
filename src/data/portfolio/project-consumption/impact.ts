@@ -5,28 +5,28 @@ export const impactContent = {
 
   stats: [
     {
-      value: "22+",
-      label: "Screens Designed across core and secondary flows",
+      statValue: "22+",
+      title: "Screens Designed across core and secondary flows",
     },
     {
-      value: "4",
-      label: "API Integrations mapped and connected",
+      statValue: "4",
+      title: "API Integrations mapped and connected",
     },
     {
-      value: "3",
-      label: "User Persona validated through testing",
+      statValue: "3",
+      title: "User Persona validated through testing",
     },
     {
-      value: "40%",
-      label: "Faster Onboarding after flow optimisation",
+      statValue: "40%",
+      title: "Faster Onboarding after flow optimisation",
     },
     {
-      value: "92%",
-      label: "Task Completion Rate in final usability test",
+      statValue: "92%",
+      title: "Task Completion Rate in final usability test",
     },
     {
-      value: "22%",
-      label: "Reduced Support Ticket after IA rollout",
+      statValue: "22%",
+      title: "Reduced Support Ticket after IA rollout",
     },
   ],
 };

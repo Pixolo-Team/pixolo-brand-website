@@ -3,15 +3,14 @@ interface Props {
   value: string;
   label: string;
   index: number;
-  total: number;
 }
 
-const { value, label, index, total } = Astro.props;
+const { value, label, index } = Astro.props;
 ---
 
 <!-- Stat Box -->
 <div
-  class="relative flex flex-col gap-4 px-5 py-4 md:gap-5 md:px-9 md:py-5 lg:gap-14 lg:pt-6 lg:pr-14 lg:pb-9 lg:pl-9"
+  class="relative flex flex-col gap-4 px-5 py-4 md:gap-5 md:px-9 md:py-5 lg:gap-5 lg:pt-6 lg:pr-14 lg:pb-9 lg:pl-9"
 >
   <!-- Right dashed border -->
   <span
