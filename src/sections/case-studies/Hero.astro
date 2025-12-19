@@ -36,7 +36,7 @@ import { clientHero } from "@/data/case-studies/1";
       </div>
     </div>
 
-    <!-- Main Image with Custom Cursor -->
+    <!-- Main Image -->
     <div class="anim-fade-in-up relative w-full" id="main-image-container">
       <Image
         src={clientHero.mainImagePath}
@@ -47,22 +47,10 @@ import { clientHero } from "@/data/case-studies/1";
         id="main-image"
       />
 
-      <!-- Custom Cursor -->
-      <div
-        id="custom-cursor"
-        class="pointer-events-none fixed z-50 hidden flex-col items-center justify-center gap-3"
-      >
-        <Image
-          src="/images/case-studies/1/cursor.svg"
-          alt="Cursor"
-          width={20}
-          height={30}
-          class="h-7 w-5"
-        />
+      <!-- Visit Website Hover Feature -->
+      <div id="custom-cursor" class="fixed z-50 hidden">
         <div class="bg-n-50 inline-flex items-center justify-center rounded-3xl px-4 py-2.5">
-          <div class="text-n-950 text-center text-base leading-5 font-normal whitespace-nowrap">
-            Visit Website
-          </div>
+          <div class="text-n-950 text-center leading-tight whitespace-nowrap">Visit Website</div>
         </div>
       </div>
     </div>
@@ -72,16 +60,15 @@ import { clientHero } from "@/data/case-studies/1";
 <script>
   const mainImage = document.getElementById("main-image");
   const customCursor = document.getElementById("custom-cursor");
-  const container = document.getElementById("main-image-container");
 
-  if (mainImage && customCursor && container) {
+  if (mainImage && customCursor) {
     mainImage.addEventListener("mouseenter", () => {
       customCursor.classList.remove("hidden");
       customCursor.classList.add("flex");
       document.body.style.cursor = "none";
     });
 
-    // Hide custom cursor and restore default cursor on leave
+    // Hide cursor
     mainImage.addEventListener("mouseleave", () => {
       customCursor.classList.add("hidden");
       customCursor.classList.remove("flex");
@@ -97,7 +84,7 @@ import { clientHero } from "@/data/case-studies/1";
     //Make the image clickable
     mainImage.addEventListener("click", () => {
       // TODO: Add your website URL here
-      window.open("https://", "_blank");
+      // window.open("https://", "_blank");
     });
   }
 </script>
