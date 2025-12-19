@@ -9,6 +9,13 @@ const { value, label, index } = Astro.props;
 ---
 
 <!-- Stat Box -->
+<!-- <div
+  class:list={[
+    "border-n-500 flex flex-col gap-4 border-b border-dashed px-5 py-4",
+    index % 2 === 0 ? "md:border-r" : "md:border-r-0",
+    index % 4 === 3 ? "lg:border-r-0" : "lg:border-r",
+  ]}
+> -->
 <div
   class="relative flex flex-col gap-4 px-5 py-4 md:gap-5 md:px-9 md:py-5 lg:gap-5 lg:pt-6 lg:pr-14 lg:pb-9 lg:pl-9"
 >
