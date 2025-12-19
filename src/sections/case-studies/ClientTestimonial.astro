@@ -9,7 +9,7 @@ import { clientTestimonial } from "@/data/case-studies/1";
 
 <section>
   <div
-    class="container m-auto flex flex-col gap-7 px-6 py-16 md:w-3xl md:gap-14 md:py-24 lg:w-[1536px] lg:gap-20 lg:py-28"
+    class="container m-auto flex flex-col gap-7 overflow-hidden px-6 py-16 md:w-3xl md:gap-14 md:py-24 lg:w-[1536px] lg:gap-20 lg:py-28"
   >
     <!-- Section Header Component -->
     <SectionHeader
@@ -23,7 +23,7 @@ import { clientTestimonial } from "@/data/case-studies/1";
       <!-- Client Testimonial Image -->
       <Image
         id="client-testimonial-image"
-        class="lg:anim-fade-in-right rounded-3xl md:rounded-4xl lg:rounded-[60px]"
+        class="rounded-3xl opacity-0 md:rounded-4xl lg:rounded-[60px]"
         width={700}
         height={700}
         src={clientTestimonial.clientImage}
