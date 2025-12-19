@@ -2,12 +2,13 @@
 import { Icon } from "astro-icon/components";
 
 interface Props {
-  poster: string;
+  poster?: string;
+  video?: string;
   name: string;
   role: string;
 }
 
-const { poster, name, role } = Astro.props as Props;
+const { poster, video, name, role } = Astro.props as Props;
 ---
 
 <div class="flex w-full flex-col gap-4 md:flex-row md:gap-7 xl:flex-col xl:gap-5">
@@ -16,7 +17,8 @@ const { poster, name, role } = Astro.props as Props;
     class="relative aspect-4/5 w-full overflow-hidden rounded-3xl md:aspect-auto md:h-[520px] xl:aspect-2/1"
   >
     <!-- Video preview -->
-    <video poster={poster} preload="metadata" class="h-full w-full object-cover"></video>
+    <video src={video} poster={poster} preload="metadata" class="h-full w-full object-cover"
+    ></video>
 
     <!-- Play button -->
     <button
