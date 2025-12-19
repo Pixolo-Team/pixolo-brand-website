@@ -21,7 +21,7 @@ import { processSteps } from "@/data/case-studies/1";
     <div class="relative flex flex-col items-center gap-6">
       <p class="text-n-800 text-center text-lg md:text-xl">Our Process</p>
 
-      <!-- Timeline positioned for small screens -->
+      <!-- Timeline  -->
       <div class="relative w-full">
         <ClientProcessTimeline />
 
@@ -29,22 +29,22 @@ import { processSteps } from "@/data/case-studies/1";
         <div id="process-steps-container" class="flex flex-col gap-32 md:gap-40 lg:gap-60">
           {
             processSteps.map((processStepItem, processStepIndex) => (
-              <div class="process-step relative flex items-start gap-8 md:gap-12">
-                {/* Dots */}
-                <div class="absolute top-0 left-5 md:left-1/2 md:-translate-x-1/2">
-                  <div class="step-circle bg-n-950 -ml-2.5 flex size-5 items-center justify-center rounded-full transition-colors duration-500" />
+              <div class="process-step relative flex gap-8 md:items-center md:gap-12">
+                {/* Step Dots */}
+                <div class="absolute top-2 left-5 md:top-auto md:left-1/2 md:-translate-x-1/2 md:pl-3">
+                  <div class="step-circle bg-n-950 -ml-2.5 flex size-5 items-center justify-center rounded-full transition-colors duration-50 lg:size-7" />
                 </div>
 
                 {/* Index */}
-                <div class="flex items-start gap-4 pl-12 md:w-1/2 md:justify-end md:pr-12 md:pl-0">
+                <div class="flex items-start gap-4 pl-12 md:w-1/2 md:flex-row-reverse md:pl-0">
                   {/* Step Number */}
-                  <div class="step-number text-n-950 flex shrink-0 items-center text-2xl font-semibold transition-colors duration-500 md:text-3xl">
+                  <div class="step-number text-n-950 flex shrink-0 items-center text-[28px] font-semibold transition-colors duration-500 md:text-3xl md:text-[40px] lg:text-8xl">
                     {processStepIndex + 1}
                   </div>
 
                   {/* Title */}
                   <div class="flex flex-col gap-2">
-                    <p class="step-title text-n-950 text-xl font-semibold transition-colors duration-500 md:text-right md:text-2xl">
+                    <p class="step-title text-n-950 text-[28px] font-semibold transition-colors duration-500 md:text-right md:text-4xl lg:text-[60px]">
                       {processStepItem.title}
                     </p>
                   </div>
@@ -52,7 +52,7 @@ import { processSteps } from "@/data/case-studies/1";
 
                 {/* Description */}
                 <div class="hidden md:block md:w-1/2 md:pl-12">
-                  <p class="step-description text-n-500 transition-colors duration-500">
+                  <p class="step-description text-n-500 transition-colors duration-50 md:text-lg lg:text-2xl">
                     {processStepItem.description}
                   </p>
                 </div>
@@ -71,6 +71,9 @@ import { processSteps } from "@/data/case-studies/1";
     const container = document.getElementById("process-steps-container");
     const outerLine = document.getElementById("outer-line");
 
+    const totalSteps = processSteps.length;
+    const progressPerStep = 100 / totalSteps;
+
     // Function to calculate and update timeline height
     const updateTimelineHeight = () => {
       if (!container || !outerLine || processSteps.length === 0) return;
@@ -81,10 +84,7 @@ import { processSteps } from "@/data/case-studies/1";
       const firstStepTop = firstStep.getBoundingClientRect().top;
       const lastStepTop = lastStep.getBoundingClientRect().top;
 
-      // Calculate the distance between first and last step
       const totalHeight = lastStepTop - firstStepTop;
-
-      // Update the timeline height
       outerLine.style.setProperty("--timeline-height", `${totalHeight}px`);
     };
 
@@ -92,16 +92,26 @@ import { processSteps } from "@/data/case-studies/1";
     updateTimelineHeight();
     window.addEventListener("resize", updateTimelineHeight);
 
-    // Color transition logic
+    // Color transition logic based on progress
     const updateStepColors = () => {
       const triggerPositionTop = window.innerHeight / 4;
+      const outerLineRect = outerLine?.getBoundingClientRect();
+      const outerLineTop = outerLineRect?.top || 0;
+      const outerLineHeight = outerLineRect?.height || 0;
+
+      // Progress
+      const scrolledDistance = triggerPositionTop - outerLineTop;
+      let currentProgress = (scrolledDistance / outerLineHeight) * 100;
+      currentProgress = Math.max(0, Math.min(100, currentProgress));
+      console.log("Current Progress: " + currentProgress);
 
       processSteps.forEach((step, index) => {
-        const stepRect = step.getBoundingClientRect();
-        const stepTop = stepRect.top;
+        // Calculate the progress threshold for this step
+        const stepThreshold = index * progressPerStep;
+        console.log("Step Threshold: " + stepThreshold);
 
-        // First step is always active, others activate when they pass trigger point
-        const isActive = index === 0 || stepTop <= triggerPositionTop;
+        // Step is active if current progress has reached its threshold
+        const isActive = currentProgress >= stepThreshold;
 
         const circle = step.querySelector(".step-circle");
         const stepNumber = step.querySelector(".step-number");
@@ -109,34 +119,26 @@ import { processSteps } from "@/data/case-studies/1";
         const descriptions = step.querySelectorAll(".step-description");
 
         if (isActive) {
-          // Change to active colors
-          circle.classList.remove("bg-n-500");
-          circle.classList.add("bg-n-950");
-
-          stepNumber.classList.remove("text-n-500");
-          stepNumber.classList.add("text-n-950");
-
-          title.classList.remove("text-n-500");
-          title.classList.add("text-n-950");
-
+          circle?.classList.remove("bg-n-500");
+          circle?.classList.add("bg-n-950");
+          stepNumber?.classList.remove("text-n-500");
+          stepNumber?.classList.add("text-n-950");
+          title?.classList.remove("text-n-500");
+          title?.classList.add("text-n-950");
           descriptions.forEach((desc) => {
-            desc.classList.remove("text-n-500");
-            desc.classList.add("text-n-700");
+            desc?.classList.remove("text-n-500");
+            desc?.classList.add("text-n-700");
           });
         } else {
-          // Reset to inactive colors
           circle?.classList.remove("bg-n-950");
           circle?.classList.add("bg-n-500");
-
           stepNumber?.classList.remove("text-n-950");
           stepNumber?.classList.add("text-n-500");
-
           title?.classList.remove("text-n-950");
           title?.classList.add("text-n-500");
-
           descriptions.forEach((desc) => {
-            desc.classList.remove("text-n-700");
-            desc.classList.add("text-n-500");
+            desc?.classList.remove("text-n-700");
+            desc?.classList.add("text-n-500");
           });
         }
       });
