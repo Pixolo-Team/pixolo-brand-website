@@ -7,7 +7,7 @@ import Image from "astro/components/Image.astro";
 import { clientTestimonial } from "@/data/case-studies/1";
 ---
 
-<section>
+<section id="client-testimonial">
   <div
     class="container m-auto flex flex-col gap-7 overflow-hidden px-6 py-16 md:w-3xl md:gap-14 md:py-24 lg:w-[1536px] lg:gap-20 lg:py-28"
   >
@@ -51,3 +51,16 @@ import { clientTestimonial } from "@/data/case-studies/1";
     </div>
   </div>
 </section>
+
+<style>
+  #client-testimonial-image {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  #client-info,
+  #client-message {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+</style>
