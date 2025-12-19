@@ -2,18 +2,18 @@
 import TeamCard from "@/components/TeamCard.astro";
 
 interface Member {
-  video: string;
+  poster: string;
   name: string;
   role: string;
 }
 
 const team: Member[] = [
-  { video: "/videos/stars.mp4", name: "Asha Kumar", role: "Founder & CEO" },
-  { video: "/videos/stars.mp4", name: "Liam Park", role: "CTO" },
-  { video: "/videos/stars.mp4", name: "Maya Singh", role: "Head of Design" },
+  { poster: "/images/services/ui-ux-branding.jpg", name: "Asha Kumar", role: "Founder & CEO" },
+  { poster: "/images/services/stack-development.jpg", name: "Liam Park", role: "CTO" },
+  { poster: "/images/services/product-planning.jpg", name: "Maya Singh", role: "Head of Design" },
 ];
 ---
 
 <section aria-label="Team" class="grid gap-6 md:grid-cols-3">
-  {team.map((member) => <TeamCard video={member.video} name={member.name} role={member.role} />)}
+  {team.map((member) => <TeamCard poster={member.poster} name={member.name} role={member.role} />)}
 </section>
