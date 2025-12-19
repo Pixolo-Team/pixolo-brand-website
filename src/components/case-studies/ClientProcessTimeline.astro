@@ -1,44 +1,50 @@
 ---
-interface Props {
-  height: number;
-  stepCount: number;
-}
 
-const { height, stepCount } = Astro.props;
 ---
 
-<div
-  id="outer-line"
-  class="bg-n-950 relative h-[var(--timeline-height)] w-2 overflow-hidden"
-  style={`--timeline-height: ${height * stepCount}px`}
->
-  <div id="internal-line" class="h-2.5 w-2 bg-red-500"></div>
+<div class="absolute top-0 left-5 md:left-1/2 md:-translate-x-1/2">
+  <div
+    id="outer-line"
+    class="bg-n-500 relative w-1"
+    style="--timeline-height: 0px; height: var(--timeline-height);"
+  >
+    <div
+      id="internal-line"
+      class="after:bg-n-950 bg-n-950 relative w-1 origin-top after:absolute after:-bottom-1 after:left-1/2 after:size-2.5 after:-translate-x-1/2 after:rounded-full after:content-['']"
+    >
+    </div>
+  </div>
 </div>
 
 <script>
-  window.onload = () => {
+  window.addEventListener("load", () => {
     const internalLine = document.getElementById("internal-line");
     const outerLine = document.getElementById("outer-line");
+
+    if (!internalLine || !outerLine) return;
+
     const triggerPositionTop = window.innerHeight / 4;
-    const internalLineHeight = internalLine.style.height;
 
-    // console.log(internalLineHeight);
-    const outerLinePosition = outerLine?.getBoundingClientRect();
-    // console.log(outerLinePosition.height);
+    const updateProgress = () => {
+      const outerLineRect = outerLine.getBoundingClientRect();
+      const outerLineTop = outerLineRect.top;
+      const outerLineHeight = outerLineRect.height;
 
-    window.addEventListener("scroll", () => {
-      const position = internalLine.getBoundingClientRect();
-      console.log(triggerPositionTop, position.top, outerLinePosition.height);
-      let progress = ((triggerPositionTop - position.top) / outerLinePosition.height) * 100;
-      progress = progress < 0 ? 0 : progress > 100 ? 100 : progress;
-      let innerLineHeight = (progress * 116) / 100;
-      internalLine.style.transform = "scaleY(" + innerLineHeight + ")";
-      console.log(innerLineHeight);
-      console.log(progress);
-      //   if (position.top < halfScreenHeight) {
-      //     console.log("Top:", position.top);
-      //     console.log("Bottom:", position.bottom);
-      //   }
-    });
-  };
+      // Calculate how much of the outer line has passed the trigger point
+      const scrolledDistance = triggerPositionTop - outerLineTop;
+      let progress = (scrolledDistance / outerLineHeight) * 100;
+
+      // Clamp progress between 0 and 100
+      progress = Math.max(0, Math.min(100, progress));
+
+      // Update the internal line height
+      internalLine.style.height = `${progress}%`;
+    };
+
+    // Initial calculation
+    updateProgress();
+
+    // Update on scroll
+    window.addEventListener("scroll", updateProgress);
+  });
 </script>
