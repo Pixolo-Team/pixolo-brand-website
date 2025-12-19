@@ -1,0 +1,64 @@
+---
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import Image from "astro/components/Image.astro";
+
+interface props {
+  badgeText: string;
+  title: string;
+  description: string;
+  buttonText: string;
+}
+
+const {
+  badgeText = "Build Your Built for real use With Us",
+  title = "Build your MVP with clarity, speed and zero rework",
+  description = "From vision to a working product customers love",
+  buttonText = "Book a Strategy Call",
+} = Astro.props as props;
+---
+
+<!-- Hero Section -->
+<section>
+  <!-- Container -->
+  <div
+    class="md:max-w-container-md lg:max-w-container-2xl relative flex flex-col items-center justify-center gap-9 px-6 py-24 md:gap-12 md:px-0 md:py-40 lg:gap-12 lg:px-0 lg:pt-72 lg:pb-12"
+  >
+    <!-- 3 Dimensional Ball Image -->
+    <Image
+      src="/images/service-consumption/three-dimension-ball.png"
+      alt="A floating 3D Ball"
+      width={60}
+      height={60}
+      class="absolute bottom-50 left-10 -z-6 lg:bottom-55 lg:left-60"
+    />
+
+    <!-- 3 Dimensional Ball Image -->
+    <Image
+      src="/images/service-consumption/three-dimension-ball.png"
+      alt="A floating 3D Ball"
+      width={42}
+      height={42}
+      class="absolute right-20 bottom-60 -z-6 lg:right-90 lg:bottom-75"
+    />
+    <!-- Content -->
+    <div class="flex flex-col items-center justify-center gap-8 md:gap-9 lg:gap-10">
+      <ToolBadge icon="comment" text={badgeText} />
+    </div>
+    <!-- Text Section -->
+    <div class="flex flex-col items-center justify-center gap-3.5 md:gap-4 lg:gap-5">
+      <p
+        class="text-n-950 text-center text-3xl leading-tight font-medium tracking-[-0.01em] md:text-6xl lg:text-7xl"
+      >
+        {title}
+      </p>
+      <p
+        class="bg-linear-to-r from-[#4254D4] to-[#8B77F3] bg-clip-text text-center text-base leading-tight text-transparent md:text-xl lg:text-2xl"
+      >
+        {description}
+      </p>
+    </div>
+    <!-- Rounded Button for Booking a Strategy Call -->
+    <RoundedButton buttonText={buttonText} />
+  </div>
+</section>
