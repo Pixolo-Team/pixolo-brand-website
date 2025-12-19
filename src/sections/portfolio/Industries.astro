@@ -12,7 +12,7 @@ import { portfolioIndustryDetails } from "src/data/portfolio/industries.ts";
 <section>
   <!-- Container -->
   <div
-    class="container mx-auto flex flex-col justify-center gap-9 px-6 py-16 md:gap-12 md:py-24 md:px-0 lg:gap-14 lg:p-28"
+    class="container mx-auto flex flex-col justify-center gap-9 px-6 py-16 md:gap-12 md:px-0 md:py-24 lg:gap-14 lg:p-28"
   >
     <!-- Tool Badge and Heading -->
     <div class="flex flex-col items-center gap-3.5 text-center md:gap-4 lg:gap-3.5">
@@ -33,10 +33,13 @@ import { portfolioIndustryDetails } from "src/data/portfolio/industries.ts";
     <div class="group relative flex flex-col gap-8 md:gap-10 lg:items-end">
       <!-- Cards -->
       <div id="industry-slider" class="embla__viewport hide-scrollbar overflow-hidden">
+        <!-- Embla container -->
         <div class="embla__container flex gap-6 md:gap-8">
+          <!-- Iterating on Industries -->
           {
             portfolioIndustryDetails.industryItems.map((industryItem) => (
               <div class="flex flex-[0_0_100%] justify-center md:flex-[0_0_70%] lg:flex-[0_0_30%]">
+                {/* Service Item Component */}
                 <ServiceItem
                   title={industryItem.title}
                   imageName={industryItem.image}
@@ -54,10 +57,10 @@ import { portfolioIndustryDetails } from "src/data/portfolio/industries.ts";
   </div>
 </section>
 
-
-
 <!-- Button working logic -->
-<script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
 <script>
-  import "src/scripts/industries.ts";
+  import { initIndustrySlider } from "src/scripts/industries.ts";
+  document.addEventListener("DOMContentLoaded", () => {
+    initIndustrySlider();
+  });
 </script>

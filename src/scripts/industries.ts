@@ -1,21 +1,29 @@
+// OTHERS //
 import EmblaCarousel from "embla-carousel";
 
-document.addEventListener("DOMContentLoaded", () => {
+export function initIndustrySlider() {
+  // Get slider container
   const slider = document.getElementById("industry-slider");
+
+  // Get navigation buttons
   const prevBtn = document.getElementById("slide-prev");
   const nextBtn = document.getElementById("slide-next");
 
-  if (slider && prevBtn && nextBtn) {
-    const embla = EmblaCarousel(slider, {
-      loop: false,
-    });
+  // Run only if all required elements exist
+  if (!slider || !prevBtn || !nextBtn) return;
 
-    nextBtn.addEventListener("click", () => {
-      embla.scrollNext();
-    });
+  // Initialize Embla carousel
+  const embla = EmblaCarousel(slider, {
+    loop: false, // Disable infinite looping
+  });
 
-    prevBtn.addEventListener("click", () => {
-      embla.scrollPrev();
-    });
-  }
-});
+  // Scroll to next slide on next button click
+  nextBtn.addEventListener("click", () => {
+    embla.scrollNext();
+  });
+
+  // Scroll to previous slide on prev button click
+  prevBtn.addEventListener("click", () => {
+    embla.scrollPrev();
+  });
+}
