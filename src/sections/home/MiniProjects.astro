@@ -21,11 +21,20 @@ const miniProjectCardsDetails = [
     btnTwoText: "Show Project",
     image: "default.jpg",
   },
+  {
+    title: "Football Club Barcelona",
+    badgeText1: "Online Course",
+    badgeText2: "Online Course",
+    date: "27 June 2024",
+    btnOneText: "visit Website",
+    btnTwoText: "Show Project",
+    image: "default.jpg",
+  },
 ];
 ---
 
 <section>
-  <div class="container mx-auto flex flex-row gap-10">
+  <div class="flex flex-col gap-10 overflow-x-scroll md:flex-row">
     {
       miniProjectCardsDetails.map((card, index) => (
         <MiniProjectCard

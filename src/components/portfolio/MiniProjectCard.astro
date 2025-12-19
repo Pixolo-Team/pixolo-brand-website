@@ -29,15 +29,15 @@ const { id, title, badgeText1, badgeText2, date, btnOneText, btnTwoText, image }
       alt={title}
     />
   </div>
-  <div class="flex flex-col gap-7">
-    <!-- Content wrap -->
+  <!-- Content wrap -->
+  <div class="flex flex-col gap-7 md:gap-9 lg:gap-10">
+    <!-- About wrap -->
     <div class="flex flex-col gap-4">
-      <!-- About wrap -->
+      <!-- Header-section -->
       <div class="flex flex-col gap-2">
-        <!-- Header-section -->
-        <p>{title}</p>
+        <p class="text-lg leading-tight font-normal md:text-xl lg:text-2xl">{title}</p>
+        <!-- ToolBadge wrap -->
         <div class="flex flex-row gap-1.5">
-          <!-- ToolBadge wrap -->
           <div class="border-n-800 rounded-3xl border px-2.5 py-1 text-center">
             <!-- Badge Text -->
             <p class="text-n-950 text-xs leading-tight md:text-sm">{badgeText1}</p>
@@ -48,10 +48,10 @@ const { id, title, badgeText1, badgeText2, date, btnOneText, btnTwoText, image }
           </div>
         </div>
       </div>
-      <p>{date}</p>
+      <p class="text-sm">{date}</p>
     </div>
+    <!--Cta wrap  -->
     <div class="flex flex-row gap-3.5">
-      <!--Cta wrap  -->
       <RoundedButton buttonText={btnOneText} />
       <RoundedButton buttonText={btnTwoText} />
     </div>
