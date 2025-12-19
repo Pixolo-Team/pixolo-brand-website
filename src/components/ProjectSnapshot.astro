@@ -1,0 +1,81 @@
+---
+// DATA //
+import { snapshotData } from "@/data/snapshot";
+
+interface ProjectSnapshotData {
+  client?: string;
+  services?: string[];
+  platforms?: string[];
+  timeline?: string;
+  industry?: string;
+  techStack?: string;
+}
+
+const data = snapshotData as ProjectSnapshotData;
+
+const { client, services, platforms, timeline, industry, techStack } = data;
+---
+
+<section>
+  <div class="gap-8 px-6 py-16 md:gap-11 md:py-20 lg:gap-14 lg:py-24">
+    <h2 class="text-n-950 text-center text-3xl md:text-5xl">
+      A Detailed Glimpse Into the Project Journey
+    </h2>
+
+    <div class="flex flex-col gap-1.5 md:gap-4">
+      <div class="flex flex-col gap-1.5 md:gap-3.5 lg:flex-row lg:items-stretch">
+        <div
+          class="bg-n-950 flex flex-1 flex-col gap-7 rounded-2xl p-3 md:px-9 md:py-4 lg:w-1/3 lg:justify-between lg:rounded-3xl"
+        >
+          <p class="text-n-300 text-sm leading-tight md:text-base">Client</p>
+          <p class="text-n-50 text-xl md:text-4xl lg:text-5xl">{client}</p>
+        </div>
+
+        <div class="flex flex-1 flex-row gap-1.5 md:gap-3.5 lg:contents">
+          <div
+            class="bg-n-100 flex w-full flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:justify-between lg:rounded-[24px]"
+          >
+            <p class="text-n-600 text-sm leading-tight md:text-base">Services</p>
+            <div class="text-n-950 gap-1 text-xs leading-tight md:gap-2 md:text-xl lg:text-2xl">
+              {services?.map((service) => <p>{service}</p>)}
+            </div>
+          </div>
+
+          <div
+            class="bg-n-100 flex w-full flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:justify-between lg:rounded-[24px]"
+          >
+            <p class="text-n-600 text-sm leading-tight md:text-base">Platforms</p>
+            <div
+              class="text-n-950 flex flex-col gap-1 text-xs leading-tight md:gap-2 md:text-xl lg:text-2xl"
+            >
+              {platforms?.map((platform) => <p>{platform}</p>)}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-1.5 md:gap-3.5 lg:gap-4">
+        <div class="flex gap-1.5 md:gap-3.5 lg:gap-[16px]">
+          <div
+            class="bg-n-100 lg:justify-space-between flex flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-[24px]"
+          >
+            <p class="text-n-600 text-sm leading-tight md:text-base">Timeline</p>
+            <p class="text-sm md:text-3xl lg:text-4xl">{timeline}</p>
+          </div>
+
+          <div
+            class="bg-n-100 lg:justify-space-between flex flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-[24px]"
+          >
+            <p class="text-n-600 text-sm leading-tight md:text-base">Industry</p>
+            <p class="text-sm md:text-3xl lg:text-4xl">{industry}</p>
+          </div>
+        </div>
+        <div
+          class="bg-n-100 lg:justify-space-between flex flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-[24px]"
+        >
+          <p class="text-n-600 text-sm leading-tight md:text-base">Tech Stack</p>
+          <p class="text-sm md:text-3xl lg:text-4xl">{techStack}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
