@@ -8,19 +8,23 @@ interface props {
 const { number, title, description } = Astro.props as props;
 ---
 
+<!-- Card Container -->
 <div
   class="border-n-500 flex flex-col gap-4 rounded-4xl border px-4 pt-4 pb-6 md:gap-5 md:px-7 md:pt-7 md:pb-9 lg:gap-9 lg:px-8 lg:pt-8 lg:pb-16"
 >
+  <!-- Number -->
   <p
     class="text-n-950 text-4xl leading-tight font-normal tracking-[-0.04em] md:text-6xl lg:text-8xl"
   >
     {number}
   </p>
+  <!-- Content Wrapper -->
   <div class="flex flex-col gap-3 md:gap-4 lg:gap-6">
+    <!-- Title -->
     <p class="text-n-950 text-base leading-tight font-normal md:text-2xl lg:text-3xl">{title}</p>
+    <!-- Description -->
     <p class="text-n-600 text-xs leading-tight font-normal md:text-base lg:text-xl">
       {description}
     </p>
-    <p class="text-xl leading-tight font-light text-blue-500">read more</p>
   </div>
 </div>
