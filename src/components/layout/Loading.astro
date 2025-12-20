@@ -1,0 +1,234 @@
+---
+// COMPONENTS //
+import { Image } from "astro:assets";
+
+// SVG's //
+import pixolo from "@/../public/images/loader/pixolo.svg";
+---
+
+<section
+  id="loading-screen"
+  class="bg-n-50 fixed z-[999] flex h-screen w-screen flex-col items-center justify-center overflow-hidden text-center transition-opacity duration-700"
+>
+  <div class="relative flex h-full w-full items-center justify-center">
+    <!-- Ball -->
+    <div class="ball bg-blue-500"></div>
+
+    <!-- Step 1: Hello -->
+    <p class="firstText text-n-950 font-regular text-5xl">Hello</p>
+
+    <!-- Step 2: We are -->
+    <p class="secondText text-n-950 font-regular text-5xl">We are</p>
+
+    <!-- Step 3: Pixolo -->
+    <div class="pixolo flex items-center justify-center gap-1">
+      <Image src={pixolo} alt="Pixolo" />
+    </div>
+
+    <!-- Loader Number -->
+    <div class="absolute right-[12%] bottom-[4%]">
+      <p id="progress-label" class="text-n-950 text-right text-5xl font-bold">0%</p>
+    </div>
+  </div>
+</section>
+<style>
+  .ball {
+    position: absolute;
+    left: 14%;
+    height: 15px;
+    width: 15px;
+    border-radius: 20px;
+
+    animation:
+      bounceUpDown 7.2s ease forwards,
+      movement 7.2s ease forwards;
+  }
+
+  @keyframes bounceUpDown {
+    0% {
+      top: 50%;
+      animation-timing-function: ease-out;
+      transform: scaleY(0.6);
+    }
+    11.11% {
+      top: 21%;
+      animation-timing-function: ease-in;
+      transform: scaleY(1.4);
+    }
+    16.67% {
+      top: 50%;
+      animation-timing-function: ease-out;
+      transform: scaleY(0.6);
+    }
+    27.78% {
+      top: 21%;
+      animation-timing-function: ease-in;
+      transform: scaleY(1.4);
+    }
+    33.33% {
+      top: 50%;
+      animation-timing-function: ease-out;
+      transform: scaleY(0.6);
+    }
+    44.44% {
+      top: 16%;
+      animation-timing-function: ease-in;
+      transform: scaleY(1.4);
+    }
+    50% {
+      top: 50%;
+      animation-timing-function: ease-out;
+      transform: scaleY(0.6);
+    }
+    63.89% {
+      top: 16%;
+      animation-timing-function: ease-in;
+      transform: scaleY(1.4);
+    }
+    69.44% {
+      top: 50%;
+      animation-timing-function: ease-out;
+      transform: scaleY(0.6);
+    }
+    83.33% {
+      top: 16%;
+      animation-timing-function: ease-in;
+      transform: scaleY(1.4);
+    }
+    88.89% {
+      top: 50%;
+      animation-timing-function: ease-out;
+      transform: scaleY(0.6);
+    }
+    97% {
+      top: 40%;
+      animation-timing-function: ease-in;
+      transform: scaleY(1.4);
+    }
+    100% {
+      top: calc(50% - 40px);
+      transform: scaleY(1);
+    }
+  }
+
+  @keyframes movement {
+    0% {
+      left: 0%;
+      animation-timing-function: ease-in;
+    }
+    11.11% {
+      left: 8%;
+      animation-timing-function: ease-out;
+    }
+    16.67% {
+      left: 17%;
+      animation-timing-function: ease-in;
+    }
+    27.78% {
+      left: 27%;
+      animation-timing-function: ease-out;
+    }
+    33.33% {
+      left: 35%;
+      animation-timing-function: ease-in;
+    }
+    44.44% {
+      left: 45%;
+      animation-timing-function: ease-out;
+    }
+    50% {
+      left: 50%;
+    }
+    63.89% {
+      left: 50%;
+    }
+    69.44% {
+      left: 50%;
+    }
+    83.33% {
+      left: 50%;
+    }
+    88.89% {
+      left: 50%;
+    }
+    97% {
+      left: 50%;
+      background-color: var(--color-blue-500);
+    }
+    100% {
+      left: calc(50% - 2px);
+      background-color: var(--color-n-950);
+    }
+  }
+
+  /* Common base */
+  .firstText,
+  .secondText,
+  .pixolo {
+    position: absolute;
+    transform-origin: center;
+  }
+
+  /* Hello: fade up and scale out */
+  .firstText {
+    animation: firstTextAnim 3.6s ease-in forwards;
+  }
+
+  /* We Are: scale in, scale out */
+  .secondText {
+    transform: scaleX(0);
+    animation: secondTextAnim 1.4s ease-in-out forwards;
+    animation-delay: 3.6s;
+  }
+
+  /* Pixolo: fade and stay visible */
+  .pixolo {
+    transform: scaleX(0);
+    animation: pixoloAnim 1s ease-in forwards;
+    animation-delay: 5s;
+  }
+
+  /* Keyframes */
+  @keyframes firstTextAnim {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scaleX(1);
+    }
+    15%,
+    95% {
+      opacity: 1;
+      transform: translateY(0) scaleX(1);
+    }
+    100% {
+      transform: translateY(0) scaleX(0);
+    }
+  }
+
+  @keyframes secondTextAnim {
+    0% {
+      transform: scaleX(0);
+    }
+    5%,
+    94% {
+      transform: scaleX(1);
+    }
+    100% {
+      transform: scaleX(0);
+    }
+  }
+
+  @keyframes pixoloAnim {
+    0% {
+      transform: scaleX(0);
+    }
+    8%,
+    100% {
+      transform: scaleX(1);
+    }
+  }
+</style>
+
+<script>
+  import { initLoader } from "@/scripts/loader";
+  initLoader();
+</script>

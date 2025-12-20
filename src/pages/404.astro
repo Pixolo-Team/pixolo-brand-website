@@ -1,0 +1,58 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<style>
+  /* Simple animation for the 404 text to make it float gently */
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  .floating {
+    animation: float 4s ease-in-out infinite;
+  }
+</style>
+
+<Layout>
+  <main class="flex min-h-screen flex-col items-center justify-center p-6 text-center">
+    <div class="mb-8 animate-pulse">
+      <img
+        src="/images/brand/pixolo-logo.png"
+        alt="Pixolo Logo"
+        class="mx-auto h-14 drop-shadow-lg"
+      />
+    </div>
+
+    <h1
+      class="floating text-[10rem] leading-none font-black text-blue-600 drop-shadow-xl select-none"
+    >
+      404
+    </h1>
+
+    <div class="mx-auto mt-6 max-w-lg space-y-4">
+      <h2 class="text-3xl font-bold md:text-4xl">Houston, we have a problem.</h2>
+      <p class="text-n-800 text-lg font-medium">
+        Oops! You've ventured into the digital void. The page you are looking for has apparently
+        escaped into another dimension.
+      </p>
+      <p class="text-n-600 text-sm italic">(PS: It's working on our system.)</p>
+    </div>
+
+    <div class="mt-12">
+      <a
+        href="/"
+        class="group relative inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-4 font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700 hover:shadow-2xl focus:ring-4 focus:ring-blue-300 focus:outline-none active:scale-95"
+      >
+        <span class="mr-2 text-2xl group-hover:animate-bounce">🚀</span>
+        Abort Mission & Teleport Home
+      </a>
+    </div>
+  </main>
+</Layout>
