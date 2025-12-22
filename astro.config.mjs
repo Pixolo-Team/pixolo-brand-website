@@ -1,15 +1,17 @@
 // @ts-check
-// OTHERS //
 import { defineConfig } from "astro/config";
-import icon from "astro-icon";
-import tailwindcss from "@tailwindcss/vite";
+import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
+import icon from "astro-icon";
+import tailwind from "@astrojs/tailwind";
 
-// https://astro.build/config
 export default defineConfig({
   site: "https://www.pixolotechnologies.com",
-  integrations: [icon()],
-  vite: {
-    plugins: [tailwindcss(), sitemap()],
-  },
+
+  integrations: [
+    icon(),
+    react(),
+    tailwind(), 
+    sitemap(),
+  ],
 });

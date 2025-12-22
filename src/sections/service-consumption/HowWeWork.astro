@@ -1,9 +1,38 @@
 ---
+// COMPONENTS //
 import SolutionsCard from "@/components/service-consumption/SolutionsCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { howWeWorkDetails } from "@/data/service-consumption/HowWeWork.ts";
 ---
 
-<SolutionsCard
-  number="01"
-  title="Discovery & Scoping"
-  description="We begin by deeply understanding your idea, business goals, and the people you’re building for."
-/>
+<section>
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col gap-7 px-6 py-16 md:gap-10 md:py-24 lg:gap-14 lg:py-28"
+  >
+    <!-- Header -->
+    <div class="flex w-full flex-col gap-4 md:gap-5">
+      <div class="self-center">
+        <ToolBadge icon="service-icon" text={howWeWorkDetails.badgeText} />
+      </div>
+      <p
+        class="self-center text-center text-3xl font-normal leading-tight tracking-[-0.02em] md:text-4xl"
+      >
+        {howWeWorkDetails.headerText}
+      </p>
+    </div>
+    <!-- Process Wrap -->
+    <div class="flex w-full flex-col gap-4 md:gap-5 lg:grid lg:grid-cols-3 lg:gap-8">
+      <!-- Solution Cards -->
+      {
+        howWeWorkDetails.solutionCards.map((solutionCard) => (
+          <SolutionsCard
+            number={solutionCard.number}
+            title={solutionCard.title}
+            description={solutionCard.description}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
