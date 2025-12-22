@@ -1,36 +1,22 @@
 ---
 const { block } = Astro.props;
+const HeadingTag = `h${block.level || 2}`;
 ---
 
 <section class="flex max-w-[256px] flex-col gap-6 md:max-w-[560px] md:gap-10 lg:max-w-[995px]">
   <!-- Heading -->
-  <h2
-    class:list={[
-      "text-n-950",
-
-      /* Mobile */
-      block.size === "xl" && "text-3xl leading-10",
-      block.size === "lg" && "text-2xl leading-9",
-      block.size === "md" && "text-2xl leading-9",
-
-      /* Tablet */
-      block.size === "xl" && "md:text-5xl md:leading-[72px]",
-      block.size === "lg" && "md:text-4xl md:leading-[54px]",
-      block.size === "md" && "md:text-3xl md:leading-10",
-
-      /* Desktop */
-      block.size === "xl" && "lg:text-6xl lg:leading-[90px]",
-      block.size === "lg" && "lg:text-5xl lg:leading-[72px]",
-      block.size === "md" && "lg:text-4xl lg:leading-[54px]",
-    ]}
+  <HeadingTag
+    class="text-n-950 text-2xl leading-9 md:text-3xl md:leading-10 lg:text-4xl lg:leading-[54px]"
   >
     {block.heading}
-  </h2>
+  </HeadingTag>
 
   <!-- Paragraph -->
   {
     block.body && (
-      <div class="text-n-700 text-sm leading-5 md:text-lg md:leading-7 lg:text-xl lg:leading-8" />
+      <div class="text-n-700text-sm leading-5 md:text-lg md:leading-7 lg:text-xl lg:leading-8">
+        {block.body}
+      </div>
     )
   }
 
