@@ -43,7 +43,7 @@ import { processSteps } from "@/data/case-studies/1";
                   </div>
 
                   {/* Title */}
-                  <div class="flex flex-col gap-2">
+                  <div class="flex flex-col items-center gap-2">
                     <p class="step-title text-n-500 text-[28px] font-semibold transition-colors duration-500 md:text-right md:text-4xl lg:text-[60px]">
                       {processStepItem.title}
                     </p>
@@ -71,8 +71,6 @@ import { processSteps } from "@/data/case-studies/1";
     const container = document.getElementById("process-steps-container");
     const outerLine = document.getElementById("outer-line");
     const internalLine = document.getElementById("internal-line");
-
-    if (!container || !outerLine || !internalLine || processSteps.length === 0) return;
 
     // Function to calculate and update timeline height
     const updateTimelineHeight = () => {
