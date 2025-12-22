@@ -29,16 +29,16 @@ import { processSteps } from "@/data/case-studies/1";
         <div id="process-steps-container" class="flex flex-col gap-32 md:gap-40 lg:gap-60">
           {
             processSteps.map((processStepItem, processStepIndex) => (
-              <div class="process-step relative flex gap-8 md:items-center md:gap-12">
+              <div class="process-step relative flex items-center gap-8 md:gap-12 lg:gap-20">
                 {/* Step Dots */}
                 <div class="absolute top-2 left-5 md:top-auto md:left-1/2 md:-translate-x-1/2 md:pl-3">
-                  <div class="step-circle bg-n-500 -ml-2.5 flex size-5 items-center justify-center rounded-full transition-colors duration-50 lg:size-7" />
+                  <div class="step-circle bg-n-500 -ml-2.5 flex size-5 items-center justify-center rounded-full transition-colors duration-500 lg:size-7" />
                 </div>
 
                 {/* Index */}
                 <div class="flex items-start gap-4 pl-12 md:w-1/2 md:flex-row-reverse md:pl-0">
                   {/* Step Number */}
-                  <div class="step-number text-n-500 flex shrink-0 items-center text-[28px] font-semibold transition-colors duration-500 md:text-3xl md:text-[40px] lg:text-8xl">
+                  <div class="step-number text-n-500 flex shrink-0 items-center text-[28px] transition-colors duration-500 md:text-3xl md:text-[40px] lg:text-8xl">
                     {processStepIndex + 1}
                   </div>
 
