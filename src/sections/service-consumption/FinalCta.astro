@@ -1,0 +1,85 @@
+---
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import Image from "astro/components/Image.astro";
+
+import Ball from "@/assets/3d-ball.svg";
+
+const badgeText = "Let’s Connect";
+const headerDetails = {
+  title: "Ready to Talk About Your Product?",
+  description:
+    "We respond fast, keep your ideas protected with NDAs, and bring experience from working with 50+ companies to every project we take on.",
+};
+---
+
+<!-- Final CTA Section -->
+<section>
+  <!-- Container -->
+  <div
+    id="cta-wrapper"
+    class="md:max-w-container-md lg:max-w-container-2xl relative container mx-auto flex flex-col items-center justify-center gap-9 px-6 py-20 md:gap-12 md:px-0 md:py-28 lg:gap-16 lg:px-60 lg:py-36"
+  >
+    <ToolBadge icon="service-icon" text={badgeText} />
+
+    <!-- 3 Dimensional Ball Image -->
+    <Image
+      id="big-marble-service-consumption-final-cta"
+      src={Ball}
+      alt="A floating 3D Ball"
+      width={60}
+      height={60}
+      class="absolute top-[22%] left-6 -z-1 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
+    />
+
+    <!-- 3 Dimensional Ball Image -->
+    <Image
+      id="small-marble-service-consumption-final-cta"
+      src={Ball}
+      alt="A floating 3D Ball"
+      width={42}
+      height={42}
+      class="absolute right-[10%] bottom-[46%] -z-1 w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
+      style="animation-duration: 4s"
+    />
+
+    <!-- Header -->
+    <div class="flex flex-col items-center justify-center gap-3 md:gap-4 lg:gap-5">
+      <!-- Header title - a question for our client -->
+      <div
+        class="text-n-950 text-center text-4xl leading-tight font-medium tracking-[-0.02em] md:text-5xl md:leading-none lg:text-8xl lg:leading-none"
+      >
+        {headerDetails.title}
+      </div>
+      <!-- Header Description -->
+      <div
+        class="text-n-700 text-center text-xs leading-tight font-normal tracking-[-0.02em] md:text-lg lg:text-xl"
+      >
+        {headerDetails.description}
+      </div>
+    </div>
+    <!-- CTA wrap -->
+    <div
+      class="flex flex-col items-center justify-center gap-2.5 md:flex-row md:gap-4 lg:flex-row lg:gap-5"
+    >
+      <!-- Rounded Button for Booking a Strategy Call -->
+      <RoundedButton
+        buttonText="Book a Strategy Call"
+        type="button"
+        onClick="window.location.href='/services'"
+      />
+      <!-- Rounded Button for Sending any requirements -->
+      <RoundedButton
+        buttonText="Send Requirements"
+        type="button"
+        onClick="window.location.href='/services'"
+      />
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animateMarble } from "@/scripts/hero.ts";
+  animateMarble("big-marble-service-consumption-final-cta", "cta-wrapper");
+  animateMarble("small-marble-service-consumption-final-cta", "cta-wrapper");
+</script>
