@@ -16,7 +16,7 @@ import { howWeWorkDetails } from "@/data/service-consumption/HowWeWork.ts";
         <ToolBadge icon="service-icon" text={howWeWorkDetails.badgeText} />
       </div>
       <p
-        class="self-center text-center text-3xl font-normal leading-tight tracking-[-0.02em] md:text-4xl"
+        class="header-text text-n-950 self-center text-center text-3xl leading-tight font-normal tracking-[-0.02em] opacity-0 md:text-4xl"
       >
         {howWeWorkDetails.headerText}
       </p>
@@ -36,3 +36,9 @@ import { howWeWorkDetails } from "@/data/service-consumption/HowWeWork.ts";
     </div>
   </div>
 </section>
+<script>
+  import { animateSolutionCards, animateHeader } from "@/scripts/how-we-work.ts";
+  animateHeader();
+  animateSolutionCards();
+  
+</script>
