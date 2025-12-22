@@ -16,7 +16,7 @@ const { name, logo, thumbnail, description, href } = Astro.props as Props;
 
 <!-- Product Item -->
 <div
-  class="border-n-950 flex w-full flex-col gap-3 border-b-[0.4px] py-7 md:gap-3.5 md:border-b-[0.6px] lg:flex-row lg:justify-between lg:gap-12 lg:border-b-[0.8px]"
+  class="group border-n-950 flex w-full flex-col gap-3 border-b-[0.4px] py-7 md:gap-3.5 md:border-b-[0.6px] lg:flex-row lg:justify-between lg:gap-12 lg:border-b-[0.8px]"
 >
   <!-- Logo Container -->
   <div class="flex gap-2.5 lg:w-2/5">
@@ -48,7 +48,7 @@ const { name, logo, thumbnail, description, href } = Astro.props as Props;
     <!-- Link for more information -->
     <a
       href={href}
-      class="border-n-950 flex size-12 shrink-0 items-center justify-center self-center rounded-full border from-(--blue-500) to-[#8B77F3] hover:border-none hover:bg-gradient-to-r md:size-20"
+      class="border-n-950 flex size-12 shrink-0 items-center justify-center self-center rounded-full border from-(--blue-500) to-[#8B77F3] group-hover:border-none group-hover:bg-gradient-to-r md:size-20"
       aria-label="View more information"
     >
       <Icon name="external-link-icon" class="size-[18px] md:size-[30px]" />
