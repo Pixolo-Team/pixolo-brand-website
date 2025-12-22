@@ -1,7 +1,11 @@
 ---
+// COMPONENTS //
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import Image from "astro/components/Image.astro";
+
+// SVG's //
+import Ball from "@/assets/3d-ball.svg";
 
 interface props {
   badgeText: string;
@@ -23,26 +27,26 @@ const {
   <!-- Container -->
   <div
     id="hero-wrapper"
-    class="md:max-w-container-md lg:max-w-container-2xl relative container mx-auto flex min-h-screen flex-col items-center justify-center gap-9 overflow-hidden px-6 py-24 md:gap-12 md:px-0 md:py-40 lg:gap-12 lg:px-0 lg:pt-72 lg:pb-12"
+    class="md:max-w-container-md lg:max-w-container-2xl relative container mx-auto flex flex-col items-center justify-center gap-9 overflow-hidden px-6 py-24 md:gap-12 md:px-0 md:py-40 lg:gap-12 lg:px-0 lg:pt-72 lg:pb-12"
   >
     <!-- 3 Dimensional Ball Image -->
     <Image
-      id="big-marble"
-      src="/images/service-consumption/three-dimension-ball.png"
+      id="big-marble-service-consumption-hero"
+      src={Ball}
       alt="A floating 3D Ball"
       width={60}
       height={60}
-      class="absolute top-[22%] left-6 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
+      class="absolute top-[22%] left-6 -z-1 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
     />
 
     <!-- 3 Dimensional Ball Image -->
     <Image
-      id="small-marble"
-      src="/images/service-consumption/three-dimension-ball.png"
+      id="small-marble-service-consumption-hero"
+      src={Ball}
       alt="A floating 3D Ball"
       width={42}
       height={42}
-      class="absolute right-[10%] bottom-[46%] w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
+      class="absolute right-[10%] bottom-[46%] -z-1 w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
       style="animation-duration: 4s"
     />
     <!-- Content -->
@@ -70,7 +74,6 @@ const {
 </section>
 <script>
   import { animateMarble } from "@/scripts/hero.ts";
-
-  animateMarble("big-marble", "hero-wrapper");
-  animateMarble("small-marble", "hero-wrapper");
+  animateMarble("big-marble-service-consumption-hero", "hero-wrapper");
+  animateMarble("small-marble-service-consumption-hero", "hero-wrapper");
 </script>
