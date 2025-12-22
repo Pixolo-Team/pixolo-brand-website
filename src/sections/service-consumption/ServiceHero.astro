@@ -22,24 +22,28 @@ const {
 <section>
   <!-- Container -->
   <div
-    class="md:max-w-container-md lg:max-w-container-2xl relative flex flex-col items-center justify-center gap-9 px-6 py-24 md:gap-12 md:px-0 md:py-40 lg:gap-12 lg:px-0 lg:pt-72 lg:pb-12"
+    id="hero-wrapper"
+    class="md:max-w-container-md lg:max-w-container-2xl relative container mx-auto flex min-h-screen flex-col items-center justify-center gap-9 overflow-hidden px-6 py-24 md:gap-12 md:px-0 md:py-40 lg:gap-12 lg:px-0 lg:pt-72 lg:pb-12"
   >
     <!-- 3 Dimensional Ball Image -->
     <Image
+      id="big-marble"
       src="/images/service-consumption/three-dimension-ball.png"
       alt="A floating 3D Ball"
       width={60}
       height={60}
-      class="absolute bottom-50 left-10 -z-6 lg:bottom-55 lg:left-60"
+      class="absolute top-[22%] left-6 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
     />
 
     <!-- 3 Dimensional Ball Image -->
     <Image
+      id="small-marble"
       src="/images/service-consumption/three-dimension-ball.png"
       alt="A floating 3D Ball"
       width={42}
       height={42}
-      class="absolute right-20 bottom-60 -z-6 lg:right-90 lg:bottom-75"
+      class="absolute right-[10%] bottom-[46%] w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
+      style="animation-duration: 4s"
     />
     <!-- Content -->
     <div class="flex flex-col items-center justify-center gap-8 md:gap-9 lg:gap-10">
@@ -64,3 +68,9 @@ const {
     <RoundedButton buttonText={buttonText} />
   </div>
 </section>
+<script>
+  import { animateMarble } from "@/scripts/hero.ts";
+
+  animateMarble("big-marble", "hero-wrapper");
+  animateMarble("small-marble", "hero-wrapper");
+</script>
