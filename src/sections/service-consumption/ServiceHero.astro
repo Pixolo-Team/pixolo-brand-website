@@ -7,19 +7,12 @@ import Image from "astro/components/Image.astro";
 // SVG's //
 import Ball from "@/assets/3d-ball.svg";
 
-interface props {
-  badgeText: string;
-  title: string;
-  description: string;
-  buttonText: string;
-}
-
-const {
-  badgeText = "Build Your Built for real use With Us",
-  title = "Build your MVP with clarity, speed and zero rework",
-  description = "From vision to a working product customers love",
-  buttonText = "Book a Strategy Call",
-} = Astro.props as props;
+const badgeText = "Build Your Built for real use With Us";
+const headerDetails = {
+  title: "Build your MVP with clarity, speed and zero rework",
+  description: "From vision to a working product customers love",
+};
+const buttonText = "Book a Strategy Call";
 ---
 
 <!-- Hero Section -->
@@ -59,17 +52,21 @@ const {
       <p
         class="text-n-950 text-center text-3xl leading-tight font-medium tracking-[-0.01em] md:text-6xl lg:text-7xl"
       >
-        {title}
+        {headerDetails.title}
       </p>
       <!-- Description -->
       <p
         class="bg-linear-to-r from-[#4254D4] to-[#8B77F3] bg-clip-text text-center text-base leading-tight text-transparent md:text-xl lg:text-2xl"
       >
-        {description}
+        {headerDetails.description}
       </p>
     </div>
     <!-- Rounded Button for Booking a Strategy Call -->
-    <RoundedButton buttonText={buttonText} />
+    <RoundedButton
+      buttonText={buttonText}
+      onClick="window.location.href='/services'"
+      type="button"
+    />
   </div>
 </section>
 <script>
