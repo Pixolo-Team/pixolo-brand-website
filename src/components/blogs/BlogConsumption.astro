@@ -1,0 +1,24 @@
+---
+
+
+---
+
+<section class="flex flex-col gap-16">
+  {
+    content.map((block) => {
+      if (block.type === "media-card") {
+        return <MediaCardBlock block={block} />;
+      }
+
+      if (block.type === "text-section") {
+        return <TextSectionBlock block={block} />;
+      }
+
+      if (block.type === "comparison-table") {
+        return <ComparisonTableBlock block={block} />;
+      }
+
+      return null;
+    })
+  }
+</section>
