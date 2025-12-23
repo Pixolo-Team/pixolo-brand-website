@@ -38,7 +38,7 @@ import { articleCardDetails } from "@/data/portfolio.ts";
       />
       <Image
         src="/3d-ball-1.svg"
-        alt={"3d small ball iamge"}
+        alt={"3d small ball image"}
         width={28}
         height={26.52}
         class={"w-[28px] h-[26.52px] md:w-[48px] md:h-[45.46px] absolute top-[202.59px] left-[252.47px] z-0 md:top-[334px] md:left-[643px] lg:top-[434px] lg:left-[978.27px]"}
@@ -48,16 +48,16 @@ import { articleCardDetails } from "@/data/portfolio.ts";
     <!-- Tile Wrapper -->
     <div class="flex flex-col">
       {
-        projectCardDetails.map((card, index) => (
-          <div class={index == 0 ? "z-0" : "z-10 mt-[-120px] md:mt-[-195.66px] xl:mt-[-120px]"}>
+        projectCardDetails.map((projectCardDetailsItem, index) => (
+          <div class={index === 0 ? "z-0" : "z-10 mt-[-120px] md:mt-[-195.66px] xl:mt-[-120px]"}>
             <ProjectCard
-              brandColor={card.brandColor}
-              brandName={card.brandName}
-              image={card.image}
-              logo={card.logo}
-              title={card.title}
-              subtitle={card.subtitle}
-              badges={card.badges}
+              brandColor={projectCardDetailsItem.brandColor}
+              brandName={projectCardDetailsItem.brandName}
+              image={projectCardDetailsItem.image}
+              logo={projectCardDetailsItem.logo}
+              title={projectCardDetailsItem.title}
+              subtitle={projectCardDetailsItem.subtitle}
+              badges={projectCardDetailsItem.badges}
             />
           </div>
         ))
@@ -70,17 +70,17 @@ import { articleCardDetails } from "@/data/portfolio.ts";
       <div class="flex flex-wrap items-center justify-center gap-24 md:gap-32">
         <!-- ROWS -->
         {
-          articleCardDetails.map((row) => (
+          articleCardDetails.map((articleCardDetailsRow) => (
             <div class="flex flex-col gap-24 md:gap-32 xl:flex-row">
-              {row.map((card) => (
+              {articleCardDetailsRow.map((articleCardDetailsItem) => (
                 <div class="anim-fade-in-up flex-1">
                   <ArticleCard
-                    thumbnail={card.thumbnail}
-                    brandName={card.brandName}
-                    chipItems={card.chipItems}
-                    title={card.title}
-                    animateClass={card.animateClass}
-                    ctaText={card.ctaText}
+                    thumbnail={articleCardDetailsItem.thumbnail}
+                    brandName={articleCardDetailsItem.brandName}
+                    chipItems={articleCardDetailsItem.chipItems}
+                    title={articleCardDetailsItem.title}
+                    animateClass={articleCardDetailsItem.animateClass}
+                    ctaText={articleCardDetailsItem.ctaText}
                   />
                 </div>
               ))}
