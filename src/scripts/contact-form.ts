@@ -287,50 +287,59 @@ export const initializeFormSubmission = () => {
     document.head.appendChild(script);
   }
 
-  const form = document.querySelector("form[aria-label='Contact form']") as HTMLFormElement | null;
-  if (!form) return;
+  const forms = document.querySelectorAll("form[aria-label='Contact form']");
+  if (!forms || forms.length === 0) return;
 
-  const submitBtn = form.querySelector('button[type="button"]') as HTMLButtonElement | null;
-  if (!submitBtn) return;
+  forms.forEach((form) => {
+    const formElement = form as HTMLFormElement;
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
 
-  submitBtn.addEventListener("click", async (e) => {
-    e.preventDefault();
+    formElement.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!submitBtn) return;
 
-    // Validate all required fields
-    const nameInput = document.getElementById("name") as HTMLInputElement | null;
-    const phoneInput = document.getElementById("phone") as HTMLInputElement | null;
-    const emailInput = document.getElementById("email") as HTMLInputElement | null;
+      // Validate required fields present inside this form
+      const nameInput = formElement.querySelector("#name") as HTMLInputElement | null;
+      const phoneInput = formElement.querySelector("#phone") as HTMLInputElement | null;
+      const emailInput = formElement.querySelector("#email") as HTMLInputElement | null;
 
-    if (!nameInput || !phoneInput || !emailInput) return;
+      let isNameValid = true;
+      let isPhoneValid = true;
+      let isEmailValid = true;
 
-    const isNameValid = validateInput(nameInput);
-    const isPhoneValid = validateInput(phoneInput);
-    const isEmailValid = validateInput(emailInput);
+      if (nameInput) isNameValid = validateInput(nameInput);
+      if (phoneInput) isPhoneValid = validateInput(phoneInput);
+      if (emailInput) isEmailValid = validateInput(emailInput);
 
-    if (!isNameValid || !isPhoneValid || !isEmailValid) {
-      return;
-    }
+      if (!isNameValid || !isPhoneValid || !isEmailValid) {
+        return;
+      }
 
-    try {
-      // Simulate form submission (replace with actual API endpoint)
-      // Example: const response = await fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) });
+      try {
+        // Disable button during submission for accessibility
+        submitBtn.setAttribute("aria-disabled", "true");
+        submitBtn.disabled = true;
 
-      // For now, assume success after a short delay
-      await new Promise((resolve) => setTimeout(resolve, 500));
+        // Simulate form submission (replace with actual API endpoint)
+        await new Promise((resolve) => setTimeout(resolve, 500));
 
-      // Show success modal
-      createAndShowModal("Cheers!", "You're good to go—your form has been submitted", true);
+        // Show success modal
+        createAndShowModal("Cheers!", "You're good to go—your form has been submitted", true);
 
-      // Reset form
-      form.reset();
-    } catch (error) {
-      console.error("Form submission error:", error);
-      // Show error modal
-      createAndShowModal(
-        "Oops!",
-        "An unexpected issue has occurred—please try again shortly",
-        false,
-      );
-    }
+        // Reset form
+        formElement.reset();
+      } catch (error) {
+        console.error("Form submission error:", error);
+        // Show error modal
+        createAndShowModal(
+          "Oops!",
+          "An unexpected issue has occurred—please try again shortly",
+          false,
+        );
+      } finally {
+        submitBtn.removeAttribute("aria-disabled");
+        submitBtn.disabled = false;
+      }
+    });
   });
 };
