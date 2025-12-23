@@ -5,7 +5,7 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { howWeWorkDetails } from "@/data/service-consumption/HowWeWork.ts";
 ---
 
-<section>
+<section id="how-we-work-section">
   <!-- Container -->
   <div
     class="container mx-auto flex flex-col gap-7 px-6 py-16 md:gap-10 md:py-24 lg:gap-14 lg:py-28"
@@ -40,5 +40,4 @@ import { howWeWorkDetails } from "@/data/service-consumption/HowWeWork.ts";
   import { animateSolutionCards, animateHeader } from "@/scripts/how-we-work.ts";
   animateHeader();
   animateSolutionCards();
-  
 </script>
