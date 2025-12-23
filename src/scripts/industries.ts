@@ -17,8 +17,8 @@ export function initIndustrySlider() {
 
   // Initialize Embla carousel
   const embla = EmblaCarousel(slider, {
-    loop: true, // Enable infinite looping
-    align: "start", // Explicitly align slides to the start
+    loop: true, 
+    align: "start",
     skipSnaps: false,
   });
 

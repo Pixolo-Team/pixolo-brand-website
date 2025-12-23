@@ -32,13 +32,13 @@ import { portfolioIndustryDetails } from "@/data/portfolio/industries.ts";
     <!-- Cards and arrows -->
     <div class="group relative flex flex-col gap-8 md:gap-10">
       <!-- Cards -->
-      <div id="industry-slider" class="embla__viewport hide-scrollbar overflow-hidden">
+      <div id="industry-slider" class="embla__viewport hide-scrollbar overflow-hidden ">
         <!-- Embla container -->
         <div class="embla__container flex gap-6 lg:space-between">
           <!-- Iterating on Industries -->
           {
             portfolioIndustryDetails.industryItems.map((industryItem) => (
-              <div class="flex w-full md:w-[490px] shrink-0">
+              <div class="flex w-full md:w-[490px] shrink-0 last:pr-6">
                 {/* Service Item Component */}
                 <ServiceItem
                   title={industryItem.title}

@@ -22,5 +22,15 @@ export const portfolioIndustryDetails = {
       image: "/images/portfolio-industries/digital.jpg",
       tags: ["Zizo", "Skorost United", "App"],
     },
+    {
+      title: "Digital",
+      image: "/images/portfolio-industries/digital.jpg",
+      tags: ["Zizo", "Skorost United", "App"],
+    },
+    {
+      title: "Digital",
+      image: "/images/portfolio-industries/digital.jpg",
+      tags: ["Zizo", "Skorost United", "App"],
+    },
   ],
 };
