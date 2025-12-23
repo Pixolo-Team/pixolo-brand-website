@@ -1,27 +1,145 @@
 ---
+import ToolBadge from "@/components/ToolBadge.astro";
 import TeamCard from "@/components/TeamCard.astro";
+import { Icon } from "astro-icon/components";
 
-interface Member {
-  poster: string;
+interface TeamMember {
   name: string;
   role: string;
+  image: string;
 }
 
-const team: Member[] = [
-  {
-    poster: "/images/retainership/employee-image.jpg",
+const {
+  featuredMember = {
     name: "Harsh Patil",
-    role: "Founder & CEO",
+    role: "Product Manager",
+    image: "/images/retainership/employee-image.jpg",
   },
-  { poster: "/images/retainership/employee-image.jpg", name: "Harsh Patil", role: "CTO" },
-  {
-    poster: "/images/retainership/employee-image.jpg",
-    name: "Harsh Patil",
-    role: "Head of Design",
-  },
-];
+  moreTeamMembers = [
+    {
+      name: "Harsh Patil",
+      role: "Product Manager",
+      image: "/images/retainership/employee-image.jpg",
+    },
+    {
+      name: "Elena Tran",
+      role: "UX Designer",
+      image: "/images/retainership/employee-image.jpg",
+    },
+  ],
+} = Astro.props as {
+  featuredMember?: TeamMember;
+  moreTeamMembers?: TeamMember[];
+};
 ---
 
-<section aria-label="Team" class="grid gap-6 md:grid-cols-3">
-  {team.map((member) => <TeamCard poster={member.poster} name={member.name} role={member.role} />)}
+<section class="w-full">
+  <!-- container -->
+  <div
+    class="flex w-full flex-col gap-16 px-6 py-20 md:mx-auto md:max-w-[768px] md:px-0 md:py-24 xl:max-w-[1536px] xl:py-28"
+  >
+    <!-- team-container -->
+    <div class="flex w-full flex-col gap-10 md:gap-12 xl:gap-12">
+      <!-- header -->
+      <div class="flex w-full flex-col items-center gap-3.5 text-center md:gap-4">
+        <ToolBadge icon="building" text="Meet the Team" />
+
+        <p
+          class="text-n-950 text-3xl leading-[125%] font-normal tracking-[-2%] md:text-4xl xl:text-5xl"
+        >
+          Behind the Scenes With Our Creative & Dev Crew
+        </p>
+      </div>
+
+      <!-- content-wrap -->
+      <div class="flex w-full flex-col gap-4 xl:gap-6">
+        <!-- featured cards -->
+        <div
+          id="featured-carousel"
+          class="flex w-full flex-row gap-4 overflow-x-auto scroll-smooth xl:gap-6"
+        >
+          <TeamCard
+            poster={featuredMember.image}
+            name={featuredMember.name}
+            role={featuredMember.role}
+          />
+
+          <!-- second card visible on xl (as per design) -->
+          <TeamCard
+            poster={featuredMember.image}
+            name={featuredMember.name}
+            role={featuredMember.role}
+          />
+        </div>
+
+        <!-- featured arrows -->
+        <div class="flex w-full items-center justify-end gap-6 md:gap-10 md:px-6 xl:px-6">
+          <button onclick="scrollCarousel('featured-carousel', -1)">
+            <Icon
+              name="right-arrow"
+              class="text-n-700 size-[13.63px] rotate-180 md:size-[17.19px]"
+            />
+          </button>
+
+          <button onclick="scrollCarousel('featured-carousel', 1)">
+            <Icon name="right-arrow" class="text-n-700 size-[13.63px] md:size-[17.19px]" />
+          </button>
+        </div>
+
+        <!-- more team -->
+        <div class="flex w-full flex-col gap-6 xl:gap-6">
+          <p class="text-n-950 text-xl leading-[125%] font-normal md:text-2xl">
+            Meet More of the Team
+          </p>
+
+          <div
+            id="small-carousel"
+            class="flex w-full flex-row gap-4 overflow-x-auto scroll-smooth xl:gap-6"
+          >
+            {
+              moreTeamMembers.map((member) => (
+                <div class="flex w-[229px] flex-col gap-3.5">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    class="h-[198px] w-full rounded-2xl object-cover"
+                  />
+                  <div class="flex flex-col gap-0.5 px-2.5">
+                    <p class="text-n-950 text-xl leading-[125%] font-normal">{member.name}</p>
+                    <p class="text-n-700 text-sm leading-[125%] font-normal">{member.role}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+
+          <!-- small arrows -->
+          <div class="flex w-full items-center justify-end gap-6 md:gap-10 md:px-6 xl:px-6">
+            <button onclick="scrollCarousel('small-carousel', -1)">
+              <Icon
+                name="right-arrow"
+                class="text-n-700 size-[13.63px] rotate-180 md:size-[17.19px]"
+              />
+            </button>
+
+            <button onclick="scrollCarousel('small-carousel', 1)">
+              <Icon name="right-arrow" class="text-n-700 size-[13.63px] md:size-[17.19px]" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<script>
+  window.scrollCarousel = function (id, direction) {
+    const container = document.getElementById(id);
+    if (!container) return;
+
+    container.scrollBy({
+      left: container.clientWidth * 0.85 * direction,
+      behavior: "smooth",
+    });
+  };
+</script>
