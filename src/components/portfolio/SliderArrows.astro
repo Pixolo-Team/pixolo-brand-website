@@ -17,7 +17,7 @@ const { prevId = "slide-prev", nextId = "slide-next" } = Astro.props as Props;
     class="hover:border-n-700 flex items-center justify-center gap-10 rounded-full border border-transparent p-1 transition"
   >
     <button id={prevId} aria-label="Previous Slide">
-      <Icon name="right-arrow" class="size-5 rotate-180 md:size-6" />
+      <Icon name="right-arrow" class="size-5 rotate-180 md:size-6 cursor-pointer" />
     </button>
   </div>
 
@@ -26,7 +26,7 @@ const { prevId = "slide-prev", nextId = "slide-next" } = Astro.props as Props;
     class="hover:border-n-700 flex items-center justify-center gap-10 rounded-full border border-transparent p-1 transition"
   >
     <button id={nextId} aria-label="Next Slide">
-      <Icon name="right-arrow" class="size-5 md:size-6" />
+      <Icon name="right-arrow" class="size-5 md:size-6 cursor-pointer" />
     </button>
   </div>
 </div>

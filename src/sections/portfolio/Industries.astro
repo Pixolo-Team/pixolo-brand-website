@@ -2,17 +2,17 @@
 // COMPONENTS //
 import SliderArrows from "@/components/portfolio/SliderArrows.astro";
 import ServiceItem from "@/components/ServiceItem.astro";
-import ToolBadge from "src/components/ToolBadge.astro";
+import ToolBadge from "@/components/ToolBadge.astro";
 
 // DATA //
-import { portfolioIndustryDetails } from "src/data/portfolio/industries.ts";
+import { portfolioIndustryDetails } from "@/data/portfolio/industries.ts";
 ---
 
 <!-- Industries Section -->
 <section>
   <!-- Container -->
   <div
-    class="container mx-auto flex flex-col justify-center gap-9 px-6 py-16 md:gap-12 md:px-0 md:py-24 lg:gap-14 lg:p-28"
+    class="container mx-auto flex flex-col justify-center gap-9 px-6 py-16 md:gap-12 md:px-0 md:py-24 lg:gap-14 lg:py-28 lg:px-0"
   >
     <!-- Tool Badge and Heading -->
     <div class="flex flex-col items-center gap-3.5 text-center md:gap-4 lg:gap-3.5">
@@ -30,15 +30,15 @@ import { portfolioIndustryDetails } from "src/data/portfolio/industries.ts";
     </div>
 
     <!-- Cards and arrows -->
-    <div class="group relative flex flex-col gap-8 md:gap-10 lg:items-end">
+    <div class="group relative flex flex-col gap-8 md:gap-10">
       <!-- Cards -->
       <div id="industry-slider" class="embla__viewport hide-scrollbar overflow-hidden">
         <!-- Embla container -->
-        <div class="embla__container flex gap-6 md:gap-8">
+        <div class="embla__container flex gap-6 lg:space-between">
           <!-- Iterating on Industries -->
           {
             portfolioIndustryDetails.industryItems.map((industryItem) => (
-              <div class="flex flex-[0_0_100%] justify-center md:flex-[0_0_70%] lg:flex-[0_0_30%]">
+              <div class="flex w-full md:w-[490px] shrink-0">
                 {/* Service Item Component */}
                 <ServiceItem
                   title={industryItem.title}
@@ -59,7 +59,7 @@ import { portfolioIndustryDetails } from "src/data/portfolio/industries.ts";
 
 <!-- Button working logic -->
 <script>
-  import { initIndustrySlider } from "src/scripts/industries.ts";
+  import { initIndustrySlider } from "@/scripts/industries.ts";
   document.addEventListener("DOMContentLoaded", () => {
     initIndustrySlider();
   });

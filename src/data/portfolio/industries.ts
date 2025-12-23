@@ -4,18 +4,23 @@ export const portfolioIndustryDetails = {
   industryItems: [
     {
       title: "Sports",
-      image: "/images/IndustriesCard/sports.jpg",
-      tags: ["Zizo", "Sikorst United", "Fc Barcelona"],
+      image: "/images/portfolio-industries/sports.jpg",
+      tags: ["Zizo", "Skorost United", "Fc Barcelona"],
     },
     {
       title: "Finance",
-      image: "/images/IndustriesCard/finance.jpg",
-      tags: ["Zizo", "Sikorst United", "App"],
+      image: "/images/portfolio-industries/finance.jpg",
+      tags: ["Zizo", "Skorost United", "App"],
     },
     {
       title: "Digital",
-      image: "/images/IndustriesCard/digital.jpg",
-      tags: ["Zizo", "Sikorst United", "App"],
+      image: "/images/portfolio-industries/digital.jpg",
+      tags: ["Zizo", "Skorost United", "App"],
+    },
+    {
+      title: "Digital",
+      image: "/images/portfolio-industries/digital.jpg",
+      tags: ["Zizo", "Skorost United", "App"],
     },
   ],
 };

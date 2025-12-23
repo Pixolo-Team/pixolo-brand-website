@@ -1,6 +1,9 @@
 // OTHERS //
 import EmblaCarousel from "embla-carousel";
 
+/**
+ * Initializes the industry slider carousel controls on the page.
+*/
 export function initIndustrySlider() {
   // Get slider container
   const slider = document.getElementById("industry-slider");
@@ -14,7 +17,9 @@ export function initIndustrySlider() {
 
   // Initialize Embla carousel
   const embla = EmblaCarousel(slider, {
-    loop: false, // Disable infinite looping
+    loop: true, // Enable infinite looping
+    align: "start", // Explicitly align slides to the start
+    skipSnaps: false,
   });
 
   // Scroll to next slide on next button click
