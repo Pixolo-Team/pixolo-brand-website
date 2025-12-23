@@ -6,6 +6,7 @@ const blogData: BlogPost = {
 
   category: {
     label: "Insights Worth Reading",
+    type: "Coding",
   },
 
   author: {
@@ -15,7 +16,7 @@ const blogData: BlogPost = {
   publishedAt: "Nov 18, 2025",
 
   hero: {
-    image: "/images/blog/hero.jpg",
+    image: "/images/blogs/blog-hero.png",
     alt: "Developer working on a laptop",
   },
 

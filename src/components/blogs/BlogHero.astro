@@ -1,6 +1,13 @@
 ---
-import type { BlogPost } from "@/data/blogs";
+// COMPONENTS //
+import { Image } from "astro:assets";
+import ToolBadge from "../ui/ToolBadge.astro";
+
+// OTHERS //
 import BlogConsumption from "./BlogConsumption.astro";
+
+// DATA //
+import type { BlogPost } from "@/data/blogs";
 
 interface Props {
   post: BlogPost;
@@ -9,22 +16,56 @@ interface Props {
 const { post } = Astro.props as Props;
 ---
 
-<section class="mx-auto max-w-3xl px-4">
-  <p class="text-sm tracking-wide uppercase opacity-70">
-    {post.category.label}
-  </p>
+<section class="inline-flex items-start justify-center">
+  <div
+    class="container inline-flex flex-col items-center justify-start gap-9 px-6 py-16 md:py-24 lg:py-28"
+  >
+    <!-- Badge -->
+    <ToolBadge icon="package" text={post.category.label} />
 
-  <h1 class="mt-4 text-4xl font-semibold">
-    {post.title}
-  </h1>
+    <!-- Content Section -->
+    <div class="flex flex-col items-center justify-start gap-7 self-stretch md:gap-14 lg:gap-16">
+      <div
+        class="flex flex-col items-center justify-start gap-3 self-stretch md:gap-5 md:px-6 lg:gap-6 lg:px-44"
+      >
+        <!-- Category and Date -->
+        <div class="flex items-center justify-center gap-3.5 self-stretch md:gap-5 lg:gap-5">
+          <div
+            class="text-n-950 justify-start text-xs leading-4 font-normal capitalize md:text-lg md:leading-6 lg:text-xl lg:leading-6"
+          >
+            {post.category.type}
+          </div>
+          <div class="border-n-950 h-0 w-3.5 rotate-90 border md:w-6 lg:w-11"></div>
+          <div
+            class="text-n-700 justify-start text-xs leading-4 font-normal capitalize md:text-lg md:leading-6 lg:text-xl lg:leading-6"
+          >
+            {post.publishedAt}
+          </div>
+        </div>
 
-  <p class="mt-2 text-sm opacity-70">
-    {post.author.name} · {post.publishedAt}
-  </p>
+        <!-- Title -->
+        <div
+          class="text-n-950 justify-start self-stretch text-center text-sm leading-4 font-normal capitalize md:text-3xl md:leading-9 lg:text-4xl lg:leading-10"
+        >
+          {post.title}
+        </div>
 
-  <img src={post.hero.image} alt={post.hero.alt} class="mt-8 w-full rounded-3xl" />
+        <!-- Author -->
+        <div
+          class="text-n-700 justify-start self-stretch text-center text-xs leading-4 font-normal capitalize md:text-lg md:leading-6 lg:text-xl lg:leading-6"
+        >
+          By: {post.author.name}
+        </div>
+      </div>
 
-  <div class="mt-12">
-    <BlogConsumption content={post.content} />
+      <!-- Hero Image -->
+      <Image
+        src={post.hero.image}
+        alt={post.hero.alt}
+        class="h-72 self-stretch rounded-3xl object-cover md:h-[650px] lg:h-[650px] lg:rounded-4xl"
+        width={1536}
+        height={650}
+      />
+    </div>
   </div>
 </section>
