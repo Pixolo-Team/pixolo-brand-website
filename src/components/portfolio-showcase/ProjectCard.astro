@@ -52,9 +52,11 @@ const {
     <div class="flex flex-col gap-7 lg:gap-8">
       <!-- Header -->
       <div class="flex flex-col gap-2 md:gap-3">
+        <!-- Title -->
         <p class=`text-n-950 text-2xl leading-tight font-normal md:text-3xl lg:text-4xl`>
           {title}
         </p>
+        <!-- Badges -->
         <div class=`flex flex-wrap gap-2 md:gap-2.5`>
           {badgeItems.map((badgeItem) => <Badge badgeText={badgeItem} />)}
         </div>
@@ -62,12 +64,15 @@ const {
 
       <!-- About -->
       <div class="flex flex-col gap-4 md:gap-6 lg:gap-7">
+        <!-- SubTitle -->
         <p class=`text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg `>
           {subtitle}
         </p>
+        <!-- Description -->
         <p class=`text-n-600 text-xs leading-tight font-normal md:text-sm lg:text-base `>
           {description}
         </p>
+        <!-- Date -->
         <p class=`text-n-700 text-xs leading-tight font-normal md:text-sm `>
           {date}
         </p>
@@ -76,7 +81,9 @@ const {
 
     <!-- Buttons -->
     <div class=`flex flex-row gap-3.5 md:gap-4`>
+      <!-- Button-1 -->
       <RoundedButton buttonText={btnOneText} onClick={""} />
+      <!-- Button-2 -->
       <RoundedButton buttonText={btnTwoText} onClick={""} variant="secondary" />
     </div>
   </div>
