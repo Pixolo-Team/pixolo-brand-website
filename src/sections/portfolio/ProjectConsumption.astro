@@ -5,17 +5,13 @@ import ThemeImage from "@/components/ui/ThemeImage.astro";
 // COMPONENTS //
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 
-// OTHERS //
-import { animateHeroTitle, animateMarble } from "@/scripts/hero";
-
 // SVG's //
-import Ball from "src/assets/3d-ball.svg";
+import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
-import { projectConsumptionHero } from "src/data/portfolio/project-consumption.ts";
+import { projectConsumptionHero } from "@/data/portfolio/project-consumption.ts";
 import { Image } from "astro:assets";
 
-const { logo, title, description, visitButton, showProjectButton } = projectConsumptionHero;
 ---
 
 <!-- Project Consumption Hero Section -->
@@ -42,26 +38,28 @@ const { logo, title, description, visitButton, showProjectButton } = projectCons
       <!-- Heading -->
       <div class="flex items-center gap-4 md:gap-5 lg:gap-8">
         <!-- Logo -->
-        <ThemeImage light={logo} dark={logo} alt={title} class="h-9 w-9 md:h-10 md:w-10 lg:h-12 lg:w-12" />
+        <ThemeImage light={projectConsumptionHero.logo} dark={projectConsumptionHero.logo} alt={projectConsumptionHero.title} class="h-9 w-9 md:h-10 md:w-10 lg:h-12 lg:w-12" />
         <!-- Title -->
-        <p class="text-2xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl">{title}</p>
+        <p class="text-2xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl">{projectConsumptionHero.title}</p>
       </div>
       <!-- Description -->
-      <p class="text-3xl leading-tight font-medium tracking-normal md:text-5xl lg:text-6xl">{description}</p>
+      <p class="text-3xl leading-tight font-medium tracking-normal md:text-5xl lg:text-6xl">{projectConsumptionHero.description}</p>
     </div>
     <!-- Buttons -->
     <div class="flex gap-3.5">
       <RoundedButton
-        buttonText={visitButton.label}
-        onClick={visitButton.href}
+        buttonText={projectConsumptionHero.visitButton.label}
+        onClick={projectConsumptionHero.visitButton.href}
         type="button"
-        variant="quinary"
+        variant="secondary"
+        className="hover:bg-n-950 hover:text-n-100 transition-colors"
       />
       <RoundedButton
-        buttonText={showProjectButton.label}
-        onClick={showProjectButton.href}
+        buttonText={projectConsumptionHero.showProjectButton.label}
+        onClick={projectConsumptionHero.showProjectButton.href}
         type="button"
-        variant="quinary"
+        variant="secondary"
+        className="hover:bg-n-950 hover:text-n-100 transition-colors"
       />
     </div>
   </div>
