@@ -69,3 +69,50 @@ export const blogSectionDetails = {
     },
   ],
 };
+
+// TYPE FOR BLOG CONSUMPTION
+
+export interface BlogPost {
+  title: string;
+
+  category: {
+    label: string;
+  };
+
+  author: {
+    name: string;
+  };
+
+  publishedAt: string;
+
+  hero: {
+    image: string;
+    alt: string;
+  };
+
+  content: BlogBlock[];
+}
+
+export type BlogBlock = HeadingBlock | ParagraphBlock | MediaBlock;
+
+export interface HeadingBlock {
+  type: "heading";
+  level: 2 | 3;
+  text: string;
+}
+
+export interface ParagraphBlock {
+  type: "paragraph";
+  text: string;
+}
+
+export interface MediaBlock {
+  type: "media";
+  mediaType: "image" | "video";
+
+  src?: string;
+  alt?: string;
+
+  videoId?: string;
+  caption?: string;
+}

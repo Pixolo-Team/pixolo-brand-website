@@ -1,18 +1,32 @@
 ---
+import type { BlogBlock } from "@/data/blogs";
+import ParagraphBlock from "./ParagraphBlock.astro";
+import HeadingBlock from "./HeadingBlock.astro";
 import MediaCardBlock from "./MediaCardBlock.astro";
-import TextSectionBlock from "./TextSectionBlock.astro";
+
+interface Props {
+  content: BlogBlock[];
+}
+
+const { content } = Astro.props as Props;
 ---
 
-<section class="flex flex-col gap-16">
+<div class="space-y-10">
   {
     content.map((block) => {
-      if (block.type === "media-card") {
-        return <MediaCardBlock block={block} />;
+      switch (block.type) {
+        case "heading":
+          return <HeadingBlock block={block} />;
+
+        case "paragraph":
+          return <ParagraphBlock block={block} />;
+
+        case "media":
+          return <MediaCardBlock block={block} />;
+
+        default:
+          return null;
       }
-      if (block.type === "text-section") {
-        return <TextSectionBlock block={block} />;
-      }
-      return null;
     })
   }
-</section>
+</div>

@@ -1,35 +1,30 @@
 ---
-import { Image } from "astro:assets";
+import type { MediaBlock } from "@/data/blogs";
 
-const { block } = Astro.props;
+interface Props {
+  block: MediaBlock;
+}
+
+const { block } = Astro.props as Props;
 ---
 
-<section class="flex flex-col items-center gap-4 md:gap-5">
-  <!-- Media -->
-  <div class="relative w-full">
-    <Image
-      src={block.media.src}
-      alt={block.media.alt || ""}
-      width={995}
-      height={594}
-      class="aspect-[270/240] w-full rounded-3xl object-cover md:aspect-768/363 lg:aspect-995/594"
-    />
+<figure class="space-y-2">
+  {
+    block.mediaType === "image" && (
+      <img src={block.src} alt={block.alt} class="w-full rounded-2xl" />
+    )
+  }
 
-    {
-      block.media.kind === "video" && (
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="border-n-950 flex h-6 w-6 items-center justify-center rounded-full border md:h-11 md:w-11 lg:h-14 lg:w-14">
-            <div class="bg-n-950 clip-path-triangle ml-0.5 h-3 w-2.5 md:h-4 md:w-3.5 lg:h-6 lg:w-5" />
-          </div>
-        </div>
-      )
-    }
-  </div>
+  {
+    block.mediaType === "video" && (
+      <iframe
+        class="aspect-video w-full rounded-2xl"
+        src={`https://www.youtube.com/embed/${block.videoId}`}
+        frameborder="0"
+        allowfullscreen
+      />
+    )
+  }
 
-  <!-- Caption -->
-  <div
-    class="text-n-700 text-center text-xs leading-4 md:max-w-[560px] md:text-lg md:leading-7 lg:px-24 lg:text-xl lg:leading-8"
-  >
-    {block.caption}
-  </div>
-</section>
+  {block.caption && <figcaption class="text-center text-sm opacity-70">{block.caption}</figcaption>}
+</figure>

@@ -1,0 +1,14 @@
+---
+import type { HeadingBlock } from "@/data/blogs";
+
+interface Props {
+  block: HeadingBlock;
+}
+
+const { block } = Astro.props as Props;
+const Tag = `h${block.level}` as keyof HTMLElementTagNameMap;
+---
+
+<Tag class="mt-12 mb-4 text-2xl font-semibold">
+  {block.text}
+</Tag>

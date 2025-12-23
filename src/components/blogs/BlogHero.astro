@@ -1,0 +1,30 @@
+---
+import type { BlogPost } from "@/data/blogs";
+import BlogConsumption from "./BlogConsumption.astro";
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props as Props;
+---
+
+<section class="mx-auto max-w-3xl px-4">
+  <p class="text-sm tracking-wide uppercase opacity-70">
+    {post.category.label}
+  </p>
+
+  <h1 class="mt-4 text-4xl font-semibold">
+    {post.title}
+  </h1>
+
+  <p class="mt-2 text-sm opacity-70">
+    {post.author.name} · {post.publishedAt}
+  </p>
+
+  <img src={post.hero.image} alt={post.hero.alt} class="mt-8 w-full rounded-3xl" />
+
+  <div class="mt-12">
+    <BlogConsumption content={post.content} />
+  </div>
+</section>
