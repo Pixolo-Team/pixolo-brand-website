@@ -1,6 +1,58 @@
 ---
 // COMPONENTS //
 import WhyUs from "@/components/service-consumption/whyUs.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+// DATA //
+import { outcomeFocusedDetails } from "@/data/service-consumption/outcome-focused.ts";
 ---
 
-<WhyUs number="01" description="A clean Product Plan" />
+<!-- Why us Section -->
+<section id="outcome-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex w-full flex-col gap-6 px-6 py-20 md:gap-10 md:py-24 lg:gap-16 lg:py-28"
+  >
+    <!-- Header Section -->
+    <div class="flex flex-col gap-3 lg:gap-4">
+      <!-- Badge -->
+      <div class="self-center">
+        <ToolBadge icon="service-icon" text={outcomeFocusedDetails.badgeText} />
+      </div>
+      <!-- Header -->
+      <p
+        class="outcome-header text-n-950 self-center text-center text-3xl leading-tight font-normal tracking-[-0.02em] opacity-0 md:text-4xl lg:text-5xl"
+      >
+        {outcomeFocusedDetails.headerText}
+      </p>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="flex w-full flex-col gap-6 md:gap-8 lg:flex-row lg:gap-14">
+      <!-- Image -->
+      <Image
+        src="/images/service-consumption/outcome-focused.png"
+        width={740}
+        height={455}
+        alt="Team collaborating on product planning"
+        class:list={"outcome-image self-center rounded-4xl opacity-0 lg:h-full lg:w-[50%]"}
+      />
+
+      <!-- Why us -->
+      <div class="flex flex-col gap-7">
+        {
+          outcomeFocusedDetails.whyUs.map((card) => (
+            <div class="why-us-card opacity-0">
+              <WhyUs number={card.number} description={card.description} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import { animateOutcomeSection } from "@/scripts/outcome-focused.ts";
+  animateOutcomeSection();
+</script>
