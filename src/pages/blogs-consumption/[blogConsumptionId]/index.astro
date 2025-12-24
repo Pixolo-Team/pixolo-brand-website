@@ -11,6 +11,7 @@ const { blogConsumptionId } = Astro.params;
 
 // COMPONENTS //
 import BlogHero from "@/components/blogs/BlogHero.astro";
+import BlogBody from "@/components/blogs/BlogBody.astro";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
@@ -21,4 +22,5 @@ import blogData from "@/data/blogs/1.ts";
 
 <Layout>
   <BlogHero post={blogData} />
+  <BlogBody content={blogData.content} />
 </Layout>

@@ -1,0 +1,297 @@
+---
+// COMPONENTS //
+import { Image } from "astro:assets";
+
+// DATA //
+import type { BlogBlock } from "@/data/blogs";
+
+interface Props {
+  content: BlogBlock[];
+}
+
+const { content } = Astro.props as Props;
+---
+
+<section>
+  <div class="container mx-auto px-6 py-12 md:py-16 lg:py-20">
+    <div class="mx-auto flex max-w-[995px] flex-col gap-10 whitespace-pre-line">
+      {
+        content.map((block) => {
+          // HEADING BLOCKS
+          if (block.type === "heading") {
+            if (block.level === 1) {
+              return (
+                <div class="flex flex-col gap-10">
+                  <div class="flex flex-col gap-3.5">
+                    <h1 class="text-n-950 text-3xl leading-10 font-semibold md:text-5xl md:leading-[72px] lg:text-6xl lg:leading-[90px]">
+                      {block.text}
+                    </h1>
+                    {block.paragraph && (
+                      <p class="text-n-700 text-sm leading-5 md:text-lg md:leading-7 lg:text-xl lg:leading-8">
+                        {block.paragraph}
+                      </p>
+                    )}
+                  </div>
+                  {block.link && (
+                    <a
+                      href={block.link.href}
+                      class="text-sm leading-5 font-medium text-blue-500 md:text-lg md:leading-7 lg:text-xl lg:leading-8"
+                    >
+                      {block.link.text}
+                    </a>
+                  )}
+                </div>
+              );
+            } else if (block.level === 2) {
+              return (
+                <div class="flex flex-col gap-10">
+                  <div class="flex flex-col gap-3.5">
+                    <h2 class="text-n-950 text-3xl leading-10 font-medium md:text-5xl md:leading-[72px] lg:text-6xl lg:leading-[90px]">
+                      {block.text}
+                    </h2>
+                    {block.paragraph && (
+                      <p class="text-n-700 text-sm leading-5 md:text-lg md:leading-7 lg:text-xl lg:leading-8">
+                        {block.paragraph}
+                      </p>
+                    )}
+                  </div>
+                  {block.link && (
+                    <a
+                      href={block.link.href}
+                      class="text-sm leading-5 font-medium text-blue-500 md:text-lg md:leading-7 lg:text-xl lg:leading-8"
+                    >
+                      {block.link.text}
+                    </a>
+                  )}
+                </div>
+              );
+            } else if (block.level === 3) {
+              return (
+                <div class="flex flex-col gap-10">
+                  <div class="flex flex-col gap-6">
+                    <h3 class="text-n-950 text-3xl leading-10 font-medium md:text-4xl md:leading-[54px] lg:text-5xl lg:leading-[72px]">
+                      {block.text}
+                    </h3>
+                    {block.paragraph && (
+                      <p class="text-n-700 text-sm leading-5 font-medium md:text-lg md:leading-7 md:font-medium lg:text-xl lg:leading-8 lg:font-medium">
+                        {block.paragraph}
+                      </p>
+                    )}
+                  </div>
+                  {block.link && (
+                    <a
+                      href={block.link.href}
+                      class="text-sm leading-5 font-medium text-blue-500 md:text-lg md:leading-7 lg:text-xl lg:leading-8"
+                    >
+                      {block.link.text}
+                    </a>
+                  )}
+                </div>
+              );
+            } else if (block.level === 4) {
+              return (
+                <div class="flex flex-col gap-10">
+                  <div class="flex flex-col gap-3.5">
+                    <h4 class="text-n-950 text-3xl leading-10 font-medium md:text-4xl md:leading-[54px] lg:text-5xl lg:leading-[72px]">
+                      {block.text}
+                    </h4>
+                    {block.paragraph && (
+                      <p class="text-n-700 text-sm leading-5 md:text-lg md:leading-7 lg:text-xl lg:leading-8">
+                        {block.paragraph}
+                      </p>
+                    )}
+                  </div>
+                  {block.link && (
+                    <a
+                      href={block.link.href}
+                      class="text-sm leading-5 font-medium text-blue-500 md:text-lg md:leading-7 lg:text-xl lg:leading-8"
+                    >
+                      {block.link.text}
+                    </a>
+                  )}
+                </div>
+              );
+            } else if (block.level === 5) {
+              return (
+                <div class="flex flex-col gap-9">
+                  <div class="flex flex-col gap-3">
+                    <h5 class="text-n-950 text-2xl leading-9 font-semibold md:text-3xl md:leading-10 lg:text-4xl lg:leading-[54px]">
+                      {block.text}
+                    </h5>
+                    {block.paragraph && (
+                      <p class="text-n-700 text-xs leading-4 md:text-base md:leading-6 lg:text-lg lg:leading-7">
+                        {block.paragraph}
+                      </p>
+                    )}
+                  </div>
+                  {block.link && (
+                    <a
+                      href={block.link.href}
+                      class="text-xs leading-4 font-medium text-blue-500 md:text-base md:leading-6 lg:text-xl lg:leading-8"
+                    >
+                      {block.link.text}
+                    </a>
+                  )}
+                </div>
+              );
+            } else if (block.level === 6) {
+              return (
+                <div class="flex flex-col gap-10">
+                  <div class="flex flex-col gap-3.5">
+                    <h6 class="text-n-950 text-2xl leading-9 font-medium md:text-3xl md:leading-10 lg:text-4xl lg:leading-[54px]">
+                      {block.text}
+                    </h6>
+                    {block.paragraph && (
+                      <p class="text-n-700 text-sm leading-5 md:text-lg md:leading-7 lg:text-xl lg:leading-8">
+                        {block.paragraph}
+                      </p>
+                    )}
+                  </div>
+                  {block.link && (
+                    <a
+                      href={block.link.href}
+                      class="text-sm leading-5 font-medium text-blue-500 md:text-lg md:leading-7 lg:text-xl lg:leading-8"
+                    >
+                      {block.link.text}
+                    </a>
+                  )}
+                </div>
+              );
+            }
+          }
+
+          // PARAGRAPH BLOCKS
+          if (block.type === "paragraph") {
+            return (
+              <p class="text-n-700 text-sm leading-5 md:text-lg md:leading-7 lg:text-xl lg:leading-8">
+                {block.text}
+              </p>
+            );
+          }
+
+          // MEDIA BLOCKS
+          if (block.type === "media") {
+            if (block.mediaType === "image") {
+              return (
+                <div class="flex flex-col items-center gap-4 md:gap-5 lg:gap-5">
+                  <Image
+                    src={block.src}
+                    alt={block.alt}
+                    class="h-60 w-full rounded-3xl object-cover md:h-96 lg:h-[594px]"
+                    width={995}
+                    height={594}
+                  />
+                  {block.caption && (
+                    <div class="px-0 text-center md:px-0 lg:px-24">
+                      <p class="text-n-700 text-xs leading-4 md:text-lg md:leading-7 lg:text-xl lg:leading-8">
+                        {block.caption}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            } else if (block.mediaType === "video") {
+              return (
+                <div class="relative flex flex-col items-center gap-3.5 md:gap-5 lg:gap-5">
+                  <div class="relative w-full">
+                    <Image
+                      src={block.src}
+                      alt={block.alt}
+                      class="h-80 w-full rounded-3xl object-cover md:h-96 lg:h-[594px]"
+                      width={995}
+                      height={594}
+                    />
+                    <div class="outline-n-950 absolute top-1/2 left-1/2 flex h-6 w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full outline-1 md:h-11 md:w-11 md:outline-2 lg:h-14 lg:w-14">
+                      <div class="bg-n-950 h-3 w-2.5 md:h-4 md:w-3.5 lg:h-6 lg:w-5" />
+                    </div>
+                  </div>
+                  {block.caption && (
+                    <div class="px-0 text-center md:px-0 lg:px-24">
+                      <p class="text-n-700 text-xs leading-4 md:text-lg md:leading-7 lg:text-xl lg:leading-8">
+                        {block.caption}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            }
+          }
+
+          // LIST BLOCKS
+          if (block.type === "list") {
+            if (block.listType === "unordered") {
+              return (
+                <div class="flex flex-col gap-3.5">
+                  {block.header && (
+                    <h2 class="text-n-950 text-2xl leading-9 md:text-3xl md:leading-10 lg:text-4xl lg:leading-[54px]">
+                      {block.header}
+                    </h2>
+                  )}
+                  <ul class="flex flex-col gap-2.5 pl-8">
+                    {block.items.map((item) => (
+                      <li class="flex items-center gap-3.5 md:gap-5 lg:gap-6">
+                        <div class="bg-n-700 h-1.5 w-1.5 shrink-0 rounded-full" />
+                        <span class="text-n-700 flex-1 text-sm leading-4 md:text-lg md:leading-7 lg:text-xl lg:leading-8">
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            } else if (block.listType === "ordered") {
+              return (
+                <div class="flex flex-col gap-3.5">
+                  {block.header && (
+                    <h2 class="text-n-950 text-2xl leading-9 md:text-3xl md:leading-10 lg:text-4xl lg:leading-[54px]">
+                      {block.header}
+                    </h2>
+                  )}
+                  <ol class="flex list-decimal flex-col gap-2.5 pl-8">
+                    {block.items.map((item) => (
+                      <li class="text-n-700 text-xs leading-4 md:text-lg md:leading-7 lg:text-xl lg:leading-8">
+                        {item}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              );
+            }
+          }
+
+          // COMPARISON TABLE BLOCKS
+          if (block.type === "comparison") {
+            return (
+              <table class="bg-n-50 outline-n-500 w-full rounded-2xl border">
+                <thead>
+                  <tr>
+                    {block.headers.map((header, i) => (
+                      <th
+                        class={`bg-n-100 text-n-700 border-t p-3 text-center text-sm font-medium md:p-5 md:text-lg lg:p-5 lg:text-xl ${
+                          i === 0 ? "rounded-tl-2xl border-l" : ""
+                        } ${i === block.headers.length - 1 ? "rounded-tr-2xl border-r" : ""}`}
+                      >
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {block.rows.map((row) => (
+                    <tr>
+                      {row.map((cell) => (
+                        <td class="text-n-700 p-4 text-center text-xs font-medium md:p-5 md:text-base lg:p-5 lg:text-lg">
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            );
+          }
+        })
+      }
+    </div>
+  </div>
+</section>

@@ -77,6 +77,7 @@ export interface BlogPost {
 
   category: {
     label: string;
+    type: string;
   };
 
   author: {
@@ -93,12 +94,17 @@ export interface BlogPost {
   content: BlogBlock[];
 }
 
-export type BlogBlock = HeadingBlock | ParagraphBlock | MediaBlock;
+export type BlogBlock = HeadingBlock | ParagraphBlock | MediaBlock | ListBlock | ComparisonBlock;
 
 export interface HeadingBlock {
   type: "heading";
-  level: 2 | 3;
+  level: 1 | 2 | 3 | 4 | 5 | 6;
   text: string;
+  paragraph?: string;
+  link?: {
+    text: string;
+    href: string;
+  };
 }
 
 export interface ParagraphBlock {
@@ -115,4 +121,17 @@ export interface MediaBlock {
 
   videoId?: string;
   caption?: string;
+}
+
+export interface ListBlock {
+  type: "list";
+  listType: "unordered" | "ordered";
+  header?: string;
+  items: string[];
+}
+
+export interface ComparisonBlock {
+  type: "comparison";
+  headers: string[];
+  rows: string[][];
 }
