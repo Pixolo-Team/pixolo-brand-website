@@ -1,0 +1,64 @@
+---
+// COMPONENTS //
+import Tab from "@/components/deliverables/Tab.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import Image from "astro/components/Image.astro";
+
+const headerDetails = {
+  badgeIcon: "service-icon",
+  badgeText: "What’s Covered",
+  headerTitle: "What’s Included in the Build",
+};
+
+const tabs = [
+  "User Flow",
+  "Wireframes",
+  "UI Screens",
+  "Frontend - Backend Code",
+  "Admin Panel",
+  "API Documentation",
+  "Deployment",
+  "30 Day Support",
+];
+---
+
+<!-- Deliverables section under Service Consumption -->
+<section>
+  <!-- Container -->
+  <div
+    class="md:max-w-container-md lg:max-w-container-2xl container mx-auto flex flex-col items-center justify-center gap-7 px-6 py-20 md:gap-11 md:py-24 lg:gap-14 lg:py-28"
+  >
+    <!-- Header -->
+    <div class="flex flex-col items-center justify-center gap-3.5 md:gap-4 lg:gap-5">
+      <!-- Tool Badge -->
+      <ToolBadge icon={headerDetails.badgeIcon} text={headerDetails.badgeText} />
+      <!-- Header Text -->
+      <p
+        class="anim-fade-in-right text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl"
+      >
+        {headerDetails.headerTitle}
+      </p>
+    </div>
+
+    <!-- Content Wrap -->
+    <div
+      class="flex h-full w-full flex-col items-center justify-center gap-4 md:flex-row md:gap-5 lg:flex-row lg:gap-16"
+    >
+      <Image
+        src={`/images/deliverables/team.png`}
+        alt={`An image of team at pixolo`}
+        width={330}
+        height={250}
+        class={`anim-fade-in-up rounded-3xl w-full h-[250px] md:w-[59%] md:h-[446px] lg:w-[65%] lg:h-[587px] object-cover`}
+      />
+
+      <!-- Tabs Wrap -->
+      <div
+        class="anim-fade-in-right flex w-full flex-col items-center justify-center gap-1.5 md:w-[38%] md:gap-2.5 lg:w-[31%] lg:gap-3"
+        style="transition-delay: 0.4s;"
+      >
+        {tabs.map((tab) => <Tab text={tab} />)}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+---
+interface props {
+  text: string;
+}
+
+const { text } = Astro.props as props;
+---
+
+<!-- Deliverables Tab -->
+<div class="bg-n-100 w-full rounded-xl px-0 py-3 lg:py-4">
+  <p
+    class="text-n-950 text-center text-base leading-tight font-normal tracking-[-0.02em] md:text-lg lg:text-2xl"
+  >
+    {text}
+  </p>
+</div>
