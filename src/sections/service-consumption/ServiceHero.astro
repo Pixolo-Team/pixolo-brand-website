@@ -45,28 +45,28 @@ const buttonText = "Book a Strategy Call";
     <!-- Content -->
     <div class="flex flex-col items-center justify-center gap-8 md:gap-9 lg:gap-10">
       <ToolBadge icon="comment" text={badgeText} />
+      <!-- Text Section -->
+      <div class="flex flex-col items-center justify-center gap-3.5 md:gap-4 lg:gap-5">
+        <!-- Title -->
+        <p
+          class="text-n-950 text-center text-3xl leading-tight font-medium tracking-[-0.01em] md:text-6xl lg:text-7xl"
+        >
+          {headerDetails.title}
+        </p>
+        <!-- Description -->
+        <p
+          class="bg-linear-to-r from-[#4254D4] to-[#8B77F3] bg-clip-text text-center text-base leading-tight text-transparent md:text-xl lg:text-2xl"
+        >
+          {headerDetails.description}
+        </p>
+      </div>
+      <!-- Rounded Button for Booking a Strategy Call -->
+      <RoundedButton
+        buttonText={buttonText}
+        onClick="window.location.href='/services'"
+        type="button"
+      />
     </div>
-    <!-- Text Section -->
-    <div class="flex flex-col items-center justify-center gap-3.5 md:gap-4 lg:gap-5">
-      <!-- Title -->
-      <p
-        class="text-n-950 text-center text-3xl leading-tight font-medium tracking-[-0.01em] md:text-6xl lg:text-7xl"
-      >
-        {headerDetails.title}
-      </p>
-      <!-- Description -->
-      <p
-        class="bg-linear-to-r from-[#4254D4] to-[#8B77F3] bg-clip-text text-center text-base leading-tight text-transparent md:text-xl lg:text-2xl"
-      >
-        {headerDetails.description}
-      </p>
-    </div>
-    <!-- Rounded Button for Booking a Strategy Call -->
-    <RoundedButton
-      buttonText={buttonText}
-      onClick="window.location.href='/services'"
-      type="button"
-    />
   </div>
 </section>
 <script>
