@@ -12,7 +12,7 @@ import { outcomeFocusedDetails } from "@/data/service-consumption/outcome-focuse
 <section id="outcome-section">
   <!-- Container -->
   <div
-    class="container mx-auto flex w-full flex-col gap-6 px-6 py-20 md:gap-10 md:py-24 lg:gap-16 lg:py-28"
+    class="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 py-20 md:gap-10 md:px-0 md:py-24 lg:max-w-384 lg:gap-16 lg:py-28"
   >
     <!-- Header Section -->
     <div class="flex flex-col gap-3 lg:gap-4">
@@ -29,18 +29,20 @@ import { outcomeFocusedDetails } from "@/data/service-consumption/outcome-focuse
     </div>
 
     <!-- Content Wrapper -->
-    <div class="grid w-full grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2 lg:gap-14">
+    <div
+      class="grid w-full grid-cols-1 justify-items-center gap-6 md:gap-8 lg:grid-cols-2 lg:gap-14"
+    >
       <!-- Image -->
       <Image
         src="/images/service-consumption/outcome-focused.png"
-        width={740}
+        width={768}
         height={455}
         alt="Team collaborating on product planning"
-        class:list={"outcome-image h-60.5 w-full self-center rounded-4xl opacity-0 md:max-h-113.75"}
+        class:list={"outcome-image h-60.5 w-81.75 rounded-4xl opacity-0 md:h-113.75 md:w-3xl lg:w-185"}
       />
 
       <!-- Why us -->
-      <div class="flex flex-col justify-center gap-7 self-center">
+      <div class="flex flex-col justify-center gap-7">
         {
           outcomeFocusedDetails.whyUs.map((card) => (
             <div class="why-us-card opacity-0">
