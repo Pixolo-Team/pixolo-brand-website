@@ -4,9 +4,10 @@ import { animate, inView, stagger } from "motion";
 export const animateSolutionCards = () => {
   inView(
     "#how-we-work-section",
-    (section) => {
-      const cards = section.querySelectorAll(".solution-card");
-      const texts = section.querySelectorAll(".solution-text");
+    () => {
+      // Querying within the callback ensures elements are ready
+      const cards = document.querySelectorAll(".solution-card");
+      const texts = document.querySelectorAll(".solution-text");
 
       if (cards.length > 0) {
         animate(
@@ -38,7 +39,8 @@ export const animateSolutionCards = () => {
         );
       }
     },
-    { amount: 0.4 },
+    // CHANGE: Reduced from 0.4 to 0.1 to ensure trigger fires
+    { amount: 0.1 },
   );
 };
 
