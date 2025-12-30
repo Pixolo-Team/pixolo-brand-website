@@ -17,7 +17,7 @@ import { impactContent } from "src/data/portfolio/project-consumption/impact";
       <ToolBadge icon={impactContent.badgeIcon} text={impactContent.badgeText} />
       <!-- Heading -->
       <p
-        class="w-full text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl"
+        class="heading w-full text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl"
       >
         {impactContent.heading}
       </p>
@@ -36,3 +36,15 @@ import { impactContent } from "src/data/portfolio/project-consumption/impact";
     </div>
   </div>
 </section>
+
+<style>
+  .heading {
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+  }
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+</style>

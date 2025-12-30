@@ -11,11 +11,12 @@ const { value, label, index } = Astro.props;
 <!-- Stat Box -->
 <div
   class="relative flex flex-col gap-4 px-5 py-4 md:gap-5 md:px-9 md:py-5 lg:gap-5 lg:pt-6 lg:pr-14 lg:pb-9 lg:pl-9"
+  style={`--delay: ${index * 0.2}s;`}
 >
   <!-- Right dashed border -->
   <span
     class:list={[
-      "text-n-500 pointer-events-none absolute top-0 right-0 hidden h-full w-px",
+      "line-right text-n-500 pointer-events-none absolute top-0 right-0 hidden h-full w-px",
       index % 2 === 0 ? "md:block" : "md:hidden",
       index % 4 !== 3 ? "lg:block" : "lg:hidden",
     ]}
@@ -28,7 +29,7 @@ const { value, label, index } = Astro.props;
 
   <!-- Bottom dashed border -->
   <span
-    class:list={["text-n-500 pointer-events-none absolute bottom-0 left-0 h-px w-full"]}
+    class:list={["line-bottom text-n-500 pointer-events-none absolute bottom-0 left-0 h-px w-full"]}
     style="background: repeating-linear-gradient(
       to right,
       currentColor 0 6px,
@@ -36,10 +37,57 @@ const { value, label, index } = Astro.props;
     );"
   ></span>
   <!-- Content -->
-  <p class="text-n-950 text-4xl leading-tight font-normal tracking-[-2%] md:text-5xl lg:text-6xl">
+  <p
+    class="value text-n-950 text-4xl leading-tight font-normal tracking-[-2%] md:text-5xl lg:text-6xl"
+  >
     {value}
   </p>
-  <p class="text-n-700 text-sm leading-tight font-normal tracking-normal md:text-base lg:text-lg">
+  <p
+    class="label text-n-700 text-sm leading-tight font-normal tracking-normal md:text-base lg:text-lg"
+  >
     {label}
   </p>
 </div>
+
+<style>
+  .value {
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+    animation-delay: var(--delay);
+  }
+
+  /* LABEL – fade + move up */
+  .label {
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+    animation-delay: calc(var(--delay) + 0.5s);
+  }
+
+  /* LINES – fade in from right */
+  .line-right,
+  .line-bottom {
+    opacity: 0;
+    transform: translateX(12px);
+    animation: lineIn 0.6s ease-out forwards;
+  }
+  .line-right {
+    animation-delay: calc(var(--delay) + 0.8s);
+  }
+
+  .line-bottom {
+    animation-delay: calc(var(--delay) + 1s);
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes lineIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>
