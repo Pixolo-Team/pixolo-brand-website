@@ -50,20 +50,21 @@ const { value, label, index } = Astro.props;
 </div>
 
 <style>
+  /* VALUE */
   .value {
     opacity: 0;
     animation: fadeIn 2s ease-out forwards;
     animation-delay: var(--delay);
   }
 
-  /* LABEL – fade + move up */
+  /* LABEL */
   .label {
     opacity: 0;
     animation: fadeIn 2s ease-out forwards;
     animation-delay: calc(var(--delay) + 0.5s);
   }
 
-  /* LINES – fade in from right */
+  /* LINES  */
   .line-right,
   .line-bottom {
     opacity: 0;

@@ -10,7 +10,9 @@ import { impactContent } from "src/data/portfolio/project-consumption/impact";
 <!-- Impact Section -->
 <section>
   <!-- Container -->
-  <div class="container mx-auto flex flex-col gap-10 px-6 py-20 md:gap-16 md:px-0 md:py-24 lg:py-9 lg:gap-20">
+  <div
+    class="container mx-auto flex flex-col gap-10 px-6 py-20 md:gap-16 md:px-0 md:py-24 lg:gap-20 lg:py-9"
+  >
     <!-- Tool Badge and Heading -->
     <div class="flex flex-col items-center gap-3.5 md:gap-4">
       <!-- Tool Badge -->
@@ -26,11 +28,7 @@ import { impactContent } from "src/data/portfolio/project-consumption/impact";
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       {
         impactContent.stats.map((statsItem, index) => (
-          <StatBox
-            value={statsItem.statValue}
-            label={statsItem.title}
-            index={index}
-          />
+          <StatBox value={statsItem.statValue} label={statsItem.title} index={index} />
         ))
       }
     </div>
@@ -38,6 +36,7 @@ import { impactContent } from "src/data/portfolio/project-consumption/impact";
 </section>
 
 <style>
+  /* HEADING */
   .heading {
     opacity: 0;
     animation: fadeIn 2s ease-out forwards;
