@@ -38,16 +38,12 @@ const {
   class=`flex gap-7 lg:gap-12 flex-col ${view == "grid" ? "md:flex-row" : ""}`
 >
   <!-- Project Card Image -->
-  <Image
-    src={image}
-    alt={`Image for ${name}`}
-    width={327}
-    height={238}
-    class=`flex-1 h-full w-full rounded-3xl ${view == "grid" ? "md:w-[370px] md:h-[400px] xl:w-[744px] xl:h-[498px]" : ""}`
-  />
+  <div class=`flex w-full rounded-3xl overflow-hidden ${view == "grid" ? "md:w-[49%]" : ""}`>
+    <Image src={image} alt={`Image for ${name}`} width={327} height={238} class="h-full w-full" />
+  </div>
 
   <!-- Content -->
-  <div class="flex flex-col justify-between gap-8 md:gap-20 lg:gap-40">
+  <div class="flex flex-1 flex-col justify-between gap-8 md:gap-20 lg:gap-40">
     <!-- Details Wrap -->
     <div class="flex flex-col gap-7 lg:gap-8">
       <!-- Header -->
