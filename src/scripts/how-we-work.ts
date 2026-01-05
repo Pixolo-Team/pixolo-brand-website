@@ -14,7 +14,7 @@ export const animateSolutionCards = () => {
           cards,
           {
             opacity: [0, 1],
-            transform: ["translateY(60px)", "translateY(0px)"],
+            transform: ["translateY(30px)", "translateY(0px)"],
           },
           {
             duration: 0.8,
