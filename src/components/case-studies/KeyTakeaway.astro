@@ -12,7 +12,7 @@ const { title, description, index } = Astro.props;
   <!-- Title & Learning -->
   <div class="flex flex-1 flex-col gap-2 leading-tight md:gap-3 lg:gap-4">
     <!-- Title -->
-    <p class="border-n-700 w-full border-b md:py-3 md:text-3xl lg:text-4xl">
+    <p class="border-n-700 w-full border-b py-2 md:py-3 md:text-3xl lg:text-4xl">
       {title}
     </p>
 
@@ -23,5 +23,5 @@ const { title, description, index } = Astro.props;
   </div>
 
   <!-- Index -->
-  <p class="text-3xl leading-tight tracking-[-0.04em] md:text-8xl">{index}</p>
+  <p class="text-3xl leading-tight tracking-[-0.04em] md:text-7xl lg:text-8xl">{index}</p>
 </div>
