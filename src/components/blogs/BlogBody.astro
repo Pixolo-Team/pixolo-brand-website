@@ -182,8 +182,8 @@ const { content } = Astro.props as Props;
                     height={594}
                   />
                   {block.caption && (
-                    <div class="px-0 text-center md:px-0 lg:px-24">
-                      <p class="text-n-700 text-xs leading-4 md:text-lg md:leading-7 lg:text-xl lg:leading-8">
+                    <div class="px-26 text-center lg:px-24">
+                      <p class="text-n-700 text-xs leading-normal md:text-lg md:leading-7 lg:text-xl lg:leading-8">
                         {block.caption}
                       </p>
                     </div>
@@ -262,14 +262,14 @@ const { content } = Astro.props as Props;
           // COMPARISON TABLE BLOCKS
           if (block.type === "comparison") {
             return (
-              <table class="bg-n-50 outline-n-500 w-full rounded-2xl border">
+              <table class="bg-n-50 outline-n-500 w-full rounded-2xl border-[0.7px]">
                 <thead>
                   <tr>
                     {block.headers.map((header, i) => (
                       <th
-                        class={`bg-n-100 text-n-700 border-t p-3 text-center text-sm font-medium md:p-5 md:text-lg lg:p-5 lg:text-xl ${
-                          i === 0 ? "rounded-tl-2xl border-l" : ""
-                        } ${i === block.headers.length - 1 ? "rounded-tr-2xl border-r" : ""}`}
+                        class={`bg-n-100 text-n-700 p-3 text-center text-sm font-medium md:p-5 md:text-lg lg:p-5 lg:text-xl ${
+                          i === 0 ? "rounded-tl-2xl" : ""
+                        } ${i === block.headers.length - 1 ? "rounded-tr-2xl " : ""}`}
                       >
                         {header}
                       </th>

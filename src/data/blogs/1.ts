@@ -22,18 +22,6 @@ const blogData: BlogPost = {
 
   content: [
     {
-      type: "heading",
-      level: 1,
-      text: "It's a Continuous Journey of Learning, Experimenting, and Improving",
-      paragraph:
-        "Technology is not just about writing code. It's about understanding systems, exploring edge cases, and constantly improving how things work behind the scenes.\n\nEvery project teaches something new. Sometimes it's a technical lesson, sometimes it's about design, and sometimes it's simply about patience.",
-      link: {
-        text: "Visit page",
-        href: "#",
-      },
-    },
-
-    {
       type: "media",
       mediaType: "image",
       src: "/images/blogs/blog-hero.png",
@@ -124,7 +112,7 @@ const blogData: BlogPost = {
       level: 6,
       text: "Header 6",
       paragraph:
-        "Dive into a collection of coding videos that simplify complex concepts and guide you step-by-step through real-world development.",
+        "Dive into a collection of coding videos that simplify complex concepts and guide you step-by-step through real-world development. \n \nDive into a collection of coding videos that simplify complex concepts and guide you step-by-step through real-world development.",
       link: {
         text: "Visit page",
         href: "#",
@@ -147,9 +135,9 @@ const blogData: BlogPost = {
       listType: "unordered",
       header: "Header 2",
       items: [
-        "Write clean, maintainable code",
-        "Test thoroughly before shipping",
-        "Document everything for future reference",
+        "Dive into a collection of coding videos.",
+        "Dive into a collection of coding videos.",
+        "Dive into a collection of coding videos.",
       ],
     },
 
@@ -157,17 +145,12 @@ const blogData: BlogPost = {
       type: "comparison",
       headers: ["Design", "Development"],
       rows: [
-        ["Focus on user experience", "Focus on implementation"],
-        ["Visual prototyping", "Code architecture"],
-        ["Figma & Sketch", "React & TypeScript"],
-        ["Color theory", "Data structures"],
-        ["Responsive layouts", "API integration"],
+        ["May 20 - Deven", "May 30 - Omkar"],
+        ["May 20 - Deven", "May 30 - Omkar"],
+        ["May 20 - Deven", "May 30 - Omkar"],
+        ["May 20 - Deven", "May 30 - Omkar"],
+        ["May 20 - Deven", "May 30 - Omkar"],
       ],
-    },
-
-    {
-      type: "paragraph",
-      text: "The journey of learning never truly ends. Each project, each bug fix, and each code review is an opportunity to grow. Embrace the process, stay curious, and keep building.",
     },
   ],
 };
