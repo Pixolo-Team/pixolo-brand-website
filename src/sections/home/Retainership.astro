@@ -13,7 +13,7 @@ import { retainershipDetails } from "@/data/retainership";
 
 <section id="retainership-section">
   <div
-    class="container mx-auto flex flex-col items-center justify-center gap-40 overflow-hidden px-6 py-40 md:gap-52 lg:gap-60 lg:px-14"
+    class="container mx-auto flex flex-col items-center justify-center gap-40 overflow-hidden px-6 py-40 md:max-w-3xl md:gap-48 lg:gap-60 lg:px-14"
   >
     <!-- Top Half Section -->
     <div class="flex w-full flex-col items-center gap-20 lg:gap-24">
@@ -60,7 +60,7 @@ import { retainershipDetails } from "@/data/retainership";
       <!-- Cards Main Title -->
       <p
         id="header-text"
-        class="text-n-950 w-full text-center text-xl leading-tight font-medium md:text-3xl lg:w-[80%] lg:text-5xl"
+        class="text-n-950 w-full text-center text-xl leading-tight font-medium md:text-[28px] lg:w-[80%] lg:text-5xl"
       >
         {retainershipDetails.contentHeading}
       </p>
@@ -91,11 +91,11 @@ import { retainershipDetails } from "@/data/retainership";
         </div>
 
         <!-- Employee Cards -->
-        <div class="flex w-full flex-col items-center gap-14 md:gap-16">
+        <div class="flex w-full flex-col items-center gap-12 md:gap-16">
           <div class="flex w-full flex-col gap-7">
             <!-- Employee Cards Title -->
             <p
-              class="text-n-950 text-lg leading-tight font-medium tracking-tight md:text-xl lg:text-2xl"
+              class="text-n-950 text-lg leading-tight font-medium tracking-[-0.02em] md:text-xl lg:text-2xl"
             >
               {retainershipDetails.employeeCardTitle}
             </p>
@@ -115,16 +115,16 @@ import { retainershipDetails } from "@/data/retainership";
               }
             </div>
           </div>
-        </div>
 
-        <!-- Extend Team Button -->
-        <RoundedButton
-          buttonText="Extend your Team Now"
-          rightIcon="right-arrow"
-          variant="tertiary"
-          type="submit"
-          onClick="window.location.href='/extend-your-team'"
-        />
+          <!-- Extend Team Button -->
+          <RoundedButton
+            buttonText="Extend your Team Now"
+            rightIcon="right-arrow"
+            variant="tertiary"
+            type="submit"
+            onClick="window.location.href='/extend-your-team'"
+          />
+        </div>
       </div>
     </div>
   </div>

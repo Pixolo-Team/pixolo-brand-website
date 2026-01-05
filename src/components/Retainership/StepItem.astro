@@ -16,7 +16,7 @@ const { number, title, description, direction } = Astro.props as props;
 >
   <!-- Step number -->
   <p
-    class={`step-number max-w-20 flex-1 font-normal text-5xl leading-tight text-n-950 grow text-right md:max-w-full md:text-7xl lg:text-8xl ${direction === "rtl" ? "md:text-left" : "md:text-right"}`}
+    class={`step-number max-w-20 flex-1 font-normal text-5xl leading-tight text-n-950 grow text-right md:max-w-full md:text-[80px] lg:text-8xl ${direction === "rtl" ? "md:text-left" : "md:text-right"}`}
   >
     {number}
   </p>
