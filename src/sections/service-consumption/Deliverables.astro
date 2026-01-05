@@ -49,12 +49,12 @@ const tabs = [
         alt={`An image of team at pixolo`}
         width={330}
         height={250}
-        class={`anim-fade-in-up rounded-3xl w-full h-63 md:w-[59%] md:h-112 lg:w-249 lg:h-147 object-cover`}
+        class={`anim-fade-in-up rounded-3xl w-full h-63 md:max-w-[59%] md:h-112 lg:w-249 lg:h-147 object-cover`}
       />
 
       <!-- Tabs Wrap -->
       <div
-        class="anim-fade-in-right flex w-full flex-col items-center justify-center gap-1.5 md:w-[38%] md:gap-2.5 lg:w-[31%] lg:gap-3"
+        class="anim-fade-in-right flex w-full flex-col items-center justify-center gap-1.5 md:max-w-[38%] md:gap-2.5 lg:w-[31%] lg:gap-3"
         style="transition-delay: 0.4s;"
       >
         {tabs.map((tab) => <Tab text={tab} />)}
