@@ -1,5 +1,6 @@
 import { animate, inView, stagger } from "motion";
 
+/** Animate Outcome Section */
 export const animateOutcomeSection = () => {
   const section = document.querySelector("#outcome-section");
   if (!section) return;

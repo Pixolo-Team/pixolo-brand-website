@@ -1,6 +1,6 @@
 ---
 // COMPONENTS //
-import WhyUs from "@/components/service-consumption/whyUs.astro";
+import WhyUs from "@/components/service-consumption/WhyUs.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
 
@@ -20,6 +20,7 @@ import { outcomeFocusedDetails } from "@/data/service-consumption/outcome-focuse
       <div class="self-center">
         <ToolBadge icon="service-icon" text={outcomeFocusedDetails.badgeText} />
       </div>
+
       <!-- Header -->
       <p
         class="outcome-header text-n-950 self-center text-center text-3xl leading-tight font-normal tracking-[-0.02em] opacity-0 md:text-4xl lg:text-5xl"
@@ -44,9 +45,9 @@ import { outcomeFocusedDetails } from "@/data/service-consumption/outcome-focuse
       <!-- Why us -->
       <div class="flex w-full flex-col gap-7 lg:justify-items-center">
         {
-          outcomeFocusedDetails.whyUs.map((card) => (
+          outcomeFocusedDetails.whyUs.map((whyUsItem) => (
             <div class="why-us-card opacity-0">
-              <WhyUs number={card.number} description={card.description} />
+              <WhyUs number={whyUsItem.number} description={whyUsItem.description} />
             </div>
           ))
         }
