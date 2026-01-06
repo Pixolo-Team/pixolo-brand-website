@@ -25,11 +25,11 @@ import { howWeWorkDetails } from "@/data/service-consumption/HowWeWork.ts";
     <div class="flex w-full flex-col gap-4 md:gap-5 lg:grid lg:grid-cols-3 lg:gap-8">
       <!-- Solution Cards -->
       {
-        howWeWorkDetails.solutionCards.map((solutionCard) => (
+        howWeWorkDetails.solutionCards.map((solutionCardItem) => (
           <SolutionsCard
-            number={solutionCard.number}
-            title={solutionCard.title}
-            description={solutionCard.description}
+            number={solutionCardItem.number}
+            title={solutionCardItem.title}
+            description={solutionCardItem.description}
           />
         ))
       }

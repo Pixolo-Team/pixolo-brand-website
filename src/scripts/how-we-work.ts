@@ -1,11 +1,11 @@
 // OTHERS //
 import { animate, inView, stagger } from "motion";
 
+// Function to add animations for solution cards and their text in How We Work section
 export const animateSolutionCards = () => {
   inView(
     "#how-we-work-section",
     () => {
-      // Querying within the callback ensures elements are ready
       const cards = document.querySelectorAll(".solution-card");
       const texts = document.querySelectorAll(".solution-text");
 
@@ -39,11 +39,11 @@ export const animateSolutionCards = () => {
         );
       }
     },
-    // CHANGE: Reduced from 0.4 to 0.1 to ensure trigger fires
     { amount: 0.1 },
   );
 };
 
+//Function to add animation for section header text
 export const animateHeader = () => {
   inView(
     ".header-text",
