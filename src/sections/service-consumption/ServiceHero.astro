@@ -2,13 +2,13 @@
 // COMPONENTS //
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 
 // SVG's //
 import Ball from "@/assets/3d-ball.svg";
 
 const badgeText = "Build Your Built for real use With Us";
-const headerDetails = {
+const headerData = {
   title: "Build your MVP with clarity, speed and zero rework",
   description: "From vision to a working product customers love",
 };
@@ -17,11 +17,13 @@ const buttonText = "Book a Strategy Call";
 
 <!-- Hero Section -->
 <section>
+  
   <!-- Container -->
   <div
     id="hero-wrapper"
     class="md:max-w-container-md lg:max-w-container-2xl relative container mx-auto flex flex-col items-center justify-center gap-9 overflow-hidden px-6 py-24 md:gap-12 md:px-0 md:py-40 lg:gap-12 lg:px-0 lg:pt-72 lg:pb-12"
   >
+
     <!-- 3 Dimensional Ball Image -->
     <Image
       id="big-marble-service-consumption-hero"
@@ -29,7 +31,7 @@ const buttonText = "Book a Strategy Call";
       alt="A floating 3D Ball"
       width={60}
       height={60}
-      class="absolute top-[22%] left-6 -z-1 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
+      class="absolute top-[22%] left-6 -z-10 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
     />
 
     <!-- 3 Dimensional Ball Image -->
@@ -42,24 +44,29 @@ const buttonText = "Book a Strategy Call";
       class="absolute right-[10%] bottom-[46%] -z-1 w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
       style="animation-duration: 4s"
     />
+
     <!-- Content -->
     <div class="flex flex-col items-center justify-center gap-8 md:gap-9 lg:gap-10">
       <ToolBadge icon="comment" text={badgeText} />
+
       <!-- Text Section -->
       <div class="flex flex-col items-center justify-center gap-3.5 md:gap-4 lg:gap-5">
+
         <!-- Title -->
         <p
           class="text-n-950 text-center text-3xl leading-tight font-medium tracking-[-0.01em] md:text-6xl lg:text-7xl"
         >
-          {headerDetails.title}
+          {headerData.title}
         </p>
+
         <!-- Description -->
         <p
-          class="bg-linear-to-r from-[#4254D4] to-[#8B77F3] bg-clip-text text-center text-base leading-tight text-transparent md:text-xl lg:text-2xl"
+          class="bg-gradient-to-r from-[#4254D4] to-[#8B77F3] bg-clip-text text-center text-base leading-tight text-transparent md:text-xl lg:text-2xl"
         >
-          {headerDetails.description}
+          {headerData.description}
         </p>
       </div>
+
       <!-- Rounded Button for Booking a Strategy Call -->
       <RoundedButton
         buttonText={buttonText}
