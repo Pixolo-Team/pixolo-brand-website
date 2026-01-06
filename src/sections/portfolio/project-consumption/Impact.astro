@@ -1,10 +1,10 @@
 ---
 // COMPONENTS //
 import ToolBadge from "@/components/ui/ToolBadge.astro";
-import StatBox from "src/components/project-consumption/StatBox.astro";
+import StatBox from "@/components/project-consumption/StatBox.astro";
 
 // DATA //
-import { impactContent } from "src/data/portfolio/project-consumption/impact";
+import { impactContent } from "@/data/portfolio/project-consumption/impact";
 ---
 
 <!-- Impact Section -->
@@ -27,8 +27,8 @@ import { impactContent } from "src/data/portfolio/project-consumption/impact";
     <!-- StatsRows -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       {
-        impactContent.stats.map((statsItem, index) => (
-          <StatBox value={statsItem.statValue} label={statsItem.title} index={index} />
+        impactContent.stats.map((statItem, index) => (
+          <StatBox value={statItem.statValue} label={statItem.title} index={index} />
         ))
       }
     </div>
