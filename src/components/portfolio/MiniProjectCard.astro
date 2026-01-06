@@ -4,7 +4,7 @@ import RoundedButton from "@/components/RoundedButton.astro";
 import { Image } from "astro:assets";
 
 interface Props {
-  id: number;
+  id: string;
   title: string;
   badgeText1: string;
   badgeText2: string;
@@ -18,46 +18,47 @@ const { id, title, badgeText1, badgeText2, date, btnOneText, btnTwoText, image }
   Astro.props as Props;
 ---
 
-<a>
-  <div
-    class="flex w-full cursor-pointer flex-col gap-2.5 p-2 md:min-w-[350px] md:gap-4 lg:min-w-[400px] lg:gap-6"
-  >
-    <div>
-      <!-- image -->
-      <Image
-        src={`/images/miniprojects/${image}`}
-        class="h-full w-full rounded-3xl"
-        width={100}
-        height={100}
-        alt={title}
-      />
-    </div>
-    <!-- Content wrap -->
-    <div class="flex flex-col gap-7 md:gap-9 lg:gap-10">
-      <!-- About wrap -->
-      <div class="flex flex-col gap-4">
-        <!-- Header-section -->
-        <div class="flex flex-col gap-2">
-          <p class="text-lg leading-tight font-normal md:text-xl lg:text-2xl">{title}</p>
-          <!-- ToolBadge wrap -->
-          <div class="flex flex-row gap-1.5">
-            <div class="border-n-800 rounded-3xl border px-2.5 py-1 text-center">
-              <!-- Badge Text -->
-              <p class="text-n-950 text-xs leading-tight md:text-sm">{badgeText1}</p>
-            </div>
-            <div class="border-n-800 rounded-3xl border px-2.5 py-1 text-center">
-              <!-- Badge Text -->
-              <p class="text-n-950 text-xs leading-tight md:text-sm">{badgeText2}</p>
-            </div>
+<div
+  id={id}
+  class="flex w-full cursor-pointer flex-col gap-2.5 p-2 md:w-[350px] md:gap-4 lg:w-[400px] lg:gap-6"
+>
+  <div>
+    <!-- Image -->
+    <Image
+      src={`/images/miniprojects/${image}`}
+      class="h-full w-full rounded-3xl"
+      width={400}
+      height={250}
+      alt={title}
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <!-- Content wrap -->
+  <div class="flex flex-col gap-7 md:gap-9 lg:gap-10">
+    <!-- About wrap -->
+    <div class="flex flex-col gap-4">
+      <!-- Header-section -->
+      <div class="flex flex-col gap-2">
+        <p class="text-lg leading-tight font-normal md:text-xl lg:text-2xl">{title}</p>
+        <!-- ToolBadge wrap -->
+        <div class="flex flex-row gap-1.5">
+          <div class="border-n-800 rounded-3xl border px-2.5 py-1 text-center">
+            <!-- Badge Text -->
+            <p class="text-n-950 text-xs leading-tight md:text-sm">{badgeText1}</p>
+          </div>
+          <div class="border-n-800 rounded-3xl border px-2.5 py-1 text-center">
+            <!-- Badge Text -->
+            <p class="text-n-950 text-xs leading-tight md:text-sm">{badgeText2}</p>
           </div>
         </div>
-        <p class="text-sm">{date}</p>
       </div>
-      <!--Cta wrap  -->
-      <div class="flex flex-row gap-3.5">
-        <RoundedButton buttonText={btnOneText} />
-        <RoundedButton buttonText={btnTwoText} />
-      </div>
+      <p class="text-sm">{date}</p>
+    </div>
+    <!-- Cta wrap -->
+    <div class="flex flex-row gap-3.5">
+      <RoundedButton buttonText={btnOneText} />
+      <RoundedButton buttonText={btnTwoText} />
     </div>
   </div>
-</a>
+</div>
