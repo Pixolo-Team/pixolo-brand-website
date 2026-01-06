@@ -1,23 +1,23 @@
 ---
-// STYLES //
-import ThemeImage from "@/components/ui/ThemeImage.astro";
-
 // COMPONENTS //
+import ThemeImage from "@/components/ui/ThemeImage.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
+import { Image } from "astro:assets";
 
 // SVG's //
 import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { projectConsumptionHero } from "@/data/portfolio/project-consumption.ts";
-import { Image } from "astro:assets";
-
 ---
 
 <!-- Project Consumption Hero Section -->
 <section>
   <!-- Container -->
-  <div id="hero-wrapper" class="relative container mx-auto flex flex-col items-center gap-14 px-6 py-24 md:pt-40 md:pb-28 md:gap-16 lg:pt-80 lg:pb-36 lg:gap-20 md:px-0">
+  <div
+    id="hero-wrapper"
+    class="relative container mx-auto flex flex-col items-center gap-14 px-6 py-24 md:gap-16 md:px-0 md:pt-40 md:pb-28 lg:gap-20 lg:pt-80 lg:pb-36"
+  >
     <!-- 3D Ball -->
     <Image
       id="big-marble"
@@ -38,12 +38,21 @@ import { Image } from "astro:assets";
       <!-- Heading -->
       <div class="flex items-center gap-4 md:gap-5 lg:gap-8">
         <!-- Logo -->
-        <ThemeImage light={projectConsumptionHero.logo} dark={projectConsumptionHero.logo} alt={projectConsumptionHero.title} class="h-9 w-9 md:h-10 md:w-10 lg:h-12 lg:w-12" />
+        <ThemeImage
+          light={projectConsumptionHero.logo}
+          dark={projectConsumptionHero.logo}
+          alt={projectConsumptionHero.title}
+          class="h-9 w-9 md:h-10 md:w-10 lg:h-12 lg:w-12"
+        />
         <!-- Title -->
-        <p class="text-2xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl">{projectConsumptionHero.title}</p>
+        <p class="text-2xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl">
+          {projectConsumptionHero.title}
+        </p>
       </div>
       <!-- Description -->
-      <p class="text-3xl leading-tight font-medium tracking-normal md:text-5xl lg:text-6xl">{projectConsumptionHero.description}</p>
+      <p class="text-3xl leading-tight font-medium tracking-normal md:text-5xl lg:text-6xl">
+        {projectConsumptionHero.description}
+      </p>
     </div>
     <!-- Buttons -->
     <div class="flex gap-3.5">
@@ -66,9 +75,8 @@ import { Image } from "astro:assets";
 </section>
 
 <script>
-  import { animateHeroTitle, animateMarble } from "@/scripts/hero";
+  import { animateMarble } from "@/scripts/hero";
 
-  animateHeroTitle();
   animateMarble("big-marble", "hero-wrapper");
   animateMarble("small-marble", "hero-wrapper");
 </script>

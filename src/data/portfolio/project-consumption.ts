@@ -1,17 +1,19 @@
+/** Hero section data for FC Barcelona project consumption portfolio page */
+
 export const projectConsumptionHero = {
-  logo: "/images/portfolio/project-consumption/fcb.png", 
-  
+  logo: "/images/portfolio/project-consumption/fcb.png",
+
   title: "FC Barcelona",
-  
+
   description: "A project crafted with purpose, creativity & seamless execution",
-  
+
   visitButton: {
     label: "Visit Website",
-    href: "window.location.href='/404'"
+    href: "window.location.href='/404'",
   },
-  
+
   showProjectButton: {
     label: "Show Project",
-    href: "window.location.href='/404'"
-  }
+    href: "window.location.href='/404'",
+  },
 };
