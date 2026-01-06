@@ -1,54 +1,64 @@
 ---
 import ToolBadge from "@/components/ToolBadge.astro";
 import { Image } from "astro:assets";
+
+import { projectIntroductionDetails } from "@/data/projectIntroduction";
 ---
 
 <section>
+  <!-- Project Introduction Section -->
   <div
     class="container mx-auto flex flex-col gap-7 px-6 py-16 md:gap-12 md:py-24 lg:gap-16 lg:py-28"
   >
+    <!-- Heading -->
     <div class="flex flex-col items-center gap-3 md:gap-4">
+      <!-- Tool Badge -->
       <ToolBadge icon="service-icon" text="Summary" />
       <p
-        class="font-regular text-center text-3xl leading-tight tracking-tight md:text-4xl lg:text-5xl"
+        class="font-regular anim-fade-in-right text-center text-3xl leading-tight tracking-tight md:text-4xl lg:text-5xl"
       >
-        Inside the Build: A Clear and Creative Project Walkthrough
+        {projectIntroductionDetails.heading}
       </p>
     </div>
-
+    <!-- Content -->
     <div class="flex flex-col gap-6 md:gap-9 lg:flex-row lg:gap-14">
+      <!-- Project Image -->
       <div>
         <Image
-          src="/images/projectintroduction/upscale_image.jpg"
+          src=`/images/projectintroduction/${projectIntroductionDetails.image}`
           width={100}
           height={100}
           alt={"Upscale_image"}
-          class="h-full w-full rounded-3xl"
+          class="anim-fade-up-quick h-full w-full rounded-3xl"
         />
       </div>
-      <div class="flex flex-col gap-7 md:gap-10 lg:gap-20">
-        <div class="gap-1 md:gap-2 lg:gap-2.5">
+      <!-- Project Details -->
+      <div class="flex flex-1 flex-col gap-7 md:gap-10 lg:gap-20">
+        <!-- About Project -->
+        <div class="anim-fade-in-right gap-1 delay-[300ms] md:gap-2 lg:gap-2.5">
           <h3 class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
-            About this project
+            {projectIntroductionDetails.aboutTheProjectHeading}
           </h3>
-          <p class="text-sm leading-normal font-normal md:text-lg">
-            FC Barcelona is a legendary football club known for its winning spirit, iconic players,
-            and dynamic, attacking style of play. Inspired by a strong culture and global fanbase,
-            the club continues to set standards in modern football.
+          <p class="text-sm leading-normal font-normal md:text-lg lg:text-xl">
+            {projectIntroductionDetails.aboutTheproject}
           </p>
         </div>
-        <div class="gap-1 md:gap-2 lg:gap-2.5">
+        <!-- Target Audience -->
+        <div class="anim-fade-in-right gap-1 delay-[500ms] md:gap-2 lg:gap-2.5">
           <h3 class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
-            Target Audience
+            {projectIntroductionDetails.targetAudienceHeading}
           </h3>
-          <p class="text-sm leading-normal font-normal md:text-lg">
-            Kids and GenZ who loves football
+          <p class="text-sm leading-normal font-normal md:text-lg lg:text-xl">
+            {projectIntroductionDetails.targetAudience}
           </p>
         </div>
-        <div class="gap-1 md:gap-2 lg:gap-2.5">
-          <h3 class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">Purpose</h3>
-          <p class="text-sm leading-normal font-normal">
-            To help kids and parents their performance
+        <!-- Purpose  -->
+        <div class="anim-fade-in-right gap-1 delay-[700ms] md:gap-2 lg:gap-2.5">
+          <h3 class="text-base leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
+            {projectIntroductionDetails.purposeHeading}
+          </h3>
+          <p class="text-sm leading-normal font-normal md:text-lg lg:text-xl">
+            {projectIntroductionDetails.purpose}
           </p>
         </div>
       </div>
