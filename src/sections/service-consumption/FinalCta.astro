@@ -1,11 +1,14 @@
 ---
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 
 import Ball from "@/assets/3d-ball.svg";
 
+/** Badge text for the CTA section */
 const badgeText = "Let’s Connect";
+
+/** Header text content for the Final CTA section */
 const headerDetails = {
   title: "Ready to Talk About Your Product?",
   description:
@@ -15,6 +18,7 @@ const headerDetails = {
 
 <!-- Final CTA Section -->
 <section>
+
   <!-- Container -->
   <div
     id="cta-wrapper"
@@ -45,12 +49,14 @@ const headerDetails = {
 
     <!-- Header -->
     <div class="flex flex-col items-center justify-center gap-3 md:gap-4 lg:gap-5">
+
       <!-- Header title - a question for our client -->
       <div
         class="text-n-950 text-center text-4xl leading-tight font-medium tracking-[-0.02em] md:text-7xl md:leading-none lg:text-8xl lg:leading-none"
       >
         {headerDetails.title}
       </div>
+
       <!-- Header Description -->
       <div
         class="text-n-700 text-center text-xs leading-tight font-normal tracking-[-0.02em] md:text-lg lg:text-xl"
@@ -58,16 +64,19 @@ const headerDetails = {
         {headerDetails.description}
       </div>
     </div>
+
     <!-- CTA wrap -->
     <div
       class="flex flex-col items-center justify-center gap-2.5 md:flex-row md:gap-4 lg:flex-row lg:gap-5"
     >
+    
       <!-- Rounded Button for Booking a Strategy Call -->
       <RoundedButton
         buttonText="Book a Strategy Call"
         type="button"
         onClick="window.location.href='/services'"
       />
+
       <!-- Rounded Button for Sending any requirements -->
       <RoundedButton
         buttonText="Send Requirements"

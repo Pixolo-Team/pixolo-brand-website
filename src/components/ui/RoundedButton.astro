@@ -31,6 +31,14 @@ const variants = {
   tertiary: "border border-n-950",
   quaternary: "bg-n-100 text-n-950",
 };
+
+// Hover classes per variant
+const hoverVariants = {
+  primary: "lg:hover:bg-n-100 lg:hover:text-n-950",
+  secondary: "", // no hover effect
+  tertiary: "", // add if needed
+  quaternary: "lg:hover:bg-n-950 lg:hover:text-n-100",
+};
 ---
 
 <!-- Rounded Button -->
@@ -38,8 +46,8 @@ const variants = {
   id={id}
   type={type}
   onclick={onClick}
-  class={`flex items-center gap-1.5 cursor-pointer rounded-4xl px-5 py-3 md:px-6 md:py-3.5 lg:gap-2 lg:py-4 lg:px-7 ${variant === "primary" ? "lg:hover:bg-n-100 lg:hover:text-n-950" : variant === "quaternary" ? "lg:hover:bg-n-950 lg:hover:text-n-100" : ""} transition-all duration-300 ease-in-out
-          ${variants[variant]}`}
+  class={`flex items-center gap-1.5 cursor-pointer rounded-4xl px-5 py-3 md:px-6 md:py-3.5 lg:gap-2 lg:py-4 lg:px-7 transition-all duration-300 ease-in-out
+          ${variants[variant]} ${hoverVariants[variant]}`}
 >
   <!-- Left icon of Rounded Button -->
   {leftIcon !== "" && <Icon name={leftIcon} class="size-4" />}
