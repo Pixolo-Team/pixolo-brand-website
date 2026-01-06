@@ -1,0 +1,37 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+// DATA //
+import { icons } from "@/data/career/tech-stack";
+---
+
+<!-- Tech Stack / Tools Used Section -->
+<section>
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-8 px-6 py-14 md:gap-11 md:px-0 md:py-20 lg:gap-12 lg:py-24"
+  >
+    <!-- Title -->
+    <p
+      class="text-n-950 text-center text-2xl leading-tight font-normal tracking-[-2%] md:text-3xl lg:text-4xl"
+    >
+      The Stack Behind Our Craft
+    </p>
+
+    <!-- Tech Stack Wrap -->
+    <div class="flex flex-col gap-2.5 md:gap-5">
+      <!-- Tech Stack Row -->
+      <div class="flex flex-wrap justify-center gap-2.5 md:gap-5 lg:flex-row">
+        <!-- Icon -->
+        {
+          icons.map((icon) => (
+            <div class="bg-n-100 hover:bg-n-200 flex h-8.5 w-10 items-center justify-center rounded-md md:h-16 md:w-19 md:rounded-xl">
+              <Icon name={icon.name} class="text-n-800 hover:text-n-950 -rotate-0.07" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
