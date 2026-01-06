@@ -23,7 +23,7 @@ const { client, services, platforms, timeline, industry, techStack } = data;
     </h2>
 
     <div class="flex flex-col gap-1.5 md:gap-4">
-      <div class="flex flex-col gap-1.5 md:gap-3.5 lg:flex-row">
+      <div class="flex flex-col gap-1.5 md:gap-3.5 lg:flex-row lg:gap-4">
         <div
           class="bg-n-950 flex flex-1 flex-col gap-7 rounded-2xl p-3 md:px-9 md:py-4 lg:w-1/3 lg:justify-between lg:rounded-3xl"
         >
@@ -33,7 +33,7 @@ const { client, services, platforms, timeline, industry, techStack } = data;
 
         <div class="flex flex-1 flex-row gap-1.5 md:gap-3.5 lg:contents">
           <div
-            class="bg-n-100 flex w-full flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:justify-between lg:rounded-[24px]"
+            class="bg-n-100 flex w-full flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:justify-between lg:rounded-3xl"
           >
             <p class="text-n-600 text-sm leading-tight md:text-base">Services</p>
             <div class="text-n-950 gap-1 text-xs leading-tight md:gap-2 md:text-xl lg:text-2xl">
@@ -42,7 +42,7 @@ const { client, services, platforms, timeline, industry, techStack } = data;
           </div>
 
           <div
-            class="bg-n-100 flex w-full flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:justify-between lg:rounded-[24px]"
+            class="bg-n-100 flex w-full flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:justify-between lg:rounded-3xl"
           >
             <p class="text-n-600 text-sm leading-tight md:text-base">Platforms</p>
             <div
@@ -54,23 +54,23 @@ const { client, services, platforms, timeline, industry, techStack } = data;
         </div>
       </div>
       <div class="flex flex-col gap-1.5 md:gap-3.5 lg:flex-row lg:gap-4">
-        <div class="flex gap-1.5 md:gap-3.5 lg:gap-[16px]">
+        <div class="flex flex-1 flex-row gap-1.5 md:gap-3.5 lg:contents">
           <div
-            class="bg-n-100 lg:justify-space-between flex flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-[24px]"
+            class="bg-n-100 lg:justify-space-between flex flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-3xl"
           >
             <p class="text-n-600 text-sm leading-tight md:text-base">Timeline</p>
             <p class="text-sm md:text-3xl lg:text-4xl">{timeline}</p>
           </div>
 
           <div
-            class="bg-n-100 lg:justify-space-between flex flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-[24px]"
+            class="bg-n-100 lg:justify-space-between flex flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-3xl"
           >
             <p class="text-n-600 text-sm leading-tight md:text-base">Industry</p>
             <p class="text-sm md:text-3xl lg:text-4xl">{industry}</p>
           </div>
         </div>
         <div
-          class="bg-n-100 lg:justify-space-between flex flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-[24px]"
+          class="bg-n-100 lg:justify-space-between flex flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-3xl"
         >
           <p class="text-n-600 text-sm leading-tight md:text-base">Tech Stack</p>
           <p class="text-sm md:text-3xl lg:text-4xl">{techStack}</p>
