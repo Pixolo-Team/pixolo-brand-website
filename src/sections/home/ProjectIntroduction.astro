@@ -15,7 +15,7 @@ import { projectIntroductionDetails } from "@/data/projectIntroduction";
       <!-- Tool Badge -->
       <ToolBadge icon="service-icon" text="Summary" />
       <p
-        class="font-regular anim-fade-in-right text-center text-3xl leading-tight tracking-tight md:text-4xl lg:text-5xl"
+        class="anim-fade-in-right text-center text-3xl leading-tight font-normal tracking-tight md:text-4xl lg:text-5xl"
       >
         {projectIntroductionDetails.heading}
       </p>
@@ -26,16 +26,16 @@ import { projectIntroductionDetails } from "@/data/projectIntroduction";
       <div>
         <Image
           src=`/images/projectintroduction/${projectIntroductionDetails.image}`
-          width={100}
-          height={100}
-          alt={"Upscale_image"}
+          width={1200}
+          height={675}
+          alt={"FC Barcelona project showcase illustration"}
           class="anim-fade-up-quick h-full w-full rounded-3xl"
         />
       </div>
       <!-- Project Details -->
       <div class="flex flex-1 flex-col gap-7 md:gap-10 lg:gap-20">
         <!-- About Project -->
-        <div class="anim-fade-in-right gap-1 delay-[300ms] md:gap-2 lg:gap-2.5">
+        <div class="anim-fade-in-right flex flex-col gap-1 delay-[300ms] md:gap-2 lg:gap-2.5">
           <h3 class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
             {projectIntroductionDetails.aboutTheProjectHeading}
           </h3>
@@ -44,7 +44,7 @@ import { projectIntroductionDetails } from "@/data/projectIntroduction";
           </p>
         </div>
         <!-- Target Audience -->
-        <div class="anim-fade-in-right gap-1 delay-[500ms] md:gap-2 lg:gap-2.5">
+        <div class="anim-fade-in-right flex flex-col gap-1 delay-[500ms] md:gap-2 lg:gap-2.5">
           <h3 class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
             {projectIntroductionDetails.targetAudienceHeading}
           </h3>
@@ -53,7 +53,7 @@ import { projectIntroductionDetails } from "@/data/projectIntroduction";
           </p>
         </div>
         <!-- Purpose  -->
-        <div class="anim-fade-in-right gap-1 delay-[700ms] md:gap-2 lg:gap-2.5">
+        <div class="anim-fade-in-right flex flex-col gap-1 delay-[700ms] md:gap-2 lg:gap-2.5">
           <h3 class="text-base leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
             {projectIntroductionDetails.purposeHeading}
           </h3>
