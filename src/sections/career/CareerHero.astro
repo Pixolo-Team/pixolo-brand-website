@@ -1,0 +1,22 @@
+---
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { careerHeroDetails } from "@/data/career/hero";
+---
+
+<section>
+  <div class="flex flex-col items-center gap-8 md:gap-9 lg:gap-10">
+    <ToolBadge icon="comment" text="Build Your Future With Us" />
+    <div class="flex flex-col items-center">
+      <p
+        class="text-center text-3xl leading-tight font-medium tracking-[-0.01em] md:text-6xl lg:text-7xl"
+      >
+        {careerHeroDetails.heading}
+      </p>
+      <p
+        class="bg-gradient-to-r from-[#4254D4] to-[#8B77F3] bg-clip-text text-center text-base leading-tight font-medium tracking-normal text-transparent md:text-xl lg:text-2xl"
+      >
+        {careerHeroDetails.subHeading}
+      </p>
+    </div>
+  </div>
+</section>
