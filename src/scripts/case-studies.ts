@@ -48,7 +48,7 @@ export const animateNumbersAfterSolution = () => {
   );
 };
 
-/**Animate Key Takeaway & Learning Cards */
+/** Animate Key Takeaway & Learning Cards */
 export const animateKeyTakeawayCard = () => {
   inView("#key-takeaway-header", () => {
     animate(

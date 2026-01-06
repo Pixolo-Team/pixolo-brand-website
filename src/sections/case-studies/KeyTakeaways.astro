@@ -8,7 +8,7 @@ import { keyTakeaways } from "@/data/case-studies/1";
 <section>
   <div
     id="key-takeaway-header"
-    class="container m-auto flex flex-col gap-10 px-6 py-16 md:gap-11 md:px-0 md:py-24 lg:w-[1536px] lg:gap-16 lg:px-0 lg:py-28"
+    class="container m-auto flex flex-col gap-10 px-6 py-16 md:gap-11 md:px-0 md:py-24 lg:max-w-[1536px] lg:gap-16 lg:py-28"
   >
     <SectionHeader
       sectionTitle="Main Learnings & Highlights"
@@ -19,12 +19,12 @@ import { keyTakeaways } from "@/data/case-studies/1";
     <div class="flex w-full flex-col items-center gap-9 lg:gap-20">
       <!-- Iterating through Data -->
       {
-        keyTakeaways.map((keyTakeawayItem, keyTakeawayindex) => (
+        keyTakeaways.map((keyTakeawayItem, keyTakeawayIndex) => (
           <div id="learning-item-card">
             <KeyTakeaway
               title={keyTakeawayItem.title}
               description={keyTakeawayItem.description}
-              index={String(keyTakeawayindex + 1).padStart(2, "0")}
+              index={String(keyTakeawayIndex + 1).padStart(2, "0")}
             />
           </div>
         ))
