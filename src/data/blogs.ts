@@ -93,20 +93,20 @@ export interface BlogPost {
   content: BlogBlock[];
 }
 
-export type BlogBlock = HeadingBlock | ParagraphBlock | MediaBlock;
+export type BlogBlock = HeadingBlockData | ParagraphBlockData | MediaBlockData;
 
-export interface HeadingBlock {
+export interface HeadingBlockData {
   type: "heading";
   level: 2 | 3;
   text: string;
 }
 
-export interface ParagraphBlock {
+export interface ParagraphBlockData {
   type: "paragraph";
   text: string;
 }
 
-export interface MediaBlock {
+export interface MediaBlockData {
   type: "media";
   mediaType: "image" | "video";
 

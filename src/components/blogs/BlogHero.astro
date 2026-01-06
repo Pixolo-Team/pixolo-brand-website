@@ -1,10 +1,9 @@
 ---
 // COMPONENTS //
 import { Image } from "astro:assets";
-import ToolBadge from "../ui/ToolBadge.astro";
 
 // OTHERS //
-import BlogConsumption from "./BlogConsumption.astro";
+import ToolBadge from "../ui/ToolBadge.astro";
 
 // DATA //
 import type { BlogPost } from "@/data/blogs";
@@ -18,7 +17,7 @@ const { post } = Astro.props as Props;
 
 <section>
   <div
-    class="container m-auto flex flex-col items-center justify-start gap-9 px-6 py-16 md:py-24 lg:py-28"
+    class="container m-auto flex flex-col items-center justify-start gap-9 px-6 py-16 md:py-24 lg:w-[1536px] lg:px-0 lg:py-28"
   >
     <!-- Badge -->
     <ToolBadge icon="package" text={post.category.label} />
@@ -35,7 +34,7 @@ const { post } = Astro.props as Props;
           >
             {post.category.type}
           </div>
-          <div class="border-n-950 h-0 w-3.5 rotate-90 border md:w-6 lg:w-11"></div>
+          <div class="border-n-950 h-0 w-3 rotate-90 border md:w-6 lg:w-11"></div>
           <div
             class="text-n-700 justify-start text-xs leading-4 font-normal capitalize md:text-lg md:leading-6 lg:text-xl lg:leading-6"
           >
