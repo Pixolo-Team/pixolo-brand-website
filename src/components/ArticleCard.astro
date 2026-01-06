@@ -4,7 +4,7 @@ import RoundedButton from "@/components/RoundedButton.astro";
 import Badge from "@/components/portfolio/Badge.astro";
 import { Image } from "astro:assets";
 
-// PROPS //
+// DEFINE PROPS //
 interface Props {
   thumbnail: string;
   brandName: string;
@@ -15,6 +15,7 @@ interface Props {
   ctaText: string;
 }
 
+// PROPS //
 const {
   thumbnail = "default-project",
   brandName,
@@ -32,7 +33,7 @@ const {
   <div class=`${animateClass} relative`>
     <Image
       src={thumbnail}
-      alt=`Thumbnail image for ${brandName}`
+      alt={`Thumbnail image for ${brandName}`}
       width={327}
       height={222}
       class="h-full w-full rounded-3xl"
