@@ -1,0 +1,42 @@
+---
+import { Icon } from "astro-icon/components";
+import { color } from "motion";
+
+interface Props {
+  problemDescription: string;
+  solutionDescription: string;
+}
+const { problemDescription, solutionDescription } = Astro.props as Props;
+---
+
+<div class="border-n-500 flex max-w-[327px] flex-col gap-3 rounded-4xl border px-3 py-4">
+  <!-- Problem Wrapper -->
+  <div class="flex w-full flex-col gap-1.5">
+    <div class="border-n-500 flex w-full flex-col rounded-3xl border-[0.8px] py-3">
+      <p class="text-n-700 text-center text-base leading-tight font-medium tracking-normal">
+        Problem
+      </p>
+    </div>
+    <p class="text-n-950 text-center text-base leading-tight font-normal tracking-normal">
+      {problemDescription}
+    </p>
+  </div>
+
+  <!-- Icon Wrapper -->
+  <div>
+    <Icon name={"polygon"} />
+    <Icon name={"polygon-2"} />
+  </div>
+
+  <!-- Solution Wrapper -->
+  <div class="flex w-full flex-col gap-1.5">
+    <div class="border-n-500 flex w-full flex-col rounded-[73.5px] border-[0.8px] py-3">
+      <p class="text-n-700 text-center text-base leading-tight font-medium tracking-normal">
+        Solution
+      </p>
+    </div>
+    <p class="text-n-950 text-center text-base leading-tight font-medium tracking-normal">
+      {solutionDescription}
+    </p>
+  </div>
+</div>
