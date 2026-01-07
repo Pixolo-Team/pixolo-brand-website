@@ -1,8 +1,8 @@
 ---
 // COMPONENTS //
 import { Image } from "astro:assets";
-import Badge from "../Badge.astro";
-import RoundedButton from "../RoundedButton.astro";
+import Badge from "@/components/Badge.astro";
+import RoundedButton from "@/components/RoundedButton.astro";
 
 // DEFINE PROPS //
 interface Props {
@@ -13,9 +13,9 @@ interface Props {
   description: string;
   date: string;
   badgeItems: string[];
-  viewWebsiteBtnText: string;
-  showProjectBtnText: string;
-  view?: string;
+  buttonOneText: string;
+  buttonTwoText: string;
+  view?: "list" | "grid";
 }
 
 // PROPS //
@@ -27,8 +27,8 @@ const {
   description,
   date,
   badgeItems,
-  viewWebsiteBtnText,
-  showProjectBtnText,
+  buttonOneText,
+  buttonTwoText,
   view = "grid",
 } = Astro.props as Props;
 ---
@@ -45,13 +45,10 @@ const {
 
   <!-- Content -->
   <div class="flex flex-1 flex-col justify-between gap-8 md:gap-20 lg:gap-40">
-    
     <!-- Details Wrap -->
     <div class="flex flex-col gap-7 lg:gap-8">
-      
       <!-- Header -->
       <div class="flex flex-col gap-2 md:gap-3">
-        
         <!-- Title -->
         <p class=`text-n-950 text-2xl leading-tight font-normal md:text-3xl lg:text-4xl`>
           {title}
@@ -65,7 +62,6 @@ const {
 
       <!-- About -->
       <div class="flex flex-col gap-4 md:gap-6 lg:gap-7">
-        
         <!-- SubTitle -->
         <p class=`text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg `>
           {subtitle}
@@ -85,12 +81,11 @@ const {
 
     <!-- Buttons -->
     <div class=`flex flex-row gap-3.5 md:gap-4`>
-      
       <!-- Button-1 -->
-      <RoundedButton buttonText={viewWebsiteBtnText} onClick={""} />
+      <RoundedButton buttonText={buttonOneText} onClick={""} />
 
       <!-- Button-2 -->
-      <RoundedButton buttonText={showProjectBtnText} onClick={""} variant="secondary" />
+      <RoundedButton buttonText={buttonTwoText} onClick={""} variant="secondary" />
     </div>
   </div>
 </div>
