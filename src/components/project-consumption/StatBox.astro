@@ -1,11 +1,11 @@
 ---
 interface Props {
-  value: string;
-  label: string;
+  statValue: string;
+  title: string;
   index: number;
 }
 
-const { value, label, index } = Astro.props;
+const { statValue, title, index } = Astro.props;
 ---
 
 <!-- Stat Box -->
@@ -38,27 +38,27 @@ const { value, label, index } = Astro.props;
   ></span>
   <!-- Content -->
   <p
-    class="value text-n-950 text-4xl leading-tight font-normal tracking-[-2%] md:text-5xl lg:text-6xl"
+    class="statValue text-n-950 text-4xl leading-tight font-normal tracking-[-2%] md:text-5xl lg:text-6xl"
   >
-    {value}
+    {statValue}
   </p>
   <p
-    class="label text-n-700 text-sm leading-tight font-normal tracking-normal md:text-base lg:text-lg"
+    class="title text-n-700 text-sm leading-tight font-normal tracking-normal md:text-base lg:text-lg"
   >
-    {label}
+    {title}
   </p>
 </div>
 
 <style>
   /* VALUE */
-  .value {
+  .statValue {
     opacity: 0;
     animation: fadeIn 2s ease-out forwards;
     animation-delay: var(--delay);
   }
 
   /* LABEL */
-  .label {
+  .title {
     opacity: 0;
     animation: fadeIn 2s ease-out forwards;
     animation-delay: calc(var(--delay) + 0.5s);
