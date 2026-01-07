@@ -1,5 +1,6 @@
 ---
 // COMPONENTS //
+import ProjectCard from "@/components/portfolio/ProjectCard.astro";
 import MiniProjectCard from "@/components/portfolio/MiniProjectCard.astro";
 
 // DATA //
@@ -8,8 +9,26 @@ import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
 
 <!-- Portfolio Showcase Section -->
 <section>
-  <!-- Container -->
   <div class="container mx-auto px-6 py-20">
+    <div class="flex flex-col gap-10">
+      {
+        portfolioShowcaseDetails.projectCardItems.map((projectCard) => (
+          <ProjectCard
+            name={projectCard.name}
+            image={projectCard.image}
+            title={projectCard.title}
+            subtitle={projectCard.subtitle}
+            description={projectCard.description}
+            date={projectCard.date}
+            badgeItems={projectCard.badgeItems}
+            buttonOneText={"View Website"}
+            buttonTwoText={"Show Project"}
+            view="grid"
+          />
+        ))
+      }
+    </div>
+
     <!-- Mini Project Cards Wrap -->
     <div class="scrollbar-hide flex flex-col gap-7 overflow-x-auto md:flex-row">
       {
