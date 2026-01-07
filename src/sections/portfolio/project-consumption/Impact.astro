@@ -28,7 +28,7 @@ import { impactContent } from "@/data/portfolio/project-consumption/impact";
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       {
         impactContent.stats.map((statItem, index) => (
-          <StatBox statValue={statItem.statValue} title={statItem.title} index={index} />
+          <StatBox value={statItem.statValue} label={statItem.title} index={index} />
         ))
       }
     </div>
