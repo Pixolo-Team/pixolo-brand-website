@@ -12,12 +12,13 @@ const { toolIcon, toolTitle, toolDescription } = Astro.props;
 ---
 
 <div
-  class="border-n-700 flex flex-col gap-3.5 rounded-4xl border px-3.5 pt-3 pb-4 md:flex-row md:items-center md:gap-8 md:rounded-full md:py-2 md:pl-2 lg:gap-9"
+  class="tool-item border-n-700 flex flex-col gap-3.5 rounded-4xl border px-3.5 pt-3 pb-4 md:flex-row md:items-center md:gap-8 md:rounded-full md:py-2 md:pl-2 lg:gap-9"
 >
   <div
     class="border-n-500 flex items-center gap-1 md:size-32 md:flex-col-reverse md:items-center md:justify-end md:rounded-full md:border md:px-6 md:py-8 lg:size-36 lg:px-11 lg:py-6"
   >
-    <!-- Tool Image -->
+  
+  <!-- Tool Image -->
     <Image
       class="md:h-[60px] md:w-[48px] lg:h-auto lg:w-auto"
       width={32}
@@ -25,9 +26,11 @@ const { toolIcon, toolTitle, toolDescription } = Astro.props;
       src={toolIcon}
       alt={toolTitle}
     />
+
     <!-- Tool Title -->
     <p class="text-sm font-medium text-nowrap md:text-xl">{toolTitle}</p>
   </div>
+
   <!-- Description -->
   <p class="text-n-800 text-sm leading-tight md:text-lg lg:text-xl">{toolDescription}</p>
 </div>
