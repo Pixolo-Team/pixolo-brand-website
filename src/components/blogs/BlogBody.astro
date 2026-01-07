@@ -195,7 +195,7 @@ const { content } = Astro.props as Props;
                     <Image
                       src={block.src}
                       alt={block.alt}
-                      class="h-80 w-full rounded-3xl object-cover md:h-96 lg:h-[594px]"
+                      class="h-60 w-full rounded-3xl object-cover md:h-96 lg:h-[594px]"
                       width={995}
                       height={594}
                     />
@@ -264,7 +264,7 @@ const { content } = Astro.props as Props;
           // COMPARISON TABLE BLOCKS
           if (block.type === "comparison") {
             return (
-              <table class="bg-n-50 w-full rounded-2xl">
+              <table class="bg-n-50 w-full rounded-2xl outline-[0.7px]">
                 <thead>
                   <tr>
                     {block.headers.map((header, i) => (
