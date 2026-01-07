@@ -1,0 +1,19 @@
+---
+// Components //
+import ProjectCard from "@/components/portfolio-showcase/ProjectCard.astro";
+---
+
+<div class="container mx-auto flex flex-col items-center justify-center gap-4">
+  <ProjectCard
+    name={"default-project"}
+    image={"/images/default-showcase-project-image.jpg"}
+    title={"Sai International School"}
+    subtitle={"A Fintech Project"}
+    description={"Sai International School is known for its strong academic foundation, modern learning environment, and a holistic approach that blends education, values, and real-world skills."}
+    date={"July 2024"}
+    badgeItems={["Website", "Mobile App", "Laptop"]}
+    buttonOneText={"View Website"}
+    buttonTwoText={"Show Project"}
+    view={"grid"}
+  />
+</div>
