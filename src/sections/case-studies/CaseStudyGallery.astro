@@ -4,7 +4,7 @@ import SectionHeader from "@/components/SectionHeader.astro";
 import Image from "astro/components/Image.astro";
 import { Icon } from "astro-icon/components";
 
-const { icon = "right-arrow", text } = Astro.props;
+const { icon = "right-arrow" } = Astro.props;
 
 // DATA //
 import { clientGalleryImages } from "@/data/case-studies/1";
@@ -21,7 +21,7 @@ import { clientGalleryImages } from "@/data/case-studies/1";
     />
 
     <!-- Image Slideshow -->
-    <div class="caseStudiesGallerySlider relative flex flex-col gap-3">
+    <div class="case-study-gallery-slider relative flex flex-col gap-3">
       <div
         id="embla-cs-gallery-slider"
         class="overflow-hidden rounded-2xl md:rounded-4xl lg:rounded-[60px]"
@@ -52,6 +52,8 @@ import { clientGalleryImages } from "@/data/case-studies/1";
       >
         <!-- Previous Button -->
         <button
+          type="button"
+          aria-label="Previous image"
           class="prev-btn arrowbtn-fill bg-n-50 flex size-9 items-center justify-center rounded-full hover:cursor-pointer md:size-10 lg:size-16"
         >
           <Icon name={icon} class="size-3 rotate-180 md:size-4 lg:size-6" />
@@ -59,6 +61,8 @@ import { clientGalleryImages } from "@/data/case-studies/1";
 
         <!-- Next Button -->
         <button
+          type="button"
+          aria-label="Next image"
           class="next-btn arrowbtn-fill bg-n-50 flex size-9 items-center justify-center rounded-full hover:cursor-pointer md:size-10 lg:size-16"
         >
           <Icon name={icon} class="size-3 md:size-4 lg:size-6" />
@@ -69,14 +73,18 @@ import { clientGalleryImages } from "@/data/case-studies/1";
 </section>
 
 <!-- Button Logic -->
-<script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>;
+<script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const viewport = document.querySelector("#embla-cs-gallery-slider");
-    const caseStudiesGallerySlider = EmblaCarousel(viewport, { loop: true });
 
-    document.querySelector(".prev-btn").onclick = () => caseStudiesGallerySlider.scrollPrev();
-    document.querySelector(".next-btn").onclick = () => caseStudiesGallerySlider.scrollNext();
+    if (!viewport) {
+      return;
+    }
+
+    const caseStudyGallerySlider = EmblaCarousel(viewport, { loop: true });
+    document.querySelector(".prev-btn").onclick = () => caseStudyGallerySlider.scrollPrev();
+    document.querySelector(".next-btn").onclick = () => caseStudyGallerySlider.scrollNext();
   });
 </script>
 
