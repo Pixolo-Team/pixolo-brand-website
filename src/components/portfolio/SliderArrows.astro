@@ -12,21 +12,23 @@ const { prevId = "slide-prev", nextId = "slide-next" } = Astro.props as Props;
 
 <!-- Arrows Wrapper -->
 <div class="text-n-700 flex justify-center gap-8 self-end text-xl md:px-5 lg:px-6">
-  <!-- Left Arrow -->
-  <div
-    class="hover:border-n-700 flex items-center justify-center gap-10 rounded-full border border-transparent p-1 transition"
+  <!-- Left Button -->
+  <button
+    id={prevId}
+    aria-label="Previous Slide"
+    class="hover:border-n-700 flex size-8 cursor-pointer items-center justify-center gap-10 rounded-full border border-transparent transition-all md:size-10"
   >
-    <button id={prevId} aria-label="Previous Slide">
-      <Icon name="right-arrow" class="size-5 rotate-180 md:size-6 cursor-pointer" />
-    </button>
-  </div>
+    <!-- Left Arrow icon  -->
+    <Icon name="right-arrow" class="size-5 rotate-180 md:size-6" />
+  </button>
 
-  <!-- Right Arrow -->
-  <div
-    class="hover:border-n-700 flex items-center justify-center gap-10 rounded-full border border-transparent p-1 transition"
+  <!-- Right Button -->
+  <button
+    id={nextId}
+    aria-label="Next Slide"
+    class="hover:border-n-700 flex size-8 cursor-pointer items-center justify-center gap-10 rounded-full border border-transparent transition-all md:size-10"
   >
-    <button id={nextId} aria-label="Next Slide">
-      <Icon name="right-arrow" class="size-5 md:size-6 cursor-pointer" />
-    </button>
-  </div>
+    <!-- Right Arrow icon -->
+    <Icon name="right-arrow" class="size-5 md:size-6" />
+  </button>
 </div>

@@ -8,7 +8,7 @@ import ToolBadge from "@/components/ToolBadge.astro";
 import { portfolioIndustryDetails } from "@/data/portfolio/industries.ts";
 ---
 
-<!-- Industries Section -->
+<!-- Portfolio Industries Section -->
 <section>
   <!-- Container -->
   <div
@@ -38,7 +38,7 @@ import { portfolioIndustryDetails } from "@/data/portfolio/industries.ts";
           <!-- Iterating on Industries -->
           {
             portfolioIndustryDetails.industryItems.map((industryItem) => (
-              <div class="flex w-full shrink-0 last:pr-6 md:w-[490px] max-w-[490px]">
+              <div class="flex w-full max-w-[490px] shrink-0 md:w-[490px]">
                 {/* Service Item Component */}
                 <ServiceItem
                   title={industryItem.title}
@@ -57,9 +57,10 @@ import { portfolioIndustryDetails } from "@/data/portfolio/industries.ts";
   </div>
 </section>
 
-<!-- Button working logic -->
+<!-- Slider working logic -->
 <script>
   import { initIndustrySlider } from "@/scripts/industries.ts";
+
   document.addEventListener("DOMContentLoaded", () => {
     initIndustrySlider();
   });

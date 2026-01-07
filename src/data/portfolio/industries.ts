@@ -1,6 +1,9 @@
+// Portfolio Industries Section data
 export const portfolioIndustryDetails = {
   badgeTitle: "Crafted Experiences",
   title: "Industries Driving Our Impact",
+
+  // Industries card items
   industryItems: [
     {
       title: "Sports",
