@@ -28,7 +28,7 @@ const {
   badgeItems,
   buttonOneText,
   buttonTwoText,
-  view = "grid",
+  view,
 } = Astro.props as Props;
 ---
 
@@ -43,7 +43,7 @@ const {
   >
     <Image
       src={image}
-      alt={`Image for ${name}`}
+      alt={name}
       width={327}
       height={238}
       class="h-full w-full object-cover"
