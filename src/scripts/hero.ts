@@ -55,8 +55,6 @@ export const animateMarble = (elementId: string, containerId: string) => {
       minY: -originTop,
       maxY: containerRect.height - originTop - marbleRect.height,
     };
-
-    console.log(bounds);
   };
 
   // Calculate Bounds
