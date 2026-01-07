@@ -1,0 +1,67 @@
+---
+// COMPONENTS //
+import ThemeImage from "@/components/ThemeImage.astro";
+import RoundedButton from "@/components/RoundedButton.astro";
+
+interface Props {
+  id: string;
+  title: string;
+  badges: string[];
+  date: string;
+  btnOneText: string;
+  btnTwoText: string;
+  image: string;
+}
+
+const { id, title, badges, date, btnOneText, btnTwoText, image } = Astro.props as Props;
+---
+
+<!-- MiniProjectCard Component -->
+<div
+  id={id}
+  class="flex w-full flex-col gap-2.5 md:min-w-[328px] md:gap-4 lg:min-w-[412px] lg:gap-6"
+>
+  <!-- Image part -->
+  <div class="h-[218px] overflow-hidden rounded-2xl md:h-[310px] lg:h-[380px]">
+    <!-- Card Image -->
+    <ThemeImage
+      light={image}
+      dark={image}
+      alt={title}
+      class="h-full w-full object-cover"
+      width={400}
+      height={250}
+    />
+  </div>
+  <!-- Content wrap -->
+  <div class="flex flex-1 flex-col justify-between gap-7 md:gap-9 lg:gap-10">
+    <!-- About wrap -->
+    <div class="flex flex-col gap-4">
+      <!-- Header-section -->
+      <div class="flex flex-col gap-2">
+        <!-- Title -->
+        <p class="text-lg leading-tight font-normal md:text-xl lg:text-2xl">{title}</p>
+        <!-- Badge wrap -->
+        <div class="flex flex-row flex-wrap gap-1.5 gap-y-2">
+          {
+            badges.map((badge) => (
+              <div class="border-n-600 rounded-3xl border px-2.5 py-1">
+                {/* Badge text */}
+                <p class="text-n-800 text-xs leading-tight font-normal md:text-sm">{badge}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <!-- Date -->
+      <p class="text-sm font-normal">{date}</p>
+    </div>
+    <!-- Cta wrap -->
+    <div class="flex flex-row gap-3.5">
+      <!-- Primary Button -->
+      <RoundedButton buttonText={btnOneText} />
+      <!-- Secondary Button -->
+      <RoundedButton buttonText={btnTwoText} variant="secondary" />
+    </div>
+  </div>
+</div>
