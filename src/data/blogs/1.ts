@@ -31,16 +31,9 @@ const blogData: BlogPost = {
     },
 
     {
-      type: "heading",
-      level: 2,
-      text: "Learning never stops",
-      paragraph:
-        "Technology is constantly evolving, and so should we. Each challenge presents an opportunity to grow and refine our skills.\n\nSmall improvements made consistently over time compound into meaningful progress.",
-    },
-
-    {
       type: "media",
       mediaType: "video",
+      // TODO : Add a video link instead of PNG
       src: "/images/blogs/blog-hero.png",
       alt: "Coding tutorial video",
       caption:
@@ -121,7 +114,7 @@ const blogData: BlogPost = {
 
     {
       type: "list",
-      listType: "ordered",
+      listType: "unordered",
       header: "Header 1",
       items: [
         "Dive into a collection of coding videos.",

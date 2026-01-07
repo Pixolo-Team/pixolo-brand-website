@@ -10,18 +10,16 @@ const { block } = Astro.props as Props;
 
 <figure class="space-y-2">
   {
-    block.mediaType === "image" && (
+    block.mediaType === "image" && block.src && block.alt && (
       <img src={block.src} alt={block.alt} class="w-full rounded-2xl" />
     )
   }
 
   {
-    block.mediaType === "video" && (
+    block.mediaType === "video" && block.videoId && (
       <iframe
         class="aspect-video w-full rounded-2xl"
         src={`https://www.youtube.com/embed/${block.videoId}`}
-        frameborder="0"
-        allowfullscreen
       />
     )
   }

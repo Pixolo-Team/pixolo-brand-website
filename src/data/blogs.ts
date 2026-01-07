@@ -94,9 +94,14 @@ export interface BlogPost {
   content: BlogBlock[];
 }
 
-export type BlogBlock = HeadingBlock | ParagraphBlock | MediaBlock | ListBlock | ComparisonBlock;
+export type BlogBlock =
+  | HeadingBlockData
+  | ParagraphBlockData
+  | MediaBlockData
+  | ListBlockData
+  | ComparisonBlockData;
 
-export interface HeadingBlock {
+export interface HeadingBlockData {
   type: "heading";
   level: 1 | 2 | 3 | 4 | 5 | 6;
   text: string;
@@ -107,12 +112,12 @@ export interface HeadingBlock {
   };
 }
 
-export interface ParagraphBlock {
+export interface ParagraphBlockData {
   type: "paragraph";
   text: string;
 }
 
-export interface MediaBlock {
+export interface MediaBlockData {
   type: "media";
   mediaType: "image" | "video";
 
@@ -123,14 +128,14 @@ export interface MediaBlock {
   caption?: string;
 }
 
-export interface ListBlock {
+export interface ListBlockData {
   type: "list";
   listType: "unordered" | "ordered";
   header?: string;
   items: string[];
 }
 
-export interface ComparisonBlock {
+export interface ComparisonBlockData {
   type: "comparison";
   headers: string[];
   rows: string[][];
