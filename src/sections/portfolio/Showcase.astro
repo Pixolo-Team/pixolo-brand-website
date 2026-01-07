@@ -1,0 +1,31 @@
+---
+// COMPONENTS //
+import ProjectCard from "@/components/portfolio-showcase/ProjectCard.astro";
+
+// DATA //
+import { portfolioShowcaseDetails } from "@/data/portfolio/showcase.ts";
+---
+
+<!-- Portfolio Showcase Section -->
+<section>
+  <div class="container mx-auto px-6 py-20">
+    <div class="flex flex-col gap-10">
+      {
+        portfolioShowcaseDetails.projectCardItems.map((projectCard) => (
+          <ProjectCard
+            name={projectCard.name}
+            image={projectCard.image}
+            title={projectCard.title}
+            subtitle={projectCard.subtitle}
+            description={projectCard.description}
+            date={projectCard.date}
+            badgeItems={projectCard.badgeItems}
+            viewWebsiteBtnText={projectCard.viewWebsiteBtnText}
+            showProjectBtnText={projectCard.showProjectBtnText}
+            view={projectCard.view}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

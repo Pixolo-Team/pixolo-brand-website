@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 import Badge from "@/components/Badge.astro";
 import RoundedButton from "@/components/RoundedButton.astro";
 
-// DEFINE PROPS //
+// Define Props //
 interface Props {
   name: string;
   image: string;
@@ -18,7 +18,6 @@ interface Props {
   view?: "list" | "grid";
 }
 
-// PROPS //
 const {
   name,
   image,
@@ -36,15 +35,26 @@ const {
 <!-- Project Card -->
 <div
   id="portfolio-showcase-project-card"
-  class=`flex gap-7 lg:gap-12 flex-col ${view === "grid" ? "md:flex-row" : ""}`
+  class=`flex gap-7 lg:gap-12 flex-col ${view === "list" ? "md:flex-row" : ""}`
 >
   <!-- Project Card Image -->
-  <div class=`flex w-full rounded-3xl overflow-hidden ${view === "grid" ? "md:w-[49%]" : ""}`>
-    <Image src={image} alt={`Image for ${name}`} width={327} height={238} class="h-full w-full" />
+  <div
+    class=`w-full rounded-3xl overflow-hidden ${view === "list" ? "flex-1" : "h-[196px] md:h-[224px] lg:h-[395px]"}`
+  >
+    <Image
+      src={image}
+      alt={`Image for ${name}`}
+      width={327}
+      height={238}
+      class="h-full w-full object-cover"
+      loading="lazy"
+    />
   </div>
 
   <!-- Content -->
-  <div class="flex flex-1 flex-col justify-between gap-8 md:gap-20 lg:gap-40">
+  <div
+    class=`flex flex-1 flex-col justify-between lg:gap-16 gap-8 ${view === "list" ? "lg:gap-40 md:gap-20 " : ""}`
+  >
     <!-- Details Wrap -->
     <div class="flex flex-col gap-7 lg:gap-8">
       <!-- Header -->
@@ -81,11 +91,11 @@ const {
 
     <!-- Buttons -->
     <div class=`flex flex-row gap-3.5 md:gap-4`>
-      <!-- Button-1 -->
-      <RoundedButton buttonText={buttonOneText} onClick={""} />
+      <!-- Primary Button -->
+      <RoundedButton buttonText={viewWebsiteBtnText} onClick={""} />
 
-      <!-- Button-2 -->
-      <RoundedButton buttonText={buttonTwoText} onClick={""} variant="secondary" />
+      <!-- Secondary Button -->
+      <RoundedButton buttonText={showProjectBtnText} onClick={""} variant="secondary" />
     </div>
   </div>
 </div>
