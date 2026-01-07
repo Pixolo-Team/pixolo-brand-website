@@ -12,7 +12,7 @@ import { portfolioIndustryDetails } from "@/data/portfolio/industries.ts";
 <section>
   <!-- Container -->
   <div
-    class="container mx-auto flex flex-col justify-center gap-9 px-6 py-16 md:gap-12 md:px-0 md:py-24 lg:gap-14 lg:py-28 lg:px-2"
+    class="container mx-auto flex flex-col justify-center gap-9 px-6 py-16 md:gap-12 md:px-0 md:py-24 lg:gap-14 lg:px-2 lg:py-28"
   >
     <!-- Tool Badge and Heading -->
     <div class="flex flex-col items-center gap-3.5 text-center md:gap-4 lg:gap-3.5">
@@ -32,13 +32,13 @@ import { portfolioIndustryDetails } from "@/data/portfolio/industries.ts";
     <!-- Cards and arrows -->
     <div class="group relative flex flex-col gap-8 md:gap-10">
       <!-- Cards -->
-      <div id="industry-slider" class="embla__viewport hide-scrollbar overflow-hidden ">
+      <div id="industry-slider" class="embla__viewport hide-scrollbar overflow-hidden">
         <!-- Embla container -->
-        <div class="embla__container flex gap-6 lg:space-between">
+        <div class="embla__container flex gap-6">
           <!-- Iterating on Industries -->
           {
             portfolioIndustryDetails.industryItems.map((industryItem) => (
-              <div class="flex w-full md:w-[490px] shrink-0 last:pr-6">
+              <div class="flex w-full shrink-0 last:pr-6 md:w-[490px] max-w-[490px]">
                 {/* Service Item Component */}
                 <ServiceItem
                   title={industryItem.title}
