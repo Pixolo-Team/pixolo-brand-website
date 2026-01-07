@@ -1,9 +1,10 @@
 ---
 // COMPONENTS //
-import ProjectCard from "@/components/portfolio-showcase/ProjectCard.astro";
+import ProjectCard from "@/components/portfolio/ProjectCard.astro";
+import MiniProjectCard from "@/components/portfolio/MiniProjectCard.astro";
 
 // DATA //
-import { portfolioShowcaseDetails } from "@/data/portfolio/showcase.ts";
+import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
 ---
 
 <!-- Portfolio Showcase Section -->
@@ -23,6 +24,23 @@ import { portfolioShowcaseDetails } from "@/data/portfolio/showcase.ts";
             buttonOneText={"View Website"}
             buttonTwoText={"Show Project"}
             view="grid"
+          />
+        ))
+      }
+    </div>
+
+    <!-- Mini Project Cards Wrap -->
+    <div class="scrollbar-hide flex flex-col gap-7 overflow-x-auto md:flex-row">
+      {
+        portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
+          <MiniProjectCard
+            id={cardItem.id}
+            title={cardItem.title}
+            badges={cardItem.badges}
+            date={cardItem.date}
+            btnOneText={cardItem.btnOneText}
+            btnTwoText={cardItem.btnTwoText}
+            image={cardItem.image}
           />
         ))
       }
