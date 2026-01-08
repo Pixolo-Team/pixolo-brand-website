@@ -1,10 +1,52 @@
 ---
 // COMPONENTS //
 import SolutionCard from "@/components/service-consumption/SolutionCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// DATA //
+import { howWeWorkSectionDetails } from "@/data/service-consumption/HowWeWork.ts";
 ---
 
-<SolutionCard
-  number="01"
-  title="Discovery & Scoping"
-  description="We begin by deeply understanding your idea, business goals, and the people you’re building for."
-/>
+<!-- How We Work Section -->
+<section id="how-we-work-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col gap-7 px-6 py-16 md:gap-10 md:py-24 lg:gap-14 lg:px-8 lg:py-28"
+  >
+    <!-- Header -->
+    <div class="flex w-full flex-col items-center gap-4 md:gap-5">
+      <!-- Tool badge component -->
+      <div class="tool-badge">
+        <ToolBadge icon="service-icon" text={howWeWorkSectionDetails.badgeText} />
+      </div>
+
+      <!-- Header text -->
+      <p
+        class="header-text text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] opacity-0 md:text-4xl lg:text-5xl"
+      >
+        {howWeWorkSectionDetails.headerText}
+      </p>
+    </div>
+
+    <!-- Process Wrap -->
+    <div
+      class="solution-cards flex w-full flex-col gap-3.5 md:gap-5 lg:grid lg:grid-cols-2 lg:gap-8 xl:grid-cols-3"
+    >
+      <!-- Solution Cards -->
+      {
+        howWeWorkSectionDetails.solutionCardItems.map((solutionCardItem, solutionCardItemIndex) => (
+          <SolutionCard
+            number={String(solutionCardItemIndex + 1).padStart(2, "0")}
+            title={solutionCardItem.title}
+            description={solutionCardItem.description}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+<script>
+  import { animateHowWeWorkSection } from "@/scripts/service-consumption/how-we-work.ts";
+
+  animateHowWeWorkSection();
+</script>
