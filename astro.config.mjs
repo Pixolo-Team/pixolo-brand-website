@@ -12,7 +12,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        "@": "src",
+        "@": "src/",
       },
     },
     plugins: [tailwindcss(), sitemap()],
