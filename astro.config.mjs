@@ -4,6 +4,7 @@ import { defineConfig } from "astro/config";
 import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
+import path from "path";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,7 +13,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        "@/*": "src/*",
+        "@": path.resolve("./src"),
       },
     },
     plugins: [tailwindcss(), sitemap()],
