@@ -17,7 +17,7 @@ const { post } = Astro.props as Props;
 
 <section>
   <div
-    class="container m-auto flex flex-col items-center justify-start gap-9 px-6 py-16 md:py-24 lg:w-[1536px] lg:px-0 lg:py-28"
+    class="container m-auto flex flex-col items-center gap-9 px-6 py-16 md:py-24 lg:max-w-[1536px] lg:px-0 lg:py-28"
   >
     <!-- Badge -->
     <ToolBadge icon="package" text={post.category.label} />
@@ -28,15 +28,15 @@ const { post } = Astro.props as Props;
         class="anim-fade-in-right flex flex-col items-center justify-start gap-3 self-stretch md:gap-5 md:px-6 lg:gap-6 lg:px-44"
       >
         <!-- Category and Date -->
-        <div class="flex items-center justify-center gap-3.5 self-stretch md:gap-5 lg:gap-5">
+        <div class="flex items-center justify-center gap-3.5 md:gap-5">
           <div
-            class="text-n-950 justify-start text-xs leading-4 font-normal capitalize md:text-lg md:leading-6 lg:text-xl lg:leading-6"
+            class="text-n-950 text-xs leading-normal font-normal capitalize md:text-lg lg:text-xl"
           >
             {post.category.type}
           </div>
-          <div class="border-n-950 h-0 w-3 rotate-90 border md:w-6 lg:w-11"></div>
+          <div class="bg-n-950 h-3.5 w-px md:h-6 lg:h-11"></div>
           <div
-            class="text-n-700 justify-start text-xs leading-4 font-normal capitalize md:text-lg md:leading-6 lg:text-xl lg:leading-6"
+            class="text-n-700 justify-start text-xs leading-normal font-normal capitalize md:text-lg lg:text-xl"
           >
             {post.publishedAt}
           </div>
@@ -44,14 +44,14 @@ const { post } = Astro.props as Props;
 
         <!-- Title -->
         <div
-          class="text-n-950 justify-start self-stretch text-center text-sm leading-4 font-normal capitalize md:text-3xl md:leading-9 lg:text-4xl lg:leading-10"
+          class="text-n-950 text-center text-sm leading-normal font-normal capitalize md:text-3xl lg:text-4xl"
         >
           {post.title}
         </div>
 
         <!-- Author -->
         <div
-          class="text-n-700 justify-start self-stretch text-center text-xs leading-4 font-normal capitalize md:text-lg md:leading-6 lg:text-xl lg:leading-6"
+          class="text-n-700 text-center text-xs leading-normal font-normal capitalize md:text-lg lg:text-xl"
         >
           By: {post.author.name}
         </div>
@@ -61,7 +61,7 @@ const { post } = Astro.props as Props;
       <Image
         src={post.hero.image}
         alt={post.hero.alt}
-        class="anim-fade-in-up h-72 rounded-3xl object-cover md:h-[650px] lg:h-[650px] lg:rounded-4xl"
+        class="anim-fade-in-up h-72 w-full rounded-3xl object-cover md:h-[650px] lg:h-[650px] lg:rounded-4xl"
         width={1536}
         height={650}
       />

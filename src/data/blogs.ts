@@ -90,10 +90,10 @@ export interface BlogPost {
     alt: string;
   };
 
-  content: BlogBlock[];
+  content: BlogBlockData[];
 }
 
-export type BlogBlock = HeadingBlockData | ParagraphBlockData | MediaBlockData;
+export type BlogBlockData = HeadingBlockData | ParagraphBlockData | MediaBlockData;
 
 export interface HeadingBlockData {
   type: "heading";
