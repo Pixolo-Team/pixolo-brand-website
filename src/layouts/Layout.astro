@@ -16,10 +16,11 @@ import BottomCTA from "@/components/ui/BottomCTA.astro";
 
 interface Props {
   meta: any;
-  showLoader: boolean;
+  showLoader?: boolean;
 }
 
 const { meta = {}, showLoader = false } = Astro.props;
+const isHome = Astro.url.pathname === "/";
 ---
 
 <!doctype html>
@@ -34,8 +35,8 @@ const { meta = {}, showLoader = false } = Astro.props;
     />
   </head>
   <body>
-    <!-- Show Loader -->
-    <Loading />
+    <!-- Show Loader only if the current page is homepage -->
+    {(isHome || showLoader) && <Loading />}
 
     <!-- Top menu -->
     <div class="fixed top-0 left-0 z-50 w-full">
