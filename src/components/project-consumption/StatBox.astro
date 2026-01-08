@@ -10,7 +10,7 @@ const { statValue, title, index } = Astro.props;
 
 <!-- Stat Box -->
 <div
-  class="relative flex flex-col gap-4 px-5 py-4 md:gap-5 md:px-9 md:py-5 lg:pt-6 lg:pr-14 lg:pb-9 lg:pl-9"
+  class="stat-box relative flex flex-col gap-4 px-5 py-4 md:gap-5 md:px-9 md:py-5 lg:pt-6 lg:pr-14 lg:pb-9 lg:pl-9"
   style={`--delay: ${index * 0.2}s;`}
 >
   <!-- Right dashed border -->
@@ -52,15 +52,18 @@ const { statValue, title, index } = Astro.props;
 </div>
 
 <style>
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
+  /* Text */
+  .impact-statValue,
+  .impact-title {
+    opacity: 0;
+    will-change: opacity;
   }
-  @keyframes lineIn {
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+
+  /* Lines */
+  .impact-line-right,
+  .impact-line-bottom {
+    opacity: 0;
+    transform: translateX(20px);
+    will-change: transform, opacity;
   }
 </style>
