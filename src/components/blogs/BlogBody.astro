@@ -15,7 +15,7 @@ const { content } = Astro.props as Props;
 <section>
   <div class="container mx-auto px-6">
     <div
-      class="anim-fade-in-up mx-auto flex max-w-[995px] flex-col items-center gap-10 whitespace-pre-line"
+      class="m-auto flex max-w-[995px] flex-col items-center gap-10 whitespace-pre-line lg:items-start"
     >
       {
         content.map((block) => {
@@ -25,11 +25,11 @@ const { content } = Astro.props as Props;
               return (
                 <div class="flex flex-col gap-10">
                   <div class="flex flex-col gap-3.5">
-                    <h1 class="text-n-950 text-3xl leading-10 font-semibold md:text-5xl md:leading-[72px] lg:text-6xl lg:leading-[90px]">
+                    <h1 class="text-n-950 text-3xl leading-normal font-semibold md:text-5xl lg:text-6xl">
                       {block.text}
                     </h1>
                     {block.paragraph && (
-                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:text-xl">
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
                         {block.paragraph}
                       </p>
                     )}
@@ -48,11 +48,11 @@ const { content } = Astro.props as Props;
               return (
                 <div class="flex flex-col gap-10">
                   <div class="flex flex-col gap-3.5">
-                    <h2 class="text-n-950 text-3xl leading-10 font-medium md:text-5xl md:leading-[72px] lg:text-6xl lg:leading-[90px]">
+                    <h2 class="text-n-950 text-3xl leading-normal font-medium md:text-5xl lg:text-6xl">
                       {block.text}
                     </h2>
                     {block.paragraph && (
-                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:text-xl">
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
                         {block.paragraph}
                       </p>
                     )}
@@ -75,7 +75,7 @@ const { content } = Astro.props as Props;
                       {block.text}
                     </h3>
                     {block.paragraph && (
-                      <p class="text-n-700 max-w-[270px] text-sm leading-normal font-medium md:max-w-[560px] md:text-lg md:font-medium lg:text-xl lg:font-medium">
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal font-medium md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
                         {block.paragraph}
                       </p>
                     )}
@@ -98,7 +98,7 @@ const { content } = Astro.props as Props;
                       {block.text}
                     </h4>
                     {block.paragraph && (
-                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:text-xl">
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
                         {block.paragraph}
                       </p>
                     )}
@@ -117,11 +117,11 @@ const { content } = Astro.props as Props;
               return (
                 <div class="flex flex-col gap-9">
                   <div class="flex flex-col gap-3">
-                    <h5 class="text-n-950 text-2xl leading-9 font-semibold md:text-3xl md:leading-10 lg:text-4xl lg:leading-[54px]">
+                    <h5 class="text-n-950 text-2xl leading-normal font-semibold md:text-3xl lg:text-4xl">
                       {block.text}
                     </h5>
                     {block.paragraph && (
-                      <p class="text-n-700 max-w-[270px] text-xs leading-4 md:max-w-[560px] md:text-base md:leading-6 lg:text-lg">
+                      <p class="text-n-700 max-w-[270px] text-xs leading-4 md:max-w-[560px] md:text-base lg:max-w-full lg:text-lg">
                         {block.paragraph}
                       </p>
                     )}
@@ -144,7 +144,7 @@ const { content } = Astro.props as Props;
                       {block.text}
                     </h6>
                     {block.paragraph && (
-                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:text-xl">
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
                         {block.paragraph}
                       </p>
                     )}
@@ -165,7 +165,7 @@ const { content } = Astro.props as Props;
           // PARAGRAPH BLOCKS
           if (block.type === "paragraph") {
             return (
-              <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:text-xl">
+              <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
                 {block.text}
               </p>
             );
@@ -185,7 +185,7 @@ const { content } = Astro.props as Props;
                   />
                   {block.caption && (
                     <div class="md:px-26 lg:px-24">
-                      <p class="text-n-700 max-w-[270px] text-left text-xs leading-normal md:max-w-[560px] md:text-lg lg:text-xl">
+                      <p class="text-n-700 max-w-[270px] text-left text-xs leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
                         {block.caption}
                       </p>
                     </div>
@@ -199,14 +199,14 @@ const { content } = Astro.props as Props;
                     <iframe
                       src={block.videoId}
                       title={block.alt}
-                      class="h-80 rounded-3xl md:w-96 lg:h-[594px]"
+                      class="h-60 w-full rounded-3xl object-cover md:h-96 lg:h-[594px] lg:w-[995px]"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
                     />
                   </div>
                   {block.caption && (
                     <div class="text-left md:px-26 lg:px-24">
-                      <p class="text-n-700 max-w-[270px] text-xs leading-normal md:max-w-[560px] md:text-lg lg:text-xl">
+                      <p class="text-n-700 max-w-[270px] text-xs leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
                         {block.caption}
                       </p>
                     </div>
@@ -222,7 +222,7 @@ const { content } = Astro.props as Props;
               return (
                 <div class="flex flex-col gap-3.5">
                   {block.header && (
-                    <h2 class="text-n-950 text-2xl leading-9 md:text-3xl md:leading-10 lg:text-4xl lg:leading-[54px]">
+                    <h2 class="text-n-950 text-2xl leading-normal md:text-3xl lg:text-4xl">
                       {block.header}
                     </h2>
                   )}
@@ -242,7 +242,7 @@ const { content } = Astro.props as Props;
               return (
                 <div class="flex flex-col gap-3.5">
                   {block.header && (
-                    <h2 class="text-n-950 text-2xl leading-9 md:text-3xl md:leading-10 lg:text-4xl lg:leading-[54px]">
+                    <h2 class="text-n-950 text-2xl leading-normal md:text-3xl lg:text-4xl">
                       {block.header}
                     </h2>
                   )}
@@ -261,14 +261,14 @@ const { content } = Astro.props as Props;
           // COMPARISON TABLE BLOCKS
           if (block.type === "comparison") {
             return (
-              <table class="bg-n-50 w-full rounded-2xl outline-[0.7px] md:max-w-[560px]">
+              <table class="bg-n-50 outline-n-300 w-full rounded-2xl outline-[0.7px] md:max-w-[560px] lg:max-w-full">
                 <thead>
                   <tr>
-                    {block.headers.map((header, i) => (
+                    {block.headers.map((header, listItem) => (
                       <th
                         class={`bg-n-100 text-n-700 p-3 text-center text-sm font-medium md:p-5 md:text-lg lg:p-5 lg:text-xl ${
-                          i === 0 ? "rounded-tl-2xl" : ""
-                        } ${i === block.headers.length - 1 ? "rounded-tr-2xl " : ""}`}
+                          listItem === 0 ? "rounded-tl-2xl" : ""
+                        } ${listItem === block.headers.length - 1 ? "rounded-tr-2xl " : ""}`}
                       >
                         {header}
                       </th>
