@@ -10,7 +10,7 @@ const { block } = Astro.props as Props;
 
 <figure class="space-y-2">
   {
-    block.mediaType === "image" && (
+    block.mediaType === "image" && block.src && block.alt && (
       <img src={block.src} alt={block.alt} class="w-full rounded-2xl" />
     )
   }
