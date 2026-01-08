@@ -26,7 +26,7 @@ export const animateHowWeWorkSection = () => {
       solutionCards?.querySelectorAll(".solution-card"),
       { opacity: [0, 1], y: [30, 0] },
       {
-        duration: 0.8,
+        duration: 0.6,
         delay: stagger(0.12),
         easing: "linear",
       },
@@ -37,7 +37,7 @@ export const animateHowWeWorkSection = () => {
       solutionCards?.querySelectorAll(".solution-text"),
       { opacity: [0, 1], x: [-20, 0] },
       {
-        duration: 0.8,
+        duration: 0.6,
         delay: stagger(0.12),
         easing: "linear",
       },
