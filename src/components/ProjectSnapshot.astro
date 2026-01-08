@@ -8,7 +8,7 @@ interface ProjectSnapshotData {
   platforms?: string[];
   timeline?: string;
   industry?: string;
-  techStack?: string;
+  techStack?: string[];
 }
 
 const data = snapshotData as ProjectSnapshotData;
@@ -31,7 +31,7 @@ const { client, services, platforms, timeline, industry, techStack } = data;
           <p class="text-n-50 text-xl md:text-4xl lg:text-5xl">{client}</p>
         </div>
 
-        <div class="flex flex-1 flex-row gap-1.5 md:gap-3.5 lg:contents">
+        <div class="flex flex-1 flex-row gap-1.5 md:gap-3.5">
           <div
             class="bg-n-100 flex w-full flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:justify-between lg:rounded-3xl"
           >
@@ -73,7 +73,13 @@ const { client, services, platforms, timeline, industry, techStack } = data;
           class="bg-n-100 lg:justify-space-between flex flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-3xl"
         >
           <p class="text-n-600 text-sm leading-tight md:text-base">Tech Stack</p>
-          <p class="text-sm md:text-3xl lg:text-4xl">{techStack}</p>
+          <div class="flex flex-wrap gap-3">
+            {
+              techStack?.map((img) => (
+                <img src={img} alt="Tech Stack" class="h-8 md:h-12 lg:h-14" />
+              ))
+            }
+          </div>
         </div>
       </div>
     </div>

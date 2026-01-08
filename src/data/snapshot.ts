@@ -4,7 +4,7 @@ export interface ProjectSnapshotData {
   platforms?: string[];
   timeline?: string;
   industry?: string;
-  techStack?: string;
+  techStack?: string[];
 }
 
 export const snapshotData: ProjectSnapshotData = {
@@ -13,5 +13,10 @@ export const snapshotData: ProjectSnapshotData = {
   platforms: ["Web", "Ios", "Android"],
   timeline: "36 weeks",
   industry: "Sports",
-  techStack: "Astro, TypeScript, Tailwind",
+  techStack: [
+    "/src/icons/react.svg",
+    "/src/icons/node-js.svg",
+    "/src/icons/figma.svg",
+    "/src/icons/tailwind.svg",
+  ],
 };

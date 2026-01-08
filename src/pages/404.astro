@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import ToolBadge from "@/components/ToolBadge.astro";
 import { Image } from "astro:assets";
+import RoundedButton from "@/components/RoundedButton.astro";
 ---
 
 <style>
@@ -25,7 +26,7 @@ import { Image } from "astro:assets";
 <Layout>
   <section>
     <div
-      class="container mx-auto flex flex-col items-center gap-14 px-5 px-6 pt-20 pb-14 text-center md:gap-20 md:px-12 md:pt-36 lg:px-0 lg:pt-64"
+      class="container mx-auto flex flex-col items-center gap-14 px-5 pt-20 pb-14 text-center md:gap-20 md:px-12 md:pt-36 lg:px-0 lg:pt-64"
     >
       <!-- Astronaut Left -->
       <Image
@@ -77,15 +78,7 @@ import { Image } from "astro:assets";
       </div>
 
       <!-- CTA -->
-      <div class="mt-10">
-        <a
-          href="/"
-          class="group inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 font-bold text-white transition-all hover:-translate-y-1 hover:bg-blue-700 hover:shadow-2xl active:scale-95"
-        >
-          <span class="mr-2 text-xl group-hover:animate-bounce">🚀</span>
-          Abort Mission & Teleport Home
-        </a>
-      </div>
+      <RoundedButton leftIcon="" buttonText="Abort Mission & Teleport Home" variant="primary" />
     </div>
   </section>
 </Layout>
