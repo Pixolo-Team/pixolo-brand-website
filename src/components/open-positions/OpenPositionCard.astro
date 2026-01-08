@@ -1,0 +1,45 @@
+---
+// DATA //
+import { openPosition } from "@/data/career/open-positions";
+---
+
+<div class="p-5 flex gap-10 b-1 rounded-4xl b-n-500">
+  <!-- Category pill -->
+  <div class="flex gap-2.5">
+    <div class="">
+      <p class="">
+        {openPosition.category}
+      </p>
+    </div>
+
+    <!-- Title -->
+    <p class="">
+      {openPosition.title}
+    </p>
+  </div>
+
+  <!-- Meta info -->
+  <div>
+    <div class="">
+      <div>
+        <p class="">Experience</p>
+        <p class="">{openPosition.experience}</p>
+      </div>
+
+      <div>
+        <p class="">Location</p>
+        <p class="">{openPosition.location}</p>
+      </div>
+
+      <div>
+        <p class="">No. of Positions</p>
+        <p class="">{openPosition.positions}</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <button class="">
+      {openPosition.ctaText}
+    </button>
+  </div>
+</div>
