@@ -1,33 +1,38 @@
 ---
 // COMPONENTS //
-import SolutionsCard from "@/components/service-consumption/SolutionsCard.astro";
+import SolutionCard from "@/components/service-consumption/SolutionCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
-import { howWeWorkDetails } from "@/data/service-consumption/HowWeWork.ts";
+
+// DATA //
+import { howWeWorkSectionDetails } from "@/data/service-consumption/HowWeWork.ts";
 ---
 
 <section id="how-we-work-section">
   <!-- Container -->
   <div
-    class="mx-auto flex flex-col gap-7 px-6 py-16 md:max-w-3xl md:gap-10 md:px-0 md:py-24 lg:max-w-384 lg:gap-14 lg:px-0 lg:py-28"
+    class="container mx-auto flex flex-col gap-7 px-6 py-16 md:gap-10 md:px-0 md:py-24 lg:gap-14 lg:px-0 lg:py-28"
   >
     <!-- Header -->
-    <div class="flex w-full flex-col gap-4 md:gap-5">
-      <div class="self-center">
-        <ToolBadge icon="service-icon" text={howWeWorkDetails.badgeText} />
+    <div class="flex w-full flex-col items-center gap-4 md:gap-5">
+      <!-- Tool badge component -->
+      <div class="tool-badge">
+        <ToolBadge icon="service-icon" text={howWeWorkSectionDetails.badgeText} />
       </div>
+
+      <!-- Header text -->
       <p
         class="header-text text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] opacity-0 md:text-4xl lg:text-5xl"
       >
-        {howWeWorkDetails.headerText}
+        {howWeWorkSectionDetails.headerText}
       </p>
     </div>
     <!-- Process Wrap -->
     <div class="flex w-full flex-col gap-4 md:gap-5 lg:grid lg:grid-cols-3 lg:gap-8">
       <!-- Solution Cards -->
       {
-        howWeWorkDetails.solutionCards.map((solutionCardItem) => (
-          <SolutionsCard
-            number={solutionCardItem.number}
+        howWeWorkSectionDetails.solutionCardItems.map((solutionCardItem, solutionCardItemIndex) => (
+          <SolutionCard
+            number={String(solutionCardItemIndex + 1).padStart(2, "0")}
             title={solutionCardItem.title}
             description={solutionCardItem.description}
           />
@@ -38,6 +43,7 @@ import { howWeWorkDetails } from "@/data/service-consumption/HowWeWork.ts";
 </section>
 <script>
   import { animateSolutionCards, animateHeader } from "@/scripts/how-we-work.ts";
+
   animateHeader();
   animateSolutionCards();
 </script>
