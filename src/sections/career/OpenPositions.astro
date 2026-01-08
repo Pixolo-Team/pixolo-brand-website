@@ -1,0 +1,42 @@
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import OpenPositionCard from "@/components/open-positions/OpenPositionCard.astro";
+
+// DATA //
+import { openPositions } from "@/data/career/open-positions";
+---
+
+<!-- Open Positions Section -->
+<section>
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col gap-9 px-6 py-16 md:gap-11 md:px-0 md:py-24 lg:gap-14 lg:py-28"
+  >
+    <!-- ToolBadge and Title -->
+    <div class="flex w-[80%] flex-col items-center gap-4 self-center text-center lg:gap-5">
+      <!-- TollBagde -->
+      <ToolBadge icon={openPositions.toolBadgeIcon} text={openPositions.toolBadgeText} />
+
+      <!-- Title -->
+      <p class="font-regular text-2xl leading-tight tracking-[-2%] md:text-4xl lg:text-5xl">
+        {openPositions.title}
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {
+        openPositions.positions.map((position) => (
+          // Card
+          <OpenPositionCard
+            category={position.category}
+            title={position.title}
+            tags={position.tags}
+            ctaText={position.ctaText}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
