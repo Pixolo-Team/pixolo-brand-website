@@ -1,0 +1,21 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { title: "service-1" } },
+    { params: { title: "service-2" } },
+    { params: { title: "service-3" } },
+  ];
+}
+
+const { title } = Astro.params;
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+
+// SECTIONS //
+import Hero from "@/sections/service-consumption/Hero.astro";
+---
+
+<Layout>
+  <Hero />
+</Layout>
