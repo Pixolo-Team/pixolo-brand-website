@@ -9,13 +9,11 @@ export function getStaticPaths() {
 
 const { title } = Astro.params;
 
-// SERVICES //
-import Hero from "@/sections/services/Hero.astro";
-
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
+import Hero from "@/sections/service-consumption/Hero.astro";
 import HowWeWork from "@/sections/service-consumption/HowWeWork.astro";
 ---
 
