@@ -26,17 +26,19 @@ const badgeCount = Math.max(0, images.length - maxVisible);
       <!-- Avatars -->
       <div class="flex items-center">
         {
-          images
-            .slice(0, maxVisible)
-            .map((imageItem, imageItemIndex) => (
+          images.slice(0, maxVisible).map((imageItem, imageItemIndex) => (
+            <div
+              class={`size-[50px] overflow-hidden rounded-full ${imageItemIndex > 0 ? "-ml-2" : ""}`}
+            >
               <Image
                 src={imageItem}
                 alt={`Profile ${imageItemIndex + 1}`}
                 width={50}
                 height={50}
-                class={`size-[50px] rounded-full object-cover ${imageItemIndex > 0 ? "-ml-2" : ""}`}
+                class="h-full w-full object-cover"
               />
-            ))
+            </div>
+          ))
         }
       </div>
 
