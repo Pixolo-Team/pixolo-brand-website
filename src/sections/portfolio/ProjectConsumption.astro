@@ -59,20 +59,22 @@ import { projectConsumptionHero } from "@/data/portfolio/project-consumption.ts"
 
     <!-- Buttons -->
     <div class="flex gap-3.5">
-      <RoundedButton
-        buttonText={projectConsumptionHero.visitButton.label}
-        onClick={projectConsumptionHero.visitButton.href}
-        type="button"
-        variant="secondary"
-        className="hover:bg-n-950 hover:text-n-100 transition-colors"
-      />
-      <RoundedButton
+      <a href={projectConsumptionHero.visitButton.href}>
+        <RoundedButton
+          buttonText={projectConsumptionHero.visitButton.label}
+          type="button"
+          variant="secondary"
+          className="hover:bg-n-950 hover:text-n-100 transition-colors"
+        />
+      </a>
+      <a href={projectConsumptionHero.visitButton.href}>
+        <RoundedButton
         buttonText={projectConsumptionHero.showProjectButton.label}
-        onClick={projectConsumptionHero.showProjectButton.href}
         type="button"
         variant="secondary"
         className="hover:bg-n-950 hover:text-n-100 transition-colors"
       />
+      </a>
     </div>
   </div>
 </section>

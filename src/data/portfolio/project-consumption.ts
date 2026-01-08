@@ -9,11 +9,11 @@ export const projectConsumptionHero = {
 
   visitButton: {
     label: "Visit Website",
-    href: "window.location.href='/404'",
+    href: "/404",
   },
 
   showProjectButton: {
     label: "Show Project",
-    href: "window.location.href='/404'",
+    href: "/404",
   },
 };
