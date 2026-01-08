@@ -33,8 +33,7 @@ const blogData: BlogPost = {
     {
       type: "media",
       mediaType: "video",
-      // TODO : Add a video link instead of PNG
-      src: "/images/blogs/blog-hero.png",
+      videoId: "https://www.youtube.com/embed/dQw4w9WgXcQ",
       alt: "Coding tutorial video",
       caption:
         "Dive into a collection of coding videos that simplify complex concepts and guide you step-by-step through real-world development.",

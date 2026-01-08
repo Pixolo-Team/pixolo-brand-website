@@ -13,8 +13,10 @@ const { content } = Astro.props as Props;
 ---
 
 <section>
-  <div class="container mx-auto px-6 py-12 md:py-16 lg:py-20">
-    <div class="anim-fade-in-up mx-auto flex max-w-[995px] flex-col gap-10 whitespace-pre-line">
+  <div class="container mx-auto px-6">
+    <div
+      class="anim-fade-in-up mx-auto flex max-w-[995px] flex-col items-center gap-10 whitespace-pre-line"
+    >
       {
         content.map((block) => {
           // HEADING BLOCKS
@@ -27,7 +29,7 @@ const { content } = Astro.props as Props;
                       {block.text}
                     </h1>
                     {block.paragraph && (
-                      <p class="text-n-700 text-sm leading-normal md:text-lg lg:text-xl">
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:text-xl">
                         {block.paragraph}
                       </p>
                     )}
@@ -50,7 +52,7 @@ const { content } = Astro.props as Props;
                       {block.text}
                     </h2>
                     {block.paragraph && (
-                      <p class="text-n-700 text-sm leading-normal md:text-lg lg:text-xl">
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:text-xl">
                         {block.paragraph}
                       </p>
                     )}
@@ -73,7 +75,7 @@ const { content } = Astro.props as Props;
                       {block.text}
                     </h3>
                     {block.paragraph && (
-                      <p class="text-n-700 text-sm leading-normal font-medium md:text-lg md:font-medium lg:text-xl lg:font-medium">
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal font-medium md:max-w-[560px] md:text-lg md:font-medium lg:text-xl lg:font-medium">
                         {block.paragraph}
                       </p>
                     )}
@@ -96,7 +98,7 @@ const { content } = Astro.props as Props;
                       {block.text}
                     </h4>
                     {block.paragraph && (
-                      <p class="text-n-700 text-sm leading-normal md:text-lg lg:text-xl">
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:text-xl">
                         {block.paragraph}
                       </p>
                     )}
@@ -119,7 +121,7 @@ const { content } = Astro.props as Props;
                       {block.text}
                     </h5>
                     {block.paragraph && (
-                      <p class="text-n-700 text-xs leading-4 md:text-base md:leading-6 lg:text-lg">
+                      <p class="text-n-700 max-w-[270px] text-xs leading-4 md:max-w-[560px] md:text-base md:leading-6 lg:text-lg">
                         {block.paragraph}
                       </p>
                     )}
@@ -142,7 +144,7 @@ const { content } = Astro.props as Props;
                       {block.text}
                     </h6>
                     {block.paragraph && (
-                      <p class="text-n-700 text-sm leading-normal md:text-lg lg:text-xl">
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:text-xl">
                         {block.paragraph}
                       </p>
                     )}
@@ -163,7 +165,9 @@ const { content } = Astro.props as Props;
           // PARAGRAPH BLOCKS
           if (block.type === "paragraph") {
             return (
-              <p class="text-n-700 text-sm leading-normal md:text-lg lg:text-xl">{block.text}</p>
+              <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:text-xl">
+                {block.text}
+              </p>
             );
           }
 
@@ -181,7 +185,7 @@ const { content } = Astro.props as Props;
                   />
                   {block.caption && (
                     <div class="md:px-26 lg:px-24">
-                      <p class="text-n-700 text-left text-xs leading-normal md:text-lg lg:text-xl">
+                      <p class="text-n-700 max-w-[270px] text-left text-xs leading-normal md:max-w-[560px] md:text-lg lg:text-xl">
                         {block.caption}
                       </p>
                     </div>
@@ -192,26 +196,17 @@ const { content } = Astro.props as Props;
               return (
                 <div class="relative flex flex-col items-center gap-3.5 md:gap-5 lg:gap-5">
                   <div class="relative w-full">
-                    <Image
-                      src={block.src}
-                      alt={block.alt}
-                      class="h-60 w-full rounded-3xl object-cover md:h-96 lg:h-[594px]"
-                      width={995}
-                      height={594}
+                    <iframe
+                      src={block.videoId}
+                      title={block.alt}
+                      class="h-60 w-[320px] rounded-3xl md:h-96 lg:h-[594px]"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
                     />
-                    <div class="outline-n-950 absolute top-1/2 left-1/2 flex h-6 w-6 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border md:top-auto md:right-[50px] md:bottom-[50px] md:left-auto md:h-11 md:w-11 md:translate-x-0 md:translate-y-0 md:outline-2 lg:h-14 lg:w-14">
-                      <Image
-                        src="/images/blogs/play-button.png"
-                        alt="Play Button"
-                        class="w-2.5 md:w-3.5"
-                        width={20}
-                        height={20}
-                      />
-                    </div>
                   </div>
                   {block.caption && (
                     <div class="text-left md:px-26 lg:px-24">
-                      <p class="text-n-700 text-xs leading-normal md:text-lg lg:text-xl">
+                      <p class="text-n-700 md:max-w-[560px]md:text-lg max-w-[270px] text-xs leading-normal lg:text-xl">
                         {block.caption}
                       </p>
                     </div>
