@@ -11,23 +11,23 @@ const { number, title, description } = Astro.props as props;
 
 <!-- Solution Card Component -->
 <div
-  class="solution-card border-n-500 flex flex-col gap-3.5 rounded-4xl border px-4 pt-4 pb-6 md:gap-5 md:px-7 md:pt-7 md:pb-9 lg:gap-9 lg:px-8 lg:pt-8 lg:pb-16"
+  class="solution-card border-n-500 rounded-4xl flex flex-col gap-3.5 border px-4 pb-6 pt-4 md:gap-5 md:px-7 md:pb-9 md:pt-7 lg:gap-9 lg:px-8 lg:pb-16 lg:pt-8"
 >
   <!-- Number -->
   <p
-    class="solution-text text-n-950 text-4xl leading-tight font-normal tracking-[-4%] md:text-6xl lg:text-8xl"
+    class="solution-text text-n-950 text-4xl font-normal leading-tight tracking-[-4%] md:text-6xl lg:text-8xl"
   >
     {number}
   </p>
   <!-- Content Wrapper -->
   <div class="flex flex-col gap-2 md:gap-4 lg:gap-6">
     <!-- Title -->
-    <p class="solution-text text-n-950 text-base leading-tight font-normal md:text-2xl lg:text-3xl">
+    <p class="solution-text text-n-950 text-base font-normal leading-tight md:text-2xl lg:text-3xl">
       {title}
     </p>
 
     <!-- Description -->
-    <p class="solution-text text-n-600 text-xs leading-tight font-normal md:text-base lg:text-xl">
+    <p class="solution-text text-n-600 text-xs font-normal leading-tight md:text-base lg:text-xl">
       {description}
     </p>
   </div>
