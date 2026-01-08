@@ -8,13 +8,18 @@ export function getStaticPaths() {
 }
 
 const { title } = Astro.params;
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
 import FinalCta from "@/sections/service-consumption/FinalCta.astro";
+import Hero from "@/sections/service-consumption/Hero.astro";
+import HowWeWork from "@/sections/service-consumption/HowWeWork.astro";
 ---
 
 <Layout>
+  <Hero />
+  <HowWeWork />
   <FinalCta />
 </Layout>
