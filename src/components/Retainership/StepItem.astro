@@ -16,7 +16,7 @@ const { number, title, description, direction } = Astro.props as props;
 >
   <!-- Step number -->
   <p
-    class={`step-number max-w-20 flex-1 font-normal text-5xl leading-tight text-n-950 grow text-right md:max-w-full md:text-7xl lg:text-8xl ${direction === "rtl" ? "md:text-left" : "md:text-right"}`}
+    class={`step-number max-w-20 flex-1 font-normal text-5xl leading-tight text-n-950 grow text-right md:max-w-full md:text-[80px] lg:text-8xl ${direction === "rtl" ? "md:text-left" : "md:text-right"}`}
   >
     {number}
   </p>
@@ -29,12 +29,16 @@ const { number, title, description, direction } = Astro.props as props;
     class={`step-text flex flex-1 flex-col gap-3 w-full text-left md:gap-5 ${direction === "rtl" ? "md:text-right" : "md:text-left"}`}
   >
     <!-- Title -->
-    <p class={"font-bold text-2xl leading-tight text-n-950 md:text-3xl lg:text-5xl lg:font-medium"}>
+    <p
+      class={"font-bold text-2xl leading-tight tracking-normal text-n-950 md:text-3xl lg:text-5xl lg:font-medium"}
+    >
       {title}
     </p>
 
     <!-- Description -->
-    <p class={"font-normal text-sm leading-tight text-n-950 md:text-base lg:text-2xl"}>
+    <p
+      class={"font-normal tracking-normal text-sm leading-tight text-n-950 md:text-base lg:text-2xl"}
+    >
       {description}
     </p>
   </div>
