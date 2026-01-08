@@ -9,13 +9,15 @@ interface Props {
 const { problemDescription, solutionDescription } = Astro.props as Props;
 ---
 
+<!-- Pain Solution Card Component -->
 <div
-  class="border-n-500 flex max-w-[327px] flex-col gap-3 rounded-4xl border px-3 py-4 md:max-w-[768px] md:flex-row md:gap-7 lg:max-w-[1536px] lg:rounded-[100px] lg:p-2"
+  class="pain-solution-card border-n-500 container flex flex-col gap-3 rounded-4xl border px-3 py-4 md:flex-row md:gap-7 lg:gap-7 lg:rounded-[100px] lg:p-2"
 >
   <!-- Problem Wrapper -->
-  <div class="flex w-full flex-col gap-1.5 md:gap-7 lg:flex-row lg:items-center">
+  <div class="flex w-full flex-col gap-1.5 md:gap-7 lg:flex-row lg:items-center lg:gap-7">
+    <!-- Problem label -->
     <div
-      class="border-n-500 flex w-full flex-col rounded-3xl border-[0.8px] py-3 lg:h-36 lg:w-36 lg:justify-center lg:rounded-[73.5px]"
+      class="border-n-500 flex w-full flex-col rounded-3xl border-[0.8px] py-3 lg:h-36 lg:w-36 lg:flex-none lg:justify-center lg:rounded-full"
     >
       <p
         class="text-n-700 self-center text-center text-base leading-tight font-medium tracking-normal md:text-xl lg:text-2xl"
@@ -23,8 +25,10 @@ const { problemDescription, solutionDescription } = Astro.props as Props;
         Problem
       </p>
     </div>
+
+    <!-- Problem description -->
     <p
-      class="text-n-950 self-center text-center text-base leading-tight font-normal tracking-normal md:text-xl lg:text-2xl"
+      class="text-n-950 self-center text-center text-base leading-tight font-normal tracking-normal md:text-xl lg:flex-1 lg:text-2xl"
     >
       {problemDescription}
     </p>
@@ -32,21 +36,24 @@ const { problemDescription, solutionDescription } = Astro.props as Props;
 
   <!-- Icon Wrapper -->
   <div
-    class="lg:border-n-300 relative flex self-center lg:h-36 lg:w-[144px] lg:flex-col lg:items-center lg:justify-center lg:rounded-full lg:border"
+    class="flex self-center lg:h-36 lg:w-36 lg:items-center lg:justify-center lg:rounded-[100px]"
   >
-    <div class="lg:flex lg:w-full lg:justify-center">
+    <div
+      class="lg:border-n-300 relative lg:flex lg:h-36 lg:w-36 lg:items-center lg:justify-center lg:self-center lg:rounded-full lg:border"
+    >
       <Icon name={"polygon"} class="h-5 w-5 rotate-[28.04] md:h-6 md:w-6 lg:h-7.5 lg:w-7.5" />
       <Icon
         name={"polygon-2"}
-        class="absolute left-2 h-5 w-5 rotate-[28.04] md:h-6 md:w-6 lg:h-7.5 lg:w-7.5"
+        class="absolute top-0.5 bottom-1 left-2 h-5 w-5 rotate-[28.04] md:h-6 md:w-6 lg:top-14 lg:left-17.5 lg:h-7.5 lg:w-7.5"
       />
     </div>
   </div>
 
   <!-- Solution Wrapper -->
-  <div class="flex w-full flex-col gap-1.5 md:gap-7 lg:flex-row-reverse lg:items-center">
+  <div class="flex w-full flex-col gap-1.5 md:gap-7 lg:flex-row-reverse lg:items-center lg:gap-7">
+    <!-- Solution label -->
     <div
-      class="border-n-500 flex w-full flex-col rounded-[73.5px] border-[0.8px] py-3 lg:h-36 lg:w-36 lg:justify-center lg:rounded-[73.5px]"
+      class="border-n-500 flex w-full flex-col rounded-[73.5px] border-[0.8px] py-3 lg:h-36 lg:w-36 lg:justify-center lg:rounded-full"
     >
       <p
         class="text-n-700 self-center text-center text-base leading-tight font-medium tracking-normal md:text-xl lg:text-2xl"
@@ -54,10 +61,20 @@ const { problemDescription, solutionDescription } = Astro.props as Props;
         Solution
       </p>
     </div>
+    <!-- Solution description -->
     <p
-      class="text-n-950 text-center text-base leading-tight font-medium tracking-normal md:text-xl lg:text-2xl"
+      class="text-n-950 text-center text-base leading-tight font-medium tracking-normal md:text-xl lg:flex-1 lg:text-2xl"
     >
       {solutionDescription}
     </p>
   </div>
 </div>
+
+<style>
+  /* Initial states */
+  .pain-solution-card {
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: transform, opacity;
+  }
+</style>
