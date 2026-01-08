@@ -10,6 +10,11 @@ export default defineConfig({
   site: "https://www.pixolotechnologies.com",
   integrations: [icon()],
   vite: {
+    resolve: {
+      alias: {
+        "@": "/src",
+      },
+    },
     plugins: [tailwindcss(), sitemap()],
   },
 });
