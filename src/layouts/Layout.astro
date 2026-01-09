@@ -16,10 +16,10 @@ import BottomCTA from "@/components/ui/BottomCTA.astro";
 
 interface Props {
   meta: any;
-  showLoader: boolean;
+  showLoader?: boolean;
 }
 
-const { meta = {}, showLoader = false } = Astro.props;
+const { meta = {} } = Astro.props;
 ---
 
 <!doctype html>
@@ -34,7 +34,7 @@ const { meta = {}, showLoader = false } = Astro.props;
     />
   </head>
   <body>
-    <!-- Show Loader -->
+    <!-- Loading -->
     <Loading />
 
     <!-- Top menu -->
@@ -90,6 +90,16 @@ const { meta = {}, showLoader = false } = Astro.props;
     height: 100%;
   }
 </style>
+<script is:inline>
+  const loader = document.querySelector("#loading-screen");
+  const hasSeenLoader = sessionStorage.getItem("loaderShown");
+
+  if (hasSeenLoader) {
+    loader.style.display = "none";
+  } else {
+    loader.style.display = "flex";
+  }
+</script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // Select all elements that should animate when visible
