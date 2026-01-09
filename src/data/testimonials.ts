@@ -1,3 +1,4 @@
+// Testimonials Section Details
 export const testimonialSectionDetails = {
   badgeIcon: "comment",
   badgeTitle: "Voices of Trust",

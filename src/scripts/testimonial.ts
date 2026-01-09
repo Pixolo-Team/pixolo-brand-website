@@ -8,9 +8,6 @@ export function initTestimonials() {
 
   if (!items.length || !textWrapper || !textEl) return;
 
-  // Set first active
-  setActive(items[0]);
-
   const container = items[0].parentElement;
   if (!container) return;
 
@@ -18,23 +15,27 @@ export function initTestimonials() {
     const target = (e.target as HTMLElement).closest(".testimonial-item") as HTMLElement | null;
     if (!target) return;
 
+    /** Set the active testimonial item and update the displayed text. */
     setActive(target);
   });
 
-  function setActive(activeItem: HTMLElement) {
+  const setActive = (activeItem: HTMLElement) => {
     // If Already active then do nothing
     if (activeItem.classList.contains("active")) return;
 
     items.forEach((item) => item.classList.remove("active"));
     activeItem.classList.add("active");
 
-    // Fade text update
+    /** Fade text update */
     textWrapper.style.opacity = "0";
     setTimeout(() => {
       textEl.textContent = activeItem.dataset.quote ?? "";
       textWrapper.style.opacity = "1";
     }, 200);
-  }
+  };
+
+  // Set first active
+  setActive(items[0]);
 }
 
 /** Animate the Testimonials Section */

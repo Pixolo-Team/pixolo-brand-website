@@ -54,7 +54,9 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
       class="flex w-full justify-end gap-3 overflow-hidden md:gap-5 lg:gap-6 lg:pr-6"
     >
       <!-- Other Clients -->
-      <div class="flex items-center justify-center gap-2.5 md:gap-3.5 lg:gap-4">
+      <div
+        class="scrollbar-hide flex items-center justify-start gap-2.5 overflow-x-auto sm:justify-end md:gap-3.5 lg:gap-4"
+      >
         {
           testimonialItems.map((testimonialItem, testimonialItemIndex) => (
             <div
@@ -62,14 +64,18 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
               data-quote={testimonialItem.testimonial}
               data-name={testimonialItem.clientName}
               data-company={testimonialItem.brandName}
+              role="button"
+              aria-label={`View testimonial from ${testimonialItem.clientName} at ${testimonialItem.brandName}`}
             >
-              <Image
-                src={testimonialItem.clientImage}
-                alt={testimonialItem.clientName}
-                width={64}
-                height={64}
-                class="size-9 rounded-full object-cover transition-all duration-600 hover:scale-125 hover:shadow-[0_0_21.7px_0_#2B7FFF] md:size-14 lg:size-16"
-              />
+              <div class="size-9 overflow-hidden rounded-full transition-all duration-600 hover:scale-125 hover:shadow-[0_0_21.7px_0_#2B7FFF] md:size-14 lg:size-16">
+                <Image
+                  src={testimonialItem.clientImage}
+                  alt={testimonialItem.clientName}
+                  width={64}
+                  height={64}
+                  class="object-cover"
+                />
+              </div>
 
               {/* Name + Company (only active shows) */}
               <div class="testimonial-info text-n-100">
@@ -89,7 +95,10 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
 </section>
 <style>
   .testimonial-item {
-    transition: all 0.6s ease;
+    transition:
+      background-color 0.6s ease,
+      transform 0.6s ease,
+      padding-right 0.6s ease;
   }
 
   /* ACTIVE */
