@@ -1,25 +1,127 @@
 ---
-const heroOverline = "We're the Geeks";
-const heroTitle = "Big Tech Story.";
-const heroSub = "Smart builds. Good vibes. Great stories.";
-const ball1Src = "/3d-ball-1.svg";
+// COMPONENTS //
+import { Image } from "astro:assets";
+
+// SVG's //
+import Ball from "@/assets/3d-ball.svg";
+import TagIcon from "@/assets/3d-tag.svg";
+
+// DATA //
+import { heroSectionDetails } from "@/data/hero";
 ---
 
-<!-- Hero section start -->
+<!-- Hero Section Start -->
 <section>
-  <!-- Decorative 3D shapes container -->
-  <!-- 3d-ball-2 -->
-  <img src={ball1Src} alt="3d ball 2" />
-  <!-- 3d-ball-1 -->
-  <img src={ball1Src} alt="3d ball 1" />
-  <!-- hero-text-wrap -->
-  <div>
-    <!-- Overline / small intro text -->
-    <p>{heroOverline}</p>
-    <!-- Main headline -->
-    <p>{heroTitle}</p>
-    <!-- Subtext paragraph -->
-    <p>{heroSub}</p>
+  <div
+    id="hero-wrapper"
+    class="relative container mx-auto flex flex-col items-center justify-center gap-9 overflow-hidden px-6 py-36 text-center md:py-52 lg:py-40 xl:pt-52 2xl:pt-64 2xl:pb-52"
+  >
+    <!-- Top-left floating marble -->
+    <Image
+      id="big-marble"
+      src={Ball}
+      alt="Big Marble"
+      class="absolute top-[22%] left-6 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
+    />
+    <!-- Bottom-right floating marble -->
+    <Image
+      id="small-marble"
+      src={Ball}
+      alt="Small Marble"
+      class="absolute right-[10%] bottom-[46%] w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
+      style="animation-duration: 4s"
+    />
+
+    <!-- Hero Text Wrapper -->
+    <div class="flex flex-col items-center justify-center gap-3 md:gap-0 xl:w-full">
+      <!--  Title first line -->
+      <p
+        class="text-n-950 text-3xl leading-none font-normal tracking-tight md:text-7xl xl:text-8xl"
+      >
+        <span class="word-container" data-animate-word>
+          {heroSectionDetails.title[0]}
+        </span>
+        <span class="word-container font-bold" data-animate-word>
+          {heroSectionDetails.title[1]}
+        </span>
+      </p>
+
+      <!--  Title second line -->
+      <p
+        class="text-n-950 flex items-center justify-center text-center text-3xl leading-tight font-normal tracking-tight text-nowrap md:text-7xl xl:text-8xl"
+      >
+        <!-- Title third line -->
+        <span class="word-container" data-animate-word>
+          {heroSectionDetails.title[2]}
+        </span>
+
+        <!-- Tag logo -->
+        <Image
+          src={TagIcon}
+          alt="3d-code-icon"
+          class="floating-icon inline-block w-14 align-middle md:w-44 xl:w-60"
+          style={"animation-duration: 5s"}
+        />
+        <span class="word-container" data-animate-word>
+          {heroSectionDetails.title[3]}
+        </span>
+      </p>
+
+      <!--  Title fourth line -->
+      <p
+        class="text-n-950 text-3xl leading-none font-semibold tracking-[-0.02em] md:text-7xl xl:text-8xl"
+      >
+        <span class="word-container" data-animate-word>
+          {heroSectionDetails.title[4]}
+        </span>
+      </p>
+    </div>
+
+    <!-- Subtext -->
+    <p
+      class="z-10 bg-gradient-to-r from-[#6654D4] to-[#8B77F3] bg-clip-text text-center text-sm leading-loose font-medium text-transparent md:text-xl xl:text-2xl"
+    >
+      {heroSectionDetails.subText}
+    </p>
   </div>
 </section>
-<!-- Hero section end -->
+<style>
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .floating-icon {
+    animation: float 6s ease-in-out infinite;
+    will-change: transform;
+  }
+  .word-container {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(15%);
+    transition:
+      opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: 0ms; /* This will be set by JS */
+  }
+
+  /* This class is added by JS to trigger the final state */
+  .word-container.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>
+<script>
+  import { animateHeroTitle, animateMarble } from "@/scripts/hero";
+
+  animateHeroTitle();
+  animateMarble("big-marble", "hero-wrapper");
+  animateMarble("small-marble", "hero-wrapper");
+</script>

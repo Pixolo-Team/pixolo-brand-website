@@ -1,18 +1,33 @@
 // Services data that can be reused across the application
 export const services = [
   {
-    imageName: "service-image",
-    title: "Design",
-    tags: ["Website", "Mobile", "UI", "App"],
+    id: 1,
+    imageName: "/images/services/product-planning.jpg",
+    title: "Product Strategy & Planning",
+    tags: [
+      "Product Ideation",
+      "UX Research",
+      "Feature Planning",
+      "System Architecture",
+      "MVP → MLP",
+    ],
   },
   {
-    imageName: "service-image",
-    title: "Web & Mobile Apps",
-    tags: ["Website", "Mobile", "UI", "App"],
+    id: 2,
+    imageName: "/images/services/ui-ux-branding.jpg",
+    title: "UI/UX & Brand Experience",
+    tags: [
+      "UI/UX Design",
+      "Design Systems (Neevo)",
+      "Interaction & Motion",
+      "Brand Identity",
+      "Landing Pages",
+    ],
   },
   {
-    imageName: "service-image",
-    title: "Technology",
-    tags: ["Website", "Mobile", "UI", "App"],
+    id: 3,
+    imageName: "/images/services/ui-ux-branding.jpg",
+    title: "Full-Stack Development",
+    tags: ["Web Apps", "Mobile Apps", "Backend & APIs", "Admin Panels", "Real-time Systems"],
   },
 ];
