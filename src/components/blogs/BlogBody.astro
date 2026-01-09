@@ -15,7 +15,7 @@ const { content } = Astro.props as Props;
 <section>
   <div class="container mx-auto px-6">
     <div
-      class="m-auto flex max-w-[995px] flex-col items-center gap-10 whitespace-pre-line lg:items-start"
+      class="mx-auto flex max-w-[995px] flex-col items-center gap-10 whitespace-pre-line lg:items-start"
     >
       {
         content.map((block) => {
@@ -175,11 +175,11 @@ const { content } = Astro.props as Props;
           if (block.type === "media") {
             if (block.mediaType === "image") {
               return (
-                <div class="anim-fade-up-quick flex flex-col items-center gap-4 md:gap-5 lg:gap-5">
+                <div class="anim-fade-up-quick flex flex-col items-center gap-4 object-contain md:gap-5 lg:gap-5">
                   <Image
                     src={block.src}
                     alt={block.alt}
-                    class="h-60 w-full rounded-3xl object-cover md:h-[363px] lg:h-[594px]"
+                    class="h-60 w-full rounded-3xl object-cover md:h-[363px] md:max-w-[768px] lg:h-[594px]"
                     width={995}
                     height={594}
                   />
@@ -194,19 +194,17 @@ const { content } = Astro.props as Props;
               );
             } else if (block.mediaType === "video") {
               return (
-                <div class="anim-fade-up-quick flex flex-col items-center justify-center gap-3.5 md:gap-5 lg:gap-5">
-                  <div class="w-full">
-                    <iframe
-                      src={block.videoId}
-                      title={block.alt}
-                      class="h-60 w-full rounded-3xl object-cover md:h-96 lg:h-[594px] lg:w-[995px]"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen
-                    />
-                  </div>
+                <div class="anim-fade-up-quick flex flex-col items-center gap-4 object-contain md:gap-5 lg:gap-5">
+                  <iframe
+                    src={block.videoId}
+                    title={block.alt}
+                    class="h-60 w-full rounded-3xl object-cover md:h-[363px] md:max-w-[768px] lg:h-[594px]"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  />
                   {block.caption && (
-                    <div class="anim-fade-in-up text-left md:px-26 lg:px-24">
-                      <p class="text-n-700 max-w-[270px] text-xs leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
+                    <div class="anim-fade-in-up lg:px-24">
+                      <p class="text-n-700 max-w-[270px] text-left text-xs leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
                         {block.caption}
                       </p>
                     </div>
