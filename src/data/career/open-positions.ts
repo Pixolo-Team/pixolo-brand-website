@@ -66,15 +66,15 @@ export const openPositions = {
       tags: [
         {
           label: "Experience",
-          value: "1-2 years",
+          value: "3-4 years",
         },
         {
           label: "Location",
-          value: "Mumbai",
+          value: "Bangalore",
         },
         {
           label: "Open Positions",
-          value: "3-4",
+          value: "5-6",
         },
       ],
       ctaText: "Apply Now",
@@ -85,15 +85,15 @@ export const openPositions = {
       tags: [
         {
           label: "Experience",
-          value: "1-2 years",
+          value: "1-3 years",
         },
         {
           label: "Location",
-          value: "Mumbai",
+          value: "Pune",
         },
         {
           label: "Open Positions",
-          value: "3-4",
+          value: "2-3",
         },
       ],
       ctaText: "Apply Now",
@@ -104,15 +104,15 @@ export const openPositions = {
       tags: [
         {
           label: "Experience",
-          value: "1-2 years",
+          value: "5+ years",
         },
         {
           label: "Location",
-          value: "Mumbai",
+          value: "Delhi",
         },
         {
           label: "Open Positions",
-          value: "3-4",
+          value: "1-2",
         },
       ],
       ctaText: "Apply Now",
