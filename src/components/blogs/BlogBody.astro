@@ -194,7 +194,7 @@ const { content } = Astro.props as Props;
               );
             } else if (block.mediaType === "video") {
               return (
-                <div class="anim-fade-up-quick flex flex-col items-center gap-4 object-contain md:gap-5 lg:gap-5">
+                <div class="anim-fade-up-quick flex w-full flex-col items-center gap-4 overflow-hidden object-contain md:gap-5 lg:gap-5">
                   <iframe
                     src={block.videoId}
                     title={block.alt}
