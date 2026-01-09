@@ -54,7 +54,7 @@ const { client, services, platforms, timeline, industry, techStack } = data;
         </div>
       </div>
       <div class="flex flex-col gap-1.5 md:gap-3.5 lg:flex-row lg:gap-4">
-        <div class="flex flex-1 flex-row gap-1.5 md:gap-3.5 lg:contents">
+        <div class="flex flex-1 flex-row gap-1.5 md:gap-3.5 lg:flex-[1]">
           <div
             class="bg-n-100 lg:justify-space-between flex flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-3xl"
           >
@@ -70,13 +70,13 @@ const { client, services, platforms, timeline, industry, techStack } = data;
           </div>
         </div>
         <div
-          class="bg-n-100 lg:justify-space-between flex flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-3xl"
+          class="bg-n-100 lg:justify-space-between flex flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:flex-[1] lg:rounded-3xl"
         >
           <p class="text-n-600 text-sm leading-tight md:text-base">Tech Stack</p>
-          <div class="flex flex-wrap gap-3">
+          <div class="scrollbar-hide flex gap-3 overflow-x-auto">
             {
               techStack?.map((img) => (
-                <img src={img} alt="Tech Stack" class="h-8 md:h-12 lg:h-14" />
+                <img src={img} alt="Tech Stack" class="h-8 shrink-0 md:h-12 lg:h-14" />
               ))
             }
           </div>
