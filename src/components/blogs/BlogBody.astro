@@ -15,7 +15,7 @@ const { content } = Astro.props as Props;
 <section>
   <div class="container mx-auto px-6">
     <div
-      class="anim-fade-in-up m-auto flex max-w-[995px] flex-col items-center gap-10 whitespace-pre-line lg:items-start"
+      class="m-auto flex max-w-[995px] flex-col items-center gap-10 whitespace-pre-line lg:items-start"
     >
       {
         content.map((block) => {
@@ -23,7 +23,7 @@ const { content } = Astro.props as Props;
           if (block.type === "heading") {
             if (block.level === 1) {
               return (
-                <div class="flex flex-col gap-10">
+                <div class="anim-fade-in-up flex flex-col gap-10">
                   <div class="flex flex-col gap-3.5">
                     <h1 class="text-n-950 text-3xl leading-normal font-semibold md:text-5xl lg:text-6xl">
                       {block.text}
@@ -46,7 +46,7 @@ const { content } = Astro.props as Props;
               );
             } else if (block.level === 2) {
               return (
-                <div class="flex flex-col gap-10">
+                <div class="anim-fade-in-up flex flex-col gap-10">
                   <div class="flex flex-col gap-3.5">
                     <h2 class="text-n-950 text-3xl leading-normal font-medium md:text-5xl lg:text-6xl">
                       {block.text}
@@ -69,7 +69,7 @@ const { content } = Astro.props as Props;
               );
             } else if (block.level === 3) {
               return (
-                <div class="flex flex-col gap-10">
+                <div class="anim-fade-in-up flex flex-col gap-10">
                   <div class="flex flex-col gap-6">
                     <h3 class="text-n-950 text-3xl leading-10 font-medium md:text-4xl md:leading-[54px] lg:text-5xl lg:leading-[72px]">
                       {block.text}
@@ -92,7 +92,7 @@ const { content } = Astro.props as Props;
               );
             } else if (block.level === 4) {
               return (
-                <div class="flex flex-col gap-10">
+                <div class="anim-fade-in-up flex flex-col gap-10">
                   <div class="flex flex-col gap-3.5">
                     <h4 class="text-n-950 text-3xl leading-10 font-medium md:text-4xl md:leading-[54px] lg:text-5xl lg:leading-[72px]">
                       {block.text}
@@ -115,7 +115,7 @@ const { content } = Astro.props as Props;
               );
             } else if (block.level === 5) {
               return (
-                <div class="flex flex-col gap-9">
+                <div class="anim-fade-in-up flex flex-col gap-9">
                   <div class="flex flex-col gap-3">
                     <h5 class="text-n-950 text-2xl leading-normal font-semibold md:text-3xl lg:text-4xl">
                       {block.text}
@@ -138,7 +138,7 @@ const { content } = Astro.props as Props;
               );
             } else if (block.level === 6) {
               return (
-                <div class="flex flex-col gap-10">
+                <div class="anim-fade-in-up flex flex-col gap-10">
                   <div class="flex flex-col gap-3.5">
                     <h6 class="text-n-950 text-2xl leading-normal font-medium md:text-3xl lg:text-4xl">
                       {block.text}
@@ -175,16 +175,16 @@ const { content } = Astro.props as Props;
           if (block.type === "media") {
             if (block.mediaType === "image") {
               return (
-                <div class="flex flex-col items-center gap-4 md:gap-5 lg:gap-5">
+                <div class="anim-fade-up-quick flex flex-col items-center gap-4 md:gap-5 lg:gap-5">
                   <Image
                     src={block.src}
                     alt={block.alt}
-                    class="h-60 w-full rounded-3xl object-cover md:h-96 lg:h-[594px]"
+                    class="h-60 w-full rounded-3xl object-cover md:h-[363px] lg:h-[594px]"
                     width={995}
                     height={594}
                   />
                   {block.caption && (
-                    <div class="md:px-26 lg:px-24">
+                    <div class="anim-fade-in-up lg:px-24">
                       <p class="text-n-700 max-w-[270px] text-left text-xs leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
                         {block.caption}
                       </p>
@@ -194,7 +194,7 @@ const { content } = Astro.props as Props;
               );
             } else if (block.mediaType === "video") {
               return (
-                <div class="flex flex-col items-center justify-center gap-3.5 md:gap-5 lg:gap-5">
+                <div class="anim-fade-up-quick flex flex-col items-center justify-center gap-3.5 md:gap-5 lg:gap-5">
                   <div class="w-full">
                     <iframe
                       src={block.videoId}
@@ -205,7 +205,7 @@ const { content } = Astro.props as Props;
                     />
                   </div>
                   {block.caption && (
-                    <div class="text-left md:px-26 lg:px-24">
+                    <div class="anim-fade-in-up text-left md:px-26 lg:px-24">
                       <p class="text-n-700 max-w-[270px] text-xs leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
                         {block.caption}
                       </p>
@@ -222,15 +222,15 @@ const { content } = Astro.props as Props;
               return (
                 <div class="flex flex-col gap-3.5">
                   {block.header && (
-                    <h2 class="text-n-950 text-2xl leading-normal md:text-3xl lg:text-4xl">
+                    <h2 class="text-n-950 max-w-[270px] text-2xl leading-normal md:max-w-[560px] md:text-3xl lg:text-4xl">
                       {block.header}
                     </h2>
                   )}
-                  <ul class="flex flex-col gap-2.5 pl-8">
+                  <ul class="flex max-w-[270px] flex-col gap-2.5 pl-8 md:max-w-[560px]">
                     {block.items.map((item) => (
                       <li class="flex items-center gap-3.5 md:gap-5 lg:gap-6">
                         <div class="bg-n-700 h-1.5 w-1.5 shrink-0 rounded-full" />
-                        <div class="text-n-700 flex-1 text-sm leading-normal md:text-lg lg:text-xl">
+                        <div class="text-n-700 flex-1 text-xs leading-normal md:text-lg lg:text-xl">
                           {item}
                         </div>
                       </li>
@@ -261,7 +261,7 @@ const { content } = Astro.props as Props;
           // COMPARISON TABLE BLOCKS
           if (block.type === "comparison") {
             return (
-              <table class="bg-n-50 outline-n-300 w-full rounded-2xl outline-[0.7px] md:max-w-[560px] lg:max-w-full">
+              <table class="bg-n-50 outline-n-300 w-full max-w-[270px] rounded-2xl outline-[0.7px] md:max-w-[560px] lg:max-w-full">
                 <thead>
                   <tr>
                     {block.headers.map((header, listItem) => (
