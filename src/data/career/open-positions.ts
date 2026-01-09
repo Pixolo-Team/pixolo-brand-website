@@ -62,7 +62,7 @@ export const openPositions = {
     },
     {
       category: "Designing",
-      title: "UI/UX Designer",
+      title: "Front-end Developer",
       tags: [
         {
           label: "Experience",
@@ -80,8 +80,8 @@ export const openPositions = {
       ctaText: "Apply Now",
     },
     {
-      category: "Designing",
-      title: "UI/UX Designer",
+      category: "Testing",
+      title: "QA Engineer",
       tags: [
         {
           label: "Experience",
@@ -99,8 +99,8 @@ export const openPositions = {
       ctaText: "Apply Now",
     },
     {
-      category: "Designing",
-      title: "UI/UX Designer",
+      category: "Managing",
+      title: "Project Manager",
       tags: [
         {
           label: "Experience",
