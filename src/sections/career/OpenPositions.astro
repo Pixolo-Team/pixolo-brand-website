@@ -25,16 +25,20 @@ import { openPositions } from "@/data/career/open-positions";
     </div>
 
     <!-- Cards -->
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div
+      class="flex flex-col flex-wrap justify-center gap-4 md:flex-row"
+    >
       {
         openPositions.positions.map((position) => (
           // Card
-          <OpenPositionCard
-            category={position.category}
-            title={position.title}
-            tags={position.tags}
-            ctaText={position.ctaText}
-          />
+          <div class="md:min-w-[377px] lg:min-w-[484px]">
+            <OpenPositionCard
+              category={position.category}
+              title={position.title}
+              tags={position.tags}
+              ctaText={position.ctaText}
+            />
+          </div>
         ))
       }
     </div>
