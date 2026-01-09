@@ -31,7 +31,7 @@ import { openPositions } from "@/data/career/open-positions";
       {
         openPositions.positions.map((position) => (
           // Card
-          <div class="md:min-w-[360px] lg:min-w-[480px]">
+          <div class="flex flex-col md:min-w-[360px] lg:min-w-[480px]">
             <OpenPositionCard
               category={position.category}
               title={position.title}
