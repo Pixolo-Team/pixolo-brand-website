@@ -6,20 +6,21 @@ export function getStaticPaths() {
     { params: { title: "service-3" } },
   ];
 }
-
 const { title } = Astro.params;
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
-import FinalCta from "@/sections/service-consumption/FinalCta.astro";
 import Hero from "@/sections/service-consumption/Hero.astro";
 import HowWeWork from "@/sections/service-consumption/HowWeWork.astro";
+import Deliverables from "@/sections/service-consumption/Deliverables.astro";
+import FinalCta from "@/sections/service-consumption/FinalCta.astro";
 ---
 
 <Layout>
   <Hero />
   <HowWeWork />
+  <Deliverables />
   <FinalCta />
 </Layout>
