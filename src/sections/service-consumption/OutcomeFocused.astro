@@ -3,6 +3,7 @@
 import WhyUs from "@/components/service-consumption/WhyUs.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
+import outcomeFocused from "@/data/service-consumption/outcome-focused.png";
 
 // DATA //
 import { outcomeFocusedDetails } from "@/data/service-consumption/outcome-focused.ts";
@@ -12,42 +13,42 @@ import { outcomeFocusedDetails } from "@/data/service-consumption/outcome-focuse
 <section id="outcome-section">
   <!-- Container -->
   <div
-    class="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 py-20 md:gap-10 md:px-0 md:py-24 lg:max-w-384 lg:gap-16 lg:py-28"
+    class="container mx-auto flex w-full flex-col gap-6 px-6 py-20 md:gap-10 md:px-0 md:py-24 lg:gap-16 lg:py-28"
   >
     <!-- Header Section -->
-    <div class="flex flex-col gap-3 lg:gap-4">
+    <div class="flex flex-col items-center justify-center gap-3 lg:gap-4">
       <!-- Badge -->
-      <div class="self-center">
-        <ToolBadge icon="service-icon" text={outcomeFocusedDetails.badgeText} />
-      </div>
-
+      <ToolBadge icon="service-icon" text={outcomeFocusedDetails.badgeText} />
       <!-- Header -->
       <p
-        class="outcome-header text-n-950 self-center text-center text-3xl leading-tight font-normal tracking-[-0.02em] opacity-0 md:text-4xl lg:text-5xl"
+        class="outcome-header text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] opacity-0 md:text-4xl lg:text-5xl"
       >
         {outcomeFocusedDetails.headerText}
       </p>
     </div>
 
     <!-- Content Wrapper -->
-    <div
-      class="grid w-full grid-cols-1 justify-items-center gap-6 md:gap-8 lg:grid-cols-2 lg:items-center lg:gap-14"
-    >
+    <div class="grid w-full grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2 lg:gap-14">
       <!-- Image -->
-      <Image
-        src="/images/service-consumption/outcome-focused.png"
-        width={768}
-        height={455}
-        alt="Team collaborating on product planning"
-        class:list={"outcome-image h-60.5 w-81.75 rounded-4xl opacity-0 md:h-113.75 md:w-3xl lg:w-185"}
-      />
+      <div class="h-full w-full">
+        <Image
+          src={outcomeFocused}
+          width={768}
+          height={455}
+          alt="Team collaborating on product planning"
+          class="outcome-image h-full w-full rounded-4xl opacity-0"
+        />
+      </div>
 
       <!-- Why us -->
-      <div class="flex w-full flex-col gap-7 lg:justify-items-center">
+      <div class="flex w-full flex-col gap-7 self-center">
         {
-          outcomeFocusedDetails.whyUs.map((whyUsItem) => (
+          outcomeFocusedDetails.whyUs.map((whyUsItem, whyUsItemIndex) => (
             <div class="why-us-card opacity-0">
-              <WhyUs number={whyUsItem.number} description={whyUsItem.description} />
+              <WhyUs
+                number={String(whyUsItemIndex + 1).padStart(2, "0")}
+                description={whyUsItem.description}
+              />
             </div>
           ))
         }
