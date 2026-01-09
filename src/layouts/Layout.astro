@@ -19,8 +19,7 @@ interface Props {
   showLoader?: boolean;
 }
 
-const { meta = {}, showLoader = false } = Astro.props;
-const isHome = Astro.url.pathname === "/";
+const { meta = {} } = Astro.props;
 ---
 
 <!doctype html>
@@ -35,8 +34,8 @@ const isHome = Astro.url.pathname === "/";
     />
   </head>
   <body>
-    <!-- Show Loader only if the current page is homepage -->
-    {(isHome || showLoader) && <Loading />}
+    <!-- Loading -->
+    <Loading />
 
     <!-- Top menu -->
     <div class="fixed top-0 left-0 z-50 w-full">
@@ -91,6 +90,16 @@ const isHome = Astro.url.pathname === "/";
     height: 100%;
   }
 </style>
+<script is:inline>
+  const loader = document.querySelector("#loading-screen");
+  const hasSeenLoader = sessionStorage.getItem("loaderShown");
+
+  if (hasSeenLoader) {
+    loader.style.display = "none";
+  } else {
+    loader.style.display = "flex";
+  }
+</script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // Select all elements that should animate when visible
