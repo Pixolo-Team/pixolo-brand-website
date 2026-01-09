@@ -7,24 +7,24 @@ export const painSolutionSectionDetails = {
   // PainSolution Card Items details
   painSolutionCardItems: [
     {
-      problemDescription: "Unclear Requirements",
-      solutionDescription: "A proven Discovery Process",
+      problem: "Unclear Requirements",
+      solution: "A proven Discovery Process",
     },
     {
-      problemDescription: "Overpromised Timelines",
-      solutionDescription: "Realistic Scoping",
+      problem: "Overpromised Timelines",
+      solution: "Realistic Scoping",
     },
     {
-      problemDescription: "Developers Who Needs Micro-Management",
-      solutionDescription: "Transparent Timelines",
+      problem: "Developers Who Needs Micro-Management",
+      solution: "Transparent Timelines",
     },
     {
-      problemDescription: "MVPs That Falls After Launch",
-      solutionDescription: "Architecture First-Development",
+      problem: "MVPs That Falls After Launch",
+      solution: "Architecture First-Development",
     },
     {
-      problemDescription: "Scope Creep And Surprise Budget",
-      solutionDescription: "Fast Iteration Cycles",
+      problem: "Scope Creep And Surprise Budget",
+      solution: "Fast Iteration Cycles",
     },
   ],
 };

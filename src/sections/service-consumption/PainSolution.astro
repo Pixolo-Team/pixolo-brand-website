@@ -9,10 +9,10 @@ import { painSolutionSectionDetails } from "@/data/service-consumption/PainSolut
 <section id="pain-solution-section">
   <!-- Container -->
   <div
-    class="container mx-auto flex w-full flex-col gap-10 px-6 py-20 md:gap-12 md:px-0 md:py-24 lg:gap-14 lg:py-28"
+    class="container mx-auto flex w-full flex-col gap-10 px-6 py-20 md:gap-12 md:px-3 md:py-24 lg:gap-14 lg:py-28"
   >
     <!-- Header -->
-    <div class="flex flex-col items-center gap-3.5 self-center md:gap-5">
+    <div class="flex flex-col items-center gap-3.5 md:gap-5">
       <div class="tool-badge">
         <ToolBadge
           icon={painSolutionSectionDetails.badgeIcon}
@@ -30,8 +30,8 @@ import { painSolutionSectionDetails } from "@/data/service-consumption/PainSolut
       {
         painSolutionSectionDetails.painSolutionCardItems.map((painSolutionCardItem) => (
           <PainSolutionCard
-            problemDescription={painSolutionCardItem.problemDescription}
-            solutionDescription={painSolutionCardItem.solutionDescription}
+            problem={painSolutionCardItem.problem}
+            solution={painSolutionCardItem.solution}
           />
         ))
       }

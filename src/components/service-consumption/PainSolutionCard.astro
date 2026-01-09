@@ -3,10 +3,10 @@
 import { Icon } from "astro-icon/components";
 
 interface Props {
-  problemDescription: string;
-  solutionDescription: string;
+  problem: string;
+  solution: string;
 }
-const { problemDescription, solutionDescription } = Astro.props as Props;
+const { problem, solution } = Astro.props as Props;
 ---
 
 <!-- Pain Solution Card Component -->
@@ -30,24 +30,15 @@ const { problemDescription, solutionDescription } = Astro.props as Props;
     <p
       class="text-n-950 self-center text-center text-base leading-tight font-normal tracking-normal md:text-xl lg:flex-1 lg:text-2xl"
     >
-      {problemDescription}
+      {problem}
     </p>
   </div>
 
   <!-- Icon Wrapper -->
-  <div class="flex items-center justify-center self-center lg:h-36 lg:w-36 lg:rounded-[100px]">
-    <div
-      class="lg:border-n-300 relative flex items-center justify-center lg:h-36 lg:w-36 lg:self-center lg:rounded-full lg:border"
-    >
-      <Icon
-        name={"polygon-2"}
-        class="absolute h-5 w-5 rotate-[28.04] md:top-1 md:h-6 md:w-6 lg:top-14 lg:left-16.5 lg:h-7.5 lg:w-7.5"
-      />
-      <Icon
-        name={"polygon-1"}
-        class="absolute right-0.5 h-5 w-5 rotate-[28.04] md:top-1 md:h-6 md:w-6 lg:top-14 lg:right-0 lg:left-11.5 lg:h-7.5 lg:w-7.5"
-      />
-    </div>
+  <div
+    class="lg:border-n-300 flex items-center justify-center lg:h-36 lg:w-36 lg:shrink-0 lg:self-center lg:rounded-full lg:border"
+  >
+    <Icon name={"play-button"} class="h-5 w-5 rotate-[28.04] md:h-6 md:w-6 lg:h-7.5 lg:w-7.5" />
   </div>
 
   <!-- Solution Wrapper -->
@@ -66,7 +57,7 @@ const { problemDescription, solutionDescription } = Astro.props as Props;
     <p
       class="text-n-950 text-center text-base leading-tight font-medium tracking-normal md:text-xl lg:flex-1 lg:text-2xl"
     >
-      {solutionDescription}
+      {solution}
     </p>
   </div>
 </div>
