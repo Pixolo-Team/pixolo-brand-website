@@ -2,48 +2,129 @@
 // COMPONENTS //
 import ProjectCard from "@/components/portfolio/ProjectCard.astro";
 import MiniProjectCard from "@/components/portfolio/MiniProjectCard.astro";
+import { Icon } from "astro-icon/components";
 
 // DATA //
 import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { getView } from "@/scripts/showcase";
+import SliderArrows from "@/components/ui/SliderArrows.astro";
 ---
 
 <!-- Portfolio Showcase Section -->
 <section>
-  <div class="container mx-auto px-6 py-20">
-    <div class="flex flex-col gap-10">
-      {
-        portfolioShowcaseDetails.projectCardItems.map((projectCard) => (
-          <ProjectCard
-            name={projectCard.name}
-            image={projectCard.image}
-            title={projectCard.title}
-            subtitle={projectCard.subtitle}
-            description={projectCard.description}
-            date={projectCard.date}
-            badgeItems={projectCard.badgeItems}
-            buttonOneText={"View Website"}
-            buttonTwoText={"Show Project"}
-            view="grid"
-          />
-        ))
-      }
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-8 px-6 py-16 md:gap-11 md:px-0 md:py-24 lg:gap-14 lg:py-28"
+  >
+    <!-- Header -->
+    <div class="flex flex-col items-center justify-center gap-4">
+      <!-- Toolbadge -->
+      <ToolBadge icon="package" text="Crafted Experiences" />
+
+      <!-- Title -->
+      <p
+        class="text-n-950 text-center text-2xl leading-tight font-normal tracking-[-2%] md:text-4xl lg:text-6xl"
+      >
+        A Showcase of Vision Turned Visual
+      </p>
     </div>
 
-    <!-- Mini Project Cards Wrap -->
-    <div class="scrollbar-hide flex flex-col gap-7 overflow-x-auto md:flex-row">
-      {
-        portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
-          <MiniProjectCard
-            id={cardItem.id}
-            title={cardItem.title}
-            badges={cardItem.badges}
-            date={cardItem.date}
-            btnOneText={cardItem.btnOneText}
-            btnTwoText={cardItem.btnTwoText}
-            image={cardItem.image}
+    <!-- Portfolio Wrap -->
+    <div class="flex flex-col gap-10 md:gap-24 lg:gap-32">
+      <!-- Portfolio Project Tiles -->
+      <div class="flex flex-col gap-10">
+        <!-- Tiles -->
+        <div class="flex flex-row justify-end gap-4 px-8 lg:gap-5">
+          <Icon
+            name={"list"}
+            class={`${getView() === "list" ? "text-n-950" : "text-n-500"} size-5 lg:size-6`}
+            id={"listIcon"}
           />
-        ))
-      }
+          <Icon
+            name={"grid"}
+            class={`${getView() === "list" ? "text-n-500" : "text-n-950"} size-5 lg:size-6`}
+            id={"gridIcon"}
+          />
+        </div>
+
+        <!-- Portfolio Cards Wrap -->
+        <div class={`grid ${getView() === "list" ? "grid-cols-1" : "grid-cols-2"} gap-10`}>
+          {
+            // Project Cards //
+            portfolioShowcaseDetails.projectCardItems.map((projectCard) => (
+              <ProjectCard
+                name={projectCard.name}
+                image={projectCard.image}
+                title={projectCard.title}
+                subtitle={projectCard.subtitle}
+                description={projectCard.description}
+                date={projectCard.date}
+                badgeItems={projectCard.badgeItems}
+                buttonOneText={"View Website"}
+                buttonTwoText={"Show Project"}
+                view={getView()}
+              />
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Mini Projects Wrap -->
+      <div class="flex flex-col gap-8 md:gap-12 lg:gap-16">
+        <!-- Mini Projects Content -->
+        <div class="flex flex-col gap-5 md:gap-6 lg:gap-7">
+          <!-- Title -->
+          <p class="text-n-950 text-base leading-tight font-normal md:text-xl lg:text-2xl">
+            Mini Projects
+          </p>
+
+          <!-- Cards Wrap -->
+          <div class="scrollbar-hide flex flex-col gap-7 overflow-x-auto md:flex-row">
+            {
+              // Mini Project Cards //
+              portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
+                <MiniProjectCard
+                  id={cardItem.id}
+                  title={cardItem.title}
+                  badges={cardItem.badges}
+                  date={cardItem.date}
+                  btnOneText={cardItem.btnOneText}
+                  btnTwoText={cardItem.btnTwoText}
+                  image={cardItem.image}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Slider Cta Wrap -->
+        <div class="relative flex flex-row">
+          <!-- Cta Wrap -->
+          <div class="absolute right-0 flex flex-row gap-6 px-1.5 md:gap-9 md:px-4">
+            <SliderArrows />
+          </div>
+
+          <!-- Slider -->
+          <div
+            class="border-n-500 absolute inset-0 m-auto h-0 w-24 border md:w-36 md:border-2 lg:w-96"
+          >
+            <div
+              class="embla__progress__bar absolute top-[-1px] h-0 w-full translate-0 border border-blue-500 md:border-2"
+            >
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  import { initShowcase, initShowcaseSlider } from "@/scripts/showcase";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initShowcase();
+    // initShowcaseSlider(); //
+  });
+</script>
