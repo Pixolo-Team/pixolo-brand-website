@@ -15,7 +15,7 @@
 
   // In case someone installs other formatters
   "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "astro-build.astro-vscode"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -23,5 +23,5 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.words": ["retainership"]
+  "cSpell.words": ["retainership", "ceat", "skorost", "yumm", "zizo"]
 }

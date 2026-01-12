@@ -3,16 +3,26 @@
 import "@/styles/global.css";
 
 // COMPONENTS //
-import WhatsappButton from "@/components/WhatsappButton.astro";
-import Navbar from "@/components/Navbar.astro";
+import WhatsappButton from "@/components/ui/WhatsappButton.astro";
 import Loading from "@/components/layout/Loading.astro";
 import Meta from "@/components/layout/Meta.astro";
+import Footer from "@/components/layout/Footer.astro";
+import Header from "@/components/layout/Header.astro";
+import ContactForm from "@/components/forms/ContactForm.astro";
+import BottomCTA from "@/components/ui/BottomCTA.astro";
+
+// DATA //
+import { siteInfo } from "@/data/site-info";
+
+interface Props {
+  meta: any;
+}
 
 const { meta = {} } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <!-- Metadata -->
     <Meta
@@ -23,11 +33,12 @@ const { meta = {} } = Astro.props;
     />
   </head>
   <body>
+    <!-- Loading -->
     <Loading />
 
     <!-- Top menu -->
     <div class="fixed top-3 left-0 z-50 w-full">
-      <Navbar />
+      <Header />
     </div>
 
     <!-- Background Star Video -->
@@ -39,10 +50,12 @@ const { meta = {} } = Astro.props;
       loop
       playsinline></video>
 
+    <div class="bg-n-50/70 fixed -z-5 h-full w-full"></div>
+
     <!-- Background Circle Gradient -->
     <div
       class="fixed top-[30%] left-1/2 h-[885px] w-[885px] -translate-x-1/2 rounded-full"
-      style="background: linear-gradient(90deg, rgba(22, 125, 229, 0.36) 0%, rgba(95, 74, 200, 0.36) 92.31%); filter: blur(250px);"
+      style="background: linear-gradient(90deg, rgba(22, 125, 229, 0.36) 0%, rgba(95, 74, 200, 0.36) 92.31%); filter: blur(200px);"
     >
     </div>
 
@@ -51,11 +64,20 @@ const { meta = {} } = Astro.props;
       <slot />
     </main>
 
+    <Footer />
+
     <!-- Whatsapp button component -->
     <WhatsappButton
       href="https://wa.me/9768941186"
       extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-50"
     />
+
+    <!-- Bottom CTA -->
+    <div class="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 md:bottom-10">
+      <BottomCTA />
+    </div>
+
+    <ContactForm />
   </body>
 </html>
 
@@ -67,13 +89,22 @@ const { meta = {} } = Astro.props;
     height: 100%;
   }
 </style>
+<script is:inline>
+  const loader = document.querySelector("#loading-screen");
+  const hasSeenLoader = sessionStorage.getItem("loaderShown");
+
+  if (hasSeenLoader) {
+    loader.style.display = "none";
+  } else {
+    loader.style.display = "flex";
+  }
+</script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // Select all elements that should animate when visible
     const animatedElements = document.querySelectorAll(
-      ".anim-fade-up-quick, .anim-fade-in-up, .anim-fade-in-right",
+      ".anim-fade-up-quick, .anim-fade-up-slow, .anim-fade-in-up, .anim-fade-in-right",
     );
-
     // Create a new Intersection Observer to detect when elements appear in the viewport
     const observer = new IntersectionObserver(
       (entries) => {

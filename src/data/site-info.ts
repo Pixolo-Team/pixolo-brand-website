@@ -26,5 +26,16 @@ export const siteInfo = {
       // Google Maps direct search URL
       mapSearchUrl: "https://www.google.com/maps/search/?api=1&query=G+Block+BKC,+Mumbai",
     },
+
+    socialLinks: [
+      {
+        iconName: "instagram",
+        link: "https://www.instagram.com/pixolotechnologies/",
+      },
+      {
+        iconName: "linkedin",
+        link: "https://in.linkedin.com/company/pixolo-technologies",
+      },
+    ],
   },
 };

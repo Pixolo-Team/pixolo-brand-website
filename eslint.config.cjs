@@ -6,6 +6,16 @@ const prettier = require("eslint-plugin-prettier");
 /** @type {import("eslint").Linter.FlatConfig[]} */
 module.exports = [
   // ---------------------------------------------------------
+  // Global ignores
+  // ---------------------------------------------------------
+  {
+    ignores: [
+      "**/.astro/**", // Ignore Astro build/cache files
+      "**/node_modules/**",
+      "**/dist/**",
+    ],
+  },
+  // ---------------------------------------------------------
   // JS + TS
   // ---------------------------------------------------------
   {
@@ -21,7 +31,8 @@ module.exports = [
     },
     rules: {
       ...tseslint.configs.recommended.rules,
-      "prettier/prettier": "error",
+      "linebreak-style": ["off"], // Allow both LF and CRLF
+      "prettier/prettier": ["error", { endOfLine: "auto" }],
     },
   },
 
@@ -35,7 +46,7 @@ module.exports = [
   // Script blocks inside Astro files
   // ---------------------------------------------------------
   {
-    files: ["**/*.astro/*.ts"],
+    files: ["**/.astro/.ts"],
     languageOptions: {
       parser: tsParser,
     },
@@ -50,7 +61,8 @@ module.exports = [
       prettier,
     },
     rules: {
-      "prettier/prettier": "error",
+      "prettier/prettier": ["error", { endOfLine: "auto" }],
+      "linebreak-style": ["off"], // Allow both LF and CRLF
     },
   },
 ];

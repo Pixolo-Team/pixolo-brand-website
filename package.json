@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky",
-    "lint": "eslint . --ext .js,.ts,.astro   --ignore-pattern '**/.astro/**'   --ignore-pattern 'node_modules/**'   --ignore-pattern 'dist/**'",
+    "lint": "eslint . --ext .js,.ts,.astro",
     "format": "prettier --write ."
   },
   "lint-staged": {
@@ -21,14 +21,19 @@
     ]
   },
   "dependencies": {
+    "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/vercel": "^9.0.1",
-    "@tailwindcss/vite": "^4.1.16",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "astro-icon": "^1.1.5",
+    "embla-carousel": "^8.6.0",
     "motion": "^12.23.24",
-    "tailwindcss": "^4.1.16"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.18",
     "@typescript-eslint/eslint-plugin": "^8.47.0",
     "@typescript-eslint/parser": "^8.47.0",
     "astro": "^5.15.3",
@@ -40,6 +45,7 @@
     "lint-staged": "^16.2.7",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.1"
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "tailwindcss": "^4.1.18"
   }
 }

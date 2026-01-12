@@ -1,21 +1,31 @@
 ---
-// COMPONENTS //
-import ContactForm from "@/components/forms/ContactForm.astro";
-
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
+import Hero from "@/sections/home/Hero.astro";
 import Clients from "@/sections/home/Clients.astro";
-import Products from "@/sections/home/Products.astro";
 import Service from "@/sections/home/Service.astro";
+import Retainership from "@/sections/home/Retainership.astro";
 import TechInteractive from "@/sections/home/TechInteractive.astro";
+import CaseStudies from "@/sections/home/CaseStudies.astro";
+import Products from "@/sections/home/Products.astro";
+import Testimonials from "@/sections/home/Testimonials.astro";
+import Industries from "@/sections/home/Industries.astro";
+import Blogs from "@/sections/home/Blogs.astro";
+import Contact from "@/sections/home/Contact.astro";
 ---
 
 <Layout>
-  <ContactForm />
+  <Hero />
   <Clients />
   <Service />
-  <Products />
+  <Retainership />
   <TechInteractive />
+  <CaseStudies />
+  <Products />
+  <Testimonials />
+  <Industries />
+  <Blogs />
+  <Contact />
 </Layout>
