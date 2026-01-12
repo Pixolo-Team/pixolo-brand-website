@@ -2,7 +2,13 @@
 export const URLS = {
   HOME: "/",
   ABOUT: "/about",
-  SERVICE: "/service",
+
   CAREER: "/careers",
+  SERVICE: {
+    ROOT: "/services",
+    ITEM: (id: string, title: string) =>
+      `/services/${id}/${title.toLowerCase().replaceAll(" ", "-")}`,
+  },
   CONTACT: "/contact",
+  PORTFOLIO: "/portfolio",
 };

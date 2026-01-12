@@ -1,0 +1,44 @@
+---
+//COMPONENTS//
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+interface Props {
+  id?: string | number;
+  title: string;
+  image: string;
+}
+
+const { id, title, image } = Astro.props;
+---
+
+<a class="group">
+  <div class="flex flex-col gap-3.5 hover:cursor-pointer">
+    {/* Image Container */}
+    <div class="relative w-full">
+      <Image
+        src={`/images/case-studies/${image}`}
+        width={100}
+        height={100}
+        alt={`caseStudyImage`}
+        class="w-full rounded-4xl"
+      />
+
+      {/* Icon */}
+      <div
+        class="lg:text-n-50 lg:group-hover:text-n-950 hidden transition delay-150 duration-300 ease-in-out lg:absolute lg:right-8 lg:bottom-8 lg:block lg:flex lg:items-center lg:justify-center lg:rounded-full lg:bg-white lg:p-4 lg:group-hover:bg-blue-500"
+      >
+        <Icon name="external-link-icon" class="lg:h-6 lg:w-6" aria-label="View case study" />
+      </div>
+    </div>
+
+    <div>
+      {/* Text */}
+      <p
+        class="text-xl leading-[1.25] font-medium tracking-normal group-hover:text-blue-200 md:text-2xl lg:text-3xl"
+      >
+        {title}
+      </p>
+    </div>
+  </div>
+</a>

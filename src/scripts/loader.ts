@@ -49,6 +49,8 @@ export const initLoader = () => {
         }, 800);
       }
     }, 30);
+    // Set loader shown in session storage
+    sessionStorage.setItem("loaderShown", "true");
   }
 
   // Start the Fake progress to < 100%
