@@ -1,0 +1,202 @@
+{
+  "pageTitle": "Eighty Days App UX Case Study: Instant AI Feedback with Response Buffering",
+  "sections": [
+    {
+      "id": "hero",
+      "toolbadge": "Perceived Performance",
+      "title": "Faster AI Response System",
+      "subtitle": "Implementing a buffering technique to deliver AI results instantly, reducing user wait time and improving satisfaction.",
+      "visual": {
+        "image": "images/case-study/landscape-10.png",
+        "altText": "A mobile screen showing text instantly streaming into a chat window."
+      },
+      "hover-text": {
+        "text": "Explore Streaming Responses",
+        "link": "#"
+      }
+    },
+    {
+      "id": "by_the_numbers",
+      "title": "Impact by the Numbers",
+      "heading": "By prioritizing Time to First Interactive (TTFI), we transformed a slow waiting experience into an engaging, dynamic conversation.",
+      "metrics": [
+        {
+          "label": "Time to First Interactive (TTFI)",
+          "value": "90% Reduction",
+          "highlight": true
+        },
+        {
+          "label": "Perceived Wait Time",
+          "value": "Negligible"
+        },
+        {
+          "label": "User Frustration Score",
+          "value": "Reduced"
+        },
+        {
+          "label": "Overall User Satisfaction",
+          "value": "Highest",
+          "highlight": true
+        }
+      ]
+    },
+    {
+      "id": "about_client",
+      "toolbadge": "The Challenge",
+      "title": "The AI Latency Problem",
+      "projectDescription": [
+        {
+          "label": "AI Engine Requirement",
+          "description": "The 'Eighty Days' app relies on complex AI generation (OpenAI APIs) that includes 'thinking' or processing time to generate detailed, structured outputs (like JSON itineraries)."
+        },
+        {
+          "label": "The Core Problem",
+          "value": "Traditional API calls require waiting for the entire response to be generated and validated before displaying anything to the user, resulting in a frustrating and lengthy silent wait."
+        }
+      ],
+      "visuals": [
+        "images/case-study/about-image-10 (1).png",
+        "images/case-study/about-image-10 (2).png"
+      ]
+    },
+    {
+      "id": "client_issues",
+      "title": "The Roadblock: The Silent Wait",
+      "issues": [
+        {
+          "name": "Slow Overall Execution Time",
+          "description": "Due to the complex 'thinking functionality' required, the total time for the AI to finish and send the complete response was long.",
+          "metric": "Total Response Time",
+          "value": "5 - 10s"
+        },
+        {
+          "name": "Zero Feedback User Experience",
+          "description": "For the entire duration of the AI processing, the user saw no output, creating anxiety and the perception that the app was frozen or slow.",
+          "metric": "Time to First Byte (TTFB)",
+          "value": "High"
+        },
+        {
+          "name": "Data Fragmentation Risk",
+          "description": "Receiving partial, buffered data could lead to invalid or broken JSON objects if not handled meticulously on the frontend.",
+          "metric": "Data Integrity Risk",
+          "value": "High"
+        }
+      ]
+    },
+    {
+      "id": "client_vision",
+      "title": "The Client’s Vision: Instant, Dynamic Feedback",
+      "visual": {
+        "image": "images/case-study/vision-10.png",
+        "altText": "A user watching a response stream into a chat window."
+      },
+      "goals": [
+        {
+          "id": 1,
+          "name": "Minimize Perceived Latency",
+          "description": "Reduce the time the user spends looking at an empty screen, even if the total processing time remains constant."
+        },
+        {
+          "id": 2,
+          "name": "Utilize Buffered API Data",
+          "description": "Implement a method to stream data chunks from the OpenAI API as they are generated, rather than waiting for the final package."
+        },
+        {
+          "id": 3,
+          "name": "Maintain Data Integrity",
+          "description": "Develop a robust frontend mechanism to correctly piece together partial, buffered JSON objects into a valid final output."
+        }
+      ]
+    },
+    {
+      "id": "our_process",
+      "toolbadge": "Crafting the Journey",
+      "title": "The Frontend JSON Stitching Solution",
+      "type": "ProcessTimeline",
+      "subtitle": "The Response Buffering Strategy",
+      "steps": [
+        {
+          "id": 1,
+          "name": "API Buffer Research & Setup",
+          "description": "Conducted research on how to efficiently and reliably receive data in chunks (buffers) from the OpenAI API, focusing on stream optimization."
+        },
+        {
+          "id": 2,
+          "name": "Frontend Parsing Logic",
+          "description": "Developed specialized frontend logic to handle the incoming, incomplete data buffers, identifying where one partial JSON object ends and the next begins."
+        },
+        {
+          "id": 3,
+          "name": "Partial JSON Object Assembly",
+          "description": "Created a mechanism to construct and validate partial JSON objects on the client side, only merging them into the final structure when they were complete and valid."
+        },
+        {
+          "id": 4,
+          "name": "Progressive Display Implementation",
+          "description": "Configured the UI to display the text output immediately as soon as the first valid text chunk arrived, creating the instantaneous streaming effect for the user. "
+        }
+      ]
+    },
+    {
+      "id": "solutions",
+      "toolbadge": "Our Solutions",
+      "title": "Instant Gratification via Streaming UX",
+      "solutions": [
+        {
+          "id": "01",
+          "title": "Reduced Time to First Interactive",
+          "description": "By immediately displaying the first text buffer, we drastically lowered the TTFI, making the app feel responsive and fast, even though the total server time remained the same."
+        },
+        {
+          "id": "02",
+          "title": "Frontend JSON Reconstruction",
+          "description": "Our innovative client-side mechanism ensures that every partial, fragmented data chunk is correctly parsed, validated, and merged into a complete JSON itinerary without breaking the application."
+        },
+        {
+          "id": "03",
+          "title": "Enhanced Perceived Performance",
+          "description": "The flowing, progressive text output turns a period of waiting into a period of engagement, managing user expectations and significantly boosting the perceived speed."
+        },
+        {
+          "id": "04",
+          "title": "Optimized User Experience (UX)",
+          "description": "This solution prioritizes the user's perception over raw execution metrics, delivering a modern, high-quality experience expected from state-of-the-art AI applications."
+        }
+      ]
+    },
+    {
+      "id": "gallery",
+      "toolbadge": "Project Visuals",
+      "title": "Behind the Transformation",
+      "gallery_images": [
+        "images/case-study/gallery-10 (1).png",
+        "images/case-study/gallery-10 (2).png",
+        "images/case-study/gallery-10 (3).png",
+        "images/case-study/gallery-10 (4).png"
+      ]
+    },
+    {
+      "id": "key_takeaways",
+      "toolbadge": "Key Takeaways",
+      "title": "Main Learnings & Highlights",
+      "type": "KeyTakeaways",
+      "takeaways": [
+        {
+          "id": "01",
+          "title": "Perceived Speed Trumps Actual Speed",
+          "description": "The project validated the principle that user satisfaction is driven by perceived performance. Giving immediate feedback, even if partial, is more valuable than a faster total response time that involves a prolonged silent wait."
+        },
+        {
+          "id": "02",
+          "title": "Frontend Processing is Crucial for AI UX",
+          "description": "Handling complex data processing, like reconstructing fragmented JSON objects, on the client side is a necessary technical investment to deliver a smooth, streaming user experience for AI outputs."
+        },
+        {
+          "id": "03",
+          "title": "UX is About Managing Expectations",
+          "description": "The buffering technique is a prime example of using UX to manage user expectations. By showing the output is in progress, the system avoids the frustration associated with ambiguous loading states."
+        }
+      ]
+    }
+  ]
+}

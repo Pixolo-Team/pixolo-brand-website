@@ -1,0 +1,202 @@
+{
+  "pageTitle": "Technical Case Study: Dynamic Content Delivery via Google Sheets (Pixolo Proprietary)",
+  "sections": [
+    {
+      "id": "hero",
+      "toolbadge": "Proprietary Solution",
+      "title": "Google Sheet → Website Dynamic Data",
+      "subtitle": "Launching dynamic, data-driven websites quickly and affordably by using Google Sheets as a lightweight CMS.",
+      "visual": {
+        "image": "images/case-study/landscape-6.png",
+        "altText": "A spreadsheet next to a webpage, visually representing the connection."
+      },
+      "hover-text": {
+        "text": "Explore Our Solutions",
+        "link": "#"
+      }
+    },
+    {
+      "id": "by_the_numbers",
+      "title": "Impact by the Numbers",
+      "heading": "Our proprietary solution eliminated the need for complex database infrastructure, delivering maximum functionality on minimum budget.",
+      "metrics": [
+        {
+          "label": "Estimated CMS Development Time Saved",
+          "value": "80+ Hrs"
+        },
+        {
+          "label": "Infrastructure Cost Reduction",
+          "value": "75%",
+          "highlight": true
+        },
+        {
+          "label": "Time to Deploy Dynamic Content",
+          "value": "2X Faster"
+        },
+        {
+          "label": "Ease of Client Content Management",
+          "value": "High",
+          "highlight": true
+        }
+      ]
+    },
+    {
+      "id": "about_client",
+      "toolbadge": "The Challenge",
+      "title": "The Low-Budget Content Barrier",
+      "projectDescription": [
+        {
+          "label": "The Budget Constraint",
+          "description": "Many clients require websites with dynamic, frequently updated data (e.g., product lists, events, pricing), but their budget prohibits the development of a custom Admin Panel or a full Content Management System (CMS)."
+        },
+        {
+          "label": "The Core Problem",
+          "value": "How to deliver a professional, dynamic website experience using a simple, cost-effective tool that clients can easily manage themselves, without incurring high CMS development costs."
+        }
+      ],
+      "visuals": [
+        "images/case-study/about-image-6 (1).png",
+        "images/case-study/about-image-6 (2).png"
+      ]
+    },
+    {
+      "id": "client_issues",
+      "title": "The Traditional Hurdles to Dynamic Data",
+      "issues": [
+        {
+          "name": "High Cost of CMS/Admin Panel",
+          "description": "Building a custom back-end for data entry, authentication, and management is expensive and time-consuming.",
+          "metric": "Development Cost",
+          "value": "High"
+        },
+        {
+          "name": "Steep Learning Curve for Clients",
+          "description": "Traditional CMS platforms often require training and complex logins, creating a barrier for simple content updates.",
+          "metric": "Client Effort",
+          "value": "High"
+        },
+        {
+          "name": "Infrastructure Complexity",
+          "description": "A full CMS requires a dedicated database, maintenance, and regular security updates.",
+          "metric": "Maintenance Burden",
+          "value": "High"
+        }
+      ]
+    },
+    {
+      "id": "client_vision",
+      "title": "The Pixolo Vision: Simplicity as a Service",
+      "visual": {
+        "image": "images/case-study/vision-6.png",
+        "altText": "A branded illustration of data flowing from a spreadsheet to a website."
+      },
+      "goals": [
+        {
+          "id": 1,
+          "name": "Eliminate CMS Development Costs",
+          "description": "Bypass the need for a dedicated CMS or Admin Panel to stay within constrained budgets."
+        },
+        {
+          "id": 2,
+          "name": "Empower Clients with Familiar Tools",
+          "description": "Allow clients to manage dynamic content using a tool they already know: Google Sheets."
+        },
+        {
+          "id": 3,
+          "name": "Ensure Secure, Reliable Data Delivery",
+          "description": "Develop a proprietary, authenticated API service to translate sheet data into usable website content."
+        }
+      ]
+    },
+    {
+      "id": "our_process",
+      "toolbadge": "Crafting the Journey",
+      "title": "Building the Dynamic Sheet API",
+      "type": "ProcessTimeline",
+      "subtitle": "The Pixolo Proprietary Solution",
+      "steps": [
+        {
+          "id": 1,
+          "name": "Service Development & Hosting",
+          "description": "Built the Pixolo proprietary service hosted on our own server, designed specifically to connect securely with Google Sheets."
+        },
+        {
+          "id": 2,
+          "name": "Data Translation Logic",
+          "description": "Engineered the core logic to convert structured Google Sheet rows and columns into a clean, developer-friendly JSON format."
+        },
+        {
+          "id": 3,
+          "name": "Authentication & API Endpoint Creation",
+          "description": "Secured the service with proper authentication, creating a simple, custom API endpoint that external servers can call to retrieve the dynamic data."
+        },
+        {
+          "id": 4,
+          "name": "Website Integration",
+          "description": "Integrated the resulting JSON data directly into the client’s website components, ensuring seamless, real-time dynamic content delivery."
+        }
+      ]
+    },
+    {
+      "id": "solutions",
+      "toolbadge": "Our Solutions",
+      "title": "Dynamic Data, Simplified",
+      "solutions": [
+        {
+          "id": "01",
+          "title": "Google Sheets: The Lightweight CMS",
+          "description": "Leveraged the familiarity and accessibility of Google Sheets, effectively using it as the database and Admin Panel for the client, minimizing their content management effort."
+        },
+        {
+          "id": "02",
+          "title": "Pixolo Proprietary JSON API",
+          "description": "Our custom service acts as the secure, powerful translation layer, converting complex spreadsheet data into a concise, easily consumable JSON object for the website."
+        },
+        {
+          "id": "03",
+          "title": "Maximum Budget Efficiency",
+          "description": "By eliminating the need to custom-build a back-end, we drastically cut development time and cost, making dynamic web solutions accessible to low-budget clients."
+        },
+        {
+          "id": "04",
+          "title": "Scalable and Reliable",
+          "description": "The service runs on the reliable Pixolo server and uses Google Sheets—arguably the most robust and widely available database tool—ensuring high uptime and data integrity."
+        }
+      ]
+    },
+    {
+      "id": "gallery",
+      "toolbadge": "Project Visuals",
+      "title": "Behind the Transformation",
+      "gallery_images": [
+        "images/case-study/gallery-6 (1).png",
+        "images/case-study/gallery-6 (2).png",
+        "images/case-study/gallery-6 (3).png",
+        "images/case-study/gallery-6 (4).png"
+      ]
+    },
+    {
+      "id": "key_takeaways",
+      "toolbadge": "Key Takeaways",
+      "title": "Main Learnings & Highlights",
+      "type": "KeyTakeaways",
+      "takeaways": [
+        {
+          "id": "01",
+          "title": "Innovation Solves Budget Constraints",
+          "description": "This project proved that a lack of budget doesn't necessitate a lack of dynamism. Creative, proprietary solutions can elegantly bypass expensive traditional infrastructure requirements."
+        },
+        {
+          "id": "02",
+          "title": "Client Comfort Drives Adoption",
+          "description": "By using a tool the client already understands (Google Sheets) for content management, we achieved near-zero training overhead and ensured quick, confident content updates by the client team."
+        },
+        {
+          "id": "03",
+          "title": "The Value of a Translation Layer",
+          "description": "The Pixolo service’s primary value is acting as a secure and reliable data translator, making a familiar client tool (Sheets) functionally equivalent to a powerful, dedicated database for the website."
+        }
+      ]
+    }
+  ]
+}

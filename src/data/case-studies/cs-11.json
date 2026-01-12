@@ -1,0 +1,202 @@
+{
+  "pageTitle": "Charkha AI Case Study: Automated UI Development from Figma to Tailwind HTML",
+  "sections": [
+    {
+      "id": "hero",
+      "toolbadge": "Proprietary Automation Tool",
+      "title": "Charkha AI",
+      "subtitle": "Cutting front-end development time by 75% by instantly converting structured Figma designs into clean Tailwind CSS HTML.",
+      "visual": {
+        "image": "images/case-study/landscape-11.png",
+        "altText": "An illustration of a Figma file transforming into HTML code."
+      },
+      "hover-text": {
+        "text": "See the Workflow",
+        "link": "#"
+      }
+    },
+    {
+      "id": "by_the_numbers",
+      "title": "Impact by the Numbers",
+      "heading": "Charkha AI revolutionized the design-to-development handoff, turning days of manual coding into mere hours of fine-tuning.",
+      "metrics": [
+        {
+          "label": "Manual HTML Development Time",
+          "value": "12-16 Hrs"
+        },
+        {
+          "label": "Charkha AI Generation Time",
+          "value": "3-4 Hrs",
+          "highlight": true
+        },
+        {
+          "label": "Time Saved Per Component",
+          "value": "75%",
+          "highlight": true
+        },
+        {
+          "label": "Development Bandwidth Increase",
+          "value": "4X"
+        }
+      ]
+    },
+    {
+      "id": "about_client",
+      "toolbadge": "The Innovation",
+      "title": "The Need for Speed in UI Development",
+      "projectDescription": [
+        {
+          "label": "The UI Bottleneck",
+          "description": "Manually translating complex, pixel-perfect design files (Figma) into well-structured, production-ready code (Tailwind CSS HTML) is historically the slowest part of front-end development."
+        },
+        {
+          "label": "The Core Problem",
+          "value": "How to bridge the gap between design and code efficiently without sacrificing code quality or relying on tedious, error-prone manual coding for every new screen."
+        }
+      ],
+      "visuals": [
+        "images/case-study/about-image-11 (1).png",
+        "images/case-study/about-image-11 (2).png"
+      ]
+    },
+    {
+      "id": "client_issues",
+      "title": "The Roadblocks of Manual UI Coding",
+      "issues": [
+        {
+          "name": "Slow Translation Time",
+          "description": "Manually coding complex UI screens from Figma to HTML typically consumes a full workday, severely slowing down project timelines.",
+          "metric": "Time Per Screen",
+          "value": "8-12 Hrs"
+        },
+        {
+          "name": "Inconsistencies & Errors",
+          "description": "Manual coding often leads to minor inconsistencies or deviations from the original design, requiring costly back-and-forth reviews.",
+          "metric": "Design Accuracy",
+          "value": "Risk-Prone"
+        },
+        {
+          "name": "Developer Burnout",
+          "description": "Repetitive conversion of visual designs to code is non-value-add labor that reduces developer focus on logic and innovation.",
+          "metric": "Developer Satisfaction",
+          "value": "Low"
+        }
+      ]
+    },
+    {
+      "id": "client_vision",
+      "title": "The Pixolo Vision: Code on Demand",
+      "visual": {
+        "image": "images/case-study/vision-11.png",
+        "altText": "A simplified, fast development workflow diagram."
+      },
+      "goals": [
+        {
+          "id": 1,
+          "name": "Automate HTML Generation",
+          "description": "Create a tool that can instantly read a design file and output high-quality, structured code."
+        },
+        {
+          "id": 2,
+          "name": "Ensure Clean, Modern Code",
+          "description": "The output must use a modern, utility-first framework like Tailwind CSS for maintainability and scalability."
+        },
+        {
+          "id": 3,
+          "name": "Maximize Developer Productivity",
+          "description": "Free up developer time from routine UI coding to focus on complex features and application logic."
+        }
+      ]
+    },
+    {
+      "id": "our_process",
+      "toolbadge": "Crafting the Journey",
+      "title": "Developing the Figma-to-Code Engine",
+      "type": "ProcessTimeline",
+      "subtitle": "The Charkha AI Logic",
+      "steps": [
+        {
+          "id": 1,
+          "name": "Figma Guidelines Establishment",
+          "description": "Defined strict guidelines for how designers must structure layers, components, and naming conventions within Figma for the AI to understand the file."
+        },
+        {
+          "id": 2,
+          "name": "Core Conversion Engine Development",
+          "description": "Built the proprietary Charkha AI engine on the Pixolo server to parse the Figma API data according to the established rules."
+        },
+        {
+          "id": 3,
+          "name": "Tailwind CSS Mapping",
+          "description": "Developed the logic to translate Figma visual properties (e.g., spacing, colors, fonts) into the corresponding Tailwind CSS utility classes."
+        },
+        {
+          "id": 4,
+          "name": "Automated HTML Output",
+          "description": "The final stage involves the AI generating well-structured, clean HTML code ready for the developer to integrate in a fraction of the time. "
+        }
+      ]
+    },
+    {
+      "id": "solutions",
+      "toolbadge": "Our Solutions",
+      "title": "Charkha AI: The Development Accelerator",
+      "solutions": [
+        {
+          "id": "01",
+          "title": "Instant UI Generation",
+          "description": "The AI tool reduces UI coding time from 8-12 hours to just 2-3 hours (primarily for review and fine-tuning), accelerating the project timeline massively."
+        },
+        {
+          "id": "02",
+          "title": "Tailwind Code Quality",
+          "description": "The output is not just HTML, but clean, well-structured code using industry-standard Tailwind CSS, ensuring the codebase is modern, maintainable, and scalable."
+        },
+        {
+          "id": "03",
+          "title": "Proprietary Pixolo Innovation",
+          "description": "Charkha AI is a bespoke tool built internally by Pixolo, demonstrating our commitment to optimizing the development pipeline and maximizing client value."
+        },
+        {
+          "id": "04",
+          "title": "Enforced Design System Consistency",
+          "description": "Since the AI enforces the conversion rules, the code is always a perfect representation of the design, eliminating pixel-pushing errors and design debt."
+        }
+      ]
+    },
+    {
+      "id": "gallery",
+      "toolbadge": "Project Visuals",
+      "title": "Behind the Transformation",
+      "gallery_images": [
+        "images/case-study/gallery-11 (1).png",
+        "images/case-study/gallery-11 (2).png",
+        "images/case-study/gallery-11 (3).png",
+        "images/case-study/gallery-11 (4).png"
+      ]
+    },
+    {
+      "id": "key_takeaways",
+      "toolbadge": "Key Takeaways",
+      "title": "Main Learnings & Highlights",
+      "type": "KeyTakeaways",
+      "takeaways": [
+        {
+          "id": "01",
+          "title": "Automation is the New Core Skill",
+          "description": "Investing in tools like Charkha AI shows that optimizing the workflow between disciplines (design and development) yields greater ROI than focusing solely on individual efficiency."
+        },
+        {
+          "id": "02",
+          "title": "Structure Dictates Automation Success",
+          "description": "The success of the tool relies entirely on designers adhering to strict guidelines in Figma. Automation requires discipline and structured input to produce reliable output."
+        },
+        {
+          "id": "03",
+          "title": "Developers Become Reviewers, Not Coders",
+          "description": "The tool shifts the developer's role from writing boilerplate UI code to reviewing and integrating machine-generated code, drastically increasing their value and focus on application logic."
+        }
+      ]
+    }
+  ]
+}

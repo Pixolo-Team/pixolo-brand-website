@@ -1,0 +1,202 @@
+{
+  "pageTitle": "Technical Case Study: Achieving Near-Instant Load Times with Custom Pre-Rendering",
+  "sections": [
+    {
+      "id": "hero",
+      "toolbadge": "Performance Optimization",
+      "title": "Faster Loading Through Pre-Rendering",
+      "subtitle": "Bypassing slow runtime rendering by serving pre-built, raw HTML for immediate user experience.",
+      "visual": {
+        "image": "images/case-study/landscape-5.png",
+        "altText": "A stopwatch showing a low load time next to a clean webpage."
+      },
+      "hover-text": {
+        "text": "Experience Instant Loading",
+        "link": "#"
+      }
+    },
+    {
+      "id": "by_the_numbers",
+      "title": "Impact by the Numbers",
+      "heading": "By eliminating the time spent on runtime rendering, we dramatically improved core web vitals and overall site speed.",
+      "metrics": [
+        {
+          "label": "Time to First Byte (TTFB)",
+          "value": "75% ↓",
+          "highlight": true
+        },
+        {
+          "label": "Page Load Speed",
+          "value": "Under 1s"
+        },
+        {
+          "label": "Core Web Vitals Score",
+          "value": "95+",
+          "highlight": true
+        },
+        {
+          "label": "User Experience Rating",
+          "value": "Improved"
+        }
+      ]
+    },
+    {
+      "id": "about_client",
+      "toolbadge": "The Challenge",
+      "title": "Client Context: The Need for Speed",
+      "projectDescription": [
+        {
+          "label": "Modern Web Components",
+          "description": "The site was built using dynamic components and data fetched from various APIs, which is standard for modern development but inherently slower due to the sequential rendering process."
+        },
+        {
+          "label": "The Core Problem",
+          "value": "All dynamic sites require a time-consuming process: fetching data, server-side rendering (SSR), and then delivering the final HTML. Our goal was to eliminate the runtime SSR delay."
+        }
+      ],
+      "visuals": [
+        "images/case-study/about-image-5 (1).png",
+        "images/case-study/about-image-5 (2).png"
+      ]
+    },
+    {
+      "id": "client_issues",
+      "title": "The Runtime Rendering Bottleneck",
+      "issues": [
+        {
+          "name": "Component Latency",
+          "description": "Pages relied on dynamic data, forcing the user to wait for APIs to respond and the server to compile the page HTML.",
+          "metric": "Server Rendering Time",
+          "value": "High"
+        },
+        {
+          "name": "Sequential Load Process",
+          "description": "The process was linear: Data Fetch → Server Render → User Load, adding unnecessary seconds to the user's wait time.",
+          "metric": "Time to Interactive",
+          "value": "Slow"
+        },
+        {
+          "name": "Subpar User Experience",
+          "description": "Slow loading speeds lead to frustration, higher bounce rates, and a lower perceived quality of the website.",
+          "metric": "Bounce Rate",
+          "value": "Increased"
+        }
+      ]
+    },
+    {
+      "id": "client_vision",
+      "title": "The Client’s Vision: Immediate Content Delivery",
+      "visual": {
+        "image": "images/case-study/vision-5.png",
+        "altText": "A user happily viewing an instantly loaded mobile screen."
+      },
+      "goals": [
+        {
+          "id": 1,
+          "name": "Achieve Near-Instant Load Times",
+          "description": "Bypass the complexities of dynamic rendering to serve content as fast as a simple, static HTML file."
+        },
+        {
+          "id": 2,
+          "name": "Simplify Delivery Flow",
+          "description": "Eliminate the runtime server-side rendering step for a direct, predictable path to content delivery."
+        },
+        {
+          "id": 3,
+          "name": "Improve SEO and User Retention",
+          "description": "Leverage improved site speed to enhance search engine ranking and provide a superior user experience."
+        }
+      ]
+    },
+    {
+      "id": "our_process",
+      "toolbadge": "Crafting the Journey",
+      "title": "The Custom Pre-Rendering Process",
+      "type": "ProcessTimeline",
+      "subtitle": "The Technical Solution",
+      "steps": [
+        {
+          "id": 1,
+          "name": "Custom PHP Script Development",
+          "description": "Built a bespoke PHP script designed to simulate a full website crawl, requesting all necessary data and executing all dynamic components."
+        },
+        {
+          "id": 2,
+          "name": "HTML Output Capture",
+          "description": "Modified the script to capture the final rendered HTML output instead of sending it to a browser."
+        },
+        {
+          "id": 3,
+          "name": "Static HTML Storage",
+          "description": "The captured raw HTML for each unique page was then saved as a static file and stored directly on the server."
+        },
+        {
+          "id": 4,
+          "name": "Direct User Service",
+          "description": "Configured the web server to serve the pre-generated static HTML file directly upon user request, completely skipping the runtime rendering process. "
+        }
+      ]
+    },
+    {
+      "id": "solutions",
+      "toolbadge": "Our Solutions",
+      "title": "Serving Speed: Pre-Built vs. Live-Built",
+      "solutions": [
+        {
+          "id": "01",
+          "title": "Serving Pre-Built HTML",
+          "description": "The fundamental solution: Users now receive a fully compiled HTML file instantly, eliminating the latency associated with fetching dynamic data and rendering components on demand."
+        },
+        {
+          "id": "02",
+          "title": "Efficiency of Custom Scripting",
+          "description": "The custom PHP script allows us to control when and how pages are rendered, ensuring dynamic updates are still captured efficiently without impacting the user's load time."
+        },
+        {
+          "id": "03",
+          "title": "Simplified Server Load",
+          "description": "The web server no longer needs to perform heavy, repeated rendering logic for every user. It simply fetches a file, significantly reducing server resource consumption."
+        },
+        {
+          "id": "04",
+          "title": "Superior User Experience",
+          "description": "The end result is an expectation-defying user experience where pages appear to load immediately, improving engagement and perceived reliability."
+        }
+      ]
+    },
+    {
+      "id": "gallery",
+      "toolbadge": "Project Visuals",
+      "title": "Behind the Transformation",
+      "gallery_images": [
+        "images/case-study/gallery-5 (1).png",
+        "images/case-study/gallery-5 (2).png",
+        "images/case-study/gallery-5 (3).png",
+        "images/case-study/gallery-5 (4).png"
+      ]
+    },
+    {
+      "id": "key_takeaways",
+      "toolbadge": "Key Takeaways",
+      "title": "Main Learnings & Highlights",
+      "type": "KeyTakeaways",
+      "takeaways": [
+        {
+          "id": "01",
+          "title": "Pre-Rendering is the Ultimate Speed Hack",
+          "description": "For any page where content doesn't change every second, pre-rendering the final output and serving it as static HTML is the most effective way to achieve sub-second load times."
+        },
+        {
+          "id": "02",
+          "title": "Custom Solutions Beat Off-The-Shelf",
+          "description": "Building a custom rendering script allowed perfect integration with the existing dynamic components, giving us granular control over the cache and update process."
+        },
+        {
+          "id": "03",
+          "title": "Speed is the New Feature",
+          "description": "In today's competitive digital landscape, a site that loads instantly is not just a nice-to-have, but a core feature that drives better user retention and conversion rates."
+        }
+      ]
+    }
+  ]
+}

@@ -3,8 +3,8 @@
 import { Image } from "astro:assets";
 import SectionHeader from "@/components/ui/SectionHeader.astro";
 
-// DATA //
-import { aboutClient } from "@/data/case-studies/1";
+// Receive data from the parent page
+const { data } = Astro.props;
 ---
 
 <section>
@@ -12,23 +12,23 @@ import { aboutClient } from "@/data/case-studies/1";
     class="text-n-950 container m-auto flex flex-col gap-8 px-6 py-20 leading-tight md:gap-14 md:py-20 lg:gap-16 lg:px-16 lg:py-28"
   >
     <!-- Toolbadge & Page Title -->
-    <SectionHeader
-      sectionTitle="Our Client at a Glance"
-      badgeIcon="package"
-      badgeText="Our Client at a Glance"
-    />
+    <SectionHeader sectionTitle={data.title} badgeIcon="package" badgeText={data.toolbadge} />
 
     <!-- Content Part -->
     <div class="flex flex-col gap-7 md:gap-12">
       <!-- Iterating About the client Data -->
       {
-        aboutClient.aboutPointers.map((aboutPointersItem) => (
+        data.projectDescription.map((projectDescriptionItem: any) => (
           <div class="flex flex-col gap-4 lg:flex-row">
             {/* Title */}
-            <h2 class="text-2xl font-medium md:text-4xl lg:w-[30%]">{aboutPointersItem.title}</h2>
+            <h2 class="text-2xl font-medium md:text-4xl lg:w-[30%]">
+              {projectDescriptionItem.label}
+            </h2>
 
             {/* Work Description */}
-            <p class="text-n-800 text-sm md:text-xl lg:flex-1">{aboutPointersItem.description}</p>
+            <p class="text-n-800 text-sm md:text-xl lg:flex-1">
+              {projectDescriptionItem.description || projectDescriptionItem.value}
+            </p>
           </div>
         ))
       }
@@ -41,25 +41,24 @@ import { aboutClient } from "@/data/case-studies/1";
         class="rounded-3xl md:rounded-4xl lg:w-[60%] lg:rounded-[60px]"
         width={930}
         height={482}
-        src={aboutClient.aboutImages.mainImage}
+        src={`/${data.visuals[0]}`}
         alt="Pixolo Client"
       />
       <!-- Bottom Images -->
       <div class="flex w-full gap-4 lg:gap-5">
-        <Image
-          class="flex-1 rounded-3xl md:rounded-4xl lg:rounded-[60px]"
-          width={100}
-          height={200}
-          src={aboutClient.aboutImages.otherImages[0]}
-          alt="Pixolo Client"
-        />
-        <Image
-          class="flex-1 rounded-3xl md:rounded-4xl lg:rounded-[60px]"
-          width={100}
-          height={200}
-          src={aboutClient.aboutImages.otherImages[1]}
-          alt="Pixolo Client"
-        />
+        {
+          data.visuals
+            .slice(1, 3)
+            .map((visualImgItem: string) => (
+              <Image
+                class="flex-1 rounded-3xl lg:rounded-[60px]"
+                width={400}
+                height={300}
+                src={`/${visualImgItem}`}
+                alt="Client Detail"
+              />
+            ))
+        }
       </div>
     </div>
   </div>

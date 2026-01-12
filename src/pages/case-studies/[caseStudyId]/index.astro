@@ -1,13 +1,13 @@
 ---
 export function getStaticPaths() {
-  return [
-    { params: { caseStudyId: "1" } },
-    { params: { caseStudyId: "2" } },
-    { params: { caseStudyId: "3" } },
-  ];
+  const paths = [];
+  for (let i = 1; i <= 12; i++) {
+    paths.push({
+      params: { caseStudyId: i.toString() },
+    });
+  }
+  return paths;
 }
-
-const { caseStudyId } = Astro.params;
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
@@ -19,13 +19,18 @@ import Solutions from "@/sections/case-studies/Solutions.astro";
 import Issues from "@/sections/case-studies/Issues.astro";
 import AboutTheClient from "@/sections/case-studies/AboutTheClient.astro";
 import SolutionNumbers from "@/sections/case-studies/SolutionNumbers.astro";
+
+const { caseStudyId } = Astro.params;
+const allData = await import(`@/data/case-studies/cs-${caseStudyId}.json`);
+const data = allData.default;
+const getSection = (id: string) => data.sections.find((s: any) => s.id === id);
 ---
 
 <Layout>
-  <Numbers />
-  <ClientVision />
-  <Issues />
-  <AboutTheClient />
-  <Solutions />
+  <Numbers data={getSection("by_the_numbers")} />
+  <ClientVision data={getSection("client_vision")} />
+  <Issues data={getSection("client_issues")} />
+  <AboutTheClient data={getSection("about_client")} />
+  <Solutions data={getSection("solutions")} />
   <SolutionNumbers />
 </Layout>

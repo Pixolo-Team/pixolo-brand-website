@@ -1,0 +1,202 @@
+{
+  "pageTitle": "Pango Diet Maker UX Case Study: Automating Nutrition Planning for Massive Efficiency",
+  "sections": [
+    {
+      "id": "hero",
+      "toolbadge": "Custom Software & Automation",
+      "title": "Pango Diet Maker",
+      "subtitle": "Transforming a 4-hour manual diet creation process into an automated task completed in under 15 minutes.",
+      "visual": {
+        "image": "images/case-study/landscape-7.png",
+        "altText": "A clean, modern interface of the 'Diet Maker' software."
+      },
+      "hover-text": {
+        "text": "See the Automation",
+        "link": "#"
+      }
+    },
+    {
+      "id": "by_the_numbers",
+      "title": "Impact by the Numbers",
+      "heading": "Automation dramatically increased the capacity of the Pango team, turning a major cost center into a scalable service.",
+      "metrics": [
+        {
+          "label": "Time to Create One Diet (Old)",
+          "value": "4 Hours"
+        },
+        {
+          "label": "Time to Create One Diet (New)",
+          "value": "15 Minutes",
+          "highlight": true
+        },
+        {
+          "label": "Productivity Increase Per Nutritionist",
+          "value": "16X",
+          "highlight": true
+        },
+        {
+          "label": "Potential Weekly Diets Created",
+          "value": "800+"
+        }
+      ]
+    },
+    {
+      "id": "about_client",
+      "toolbadge": "About the Client",
+      "title": "Our Client at a Glance",
+      "projectDescription": [
+        {
+          "label": "Pango Nutrition",
+          "description": "A nutrition service relying on expert nutritionists to create personalized, calculation-intensive diet plans for their growing client base."
+        },
+        {
+          "label": "The Core Problem",
+          "value": "Diets were created manually in Excel, involving tedious calorie and nutrient checks, which severely capped the business’s ability to take on new clients due to time constraints."
+        }
+      ],
+      "visuals": [
+        "images/case-study/about-image-7 (1).png",
+        "images/case-study/about-image-7 (2).png"
+      ]
+    },
+    {
+      "id": "client_issues",
+      "title": "The Roadblock: Manual, Time-Consuming Process",
+      "issues": [
+        {
+          "name": "Excessive Time Overhead",
+          "description": "Each personalized diet required approximately 4 hours of manual labor, checking and cross-referencing nutritional data in spreadsheets.",
+          "metric": "Time Per Diet",
+          "value": "4 Hrs"
+        },
+        {
+          "name": "Low Scalability",
+          "description": "With only 10 diets created per week per nutritionist, the business could not grow its client base without hiring more expensive staff.",
+          "metric": "Weekly Diet Cap (Old)",
+          "value": "50"
+        },
+        {
+          "name": "High Risk of Error",
+          "description": "Manual data entry and calculation in Excel increased the likelihood of calorie or nutrient errors.",
+          "metric": "Error Rate (Manual)",
+          "value": "Elevated"
+        }
+      ]
+    },
+    {
+      "id": "client_vision",
+      "title": "The Client’s Vision: Infinite Capacity",
+      "visual": {
+        "image": "images/case-study/vision-7.png",
+        "altText": "A happy nutritionist reviewing a diet plan on a simplified interface."
+      },
+      "goals": [
+        {
+          "id": 1,
+          "name": "Minimize Diet Creation Time",
+          "description": "Reduce the time taken to generate a personalized diet plan from hours to minutes."
+        },
+        {
+          "id": 2,
+          "name": "Unlock Scalability and Profit",
+          "description": "Remove the labor bottleneck to allow the existing team to serve hundreds of clients, driving exponential business growth."
+        },
+        {
+          "id": 3,
+          "name": "Ensure Accuracy and Reliability",
+          "description": "Automate all calculations to eliminate human error in nutritional planning."
+        }
+      ]
+    },
+    {
+      "id": "our_process",
+      "toolbadge": "Crafting the Journey",
+      "title": "Building the Automation Engine",
+      "type": "ProcessTimeline",
+      "subtitle": "The Custom Software Development",
+      "steps": [
+        {
+          "id": 1,
+          "name": "User Workflow Analysis",
+          "description": "Mapped the nutritionist's entire manual process, identifying every step from selecting food items to calculating totals, to ensure comprehensive automation."
+        },
+        {
+          "id": 2,
+          "name": "Database Integration",
+          "description": "Built a centralized, accurate database of all food items, calorie counts, and nutritional information to replace manual checking."
+        },
+        {
+          "id": 3,
+          "name": "Interface & Logic Design",
+          "description": "Designed the intuitive Diet Maker interface with logic for user selection, date assignment, and instant calorie calculation."
+        },
+        {
+          "id": 4,
+          "name": "Pre-Made Diet Feature",
+          "description": "Integrated the ability to assign pre-made diets instantly or use them as a starting template, significantly speeding up customization. "
+        }
+      ]
+    },
+    {
+      "id": "solutions",
+      "toolbadge": "Our Solutions",
+      "title": "The Diet Maker: Efficiency at Your Fingertips",
+      "solutions": [
+        {
+          "id": "01",
+          "title": "Automated Calculation Engine",
+          "description": "The software instantly calculates total calories and nutrients as ingredients are added, removing the 3.5 hours of manual, error-prone spreadsheet work."
+        },
+        {
+          "id": "02",
+          "title": "Intuitive User-Centric Interface",
+          "description": "The simple workflow allows nutritionists to Select User → Select Dates → Assign/Create Diet with minimal clicks, prioritizing speed and clarity."
+        },
+        {
+          "id": "03",
+          "title": "Template & Custom Creation Flow",
+          "description": "Nutritionists can now choose a pre-made template or create a new plan from scratch, both optimized to take under 15 minutes."
+        },
+        {
+          "id": "04",
+          "title": "Massive Business Scalability",
+          "description": "By freeing up the nutritionist's time, the client’s team of 5 is now capable of managing 800 diets per week, unlocking exponential potential revenue and market reach."
+        }
+      ]
+    },
+    {
+      "id": "gallery",
+      "toolbadge": "Project Visuals",
+      "title": "Behind the Transformation",
+      "gallery_images": [
+        "images/case-study/gallery-7 (1).png",
+        "images/case-study/gallery-7 (2).png",
+        "images/case-study/gallery-7 (3).png",
+        "images/case-study/gallery-7 (4).png"
+      ]
+    },
+    {
+      "id": "key_takeaways",
+      "toolbadge": "Key Takeaways",
+      "title": "Main Learnings & Highlights",
+      "type": "KeyTakeaways",
+      "takeaways": [
+        {
+          "id": "01",
+          "title": "Software Replaces Staffing",
+          "description": "This project highlights that when capacity is the bottleneck, custom automation software can provide a far greater, faster, and cheaper solution than continuous hiring."
+        },
+        {
+          "id": "02",
+          "title": "Efficiency Directly Fuels Growth",
+          "description": "The 16X gain in individual productivity directly translated into the potential for 16X business growth, proving automation is a critical strategy for service-based businesses."
+        },
+        {
+          "id": "03",
+          "title": "The Focus Must Be on the User's Time",
+          "description": "Designing the 'Diet Maker' was centered on one metric: time. Every interface element was streamlined to minimize the steps and clicks required by the nutritionist, ensuring maximum efficiency."
+        }
+      ]
+    }
+  ]
+}

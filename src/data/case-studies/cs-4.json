@@ -1,0 +1,202 @@
+{
+  "pageTitle": "Poonam Pandey Case Study: 70% Server Cost Optimization through Smart Scaling",
+  "sections": [
+    {
+      "id": "hero",
+      "toolbadge": "Infrastructure Optimization",
+      "title": "The Poonam Pandey App",
+      "subtitle": "Reducing monthly cloud infrastructure costs by 70% through strategic scaling and resource management.",
+      "visual": {
+        "image": "images/case-study/landscape-4.png",
+        "altText": "A visual representation of cloud costs dropping significantly."
+      },
+      "hover-text": {
+        "text": "View Cost Savings Breakdown",
+        "link": "#"
+      }
+    },
+    {
+      "id": "by_the_numbers",
+      "title": "Impact by the Numbers",
+      "heading": "Strategic architectural changes led to massive financial efficiency, proving that cloud infrastructure doesn't have to be prohibitively expensive.",
+      "metrics": [
+        {
+          "label": "Original Monthly Server Cost",
+          "value": "$2000"
+        },
+        {
+          "label": "New Monthly Server Cost",
+          "value": "$300",
+          "highlight": true
+        },
+        {
+          "label": "Monthly Cost Reduction",
+          "value": "70%",
+          "highlight": true
+        },
+        {
+          "label": "Servers Running (Weekend Peak)",
+          "value": "6+"
+        }
+      ]
+    },
+    {
+      "id": "about_client",
+      "toolbadge": "About the Client",
+      "title": "Our Client at a Glance",
+      "projectDescription": [
+        {
+          "label": "Poonam Pandey Digital Platform",
+          "description": "A high-profile digital platform that experiences significant and predictable traffic spikes, especially during peak weekend hours, requiring robust yet cost-effective scalability."
+        },
+        {
+          "label": "Project Scope",
+          "value": "Cloud Infrastructure Cost Audit & Optimization. The goal was to maintain high performance and availability during peak traffic while drastically reducing baseline operational server costs."
+        }
+      ],
+      "visuals": [
+        "images/case-study/about-image-4 (1).png",
+        "images/case-study/about-image-4 (2).png"
+      ]
+    },
+    {
+      "id": "client_issues",
+      "title": "The Problem: Expensive, Inefficient Servers",
+      "issues": [
+        {
+          "name": "High Base Operating Cost",
+          "description": "Servers were provisioned for peak loads constantly, resulting in paying for capacity that was only used during weekend traffic spikes.",
+          "metric": "Monthly Server Bill",
+          "value": "$1000"
+        },
+        {
+          "name": "Underutilized Weekday Resources",
+          "description": "Weekday traffic was low, but high-spec servers ran 24/7, leading to poor resource utilization for five days a week.",
+          "metric": "Resource Utilization (Weekday)",
+          "value": "Below 15%"
+        },
+        {
+          "name": "Inefficient Data Management",
+          "description": "Database backups were managed using expensive S3 bucket transfers, incurring high upload and download fees.",
+          "metric": "Data Transfer Cost",
+          "value": "High"
+        }
+      ]
+    },
+    {
+      "id": "client_vision",
+      "title": "The Client’s Vision: Cost-Conscious Performance",
+      "visual": {
+        "image": "images/case-study/vision-4.png",
+        "altText": "A line graph showing low traffic during the week and a sharp spike on the weekend."
+      },
+      "goals": [
+        {
+          "id": 1,
+          "name": "Maintain Peak Performance",
+          "description": "Ensure the site remains fast and stable during the heavy traffic period (Friday evening to Monday morning)."
+        },
+        {
+          "id": 2,
+          "name": "Drastically Reduce Operational Costs",
+          "description": "Implement smarter infrastructure choices to cut the monthly server bill by more than half."
+        },
+        {
+          "id": 3,
+          "name": "Optimize Media Delivery",
+          "description": "Lower bandwidth costs by serving large static files (videos/images) efficiently and intelligently."
+        }
+      ]
+    },
+    {
+      "id": "our_process",
+      "toolbadge": "Crafting the Journey",
+      "title": "Smart Scaling: Matching Resources to Demand",
+      "type": "ProcessTimeline",
+      "subtitle": "Our Optimization Strategy",
+      "steps": [
+        {
+          "id": 1,
+          "name": "Traffic Analysis & Modeling",
+          "description": "Identified the clear, predictable pattern of low weekday traffic versus high weekend peak traffic to inform scaling strategy. "
+        },
+        {
+          "id": 2,
+          "name": "Adopting Vertical Auto-Scaling",
+          "description": "Shifted from permanently oversized servers to smaller base servers with vertical auto-scaling to adjust capacity only when demand dictates."
+        },
+        {
+          "id": 3,
+          "name": "Hardware Cost Review (Intel to AMD)",
+          "description": "Migrated server instances to more cost-effective AMD processors, achieving similar performance at a significantly lower cloud provider rate."
+        },
+        {
+          "id": 4,
+          "name": "Database and Media Rerouting",
+          "description": "Implemented strategic changes to database backup storage and static media delivery to cut external service costs."
+        }
+      ]
+    },
+    {
+      "id": "solutions",
+      "toolbadge": "Our Solutions",
+      "title": "Efficiency Through Infrastructure Discipline",
+      "solutions": [
+        {
+          "id": "01",
+          "title": "Vertical Auto-Scaling Implementation",
+          "description": "Enabled servers to automatically scale up for weekend traffic (often 6+ running instances) and scale down to a single server during quiet weekdays, eliminating waste."
+        },
+        {
+          "id": "02",
+          "title": "Strategic Hardware Choice (AMD)",
+          "description": "By selecting AMD-based instances over comparable Intel instances, we achieved necessary processing power while instantly realizing lower hourly compute rates."
+        },
+        {
+          "id": "03",
+          "title": "Optimized Database Backup Flow",
+          "description": "Moved database backups inside a temporary EC2 server for processing instead of relying on direct S3 bucket transfers, significantly reducing costly data upload/download operations."
+        },
+        {
+          "id": "04",
+          "title": "CDN & Intelligent Video Buffering",
+          "description": "Switched static media (images, videos) to a Content Delivery Network (CDN) and implemented video buffering. This ensures only the portion of the video the user watches is downloaded, saving substantial bandwidth costs."
+        }
+      ]
+    },
+    {
+      "id": "gallery",
+      "toolbadge": "Project Visuals",
+      "title": "Behind the Transformation",
+      "gallery_images": [
+        "images/case-study/gallery-4 (1).png",
+        "images/case-study/gallery-4 (2).png",
+        "images/case-study/gallery-4 (3).png",
+        "images/case-study/gallery-4 (4).png"
+      ]
+    },
+    {
+      "id": "key_takeaways",
+      "toolbadge": "Key Takeaways",
+      "title": "Main Learnings & Highlights",
+      "type": "KeyTakeaways",
+      "takeaways": [
+        {
+          "id": "01",
+          "title": "Infrastructure Alignment with Traffic Patterns",
+          "description": "The biggest saving came from understanding the client's predictable traffic. Matching capacity to demand—scaling up for the weekend and aggressively scaling down during the week—is key to cloud financial management."
+        },
+        {
+          "id": "02",
+          "title": "Micro-Optimizations Yield Macro Savings",
+          "description": "Switching processor types (Intel to AMD) and optimizing media buffering are small, non-disruptive changes that collectively deliver massive long-term financial benefits by reducing pay-per-use metrics."
+        },
+        {
+          "id": "03",
+          "title": "Data Management is a Hidden Cost Center",
+          "description": "The cost of moving data (upload/download fees) can be a significant drain. Creative solutions, like in-EC2 backup processing, are essential for deep infrastructure cost reduction."
+        }
+      ]
+    }
+  ]
+}

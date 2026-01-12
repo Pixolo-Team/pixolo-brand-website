@@ -1,0 +1,202 @@
+{
+  "pageTitle": "SAI International School UX Case Study: Simplifying the Admissions Journey",
+  "sections": [
+    {
+      "id": "hero",
+      "toolbadge": "UX Redesign",
+      "title": "SAI International School Admissions",
+      "subtitle": "Transforming a confusing, lengthy form into a clear, multi-step process that builds user confidence.",
+      "visual": {
+        "image": "images/case-study/landscape-3.png",
+        "altText": "A visual representation of a simplified, multi-step online form on a desktop screen."
+      },
+      "hover-text": {
+        "text": "Start the Journey",
+        "link": "#"
+      }
+    },
+    {
+      "id": "by_the_numbers",
+      "title": "Impact by the Numbers",
+      "heading": "By reducing cognitive load and clarifying the path forward, we saw immediate improvements in form completion rates and user feedback.",
+      "metrics": [
+        {
+          "label": "Form Completion Rate",
+          "value": "+85%",
+          "highlight": true
+        },
+        {
+          "label": "Support Tickets for 'Process Confusion'",
+          "value": "70% ↓"
+        },
+        {
+          "label": "Time to Form Submission",
+          "value": "40% ↑"
+        },
+        {
+          "label": "User Confidence Score",
+          "value": "2.5 Pts ↑"
+        }
+      ]
+    },
+    {
+      "id": "about_client",
+      "toolbadge": "About the Client",
+      "title": "Our Client at a Glance",
+      "projectDescription": [
+        {
+          "label": "SAI International School",
+          "description": "A top-tier educational institution facing high drop-off rates on a critical conversion path: the online application form."
+        },
+        {
+          "label": "Project Scope",
+          "value": "Admissions UX Redesign. The challenge was to transform a single, overwhelming form into an intuitive, multi-step wizard, while clarifying the post-submission journey."
+        }
+      ],
+      "visuals": [
+        "images/case-study/about-image-3 (1).png",
+        "images/case-study/about-image-3 (2).png",
+        "images/case-study/about-image-3 (3).png"
+      ]
+    },
+    {
+      "id": "client_issues",
+      "title": "The Roadblocks to Enrollment",
+      "issues": [
+        {
+          "name": "Complex Form",
+          "description": "The admission form was presented as one long page, causing 'form fatigue' and high abandonment rates before submission.",
+          "metric": "Drop-off Rate (First Page)",
+          "value": "55%"
+        },
+        {
+          "name": "Post-Submission Confusion",
+          "description": "The main pain point identified through research: users were confused about the steps after filling the form (interviews, documents, follow-up).",
+          "metric": "Support Inquiries (Post-Submit)",
+          "value": "High"
+        },
+        {
+          "name": "Lack of Process Visibility",
+          "description": "No visual indicator or textual guide existed to explain the overall admissions lifecycle.",
+          "metric": "Process Clarity Score",
+          "value": "Low"
+        }
+      ]
+    },
+    {
+      "id": "client_vision",
+      "title": "The Client’s Vision: Clarity and Guidance",
+      "visual": {
+        "image": "images/case-study/vision-3.png",
+        "altText": "A progress bar showing a user on step 2 of 4 of a process."
+      },
+      "goals": [
+        {
+          "id": 1,
+          "name": "Reduce Form Anxiety",
+          "description": "Break down the application into manageable chunks to make the task feel less daunting and increase completion rates."
+        },
+        {
+          "id": 2,
+          "name": "Clarify the Entire Journey",
+          "description": "Provide a simple, step-by-step map of the entire admissions process, not just the online form submission."
+        },
+        {
+          "id": 3,
+          "name": "Build User Confidence",
+          "description": "Use guiding UX copy and predictable design to assure users that they are on the right track at all times."
+        }
+      ]
+    },
+    {
+      "id": "our_process",
+      "toolbadge": "Crafting the Journey",
+      "title": "Creating a Confident User Experience",
+      "type": "ProcessTimeline",
+      "subtitle": "Our Redesign Methodology",
+      "steps": [
+        {
+          "id": 1,
+          "name": "User Research & Pain Point Mapping",
+          "description": "Conducted user interviews and analyzed existing data to pinpoint the true pain points, revealing that confusion after the form was a bigger issue than filling the form itself."
+        },
+        {
+          "id": 2,
+          "name": "Information Architecture (IA) Re-structuring",
+          "description": "Organized the form fields into logical, themed steps (e.g., 'Parent Details,' 'Student Details,' 'Course Selection')."
+        },
+        {
+          "id": 3,
+          "name": "Multi-Step Form Design",
+          "description": "Implemented a multi-step design with a persistent progress indicator, visually illustrating how far the user is from completion."
+        },
+        {
+          "id": 4,
+          "name": "Process Clarification Flow",
+          "description": "Designed a dedicated section that clearly explains the full post-application process (e.g., Screening, Interview, Selection, Admission)."
+        }
+      ]
+    },
+    {
+      "id": "solutions",
+      "toolbadge": "Our Solutions",
+      "title": "Structured Guidance at Every Step",
+      "solutions": [
+        {
+          "id": "01",
+          "title": "Multi-Step Form Implementation",
+          "description": "Replaced the monolithic form with a series of smaller, focused pages. This design leverages the Zeigarnik effect to encourage completion by showing progress."
+        },
+        {
+          "id": "02",
+          "title": "Visible Progress and Guiding Copy",
+          "description": "Added a top-of-page progress bar and used concise, encouraging UX copy at the start of each step (e.g., 'You're halfway there!')."
+        },
+        {
+          "id": "03",
+          "title": "Clear 'What Happens Next' Flow",
+          "description": "Crucially, a dedicated, visually distinct section was added to transparently outline all steps following the form submission, eliminating the anxiety of the unknown."
+        },
+        {
+          "id": "04",
+          "title": "In-Line Help and Tooltips",
+          "description": "Added contextual help text and instructional microcopy next to complex fields to prevent hesitation and reduce input errors."
+        }
+      ]
+    },
+    {
+      "id": "gallery",
+      "toolbadge": "Project Visuals",
+      "title": "Behind the Transformation",
+      "gallery_images": [
+        "images/case-study/gallery-3 (1).png",
+        "images/case-study/gallery-3 (2).png",
+        "images/case-study/gallery-3 (3).png",
+        "images/case-study/gallery-3 (4).png"
+      ]
+    },
+    {
+      "id": "key_takeaways",
+      "toolbadge": "Key Takeaways",
+      "title": "Main Learnings & Highlights",
+      "type": "KeyTakeaways",
+      "takeaways": [
+        {
+          "id": "01",
+          "title": "Manageable Chunks Boost Completion",
+          "description": "Splitting a large task into smaller, labeled steps significantly reduces perceived effort. It's a key tactic for increasing completion rates on high-friction activities like application forms."
+        },
+        {
+          "id": "02",
+          "title": "The Post-Task Journey is Just as Critical",
+          "description": "The research proved that user anxiety often peaks after the primary interaction (form submission). Clarifying the subsequent steps is essential UX design for managing expectations and reducing support load."
+        },
+        {
+          "id": "03",
+          "title": "User Research Finds the Hidden Problem",
+          "description": "Focusing solely on the form itself would have missed the primary pain point. User research was crucial in revealing the true source of confusion lay in the lack of process transparency."
+        }
+      ]
+    }
+  ]
+}
