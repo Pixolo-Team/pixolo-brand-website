@@ -2,17 +2,13 @@
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
 
-interface Props {
+interface props {
   icon: string;
   text?: string;
   backgroundColor: string;
 }
 
-const {
-  icon = "",
-  text = "",
-  backgroundColor = "",
-} = Astro.props;
+const { icon, text, backgroundColor } = Astro.props as props;
 ---
 
 <!-- Tech Tool Badge Component -->
@@ -22,9 +18,7 @@ const {
   <!-- Tech Badge Icon -->
   <Icon name={icon} />
   <!-- Tech Badge Text -->
-  <p
-    class="text-sm md:text-base font-medium lg:text-xl leading-tight text-n-950"
-  >
+  <p class="text-n-950 text-sm leading-tight font-medium md:text-base lg:text-xl">
     {text}
   </p>
 </div>
