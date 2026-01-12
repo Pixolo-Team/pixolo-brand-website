@@ -27,12 +27,12 @@ import { openPositions } from "@/data/career/open-positions";
     </div>
 
     <!-- Cards -->
-    <div class="flex flex-wrap justify-center gap-4 lg:gap-10">
+    <div class="flex flex-wrap justify-center gap-4 lg:gap-10 ">
       {
         openPositions.positions.map((position, index) => (
           // Card
           <div
-            class="open-positions-card md:min-w-[360px] lg:min-w-[480px] flex-shrink-0 min-w-[327px]"
+            class="open-positions-card md:min-w-[360px] lg:min-w-[480px] flex-grow-1 min-w-[327px] md:max-w-[377px]"
             style={`--delay: ${index * 0.3}s`}
           >
             <OpenPositionCard
