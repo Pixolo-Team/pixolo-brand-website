@@ -1,93 +1,117 @@
 ---
-//COMPONENTS //
+// COMPONENTS //
 import ArticleCard from "@/components/ArticleCard.astro";
 import ProjectCard from "@/components/portfolio/ProjectCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
 
+// SVG's //
+import Ball from "@/assets/3d-ball.svg";
+
 // DATA //
-import { projectCardDetails } from "@/data/portfolio.ts";
-import { articleCardDetails } from "@/data/portfolio.ts";
+import { portfolioSectionDetails } from "@/data/portfolio.ts";
 ---
 
 <!-- Portfolio Section -->
-<section>
+<section id="portfolio-section">
   <!-- Container -->
   <div
     class="container mx-auto flex flex-col items-center justify-center gap-20 px-6 py-16 md:gap-28 md:py-28 lg:gap-40 lg:px-14 lg:py-52"
   >
     <!-- Header -->
-    <div class="relative flex flex-col items-center justify-center gap-5 md:gap-6 lg:gap-7">
-      <ToolBadge icon={"service-icon"} text={"Portfolio"} />
+    <div
+      id="portfolio-wrapper"
+      class="relative flex flex-col items-center justify-center gap-5 md:gap-6 lg:gap-7"
+    >
+      <div class="tool-badge">
+        <ToolBadge
+          icon={portfolioSectionDetails.badgeIcon}
+          text={portfolioSectionDetails.badgeTitle}
+        />
+      </div>
+
       <!-- Header Text -->
       <div
-        class="z-10 flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-8xl"
+        class="header-text z-10 flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-8xl"
       >
-        <p class="text-balance">Building Digital Experiences That</p>
-        <p class="bg-linear-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent">
-          Perform
+        <p class="text-balance">{portfolioSectionDetails.title}</p>
+        <p class="bg-gradient-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent">
+          {portfolioSectionDetails.highlight}
         </p>
       </div>
+
       <!-- Absolute images -->
       <Image
-        src="/3d-ball-1.svg"
-        alt={"3d big ball image"}
-        width={50.68}
-        height={48}
-        class={"w-[50.68px] h-[48px] md:w-[84.47px] md:h-[80px] absolute top-[157px] left-[8px] z-0 md:top-[269px] md:left-[49px] lg:top-[369px] lg:left-[384.27px]"}
+        id="big-marble-portfolio"
+        src={Ball}
+        alt="Big Marble"
+        class="absolute top-[22%] left-6 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
       />
       <Image
-        src="/3d-ball-1.svg"
-        alt={"3d small ball image"}
-        width={28}
-        height={26.52}
-        class={"w-[28px] h-[26.52px] md:w-[48px] md:h-[45.46px] absolute top-[202.59px] left-[252.47px] z-0 md:top-[334px] md:left-[643px] lg:top-[434px] lg:left-[978.27px]"}
+        id="small-marble-portfolio"
+        src={Ball}
+        alt="Small Marble"
+        class="absolute right-[10%] bottom-[46%] w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
+        style="animation-duration: 4s"
       />
     </div>
 
     <!-- Tile Wrapper -->
-    <div class="flex flex-col">
+    <div class="project-card-wrapper flex flex-col gap-10">
       {
-        projectCardDetails.map((projectCardDetailsItem, index) => (
-          <div class={index === 0 ? "z-0" : "z-10 mt-[-120px] md:mt-[-195.66px] xl:mt-[-120px]"}>
-            <ProjectCard
-              brandColor={projectCardDetailsItem.brandColor}
-              brandName={projectCardDetailsItem.brandName}
-              image={projectCardDetailsItem.image}
-              logo={projectCardDetailsItem.logo}
-              title={projectCardDetailsItem.title}
-              subtitle={projectCardDetailsItem.subtitle}
-              badges={projectCardDetailsItem.badges}
-            />
-          </div>
-        ))
+        portfolioSectionDetails.projectCardItems.map((projectCardItem, index) => {
+          const topOffset = 20 + index * 20; // 20vh, 40vh, 60vh...
+
+          return (
+            <div class="project-card sticky" style={`top: ${topOffset}vh; margin-top: `}>
+              <ProjectCard
+                brandColor={projectCardItem.brandColor}
+                brandName={projectCardItem.brandName}
+                image={projectCardItem.image}
+                logo={projectCardItem.logo}
+                title={projectCardItem.title}
+                subtitle={projectCardItem.subtitle}
+                badges={projectCardItem.badges}
+              />
+            </div>
+          );
+        })
       }
     </div>
 
-    <!-- CARDS -->
-    <div class="flex flex-col items-center justify-center gap-16 md:gap-24">
-      <!-- CARDS WRAPPER -->
-      <div class="flex flex-wrap items-center justify-center gap-24 md:gap-32">
-        <!-- ROWS -->
-        {
-          articleCardDetails.map((articleCardDetailsRow) => (
-            <div class="flex flex-col gap-24 md:gap-32 xl:flex-row">
-              {articleCardDetailsRow.map((articleCardDetailsItem) => (
-                <div class="anim-fade-in-up flex-1">
-                  <ArticleCard
-                    thumbnail={articleCardDetailsItem.thumbnail}
-                    brandName={articleCardDetailsItem.brandName}
-                    chipItems={articleCardDetailsItem.chipItems}
-                    title={articleCardDetailsItem.title}
-                    animateClass={articleCardDetailsItem.animateClass}
-                    ctaText={articleCardDetailsItem.ctaText}
-                  />
-                </div>
-              ))}
-            </div>
-          ))
-        }
-      </div>
+    <!-- Article Cards -->
+    <div class="grid grid-cols-1 gap-24 lg:grid-cols-2 lg:gap-20 xl:gap-28 2xl:gap-32">
+      {
+        portfolioSectionDetails.articleCardItems.map((articleCardItem) => (
+          <ArticleCard
+            thumbnail={articleCardItem.thumbnail}
+            brandName={articleCardItem.brandName}
+            chipItems={articleCardItem.chipItems}
+            title={articleCardItem.title}
+            animateClass={"anim-fade-in-up"}
+            ctaText={articleCardItem.ctaText}
+          />
+        ))
+      }
     </div>
   </div>
 </section>
+<style>
+  .project-card-wrapper {
+    position: relative;
+  }
+
+  .project-card {
+    position: sticky;
+    z-index: 10;
+  }
+</style>
+<script>
+  // OTHERS //
+  import { animateMarble } from "@/scripts/hero";
+  import { animatePortfolioSection } from "@/scripts/portfolio";
+
+  animateMarble("big-marble-portfolio", "portfolio-wrapper");
+  animateMarble("small-marble-portfolio", "portfolio-wrapper");
+  animatePortfolioSection();
+</script>
