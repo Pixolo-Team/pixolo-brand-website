@@ -1,0 +1,25 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+interface props {
+  icon: string;
+  text?: string;
+  backgroundColor: string;
+}
+
+const { icon, text, backgroundColor } = Astro.props as props;
+---
+
+<!-- Tech Tool Badge Component -->
+<div
+  class={`flex items-center justify-center p-2.5 md:p-3 lg:p-2.5 gap-1.5 lg:gap-4 rounded-4xl ${backgroundColor} ${text ? "px-3.5 md:px-6 lg:px-7" : "rounded-full"}`}
+>
+  <!-- Tech Badge Icon -->
+  <Icon name={icon} class="size-3 md:size-4 lg:size-6" />
+
+  <!-- Tech Badge Text -->
+  <p class="text-n-950 text-sm leading-tight font-medium md:text-base lg:text-xl">
+    {text}
+  </p>
+</div>
