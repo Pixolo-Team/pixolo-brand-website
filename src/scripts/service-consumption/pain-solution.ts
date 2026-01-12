@@ -1,7 +1,8 @@
+// OTHERS //
 import { animate, inView, stagger } from "motion";
 
 /** Animate Pain Solution Section */
-export const animatepainSolutionSection = () => {
+export const animatePainSolutionSection = () => {
   // 1. Animate Header Elements
   inView("#pain-solution-section", (painSolutionSection) => {
     // Tool Badge animation

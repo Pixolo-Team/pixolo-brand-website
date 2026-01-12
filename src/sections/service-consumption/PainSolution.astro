@@ -2,7 +2,9 @@
 // COMPONENTS //
 import PainSolutionCard from "@/components/service-consumption/PainSolutionCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
-import { painSolutionSectionDetails } from "@/data/service-consumption/PainSolution.ts";
+
+// DATA //
+import { painSolutionSectionDetails } from "@/data/service-consumption/pain-solution.ts";
 ---
 
 <!-- Pain Solution Section -->
@@ -40,6 +42,7 @@ import { painSolutionSectionDetails } from "@/data/service-consumption/PainSolut
 </section>
 
 <script>
-  import { animatepainSolutionSection } from "@/scripts/service-consumption/pain-solution.ts";
-  animatepainSolutionSection();
+  import { animatePainSolutionSection } from "@/scripts/service-consumption/pain-solution.ts";
+
+  animatePainSolutionSection();
 </script>
