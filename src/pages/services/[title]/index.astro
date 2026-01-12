@@ -12,9 +12,19 @@ const { title } = Astro.params;
 import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
+import Hero from "@/sections/service-consumption/Hero.astro";
+import OutcomeFocused from "@/sections/service-consumption/OutcomeFocused.astro";
 import PainSolution from "@/sections/service-consumption/PainSolution.astro";
+import HowWeWork from "@/sections/service-consumption/HowWeWork.astro";
+import Deliverables from "@/sections/service-consumption/Deliverables.astro";
+import FinalCta from "@/sections/service-consumption/FinalCta.astro";
 ---
 
 <Layout>
+  <Hero />
+  <OutcomeFocused />
   <PainSolution />
+  <HowWeWork />
+  <Deliverables />
+  <FinalCta />
 </Layout>

@@ -1,0 +1,15 @@
+---
+interface TabPropsData {
+  text: string;
+}
+
+const { text } = Astro.props as TabPropsData;
+---
+
+<!-- Deliverables Tab -->
+<div class="deliverables-tab bg-n-100 w-full rounded-xl py-3 text-center lg:py-4">
+  <!-- Text -->
+  <p class="text-n-950 text-base leading-tight font-normal tracking-[-2%] md:text-lg lg:text-2xl">
+    {text}
+  </p>
+</div>
