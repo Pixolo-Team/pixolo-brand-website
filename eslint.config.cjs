@@ -31,7 +31,8 @@ module.exports = [
     },
     rules: {
       ...tseslint.configs.recommended.rules,
-      "prettier/prettier": "error",
+      "linebreak-style": ["off"], // Allow both LF and CRLF
+      "prettier/prettier": ["error", { endOfLine: "auto" }],
     },
   },
 
@@ -60,7 +61,8 @@ module.exports = [
       prettier,
     },
     rules: {
-      "prettier/prettier": "error",
+      "prettier/prettier": ["error", { endOfLine: "auto" }],
+      "linebreak-style": ["off"], // Allow both LF and CRLF
     },
   },
 ];

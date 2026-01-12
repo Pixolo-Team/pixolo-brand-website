@@ -1,3 +1,8 @@
+---
+applyTo: "**"
+priority: 1
+---
+
 # Pixolo Brand Website - Copilot Instructions
 
 ## Project Overview
@@ -10,14 +15,150 @@ This is the brand website for Pixolo Technologies, built with Astro 5.15.3 and T
 **Node.js Version:** v20.19.5  
 **npm Version:** 10.8.2
 
+# Global Engineering & Code Quality Rules
+
+## 📌 Import Rules
+
+- All imports must use project aliases (e.g., `@/components/...`), never relative paths like `../../`.
+
+## 📁 File Naming Rules
+
+- All filenames **must be kebab-case**.
+- UI components (`.astro`, `.tsx`) **may be PascalCase**.
+- File names must be correctly **singular or plural**, depending on purpose.
+- TypeScript files should include a suffix describing purpose:
+  - `*.util.ts`
+  - `*.service.ts`
+  - `*.helper.ts`
+  - `*.controller.ts`
+  - etc.
+
+## 🧼 Clean Code
+
+- Break code into smaller files—avoid mixing HTML, CSS, JS unless required by the framework.
+- Maintain clean spacing: leave intentional blank lines for readability.
+- Folders should be structured logically by feature or domain.
+- Use comments to explain **major steps**, functions, and logic flow.
+- Every function must include at least a **one-line JSDoc** above it.
+- Break HTML sections using comments; each HTML comment must have **one empty line above it**.
+
+## 📌 Naming Conventions
+
+- Never use vague names like `status`, `message`, `data`.  
+  Use descriptive names such as `activeStatus`, `errorPopup`, `finalResponseData`.
+- All **types & interfaces** must be PascalCase and end with `Data`.  
+  Examples:
+  - `UserData`
+  - `ProductResponseData`
+- Normal variables must be camelCase.
+
+## 🎯 Decision Rules
+
+- Variable names should be **singular** unless representing a list.
+- Use **JPG** for images unless transparency is required → then use PNG/SVG.
+
+## 🧠 Map Iteration Rules
+
+When using `.map()` in UI code:
+
+- The iterated variable must have plural list name + `Item`.  
+  Example:
+
+  ```ts
+  clients.map((clientItem, clientIndex) => ...)
+  ```
+
+## 🧩 Function Definition Rule
+
+All functions must follow this exact format:
+
+```ts
+const functionName = () => {
+  // logic
+};
+```
+
+- All functions must follow this exact format:
+
+---
+
+# ✅ **FILE 2: `.github/instructions/code-completion.md`**
+
+````md
+---
+applyTo: "**"
+includeAgent: "code-completion"
+priority: 2
+---
+
+# Copilot Code Completion Rules
+
+## 🧩 Imports
+
+- Always use `@` alias. Never generate `../..` style imports.
+
+## 🧪 File Structure
+
+- Auto-split components, styles, utils, and services into separate files.
+- Suggest folder structures automatically when files get too large.
+
+## 🧼 Cleanliness
+
+- Encourage blank lines between conceptual blocks.
+- Add meaningful inline comments automatically.
+- Add HTML section comments with one empty line above.
+
+## 🧠 Naming
+
+- Use descriptive variable names.
+- CamelCase for variables.
+- PascalCase + `Data` suffix for interfaces & types.
+- Always prefer meaningful plurals/singulars.
+
+## 🔁 Map conventions
+
+```ts
+arrayItems.map((arrayItem, arrayIndex) => ...)
+```
+````
+
+## 🧩 Function Format (mandatory)
+
+```ts
+const functionName = () => {
+  // logic
+};
+```
+
+## 🎨 Assets
+
+- Default image output as JPG unless transparency must be preserved.
+
+---
+
+# ✅ **RESULT**
+
+With this setup:
+
+- Copilot Chat follows rules
+- Code completion in VS Code follows rules
+- PR Review Comments follow rules
+- Both global + coding-specific instructions remain separate
+- Strong enforcement of file naming, imports, structure, comments, JS Docs, maps, and function style
+
+---
+
 ## Build & Development Workflow
 
 ### Initial Setup
 
 **ALWAYS run npm install before any build or dev commands:**
+
 ```bash
 npm install
 ```
+
+````
 
 This takes approximately 30-40 seconds and installs 389+ packages. Lock files are in .gitignore (marked as optional), so npm will generate package-lock.json locally during install.
 
@@ -26,24 +167,30 @@ This takes approximately 30-40 seconds and installs 389+ packages. Lock files ar
 The project has 4 npm scripts (no linting, testing, or formatting scripts):
 
 1. **Development Server:**
+
    ```bash
    npm run dev
    ```
+
    Starts Astro dev server on http://localhost:4321 (default)
 
 2. **Production Build:**
+
    ```bash
    npm run build
    ```
+
    - Takes ~1-2 seconds
    - Outputs to `dist/` directory
    - Generates 2 static pages: `/` and `/about/`
    - Shows a harmless warning about unused imports from vite
 
 3. **Preview Built Site:**
+
    ```bash
    npm run preview
    ```
+
    Previews the production build locally
 
 4. **Astro CLI:**
@@ -55,6 +202,7 @@ The project has 4 npm scripts (no linting, testing, or formatting scripts):
 ### Clean Build Workflow
 
 To ensure a clean build after making changes:
+
 ```bash
 rm -rf dist .astro && npm run build
 ```
@@ -64,6 +212,7 @@ The `.astro/` directory contains generated TypeScript types and should be cleane
 ### Build Validation
 
 After making code changes:
+
 1. Always run `npm run build` to verify the build succeeds
 2. Build time should remain ~1-2 seconds
 3. Check for any new warnings or errors beyond the expected vite warning
@@ -122,16 +271,19 @@ After making code changes:
 ### Key Configuration Files
 
 **astro.config.mjs:**
+
 - Integrations: `astro-icon` for SVG icons
 - Vite plugin: `@tailwindcss/vite` for Tailwind CSS v4
 - No SSR, no adapters - static site generation only
 
 **tsconfig.json:**
+
 - Extends `astro/tsconfigs/strict`
 - Includes all TypeScript files and generated `.astro/types.d.ts`
 - Excludes `dist/` directory
 
 **package.json:**
+
 - Type: "module" (ES modules)
 - Dependencies: @tailwindcss/vite, astro-icon, tailwindcss
 - DevDependencies: astro
@@ -142,17 +294,20 @@ After making code changes:
 **Tailwind CSS v4** is configured via Vite plugin (not standalone config file).
 
 **Custom CSS Variables:**
+
 - Neutral colors: `--color-n-50` through `--color-n-950` (responsive to color scheme)
 - Blue shades: `--blue-50` through `--blue-950`
 - Violet shades: `--violet-50` through `--violet-950`
 - Variables reverse in dark mode (light becomes dark, dark becomes light)
 
 **Custom Font: Neometric**
+
 - 9 weights loaded via @font-face (100-900)
 - Files in `public/fonts/` as .otf format
 - Applied globally via `font-family: "Neometric", sans-serif`
 
 **Animation Classes:**
+
 - `.anim-fade-up-quick`, `.anim-fade-in-up`, `.anim-fade-in-right`
 - Triggered via Intersection Observer in Layout.astro
 - Becomes visible when `.anim-visible` class is added (20% threshold)
@@ -160,16 +315,19 @@ After making code changes:
 ### Component Patterns
 
 **Astro Components** (`.astro` files):
+
 - Use `---` frontmatter for imports and logic
 - TypeScript interfaces via `interface Props {}`
 - Props destructured with defaults: `const { prop = "default" } = Astro.props as Props`
 - Components are in `src/components/`, sections in `src/sections/`
 
 **Data-driven rendering:**
+
 - Data files in `src/data/` (e.g., services.ts)
 - Iterate with `.map()` in JSX-like syntax
 
 **Image handling:**
+
 - Use Astro's `Image` component from `astro:assets`
 - Reference public images: `<Image src="/images/name.png" ... />`
 - Include width, height, loading="lazy", decoding="async"
@@ -177,6 +335,7 @@ After making code changes:
 ### Routing
 
 File-based routing via `src/pages/`:
+
 - `index.astro` → `/`
 - `about.astro` → `/about/`
 
@@ -187,6 +346,7 @@ No dynamic routes currently configured.
 The `.github/PULL_REQUEST_TEMPLATE.md` defines expected quality standards:
 
 **Developer Self-Review:**
+
 - Test across breakpoints (sm/md/lg/xl)
 - Verify hover, focus, animation states
 - No unused/commented code
@@ -196,6 +356,7 @@ The `.github/PULL_REQUEST_TEMPLATE.md` defines expected quality standards:
 - SonarLint clean (if available in your IDE)
 
 **Design/QC Review:**
+
 - Match Figma designs visually
 - Handle all breakpoints
 - Implement hover/focus/disabled states
@@ -225,18 +386,21 @@ When making changes, always verify the build succeeds and consider these quality
 ### Common Change Types
 
 **Adding a new page:**
+
 1. Create new `.astro` file in `src/pages/`
 2. Import Layout: `import Layout from "../layouts/Layout.astro"`
 3. Wrap content in `<Layout>` component
 4. Build to verify routing works
 
 **Adding a new component:**
+
 1. Create `.astro` file in `src/components/`
 2. Define Props interface if needed
 3. Use TypeScript for type safety
 4. Follow existing patterns (see ServiceItem.astro, Badge.astro)
 
 **Adding styles:**
+
 1. Use Tailwind utility classes (preferred)
 2. Reference CSS variables:
    - Neutral: `bg-n-50`, `text-n-950`
@@ -246,6 +410,7 @@ When making changes, always verify the build succeeds and consider these quality
 4. For animations, add to `src/styles/animations.css`
 
 **Adding static assets:**
+
 1. Place in `public/` directory (fonts, images, icons, videos)
 2. Reference with absolute paths: `/images/name.png`
 3. Files are copied as-is to `dist/` during build
@@ -253,6 +418,7 @@ When making changes, always verify the build succeeds and consider these quality
 ### TypeScript Patterns
 
 The project uses TypeScript but WITHOUT type checking in the build:
+
 - Type annotations in frontmatter and interfaces
 - No need to run `tsc` or `astro check`
 - Focus on runtime correctness over compile-time checking
@@ -260,6 +426,7 @@ The project uses TypeScript but WITHOUT type checking in the build:
 ### Dependencies
 
 When adding dependencies:
+
 1. Use npm: `npm install <package>`
 2. Check compatibility with Astro 5.x
 3. Update imports in code
@@ -269,6 +436,7 @@ When adding dependencies:
 ## Trust These Instructions
 
 These instructions have been thoroughly validated by:
+
 - Running fresh `npm install`
 - Testing `npm run build` multiple times
 - Testing clean builds (`rm -rf dist .astro && npm run build`)
@@ -277,8 +445,10 @@ These instructions have been thoroughly validated by:
 - Reviewing the entire project structure
 
 **Only perform additional searches if:**
+
 - These instructions are incomplete for your specific task
 - You encounter errors not documented here
 - You need to verify information that seems outdated
 
 When in doubt, test the build first - it's fast (~1-2 seconds) and will catch most issues immediately.
+````

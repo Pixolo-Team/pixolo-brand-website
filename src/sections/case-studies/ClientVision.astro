@@ -1,0 +1,42 @@
+---
+// COMPONENTS //
+import Image from "astro/components/Image.astro";
+import ClientVision from "@/components/case-studies/ClientVision.astro";
+
+// DATA //
+import { clientVisionSection } from "@/data/case-studies/1";
+---
+
+<section>
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col gap-7 px-6 py-14 md:gap-12 lg:gap-16 lg:px-16 lg:py-24"
+  >
+    <!-- Page Title -->
+    <p class="text-center text-3xl lg:text-4xl">The Client's Vision</p>
+    <div class="flex flex-col gap-10 md:gap-12 lg:flex-row lg:items-center lg:gap-14">
+      <!-- Client Image -->
+      <Image
+        class="w-full rounded-3xl md:rounded-4xl lg:w-auto lg:max-w-[50%]"
+        width={700}
+        height={700}
+        src={clientVisionSection.mainImage}
+        alt={clientVisionSection.imageAlt}
+      />
+
+      <!-- Client Vision Component -->
+      <div class="flex w-full flex-col items-center gap-9 lg:gap-10">
+        <!-- Iterating through Data -->
+        {
+          clientVisionSection.clientVisions.map((clientVisionItem, clientVisionindex) => (
+            <ClientVision
+              title={clientVisionItem.title}
+              description={clientVisionItem.description}
+              index={String(clientVisionindex + 1).padStart(2, "0")}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

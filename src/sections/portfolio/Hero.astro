@@ -1,0 +1,66 @@
+---
+// COMPONENTS //
+import ToolBadge from "src/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+// SVG's //
+import Ball from "src/assets/3d-ball.svg";
+
+// DATA //
+import { portfolioHeroDetails } from "src/data/portfolio/hero.ts";
+---
+
+<!-- Hero Section -->
+<section>
+  <div
+    id="hero-wrapper"
+    class="relative container mx-auto flex flex-col items-center px-6 py-24 text-center md:gap-9 md:py-40 lg:gap-12 xl:pt-52 2xl:pt-64"
+  >
+    <!-- Large 3D Ball  -->
+    <Image
+      id="big-marble"
+      src={Ball}
+      alt="Big Marble"
+      class="absolute top-[278px] left-[65px] z-[-1] w-9 md:top-[400px] md:left-[200px] md:h-15 md:w-20 lg:h-16 lg:w-20 xl:top-[330px] xl:left-[120px]"
+    />
+
+    <!-- Small 3D Ball -->
+    <Image
+      id="small-marble"
+      src={Ball}
+      alt="Small Marble"
+      class="absolute top-[145px] left-[252.47px] z-[-1] w-5 rotate-[-20deg] md:top-[450px] md:left-[780px] md:h-10 md:w-12 lg:h-11 lg:w-12 xl:top-[300px] xl:left-[1200px]"
+    />
+
+    <!-- Content -->
+    <div class="flex flex-col items-center gap-8 md:gap-9 lg:gap-10">
+      <!-- Tool Badge -->
+      <div class="flex flex-col items-center gap-8 md:gap-9 lg:gap-10">
+        <ToolBadge icon="comment" text={portfolioHeroDetails.badgeTitle} />
+      </div>
+
+      <!-- Headings -->
+      <div class="flex flex-col gap-3.5 lg:gap-7">
+        <!-- Title -->
+        <p class="text-3xl leading-tight font-medium tracking-[-1] md:text-5xl lg:text-7xl">
+          {portfolioHeroDetails.title}
+        </p>
+
+        <!-- SubTitle -->
+        <p
+          class="bg-[linear-gradient(90deg,var(--blue-500)_0%,var(--blue-300)_100%)] bg-clip-text text-sm leading-tight tracking-normal text-transparent md:text-lg lg:text-2xl"
+        >
+          {portfolioHeroDetails.subTitle}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animateHeroTitle, animateMarble } from "@/scripts/hero";
+
+  animateHeroTitle();
+  animateMarble("big-marble", "hero-wrapper");
+  animateMarble("small-marble", "hero-wrapper");
+</script>
