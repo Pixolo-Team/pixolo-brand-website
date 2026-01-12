@@ -2,6 +2,7 @@
 export const outcomeFocusedDetails = {
   badgeText: "Your deliverables",
   headerText: "Included in this service",
+  image: "/images/outcome/outcome-focused.png",
 
   // Why Use Details
   whyUs: [
