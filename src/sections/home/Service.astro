@@ -3,9 +3,12 @@
 import ServiceItem from "@/components/ui/ServiceItem.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
+import { URLS } from "@/infrastructure/constants/urls";
+
 // DATA //
 import { services } from "@/data/services";
 
+import RoundedButton from "@/components/ui/RoundedButton.astro";
 // DATA
 
 const serviceDetails = {
@@ -40,15 +43,20 @@ const serviceDetails = {
       class="mx-auto grid w-full grid-cols-1 gap-11 md:gap-16 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-20 2xl:grid-cols-3"
     >
       {
-        // Iterating over an array of objects  - services
         services.map((serviceItem) => (
-          <ServiceItem
-            imageName={serviceItem.imageName}
-            title={serviceItem.title}
-            tags={serviceItem.tags}
-          />
+          <a href={URLS.SERVICE.ITEM(serviceItem.id.toString(), serviceItem.title)}>
+            <ServiceItem
+              imageName={serviceItem.imageName}
+              title={serviceItem.title}
+              tags={serviceItem.tags}
+            />
+          </a>
         ))
       }
     </div>
+
+    <a href={URLS.SERVICE.ROOT}>
+      <RoundedButton variant="tertiary" buttonText="View all Services" /></a
+    >
   </div>
 </section>
