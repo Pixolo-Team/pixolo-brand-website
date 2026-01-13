@@ -18,7 +18,6 @@ const isCopyable = type === "phone" || type === "mail";
 const isExternal = type === "location";
 ---
 
-
 <!-- Contact Card component -->
 <a
   href={link}
@@ -26,24 +25,20 @@ const isExternal = type === "location";
   rel={isExternal ? "noopener noreferrer" : undefined}
   class="bg-n-100 hover:bg-n-200 flex w-full cursor-pointer items-end justify-between gap-4 rounded-4xl px-5 py-4 transition-colors duration-300 lg:gap-5 lg:px-6 lg:py-5"
 >
-
   <!-- Left side: Icon + text -->
   <div class="flex items-center gap-3.5 md:gap-4">
     <div
       class="flex size-14 items-center justify-center rounded-4xl bg-linear-to-r from-[#6C6AF2] to-[#8B77F3] shadow-sm md:size-[64px] lg:size-[74px]"
     >
-
       <!-- Icon -->
       <Icon name={icon} class="text-n-950 size-7" />
     </div>
 
     <div class="flex w-[60%] flex-col">
-
       <!-- Title -->
       <p class="text-n-700 text-xs font-bold md:text-sm lg:text-base">
         {title}
       </p>
-
 
       <!-- Value -->
       <p class="text-n-950 max-w-[180px] truncate text-sm font-semibold md:text-lg lg:text-xl">
@@ -51,7 +46,6 @@ const isExternal = type === "location";
       </p>
     </div>
   </div>
-
 
   <!-- Right side: Action Icons -->
   {

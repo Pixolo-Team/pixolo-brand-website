@@ -33,7 +33,6 @@ const {
 } = Astro.props;
 ---
 
-
 <!-- Container for input field and error message -->
 <div class="flex w-full flex-col gap-3">
   <!-- Container for label and Input with bottom border -->
@@ -52,7 +51,6 @@ const {
       )
     }
 
-
     <!-- Input field with dynamic attributes from props -->
     <input
       disabled={isDisabled}
@@ -67,14 +65,12 @@ const {
     />
   </div>
 
-
   <!-- Error messages display section -->
   {
     isError && (
       <div class="flex flex-col gap-2.5 md:gap-3">
         {errorMessages.map((errorMessageItem) => (
           <div class="flex items-center gap-1.5 md:gap-2">
-
             {/* Error icon */}
             <Icon name="error-icon" class="size-4" />
 
