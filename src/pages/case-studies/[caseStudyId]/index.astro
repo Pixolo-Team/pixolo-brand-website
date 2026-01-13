@@ -32,5 +32,5 @@ const getSection = (id: string) => data.sections.find((s: any) => s.id === id);
   <Issues data={getSection("client_issues")} />
   <AboutTheClient data={getSection("about_client")} />
   <Solutions data={getSection("solutions")} />
-  <SolutionNumbers />
+  <SolutionNumbers data={getSection("numbers_after_the_solution")} />
 </Layout>

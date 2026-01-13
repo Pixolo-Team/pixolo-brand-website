@@ -2,8 +2,8 @@
 // COMPONENTS //
 import ClientIssues from "@/components/case-studies/ClientIssue.astro";
 
-// DATA //
-import { solutionNumbers } from "@/data/case-studies/1";
+// Receive data from the parent page
+const { data } = Astro.props;
 ---
 
 <section id="solution-numbers">
@@ -14,18 +14,18 @@ import { solutionNumbers } from "@/data/case-studies/1";
       id="solution-numbers-header"
       class="text-center text-2xl leading-tight md:text-3xl lg:text-4xl"
     >
-      Limitations That Guided The Process
+      {data.title}
     </p>
 
     <div id="sol-num-wrap" class="flex flex-col gap-5">
       <!-- Iterate through Data -->
       {
-        solutionNumbers.map((solutionNumberItem) => (
+        data.limitations.map((limitationItem: any) => (
           <ClientIssues
-            title={solutionNumberItem.title}
-            description={solutionNumberItem.description}
-            issue={solutionNumberItem.issue}
-            stat={solutionNumberItem.stat}
+            title={limitationItem.name}
+            description={limitationItem.description}
+            issue={limitationItem.metric}
+            stat={limitationItem.value}
           />
         ))
       }

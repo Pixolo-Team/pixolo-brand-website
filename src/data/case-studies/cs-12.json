@@ -197,6 +197,36 @@
           "description": "The success of the feature lies in its simplicity: for the client, launching a new project is literally as easy as creating a new tab in a spreadsheet."
         }
       ]
+    },
+    {
+      "id": "numbers_after_the_solution",
+      "title": "Limitations That Guided The Process",
+      "limitations": [
+        {
+          "name": "Project Timeline",
+          "description": "The project carried a firm deadline, pushing the team to stay aligned and deliver on time.",
+          "metric": "Time taken",
+          "value": "125 Hrs"
+        },
+        {
+          "name": "Phase 1",
+          "description": "Initial planning and research took place, establishing the framework for the project.",
+          "metric": "Time taken",
+          "value": "50 Hrs"
+        },
+        {
+          "name": "Phase 2",
+          "description": "Development and implementation, where the core features were built and tested.",
+          "metric": "Time taken",
+          "value": "75 Hrs"
+        },
+        {
+          "name": "Phase 3",
+          "description": "Final review and adjustments, ensuring everything met the quality standards before the launch.",
+          "metric": "Time taken",
+          "value": "30 Hrs"
+        }
+      ]
     }
   ]
 }
