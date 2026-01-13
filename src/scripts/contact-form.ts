@@ -73,6 +73,11 @@ function validateInput(input: HTMLInputElement): boolean {
     if (!/^[0-9\s\-\+\(\)]+$/.test(value)) {
       errors.push(formErrors.phone.invalidFormat);
     }
+    // Check if phone number has at least 10 digits
+    const digitsOnly = value.replace(/\D/g, "");
+    if (digitsOnly.length < 10) {
+      errors.push(formErrors.phone.lessThanTenDigits);
+    }
   }
 
   // Validation for Email field
