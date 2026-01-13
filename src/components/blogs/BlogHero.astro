@@ -17,7 +17,7 @@ const { post } = Astro.props as Props;
 
 <section>
   <div
-    class="container mx-auto flex flex-col items-center gap-7 px-6 py-24 md:gap-14 md:px-0 md:py-24 lg:py-28"
+    class="container mx-auto flex flex-col items-center gap-7 px-6 py-24 md:gap-14 md:py-24 lg:px-0 lg:py-28"
   >
     <!-- Badge -->
     <ToolBadge icon="package" text={post.category.label} />
@@ -54,7 +54,7 @@ const { post } = Astro.props as Props;
     <Image
       src={post.hero.image}
       alt={post.hero.alt}
-      class="anim-fade-in-up h-[295px] overflow-hidden rounded-3xl object-cover md:h-[650px] lg:h-[650px] lg:rounded-4xl"
+      class="anim-fade-in-up container h-[295px] overflow-hidden rounded-3xl object-contain md:h-[650px] md:rounded-4xl lg:h-[650px]"
       width={1536}
       height={650}
     />
