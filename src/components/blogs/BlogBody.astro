@@ -175,11 +175,11 @@ const { content } = Astro.props as Props;
           if (block.type === "media") {
             if (block.mediaType === "image") {
               return (
-                <div class="anim-fade-up-quick flex flex-col items-center gap-4 object-contain md:gap-5 lg:gap-5">
+                <div class="anim-fade-up-quick container flex flex-col items-center gap-4 object-contain md:gap-5 lg:gap-5">
                   <Image
                     src={block.src}
                     alt={block.alt}
-                    class="h-60 w-full rounded-3xl object-cover md:h-[363px] md:max-w-[768px] lg:h-[594px]"
+                    class="h-60 w-full rounded-3xl object-cover md:h-[363px] lg:h-[594px]"
                     width={995}
                     height={594}
                   />
@@ -194,11 +194,11 @@ const { content } = Astro.props as Props;
               );
             } else if (block.mediaType === "video") {
               return (
-                <div class="anim-fade-up-quick flex w-full flex-col items-center gap-4 overflow-hidden object-contain md:gap-5 lg:gap-5">
+                <div class="anim-fade-up-quick flex w-full flex-col items-center gap-4 overflow-hidden md:gap-5 lg:gap-5">
                   <iframe
                     src={block.videoId}
                     title={block.alt}
-                    class="h-60 w-full rounded-3xl object-cover md:h-[363px] md:max-w-[768px] lg:h-[594px]"
+                    class="h-60 w-full rounded-3xl object-cover md:h-[363px] lg:h-[594px]"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
                   />
