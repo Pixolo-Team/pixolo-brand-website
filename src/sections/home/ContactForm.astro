@@ -144,7 +144,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
           <!-- Submit button-->
           <div class="self-end">
             <!-- Rounded Button component -->
-            <RoundedButton buttonText="Contact Us" type="button" onClick="" />
+            <RoundedButton buttonText="Contact Us" type="submit" aria-label="Send message" />
           </div>
         </form>
       </div>
@@ -153,14 +153,14 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
 </section>
 
 <script>
-   import {
+  import {
     initializeFormValidation,
     initializeCopyButtons,
     initializeFormSubmission,
-  } from "@/scripts/contact-form"; 
-   document.addEventListener("DOMContentLoaded", () => {
+  } from "@/scripts/contact-form";
+  document.addEventListener("DOMContentLoaded", () => {
     initializeFormValidation();
     initializeCopyButtons();
     initializeFormSubmission();
-   });
+  });
 </script>
