@@ -36,7 +36,7 @@ const {
 <section class="w-full">
   <!-- container -->
   <div
-    class="flex w-full flex-col gap-16 px-6 py-20 md:mx-auto md:max-w-[768px] md:px-0 md:py-24 xl:max-w-[1536px] xl:py-28"
+    class="flex w-full flex-col gap-16 px-6 py-20 md:mx-auto md:max-w-3xl md:px-0 md:py-24 xl:max-w-384 xl:py-28"
   >
     <!-- team-container -->
     <div class="flex w-full flex-col gap-10 md:gap-12 xl:gap-12">
@@ -98,11 +98,11 @@ const {
           >
             {
               moreTeamMembers.map((member) => (
-                <div class="flex w-[229px] flex-col gap-3.5">
+                <div class="flex w-57.25 flex-col gap-3.5">
                   <img
                     src={member.image}
                     alt={member.name}
-                    class="h-[198px] w-full rounded-2xl object-cover"
+                    class="h-49.5 w-full rounded-2xl object-cover"
                   />
                   <div class="flex flex-col gap-0.5 px-2.5">
                     <p class="text-n-950 text-xl leading-[125%] font-normal">{member.name}</p>
