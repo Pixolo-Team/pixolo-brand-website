@@ -4,25 +4,26 @@ import SectionHeader from "@/components/ui/SectionHeader.astro";
 import { Image } from "astro:assets";
 
 // DATA //
-import { clientTestimonial } from "@/data/case-studies/case-study-consumption";
+import { clientTestimonialDetails } from "@/data/case-studies/case-study-consumption";
 ---
 
+<!-- Client Testimonial Section -->
 <section id="client-testimonial">
   <div
     class="container mx-auto flex w-full flex-col gap-7 px-6 py-16 md:gap-14 md:py-24 lg:gap-20 lg:py-28"
   >
     <!-- Section Header Component -->
     <SectionHeader
-      sectionTitle="What Our Clients Had To Say"
-      badgeIcon="package"
-      badgeText="What Our Clients Are Saying"
+      sectionTitle={clientTestimonialDetails.title}
+      badgeIcon={clientTestimonialDetails.badgeIcon}
+      badgeText={clientTestimonialDetails.badgeText}
     />
 
-    <!-- Testimonial Content -->
+    <!-- Content -->
     <div
       class="flex w-full flex-col items-center gap-6 md:gap-12 md:px-10 lg:flex-row lg:gap-12 xl:px-16"
     >
-      <!-- Client Testimonial Image -->
+      <!-- Client Image -->
       <div
         class="client-image h-[350px] w-full overflow-hidden rounded-3xl md:h-[734px] md:rounded-4xl lg:h-full lg:w-1/2 lg:rounded-[60px] xl:h-[562px] xl:w-[45%] 2xl:w-[40%]"
       >
@@ -30,27 +31,29 @@ import { clientTestimonial } from "@/data/case-studies/case-study-consumption";
           class="h-full w-full object-cover"
           width={700}
           height={700}
-          src={clientTestimonial.clientImage}
-          alt={clientTestimonial.clientName}
+          src={clientTestimonialDetails.image}
+          alt={clientTestimonialDetails.name}
           loading="lazy"
         />
       </div>
 
-      <!-- Client Testimonial Text -->
+      <!-- Client Information -->
       <div class="flex w-[60%] flex-col gap-5 md:gap-8 lg:justify-center lg:gap-14 xl:gap-20">
-        <!-- Client Name & Role -->
+        <!-- Name -->
         <div class="client-info flex flex-col gap-0.5 leading-tight md:gap-2">
           <p class="text-n-950 text-3xl font-semibold md:text-5xl">
-            {clientTestimonial.clientName}
+            {clientTestimonialDetails.name}
           </p>
-          <p class="text-n-700 text-xs md:text-xl">{clientTestimonial.clientRole}</p>
+
+          <!-- Role -->
+          <p class="text-n-700 text-xs md:text-xl">{clientTestimonialDetails.role}</p>
         </div>
 
-        <!-- Client Message -->
+        <!-- Message -->
         <p
           class="client-message text-n-800 after:bg-n-500 relative text-sm leading-normal tracking-wide after:mx-auto after:mt-9 after:block after:h-[0.7px] after:w-50 md:text-xl md:after:mt-14 md:after:w-[350px] lg:text-2xl lg:after:mt-20"
         >
-          {clientTestimonial.clientMessage}
+          {clientTestimonialDetails.message}
         </p>
       </div>
     </div>

@@ -115,13 +115,18 @@ export const aboutClient = {
   },
 };
 
-export const clientTestimonial = {
-  clientImage: "/images/case-studies/1/client-testimonial-image.jpg",
-  clientName: "Elon Musk",
-  clientRole: "Ceo, Tesla",
-  clientMessage:
+// Client Testimonial Details
+export const clientTestimonialDetails = {
+  badgeIcon: "package",
+  badgeText: "What Our Clients Are Saying",
+  title: "What Our Clients Are Saying",
+  image: "/images/case-studies/case-study-consumption/client-testimonial-image.jpg",
+  name: "Elon Musk",
+  role: "Ceo, Tesla",
+  message:
     "“Pixolo took the time to truly understand our vision and transformed it into something even more refined, impactful, and elevated. Pixolo took the time to truly understand our vision and transformed it into something even more refined, impactful, and elevated.”",
 };
+
 export const toolsUsedDetails = {
   headerText: "The project relied on key tools to deliver effective results",
   toolItems: [
