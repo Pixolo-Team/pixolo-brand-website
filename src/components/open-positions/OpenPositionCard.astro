@@ -1,7 +1,7 @@
 ---
 // OTHERS //
 import RoundedButton from "@/components/ui/RoundedButton.astro";
-import OpenPositionCardTag from "./OpenPositionCardTag.astro";
+import OpenPositionCardTag from "@/components/open-positions/OpenPositionCardTag.astro";
 
 const { category, title, tags = [], ctaText } = Astro.props;
 ---
@@ -32,7 +32,7 @@ const { category, title, tags = [], ctaText } = Astro.props;
     <!-- Tags -->
     <div class="flex flex-col gap-2 md:gap-3 lg:gap-4">
       <!-- Tag -->
-      {tags.map((tag: any) => <OpenPositionCardTag label={tag.label} value={tag.value} />)}
+      {tags.map((tagItem: any) => <OpenPositionCardTag label={tagItem.label} value={tagItem.value} />)}
     </div>
 
     <!-- RoundedButton -->
