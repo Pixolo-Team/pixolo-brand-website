@@ -49,7 +49,7 @@ export const animateNumbersAfterSolution = () => {
 };
 
 /** Animate Tools Used in Case Study */
-export const animateToolsUsed = () => {
+export const animateToolsUsedSection = () => {
   inView("#tools-used-section", (toolsUsedSection) => {
     animate(
       toolsUsedSection?.querySelectorAll(".header-text"),
