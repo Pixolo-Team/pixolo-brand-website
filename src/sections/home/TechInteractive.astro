@@ -11,7 +11,7 @@ import { techInteractiveSectionDetails } from "@/data/tech-interactive";
 <section id="tech-interactive-section">
   <!-- Container -->
   <div
-    class="container mx-auto flex flex-col items-center justify-center gap-36 px-6 pt-16 pb-72 md:gap-32 md:pt-36 md:pb-96 lg:pt-36 lg:pb-96"
+    class="relative z-10 container mx-auto flex flex-col items-center justify-center gap-36 overflow-hidden px-6 pt-16 pb-72 md:gap-32 md:pt-36 md:pb-96 lg:pt-36 lg:pb-90"
   >
     <!-- Header -->
     <div class="flex flex-col items-center justify-center gap-6 md:px-16 lg:gap-7 lg:px-56">
@@ -42,8 +42,16 @@ import { techInteractiveSectionDetails } from "@/data/tech-interactive";
       }
     </div>
 
-    <!-- Tech Badge Component -->
-    <!-- <TechBadge icon="mongo" text="Mongo" backgroundColor="bg-green-700" /> -->
+    <!-- Gravity Tech Badges Container -->
+    <div id="tech-badge-container" class="absolute inset-0 z-0 overflow-hidden">
+      {
+        techInteractiveSectionDetails.techBadges.map((badge) => (
+          <div class="tech-badge-wrapper absolute top-0 left-0 opacity-0">
+            <TechBadge icon={badge.icon} text={badge.name} backgroundColor={badge.color} />
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>
 <style>
@@ -53,7 +61,11 @@ import { techInteractiveSectionDetails } from "@/data/tech-interactive";
   }
 </style>
 <script>
-  import { animateTechInteractiveSection } from "@/scripts/tech-interactive.ts";
+  import {
+    animateTechInteractiveSection,
+    animateGravityEffect,
+  } from "@/scripts/tech-interactive.ts";
 
   animateTechInteractiveSection();
+  animateGravityEffect();
 </script>
