@@ -149,7 +149,7 @@ export const keyTakeaways = [
   {
     title: "Real User Behavior Always Breaks Assumptions",
     description:
-      "Early interviews and usability tests revealed patterns we hadn't anticipated.\n Features we believed were “obvious” turned out to be unclear, and tasks we expected to be simple took users significantly longer.This reinforced the importance of validating every assumption with real users before committing to design or development.",
+      "Early interviews and usability tests revealed patterns we hadn't anticipated. Features we believed were “obvious” turned out to be unclear, and tasks we expected to be simple took users significantly longer.This reinforced the importance of validating every assumption with real users before committing to design or development.",
   },
   {
     title: "Iterative Design: Embrace Continuous Feedback",
