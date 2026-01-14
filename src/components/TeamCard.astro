@@ -14,18 +14,34 @@ const { poster, name, role, className = "" } = Astro.props as Props;
 <div class={`flex w-full flex-col gap-4 md:gap-7 xl:flex-col xl:gap-5 ${className}`}>
   <div class="flex w-full flex-col gap-4 md:gap-7 xl:flex-col xl:gap-5">
     <!-- Media / Video wrapper -->
-    <div class="relative h-[279px] w-full overflow-hidden rounded-3xl md:h-[520px] xl:h-[520px]">
+    <div
+      class="group relative h-[279px] w-full overflow-hidden rounded-3xl md:h-[520px] xl:h-[520px]"
+    >
       <!-- Poster image preview -->
-      <img src={poster} alt={`Portrait of ${name}`} class="h-full w-full object-cover" />
+      <img
+        src={poster}
+        alt={`Portrait of ${name}`}
+        class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
 
-      <!-- Play button -->
+      <!-- Dark overlay on hover -->
+      <div class="bg-n-950/0 group-hover:bg-n-950/30 absolute inset-0 transition-all duration-300">
+      </div>
+
+      <!-- Play button with Watch Video CTA -->
       <button
         type="button"
         aria-label="Play video"
-        class="border-n-950 xl:bg-n-800 absolute right-3 bottom-3 flex size-10 items-center justify-center rounded-full border md:right-5 md:bottom-5 md:size-14 md:border-2 xl:border-0"
+        class="border-n-950 bg-n-50 xl:bg-n-800 group-hover:bg-n-800 absolute right-3 bottom-3 flex flex-col items-center justify-center gap-2 rounded-full border px-4 py-2.5 transition-all duration-300 group-hover:cursor-pointer group-hover:text-white md:right-5 md:bottom-5 md:gap-2.5 md:px-5 md:py-3.5 md:group-hover:scale-110 xl:gap-3 xl:border-0 xl:group-hover:scale-110"
       >
-        <Icon name="play" class="text-n-950 size-[12.26px] md:size-[17.16px]" />
+        <Icon
+          name="play"
+          class="text-n-950 size-[12.26px] transition-colors duration-300 group-hover:text-white md:size-[17.16px] xl:text-white"
+        />
       </button>
+      <span class="text-n-50 hidden text-xs leading-none font-normal group-hover:block xl:block"
+        >Watch Video</span
+      >
     </div>
 
     <!-- Name & role -->
