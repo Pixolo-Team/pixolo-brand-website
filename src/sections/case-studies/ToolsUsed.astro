@@ -1,28 +1,26 @@
 ---
 // COMPONENTS //
-import ToolUsed from "@/components/case-studies/ToolUsed.astro";
+import ToolCard from "@/components/case-studies/ToolCard.astro";
 
 // DATA //
-import { toolsUsed } from "@/data/case-studies/1";
+import { toolsUsedDetails } from "@/data/case-studies/case-study-consumption";
 ---
 
-<section>
-  <div class="container m-auto flex flex-col gap-10 px-6 py-16 md:gap-4 lg:gap-16">
+<section id="tools-used-section">
+  <div class="container mx-auto flex flex-col gap-10 px-6 py-16 md:gap-14 lg:gap-16">
     <!-- Title -->
-    <p class="text-center text-2xl capitalize md:text-3xl lg:text-4xl">
-      The project relied on key tools to deliver effective results
+    <p class="header-text text-center text-2xl capitalize md:text-3xl lg:text-4xl">
+      {toolsUsedDetails.headerText}
     </p>
+
     <!-- Iterating through Data -->
-    <div
-      id="tools-used-wrapper"
-      class="tool-item flex flex-col gap-4 md:gap-9 lg:grid lg:grid-cols-2"
-    >
+    <div class="tool-items flex flex-col gap-4 md:gap-9 lg:grid lg:grid-cols-2">
       {
-        toolsUsed.map((toolUsedItem) => (
-          <ToolUsed
-            toolIcon={toolUsedItem.icon}
-            toolTitle={toolUsedItem.title}
-            toolDescription={toolUsedItem.description}
+        toolsUsedDetails.toolItems.map((toolItem) => (
+          <ToolCard
+            logo={toolItem.logo}
+            title={toolItem.title}
+            description={toolItem.description}
           />
         ))
       }
