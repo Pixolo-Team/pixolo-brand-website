@@ -23,13 +23,13 @@ import { projectIntroductionDetails } from "@/data/project-consumption/projectIn
     <!-- Content -->
     <div class="flex flex-col gap-6 md:gap-9 lg:flex-row lg:gap-14">
       <!-- Project Image -->
-      <div class="h-[195] w-[573]">
+      <div class="h-[195] w-[327] md:h-[429] md:w-[768] lg:w-[573]">
         <Image
           src=`/images/projectintroduction/${projectIntroductionDetails.image}`
           width={1200}
           height={675}
           alt={"FC Barcelona project showcase illustration"}
-          class="anim-fade-up-quick h-full w-full rounded-3xl"
+          class="anim-fade-up-quick h-full w-full rounded-3xl object-cover"
         />
       </div>
       <!-- Project Details -->
@@ -39,7 +39,7 @@ import { projectIntroductionDetails } from "@/data/project-consumption/projectIn
           <h3 class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
             {projectIntroductionDetails.aboutTheProjectHeading}
           </h3>
-          <p class="text-sm leading-normal font-normal md:text-lg lg:text-xl">
+          <p class="color-n-700 text-sm leading-normal font-normal md:text-lg lg:text-xl">
             {projectIntroductionDetails.aboutTheproject}
           </p>
         </div>
@@ -48,7 +48,7 @@ import { projectIntroductionDetails } from "@/data/project-consumption/projectIn
           <h3 class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
             {projectIntroductionDetails.targetAudienceHeading}
           </h3>
-          <p class="text-sm leading-normal font-normal md:text-lg lg:text-xl">
+          <p class="color-n-700 text-sm leading-normal font-normal md:text-lg lg:text-xl">
             {projectIntroductionDetails.targetAudience}
           </p>
         </div>
@@ -57,7 +57,7 @@ import { projectIntroductionDetails } from "@/data/project-consumption/projectIn
           <h3 class="text-base leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
             {projectIntroductionDetails.purposeHeading}
           </h3>
-          <p class="text-sm leading-normal font-normal md:text-lg lg:text-xl">
+          <p class="color-n-700 text-sm leading-normal font-normal md:text-lg lg:text-xl">
             {projectIntroductionDetails.purpose}
           </p>
         </div>
