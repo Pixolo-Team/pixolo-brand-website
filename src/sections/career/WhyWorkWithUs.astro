@@ -1,29 +1,66 @@
 ---
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
+
+const projectHighlights = [
+  { id: "01", title: "Ownership Over Work And Decisions" },
+  { id: "02", title: "Creative Freedom" },
+  { id: "03", title: "Learning By Doing, Not Watching" },
+  { id: "04", title: "Clear, Honest Feedback" },
+  { id: "05", title: "High Standards, Real Support" },
+  { id: "06", title: "Leadership Isn’t A Title Here" },
+  { id: "07", title: "People First, Always" },
+];
 ---
 
 <section>
-  <!-- Container -->
   <div class="container mx-auto flex flex-col gap-10 px-6 py-16">
-    <!-- Header Section -->
     <div class="flex flex-col items-center gap-3.5">
       <ToolBadge icon="package" text="Your Growth Starts Here" />
       <p class="text-center text-2xl leading-tight font-normal tracking-[-0.02em]">
         A friendly, flexible environment built for your best work.
       </p>
     </div>
-    <!-- Content Wrap -->
-    <div class="flex flex-col">
-      <div class="rounded-4xl">
+
+    <div class="mx-auto flex w-full flex-col gap-9">
+      <div class="overflow-hidden rounded-4xl">
         <Image
-          src={"images/career/why-work-with-us/why-work-with-us-default.jpg"}
-          width={1200}
-          height={675}
+          src={"/images/career/why-work-with-us/why-work-with-us-default.jpg"}
+          width={100}
+          height={100}
           alt={"why-work-with-us-default"}
+          class={"object-cover w-full"}
         />
       </div>
-      <div></div>
+
+      <div class="flex w-full flex-col">
+        <div class="flex w-full flex-col">
+          {
+            projectHighlights.map((item) => (
+              <div class="flex w-full items-start justify-between gap-2.5">
+                {/* Left side: Number stays fixed to the left */}
+                <span class="flex shrink-0 flex-col self-end text-lg leading-relaxed font-normal tracking-[-0.02em] capitalize">
+                  {item.id}
+                </span>
+
+                {/* Right side: flex-1 makes this container fill all remaining space */}
+                <div class="flex flex-1 flex-col gap-4">
+                  <div class="border-n-700 flex w-full flex-col border-b py-3 pr-1.5">
+                    <p class="text-n-700 text-right text-base leading-tight font-normal tracking-normal capitalize">
+                      {item.title}
+                    </p>
+                  </div>
+
+                  {/* Hidden text remains right-aligned if shown */}
+                  <p class="hidden text-right text-lg leading-tight font-normal tracking-normal text-white not-italic">
+                    Pages load instantly, keeping visitors engaged instead of frustrated
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
     </div>
   </div>
 </section>
