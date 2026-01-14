@@ -1,15 +1,15 @@
 ---
 // COMPONENTS //
-import SectionHeader from "@/components/SectionHeader.astro";
-import Image from "astro/components/Image.astro";
+import SectionHeader from "@/components/ui/SectionHeader.astro";
+import { Image } from "astro:assets";
 
 // DATA //
-import { clientTestimonial } from "@/data/case-studies/1";
+import { clientTestimonial } from "@/data/case-studies/case-study-consumption";
 ---
 
 <section id="client-testimonial">
   <div
-    class="container m-auto flex flex-col gap-7 overflow-hidden px-6 py-16 md:w-3xl md:gap-14 md:py-24 lg:w-[1536px] lg:gap-20 lg:py-28"
+    class="container mx-auto flex w-full flex-col gap-7 px-6 py-16 md:gap-14 md:py-24 lg:gap-20 lg:py-28"
   >
     <!-- Section Header Component -->
     <SectionHeader
@@ -19,21 +19,27 @@ import { clientTestimonial } from "@/data/case-studies/1";
     />
 
     <!-- Testimonial Content -->
-    <div class="flex flex-col items-center gap-8 md:gap-12 md:px-10 lg:flex-row lg:gap-14">
+    <div
+      class="flex w-full flex-col items-center gap-6 md:gap-12 md:px-10 lg:flex-row lg:gap-12 xl:px-16"
+    >
       <!-- Client Testimonial Image -->
-      <Image
-        id="client-testimonial-image"
-        class="rounded-3xl opacity-0 md:rounded-4xl lg:rounded-[60px]"
-        width={700}
-        height={700}
-        src={clientTestimonial.clientImage}
-        alt={clientTestimonial.clientName}
-      />
+      <div
+        class="client-image h-[350px] w-full overflow-hidden rounded-3xl md:h-[734px] md:rounded-4xl lg:h-full lg:w-1/2 lg:rounded-[60px] xl:h-[562px] xl:w-[45%] 2xl:w-[40%]"
+      >
+        <Image
+          class="h-full w-full object-cover"
+          width={700}
+          height={700}
+          src={clientTestimonial.clientImage}
+          alt={clientTestimonial.clientName}
+          loading="lazy"
+        />
+      </div>
 
       <!-- Client Testimonial Text -->
-      <div class="flex flex-col gap-5 md:gap-8 lg:justify-center lg:gap-20">
+      <div class="flex w-[60%] flex-col gap-5 md:gap-8 lg:justify-center lg:gap-14 xl:gap-20">
         <!-- Client Name & Role -->
-        <div id="client-info" class="flex flex-col gap-0.5 leading-tight opacity-0 md:gap-2">
+        <div class="client-info flex flex-col gap-0.5 leading-tight md:gap-2">
           <p class="text-n-950 text-3xl font-semibold md:text-5xl">
             {clientTestimonial.clientName}
           </p>
@@ -42,8 +48,7 @@ import { clientTestimonial } from "@/data/case-studies/1";
 
         <!-- Client Message -->
         <p
-          id="client-message"
-          class="text-n-800 after:bg-n-500 relative text-sm leading-normal tracking-wide opacity-0 after:mx-auto after:mt-9 after:block after:h-[0.7px] after:w-50 md:text-xl md:after:mt-14 md:after:w-[350px] lg:text-2xl lg:after:mt-20"
+          class="client-message text-n-800 after:bg-n-500 relative text-sm leading-normal tracking-wide after:mx-auto after:mt-9 after:block after:h-[0.7px] after:w-50 md:text-xl md:after:mt-14 md:after:w-[350px] lg:text-2xl lg:after:mt-20"
         >
           {clientTestimonial.clientMessage}
         </p>
@@ -51,16 +56,20 @@ import { clientTestimonial } from "@/data/case-studies/1";
     </div>
   </div>
 </section>
-
 <style>
-  #client-testimonial-image {
+  .client-image {
     transform: translateX(-100px);
     opacity: 0;
   }
 
-  #client-info,
-  #client-message {
+  .client-info,
+  .client-message {
     transform: translateX(100px);
     opacity: 0;
   }
 </style>
+<script>
+  import { animateClientTestimonial } from "@/scripts/case-studies";
+
+  animateClientTestimonial();
+</script>

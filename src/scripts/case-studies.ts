@@ -48,19 +48,31 @@ export const animateNumbersAfterSolution = () => {
   );
 };
 
-/**Animate the Client Testimonial Image  */
-inView("#client-testimonial", () => {
-  // Client Image Slide from Left
-  animate("#client-testimonial-image", { x: 0, opacity: 1 }, { duration: 0.4 }).finished.then(
-    () => {
-      // Animate Client Name & Title
-      animate("#client-info", { x: 0, opacity: 1 }, { duration: 0.4 }).finished.then(() => {
-        // Animate Client Message
-        animate("#client-message", { x: 0, opacity: 1 }, { duration: 0.4 });
-      });
-    },
-  );
-});
+/** Animate the Client Testimonial */
+export const animateClientTestimonial = () => {
+  inView("#client-testimonial", (clientTestimonials) => {
+    // Client Image Slide from Left
+    animate(
+      clientTestimonials?.querySelectorAll(".client-image"),
+      { x: 0, opacity: 1 },
+      { duration: 0.6 },
+    );
+
+    // Client Info Slide from Left
+    animate(
+      clientTestimonials?.querySelectorAll(".client-info"),
+      { x: 0, opacity: 1 },
+      { duration: 0.8, delay: 0.6 },
+    );
+
+    // Client Message Slide from Right
+    animate(
+      clientTestimonials?.querySelectorAll(".client-message"),
+      { x: 0, opacity: 1 },
+      { duration: 0.8, delay: 0.8 },
+    );
+  });
+};
 
 /** Animate Tools Used in Case Study */
 export const animateToolsUsedSection = () => {
