@@ -1,6 +1,7 @@
 export const projectIntroductionDetails = {
-  heading: "Inside the Build: A Clear and Creative Project Walkthrough",
-  image: "upscale_image.jpg",
+  title: "Inside the Build: A Clear and Creative Project Walkthrough",
+  image: "/images/portfolio-consumption/project-introduction-deafult.jpg",
+  badgeText: "Summary",
   aboutTheProjectHeading: "About this project",
   aboutTheproject:
     "FC Barcelona is a legendary football club known for its winning spirit, iconic players,and dynamic, attacking style of play. Inspired by a strong culture and global fanbase, the club continues to set standards in modern football.",

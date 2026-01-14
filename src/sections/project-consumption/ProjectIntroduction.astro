@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 import { projectIntroductionDetails } from "@/data/project-consumption/projectIntroduction.ts";
 ---
 
-<section>
+<section id="project-introduction">
   <!-- Project Introduction Section -->
   <div
     class="container mx-auto flex flex-col gap-7 px-6 py-16 md:gap-12 md:px-0 md:py-24 lg:gap-16 lg:py-28"
@@ -13,50 +13,52 @@ import { projectIntroductionDetails } from "@/data/project-consumption/projectIn
     <!-- Heading -->
     <div class="flex flex-col items-center gap-3 md:gap-4">
       <!-- Tool Badge -->
-      <ToolBadge icon="service-icon" text="Summary" />
+      <div class="tool-badge">
+        <ToolBadge icon="service-icon" text={projectIntroductionDetails.badgeText} />
+      </div>
       <p
-        class="anim-fade-in-right text-center text-3xl leading-tight font-normal tracking-[-2px] md:text-4xl lg:text-5xl"
+        class="anim-fade-up-slow text-center text-3xl leading-tight font-normal tracking-[-2px] md:text-4xl lg:text-5xl"
       >
-        {projectIntroductionDetails.heading}
+        {projectIntroductionDetails.title}
       </p>
     </div>
     <!-- Content -->
     <div class="flex flex-col gap-6 md:gap-9 lg:flex-row lg:gap-14">
       <!-- Project Image -->
-      <div class="h-[195] w-[327] md:h-[429] md:w-[768] lg:w-[573]">
+      <div class="image overflow-hidden rounded-3xl">
         <Image
-          src=`/images/projectintroduction/${projectIntroductionDetails.image}`
+          src={projectIntroductionDetails.image}
           width={1200}
           height={675}
           alt={"FC Barcelona project showcase illustration"}
-          class="anim-fade-up-quick h-full w-full rounded-3xl object-cover"
+          class="h-full w-full object-cover"
         />
       </div>
       <!-- Project Details -->
       <div class="flex flex-1 flex-col gap-7 md:gap-10 lg:gap-20">
         <!-- About Project -->
-        <div class="anim-fade-in-right flex flex-col gap-1 delay-[300ms] md:gap-2 lg:gap-2.5">
-          <h3 class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
+        <div class="anim-fade-in-right flex flex-col gap-1 delay-[400ms] md:gap-2 lg:gap-2.5">
+          <p class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
             {projectIntroductionDetails.aboutTheProjectHeading}
-          </h3>
+          </p>
           <p class="color-n-700 text-sm leading-normal font-normal md:text-lg lg:text-xl">
             {projectIntroductionDetails.aboutTheproject}
           </p>
         </div>
         <!-- Target Audience -->
         <div class="anim-fade-in-right flex flex-col gap-1 delay-[500ms] md:gap-2 lg:gap-2.5">
-          <h3 class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
+          <p class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
             {projectIntroductionDetails.targetAudienceHeading}
-          </h3>
+          </p>
           <p class="color-n-700 text-sm leading-normal font-normal md:text-lg lg:text-xl">
             {projectIntroductionDetails.targetAudience}
           </p>
         </div>
         <!-- Purpose  -->
         <div class="anim-fade-in-right flex flex-col gap-1 delay-[700ms] md:gap-2 lg:gap-2.5">
-          <h3 class="text-base leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
+          <p class="text-base leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
             {projectIntroductionDetails.purposeHeading}
-          </h3>
+          </p>
           <p class="color-n-700 text-sm leading-normal font-normal md:text-lg lg:text-xl">
             {projectIntroductionDetails.purpose}
           </p>
@@ -65,3 +67,8 @@ import { projectIntroductionDetails } from "@/data/project-consumption/projectIn
     </div>
   </div>
 </section>
+
+<script>
+  import { animateProjectIntroduction } from "@/scripts/portfolio-consumption/project-introduction";
+  animateProjectIntroduction();
+</script>
