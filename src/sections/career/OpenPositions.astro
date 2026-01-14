@@ -8,32 +8,31 @@ import { openPositions } from "@/data/career/open-positions";
 ---
 
 <!-- Open Positions Section -->
-<section>
+<section id="open-positions-section">
   <!-- Container -->
   <div
     class="container mx-auto flex flex-col gap-9 px-6 py-16 md:gap-11 md:px-0 md:py-24 lg:gap-14 lg:py-28"
   >
     <!-- ToolBadge and Title -->
-    <div class="flex  lg:w-[75%] flex-col items-center gap-4 self-center text-center lg:gap-5">
+    <div class="tool-badge flex flex-col items-center gap-4 self-center text-center lg:w-[75%] lg:gap-5">
       <!-- TollBagde -->
       <ToolBadge icon={openPositions.toolBadgeIcon} text={openPositions.toolBadgeText} />
 
       <!-- Title -->
-      <p
-        class="open-positions-heading font-regular text-2xl leading-tight tracking-[-0.02em] md:text-4xl lg:text-5xl"
+      <p id="open-positions-heading"
+        class="font-regular text-2xl leading-tight tracking-[-0.02em] md:text-4xl lg:text-5xl"
       >
         {openPositions.title}
       </p>
     </div>
 
     <!-- Cards -->
-    <div class="flex flex-wrap justify-center gap-4 lg:gap-10 ">
+    <div class="open-position-cards flex flex-wrap justify-center gap-4 lg:gap-10">
       {
-        openPositions.positions.map((position, index) => (
+        openPositions.positions.map((position) => (
           // Card
           <div
-            class="open-positions-card md:min-w-[360px] lg:min-w-[480px] flex-grow-1 min-w-[327px] md:max-w-[377px]"
-            style={`--delay: ${index * 0.3}s`}
+            class="open-position-card min-w-[327px] flex-grow-1 md:max-w-[377px] md:min-w-[360px] lg:min-w-[480px]"
           >
             <OpenPositionCard
               category={position.category}
@@ -47,7 +46,7 @@ import { openPositions } from "@/data/career/open-positions";
     </div>
   </div>
 </section>
-
+<!-- 
 <style>
   @keyframes fadeIn {
     from {
@@ -59,4 +58,8 @@ import { openPositions } from "@/data/career/open-positions";
       transform: translateY(0);
     }
   }
-</style>
+</style> -->
+<script>
+  import { animateOpenPositionsSection } from "@/scripts/career/open-positions";
+  animateOpenPositionsSection();
+</script>
