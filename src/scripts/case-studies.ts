@@ -81,7 +81,7 @@ export const animateHeroImageLink = () => {
       }
 
       // Get label dimensions
-      const labelWidth = customCursor.offsetWidth;git 
+      const labelWidth = customCursor.offsetWidth;
 
       // Calculate position with 20px offset below cursor
       let finalX = x;
