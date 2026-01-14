@@ -1,0 +1,33 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { caseStudyId: "1" } },
+    { params: { caseStudyId: "2" } },
+    { params: { caseStudyId: "3" } },
+  ];
+}
+
+const { caseStudyId } = Astro.params;
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+
+// SECTIONS //
+import Numbers from "@/sections/case-studies/Numbers.astro";
+import ClientVision from "@/sections/case-studies/ClientVision.astro";
+import Solutions from "@/sections/case-studies/Solutions.astro";
+import Issues from "@/sections/case-studies/Issues.astro";
+import AboutTheClient from "@/sections/case-studies/AboutTheClient.astro";
+import ToolsUsed from "@/sections/case-studies/ToolsUsed.astro";
+import SolutionNumbers from "@/sections/case-studies/SolutionNumbers.astro";
+---
+
+<Layout>
+  <Numbers />
+  <ClientVision />
+  <Issues />
+  <AboutTheClient />
+  <ToolsUsed />
+  <Solutions />
+  <SolutionNumbers />
+</Layout>
