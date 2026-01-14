@@ -1,42 +1,38 @@
 ---
-import ToolBadge from "@/components/ToolBadge.astro";
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
 
+// DATA //
 import { projectIntroductionDetails } from "@/data/project-consumption/projectIntroduction.ts";
 ---
 
 <section id="project-introduction">
-  <!-- Project Introduction Section -->
   <div
     class="container mx-auto flex flex-col gap-7 px-6 py-16 md:gap-12 md:px-0 md:py-24 lg:gap-16 lg:py-28"
   >
-    <!-- Heading -->
     <div class="flex flex-col items-center gap-3 md:gap-4">
-      <!-- Tool Badge -->
       <div class="tool-badge">
         <ToolBadge icon="service-icon" text={projectIntroductionDetails.badgeText} />
       </div>
       <p
-        class="anim-fade-up-slow text-center text-3xl leading-tight font-normal tracking-[-2px] md:text-4xl lg:text-5xl"
+        id="header-text"
+        class="text-center text-3xl leading-tight font-normal tracking-[-2px] md:text-4xl lg:text-5xl"
       >
         {projectIntroductionDetails.title}
       </p>
     </div>
-    <!-- Content -->
     <div class="flex flex-col gap-6 md:gap-9 lg:flex-row lg:gap-14">
-      <!-- Project Image -->
-      <div class="image overflow-hidden rounded-3xl">
+      <div class="image overflow-hidden rounded-3xl lg:w-1/2">
         <Image
           src={projectIntroductionDetails.image}
           width={1200}
           height={675}
           alt={"FC Barcelona project showcase illustration"}
-          class="h-full w-full object-cover"
+          class="anim-fade-up-quick h-full w-full object-cover"
         />
       </div>
-      <!-- Project Details -->
       <div class="flex flex-1 flex-col gap-7 md:gap-10 lg:gap-20">
-        <!-- About Project -->
         <div class="anim-fade-in-right flex flex-col gap-1 delay-[400ms] md:gap-2 lg:gap-2.5">
           <p class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
             {projectIntroductionDetails.aboutTheProjectHeading}
@@ -45,7 +41,6 @@ import { projectIntroductionDetails } from "@/data/project-consumption/projectIn
             {projectIntroductionDetails.aboutTheproject}
           </p>
         </div>
-        <!-- Target Audience -->
         <div class="anim-fade-in-right flex flex-col gap-1 delay-[500ms] md:gap-2 lg:gap-2.5">
           <p class="leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
             {projectIntroductionDetails.targetAudienceHeading}
@@ -54,8 +49,7 @@ import { projectIntroductionDetails } from "@/data/project-consumption/projectIn
             {projectIntroductionDetails.targetAudience}
           </p>
         </div>
-        <!-- Purpose  -->
-        <div class="anim-fade-in-right flex flex-col gap-1 delay-[700ms] md:gap-2 lg:gap-2.5">
+        <div class="anim-fade-in-right flex flex-col gap-1 delay-[600ms] md:gap-2 lg:gap-2.5">
           <p class="text-base leading-tight font-medium tracking-normal md:text-xl lg:text-2xl">
             {projectIntroductionDetails.purposeHeading}
           </p>

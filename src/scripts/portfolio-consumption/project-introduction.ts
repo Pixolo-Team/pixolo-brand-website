@@ -18,6 +18,11 @@ export const animateProjectIntroduction = () => {
         { duration: 0.6, delay: 0.3 }, // Starts slightly after header
       );
     }
+    animate(
+      projectIntroductionSection?.querySelectorAll("#header-text"),
+      { opacity: [0, 1], y: ["50px", 0], scaleY: [0.4, 1] },
+      { duration: 0.8, delay: 0.4 },
+    );
   });
 };
 

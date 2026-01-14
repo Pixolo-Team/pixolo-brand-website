@@ -1,0 +1,36 @@
+---
+// COMPONENTS //
+import { Image } from "astro:assets";
+
+interface Props {
+  logo: string;
+  title: string;
+  description: string;
+}
+
+const { logo, title, description } = Astro.props;
+---
+
+<div
+  class="tool-item border-n-700 flex flex-col gap-3.5 rounded-4xl border px-3.5 pt-3 pb-4 md:flex-row md:items-center md:gap-8 md:rounded-full md:py-2 md:pr-9 md:pl-2 xl:gap-9"
+>
+  <div
+    class="border-n-500 flex items-center gap-1 md:size-32 md:flex-col-reverse md:justify-center md:rounded-full md:border lg:size-36"
+  >
+    <!-- Logo -->
+    <Image
+      src={logo}
+      width={56}
+      height={56}
+      alt={title}
+      class="w-8 object-contain md:w-12 lg:w-14"
+      loading="lazy"
+    />
+
+    <!-- Title -->
+    <p class="text-n-950 text-sm font-medium text-nowrap md:text-xl">{title}</p>
+  </div>
+
+  <!-- Description -->
+  <p class="text-n-800 flex-1 text-sm leading-tight md:text-lg lg:text-xl">{description}</p>
+</div>

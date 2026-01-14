@@ -1,0 +1,117 @@
+---
+// COMPONENTS //
+import ArticleCard from "@/components/ArticleCard.astro";
+import ProjectCard from "@/components/portfolio/ProjectCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+// SVG's //
+import Ball from "@/assets/3d-ball.svg";
+
+// DATA //
+import { portfolioSectionDetails } from "@/data/portfolio.ts";
+---
+
+<!-- Portfolio Section -->
+<section id="portfolio-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-20 px-6 py-16 md:gap-28 md:py-28 lg:gap-40 lg:px-14 lg:py-52"
+  >
+    <!-- Header -->
+    <div
+      id="portfolio-wrapper"
+      class="relative flex flex-col items-center justify-center gap-5 md:gap-6 lg:gap-7"
+    >
+      <div class="tool-badge">
+        <ToolBadge
+          icon={portfolioSectionDetails.badgeIcon}
+          text={portfolioSectionDetails.badgeTitle}
+        />
+      </div>
+
+      <!-- Header Text -->
+      <div
+        class="header-text z-10 flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-8xl"
+      >
+        <p class="text-balance">{portfolioSectionDetails.title}</p>
+        <p class="bg-gradient-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent">
+          {portfolioSectionDetails.highlight}
+        </p>
+      </div>
+
+      <!-- Absolute images -->
+      <Image
+        id="big-marble-portfolio"
+        src={Ball}
+        alt="Big Marble"
+        class="absolute top-[22%] left-6 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
+      />
+      <Image
+        id="small-marble-portfolio"
+        src={Ball}
+        alt="Small Marble"
+        class="absolute right-[10%] bottom-[46%] w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
+        style="animation-duration: 4s"
+      />
+    </div>
+
+    <!-- Tile Wrapper -->
+    <div class="project-card-wrapper flex flex-col gap-10">
+      {
+        portfolioSectionDetails.projectCardItems.map((projectCardItem, index) => {
+          const topOffset = 20 + index * 20; // 20vh, 40vh, 60vh...
+
+          return (
+            <div class="project-card sticky" style={`top: ${topOffset}vh; margin-top: `}>
+              <ProjectCard
+                brandColor={projectCardItem.brandColor}
+                brandName={projectCardItem.brandName}
+                image={projectCardItem.image}
+                logo={projectCardItem.logo}
+                title={projectCardItem.title}
+                subtitle={projectCardItem.subtitle}
+                badges={projectCardItem.badges}
+              />
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <!-- Article Cards -->
+    <div class="grid grid-cols-1 gap-24 lg:grid-cols-2 lg:gap-20 xl:gap-28 2xl:gap-32">
+      {
+        portfolioSectionDetails.articleCardItems.map((articleCardItem) => (
+          <ArticleCard
+            thumbnail={articleCardItem.thumbnail}
+            brandName={articleCardItem.brandName}
+            chipItems={articleCardItem.chipItems}
+            title={articleCardItem.title}
+            animateClass={"anim-fade-in-up"}
+            ctaText={articleCardItem.ctaText}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+<style>
+  .project-card-wrapper {
+    position: relative;
+  }
+
+  .project-card {
+    position: sticky;
+    z-index: 10;
+  }
+</style>
+<script>
+  // OTHERS //
+  import { animateMarble } from "@/scripts/hero";
+  import { animatePortfolioSection } from "@/scripts/portfolio";
+
+  animateMarble("big-marble-portfolio", "portfolio-wrapper");
+  animateMarble("small-marble-portfolio", "portfolio-wrapper");
+  animatePortfolioSection();
+</script>
