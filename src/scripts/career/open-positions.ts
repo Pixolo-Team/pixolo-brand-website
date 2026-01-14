@@ -20,17 +20,22 @@ export const animateOpenPositionsSection = () => {
   });
 
   // Detect when the Cards come into the Screen
-  inView(
-    ".open-position-card",
-    (card) => {
+  const cards = document.querySelectorAll(".open-position-card");
+
+  cards.forEach((card, index) => {
+    const calculatedDelay = index < 3 ? index * 0.2 : 0;
+
+    // Card animation
+    inView(card, (element) => {
       animate(
-        card,
+        element,
         { opacity: [0, 1], y: [30, 0] },
         {
           duration: 0.8,
+          delay: calculatedDelay,
           easing: [0.22, 1, 0.36, 1],
         },
       );
-    },
-  );
+    });
+  });
 };
