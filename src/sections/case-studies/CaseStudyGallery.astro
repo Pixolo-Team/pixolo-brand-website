@@ -18,6 +18,7 @@ import { clientGalleryImages } from "@/data/case-studies/1";
       badgeIcon="package"
       badgeText="Visual Highlights"
       sectionTitle="Our Journey, Captured In Powerful Frames"
+      sectionTitleClass="text-2xl"
     />
 
     <!-- Image Slideshow -->
@@ -26,17 +27,15 @@ import { clientGalleryImages } from "@/data/case-studies/1";
         id="embla-cs-gallery-slider"
         class="overflow-hidden rounded-2xl md:rounded-4xl lg:rounded-[60px]"
       >
-
         <!-- Embla Slide Container -->
         <div class="flex">
-          
           <!-- Iterating through Data & Embla Slides-->
           {
             clientGalleryImages.map((clientGalleryImageItem) => (
               // TODO: Fix the Alt prop value below //
               <div class="flex-none basis-full">
                 <Image
-                  class="h-auto w-full rounded-3xl md:rounded-4xl lg:rounded-[60px]"
+                  class="h-auto w-full rounded-3xl md:h-[350px] md:rounded-4xl lg:h-[665px] lg:rounded-[60px]"
                   width={700}
                   height={700}
                   src={clientGalleryImageItem.imagePath}
@@ -50,7 +49,7 @@ import { clientGalleryImages } from "@/data/case-studies/1";
 
       <!-- ARROWS -->
       <div
-        class="right-0 flex justify-end gap-2 px-2 md:absolute md:bottom-5 md:gap-4 md:px-5 lg:gap-5 lg:px-7"
+        class="right-0 flex justify-end gap-2 px-2 md:absolute md:bottom-5 md:gap-4 md:px-5 lg:bottom-9 lg:gap-5 lg:px-7"
       >
         <!-- Previous Button -->
         <button
