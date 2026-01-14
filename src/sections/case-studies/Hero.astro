@@ -45,12 +45,12 @@ import { clientHero } from "@/data/case-studies/1";
         alt={clientHero.mainImageAlt}
         width={1536}
         height={616}
-        class="w-fit cursor-none rounded-3xl object-cover md:h-80 md:rounded-4xl lg:h-[616px] lg:rounded-[60px]"
+        class="w-fit rounded-3xl object-cover md:h-80 md:rounded-4xl lg:h-[616px] lg:rounded-[60px]"
         id="main-image"
       />
 
       <!-- Visit Website Hover Feature -->
-      <div id="custom-cursor" class="fixed z-50 hidden">
+      <div id="custom-cursor" class="pointer-events-none absolute z-50 hidden -translate-x-1/2">
         <div class="bg-n-50 inline-flex items-center justify-center rounded-3xl px-4 py-2.5">
           <div class="text-n-950 text-center leading-tight whitespace-nowrap">Visit Website</div>
         </div>
@@ -60,7 +60,7 @@ import { clientHero } from "@/data/case-studies/1";
 </section>
 
 <script>
-  import { hoverHeroImageLink } from "@/scripts/case-studies";
+  import { animateHeroImageLink } from "@/scripts/case-studies";
 
-  hoverHeroImageLink();
+  animateHeroImageLink();
 </script>
