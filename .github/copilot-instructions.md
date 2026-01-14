@@ -1,3 +1,8 @@
+---
+applyTo: "**"
+priority: 1
+---
+
 # Pixolo Brand Website - Copilot Instructions
 
 ## Project Overview
@@ -10,6 +15,139 @@ This is the brand website for Pixolo Technologies, built with Astro 5.15.3 and T
 **Node.js Version:** v20.19.5  
 **npm Version:** 10.8.2
 
+# Global Engineering & Code Quality Rules
+
+## 📌 Import Rules
+
+- All imports must use project aliases (e.g., `@/components/...`), never relative paths like `../../`.
+
+## 📁 File Naming Rules
+
+- All filenames **must be kebab-case**.
+- UI components (`.astro`, `.tsx`) **may be PascalCase**.
+- File names must be correctly **singular or plural**, depending on purpose.
+- TypeScript files should include a suffix describing purpose:
+  - `*.util.ts`
+  - `*.service.ts`
+  - `*.helper.ts`
+  - `*.controller.ts`
+  - etc.
+
+## 🧼 Clean Code
+
+- Break code into smaller files—avoid mixing HTML, CSS, JS unless required by the framework.
+- Maintain clean spacing: leave intentional blank lines for readability.
+- Folders should be structured logically by feature or domain.
+- Use comments to explain **major steps**, functions, and logic flow.
+- Every function must include at least a **one-line JSDoc** above it.
+- Break HTML sections using comments; each HTML comment must have **one empty line above it**.
+
+## 📌 Naming Conventions
+
+- Never use vague names like `status`, `message`, `data`.  
+  Use descriptive names such as `activeStatus`, `errorPopup`, `finalResponseData`.
+- All **types & interfaces** must be PascalCase and end with `Data`.  
+  Examples:
+  - `UserData`
+  - `ProductResponseData`
+- Normal variables must be camelCase.
+
+## 🎯 Decision Rules
+
+- Variable names should be **singular** unless representing a list.
+- Use **JPG** for images unless transparency is required → then use PNG/SVG.
+
+## 🧠 Map Iteration Rules
+
+When using `.map()` in UI code:
+
+- The iterated variable must have plural list name + `Item`.  
+  Example:
+
+  ```ts
+  clients.map((clientItem, clientIndex) => ...)
+  ```
+
+## 🧩 Function Definition Rule
+
+All functions must follow this exact format:
+
+```ts
+const functionName = () => {
+  // logic
+};
+```
+
+- All functions must follow this exact format:
+
+---
+
+# ✅ **FILE 2: `.github/instructions/code-completion.md`**
+
+````md
+---
+applyTo: "**"
+includeAgent: "code-completion"
+priority: 2
+---
+
+# Copilot Code Completion Rules
+
+## 🧩 Imports
+
+- Always use `@` alias. Never generate `../..` style imports.
+
+## 🧪 File Structure
+
+- Auto-split components, styles, utils, and services into separate files.
+- Suggest folder structures automatically when files get too large.
+
+## 🧼 Cleanliness
+
+- Encourage blank lines between conceptual blocks.
+- Add meaningful inline comments automatically.
+- Add HTML section comments with one empty line above.
+
+## 🧠 Naming
+
+- Use descriptive variable names.
+- CamelCase for variables.
+- PascalCase + `Data` suffix for interfaces & types.
+- Always prefer meaningful plurals/singulars.
+
+## 🔁 Map conventions
+
+```ts
+arrayItems.map((arrayItem, arrayIndex) => ...)
+```
+````
+
+## 🧩 Function Format (mandatory)
+
+```ts
+const functionName = () => {
+  // logic
+};
+```
+
+## 🎨 Assets
+
+- Default image output as JPG unless transparency must be preserved.
+
+---
+
+# ✅ **RESULT**
+
+With this setup:
+
+- Copilot Chat follows rules
+- Code completion in VS Code follows rules
+- PR Review Comments follow rules
+- Both global + coding-specific instructions remain separate
+- Strong enforcement of file naming, imports, structure, comments, JS Docs, maps, and function style
+
+---
+
 ## Build & Development Workflow
 
 ### Initial Setup
@@ -19,6 +157,8 @@ This is the brand website for Pixolo Technologies, built with Astro 5.15.3 and T
 ```bash
 npm install
 ```
+
+````
 
 This takes approximately 30-40 seconds and installs 389+ packages. Lock files are in .gitignore (marked as optional), so npm will generate package-lock.json locally during install.
 
@@ -311,3 +451,4 @@ These instructions have been thoroughly validated by:
 - You need to verify information that seems outdated
 
 When in doubt, test the build first - it's fast (~1-2 seconds) and will catch most issues immediately.
+````

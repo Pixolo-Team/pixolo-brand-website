@@ -1,35 +1,176 @@
 ---
 // COMPONENTS //
-import RetainershipCard from "@/components/retainership/RetainershipCard.astro";
-import RetainershipEmployeeCard from "@/components/retainership/RetainershipEmployeeCard.astro";
-import StepItem from "@/components/retainership/StepItem.astro";
+import RetainershipCard from "@/components/retainer/RetainershipCard.astro";
+import RetainershipEmployeeCard from "@/components/retainer/RetainershipEmployeeCard.astro";
+import Slab from "@/components/retainer/Slab.astro";
+import StepItem from "@/components/retainer/StepItem.astro";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// DATA //
+import { retainershipDetails } from "@/data/retainership";
+
 ---
 
-<!-- Step Item -->
-<StepItem
-  number="01"
-  title="Tell us what you need"
-  description="We understand your project and match you with the right expert."
-  direction="ltr"
-/>
+<section id="retainership-section">
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-40 overflow-hidden px-6 py-40 md:gap-48 md:px-0 lg:gap-60 lg:px-8"
+  >
+    <!-- Top Half Section -->
+    <div class="flex w-full flex-col items-center gap-20 lg:gap-24">
+      <!-- Section Header -->
+      <div class="flex w-full flex-col items-center gap-7">
+        <!-- Tool badge component -->
+        <div class="tool-badge">
+          <ToolBadge icon={retainershipDetails.badgeIcon} text={retainershipDetails.badgeTitle} />
+        </div>
 
-<StepItem
-  number="02"
-  title="Sign one simple contract"
-  description="No hiring HR, or paperwork hassles - we handle it all."
-  direction="rtl"
-/>
+        <!-- Section Title -->
+        <p
+          id="header-text"
+          class="text-n-950 text-center text-2xl leading-tight font-medium tracking-normal md:max-w-[65%] md:text-4xl lg:max-w-[874px] lg:text-[64px]"
+        >
+          {retainershipDetails.title}
+        </p>
+      </div>
 
-<RetainershipCard
-  number="1"
-  title="Designer"
-  description="We provide the best of the best designer. We would love to share you more details."
-/>
+      <!-- Steps Title -->
+      <div class="flex w-full flex-col items-center gap-10 md:gap-7">
+        <p class="text-n-950 text-center text-2xl leading-tight font-medium tracking-tight">
+          {retainershipDetails.stepsTitle}
+        </p>
 
-<RetainershipEmployeeCard
-  image="employee-image.jpg"
-  name="Deven Bhagtani"
-  position="UX Designer"
-  salary="Rs.10,000"
-  experience="4 Years"
-/>
+        <!-- Steps Items -->
+        <div class="scroll-line relative flex flex-col items-center gap-48 md:gap-72">
+          {
+            retainershipDetails.stepItems.map((step, stepIndex) => (
+              <StepItem
+                number={step.number}
+                title={step.title}
+                description={step.description}
+                direction={stepIndex % 2 === 0 ? "ltr" : "rtl"}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Half Section -->
+    <div class="flex w-full flex-col items-center gap-14 lg:gap-16">
+      <!-- Cards Main Title -->
+      <p
+        id="header-text"
+        class="text-n-950 w-full text-center text-xl leading-tight font-medium md:text-[28px] lg:w-[80%] lg:text-5xl"
+      >
+        {retainershipDetails.contentHeading}
+      </p>
+
+      <div class="flex w-full flex-col items-center gap-20">
+        <!-- Retainership Cards -->
+        <div class="flex w-full flex-col items-center gap-10">
+          <div class="retainership-cards grid h-full w-full gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {
+              retainershipDetails.retainershipCardItems.map((card) => (
+                <RetainershipCard
+                  number={card.number}
+                  title={card.title}
+                  description={card.description}
+                />
+              ))
+            }
+          </div>
+
+          <!-- Slab component -->
+          <Slab
+            title={retainershipDetails.slab.title}
+            images={retainershipDetails.slab.images}
+            btnText={retainershipDetails.slab.btnText}
+          />
+        </div>
+
+        <!-- Employee Cards -->
+        <div class="flex w-full flex-col items-center gap-12 md:gap-16">
+          <div class="flex w-full flex-col gap-7">
+            <!-- Employee Cards Title -->
+            <p
+              class="text-n-950 text-lg leading-tight font-medium tracking-[-0.02em] md:text-xl lg:text-2xl"
+            >
+              {retainershipDetails.employeeCardTitle}
+            </p>
+
+            <!-- Employee Card Component -->
+            <div class="employee-cards grid w-full gap-6 lg:gap-4 xl:grid-cols-3">
+              {
+                retainershipDetails.employeeCardItems.map((emp) => (
+                  <RetainershipEmployeeCard
+                    image={emp.image}
+                    name={emp.name}
+                    position={emp.position}
+                    salary={emp.salary}
+                    experience={emp.experience}
+                  />
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Extend Team Button -->
+          <RoundedButton
+            buttonText="Extend your Team Now"
+            rightIcon="right-arrow"
+            variant="tertiary"
+            type="button"
+            onClick="window.location.href='/extend-your-team'"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .scroll-line::before,
+  .scroll-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 6px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+  }
+
+  .scroll-line::before {
+    left: 112px;
+    height: 100%;
+    background: #2f354c;
+    z-index: -2;
+  }
+
+  .scroll-line::after {
+    left: 112px;
+    height: var(--fill-height, 0%);
+    background: linear-gradient(var(--blue-500), #8b77f3);
+    z-index: -1;
+    transition: height 150ms linear;
+  }
+
+  @media (min-width: 768px) {
+    .scroll-line::before {
+      left: 50%;
+    }
+
+    .scroll-line::after {
+      left: 50%;
+    }
+  }
+</style>
+<script>
+  import { animateRetainershipSection, initScrollLine } from "@/scripts/retainership.ts";
+
+  // ANimate Retainership Section
+  animateRetainershipSection();
+
+  // Vertical Scroll Progress
+  initScrollLine();
+</script>
