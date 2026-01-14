@@ -19,7 +19,9 @@ const { icon, text, backgroundColor } = Astro.props as props;
   <Icon name={icon} class="size-3 md:size-4 lg:size-6" />
 
   <!-- Tech Badge Text -->
-  <p class="text-n-950 text-sm leading-tight font-medium md:text-base lg:text-xl">
-    {text}
-  </p>
+  {
+    text && (
+      <p class="text-n-950 text-sm leading-tight font-medium md:text-base lg:text-xl">{text}</p>
+    )
+  }
 </div>

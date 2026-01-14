@@ -8,13 +8,13 @@ import { techInteractiveSectionDetails } from "@/data/tech-interactive";
 ---
 
 <!-- Tech Interactive Section -->
-<section id="tech-interactive-section">
-  <!-- Container -->
+<section id="tech-interactive-section" class="relative overflow-hidden">
+  <!--  Container -->
   <div
-    class="relative z-10 container mx-auto flex flex-col items-center justify-center gap-36 overflow-hidden px-6 pt-16 pb-72 md:gap-32 md:pt-36 md:pb-96 lg:pt-36 lg:pb-90"
+    class="relative z-10 container mx-auto flex flex-col items-center justify-center gap-36 px-6 pt-16 pb-72 md:gap-32 md:pt-36 md:pb-96 lg:pt-36 lg:pb-90"
   >
     <!-- Header -->
-    <div class="flex flex-col items-center justify-center gap-6 md:px-16 lg:gap-7 lg:px-56">
+    <div class="flex flex-col items-center justify-center gap-6 lg:gap-7">
       <!-- Tool Badge Component -->
       <div class="tool-badge">
         <ToolBadge
@@ -41,19 +41,20 @@ import { techInteractiveSectionDetails } from "@/data/tech-interactive";
         ))
       }
     </div>
+  </div>
 
-    <!-- Gravity Tech Badges Container -->
-    <div id="tech-badge-container" class="absolute inset-0 z-0 overflow-hidden">
-      {
-        techInteractiveSectionDetails.techBadges.map((badge) => (
-          <div class="tech-badge-wrapper absolute top-0 left-0 opacity-0">
-            <TechBadge icon={badge.icon} text={badge.name} backgroundColor={badge.color} />
-          </div>
-        ))
-      }
-    </div>
+  <!-- Gravity Tech Badges Container -->
+  <div id="tech-badge-container" class="absolute inset-0 z-0 container mx-auto px-6">
+    {
+      techInteractiveSectionDetails.techBadges.map((badge) => (
+        <div class="tech-badge-wrapper absolute top-0 left-0 opacity-0">
+          <TechBadge icon={badge.icon} text={badge.name} backgroundColor={badge.color} />
+        </div>
+      ))
+    }
   </div>
 </section>
+
 <style>
   .tech-stat {
     opacity: 0;

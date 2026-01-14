@@ -41,13 +41,20 @@ export const animateGravityEffect = () => {
   const container = document.getElementById("tech-badge-container");
   if (!container) return;
 
+  // Keep container non-blocking for scroll
+  container.style.pointerEvents = "none";
+
+  let gravityInitialized = false;
+
   inView(container, () => {
+    if (gravityInitialized) return;
+    gravityInitialized = true;
+
     const badges = container.querySelectorAll<HTMLElement>(".tech-badge-wrapper");
     if (!badges.length) return;
 
     const { Engine, Runner, Bodies, Composite, Events, Mouse, MouseConstraint } = Matter;
 
-    // Engine
     const engine = Engine.create();
     const world = engine.world;
     const runner = Runner.create();
@@ -55,7 +62,9 @@ export const animateGravityEffect = () => {
     let width = container.clientWidth;
     let height = container.clientHeight;
 
-    // Wall config
+    // Physics tuning
+    world.gravity.y = 1.2;
+
     const wallOptions = { isStatic: true, render: { visible: false } };
     const wallThickness = 200;
 
@@ -88,7 +97,7 @@ export const animateGravityEffect = () => {
     walls = createWalls();
     Composite.add(world, walls);
 
-    // Create bodies
+    // Create badge bodies
     const bodies: Matter.Body[] = [];
     const spacing = width / badges.length;
 
@@ -98,12 +107,13 @@ export const animateGravityEffect = () => {
       const badgeHeight = rect.height || 50;
 
       const x = spacing * index + spacing / 2;
-      const y = -Math.random() * 500 - 100;
+      const y = -Math.random() * 400 - 100;
 
       const body = Bodies.rectangle(x, y, badgeWidth, badgeHeight, {
         chamfer: { radius: badgeHeight / 2 },
         restitution: 0.5,
         friction: 0.1,
+        density: 0.2,
         render: { visible: false },
       });
 
@@ -117,10 +127,18 @@ export const animateGravityEffect = () => {
     const isTouch = "ontouchstart" in window;
 
     if (!isTouch) {
+      // Enable pointer events on badges only, not container
+      badges.forEach((badge) => {
+        badge.style.pointerEvents = "auto";
+      });
+
       const mouse = Mouse.create(container);
       const mouseConstraint = MouseConstraint.create(engine, {
         mouse,
-        constraint: { stiffness: 0.2, render: { visible: false } },
+        constraint: {
+          stiffness: 0.2,
+          render: { visible: false },
+        },
       });
 
       Composite.add(world, mouseConstraint);
