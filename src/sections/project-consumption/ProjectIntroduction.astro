@@ -1,11 +1,14 @@
 ---
-import ToolBadge from "@/components/ToolBadge.astro";
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
 
+// DATA //
 import { projectIntroductionDetails } from "@/data/project-consumption/projectIntroduction.ts";
+
 ---
 
-<section>
+<section id="project-introduction-section">
   <!-- Project Introduction Section -->
   <div
     class="container mx-auto flex flex-col gap-7 px-6 py-16 md:gap-12 md:px-0 md:py-24 lg:gap-16 lg:py-28"
@@ -13,7 +16,11 @@ import { projectIntroductionDetails } from "@/data/project-consumption/projectIn
     <!-- Heading -->
     <div class="flex flex-col items-center gap-3 md:gap-4">
       <!-- Tool Badge -->
-      <ToolBadge icon="service-icon" text="Summary" />
+      <div class="tool-badge">
+        <ToolBadge icon="service-icon" text="Summary" />
+      </div>
+
+      <!-- Title -->
       <p
         class="anim-fade-in-right text-center text-3xl leading-tight font-normal tracking-[-2px] md:text-4xl lg:text-5xl"
       >
@@ -25,7 +32,7 @@ import { projectIntroductionDetails } from "@/data/project-consumption/projectIn
       <!-- Project Image -->
       <div class="h-[195] w-[573]">
         <Image
-          src=`/images/projectintroduction/${projectIntroductionDetails.image}`
+          src={projectIntroductionDetails.image}
           width={1200}
           height={675}
           alt={"FC Barcelona project showcase illustration"}
