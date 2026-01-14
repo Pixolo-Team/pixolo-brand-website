@@ -8,16 +8,17 @@ import { clientHero } from "@/data/case-studies/1";
 
 <section>
   <div
-    class="container m-auto flex flex-col items-center justify-start gap-8 px-6 py-14 md:gap-14 md:py-16 lg:w-[1536px] lg:gap-16 lg:px-0 lg:py-24"
+    class="container m-auto flex flex-col items-center justify-start gap-8 px-6 py-18 md:gap-14 md:py-16 lg:gap-16 lg:py-24"
   >
-  
     <!--ToolBadge-->
-    <div class="flex flex-col items-center justify-start gap-6 md:gap-6 lg:gap-7">
+    <div
+      class="anim-fade-in-right flex flex-col items-center justify-start gap-6 md:gap-6 lg:gap-7"
+    >
       <ToolBadge icon="package" text="UX Case Study" />
 
       <!-- Main Heading Content -->
       <div class="flex flex-col items-center justify-start gap-4 md:gap-4 lg:gap-5">
-        <div class="anim-fade-in-right flex items-center justify-center gap-5 md:gap-7 lg:gap-8">
+        <div class="flex items-center justify-center gap-5 md:gap-7 lg:gap-8">
           <Image
             src={clientHero.titleImagePath}
             alt={clientHero.titleImageAlt}
@@ -59,31 +60,7 @@ import { clientHero } from "@/data/case-studies/1";
 </section>
 
 <script>
-  const mainImage = document.getElementById("main-image");
-  const customCursor = document.getElementById("custom-cursor");
+  import { hoverHeroImageLink } from "@/scripts/case-studies";
 
-  if (mainImage && customCursor) {
-    mainImage.addEventListener("mouseenter", () => {
-      customCursor.classList.remove("hidden");
-      customCursor.classList.add("flex");
-    });
-
-    // Hide cursor
-    mainImage.addEventListener("mouseleave", () => {
-      customCursor.classList.add("hidden");
-      customCursor.classList.remove("flex");
-    });
-
-    // Update custom cursor position
-    mainImage.addEventListener("mousemove", (mousePosition) => {
-      customCursor.style.left = mousePosition.clientX + "px";
-      customCursor.style.top = mousePosition.clientY + "px";
-    });
-
-    // Make the image clickable
-    mainImage.addEventListener("click", () => {
-      // TODO: Add your website URL here
-      // window.open("https://", "_blank");
-    });
-  }
+  hoverHeroImageLink();
 </script>
