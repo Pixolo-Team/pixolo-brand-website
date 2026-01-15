@@ -1,3 +1,15 @@
+// Case Study Consumption Hero Section Details
+export const caseStudyConsumptionHeroDetails = {
+  badgeIcon: "package",
+  badgeTitle: "UX Case Study",
+  title: "FC Barcelona",
+  description:
+    "A full digital overhaul that unified experience across 3 continents. A full digital overhaul that unified experience across 3 continents.",
+  logo: "/images/case-studies/1/client-barcelona.png",
+  name: "FC Barcelona",
+  thumbnail: "/images/case-studies/1/client-fcbarcelona-hero.jpg",
+};
+
 export const clientNumbers = [
   { title: "Faster Onboarding", value: "3X" },
   { title: "Improved User Retention", value: "25%" },
