@@ -115,11 +115,25 @@ export const aboutClient = {
   },
 };
 
-export const clientGalleryImages = [
-  { imagePath: "/images/case-studies/1/client-gallery-image1.jpg" },
-  { imagePath: "/images/case-studies/1/client-gallery-image1.jpg" },
-  { imagePath: "/images/case-studies/1/client-gallery-image1.jpg" },
-];
+export const clientGallery = {
+  badgeIcon: "package",
+  badgeText: "Visual Highlights",
+  sectionTitle: "Our Journey, Captured In Powerful Frames",
+  images: [
+    {
+      imagePath: "/images/case-studies/1/client-gallery-image1.jpg",
+      alt: "Pixolo Client Gallery Image 1",
+    },
+    {
+      imagePath: "/images/case-studies/1/client-gallery-image1.jpg",
+      alt: "Pixolo Client Gallery Image 2",
+    },
+    {
+      imagePath: "/images/case-studies/1/client-gallery-image1.jpg",
+      alt: "Pixolo Client Gallery Image 3",
+    },
+  ],
+};
 
 export const solutionNumbers = [
   {

@@ -47,3 +47,10 @@ export const animateNumbersAfterSolution = () => {
     },
   );
 };
+
+
+/** Animate the Numbers after Solution Section */
+export const caseStudyGallerySlider = () => {
+
+  
+}

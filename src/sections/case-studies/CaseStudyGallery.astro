@@ -2,23 +2,22 @@
 // COMPONENTS //
 import SectionHeader from "@/components/SectionHeader.astro";
 import Image from "astro/components/Image.astro";
-import { Icon } from "astro-icon/components";
-
-const { icon = "right-arrow" } = Astro.props;
+import NavigationArrows from "@/components/NavigationArrows.astro";
 
 // DATA //
-import { clientGalleryImages } from "@/data/case-studies/1";
+import { clientGallery } from "@/data/case-studies/1";
+
+const { icon = "right-arrow" } = Astro.props;
 ---
 
 <section>
   <div
-    class="container m-auto flex flex-col gap-7 px-6 py-16 md:gap-12 md:py-24 lg:gap-16 lg:py-28"
+    class="container mx-auto flex flex-col gap-7 px-6 py-16 md:gap-12 md:py-24 lg:gap-16 lg:py-28"
   >
     <SectionHeader
-      badgeIcon="package"
-      badgeText="Visual Highlights"
-      sectionTitle="Our Journey, Captured In Powerful Frames"
-      sectionTitleClass="text-2xl"
+      badgeIcon={clientGallery.badgeIcon}
+      badgeText={clientGallery.badgeText}
+      sectionTitle={clientGallery.sectionTitle}
     />
 
     <!-- Image Slideshow -->
@@ -31,44 +30,23 @@ import { clientGalleryImages } from "@/data/case-studies/1";
         <div class="flex">
           <!-- Iterating through Data & Embla Slides-->
           {
-            clientGalleryImages.map((clientGalleryImageItem) => (
-              // TODO: Fix the Alt prop value below //
+            clientGallery.images.map((clientGalleryImageItem) => (
               <div class="flex-none basis-full">
-                <Image
-                  class="h-auto w-full rounded-3xl md:h-[350px] md:rounded-4xl lg:h-[665px] lg:rounded-[60px]"
-                  width={700}
-                  height={700}
-                  src={clientGalleryImageItem.imagePath}
-                  alt="Pixolo Client"
-                />
+                <div class="w-full rounded-3xl md:max-h-[350px] md:rounded-4xl lg:max-h-[665px] lg:rounded-[60px]">
+                  <Image
+                    width={1536}
+                    height={665}
+                    src={clientGalleryImageItem.imagePath}
+                    alt={clientGalleryImageItem.alt}
+                  />
+                </div>
               </div>
             ))
           }
         </div>
       </div>
 
-      <!-- ARROWS -->
-      <div
-        class="right-0 flex justify-end gap-2 px-2 md:absolute md:bottom-5 md:gap-4 md:px-5 lg:bottom-9 lg:gap-5 lg:px-7"
-      >
-        <!-- Previous Button -->
-        <button
-          type="button"
-          aria-label="Previous image"
-          class="prev-btn arrowbtn-fill bg-n-50 flex size-9 items-center justify-center rounded-full hover:cursor-pointer md:size-10 lg:size-16"
-        >
-          <Icon name={icon} class="size-3 rotate-180 md:size-4 lg:size-6" />
-        </button>
-
-        <!-- Next Button -->
-        <button
-          type="button"
-          aria-label="Next image"
-          class="next-btn arrowbtn-fill bg-n-50 flex size-9 items-center justify-center rounded-full hover:cursor-pointer md:size-10 lg:size-16"
-        >
-          <Icon name={icon} class="size-3 md:size-4 lg:size-6" />
-        </button>
-      </div>
+      <NavigationArrows icon={icon} />
     </div>
   </div>
 </section>
@@ -89,25 +67,4 @@ import { clientGalleryImages } from "@/data/case-studies/1";
   });
 </script>
 
-<!-- Slider Arrows Hover Animation -->
-<style>
-  .arrowbtn-fill {
-    position: relative;
-    overflow: hidden;
-    z-index: 20;
-  }
 
-  .arrowbtn-fill::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    height: 0%;
-    background: var(--color-n-300);
-    transition: height 0.5s ease-in-out;
-    z-index: -1;
-  }
-
-  .arrowbtn-fill:hover::before {
-    height: 100%;
-  }
-</style>
