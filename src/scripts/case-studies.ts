@@ -48,23 +48,23 @@ export const animateNumbersAfterSolution = () => {
   );
 };
 
-/** Animate Key Takeaway & Learning Cards */
-export const animateKeyTakeawayCard = () => {
-  inView("#key-takeaway-header", () => {
+/** Animate Key Takeaway Section */
+export const animateKeyTakeawaySection = () => {
+  inView("#key-takeaways-section", (keyTakeawaysSection) => {
     animate(
-      "#learning-item-card",
+      keyTakeawaysSection?.querySelectorAll(".learning-item-card"),
       {
         opacity: [0, 1],
-        x: [60, 0],
-        y: [20, 0],
+        x: ["60px", 0],
       },
       {
-        duration: 0.4,
-        delay: stagger(0.2),
+        duration: 0.8,
+        delay: stagger(0.4),
       },
     );
   });
 };
+
 /** Animate the Client Testimonial */
 export const animateClientTestimonial = () => {
   inView("#client-testimonial", (clientTestimonials) => {
