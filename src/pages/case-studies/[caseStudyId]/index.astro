@@ -21,6 +21,7 @@ import AboutTheClient from "@/sections/case-studies/AboutTheClient.astro";
 import ToolsUsed from "@/sections/case-studies/ToolsUsed.astro";
 import ClientTestimonial from "@/sections/case-studies/ClientTestimonial.astro";
 import SolutionNumbers from "@/sections/case-studies/SolutionNumbers.astro";
+import KeyTakeaways from "@/sections/case-studies/KeyTakeaways.astro";
 
 const { caseStudyId } = Astro.params;
 const allData = await import(`@/data/case-studies/cs-${caseStudyId}.json`);
@@ -33,6 +34,9 @@ const getSection = (id: string) => data.sections.find((s: any) => s.id === id);
   <ClientVision data={getSection("client_vision")} />
   <Issues data={getSection("client_issues")} />
   <AboutTheClient data={getSection("about_client")} />
+  <ToolsUsed />
   <Solutions data={getSection("solutions")} />
+  <ClientTestimonial />
   <SolutionNumbers data={getSection("numbers_after_the_solution")} />
+  <KeyTakeaways data={getSection("key_takeaways")} />
 </Layout>
