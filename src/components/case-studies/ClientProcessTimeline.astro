@@ -8,43 +8,49 @@
     class="bg-n-500 relative w-1"
     style="--timeline-height: 0px; height: var(--timeline-height);"
   >
-    <div
-      id="internal-line"
-      class="after:bg-n-950 bg-n-950 relative w-1 origin-top after:absolute after:-bottom-1 after:left-1/2 after:size-2.5 after:-translate-x-1/2 after:rounded-full after:content-['']"
-    >
+    {/* Start ball (top) */}
+
+    {/* Progress line with moving ball at the end */}
+    <div id="internal-line" class="bg-n-950 relative w-1 origin-top">
+      {/* Moving inner ball - this is what triggers color changes */}
+      <div
+        id="moving-ball"
+        class="bg-n-950 absolute -bottom-2.5 left-1/2 size-2.5 -translate-x-1/2 rounded-full transition-all duration-150 lg:size-3"
+      >
+      </div>
     </div>
   </div>
+
+  <script>
+    window.addEventListener("load", () => {
+      const internalLine = document.getElementById("internal-line");
+      const outerLine = document.getElementById("outer-line");
+
+      if (!internalLine || !outerLine) return;
+
+      const triggerPositionTop = window.innerHeight / 4;
+
+      const updateProgress = () => {
+        const outerLineRect = outerLine.getBoundingClientRect();
+        const outerLineTop = outerLineRect.top;
+        const outerLineHeight = outerLineRect.height;
+
+        // Calculate how much of the outer line has passed the trigger point
+        const scrolledDistance = triggerPositionTop - outerLineTop;
+        let progress = (scrolledDistance / outerLineHeight) * 100;
+
+        // Clamp progress between 0 and 100
+        progress = Math.max(0, Math.min(100, progress));
+
+        // Update the internal line height
+        internalLine.style.height = `${progress}%`;
+      };
+
+      // Initial calculation
+      updateProgress();
+
+      // Update on scroll
+      window.addEventListener("scroll", updateProgress);
+    });
+  </script>
 </div>
-
-<script>
-  window.addEventListener("load", () => {
-    const internalLine = document.getElementById("internal-line");
-    const outerLine = document.getElementById("outer-line");
-
-    if (!internalLine || !outerLine) return;
-
-    const triggerPositionTop = window.innerHeight / 4;
-
-    const updateProgress = () => {
-      const outerLineRect = outerLine.getBoundingClientRect();
-      const outerLineTop = outerLineRect.top;
-      const outerLineHeight = outerLineRect.height;
-
-      // Calculate how much of the outer line has passed the trigger point
-      const scrolledDistance = triggerPositionTop - outerLineTop;
-      let progress = (scrolledDistance / outerLineHeight) * 100;
-
-      // Clamp progress between 0 and 100
-      progress = Math.max(0, Math.min(100, progress));
-
-      // Update the internal line height
-      internalLine.style.height = `${progress}%`;
-    };
-
-    // Initial calculation
-    updateProgress();
-
-    // Update on scroll
-    window.addEventListener("scroll", updateProgress);
-  });
-</script>
