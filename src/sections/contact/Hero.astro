@@ -1,6 +1,6 @@
 ---
 // COMPONENTS //
-import ToolBadge from "@/components/ToolBadge.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
 
 // IMAGES //
@@ -14,7 +14,7 @@ import Ball from "@/assets/3d-ball.svg";
 <section>
   <div
     id="hero-wrapper"
-    class="relative container m-auto flex flex-col items-center gap-5 px-6 py-28 text-center md:gap-3.5 md:px-4 md:py-40 lg:gap-4 lg:pt-72 lg:pb-60"
+    class="relative container mx-auto flex flex-col items-center gap-5 px-6 py-28 text-center md:gap-3.5 md:px-4 md:py-40 lg:gap-4 lg:pt-52 lg:pb-60 2xl:pt-64"
   >
     <!-- Top-left floating marble -->
     <Image
@@ -33,7 +33,9 @@ import Ball from "@/assets/3d-ball.svg";
     />
 
     <!-- ToolBadge -->
-    <ToolBadge icon="comment" text="Want to know more?" />
+    <div class="tool-badge">
+      <ToolBadge icon="comment" text="Want to know more?" />
+    </div>
 
     <!-- Title content -->
     <div class="text-n-950 relative z-10">
