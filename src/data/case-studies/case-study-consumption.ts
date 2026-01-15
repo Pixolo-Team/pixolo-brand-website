@@ -1,11 +1,13 @@
-export const clientHero = {
+// Case Study Consumption Hero Section Details
+export const caseStudyConsumptionHeroDetails = {
+  badgeIcon: "package",
+  badgeTitle: "UX Case Study",
   title: "FC Barcelona",
   description:
     "A full digital overhaul that unified experience across 3 continents. A full digital overhaul that unified experience across 3 continents.",
-  titleImagePath: "/images/case-studies/1/client-barcelona.png",
-  titleImageAlt: "FC Barcelona Logo",
-  mainImagePath: "/images/case-studies/1/client-fcbarcelona-hero.jpg",
-  mainImageAlt: "FC Barcelona Image",
+  logo: "/images/case-studies/1/client-barcelona.png",
+  name: "FC Barcelona",
+  thumbnail: "/images/case-studies/1/client-fcbarcelona-hero.jpg",
 };
 
 export const clientNumbers = [

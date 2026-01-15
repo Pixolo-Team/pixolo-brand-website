@@ -48,8 +48,31 @@ export const animateNumbersAfterSolution = () => {
   );
 };
 
-/** Animate hover for Hero Image Link - Shows Visit Website text below cursor */
+/* Animate Case Study Consumption Hero Section */
+export const animateCaseStudyConsumptionHero = () => {
+  inView("#case-study-consumption-hero", (caseStudyConsumptionHero) => {
+    animate(
+      caseStudyConsumptionHero?.querySelectorAll(".tool-badge"),
+      { opacity: [0, 1], y: ["50px", 0], scaleX: [0.6, 1], rotateX: [120, 0] },
+      { duration: 0.8, delay: 0 },
+    );
 
+    animate(
+      caseStudyConsumptionHero?.querySelectorAll(".header-text"),
+      { opacity: [0, 1], y: ["50px", 0], scaleY: [0.4, 1] },
+      { duration: 0.8, delay: 0.4 },
+    );
+
+    // Animate the Hero Thumbnail (When in View)
+    animate(
+      caseStudyConsumptionHero.querySelectorAll(".hero-thumbnail"),
+      { opacity: [0, 1], y: ["50px", 0] },
+      { duration: 0.8, delay: 0.6 },
+    );
+  });
+};
+
+/** Animate hover for Hero Image Link - Shows Visit Website text below cursor */
 export const animateHeroImageLink = () => {
   const mainImage = document.getElementById("main-image");
   const mainImageContainer = document.getElementById("main-image-container");
