@@ -72,6 +72,23 @@ export const animateCaseStudyConsumptionHero = () => {
   });
 };
 
+/** Animate Key Takeaway Section */
+export const animateKeyTakeawaySection = () => {
+  inView("#key-takeaways-section", (keyTakeawaysSection) => {
+    animate(
+      keyTakeawaysSection?.querySelectorAll(".learning-item-card"),
+      {
+        opacity: [0, 1],
+        x: ["60px", 0],
+      },
+      {
+        duration: 0.8,
+        delay: stagger(0.4),
+      },
+    );
+  });
+};
+
 /** Animate hover for Hero Image Link - Shows Visit Website text below cursor */
 export const animateHeroImageLink = () => {
   const mainImage = document.getElementById("main-image");
