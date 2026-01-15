@@ -20,7 +20,6 @@ export const openPositions = {
           value: "3-4",
         },
       ],
-      ctaText: "Apply Now",
     },
     {
       category: "Designing",
@@ -39,7 +38,6 @@ export const openPositions = {
           value: "3-4",
         },
       ],
-      ctaText: "Apply Now",
     },
     {
       category: "Designing",
@@ -58,7 +56,6 @@ export const openPositions = {
           value: "3-4",
         },
       ],
-      ctaText: "Apply Now",
     },
     {
       category: "Designing",
@@ -77,7 +74,6 @@ export const openPositions = {
           value: "5-6",
         },
       ],
-      ctaText: "Apply Now",
     },
     {
       category: "Testing",
@@ -96,7 +92,6 @@ export const openPositions = {
           value: "2-3",
         },
       ],
-      ctaText: "Apply Now",
     },
     {
       category: "Managing",
@@ -115,7 +110,6 @@ export const openPositions = {
           value: "1-2",
         },
       ],
-      ctaText: "Apply Now",
     },
   ],
 };

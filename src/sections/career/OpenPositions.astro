@@ -1,7 +1,7 @@
 ---
 // COMPONENTS //
 import ToolBadge from "@/components/ui/ToolBadge.astro";
-import OpenPositionCard from "@/components/open-positions/OpenPositionCard.astro";
+import OpenPositionCard from "@/components/career/OpenPositionCard.astro";
 
 // DATA //
 import { openPositions } from "@/data/career/open-positions";
@@ -11,17 +11,18 @@ import { openPositions } from "@/data/career/open-positions";
 <section id="open-positions-section">
   <!-- Container -->
   <div
-    class="container mx-auto flex flex-col gap-9 px-6 py-16 md:gap-11 md:px-0 md:py-24 lg:gap-14 lg:py-28"
+    class="container mx-auto flex flex-col gap-9 px-6 py-16 md:gap-11 md:py-24 lg:gap-14 lg:py-28"
   >
     <!-- ToolBadge and Title -->
     <div class="flex flex-col items-center gap-4 self-center text-center lg:w-[75%] lg:gap-5">
-      <!-- ToolBagde -->
+      <!-- ToolBadge -->
       <div class="tool-badge">
         <ToolBadge icon={openPositions.toolBadgeIcon} text={openPositions.toolBadgeText} />
       </div>
 
       <!-- Title -->
-      <p id="open-positions-heading"
+      <p
+        id="open-positions-heading"
         class="font-regular text-2xl leading-tight tracking-[-0.02em] md:text-4xl lg:text-5xl"
       >
         {openPositions.title}
@@ -29,18 +30,18 @@ import { openPositions } from "@/data/career/open-positions";
     </div>
 
     <!-- Cards -->
-    <div class="open-position-cards flex flex-wrap justify-center gap-4 lg:gap-10">
+    <div
+      class="open-position-cards grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-6 xl:gap-10 2xl:grid-cols-3"
+    >
       {
         openPositions.positions.map((position) => (
-          // Card
-          <div
-            class="open-position-card min-w-[327px] flex-grow-1 md:max-w-[377px] md:min-w-[360px] lg:min-w-[480px]"
-          >
+          // Open Position Card Component
+          <div class="open-position-card">
             <OpenPositionCard
               category={position.category}
               title={position.title}
               tags={position.tags}
-              ctaText={position.ctaText}
+              ctaText="Apply Now"
             />
           </div>
         ))
@@ -48,20 +49,8 @@ import { openPositions } from "@/data/career/open-positions";
     </div>
   </div>
 </section>
-<!-- 
-<style>
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style> -->
 <script>
   import { animateOpenPositionsSection } from "@/scripts/career/open-positions";
+
   animateOpenPositionsSection();
 </script>
