@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  number: string;
+}
+
+const { title, description, number } = Astro.props;
+---
+
+<div class="flex w-full items-center justify-between gap-3.5 md:items-start md:gap-16 lg:gap-20">
+  <!-- Title + Description -->
+  <div class="flex flex-1 flex-col gap-2 leading-tight md:gap-3.5 lg:gap-4">
+    <!-- Title -->
+    <p
+      class="border-n-700 text-n-950 w-full border-b py-2 text-base leading-tight font-normal md:py-3.5 md:text-3xl lg:py-4 lg:text-4xl"
+    >
+      {title}
+    </p>
+
+    <!-- Description -->
+    <p class="text-n-700 hidden leading-normal md:block md:text-base lg:text-xl">
+      {description}
+    </p>
+  </div>
+
+  <!-- Number -->
+  <p
+    class="text-n-950 text-3xl leading-tight font-normal tracking-[-0.04em] md:text-7xl lg:text-8xl"
+  >
+    {number}
+  </p>
+</div>
