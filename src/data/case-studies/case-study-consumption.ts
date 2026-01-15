@@ -125,6 +125,46 @@ export const aboutClient = {
   },
 };
 
+// Client Testimonial Details
+export const clientTestimonialDetails = {
+  badgeIcon: "package",
+  badgeText: "What Our Clients Are Saying",
+  title: "What Our Clients Are Saying",
+  image: "/images/case-studies/case-study-consumption/client-testimonial-image.jpg",
+  name: "Elon Musk",
+  role: "Ceo, Tesla",
+  message:
+    "“Pixolo took the time to truly understand our vision and transformed it into something even more refined, impactful, and elevated. Pixolo took the time to truly understand our vision and transformed it into something even more refined, impactful, and elevated.”",
+};
+
+export const toolsUsedDetails = {
+  headerText: "The project relied on key tools to deliver effective results",
+  toolItems: [
+    {
+      logo: "/images/case-studies/1/tool-logo.png",
+      title: "Figma",
+      description: "We used Figma to design and prototype the project efficiently.",
+    },
+    {
+      logo: "/images/case-studies/1/tool-logo.png",
+      title: "Sketch",
+      description:
+        "Sketch allowed us to create vector graphics and collaborate with the team seamlessly",
+    },
+    {
+      logo: "/images/case-studies/1/tool-logo.png",
+      title: "Adobe XD",
+      description: "Adobe XD provided powerful tools for interactive prototypes and user testing",
+    },
+    {
+      logo: "/images/case-studies/1/tool-logo.png",
+      title: "InVision",
+      description:
+        "InVision facilitated our design handoff and feedback processes, enhancing communication.",
+    },
+  ],
+};
+
 export const solutionNumbers = [
   {
     title: "Project Timeline",

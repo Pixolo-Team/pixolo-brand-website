@@ -1,0 +1,34 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  prevId?: string;
+  nextId?: string;
+}
+
+const { prevId = "slide-prev", nextId = "slide-next" } = Astro.props as Props;
+---
+
+<!-- Arrows Wrapper -->
+<div class="text-n-700 flex justify-center gap-8 self-end text-xl md:px-5 lg:px-6">
+  <!-- Left Button -->
+  <button
+    id={prevId}
+    aria-label="Previous Slide"
+    class="hover:border-n-700 flex size-8 cursor-pointer items-center justify-center gap-10 rounded-full border border-transparent transition-all md:size-10"
+  >
+    <!-- Left Arrow icon  -->
+    <Icon name="right-arrow" class="size-5 rotate-180 md:size-6" />
+  </button>
+
+  <!-- Right Button -->
+  <button
+    id={nextId}
+    aria-label="Next Slide"
+    class="hover:border-n-700 flex size-8 cursor-pointer items-center justify-center gap-10 rounded-full border border-transparent transition-all md:size-10"
+  >
+    <!-- Right Arrow icon -->
+    <Icon name="right-arrow" class="size-5 md:size-6" />
+  </button>
+</div>

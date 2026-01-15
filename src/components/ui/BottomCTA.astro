@@ -3,7 +3,7 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div>
+<button id="open-contact-modal" class="cursor-pointer">
   <!-- CTA  -->
   <div
     class="text-n-950 bg-n-800/20 flex w-fit items-center justify-center gap-3 rounded-4xl py-2 pr-2 pl-7"
@@ -16,4 +16,10 @@ import { Icon } from "astro-icon/components";
       <Icon name={"menu"} />
     </div>
   </div>
-</div>
+</button>
+
+<script>
+  import { bottomCtaClick } from "@/scripts/bottom-cta";
+
+  bottomCtaClick();
+</script>
