@@ -1,0 +1,185 @@
+---
+// COMPONENTS //
+import DropdownTwo from "@/components/ui/DropdownTwo.astro";
+import InputField from "@/components/ui/InputField.astro";
+import FileInput from "@/components/ui/FileInput.astro";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import Textarea from "@/components/ui/Textarea.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import Tooltip from "@/components/ui/Tooltip.astro";
+import { Icon } from "astro-icon/components";
+
+// DATA //
+import { contactSectionDetails } from "@/data/contact";
+---
+
+<!-- Form Section -->
+<section>
+  <div class="flex w-full flex-col items-center justify-center">
+    <!-- Container -->
+    <div
+      class="container flex w-full flex-col gap-16 px-6 py-16 md:gap-28 md:py-24 lg:gap-36 lg:py-28 xl:px-80">
+      <!-- Form -->
+      <div class="flex w-full flex-col gap-14 lg:gap-16">
+        <!-- Header -->
+        <div class="flex flex-col items-center justify-center gap-3 md:gap-3.5 lg:gap-4">
+          <ToolBadge icon="service-icon" text="Quick Apply" />
+          <p
+            class="text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl">
+            Your CV Goes Here
+          </p>
+        </div>
+
+        <!-- Form Contents -->
+        <div class="flex w-full flex-col gap-4 md:gap-5 lg:gap-6">
+          <!-- Contents wrap -->
+          <div class="flex w-full flex-col gap-11 lg:gap-14">
+            <!-- Name -->
+            <InputField label="" name="Name" id="name" placeholder="Name" required={true} />
+            <!-- Email and Phone Number -->
+            <div class="grid w-full grid-cols-2 gap-5 md:gap-20">
+              <InputField
+                label=""
+                name="email"
+                id="email"
+                type="email"
+                placeholder="E-Mail"
+                required={true}
+                isError={false}
+                errorMessages={[
+                  "This doesn’t look like an email address.",
+                  "This field is required.",
+                ]}
+              />
+              <InputField
+                label=""
+                name="phoneNo"
+                id="phoneNo"
+                type="tel"
+                placeholder="Phone Number"
+                required={true}
+                isError={false}
+                errorMessages={[
+                  "This field is required.",
+                  "This doesn’t look like a phone number.",
+                ]}
+              />
+            </div>
+            <!-- Resume and Position -->
+            <div class="grid w-full grid-cols-2 gap-5 md:gap-20">
+              <FileInput name="resume" placeholder="Upload resume" id="resume" />
+              <DropdownTwo
+                id="position"
+                name="position"
+                label="Position"
+                options={["UI/UX Designer", "Developer", "QA Engineer", "Project Manager"]}
+              />
+            </div>
+            <Textarea
+              iconName="expand-icon"
+              placeholder="Say something about yourself"
+              name="additionalNote"
+              id="additionalNote"
+            />
+          </div>
+          <!-- Submit button -->
+          <div class="self-end">
+            <RoundedButton buttonText="Submit Form" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact us -->
+      <div class="flex w-full flex-col justify-between gap-8 md:flex-row md:gap-16 lg:gap-24">
+        <!-- Title -->
+        <div class="flex flex-col gap-0.5 md:gap-1 lg:gap-2">
+          <p
+            class="text-n-700 text-sm leading-tight font-normal tracking-normal md:text-lg lg:text-xl">
+            Having any Issue?
+          </p>
+          <p
+            class="text-n-950 text-3xl leading-tight font-normal tracking-normal md:text-4xl lg:text-5xl">
+            Contact Us
+          </p>
+        </div>
+
+        <!-- Contact us details -->
+
+        <div class="flex flex-col justify-center gap-3.5 lg:flex-row">
+          <div class="flex w-full flex-col gap-3.5 lg:max-w-[440px]">
+            {
+              contactSectionDetails.contactCards.map((contactSectionItem) => (
+                // Contact Card
+                <a
+                  href={contactSectionItem.link}
+                  class="hover:bg-n-200 bg-n-100 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5">
+                  <div class="flex max-w-[80%] items-center gap-5">
+                    {/* Icon wrapper */}
+                    <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-(--blue-500) to-[#8B77F3] sm:size-16 lg:size-[74px]">
+                      <Icon name={contactSectionItem.icon} class="size-5 sm:size-6" />
+                    </div>
+
+                    {/* Contact info */}
+                    <div class="flex w-[60%] flex-col gap-0.5">
+                      <p class="text-n-700 text-xs font-bold md:text-sm lg:text-base">
+                        {contactSectionItem.title}
+                      </p>
+                      <p
+                        class:list={[
+                          "text-n-900 text-sm font-semibold md:text-lg lg:text-xl",
+                          contactSectionItem.id === "mail" ? "truncate" : "",
+                        ]}>
+                        {contactSectionItem.value}
+                      </p>
+                    </div>
+                  </div>
+                  {/* Tooltip with copy icon */}
+                  <Tooltip text="Copy" position="top" />
+                  <span
+                    class="copy-btn relative flex size-5 cursor-pointer items-center justify-center"
+                    data-copy={contactSectionItem.value}>
+                    <Icon name="copy" class="icon-copy size-5" />
+                    <Icon name="check" class="icon-check hidden size-5" />
+                  </span>
+                </a>
+              ))
+            }
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactSectionDetails.location.address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:bg-n-200 bg-n-100 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5 lg:max-w-[440px]">
+              <div class="flex max-w-[80%] items-center gap-5">
+                {/* Icon wrapper - Matches phone/email size and style */}
+                <div
+                  class="flex size-11 shrink-0 items-center justify-center rounded-full bg-linear-to-r from-(--blue-500) to-[#8B77F3] sm:size-16 lg:size-[74px]">
+                  <Icon name={contactSectionDetails.location.icon} class="size-5 sm:size-6" />
+                </div>
+
+                {/* Contact info - Matches phone/email text hierarchy */}
+                <div class="flex w-[60%] flex-col gap-0.5">
+                  <p class="text-n-700 text-xs font-bold md:text-sm lg:text-base">
+                    {contactSectionDetails.location.title}
+                  </p>
+                  <p class="text-n-900 text-sm font-semibold md:text-lg lg:text-xl">
+                    {contactSectionDetails.location.address}
+                  </p>
+                </div>
+              </div>
+
+              {/* Arrow icon - Occupies same space as the Copy button */}
+              <span class="relative flex size-5 items-center justify-center">
+                <Icon name="right-arrow" class="size-5" />
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initCopyButtons } from "@/scripts/contact-copy";
+  document.addEventListener("DOMContentLoaded", initCopyButtons);
+</script>
