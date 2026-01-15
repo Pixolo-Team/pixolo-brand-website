@@ -1,4 +1,4 @@
-import { animate, inView } from "motion";
+import { animate, inView, stagger } from "motion";
 
 /** Animate the Project Introduction Section */
 export const animateProjectIntroduction = () => {
@@ -10,32 +10,26 @@ export const animateProjectIntroduction = () => {
       { opacity: [0, 1], y: ["50px", 0], scaleX: [0.6, 1], rotateX: [120, 0] },
       { duration: 0.8, delay: 0 },
     );
-    const image = projectIntroductionSection?.querySelector(".image");
-    if (image) {
-      animate(
-        image,
-        { opacity: [0, 1], scale: [0.9, 1], y: [20, 0] },
-        { duration: 0.6, delay: 0.3 }, // Starts slightly after header
-      );
-    }
+
+    // Animate the Section Header Text Part
     animate(
       projectIntroductionSection?.querySelectorAll("#header-text"),
       { opacity: [0, 1], y: ["50px", 0], scaleY: [0.4, 1] },
       { duration: 0.8, delay: 0.4 },
     );
+
+    // Animate the Section Image Part
+    animate(
+      projectIntroductionSection?.querySelectorAll(".introduction-image"),
+      { opacity: [0, 1], x: ["-40px", 0] },
+      { duration: 0.6, delay: 0.3 },
+    );
+
+    // Animate the Project Info Part
+    animate(
+      projectIntroductionSection?.querySelectorAll(".project-info-item"),
+      { opacity: [0, 1], x: [40, 0] },
+      { duration: 0.6, delay: stagger(0.3, { startDelay: 0.6 }) },
+    );
   });
 };
-
-/**
- *  // animate(
-    //   clientLogoSection?.querySelectorAll("#header-text"),
-    //   { opacity: [0, 1], y: ["50px", 0], scaleY: [0.4, 1] },
-    //   { duration: 0.8, delay: 0.4 },
-    // );
-
-    // animate(
-    //   clientLogoSection?.querySelectorAll(".client-logo"),
-    //   { y: ["50px", 0], opacity: [0, 1] },
-    //   { duration: 0.4, delay: stagger(0.2, { from: "first", startDelay: 1 }) },
-    // );
- */
