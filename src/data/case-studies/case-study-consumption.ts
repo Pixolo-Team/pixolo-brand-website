@@ -115,6 +115,46 @@ export const aboutClient = {
   },
 };
 
+// Client Testimonial Details
+export const clientTestimonialDetails = {
+  badgeIcon: "package",
+  badgeText: "What Our Clients Are Saying",
+  title: "What Our Clients Are Saying",
+  image: "/images/case-studies/case-study-consumption/client-testimonial-image.jpg",
+  name: "Elon Musk",
+  role: "Ceo, Tesla",
+  message:
+    "“Pixolo took the time to truly understand our vision and transformed it into something even more refined, impactful, and elevated. Pixolo took the time to truly understand our vision and transformed it into something even more refined, impactful, and elevated.”",
+};
+
+export const toolsUsedDetails = {
+  headerText: "The project relied on key tools to deliver effective results",
+  toolItems: [
+    {
+      logo: "/images/case-studies/1/tool-logo.png",
+      title: "Figma",
+      description: "We used Figma to design and prototype the project efficiently.",
+    },
+    {
+      logo: "/images/case-studies/1/tool-logo.png",
+      title: "Sketch",
+      description:
+        "Sketch allowed us to create vector graphics and collaborate with the team seamlessly",
+    },
+    {
+      logo: "/images/case-studies/1/tool-logo.png",
+      title: "Adobe XD",
+      description: "Adobe XD provided powerful tools for interactive prototypes and user testing",
+    },
+    {
+      logo: "/images/case-studies/1/tool-logo.png",
+      title: "InVision",
+      description:
+        "InVision facilitated our design handoff and feedback processes, enhancing communication.",
+    },
+  ],
+};
+
 export const solutionNumbers = [
   {
     title: "Project Timeline",
@@ -144,3 +184,53 @@ export const solutionNumbers = [
     stat: "30 Hrs",
   },
 ];
+
+// Key Takeaways Section Details
+export const keyTakeawaysDetails = {
+  badgeIcon: "service-icon",
+  badgeTitle: "Essential Takeaways",
+  title: "Main Learnings & Highlights",
+
+  learningItems: [
+    {
+      title: "Real User Behavior Always Breaks Assumptions",
+      description:
+        "Early interviews and usability tests revealed patterns we hadn't anticipated. Features we believed were “obvious” turned out to be unclear, and tasks we expected to be simple took users significantly longer.This reinforced the importance of validating every assumption with real users before committing to design or development.",
+    },
+    {
+      title: "Iterative Design: Embrace Continuous Feedback",
+      description:
+        "By implementing user feedback at every stage, we were able to refine our designs iteratively. This approach not only improved usability but also fostered a sense of ownership among users, making them feel like a part of the design process.",
+    },
+    {
+      title: "Diversity in User Testing: A Broader Perspective",
+      description:
+        "Involving users from various backgrounds helped uncover unique insights. Different demographics interacted with our product in unexpected ways, highlighting the necessity for inclusive design practices that cater to a wider audience.",
+    },
+    {
+      title: "Prioritizing Accessibility: Design for All",
+      description:
+        "Accessibility became a cornerstone of our design strategy. We learned that features beneficial to users with disabilities often improved the experience for everyone, leading us to advocate for universal design principles.",
+    },
+    {
+      title: "Data-Driven Decisions: The Power of Analytics",
+      description:
+        "Analyzing user behavior through analytics tools provided concrete data on how our product was used. This information was invaluable for making informed design decisions and improving user satisfaction.",
+    },
+    {
+      title: "Storytelling in Design: The User's Journey",
+      description:
+        "Mapping out the user journey through storytelling techniques allowed us to visualize pain points and moments of delight. This holistic view facilitated a deeper understanding of user needs and aspirations.",
+    },
+    {
+      title: "Collaboration Across Teams: Breaking Silos",
+      description:
+        "Fostering collaboration between design, development, and marketing teams ensured a cohesive vision. Sharing insights and challenges from different perspectives led to more innovative solutions and a stronger product.",
+    },
+    {
+      title: "Testing Prototypes: Fail Fast, Learn Faster",
+      description:
+        "Creating low-fidelity prototypes enabled us to test ideas quickly and cheaply. This lean approach to testing allowed us to fail early, learn rapidly, and pivot our designs based on real user feedback.",
+    },
+  ],
+};
