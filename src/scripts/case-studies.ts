@@ -142,12 +142,6 @@ export const animateHeroImageLink = () => {
       customCursor.style.top = finalY + "px";
     });
 
-    // Make the image clickable
-    mainImage.addEventListener("click", () => {
-      // TODO: Add your website URL here
-      // window.open("https://", "_blank");
-    });
-
     // Hide Visit Website div when scrolling to prevent stuck position
     window.addEventListener("scroll", () => {
       if (customCursor.classList.contains("flex")) {
