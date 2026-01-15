@@ -131,6 +131,9 @@ export const clientGallery = {
     {
       imagePath: "/images/case-studies/1/client-gallery-image1.jpg",
       alt: "Pixolo Client Gallery Image 3",
+    },
+  ],
+};
 // Client Testimonial Details
 export const clientTestimonialDetails = {
   badgeIcon: "package",

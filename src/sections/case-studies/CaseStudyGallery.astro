@@ -1,11 +1,11 @@
 ---
 // COMPONENTS //
-import SectionHeader from "@/components/SectionHeader.astro";
+import SectionHeader from "@/components/ui/SectionHeader.astro";
 import Image from "astro/components/Image.astro";
 import NavigationArrows from "@/components/NavigationArrows.astro";
 
 // DATA //
-import { clientGallery } from "@/data/case-studies/1";
+import { clientGallery } from "@/data/case-studies/case-study-consumption";
 
 const { icon = "right-arrow" } = Astro.props;
 ---
@@ -66,5 +66,3 @@ const { icon = "right-arrow" } = Astro.props;
     document.querySelector(".next-btn").onclick = () => caseStudyGallerySlider.scrollNext();
   });
 </script>
-
-
