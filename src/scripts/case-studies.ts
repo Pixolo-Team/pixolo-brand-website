@@ -65,3 +65,48 @@ export const animateKeyTakeawayCard = () => {
     );
   });
 };
+/** Animate the Client Testimonial */
+export const animateClientTestimonial = () => {
+  inView("#client-testimonial", (clientTestimonials) => {
+    // Client Image Slide from Left
+    animate(
+      clientTestimonials?.querySelectorAll(".client-image"),
+      { x: 0, opacity: 1 },
+      { duration: 0.6 },
+    );
+
+    // Client Info Slide from Left
+    animate(
+      clientTestimonials?.querySelectorAll(".client-info"),
+      { x: 0, opacity: 1 },
+      { duration: 0.8, delay: 0.6 },
+    );
+
+    // Client Message Slide from Right
+    animate(
+      clientTestimonials?.querySelectorAll(".client-message"),
+      { x: 0, opacity: 1 },
+      { duration: 0.8, delay: 0.8 },
+    );
+  });
+};
+
+/** Animate Tools Used in Case Study */
+export const animateToolsUsedSection = () => {
+  inView("#tools-used-section", (toolsUsedSection) => {
+    animate(
+      toolsUsedSection?.querySelectorAll(".header-text"),
+      { opacity: [0, 1], y: ["50px", 0], scaleY: [0.4, 1] },
+      { duration: 0.8, delay: 0.4 },
+    );
+
+    animate(
+      toolsUsedSection?.querySelectorAll(".tool-item"),
+      {
+        y: ["60px", 0],
+        opacity: [0.2, 1],
+      },
+      { duration: 0.8, delay: stagger(0.12, { from: "first", startDelay: 0.6 }) },
+    );
+  });
+};
