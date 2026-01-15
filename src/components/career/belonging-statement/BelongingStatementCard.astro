@@ -1,0 +1,27 @@
+---
+// STYLES //
+import ThemeImage from "@/components/ui/ThemeImage.astro";
+
+const { imageSrc, imageAlt, heading, description } = Astro.props;
+---
+
+<!-- Belonging Statement Card -->
+<div
+  class="flex flex-col gap-3.5 md:gap-5 lg:gap-6"
+>
+  <!-- Image -->
+  <ThemeImage light={imageSrc} dark={imageSrc} alt={"title"} class="h-auto w-full rounded-4xl" />
+
+  <!-- Heading and Description -->
+  <div class="flex flex-col gap-1.5 md:gap-2 lg:gap-2.5">
+    <!-- Heading -->
+    <p class="font-regular text-xl leading-tight tracking-normal md:text-3xl lg:text-4xl">
+      {heading}
+    </p>
+
+    <!-- Description -->
+    <p class="font-regular text-sm leading-tight tracking-normal md:text-lg lg:text-xl">
+      {description}
+    </p>
+  </div>
+</div>
