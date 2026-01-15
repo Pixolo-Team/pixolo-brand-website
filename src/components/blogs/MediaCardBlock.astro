@@ -1,20 +1,23 @@
 ---
-import type { MediaBlock } from "@/data/blogs";
+// DATA //
+import type { MediaBlockData } from "@/data/blogs";
 
 interface Props {
-  block: MediaBlock;
+  block: MediaBlockData;
 }
 
 const { block } = Astro.props as Props;
 ---
 
-<figure class="space-y-2">
+<div class="space-y-2">
+  <!-- Image -->
   {
     block.mediaType === "image" && block.src && block.alt && (
       <img src={block.src} alt={block.alt} class="w-full rounded-2xl" />
     )
   }
 
+  <!-- Video -->
   {
     block.mediaType === "video" && (
       <iframe
@@ -24,5 +27,6 @@ const { block } = Astro.props as Props;
     )
   }
 
-  {block.caption && <figcaption class="text-center text-sm opacity-70">{block.caption}</figcaption>}
-</figure>
+  <!-- Caption -->
+  {block.caption && <p class="text-center text-sm opacity-70">{block.caption}</p>}
+</div>

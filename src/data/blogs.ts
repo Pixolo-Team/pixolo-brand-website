@@ -71,7 +71,6 @@ export const blogSectionDetails = {
 };
 
 // TYPE FOR BLOG CONSUMPTION
-
 export interface BlogPost {
   title: string;
 
