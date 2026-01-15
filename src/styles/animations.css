@@ -33,6 +33,55 @@
   transform: translateY(0) !important;
 }
 
+/* IMPACT SECTION HEADING */
+.impact-heading {
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards;
+}
+
+/* IMPACT COMPONENT STATVALUE */
+.impact-statValue {
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards;
+  animation-delay: var(--delay);
+}
+
+/* IMPACT COMPONENT TITLE */
+.impact-title {
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards;
+  animation-delay: calc(var(--delay) + 0.5s);
+}
+
+/* IMPACT COMPONENT LINES  */
+.impact-line-right,
+.impact-line-bottom {
+  opacity: 0;
+  transform: translateX(12px);
+  animation: lineIn 0.6s ease-out forwards;
+}
+.impact-line-right {
+  animation-delay: calc(var(--delay) + 0.8s);
+}
+
+.impact-line-bottom {
+  animation-delay: calc(var(--delay) + 1s);
+}
+
+/* OPEN SECTIONS TITLE */
+/* .open-positions-heading {
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out forwards;
+  animation-delay: 0.s; 
+}
+
+.open-positions-card {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+  animation-delay: var(--delay); 
+  animation-play-state: paused;
+} */
+
 /* Float animation for decorative elements */
 @keyframes float {
   0%,

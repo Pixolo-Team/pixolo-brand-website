@@ -1,10 +1,10 @@
 ---
 // COMPONENTS //
-import Chip from "@/components/Chip.astro";
-import Dropdown from "@/components/Dropdown.astro";
-import InputField from "@/components/InputField.astro";
-import RoundedButton from "@/components/RoundedButton.astro";
-import Textarea from "@/components/Textarea.astro";
+import Chip from "@/components/ui/Chip.astro";
+import Dropdown from "@/components/ui/Dropdown.astro";
+import InputField from "@/components/ui/InputField.astro";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import Textarea from "@/components/ui/Textarea.astro";
 
 // DATA //
 import { contactSubjectOptions } from "@/data/contact";
@@ -110,47 +110,7 @@ import { contactSubjectOptions } from "@/data/contact";
   </div>
 </div>
 
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", function () {
-    const backdrop = document.getElementById("backdrop-modal");
-    const closeBtn = document.getElementById("close-btn");
-
-    if (!backdrop || !closeBtn) {
-      console.warn("ContactForm: Required elements not found. Modal functionality may not work.");
-      return;
-    }
-
-    // Opens Modal
-    window.addEventListener("open-contact-modal", () => {
-      backdrop.classList.remove("opacity-0", "invisible");
-      backdrop.classList.add("opacity-100", "visible");
-
-      // Prevent body scroll when modal is open
-      document.body.style.overflow = "hidden";
-    });
-
-    // CLOSE BUTTON - with click handler
-    closeBtn.addEventListener("click", closeModal);
-
-    // Click backdrop only (not the form box)
-    backdrop.addEventListener("click", (e) => {
-      if (e.target === backdrop) closeModal();
-    });
-
-    // ESC key to close modal
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && backdrop.classList.contains("visible")) {
-        closeModal();
-      }
-    });
-
-    /** Closes the modal by toggling visibility classes */
-    function closeModal() {
-      backdrop.classList.remove("opacity-100", "visible");
-      backdrop.classList.add("opacity-0", "invisible");
-
-      // Restore body scroll when modal is closed
-      document.body.style.overflow = "";
-    }
-  });
+<script>
+  import { initContactFormModal } from "@/scripts/contact-form";
+  initContactFormModal();
 </script>
