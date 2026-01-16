@@ -45,13 +45,23 @@ const moreTeamMembers: TeamMember[] = [
     role: "Backend Developer",
     image: "/images/portfolio/image-video.svg",
   },
+  {
+    name: "Liam Chen",
+    role: "QA Engineer",
+    image: "/images/portfolio/image-video.svg",
+  },
+  {
+    name: "Sophia Lee",
+    role: "Marketing Specialist",
+    image: "/images/portfolio/image-video.svg",
+  },
 ];
 ---
 
 <section class="container">
   <!-- OUTER CONTAINER -->
   <div
-    class="mx-auto flex w-full flex-col gap-16 px-6 py-20 md:max-w-3xl md:px-0 md:py-28 xl:max-w-screen-2xl xl:gap-16"
+    class="mx-auto flex w-full flex-col gap-16 px-6 py-20 md:max-w-3xl md:px-7 md:py-28 xl:max-w-screen-2xl xl:gap-16"
   >
     <!-- TEAM CONTAINER -->
     <div class="flex w-full flex-col gap-12">
@@ -147,8 +157,8 @@ const moreTeamMembers: TeamMember[] = [
   document.addEventListener("DOMContentLoaded", () => {
     initSlider({
       sliderId: "featured-carousel",
-      prevId: "slide-prev",
-      nextId: "slide-next",
+      prevId: "featured-prev",
+      nextId: "featured-next",
       loop: true,
     });
 
@@ -159,22 +169,12 @@ const moreTeamMembers: TeamMember[] = [
       loop: false,
     });
   });
-  const cursor = document.getElementById("custom-cursor");
-  const hoverTargets = document.querySelectorAll<HTMLElement>(".team-card-hover");
-  hoverTargets.forEach((el) => {
-    el.addEventListener("mouseenter", () => {
-      cursor?.classList.remove("hidden");
-    });
+  import { animateHoverFollowCursor } from "@/scripts/hover-follow-cursor";
 
-    el.addEventListener("mouseleave", () => {
-      cursor?.classList.add("hidden");
-    });
-
-    el.addEventListener("mousemove", (e: MouseEvent) => {
-      if (!cursor) return;
-
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
+  document.addEventListener("DOMContentLoaded", () => {
+    animateHoverFollowCursor({
+      targetSelector: ".team-card-hover",
+      cursorId: "team-hover-cursor",
     });
   });
 </script>
