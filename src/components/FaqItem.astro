@@ -1,31 +1,44 @@
 ---
+// COMPONENTS //
 import { Icon } from "astro-icon/components";
 
-const { question, answer, isOpen, index } = Astro.props;
+const { question, answer, isOpen = false } = Astro.props;
 ---
 
 <div
-  class="group text-n-700 flex cursor-pointer flex-col gap-3.5 border-t-[0.8px] border-b-[0.8px] px-2 py-8 md:py-12 lg:px-2.5 lg:py-14"
-  data-faq-toggle={index}
+  class={`group faq-item text-n-700 cursor-pointer border-n-700 border-b-[0.8px] px-2 py-8 md:py-12 lg:px-2.5 lg:py-14`}
+  data-faq-accordion
+  data-open={isOpen}
 >
-  <div class="flex items-center justify-between">
-    <div
-      class="gap-3.5 px-2.5 pt-8 pb-4 text-base leading-tight transition-transform duration-300 md:text-2xl lg:text-3xl lg:group-hover:scale-105"
+  <div class="flex w-full flex-col">
+    <button
+      type="button"
+      class="flex cursor-pointer items-center justify-between gap-3.5 md:gap-11 lg:gap-12"
+      data-accordion-trigger
+      aria-expanded={isOpen ? "true" : "false"}
     >
-      {question}
+      <!-- Question -->
+      <p
+        class="text-n-950 text-base leading-tight font-normal transition-transform duration-300 group-hover:scale-105 md:text-2xl lg:text-3xl"
+      >
+        {question}
+      </p>
+
+      <!-- Plus Icon -->
+      <Icon
+        name="plus"
+        class={`text-n-500 size-2.5 cursor-pointer transition-transform duration-300 md:size-5 lg:size-6 group-hover:scale-105 ${isOpen ? "rotate-45" : ""}`}
+        data-accordion-plus
+      />
+    </button>
+
+    <!-- Answer Block -->
+    <div
+      class="text-n-700 overflow-hidden text-xs transition-[height] duration-300 ease-in-out md:text-lg lg:text-xl"
+      data-accordion-answer
+    >
+      <!-- Answer -->
+      <p class="pt-8">{answer}</p>
     </div>
-
-    <Icon
-      name="plus"
-      id={`faq-icon-${index}`}
-      class="w-5 cursor-pointer transition-transform duration-300 lg:group-hover:scale-105"
-    />
-  </div>
-
-  <div
-    id={`faq-answer-${index}`}
-    class={`text-n-700 flex flex-col gap-2 pb-6 text-xs md:text-lg lg:text-xl ${!isOpen ? "hidden" : ""}`}
-  >
-    <div class="pr-5 pl-2.5">{answer}</div>
   </div>
 </div>
