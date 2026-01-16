@@ -1,0 +1,68 @@
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+// DATA //
+import { projectIntroductionDetails } from "@/data/portfolio-consumption/project-introduction";
+---
+
+<!-- Project Introduction Section -->
+<section id="project-introduction">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col gap-7 px-6 py-16 md:gap-12 md:py-24 lg:gap-16 lg:py-28"
+  >
+    <div class="flex flex-col items-center gap-3 md:gap-4">
+      <!-- ToolBadge Component -->
+      <div class="tool-badge">
+        <ToolBadge icon="service-icon" text={projectIntroductionDetails.badgeText} />
+      </div>
+
+      <!-- Title -->
+      <p
+        id="header-text"
+        class="text-center text-3xl leading-tight font-normal tracking-[-2px] md:text-4xl lg:text-5xl"
+      >
+        {projectIntroductionDetails.title}
+      </p>
+    </div>
+    <div class="flex flex-col gap-6 md:gap-9 lg:flex-row lg:gap-11 xl:gap-14">
+      <!-- Image -->
+      <div class="introduction-image overflow-hidden rounded-3xl lg:w-1/2">
+        <Image
+          src={projectIntroductionDetails.image}
+          width={1200}
+          height={675}
+          alt={"Project Introduction Image"}
+          class="h-[195px] w-full object-cover sm:h-full"
+        />
+      </div>
+
+      <!-- Project Info -->
+      <div class="project-info flex flex-1 flex-col gap-7 md:gap-10 lg:gap-14 xl:gap-16 2xl:gap-20">
+        {
+          projectIntroductionDetails.projectInfo.map((projectInfoItem) => (
+            <div class="project-info-item flex flex-col gap-1 md:gap-2 lg:gap-2.5">
+              {/* Heading */}
+              <p class="text-n-950 text-base leading-tight font-medium md:text-xl lg:text-2xl">
+                {projectInfoItem.header}
+              </p>
+
+              {/* Sub Heading */}
+              <p class="text-n-700 text-sm leading-normal font-normal md:text-lg lg:text-xl">
+                {projectInfoItem.subHeading}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animateProjectIntroduction } from "@/scripts/portfolio-consumption/project-introduction";
+
+  animateProjectIntroduction();
+</script>

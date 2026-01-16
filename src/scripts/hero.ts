@@ -34,6 +34,7 @@ export const animateMarble = (elementId: string, containerId: string) => {
   const SPEED_PX_PER_SECOND = 25;
   let posX = 0;
   let posY = 0;
+  let rotation = 0;
   let direction = Math.random() * Math.PI * 2;
 
   // Walls
@@ -54,8 +55,6 @@ export const animateMarble = (elementId: string, containerId: string) => {
       minY: -originTop,
       maxY: containerRect.height - originTop - marbleRect.height,
     };
-
-    console.log(bounds);
   };
 
   // Calculate Bounds
@@ -79,6 +78,9 @@ export const animateMarble = (elementId: string, containerId: string) => {
     // Update Position Vertically
     posY += vy * deltaSeconds;
 
+    // Update Position Rotationally
+    rotation += 20 * deltaSeconds;
+
     // Wall bounce (perfect physics) - Horizontal walls
     if (posX <= bounds.minX) {
       posX = bounds.minX;
@@ -97,10 +99,8 @@ export const animateMarble = (elementId: string, containerId: string) => {
       direction = -direction;
     }
 
-    console.log(posY, bounds.maxY);
-
     // --- ⚡ Motion One animation update ---
-    animate(marble, { x: posX, y: posY }, { duration: 0, easing: "linear" });
+    animate(marble, { x: posX, y: posY, rotate: rotation }, { duration: 0, easing: "linear" });
 
     requestAnimationFrame(step);
   };
