@@ -1,197 +1,180 @@
 ---
-// COMPONENTS //
 import ToolBadge from "@/components/ToolBadge.astro";
 import TeamCard from "@/components/TeamCard.astro";
-import { Icon } from "astro-icon/components";
+import SliderArrows from "@/components/ui/SliderArrows.astro";
+import EmblaCarousel from "embla-carousel";
+import { initIndustrySlider } from "@/scripts/industries.ts";
 
-// INTERFACES //
 interface TeamMember {
   name: string;
   role: string;
   image: string;
 }
 
-// PROPS //
-const {
-  featuredMember = {
+const featuredMembers: TeamMember[] = [
+  {
     name: "Harsh Patil",
     role: "Product Manager",
-    image: "/images/retainership/employee-image.jpg",
+    image: "/images/portfolio/image-video.svg",
   },
-  moreTeamMembers = [
-    {
-      name: "Harsh Patil",
-      role: "Product Manager",
-      image: "/images/retainership/employee-image.jpg",
-    },
-    {
-      name: "Elena Tran",
-      role: "UX Designer",
-      image: "/images/retainership/employee-image.jpg",
-    },
-    {
-      name: "Rajesh Kumar",
-      role: "Frontend Developer",
-      image: "/images/retainership/employee-image.jpg",
-    },
-    {
-      name: "Maya Singh",
-      role: "Backend Developer",
-      image: "/images/retainership/employee-image.jpg",
-    },
-    {
-      name: "Alex Johnson",
-      role: "UI Designer",
-      image: "/images/retainership/employee-image.jpg",
-    },
-  ],
-} = Astro.props as {
-  featuredMember?: TeamMember;
-  moreTeamMembers?: TeamMember[];
-};
+  {
+    name: "Harsh Patil",
+    role: "Product Manager",
+    image: "/images/portfolio/image-video.svg",
+  },
+];
+
+const moreTeamMembers: TeamMember[] = [
+  {
+    name: "Harsh Patil",
+    role: "Product Manager",
+    image: "/images/portfolio/image-video.svg",
+  },
+  {
+    name: "Elena Tran",
+    role: "UX Designer",
+    image: "/images/portfolio/image-video.svg",
+  },
+  {
+    name: "Rajesh Kumar",
+    role: "Frontend Developer",
+    image: "/images/portfolio/image-video.svg",
+  },
+  {
+    name: "Maya Singh",
+    role: "Backend Developer",
+    image: "/images/portfolio/image-video.svg",
+  },
+];
 ---
 
-<!-- Teams Section -->
-<section class="w-full">
-  <!-- container -->
+<section class="container">
+  <!-- OUTER CONTAINER -->
   <div
-    class="container mx-auto flex w-full flex-col gap-16 px-6 py-24 md:gap-16 md:px-6 md:py-28 xl:max-w-screen-2xl xl:gap-16 xl:px-0 xl:py-28"
+    class="mx-auto flex w-full flex-col gap-16 px-6 py-20 md:max-w-3xl md:px-0 md:py-28 xl:max-w-screen-2xl xl:gap-16"
   >
-    <!-- team-container -->
-    <div class="flex w-full flex-col gap-12 md:gap-12 xl:gap-12">
-      <!-- header -->
-      <div class="flex w-full flex-col items-center gap-4 text-center md:gap-4 xl:gap-4">
+    <!-- TEAM CONTAINER -->
+    <div class="flex w-full flex-col gap-12">
+      <!-- HEADER -->
+      <div class="flex w-full flex-col items-center gap-4 text-center">
         <ToolBadge icon="service-icon" text="Meet the Team" />
 
-        <p class="text-n-950 text-3xl leading-[125%] font-normal md:text-4xl xl:text-5xl">
+        <p
+          class="anim-fade-in-up text-n-950 text-3xl leading-[125%] font-normal md:text-4xl xl:text-5xl"
+        >
           Behind the Scenes With Our Creative & Dev Crew
         </p>
       </div>
 
-      <!-- content-wrap -->
-      <div class="flex w-full flex-col gap-4 md:gap-4 xl:gap-6">
-        <!-- featured cards wrapper -->
-        <div class="flex w-full flex-col gap-10 md:gap-12 xl:gap-12">
-          <!-- featured cards carousel -->
-          <div
-            id="featured-carousel"
-            class="flex w-full flex-row gap-4 overflow-x-auto scroll-smooth md:gap-4 xl:gap-6 xl:overflow-visible"
-          >
-            <div class="flex w-full flex-shrink-0 md:flex-shrink-0 xl:w-1/2 xl:flex-shrink">
-              <TeamCard
-                poster={featuredMember.image}
-                name={featuredMember.name}
-                role={featuredMember.role}
-              />
+      <!-- CONTENT WRAP -->
+      <div class="flex w-full flex-col gap-4 xl:gap-7">
+        <!-- FEATURED MEMBER -->
+        <div class="flex w-full flex-col gap-10 md:gap-12 xl:gap-7">
+          <!-- FEATURED CAROUSEL -->
+          <div id="featured-carousel" class="overflow-hidden xl:overflow-hidden">
+            <div class="flex gap-4 xl:gap-5">
+              {
+                featuredMembers.map((member, index) => (
+                  <div
+                    class={`custom-cursor anim-fade-up-slow w-full shrink-0 xl:w-260.5`}
+                    style={`animation-delay: ${index * 120}ms`}
+                  >
+                    <TeamCard poster={member.image} name={member.name} role={member.role} />
+                  </div>
+                ))
+              }
             </div>
-
-            <!-- second card visible on xl (as per design) -->
-            <div class="hidden xl:flex xl:w-1/2 xl:flex-shrink">
-              <TeamCard
-                poster={featuredMember.image}
-                name={featuredMember.name}
-                role={featuredMember.role}
-              />
-            </div>
-          </div>
-
-          <!-- featured carousel buttons -->
-          <div class="flex w-full items-center justify-end gap-6 md:gap-10 xl:gap-6">
-            <button
-              onclick="scrollCarousel('featured-carousel', -1)"
-              aria-label="Previous slide"
-              class="hover:border-n-700 flex items-center justify-center transition-all duration-300 hover:size-10 hover:rounded-full hover:border"
-            >
-              <Icon
-                name="right-arrow"
-                class="text-n-700 hover:text-n-950 size-[13.63px] rotate-180 transition-colors duration-300 md:size-[17.19px]"
-              />
-            </button>
-
-            <button
-              onclick="scrollCarousel('featured-carousel', 1)"
-              aria-label="Next slide"
-              class="hover:border-n-700 flex items-center justify-center transition-all duration-300 hover:size-10 hover:rounded-full hover:border"
-            >
-              <Icon
-                name="right-arrow"
-                class="text-n-700 hover:text-n-950 size-[13.63px] transition-colors duration-300 md:size-[17.19px]"
-              />
-            </button>
           </div>
         </div>
 
-        <!-- more team section -->
-        <div class="flex w-full flex-col gap-6 md:gap-6 xl:gap-6">
-          <p class="text-n-950 text-xl leading-[125%] font-normal md:text-2xl xl:text-2xl">
+        <!-- FEATURED ARROWS -->
+        <div class="flex justify-end">
+          <SliderArrows prevId="featured-prev" nextId="featured-next" />
+        </div>
+
+        <!-- MORE TEAM -->
+        <div class="flex w-full flex-col gap-6">
+          <p class="text-n-950 text-xl leading-[125%] font-normal md:text-2xl">
             Meet More of the Team
           </p>
 
-          <!-- more team carousel -->
-          <div
-            id="small-carousel"
-            class="flex w-full flex-row gap-4 overflow-x-auto scroll-smooth md:gap-4 xl:gap-6"
-          >
-            {
-              moreTeamMembers.map((member) => (
-                <div class="flex flex-shrink-0 flex-col gap-3.5 md:gap-3.5 xl:gap-3.5">
-                  <img
-                    src={member.image}
-                    alt={`Portrait of ${member.name}`}
-                    class="h-[264px] w-[229px] rounded-3xl object-cover md:h-[264px] md:w-[229px] xl:h-[264px] xl:w-[229px]"
-                  />
+          <!-- SMALL CAROUSEL -->
+          <div id="small-carousel" class="overflow-hidden">
+            <div class="flex gap-4">
+              {
+                moreTeamMembers.map((member, index) => (
+                  <div
+                    class="flex w-[229px] shrink-0 flex-col gap-3.5 md:w-[229px] xl:w-[291.2px]"
+                    style={`--delay: ${index * 0.15}s`}
+                  >
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      class="h-[198px] w-full rounded-2xl object-cover"
+                    />
 
-                  <div class="flex flex-col gap-0.5 md:gap-0.5 xl:gap-0.5">
-                    <p class="text-n-950 text-xl leading-[125%] font-normal md:text-xl xl:text-xl">
-                      {member.name}
-                    </p>
-                    <p class="text-n-700 text-sm leading-[125%] font-normal md:text-sm xl:text-sm">
-                      {member.role}
-                    </p>
+                    <div class="flex flex-col gap-0.5 px-2.5">
+                      <p class="text-n-950 text-xl leading-[125%]">{member.name}</p>
+                      <p class="text-n-700 text-sm leading-[125%]">{member.role}</p>
+                    </div>
                   </div>
-                </div>
-              ))
-            }
+                ))
+              }
+            </div>
           </div>
 
-          <!-- more team carousel buttons -->
-          <div class="flex w-full items-center justify-end gap-6 md:gap-10 xl:gap-6">
-            <button
-              onclick="scrollCarousel('small-carousel', -1)"
-              aria-label="Previous slide"
-              class="hover:border-n-700 flex items-center justify-center transition-all duration-300 hover:size-10 hover:rounded-full hover:border"
-            >
-              <Icon
-                name="right-arrow"
-                class="text-n-700 hover:text-n-950 size-[13.63px] rotate-180 transition-colors duration-300 md:size-[17.19px]"
-              />
-            </button>
-
-            <button
-              onclick="scrollCarousel('small-carousel', 1)"
-              aria-label="Next slide"
-              class="hover:border-n-700 flex items-center justify-center transition-all duration-300 hover:size-10 hover:rounded-full hover:border"
-            >
-              <Icon
-                name="right-arrow"
-                class="text-n-700 hover:text-n-950 size-[13.63px] transition-colors duration-300 md:size-[17.19px]"
-              />
-            </button>
+          <!-- SMALL ARROWS -->
+          <div class="flex justify-end">
+            <SliderArrows prevId="small-prev" nextId="small-next" />
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div
+    id="team-hover-cursor"
+    class="bg-n-200 pointer-events-none fixed z-50 hidden -translate-x-1/2 -translate-y-1/2 rounded-xl px-3 py-1.5"
+  >
+    <p class="text-n-950 text-xs whitespace-nowrap">Watch Video</p>
+  </div>
 </section>
 
-<script>
-  window.scrollCarousel = function (id: string, direction: number) {
-    const container = document.getElementById(id);
-    if (!container) return;
+<!-- CAROUSEL LOGIC -->
 
-    container.scrollBy({
-      left: container.clientWidth * 0.85 * direction,
-      behavior: "smooth",
+<script>
+  import { initSlider } from "@/scripts/portfolio-consumption/slider";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initSlider({
+      sliderId: "featured-carousel",
+      prevId: "slide-prev",
+      nextId: "slide-next",
+      loop: true,
     });
-  };
+
+    initSlider({
+      sliderId: "small-carousel",
+      prevId: "small-prev",
+      nextId: "small-next",
+      loop: false,
+    });
+  });
+  const cursor = document.getElementById("custom-cursor");
+  const hoverTargets = document.querySelectorAll<HTMLElement>(".team-card-hover");
+  hoverTargets.forEach((el) => {
+    el.addEventListener("mouseenter", () => {
+      cursor?.classList.remove("hidden");
+    });
+
+    el.addEventListener("mouseleave", () => {
+      cursor?.classList.add("hidden");
+    });
+
+    el.addEventListener("mousemove", (e: MouseEvent) => {
+      if (!cursor) return;
+
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    });
+  });
 </script>

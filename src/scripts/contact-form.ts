@@ -40,26 +40,18 @@ export const initContactFormModal = () => {
 
   /** Function to animte the modal on open */
   const fadeIn = (formElement: HTMLElement) => {
-    animate(
-      formElement,
-      { opacity: [0, 1], scale: [0.96, 1] },
-      {
-        duration: 0.3,
-        easing: "ease-out",
-      },
-    );
+    animate(formElement, { opacity: [0, 1], scale: [0.96, 1] } as any, {
+      duration: 0.3,
+      easing: "ease-out",
+    });
   };
 
   /** Function to animte the modal on close */
   const fadeOut = (formElement: HTMLElement, onFinish: () => void) => {
-    animate(
-      formElement,
-      { opacity: [1, 0], scale: [1, 0.96] },
-      {
-        duration: 0.2,
-        easing: "ease-in",
-      },
-    ).finished.then(onFinish);
+    animate(formElement, { opacity: [1, 0], scale: [1, 0.96] } as any, {
+      duration: 0.2,
+      easing: "ease-in",
+    }).finished.then(onFinish);
   };
 
   /** Function to open the modal */
