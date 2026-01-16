@@ -22,7 +22,9 @@ import { contactSectionDetails } from "@/data/contact";
       <!-- Form -->
       <div class="flex w-full flex-col gap-14 lg:gap-16">
         <!-- Header -->
-        <div class="flex flex-col items-center justify-center gap-3 md:gap-3.5 lg:gap-4">
+        <div
+          id="form-header"
+          class="flex flex-col items-center justify-center gap-3 md:gap-3.5 lg:gap-4">
           <ToolBadge icon="service-icon" text="Quick Apply" />
           <p
             class="text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl">
@@ -31,7 +33,7 @@ import { contactSectionDetails } from "@/data/contact";
         </div>
 
         <!-- Form Contents -->
-        <div class="flex w-full flex-col gap-4 md:gap-5 lg:gap-6">
+        <form class="flex w-full flex-col gap-4 md:gap-5 lg:gap-6" aria-label="Contact form">
           <!-- Contents wrap -->
           <div class="flex w-full flex-col gap-11 lg:gap-14">
             <!-- Name -->
@@ -53,11 +55,10 @@ import { contactSectionDetails } from "@/data/contact";
               />
               <InputField
                 label=""
-                name="phoneNo"
-                id="phoneNo"
+                name="phone"
+                id="phone"
                 type="tel"
                 placeholder="Phone Number"
-                required={true}
                 isError={false}
                 errorMessages={[
                   "This field is required.",
@@ -67,7 +68,7 @@ import { contactSectionDetails } from "@/data/contact";
             </div>
             <!-- Resume and Position -->
             <div class="grid w-full grid-cols-2 gap-5 md:gap-20">
-              <FileInput name="resume" placeholder="Upload resume" id="resume" />
+              <FileInput name="resume" placeholder="Upload resume" id="resume" required={true} />
               <DropdownTwo
                 id="position"
                 name="position"
@@ -84,9 +85,9 @@ import { contactSectionDetails } from "@/data/contact";
           </div>
           <!-- Submit button -->
           <div class="self-end">
-            <RoundedButton buttonText="Submit Form" />
+            <RoundedButton buttonText="Submit Form" type="submit" aria-label="Submit form" />
           </div>
-        </div>
+        </form>
       </div>
 
       <!-- Contact us -->
@@ -180,6 +181,15 @@ import { contactSectionDetails } from "@/data/contact";
 </section>
 
 <script>
-  import { initCopyButtons } from "@/scripts/contact-copy";
-  document.addEventListener("DOMContentLoaded", initCopyButtons);
+  import {
+    initializeCopyButtons,
+    initializeFormSubmission,
+    animateFormHeader,
+  } from "@/scripts/career/form";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initializeCopyButtons();
+    initializeFormSubmission();
+    animateFormHeader();
+  });
 </script>

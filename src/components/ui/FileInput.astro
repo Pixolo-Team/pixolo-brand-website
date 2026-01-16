@@ -32,7 +32,7 @@ const {
       {label}
     </label>
 
-    <div class="relative flex-1">
+    <div class="relative min-w-0 flex-1">
       {/* 1. The Actual Hidden Input */}
       <input
         disabled={isDisabled}
@@ -46,7 +46,7 @@ const {
       {/* 2. The Visual "Fake" Input */}
       <div
         id={`${id}-display`}
-        class="text-n-600 peer-focus:text-n-900 truncate text-sm lg:text-base">
+        class="text-n-600 peer-focus:text-n-950 truncate text-sm lg:text-base">
         {placeholder}
       </div>
     </div>
@@ -81,12 +81,12 @@ const {
         // Change text to filename and make it look "active"
         displayDiv.innerText = files[0].name;
         displayDiv.classList.remove("text-n-600");
-        displayDiv.classList.add("text-n-900", "font-medium");
+        displayDiv.classList.add("text-n-950", "font-medium");
       } else {
         // Reset if selection cleared
         displayDiv.innerText = placeholder;
         displayDiv.classList.add("text-n-600");
-        displayDiv.classList.remove("text-n-900", "font-medium");
+        displayDiv.classList.remove("text-n-950", "font-medium");
       }
     });
   }
