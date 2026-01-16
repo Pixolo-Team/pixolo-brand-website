@@ -352,30 +352,24 @@ export const initializeFormSubmission = () => {
   });
 };
 
-// Animate Form Header
-// Animate Form Header
 export const animateFormHeader = () => {
-  inView(
-    "#form-header",
-    (element) => {
-      animate(
-        element,
-        {
-          // Initial state [from, to]
-          opacity: [0, 1],
-          // Starts 50 pixels to the right and moves to 0
-          x: [50, 0],
-        },
-        {
-          duration: 0.6, // Slightly longer duration for a smoother horizontal glide
-          delay: 0.2,
-          easing: "ease-out", // Added easing for a more professional feel
-        },
-      );
-    },
-    {
-      margin: "0px 0px -50px 0px", // Trigger slightly before it hits the viewport
-      amount: "any",
-    },
-  );
+  const formHeader = document.querySelector("#form-header");
+
+  if (!formHeader) return;
+
+  inView(formHeader, () => {
+    // 1. Animate the ToolBadge
+    animate(
+      formHeader.querySelectorAll(".tool-badge"),
+      { opacity: [0, 1], y: ["50px", 0], scaleX: [0.6, 1], rotateX: [120, 0] },
+      { duration: 0.8, delay: 0 },
+    );
+
+    // 2. Animate the Header Text
+    animate(
+      formHeader.querySelectorAll(".header-text"),
+      { opacity: [0, 1], y: ["50px", 0], scaleY: [0.4, 1] },
+      { duration: 0.8, delay: 0.4 },
+    );
+  });
 };
