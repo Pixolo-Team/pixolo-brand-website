@@ -7,7 +7,6 @@ import { Icon } from "astro-icon/components";
 // DATA //
 import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
-import { getView } from "@/scripts/showcase";
 import SliderArrows from "@/components/ui/SliderArrows.astro";
 ---
 
@@ -39,16 +38,16 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
       <div class="flex flex-col gap-10">
         <!-- Tiles -->
         <div class="flex flex-row justify-end gap-4 px-8 lg:gap-5">
-          <button id="listIconBtn" class="cursor-pointer">
+          <button id="listIconBtn" class="text-n-500 cursor-pointer">
             <Icon
               name={"list"}
-              class={`${getView() === "grid" ? "text-n-950" : "text-n-500"} size-5 lg:size-6 hover:size-5.5 lg:hover:size-6.5`}
+              class={`text-n-500 size-5 lg:size-6 hover:size-5.5 lg:hover:size-6.5`}
             />
           </button>
           <button id="gridIconBtn" class="cursor-pointer">
             <Icon
               name={"grid"}
-              class={`${getView() === "grid" ? "text-n-500" : "text-n-950"} size-5 lg:size-6 hover:size-5.5 lg:hover:size-6.5`}
+              class={`text-n-100 size-5 lg:size-6 hover:size-5.5 lg:hover:size-6.5`}
             />
           </button>
         </div>
@@ -56,8 +55,8 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
         <!-- Portfolio Cards Wrap -->
         <div
           id="portfolio-project-cards"
-          data-view=`${getView() === "list" ? "list" : "grid"}`
-          class={`grid ${getView() === "list" ? "grid-cols-1" : "grid-cols-2"} gap-10`}
+          data-view="list"
+          class={`group grid data-[view=list]:grid-cols-1 data-[view=grid]:grid-cols-2 gap-10`}
         >
           {
             // Project Cards //
@@ -72,7 +71,6 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
                 badgeItems={projectCard.badgeItems}
                 buttonOneText={"View Website"}
                 buttonTwoText={"Show Project"}
-                view={getView() === "list" ? "list" : "grid"}
               />
             ))
           }
@@ -96,7 +94,7 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
               {
                 // Mini Project Cards //
                 portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
-                  <div class="embla__slide mr-6 max-w-full min-w-0 flex-[0_0_327px] lg:flex-[0_0_413px]">
+                  <div class="embla__slide mr-6 flex max-w-full min-w-0 flex-1 flex-[1_0_327px] lg:flex-[0_0_413px]">
                     <MiniProjectCard
                       id={cardItem.id}
                       title={cardItem.title}

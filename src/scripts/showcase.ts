@@ -164,26 +164,25 @@ export const animateProjectCards = () => {
 };
 
 /** Handling the Toggle Functionality of Project Cards View **/
-let view = "list";
 export function initShowcase() {
   const gridIconBtn = document.getElementById("gridIconBtn");
   const listIconBtn = document.getElementById("listIconBtn");
-  const rootNode = document.getElementById("portfolio-project-card");
+  const rootNode = document.getElementById("portfolio-project-cards");
 
-  if (!gridIconBtn || !listIconBtn || !rootNode) return;
+  if (!gridIconBtn || !listIconBtn || !rootNode) {
+    if (!gridIconBtn) console.log("error grid");
+    else if (!listIconBtn) console.log("error list");
+    else console.log("error root");
+    return;
+  }
 
-  view = rootNode.getAttribute("data-view") === "list" ? "list" : "grid";
   gridIconBtn.addEventListener("click", () => {
-    rootNode.setAttribute("data-view", "grid");
-    location.reload();
+    rootNode.dataset.view = "grid";
+    console.log("clicked grid");
   });
 
   listIconBtn.addEventListener("click", () => {
-    rootNode.setAttribute("data-view", "list");
-    location.reload();
+    rootNode.dataset.view = "list";
+    console.log("clicked list");
   });
-}
-
-export function getView() {
-  return view === "list" ? "list" : "grid";
 }
