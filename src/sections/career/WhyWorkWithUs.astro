@@ -1,0 +1,58 @@
+---
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+import { reasonToWorkWithUs, headingsAndDetails } from "@/data/career/why-work-with-us";
+---
+
+<section>
+  <div class="container mx-auto flex flex-col gap-10 px-6 py-16">
+    <div class="flex flex-col items-center gap-3.5">
+      <ToolBadge icon="package" text={headingsAndDetails.badgeText} />
+      <p
+        class="text-center text-2xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl"
+      >
+        {headingsAndDetails.mainTitle}
+      </p>
+    </div>
+
+    <div class="mx-auto flex w-full flex-col gap-9 md:gap-12 lg:flex-row lg:gap-14">
+      <div class="w-full overflow-hidden rounded-4xl object-cover">
+        <Image
+          src={headingsAndDetails.image}
+          width={100}
+          height={100}
+          alt={"why-work-with-us-default"}
+          class={" w-full h-full"}
+        />
+      </div>
+
+      <div class="flex w-full flex-col gap-5 md:gap-6 lg:gap-7">
+        {
+          reasonToWorkWithUs.map((reason) => (
+            <div class="flex w-full items-start justify-between gap-2.5">
+              {/* Left side: Number stays fixed to the left */}
+              <span class="flex shrink-0 flex-col self-end text-lg leading-relaxed font-normal tracking-[-0.02em] capitalize md:text-2xl lg:text-3xl">
+                {reason.id}
+              </span>
+
+              {/* Right side: flex-1 makes this container fill all remaining space */}
+              <div class="flex flex-1 flex-col gap-4">
+                <div class="border-n-700 flex w-full flex-col border-b py-3 pr-1.5">
+                  <p class="text-n-700 text-right text-base leading-tight font-normal tracking-normal capitalize md:text-xl lg:text-2xl">
+                    {reason.title}
+                  </p>
+                </div>
+
+                {/* Hidden text remains right-aligned if shown */}
+                <p class="hidden text-right text-lg leading-tight font-normal tracking-normal text-white not-italic">
+                  {reason.hiddeTitle}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
