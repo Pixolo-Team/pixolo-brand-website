@@ -127,11 +127,13 @@ export const aboutClient = {
   },
 };
 
-export const clientGallery = {
+// Gallery Section Details
+export const gallerySectionDetails = {
   badgeIcon: "package",
   badgeText: "Visual Highlights",
   sectionTitle: "Our Journey, Captured In Powerful Frames",
-  images: [
+
+  galleryImages: [
     {
       imagePath: "/images/case-studies/1/client-gallery-image1.jpg",
       alt: "Pixolo Client Gallery Image 1",
@@ -146,6 +148,7 @@ export const clientGallery = {
     },
   ],
 };
+
 // Client Testimonial Details
 export const clientTestimonialDetails = {
   badgeIcon: "package",

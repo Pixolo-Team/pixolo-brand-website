@@ -1,4 +1,4 @@
-// PLUGINS //
+// OTHERS //
 import { animate, inView, stagger } from "motion";
 
 /** Animate the Numbers after Solution Section */
@@ -48,8 +48,24 @@ export const animateNumbersAfterSolution = () => {
   );
 };
 
-/** Animate the Numbers after Solution Section */
-export const caseStudyGallerySlider = () => {};
+/** Animate the Gallery Section */
+export const animateGallerySection = () => {
+  // Animate when in view
+  inView("#gallery-section", (gallerySection) => {
+    animate(
+      gallerySection?.querySelectorAll(".gallery-item"),
+      {
+        opacity: [0, 1],
+        x: ["-60px", 0],
+      },
+      {
+        duration: 0.8,
+        delay: 0.6,
+      },
+    );
+  });
+};
+
 /* Animate Case Study Consumption Hero Section */
 export const animateCaseStudyConsumptionHero = () => {
   inView("#case-study-consumption-hero", (caseStudyConsumptionHero) => {
