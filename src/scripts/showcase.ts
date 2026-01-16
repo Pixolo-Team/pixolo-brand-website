@@ -1,95 +1,76 @@
 // OTHERS //
-import EmblaCarousel, { type EmblaCarouselType, type EmblaOptionsType } from "embla-carousel";
-
-const addTogglePrevNextBtnsActive = (
-  emblaApi: EmblaCarouselType,
-  prevBtn: HTMLElement,
-  nextBtn: HTMLElement,
-): (() => void) => {
-  const togglePrevNextBtnsState = (): void => {
-    if (emblaApi.canScrollPrev()) prevBtn.removeAttribute("disabled");
-    else prevBtn.setAttribute("disabled", "disabled");
-
-    if (emblaApi.canScrollNext()) nextBtn.removeAttribute("disabled");
-    else nextBtn.setAttribute("disabled", "disabled");
-  };
-
-  emblaApi
-    .on("select", togglePrevNextBtnsState)
-    .on("init", togglePrevNextBtnsState)
-    .on("reInit", togglePrevNextBtnsState);
-
-  return (): void => {
-    prevBtn.removeAttribute("disabled");
-    nextBtn.removeAttribute("disabled");
-  };
-};
-
-export const addPrevNextBtnsClickHandlers = (
-  emblaApi: EmblaCarouselType,
-  prevBtn: HTMLElement,
-  nextBtn: HTMLElement,
-): (() => void) => {
-  const scrollPrev = (): void => {
-    emblaApi.scrollPrev();
-  };
-  const scrollNext = (): void => {
-    emblaApi.scrollNext();
-  };
-  prevBtn.addEventListener("click", scrollPrev, false);
-  nextBtn.addEventListener("click", scrollNext, false);
-
-  const removeTogglePrevNextBtnsActive = addTogglePrevNextBtnsActive(emblaApi, prevBtn, nextBtn);
-
-  return (): void => {
-    removeTogglePrevNextBtnsActive();
-    prevBtn.removeEventListener("click", scrollPrev, false);
-    nextBtn.removeEventListener("click", scrollNext, false);
-  };
-};
-
-const setupProgressBar = (
-  emblaApi: EmblaCarouselType,
-  progressNode: HTMLElement,
-): {
-  applyProgress: () => void;
-  removeProgress: () => void;
-} => {
-  const applyProgress = (): void => {
-    const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
-    progressNode.style.transform = `translate3d(${progress * 100}%,0px,0px)`;
-  };
-
-  const removeProgress = (): void => {
-    progressNode.removeAttribute("style");
-  };
-
-  return {
-    applyProgress,
-    removeProgress,
-  };
-};
-
-const OPTIONS: EmblaOptionsType = { dragFree: true };
+import EmblaCarousel from "embla-carousel";
 
 export function initShowcaseSlider() {
-  const emblaNode = <HTMLElement>document.querySelector("#showcase-slider");
-  const viewportNode = <HTMLElement>emblaNode.querySelector(".embla__viewport");
-  const prevBtn = <HTMLElement>emblaNode.querySelector(".slide-prev");
-  const nextBtn = <HTMLElement>emblaNode.querySelector(".slide-next");
-  const progressNode = <HTMLElement>emblaNode.querySelector(".embla__progress__bar");
+  // Grab wrapper nodes
+  const rootNode = document.querySelector(".embla");
+  const viewportNode = document.getElementById("showcase-slider");
+  // Grab button nodes
+  const prevButtonNode = rootNode?.querySelector("#slide-prev");
+  const nextButtonNode = rootNode?.querySelector("#slide-next");
+  // Grab progress node
+  const progressNode = document.getElementById("embla__progress__bar");
 
-  const emblaApi = EmblaCarousel(viewportNode, OPTIONS);
-  const { applyProgress, removeProgress } = setupProgressBar(emblaApi, progressNode);
+  // Run only if all required elements exist
+  if (!rootNode || !viewportNode || !prevButtonNode || !nextButtonNode || !progressNode) return;
 
-  const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(emblaApi, prevBtn, nextBtn);
+  // Initialize Embla carousel
+  const embla = EmblaCarousel(viewportNode, {
+    loop: false,
+    align: "start",
+    skipSnaps: false,
+  });
 
-  emblaApi
-    .on("init", applyProgress)
-    .on("reInit", applyProgress)
-    .on("scroll", applyProgress)
-    .on("slideFocus", applyProgress)
-    .on("destroy", removeProgress)
+  const reInitialize = () => {
+    const progress = Math.max(0, Math.min(1, embla.scrollProgress()));
+    console.log(embla.scrollProgress());
+    progressNode.style.width = `${progress * 100}%`;
+
+    if (embla.canScrollNext()) nextButtonNode.children[0].classList.remove("text-n-500");
+    else nextButtonNode.children[0].classList.add("text-n-500");
+    if (embla.canScrollPrev()) prevButtonNode.children[0].classList.remove("text-n-500");
+    else prevButtonNode.children[0].classList.add("text-n-500");
+  };
+
+  const removePrevNextBtnsClickHandlers = () => {
+    nextButtonNode.removeEventListener(
+      "click",
+      () => {
+        embla.scrollNext();
+        reInitialize();
+      },
+      false,
+    );
+    prevButtonNode.removeEventListener(
+      "click",
+      () => {
+        embla.scrollPrev();
+        reInitialize();
+      },
+      false,
+    );
+  };
+
+  // Scroll to next slide on next button click
+  nextButtonNode.addEventListener("click", () => {
+    embla.scrollNext();
+    reInitialize();
+  });
+
+  // Scroll to previous slide on prev button click
+  prevButtonNode.addEventListener("click", () => {
+    embla.scrollPrev();
+    reInitialize();
+  });
+
+  embla
+    .on("init", reInitialize)
+    .on("reInit", reInitialize)
+    .on("scroll", reInitialize)
+    .on("slideFocus", reInitialize)
+    .on("destroy", () => {
+      progressNode.removeAttribute("style");
+    })
     .on("destroy", removePrevNextBtnsClickHandlers);
 }
 

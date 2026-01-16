@@ -31,7 +31,7 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
     </div>
 
     <!-- Portfolio Wrap -->
-    <div class="flex flex-col gap-10 md:gap-24 lg:gap-32">
+    <div class="flex max-w-full flex-col gap-10 md:gap-24 lg:gap-32">
       <!-- Portfolio Project Tiles -->
       <div class="flex flex-col gap-10">
         <!-- Tiles -->
@@ -71,7 +71,7 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
       </div>
 
       <!-- Mini Projects Wrap -->
-      <div class="flex flex-col gap-8 md:gap-12 lg:gap-16">
+      <div class="embla flex flex-col gap-8 overflow-hidden md:gap-12 lg:gap-16">
         <!-- Mini Projects Content -->
         <div class="flex flex-col gap-5 md:gap-6 lg:gap-7">
           <!-- Title -->
@@ -80,28 +80,34 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
           </p>
 
           <!-- Cards Wrap -->
-          <div class="scrollbar-hide flex flex-col gap-7 overflow-x-auto md:flex-row">
-            {
-              // Mini Project Cards //
-              portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
-                <MiniProjectCard
-                  id={cardItem.id}
-                  title={cardItem.title}
-                  badges={cardItem.badges}
-                  date={cardItem.date}
-                  btnOneText={cardItem.btnOneText}
-                  btnTwoText={cardItem.btnTwoText}
-                  image={cardItem.image}
-                />
-              ))
-            }
+          <div id="showcase-slider" class="embla__viewport">
+            <!-- Embla container -->
+            <div class="embla__container flex flex-row">
+              <!-- Iterating on Project Cards -->
+              {
+                // Mini Project Cards //
+                portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
+                  <div class="embla__slide mr-6 max-w-full min-w-0 flex-[0_0_327px] lg:flex-[0_0_413px]">
+                    <MiniProjectCard
+                      id={cardItem.id}
+                      title={cardItem.title}
+                      badges={cardItem.badges}
+                      date={cardItem.date}
+                      btnOneText={cardItem.btnOneText}
+                      btnTwoText={cardItem.btnTwoText}
+                      image={cardItem.image}
+                    />
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
 
         <!-- Slider Cta Wrap -->
-        <div class="relative flex flex-row">
+        <div class="relative flex max-w-full flex-col">
           <!-- Cta Wrap -->
-          <div class="absolute right-0 flex flex-row gap-6 px-1.5 md:gap-9 md:px-4">
+          <div class="self-end justify-self-end">
             <SliderArrows />
           </div>
 
@@ -110,7 +116,8 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
             class="border-n-500 absolute inset-0 m-auto h-0 w-24 border md:w-36 md:border-2 lg:w-96"
           >
             <div
-              class="embla__progress__bar absolute top-[-1px] h-0 w-full translate-0 border border-blue-500 md:border-2"
+              id="embla__progress__bar"
+              class="absolute top-[-1px] h-0 w-0 border border-blue-500 md:border-2"
             >
             </div>
           </div>
@@ -125,6 +132,6 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
 
   document.addEventListener("DOMContentLoaded", () => {
     initShowcase();
-    // initShowcaseSlider(); //
+    initShowcaseSlider();
   });
 </script>
