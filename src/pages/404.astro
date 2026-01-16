@@ -1,7 +1,10 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import ToolBadge from "@/components/ToolBadge.astro";
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
 ---
 
 <style>
@@ -49,7 +52,7 @@ import { Image } from "astro:assets";
         <div
           class="absolute top-[-25%] left-[-15%] z-20 -mt-[10px] rotate-[-13.99deg] md:top-[-20%] md:left-[-10%]"
         >
-          <ToolBadge icon="alert" text="404 vibes only" />
+          <ToolBadge icon="package" text="404 vibes only" />
         </div>
 
         <Image
