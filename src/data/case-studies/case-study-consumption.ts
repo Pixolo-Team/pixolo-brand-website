@@ -1,3 +1,15 @@
+// Case Study Consumption Hero Section Details
+export const caseStudyConsumptionHeroDetails = {
+  badgeIcon: "package",
+  badgeTitle: "UX Case Study",
+  title: "FC Barcelona",
+  description:
+    "A full digital overhaul that unified experience across 3 continents. A full digital overhaul that unified experience across 3 continents.",
+  logo: "/images/case-studies/1/client-barcelona.png",
+  name: "FC Barcelona",
+  thumbnail: "/images/case-studies/1/client-fcbarcelona-hero.jpg",
+};
+
 export const clientNumbers = [
   { title: "Faster Onboarding", value: "3X" },
   { title: "Improved User Retention", value: "25%" },
@@ -113,6 +125,28 @@ export const aboutClient = {
       "/images/case-studies/1/client-barcelona-player.jpg",
     ],
   },
+};
+
+// Gallery Section Details
+export const gallerySectionDetails = {
+  badgeIcon: "package",
+  badgeText: "Visual Highlights",
+  sectionTitle: "Our Journey, Captured In Powerful Frames",
+
+  galleryImages: [
+    {
+      imagePath: "/images/case-studies/case-study-consumption/gallery-default-image.jpg",
+      alt: "Pixolo Client Gallery Image 1",
+    },
+    {
+      imagePath: "/images/case-studies/case-study-consumption/gallery-default-image.jpg",
+      alt: "Pixolo Client Gallery Image 2",
+    },
+    {
+      imagePath: "/images/case-studies/case-study-consumption/gallery-default-image.jpg",
+      alt: "Pixolo Client Gallery Image 3",
+    },
+  ],
 };
 
 // Client Testimonial Details

@@ -1,4 +1,4 @@
-// PLUGINS //
+// OTHERS //
 import { animate, inView, stagger } from "motion";
 
 /** Animate the Numbers after Solution Section */
@@ -48,6 +48,48 @@ export const animateNumbersAfterSolution = () => {
   );
 };
 
+/** Animate the Gallery Section */
+export const animateGallerySection = () => {
+  // Animate when in view
+  inView("#gallery-section", (gallerySection) => {
+    animate(
+      gallerySection?.querySelectorAll(".gallery-item"),
+      {
+        opacity: [0, 1],
+        x: ["-60px", 0],
+      },
+      {
+        duration: 0.8,
+        delay: 0.6,
+      },
+    );
+  });
+};
+
+/* Animate Case Study Consumption Hero Section */
+export const animateCaseStudyConsumptionHero = () => {
+  inView("#case-study-consumption-hero", (caseStudyConsumptionHero) => {
+    animate(
+      caseStudyConsumptionHero?.querySelectorAll(".tool-badge"),
+      { opacity: [0, 1], y: ["50px", 0], scaleX: [0.6, 1], rotateX: [120, 0] },
+      { duration: 0.8, delay: 0 },
+    );
+
+    animate(
+      caseStudyConsumptionHero?.querySelectorAll(".header-text"),
+      { opacity: [0, 1], y: ["50px", 0], scaleY: [0.4, 1] },
+      { duration: 0.8, delay: 0.4 },
+    );
+
+    // Animate the Hero Thumbnail (When in View)
+    animate(
+      caseStudyConsumptionHero.querySelectorAll(".hero-thumbnail"),
+      { opacity: [0, 1], y: ["50px", 0] },
+      { duration: 0.8, delay: 0.6 },
+    );
+  });
+};
+
 /** Animate Key Takeaway Section */
 export const animateKeyTakeawaySection = () => {
   inView("#key-takeaways-section", (keyTakeawaysSection) => {
@@ -63,6 +105,69 @@ export const animateKeyTakeawaySection = () => {
       },
     );
   });
+};
+
+/** Animate hover for Hero Image Link - Shows Visit Website text below cursor */
+export const animateHeroImageLink = () => {
+  const mainImage = document.getElementById("main-image");
+  const mainImageContainer = document.getElementById("main-image-container");
+  const customCursor = document.getElementById("custom-cursor");
+
+  if (mainImage && mainImageContainer && customCursor) {
+    // Show the Visit Website div
+    mainImage.addEventListener("mouseenter", () => {
+      customCursor.classList.remove("hidden");
+      customCursor.classList.add("flex");
+    });
+
+    // Hide the Visit Website div
+    mainImage.addEventListener("mouseleave", () => {
+      customCursor.classList.add("hidden");
+      customCursor.classList.remove("flex");
+    });
+
+    // Update Visit Website position to follow cursor (with boundary detection)
+    mainImage.addEventListener("mousemove", (e) => {
+      const rect = mainImageContainer.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Re-show the div if it was hidden by scroll
+      if (customCursor.classList.contains("hidden")) {
+        customCursor.classList.remove("hidden");
+        customCursor.classList.add("flex");
+      }
+
+      // Get label dimensions
+      const labelWidth = customCursor.offsetWidth;
+
+      // Calculate position with 20px offset below cursor
+      let finalX = x;
+      let finalY = y + 30;
+
+      // Boundary detection - prevent overflow
+      // Check right boundary
+      if (finalX + labelWidth / 2 > rect.width) {
+        finalX = rect.width - labelWidth / 2;
+      }
+      // Check left boundary
+      if (finalX - labelWidth / 2 < 0) {
+        finalX = labelWidth / 2;
+      }
+
+      // Position the label at the cursor, offset handled by translate classes
+      customCursor.style.left = finalX + "px";
+      customCursor.style.top = finalY + "px";
+    });
+
+    // Hide Visit Website div when scrolling to prevent stuck position
+    window.addEventListener("scroll", () => {
+      if (customCursor.classList.contains("flex")) {
+        customCursor.classList.add("hidden");
+        customCursor.classList.remove("flex");
+      }
+    });
+  }
 };
 
 /** Animate the Client Testimonial */
@@ -110,3 +215,29 @@ export const animateToolsUsedSection = () => {
     );
   });
 };
+
+/** Button Logic in Case Study Gallery Section */
+export const CaseStudyGallerySlider = () => {
+  const viewport = document.querySelector("#embla-cs-gallery-slider");
+
+  if (!viewport) {
+    console.warn("Gallery slider viewport not found");
+    return;
+  }
+
+  const caseStudyGallerySlider = EmblaCarousel(viewport, { loop: true });
+
+  const prevBtn = document.querySelector(".prev-btn");
+  const nextBtn = document.querySelector(".next-btn");
+
+  if (prevBtn) {
+    prevBtn.onclick = () => caseStudyGallerySlider.scrollPrev();
+  }
+
+  if (nextBtn) {
+    nextBtn.onclick = () => caseStudyGallerySlider.scrollNext();
+  }
+};
+
+// Call the function when DOM is ready
+document.addEventListener("DOMContentLoaded", CaseStudyGallerySlider);

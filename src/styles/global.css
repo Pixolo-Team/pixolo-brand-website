@@ -207,3 +207,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-blue-600); /* hover color */
 }
+/* Common top padding for the hero sections */
+.hero-padding-top {
+  padding-top: calc(90px + 20px);
+}
