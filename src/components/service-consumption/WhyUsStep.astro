@@ -1,0 +1,23 @@
+---
+interface Props {
+  number: string;
+  description: string;
+}
+const { number, description } = Astro.props as Props;
+---
+
+<div class="flex w-full items-end">
+  <!-- Number -->
+  <p class="text-n-700 text-xl leading-normal font-normal tracking-[-0.02em] md:text-3xl">
+    {number}
+  </p>
+
+  <!-- Description -->
+  <div class="flex w-full flex-1 grow justify-end border-b md:py-3 md:pr-4 md:pl-8">
+    <p
+      class="text-n-950 w-full max-w-75 text-right text-base leading-tight font-normal capitalize md:max-w-184 md:text-2xl lg:max-w-174.5"
+    >
+      {description}
+    </p>
+  </div>
+</div>

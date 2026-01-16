@@ -1,0 +1,77 @@
+---
+// COMPONENTS //
+import WhyUsStep from "@/components/service-consumption/WhyUsStep.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+// DATA //
+import { outcomeFocusedDetails } from "@/data/service-consumption/outcome-focused.ts";
+---
+
+<!-- Why us Section -->
+<section id="outcome-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex w-full flex-col gap-6 px-6 py-20 md:gap-10 md:py-24 lg:gap-16 lg:py-28"
+  >
+    <!-- Header Section -->
+    <div class="flex flex-col items-center justify-center gap-3 lg:gap-4">
+      <!-- Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="service-icon" text={outcomeFocusedDetails.badgeText} />
+      </div>
+
+      <!-- Header -->
+      <p
+        class="header-text text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl"
+      >
+        {outcomeFocusedDetails.headerText}
+      </p>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="grid w-full grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-14">
+      <!-- Image -->
+      <div class="h-[250px] w-full overflow-hidden rounded-4xl md:h-[455px] lg:h-full">
+        <Image
+          src={outcomeFocusedDetails.image}
+          width={768}
+          height={455}
+          alt="Team collaborating on product planning"
+          class="outcome-image h-full w-full object-cover"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Why us -->
+      <div class="flex w-full flex-col gap-7">
+        {
+          outcomeFocusedDetails.whyUs.map((whyUsItem, whyUsItemIndex) => (
+            <div class="why-us-card">
+              <WhyUsStep
+                number={String(whyUsItemIndex + 1).padStart(2, "0")}
+                description={whyUsItem.description}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Initial states */
+  .why-us-card,
+  .outcome-image {
+    opacity: 0;
+    transform: translateX(30px);
+    will-change: transform, opacity;
+  }
+</style>
+
+<script>
+  import { animateOutcomeSection } from "@/scripts/outcome-focused.ts";
+
+  animateOutcomeSection();
+</script>
