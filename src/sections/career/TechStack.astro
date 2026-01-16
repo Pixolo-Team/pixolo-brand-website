@@ -1,0 +1,42 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+// DATA //
+import { techStackDetails } from "@/data/career/tech-stack";
+---
+
+<!-- Tech Stack / Tools Used Section -->
+<section id="tech-stack-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-8 px-6 py-14 md:gap-11 md:py-20 lg:gap-12 lg:py-24"
+  >
+    <!-- Title -->
+    <p
+      id="header-text"
+      class="text-n-950 text-center text-2xl leading-tight font-normal tracking-[-2%] md:text-3xl lg:text-4xl"
+    >
+      {techStackDetails.title}
+    </p>
+
+    <!-- Tech Stack Row -->
+    <div class="flex flex-wrap justify-center gap-2.5 md:gap-5 2xl:w-[85%]">
+      <!-- Tech Logos -->
+      {
+        techStackDetails.techLogos.map((techLogoItem) => (
+          // Logo
+          <div class="tech-stack-icon bg-n-100 flex h-8 w-10 items-center justify-center rounded-lg md:h-16 md:w-19 md:rounded-xl">
+            <Icon name={techLogoItem.icon} class="text-n-800 size-5 md:size-7" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animateTechStackIcons } from "@/scripts/career/tech-stack";
+
+  animateTechStackIcons();
+</script>
