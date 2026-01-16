@@ -5,58 +5,48 @@ import { Image } from "astro:assets";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
+
+// DATA //
+import { pageErrorDetails } from "@/data/page-error";
 ---
-
-<style>
-  @keyframes float {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-15px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-  .floating {
-    animation: float 4s ease-in-out infinite;
-  }
-</style>
 
 <Layout>
   <section>
     <div
-      class="container mx-auto flex flex-col items-center gap-14 px-5 px-6 pt-20 pb-14 text-center md:gap-20 md:px-12 md:pt-36 lg:px-0 lg:pt-64"
+      id="hero-wrapper"
+      class="hero-padding-top container mx-auto flex flex-col items-center gap-14 px-6 pb-14 text-center md:gap-20 md:px-12 md:pt-36 lg:pt-64"
     >
-      <!-- Astronaut Left -->
+      <!-- Larger Astronaut image -->
       <Image
-        src={`/images/astronaut.png`}
-        alt={`astronaut`}
+        id="large-astronaut"
+        src={pageErrorDetails.image}
+        alt={`Larger Astronaut`}
         width={128}
         height={140}
-        class="absolute top-[50%] w-10 md:left-[10%] md:w-24 lg:left-[20%]"
+        class="absolute top-[50%] w-12 md:left-[10%] md:w-28 lg:left-[20%]"
       />
 
-      <!-- Astronaut Right -->
+      <!-- Smaller Astronaut image -->
       <Image
-        src={`/images/astronaut.png`}
-        alt={`astronaut`}
+        id="small-astronaut"
+        src={pageErrorDetails.image}
+        alt={"Smaller Astronaut"}
         width={40}
         height={44}
-        class="absolute top-[70%] w-6 md:top-[65%] md:right-[20%] md:w-9 lg:w-10"
+        class="absolute top-[70%] w-6 md:top-[65%] md:right-[20%] md:w-10"
+        style="animation-duration: 4s"
       />
 
       <div class="relative mx-auto w-fit">
         <div
           class="absolute top-[-25%] left-[-15%] z-20 -mt-[10px] rotate-[-13.99deg] md:top-[-20%] md:left-[-10%]"
         >
-          <ToolBadge icon="package" text="404 vibes only" />
+          <ToolBadge icon={pageErrorDetails.badgeIcon} text={pageErrorDetails.badgeTitle} />
         </div>
 
+        <!-- Not Found 404 image -->
         <Image
-          src={`/images/404.png`}
+          src={pageErrorDetails.mainImage}
           alt={`404`}
           width={775}
           height={295}
@@ -68,27 +58,46 @@ import Layout from "@/layouts/Layout.astro";
         <h2
           class="text-n-950 mx-auto text-2xl leading-tight font-bold md:text-3xl lg:max-w-[620px] lg:text-4xl"
         >
-          “Captain, something weird just happened… again.”
+          {pageErrorDetails.title}
         </h2>
 
         <p
           class="text-n-700 mx-auto text-sm leading-tight font-normal md:max-w-[720px] md:text-2xl lg:max-w-[860px] lg:text-balance"
         >
-          Oops! You've ventured into the digital void. The page you are looking for has apparently
-          escaped into another dimension.
+          {pageErrorDetails.description}
         </p>
       </div>
 
       <!-- CTA -->
-      <div class="mt-10">
-        <a
-          href="/"
-          class="group inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 font-bold text-white transition-all hover:-translate-y-1 hover:bg-blue-700 hover:shadow-2xl active:scale-95"
-        >
-          <span class="mr-2 text-xl group-hover:animate-bounce">🚀</span>
-          Abort Mission & Teleport Home
-        </a>
-      </div>
+      <a
+        href="/"
+        class="group inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 font-bold text-white transition-all hover:-translate-y-1 hover:bg-blue-700 hover:shadow-2xl active:scale-95"
+      >
+        <span class="mr-2 text-xl group-hover:animate-bounce">🚀</span>
+        {pageErrorDetails.ctaText}
+      </a>
     </div>
   </section>
+  <style>
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    .floating {
+      animation: float 4s ease-in-out infinite;
+    }
+  </style>
+  <script>
+    import { animateMarble } from "@/scripts/hero";
+
+    animateMarble("large-astronaut", "hero-wrapper");
+    animateMarble("small-astronaut", "hero-wrapper");
+  </script>
 </Layout>
