@@ -48,12 +48,8 @@ export const animateNumbersAfterSolution = () => {
   );
 };
 
-
 /** Animate the Numbers after Solution Section */
-export const caseStudyGallerySlider = () => {
-
-  
-}
+export const caseStudyGallerySlider = () => {};
 /** Animate the Client Testimonial */
 export const animateClientTestimonial = () => {
   inView("#client-testimonial", (clientTestimonials) => {
@@ -99,3 +95,29 @@ export const animateToolsUsedSection = () => {
     );
   });
 };
+
+/** Button Logic in Case Study Gallery Section */
+export const CaseStudyGallerySlider = () => {
+  const viewport = document.querySelector("#embla-cs-gallery-slider");
+
+  if (!viewport) {
+    console.warn("Gallery slider viewport not found");
+    return;
+  }
+
+  const caseStudyGallerySlider = EmblaCarousel(viewport, { loop: true });
+
+  const prevBtn = document.querySelector(".prev-btn");
+  const nextBtn = document.querySelector(".next-btn");
+
+  if (prevBtn) {
+    prevBtn.onclick = () => caseStudyGallerySlider.scrollPrev();
+  }
+
+  if (nextBtn) {
+    nextBtn.onclick = () => caseStudyGallerySlider.scrollNext();
+  }
+};
+
+// Call the function when DOM is ready
+document.addEventListener("DOMContentLoaded", CaseStudyGallerySlider);

@@ -32,8 +32,9 @@ const { icon = "right-arrow" } = Astro.props;
           {
             clientGallery.images.map((clientGalleryImageItem) => (
               <div class="flex-none basis-full">
-                <div class="w-full rounded-3xl md:max-h-[350px] md:rounded-4xl lg:max-h-[665px] lg:rounded-[60px]">
+                <div class="h-40 w-full rounded-3xl md:h-[350px] md:rounded-4xl lg:h-[665px] lg:rounded-[60px]">
                   <Image
+                    class="h-full w-full"
                     width={1536}
                     height={665}
                     src={clientGalleryImageItem.imagePath}
@@ -52,17 +53,5 @@ const { icon = "right-arrow" } = Astro.props;
 </section>
 
 <!-- Button Logic -->
-<script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const viewport = document.querySelector("#embla-cs-gallery-slider");
-
-    if (!viewport) {
-      return;
-    }
-
-    const caseStudyGallerySlider = EmblaCarousel(viewport, { loop: true });
-    document.querySelector(".prev-btn").onclick = () => caseStudyGallerySlider.scrollPrev();
-    document.querySelector(".next-btn").onclick = () => caseStudyGallerySlider.scrollNext();
-  });
-</script>
+<script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js" defer></script>
+<script src="@/scripts/case-studies" defer></script>
