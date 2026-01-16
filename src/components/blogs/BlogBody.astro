@@ -197,15 +197,27 @@ const { content } = Astro.props as Props;
                 <div class="anim-fade-up-quick flex w-full flex-col items-center gap-4 overflow-hidden md:gap-5 lg:gap-5">
                   <div class="group relative aspect-video w-full overflow-hidden rounded-3xl md:h-[363px] lg:h-[594px]">
                     <iframe
-                      id="youtube-iframe"
-                      class="h-full w-full object-contain"
-                      src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                      class="js-youtube-iframe h-full w-full object-contain"
+                      src={block.videoId}
                       title="YouTube video player"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     />
-                  </div>
 
-                  <div class="text-n-950 hover:bg-n-50 outline-n-950 absolute right-1/2 bottom-1/2 z-1 flex size-6 translate-1/2 cursor-pointer items-center justify-center rounded-full  outline-1 -outline-offset-1 transition-all duration-300 hover:outline-0 md:right-11 md:bottom-11 md:size-12 lg:right-12 lg:bottom-14 lg:size-14" />
+                    <!-- Custom Play Button Overlay -->
+                    <button
+                      type="button"
+                      aria-label="Play video"
+                      class="js-play-button text-n-950 hover:bg-n-50 absolute right-1/2 bottom-1/2 z-1 flex size-6 translate-1/2 cursor-pointer items-center justify-center rounded-full outline -outline-offset-1 transition-all duration-300 hover:outline-0 md:right-11 md:bottom-11 md:size-12 lg:right-12 lg:bottom-14 lg:size-14"
+                    >
+                      <Image
+                        src="/images/blogs/play-button.png"
+                        width={14}
+                        height={14}
+                        alt="play button"
+                        class="size-2 md:size-3.5"
+                      />
+                    </button>
+                  </div>
 
                   {block.caption && (
                     <div class="anim-fade-in-up lg:px-24">
@@ -297,3 +309,363 @@ const { content } = Astro.props as Props;
     </div>
   </div>
 </section>
+
+<script>
+  // Wait for the DOM to be fully loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    // Select all custom play buttons on the page
+    const playButtons = document.querySelectorAll(".js-play-button");
+
+    playButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        // Find the specific container for this button's video
+        const videoWrapper = button.closest(".group");
+        // Find the iframe within that specific container
+        const iframe = videoWrapper?.querySelector(".js-youtube-iframe");
+
+        if (iframe) {
+          const currentSrc = iframe.getAttribute("src");
+          // If src exists and doesn't already have autoplay
+          if (currentSrc && !currentSrc.includes("autoplay=1")) {
+            // Append autoplay param to trigger video start
+            iframe.setAttribute("src", `${currentSrc}&autoplay=1`);
+            // Hide the custom play button overlay
+            button.classList.add("hidden");
+          }
+        }
+      });
+    });
+  });
+</script>
+---
+// COMPONENTS //
+import { Image } from "astro:assets";
+
+// DATA //
+import type { BlogBlock } from "@/data/blogs";
+
+interface Props {
+  content: BlogBlock[];
+}
+
+const { content } = Astro.props as Props;
+---
+
+<section>
+  <div class="container mx-auto px-6">
+    <div
+      class="mx-auto flex max-w-[995px] flex-col items-center gap-10 whitespace-pre-line lg:items-start"
+    >
+      {
+        content.map((block) => {
+          // HEADING BLOCKS
+          if (block.type === "heading") {
+            if (block.level === 1) {
+              return (
+                <div class="anim-fade-in-up flex flex-col gap-10">
+                  <div class="flex flex-col gap-3.5">
+                    <h1 class="text-n-950 text-3xl leading-normal font-semibold md:text-5xl lg:text-6xl">
+                      {block.text}
+                    </h1>
+                    {block.paragraph && (
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
+                        {block.paragraph}
+                      </p>
+                    )}
+                  </div>
+                  {block.link && (
+                    <a
+                      href={block.link.href}
+                      class="relative inline-block w-fit origin-center text-sm leading-normal font-medium text-blue-500 transition-transform after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-[width] after:duration-300 hover:scale-110 hover:after:w-full md:text-lg lg:text-xl"
+                    >
+                      {block.link.text}
+                    </a>
+                  )}
+                </div>
+              );
+            } else if (block.level === 2) {
+              return (
+                <div class="anim-fade-in-up flex flex-col gap-10">
+                  <div class="flex flex-col gap-3.5">
+                    <h2 class="text-n-950 text-3xl leading-normal font-medium md:text-5xl lg:text-6xl">
+                      {block.text}
+                    </h2>
+                    {block.paragraph && (
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
+                        {block.paragraph}
+                      </p>
+                    )}
+                  </div>
+                  {block.link && (
+                    <a
+                      href={block.link.href}
+                      class="relative inline-block w-fit origin-center text-sm leading-normal font-medium text-blue-500 transition-transform after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-[width] after:duration-300 hover:scale-110 hover:after:w-full md:text-lg lg:text-xl"
+                    >
+                      {block.link.text}
+                    </a>
+                  )}
+                </div>
+              );
+            } else if (block.level === 3) {
+              return (
+                <div class="anim-fade-in-up flex flex-col gap-10">
+                  <div class="flex flex-col gap-6">
+                    <h3 class="text-n-950 text-3xl leading-10 font-medium md:text-4xl md:leading-[54px] lg:text-5xl lg:leading-[72px]">
+                      {block.text}
+                    </h3>
+                    {block.paragraph && (
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal font-medium md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
+                        {block.paragraph}
+                      </p>
+                    )}
+                  </div>
+                  {block.link && (
+                    <a
+                      href={block.link.href}
+                      class="relative inline-block w-fit origin-center text-sm leading-normal font-medium text-blue-500 transition-transform after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-[width] after:duration-300 hover:scale-110 hover:after:w-full md:text-lg lg:text-xl"
+                    >
+                      {block.link.text}
+                    </a>
+                  )}
+                </div>
+              );
+            } else if (block.level === 4) {
+              return (
+                <div class="anim-fade-in-up flex flex-col gap-10">
+                  <div class="flex flex-col gap-3.5">
+                    <h4 class="text-n-950 text-3xl leading-10 font-medium md:text-4xl md:leading-[54px] lg:text-5xl lg:leading-[72px]">
+                      {block.text}
+                    </h4>
+                    {block.paragraph && (
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
+                        {block.paragraph}
+                      </p>
+                    )}
+                  </div>
+                  {block.link && (
+                    <a
+                      href={block.link.href}
+                      class="relative inline-block w-fit origin-center text-sm leading-normal font-medium text-blue-500 transition-transform after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-[width] after:duration-300 hover:scale-110 hover:after:w-full md:text-lg lg:text-xl"
+                    >
+                      {block.link.text}
+                    </a>
+                  )}
+                </div>
+              );
+            } else if (block.level === 5) {
+              return (
+                <div class="anim-fade-in-up flex flex-col gap-9">
+                  <div class="flex flex-col gap-3">
+                    <h5 class="text-n-950 text-2xl leading-normal font-semibold md:text-3xl lg:text-4xl">
+                      {block.text}
+                    </h5>
+                    {block.paragraph && (
+                      <p class="text-n-700 max-w-[270px] text-xs leading-4 md:max-w-[560px] md:text-base lg:max-w-full lg:text-lg">
+                        {block.paragraph}
+                      </p>
+                    )}
+                  </div>
+                  {block.link && (
+                    <a
+                      href={block.link.href}
+                      class="relative inline-block w-fit origin-center text-sm leading-normal font-medium text-blue-500 transition-transform after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-[width] after:duration-300 hover:scale-110 hover:after:w-full md:text-lg lg:text-xl"
+                    >
+                      {block.link.text}
+                    </a>
+                  )}
+                </div>
+              );
+            } else if (block.level === 6) {
+              return (
+                <div class="anim-fade-in-up flex flex-col gap-10">
+                  <div class="flex flex-col gap-3.5">
+                    <h6 class="text-n-950 text-2xl leading-normal font-medium md:text-3xl lg:text-4xl">
+                      {block.text}
+                    </h6>
+                    {block.paragraph && (
+                      <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
+                        {block.paragraph}
+                      </p>
+                    )}
+                  </div>
+                  {block.link && (
+                    <a
+                      href={block.link.href}
+                      class="relative inline-block w-fit origin-center text-sm leading-normal font-medium text-blue-500 transition-transform after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-[width] after:duration-300 hover:scale-110 hover:after:w-full md:text-lg lg:text-xl"
+                    >
+                      {block.link.text}
+                    </a>
+                  )}
+                </div>
+              );
+            }
+          }
+
+          // PARAGRAPH BLOCKS
+          if (block.type === "paragraph") {
+            return (
+              <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
+                {block.text}
+              </p>
+            );
+          }
+
+          // MEDIA BLOCKS
+          if (block.type === "media") {
+            if (block.mediaType === "image") {
+              return (
+                <div class="anim-fade-up-quick container flex flex-col items-center gap-4 object-contain md:gap-5 lg:gap-5">
+                  <Image
+                    src={block.src}
+                    alt={block.alt}
+                    class="h-60 w-full rounded-3xl object-cover md:h-[363px] lg:h-[594px]"
+                    width={995}
+                    height={594}
+                  />
+                  {block.caption && (
+                    <div class="anim-fade-in-up lg:px-24">
+                      <p class="text-n-700 max-w-[270px] text-left text-xs leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
+                        {block.caption}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            } else if (block.mediaType === "video") {
+              return (
+                <div class="anim-fade-up-quick flex w-full flex-col items-center gap-4 overflow-hidden md:gap-5 lg:gap-5">
+                  <div class="group relative aspect-video w-full overflow-hidden rounded-3xl md:h-[363px] lg:h-[594px]">
+                    <iframe
+                      class="js-youtube-iframe h-full w-full object-contain"
+                      src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&showinfo=0&rel=0&modestbranding=1"
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    />
+
+                    <!-- Custom Play Button Overlay -->
+                    <button
+                      type="button"
+                      aria-label="Play video"
+                      class="js-play-button text-n-950 hover:bg-n-50 absolute right-1/2 bottom-1/2 z-1 flex size-6 translate-1/2 cursor-pointer items-center justify-center rounded-full outline -outline-offset-1 transition-all duration-300 hover:outline-0 md:right-11 md:bottom-11 md:size-12 lg:right-12 lg:bottom-14 lg:size-14"
+                    >
+                      <Image
+                        src="/images/blogs/play-button.png"
+                        width={14}
+                        height={14}
+                        alt="play button"
+                        class="size-2 md:size-3.5"
+                      />
+                    </button>
+                  </div>
+
+                  {block.caption && (
+                    <div class="anim-fade-in-up lg:px-24">
+                      <p class="text-n-700 max-w-[270px] text-left text-xs leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
+                        {block.caption}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            }
+          }
+
+          // LIST BLOCKS
+          if (block.type === "list") {
+            if (block.listType === "unordered") {
+              return (
+                <div class="flex flex-col gap-3.5">
+                  {block.header && (
+                    <h2 class="text-n-950 max-w-[270px] text-2xl leading-normal md:max-w-[560px] md:text-3xl lg:text-4xl">
+                      {block.header}
+                    </h2>
+                  )}
+                  <ul class="flex max-w-[270px] flex-col gap-2.5 pl-8 md:max-w-[560px]">
+                    {block.items.map((item) => (
+                      <li class="flex items-center gap-3.5 md:gap-5 lg:gap-6">
+                        <div class="bg-n-700 h-1.5 w-1.5 shrink-0 rounded-full" />
+                        <div class="text-n-700 flex-1 text-xs leading-normal md:text-lg lg:text-xl">
+                          {item}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            } else if (block.listType === "ordered") {
+              return (
+                <div class="flex flex-col gap-3.5">
+                  {block.header && (
+                    <h2 class="text-n-950 text-2xl leading-normal md:text-3xl lg:text-4xl">
+                      {block.header}
+                    </h2>
+                  )}
+                  <ol class="flex list-decimal flex-col gap-2.5 pl-8">
+                    {block.items.map((item) => (
+                      <li class="text-n-700 text-xs leading-normal md:text-lg lg:text-xl">
+                        {item}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              );
+            }
+          }
+
+          // COMPARISON TABLE BLOCKS
+          if (block.type === "comparison") {
+            return (
+              <table class="bg-n-50 outline-n-300 w-full max-w-[270px] rounded-2xl outline-[0.7px] md:max-w-[560px] lg:max-w-full">
+                <thead>
+                  <tr>
+                    {block.headers.map((header, listItem) => (
+                      <th
+                        class={`bg-n-100 text-n-700 p-3 text-center text-sm font-medium md:p-5 md:text-lg lg:p-5 lg:text-xl ${
+                          listItem === 0 ? "rounded-tl-2xl" : ""
+                        } ${listItem === block.headers.length - 1 ? "rounded-tr-2xl " : ""}`}
+                      >
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {block.rows.map((row) => (
+                    <tr>
+                      {row.map((cell) => (
+                        <td class="text-n-700 px-1.5 py-4 text-center text-xs font-medium md:p-5 md:text-base lg:py-5 lg:text-lg">
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            );
+          }
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const playButtons = document.querySelectorAll(".js-play-button");
+
+    playButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const videoWrapper = button.closest(".group");
+        const iframe = videoWrapper?.querySelector(".js-youtube-iframe");
+
+        if (iframe) {
+          const currentSrc = iframe.getAttribute("src");
+          if (currentSrc && !currentSrc.includes("autoplay=1")) {
+            iframe.setAttribute("src", `${currentSrc}&autoplay=1`);
+            button.classList.add("hidden");
+          }
+        }
+      });
+    });
+  });
+</script>
