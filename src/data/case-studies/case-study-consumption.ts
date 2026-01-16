@@ -127,6 +127,28 @@ export const aboutClient = {
   },
 };
 
+// Gallery Section Details
+export const gallerySectionDetails = {
+  badgeIcon: "package",
+  badgeText: "Visual Highlights",
+  sectionTitle: "Our Journey, Captured In Powerful Frames",
+
+  galleryImages: [
+    {
+      imagePath: "/images/case-studies/case-study-consumption/gallery-default-image.jpg",
+      alt: "Pixolo Client Gallery Image 1",
+    },
+    {
+      imagePath: "/images/case-studies/case-study-consumption/gallery-default-image.jpg",
+      alt: "Pixolo Client Gallery Image 2",
+    },
+    {
+      imagePath: "/images/case-studies/case-study-consumption/gallery-default-image.jpg",
+      alt: "Pixolo Client Gallery Image 3",
+    },
+  ],
+};
+
 // Client Testimonial Details
 export const clientTestimonialDetails = {
   badgeIcon: "package",
