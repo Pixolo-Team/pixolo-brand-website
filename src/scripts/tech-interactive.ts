@@ -1,5 +1,23 @@
+// OTHERS //
 import { animate, inView } from "motion";
 import Matter from "matter-js";
+
+// Colors for Tech Badges
+const badgeColors = [
+  "bg-green-500",
+  "bg-violet-500",
+  "bg-blue-500",
+  "bg-sky-500",
+  "bg-fuchsia-400",
+  "bg-red-500",
+  "bg-yellow-500",
+];
+
+/** Gives random color from badgeColors array */
+export const getRandomColor = () => badgeColors[Math.floor(Math.random() * badgeColors.length)];
+
+/** Gives random boolean value */
+export const shouldShowText = () => Math.random() > 0.4; // 60% show text
 
 /** Tech Interactive Section Animation */
 export const animateTechInteractiveSection = () => {

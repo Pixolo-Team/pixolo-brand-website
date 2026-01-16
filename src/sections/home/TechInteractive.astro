@@ -3,6 +3,9 @@
 import TechBadge from "@/components/tech-interactive/TechBadge.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
+// OTHERS //
+import { getRandomColor, shouldShowText } from "@/scripts/tech-interactive";
+
 // DATA //
 import { techInteractiveSectionDetails } from "@/data/tech-interactive";
 ---
@@ -46,11 +49,22 @@ import { techInteractiveSectionDetails } from "@/data/tech-interactive";
   <!-- Gravity Tech Badges Container -->
   <div id="tech-badge-container" class="absolute inset-0 z-20 container mx-auto px-6">
     {
-      techInteractiveSectionDetails.techBadges.map((badge) => (
-        <div class="tech-badge-wrapper absolute top-0 left-0 opacity-0">
-          <TechBadge icon={badge.icon} text={badge.name} backgroundColor={badge.color} />
-        </div>
-      ))
+      techInteractiveSectionDetails.techBadges.map((badgeItem) => {
+        // Get random color and show text
+        const color = getRandomColor();
+        const showText = shouldShowText();
+
+        return (
+          // TechBadge Component
+          <div class="tech-badge-wrapper absolute top-0 left-0 opacity-0">
+            <TechBadge
+              icon={badgeItem.icon}
+              text={showText ? badgeItem.name : ""}
+              backgroundColor={color}
+            />
+          </div>
+        );
+      })
     }
   </div>
 </section>
