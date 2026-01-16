@@ -1,6 +1,6 @@
 import type { BlogPost } from "@/data/blogs";
 
-const blogData: BlogPost = {
+const blogPost1Data: BlogPost = {
   title:
     "It's a Continuous Journey of Learning, Experimenting, and Improving How Technology Works Behind the Scenes",
 
@@ -147,4 +147,4 @@ const blogData: BlogPost = {
   ],
 };
 
-export default blogData;
+export default blogPost1Data;

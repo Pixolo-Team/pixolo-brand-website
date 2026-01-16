@@ -71,7 +71,6 @@ export const blogSectionDetails = {
 };
 
 // TYPE FOR BLOG CONSUMPTION
-
 export interface BlogPost {
   title: string;
 
@@ -91,15 +90,19 @@ export interface BlogPost {
     alt: string;
   };
 
-  content: BlogBlock[];
+  content: BlogBlockData[];
 }
 
+<<<<<<< HEAD
 export type BlogBlock =
   | HeadingBlockData
   | ParagraphBlockData
   | MediaBlockData
   | ListBlockData
   | ComparisonBlockData;
+=======
+export type BlogBlockData = HeadingBlockData | ParagraphBlockData | MediaBlockData;
+>>>>>>> feature/blog-consumption-hero
 
 export interface HeadingBlockData {
   type: "heading";

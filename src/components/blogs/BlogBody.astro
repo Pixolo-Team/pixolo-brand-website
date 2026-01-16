@@ -195,13 +195,18 @@ const { content } = Astro.props as Props;
             } else if (block.mediaType === "video") {
               return (
                 <div class="anim-fade-up-quick flex w-full flex-col items-center gap-4 overflow-hidden md:gap-5 lg:gap-5">
-                  <iframe
-                    src={block.videoId}
-                    title={block.alt}
-                    class="h-60 w-full rounded-3xl object-cover md:h-[363px] lg:h-[594px]"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  />
+                  <div class="group relative aspect-video w-full overflow-hidden rounded-3xl md:h-[363px] lg:h-[594px]">
+                    <iframe
+                      id="youtube-iframe"
+                      class="h-full w-full object-contain"
+                      src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    />
+                  </div>
+
+                  <div class="text-n-950 hover:bg-n-50 outline-n-950 absolute right-1/2 bottom-1/2 z-1 flex size-6 translate-1/2 cursor-pointer items-center justify-center rounded-full  outline-1 -outline-offset-1 transition-all duration-300 hover:outline-0 md:right-11 md:bottom-11 md:size-12 lg:right-12 lg:bottom-14 lg:size-14" />
+
                   {block.caption && (
                     <div class="anim-fade-in-up lg:px-24">
                       <p class="text-n-700 max-w-[270px] text-left text-xs leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">

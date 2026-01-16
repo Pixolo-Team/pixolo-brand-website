@@ -1,7 +1,7 @@
 ---
 // COMPONENTS //
 import { Image } from "astro:assets";
-import ToolBadge from "../ui/ToolBadge.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
 
 // DATA //
 import type { BlogPost } from "@/data/blogs";
@@ -13,56 +13,61 @@ interface Props {
 const { post } = Astro.props as Props;
 ---
 
+<!-- Blog Hero Component -->
 <section>
+  <!-- Container  -->
   <div
-    class="container m-auto flex flex-col items-center justify-start gap-9 px-6 py-16 md:py-24 lg:py-28"
+    class="container mx-auto flex flex-col items-center gap-7 px-6 py-24 md:gap-9 md:py-24 lg:py-28"
   >
-    <!-- Badge -->
-    <ToolBadge icon="package" text={post.category.label} />
+    <!-- ToolBadge -->
+    <div class="tool-badge">
+      <ToolBadge icon="package" text={post.category.label} />
+    </div>
 
     <!-- Content Section -->
-    <div class="flex flex-col items-center justify-start gap-7 self-stretch md:gap-14 lg:gap-16">
+    <div class="flex flex-col items-center gap-7 md:gap-14 lg:gap-16">
       <div
-        class="anim-fade-in-right flex flex-col items-center justify-start gap-3 self-stretch md:gap-5 md:px-6 lg:gap-6 lg:px-44"
+        class="anim-fade-in-right flex flex-col items-center justify-center gap-3 md:gap-5 lg:gap-6"
       >
-        <!-- Category and Date -->
-        <div class="flex items-center justify-center gap-3.5 self-stretch md:gap-5 lg:gap-5">
-          <div
-            class="text-n-950 justify-start text-xs leading-4 font-normal capitalize md:text-lg md:leading-6 lg:text-xl lg:leading-6"
-          >
-            {post.category.type}
-          </div>
-          <div class="border-n-950 h-0 w-3.5 rotate-90 border md:w-6 lg:w-11"></div>
-          <div
-            class="text-n-700 justify-start text-xs leading-4 font-normal capitalize md:text-lg md:leading-6 lg:text-xl lg:leading-6"
-          >
+        <!-- Category + Date -->
+        <div class="flex items-center justify-center gap-3.5 md:gap-5">
+          <!-- Label -->
+          <p class="text-n-950 text-xs leading-normal font-normal capitalize md:text-lg lg:text-xl">
+            {post.category.label}
+          </p>
+
+          <!-- Divider line -->
+          <div class="bg-n-950 h-3.5 w-px md:h-6 lg:h-11"></div>
+
+          <!-- Published Date -->
+          <p class="text-n-700 justify-start text-xs leading-normal md:text-lg lg:text-xl">
             {post.publishedAt}
-          </div>
+          </p>
         </div>
 
         <!-- Title -->
-        <div
-          class="text-n-950 justify-start self-stretch text-center text-sm leading-4 font-normal capitalize md:text-3xl md:leading-9 lg:text-4xl lg:leading-10"
-        >
+        <p class="text-n-950 text-center text-sm leading-tight md:text-3xl lg:px-44 lg:text-4xl">
           {post.title}
-        </div>
+        </p>
 
         <!-- Author -->
-        <div
-          class="text-n-700 justify-start self-stretch text-center text-xs leading-4 font-normal capitalize md:text-lg md:leading-6 lg:text-xl lg:leading-6"
-        >
+        <div class="text-n-700 text-center text-xs leading-normal md:text-lg lg:text-xl">
           By: {post.author.name}
         </div>
       </div>
 
       <!-- Hero Image -->
-      <Image
-        src={post.hero.image}
-        alt={post.hero.alt}
-        class="anim-fade-in-up h-72 self-stretch rounded-3xl object-cover md:h-[650px] lg:h-[650px] lg:rounded-4xl"
-        width={1536}
-        height={650}
-      />
+      <div
+        class="anim-fade-in-up h-[295px] overflow-hidden rounded-3xl md:h-[588px] md:rounded-4xl lg:h-[650px]"
+      >
+        <Image
+          src={post.hero.image}
+          alt={post.hero.alt}
+          class="object-cover"
+          width={1536}
+          height={650}
+        />
+      </div>
     </div>
   </div>
 </section>

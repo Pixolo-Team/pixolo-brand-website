@@ -1,30 +1,32 @@
 ---
-import type { MediaBlock } from "@/data/blogs";
+// DATA //
+import type { MediaBlockData } from "@/data/blogs";
 
 interface Props {
-  block: MediaBlock;
+  block: MediaBlockData;
 }
 
 const { block } = Astro.props as Props;
 ---
 
-<figure class="space-y-2">
+<div class="space-y-2">
+  <!-- Image -->
   {
-    block.mediaType === "image" && (
+    block.mediaType === "image" && block.src && block.alt && (
       <img src={block.src} alt={block.alt} class="w-full rounded-2xl" />
     )
   }
 
+  <!-- Video -->
   {
     block.mediaType === "video" && (
-      <iframe 
-        class="aspect-video w-full rounded-2xl" 
-        src={block.videoId}
-        title={block.alt || "Video"}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      <iframe
+        class="aspect-video w-full rounded-2xl"
+        src={`https://www.youtube.com/embed/${block.videoId}`}
       />
     )
   }
 
-  {block.caption && <figcaption class="text-center text-sm opacity-70">{block.caption}</figcaption>}
-</figure>
+  <!-- Caption -->
+  {block.caption && <p class="text-center text-sm opacity-70">{block.caption}</p>}
+</div>
