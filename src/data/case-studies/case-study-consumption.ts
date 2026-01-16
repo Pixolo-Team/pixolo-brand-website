@@ -135,15 +135,15 @@ export const gallerySectionDetails = {
 
   galleryImages: [
     {
-      imagePath: "/images/case-studies/1/client-gallery-image1.jpg",
+      imagePath: "/images/case-studies/case-study-consumption/gallery-default-image.jpg",
       alt: "Pixolo Client Gallery Image 1",
     },
     {
-      imagePath: "/images/case-studies/1/client-gallery-image1.jpg",
+      imagePath: "/images/case-studies/case-study-consumption/gallery-default-image.jpg",
       alt: "Pixolo Client Gallery Image 2",
     },
     {
-      imagePath: "/images/case-studies/1/client-gallery-image1.jpg",
+      imagePath: "/images/case-studies/case-study-consumption/gallery-default-image.jpg",
       alt: "Pixolo Client Gallery Image 3",
     },
   ],
