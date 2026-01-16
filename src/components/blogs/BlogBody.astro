@@ -175,6 +175,7 @@ const { content } = Astro.props as Props;
           if (block.type === "media") {
             if (block.mediaType === "image") {
               return (
+                // Image Block
                 <div class="media-anim container flex flex-col items-center gap-4 object-contain md:gap-5 lg:gap-5">
                   <Image
                     src={block.src}
@@ -183,6 +184,7 @@ const { content } = Astro.props as Props;
                     width={995}
                     height={594}
                   />
+                  {/* Image Caption */}
                   {block.caption && (
                     <div class="lg:px-24">
                       <p class="text-n-700 max-w-[270px] text-left text-xs leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
@@ -194,6 +196,7 @@ const { content } = Astro.props as Props;
               );
             } else if (block.mediaType === "video") {
               return (
+                // Video Block
                 <div class="media-anim flex w-full flex-col items-center gap-4 overflow-hidden md:gap-5 lg:gap-5">
                   <div class="group relative aspect-video w-full overflow-hidden rounded-3xl md:h-[363px] lg:h-[594px]">
                     <iframe
@@ -202,7 +205,7 @@ const { content } = Astro.props as Props;
                       title="YouTube video player"
                     />
 
-                    <!-- Custom Play Button Overlay -->
+                    {/* <!-- Custom Play Button Overlay --> */}
                     <button
                       type="button"
                       aria-label="Play video"
@@ -218,6 +221,7 @@ const { content } = Astro.props as Props;
                     </button>
                   </div>
 
+                  {/* Video Caption */}
                   {block.caption && (
                     <div class="lg:px-24">
                       <p class="text-n-700 max-w-[270px] text-left text-xs leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
@@ -232,15 +236,18 @@ const { content } = Astro.props as Props;
 
           // LIST BLOCKS
           if (block.type === "list") {
+            // Unordered List
             if (block.listType === "unordered") {
               return (
                 <div class="flex flex-col gap-3.5">
+                  {/* List Header */}
                   {block.header && (
                     <h2 class="text-n-950 max-w-[270px] text-2xl leading-normal md:max-w-[560px] md:text-3xl lg:text-4xl">
                       {block.header}
                     </h2>
                   )}
                   <ul class="flex max-w-[270px] flex-col gap-2.5 pl-8 md:max-w-[560px]">
+                    {/* Mapping out List Pointers */}
                     {block.items.map((item) => (
                       <li class="flex items-center gap-3.5 md:gap-5 lg:gap-6">
                         <div class="bg-n-700 h-1.5 w-1.5 shrink-0 rounded-full" />
@@ -252,15 +259,19 @@ const { content } = Astro.props as Props;
                   </ul>
                 </div>
               );
+
+              // Ordered List
             } else if (block.listType === "ordered") {
               return (
                 <div class="flex flex-col gap-3.5">
+                  {/* List Header */}
                   {block.header && (
                     <h2 class="text-n-950 text-2xl leading-normal md:text-3xl lg:text-4xl">
                       {block.header}
                     </h2>
                   )}
                   <ol class="flex list-decimal flex-col gap-2.5 pl-8">
+                    {/* Iterating List Pointers */}
                     {block.items.map((item) => (
                       <li class="text-n-700 text-xs leading-normal md:text-lg lg:text-xl">
                         {item}
@@ -315,7 +326,7 @@ const { content } = Astro.props as Props;
 
   animateHeaderFadeInUp();
   animateMediaFadeInUp();
-  // Wait for the DOM to be fully loaded
+
   document.addEventListener("DOMContentLoaded", () => {
     // Select all custom play buttons on the page
     const playButtons = document.querySelectorAll(".js-play-button");
