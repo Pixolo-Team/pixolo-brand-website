@@ -39,7 +39,7 @@ const {
 >
   <!-- Project Card Image -->
   <div
-    class=`w-full rounded-3xl overflow-hidden ${view === "list" ? "flex-1" : "h-[196px] md:h-[224px] lg:h-[395px]"}`
+    class=`project-card-image w-full rounded-3xl overflow-hidden ${view === "list" ? "flex-1" : "h-[196px] md:h-[224px] lg:h-[395px]"}`
   >
     <Image
       src={image}
@@ -60,12 +60,14 @@ const {
       <!-- Header -->
       <div class="flex flex-col gap-2 md:gap-3">
         <!-- Title -->
-        <p class=`text-n-950 text-2xl leading-tight font-normal md:text-3xl lg:text-4xl`>
+        <p
+          class=`project-card-title text-n-950 text-2xl leading-tight font-normal md:text-3xl lg:text-4xl`
+        >
           {title}
         </p>
 
         <!-- Badges -->
-        <div class=`flex flex-wrap gap-2 md:gap-2.5`>
+        <div class=`project-card-badges flex flex-wrap gap-2 md:gap-2.5`>
           {badgeItems.map((badgeItem) => <Badge badgeText={badgeItem} />)}
         </div>
       </div>
@@ -73,24 +75,28 @@ const {
       <!-- About -->
       <div class="flex flex-col gap-4 md:gap-6 lg:gap-7">
         <!-- SubTitle -->
-        <p class=`text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg `>
+        <p
+          class=`text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg project-card-subtitle`
+        >
           {subtitle}
         </p>
 
         <!-- Description -->
-        <p class=`text-n-600 text-xs leading-tight font-normal md:text-sm lg:text-base `>
+        <p
+          class=`text-n-600 text-xs leading-tight font-normal md:text-sm lg:text-base project-card-description`
+        >
           {description}
         </p>
 
         <!-- Date -->
-        <p class=`text-n-700 text-xs leading-tight font-normal md:text-sm `>
+        <p class=`text-n-700 text-xs leading-tight font-normal md:text-sm project-card-date`>
           {date}
         </p>
       </div>
     </div>
 
     <!-- Buttons -->
-    <div class=`flex flex-row gap-3.5 md:gap-4`>
+    <div class=`flex flex-row gap-3.5 md:gap-4 project-card-buttons`>
       <!-- Primary Button -->
       <RoundedButton buttonText={buttonOneText} onClick={""} />
 
