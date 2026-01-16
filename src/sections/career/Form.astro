@@ -11,6 +11,8 @@ import { Icon } from "astro-icon/components";
 
 // DATA //
 import { contactSectionDetails } from "@/data/contact";
+import { formHeaderDetails } from "@/data/career/form";
+import { formPositionOptions } from "@/data/career/form";
 ---
 
 <!-- Form Section -->
@@ -26,11 +28,11 @@ import { contactSectionDetails } from "@/data/contact";
           id="form-header"
           class="flex flex-col items-center justify-center gap-3 md:gap-3.5 lg:gap-4">
           <div class="tool-badge">
-            <ToolBadge icon="service-icon" text="Quick Apply" />
+            <ToolBadge icon={formHeaderDetails.badgeIcon} text={formHeaderDetails.badgeTitle} />
           </div>
           <p
             class="header-text text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl">
-            Your CV Goes Here
+            {formHeaderDetails.title}
           </p>
         </div>
 
@@ -75,7 +77,7 @@ import { contactSectionDetails } from "@/data/contact";
                 id="position"
                 name="position"
                 label="Position"
-                options={["UI/UX Designer", "Developer", "QA Engineer", "Project Manager"]}
+                options={formPositionOptions}
               />
             </div>
             <Textarea

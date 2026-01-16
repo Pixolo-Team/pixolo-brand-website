@@ -1,13 +1,8 @@
 // Form Header Details
-export const FormHeaderDetails = {
+export const formHeaderDetails = {
   badgeIcon: "service-icon",
   badgeTitle: "Quick Apply",
   title: "Your CV Goes Here",
-};
-// Contact Us Details
-export const contactUsDetails = {
-  text: "Having any Issue?",
-  title: "Contact Us",
 };
 export const formPositionOptions = [
   "UI/UX Designer",
