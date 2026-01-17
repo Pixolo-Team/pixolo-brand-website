@@ -58,10 +58,10 @@ const moreTeamMembers: TeamMember[] = [
 ];
 ---
 
-<section>
+<section class="relative">
   <!-- OUTER CONTAINER -->
   <div
-    class="container mx-auto flex w-full max-w-screen-2xl flex-col gap-16 px-6 py-20 md:py-24 xl:gap-16 xl:py-28"
+    class="mx-auto flex w-full max-w-screen-2xl flex-col gap-16 px-6 py-20 md:py-24 xl:gap-16 xl:py-28"
   >
     <!-- TEAM CONTAINER -->
     <div class="flex w-full flex-col gap-12">
@@ -81,17 +81,19 @@ const moreTeamMembers: TeamMember[] = [
         <!-- FEATURED MEMBER -->
         <div class="flex w-full flex-col gap-10 md:gap-12 lg:gap-7">
           <!-- FEATURED CAROUSEL -->
-          <div id="featured-carousel" class="overflow-hidden flex gap-4 xl:gap-5">
-            {
-              featuredMembers.map((member, index) => (
-                <div
-                  class={`custom-cursor anim-fade-up-slow w-full shrink-0 xl:w-260.5`}
-                  style={`animation-delay: ${index * 120}ms`}
-                >
-                  <TeamCard poster={member.image} name={member.name} role={member.role} />
-                </div>
-              ))
-            }
+          <div id="featured-carousel" class="embla__viewport overflow-hidden">
+            <div class="flex gap-4 xl:gap-5">
+              {
+                featuredMembers.map((member, index) => (
+                  <div
+                    class={`custom-cursor anim-fade-up-slow w-full shrink-0 md:w-full xl:w-260.5`}
+                    style={`animation-delay: ${index * 120}ms`}
+                  >
+                    <TeamCard poster={member.image} name={member.name} role={member.role} />
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
 
@@ -171,7 +173,7 @@ const moreTeamMembers: TeamMember[] = [
 
   document.addEventListener("DOMContentLoaded", () => {
     animateHoverFollowCursor({
-      targetSelector: ".team-card-hover",
+      targetSelector: ".team-video-hover",
       cursorId: "team-hover-cursor",
     });
   });
