@@ -28,4 +28,34 @@ export const clientItems = [
     lightImage: "skorost-united-light.png",
   },
   { name: "FC Barcelona", darkImage: "fcb.png", lightImage: "fcb-light.png" },
+  {
+    name: "Chinook Driving Academy",
+    darkImage: "chinook-driving-academy.png",
+    lightImage: "chinook-driving-academy-light.png",
+  },
+  {
+    name: "Sunali's Classes",
+    darkImage: "sunalis-classes.png",
+    lightImage: "sunalis-classes-light.png",
+  },
+  {
+    name: "RichMonks",
+    darkImage: "richmonks.png",
+    lightImage: "richmonks-light.png",
+  },
+  {
+    name: "AI Research Project",
+    darkImage: "ai-research-project.png",
+    lightImage: "ai-research-project-light.png",
+  },
+  {
+    name: "Connect Club",
+    darkImage: "connect-club.png",
+    lightImage: "connect-club-light.png",
+  },
+  {
+    name: "Neelsiddhi",
+    darkImage: "neelsidhi.png",
+    lightImage: "neelsidhi-light.png",
+  },
 ];
