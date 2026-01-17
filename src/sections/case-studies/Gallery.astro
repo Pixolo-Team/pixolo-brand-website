@@ -36,8 +36,8 @@ const { data } = Astro.props;
                     class="h-full w-full object-cover"
                     width={1536}
                     height={665}
-                    src={`/${galleryImageItem}`}
-                    alt={""}
+                    src={`/${galleryImageItem.image}`}
+                    alt={galleryImageItem.altText}
                     loading="lazy"
                   />
                 </div>

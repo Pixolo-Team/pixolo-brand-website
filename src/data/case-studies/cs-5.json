@@ -169,10 +169,22 @@
       "toolbadge": "Project Visuals",
       "title": "Behind the Transformation",
       "gallery_images": [
-        "images/case-study/gallery-5 (1).png",
-        "images/case-study/gallery-5 (2).png",
-        "images/case-study/gallery-5 (3).png",
-        "images/case-study/gallery-5 (4).png"
+        {
+          "image": "images/case-study/gallery-5 (1).png",
+          "altText": "Client Gallery Image 1"
+        },
+         {
+          "image":  "images/case-study/gallery-5 (2).png",
+          "altText": "Client Gallery Image 2"
+        },
+         {
+          "image": "images/case-study/gallery-5 (3).png",
+          "altText": "Client Gallery Image 3"
+        },
+        {
+          "image": "images/case-study/gallery-5 (4).png",
+          "altText": "Client Gallery Image 4"
+        }
       ]
     },
     {
