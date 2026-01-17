@@ -67,13 +67,14 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
               role="button"
               aria-label={`View testimonial from ${testimonialItem.clientName} at ${testimonialItem.brandName}`}
             >
-              <div class="size-9 overflow-hidden rounded-full transition-all duration-600 hover:scale-125 hover:shadow-[0_0_21.7px_0_#2B7FFF] md:size-14 lg:size-16">
+              <div class="bg-n-100 flex size-9 items-center overflow-hidden rounded-full transition-all duration-600 hover:scale-125 hover:shadow-[0_0_21.7px_0_#2B7FFF] md:size-14 lg:size-16">
                 <Image
+                  id="testimonial-image"
                   src={testimonialItem.clientImage}
                   alt={testimonialItem.clientName}
                   width={64}
                   height={64}
-                  class="object-cover"
+                  class="self-center object-cover"
                 />
               </div>
 
