@@ -32,13 +32,15 @@ const getSection = (id: string) => data.sections.find((s: any) => s.id === id);
 ---
 
 <Layout>
+  <Hero data={getSection("hero")} />
   <Numbers data={getSection("by_the_numbers")} />
-  <ClientVision data={getSection("client_vision")} />
-  <Issues data={getSection("client_issues")} />
   <AboutTheClient data={getSection("about_client")} />
-  <ToolsUsed />
+  <Issues data={getSection("client_issues")} />
+  <ClientVision data={getSection("client_vision")} />
   <Solutions data={getSection("solutions")} />
+  <Gallery data={getSection("gallery")} />
+  <KeyTakeaways data={getSection("key_takeaways")} />
+  <ToolsUsed />
   <ClientTestimonial />
   <SolutionNumbers data={getSection("numbers_after_the_solution")} />
-  <KeyTakeaways data={getSection("key_takeaways")} />
 </Layout>

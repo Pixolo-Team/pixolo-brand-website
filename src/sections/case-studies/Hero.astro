@@ -3,8 +3,8 @@
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
 
-// DATA //
-import { caseStudyConsumptionHeroDetails } from "@/data/case-studies/case-study-consumption";
+// Receive data from the parent page
+const { data } = Astro.props;
 ---
 
 <!-- Case Study Consumption Hero Section -->
@@ -17,35 +17,32 @@ import { caseStudyConsumptionHeroDetails } from "@/data/case-studies/case-study-
     <div class="flex flex-col items-center justify-start gap-6 md:gap-6 lg:gap-7">
       <!-- ToolBadge -->
       <div class="tool-badge">
-        <ToolBadge
-          icon={caseStudyConsumptionHeroDetails.badgeIcon}
-          text={caseStudyConsumptionHeroDetails.badgeTitle}
-        />
+        <ToolBadge icon="package" text={data.toolbadge} />
       </div>
 
       <!-- Main Heading Content -->
       <div class="header-text flex flex-col items-center justify-start gap-4 md:gap-4 lg:gap-5">
         <div class="flex items-center justify-center gap-5 md:gap-7 lg:gap-8">
-          <!-- Logo -->
+          <!-- Logo
           <Image
             src={caseStudyConsumptionHeroDetails.logo}
             alt={caseStudyConsumptionHeroDetails.name}
             width={56}
             height={57}
             class="w-9 md:w-12 lg:w-14"
-          />
+          /> -->
 
           <!-- Client Name -->
           <p
             class="text-n-950 text-start text-3xl leading-tight font-medium md:text-5xl lg:text-6xl"
           >
-            {caseStudyConsumptionHeroDetails.title}
+            {data.title}
           </p>
         </div>
 
         <!-- Description -->
         <p class="text-n-950 text-center leading-tight md:text-2xl lg:text-3xl xl:w-[80%]">
-          {caseStudyConsumptionHeroDetails.description}
+          {data.subtitle}
         </p>
       </div>
     </div>
@@ -58,8 +55,8 @@ import { caseStudyConsumptionHeroDetails } from "@/data/case-studies/case-study-
         <!-- Clickable Thumbnail Image -->
         <a href="/case-studies/1">
           <Image
-            src={caseStudyConsumptionHeroDetails.thumbnail}
-            alt={caseStudyConsumptionHeroDetails.name}
+            src={`/${data.visual.image}`}
+            alt={data.visual.altText}
             width={1536}
             height={616}
             class="h-full w-full object-cover"
