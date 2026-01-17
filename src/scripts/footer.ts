@@ -1,5 +1,5 @@
 // OTHERS //
-import { scroll, transform } from "motion";
+import { animate, scroll, transform } from "motion";
 
 /** Function to add animation to footer  */
 export const animateFooter = () => {
@@ -35,25 +35,25 @@ export function removeStickyWhatsapp() {
   if (!footer || !whatsappBtn) return;
 
   // Logic to hide Sticky WhatsApp button when Footer is visible
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Footer is visible -> Hide button
-          whatsappBtn.style.opacity = "0";
-          whatsappBtn.style.pointerEvents = "none";
-        } else {
-          // Footer is not visible -> Show button
-          whatsappBtn.style.opacity = "1";
-          whatsappBtn.style.pointerEvents = "auto";
-        }
-      });
-    },
+  scroll(
+    animate(whatsappBtn, {
+      opacity: [1, 0],
+      y: [0, 20],
+    }),
     {
-      root: null,
-      threshold: 0.1,
+      target: footer,
     },
   );
 
-  observer.observe(footer);
+  // Disable clicks when completely hidden
+  scroll(
+    () => {
+      // Check if button is effectively invisible to disable clicks
+      const isHidden = parseFloat(whatsappBtn.style.opacity) < 0.1;
+      whatsappBtn.style.pointerEvents = isHidden ? "none" : "auto";
+    },
+    {
+      target: footer,
+    },
+  );
 }
