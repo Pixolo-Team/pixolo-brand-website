@@ -10,9 +10,11 @@ import { reasonToWorkWithUs, headingsAndDetails } from "@/data/career/why-work-w
 <!-- Why Work With Us Section -->
 <section id="why-work-section">
   <!-- Container -->
-  <div class="container mx-auto flex flex-col gap-10 px-6 py-16">
+  <div
+    class="container mx-auto flex flex-col gap-10 px-6 py-16 md:gap-14 md:px-0 md:py-24 lg:gap-16 lg:py-28"
+  >
     <!-- Header Section -->
-    <div class="flex flex-col items-center gap-3.5">
+    <div class="flex flex-col items-center gap-3.5 md:gap-5">
       <div class="tool-badge">
         <ToolBadge icon="package" text={headingsAndDetails.badgeText} />
       </div>
@@ -26,13 +28,16 @@ import { reasonToWorkWithUs, headingsAndDetails } from "@/data/career/why-work-w
     <!-- Content Wrap -->
     <div class="mx-auto flex w-full flex-col gap-9 md:gap-12 lg:flex-row lg:gap-14">
       <!-- Image -->
-      <div id="team-image" class="w-full overflow-hidden rounded-4xl object-cover">
+      <div
+        id="team-image"
+        class="h-[50%] w-full overflow-hidden rounded-4xl md:h-[110%] lg:w-[104%]"
+      >
         <Image
           src={headingsAndDetails.image}
-          width={100}
-          height={100}
+          width={1200}
+          height={500}
           alt={"why-work-with-us-default"}
-          class={" w-full h-full"}
+          class={" w-full h-full  object-cover"}
         />
       </div>
       <!-- Content -->
@@ -52,7 +57,7 @@ import { reasonToWorkWithUs, headingsAndDetails } from "@/data/career/why-work-w
               {/* Header-SubHeader */}
               <div class="flex flex-1 flex-col gap-4">
                 {/* Big Text */}
-                <div class="border-n-700 flex w-full flex-col border-b py-3 pr-1.5">
+                <div class="border-n-700 flex w-full flex-col border-b py-3 pr-1.5 md:px-3 md:pr-4 lg:pl-8">
                   <p class="text-n-700 text-right text-base leading-tight font-normal tracking-normal capitalize md:text-xl lg:text-2xl">
                     {reason.title}
                   </p>
