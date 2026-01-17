@@ -20,18 +20,21 @@ import { formPositionOptions } from "@/data/career/form";
   <div class="flex w-full flex-col items-center justify-center">
     <!-- Container -->
     <div
-      class="container flex w-full flex-col gap-16 px-6 py-16 md:gap-28 md:py-24 lg:gap-36 lg:py-28">
+      class="container flex w-full flex-col gap-16 px-6 py-16 md:gap-28 md:py-24 lg:gap-36 lg:py-28"
+    >
       <!-- Form -->
       <div class="flex w-full flex-col gap-14 lg:gap-16 xl:px-80">
         <!-- Header -->
         <div
           id="form-header"
-          class="flex flex-col items-center justify-center gap-3 md:gap-3.5 lg:gap-4">
+          class="flex flex-col items-center justify-center gap-3 md:gap-3.5 lg:gap-4"
+        >
           <div class="tool-badge">
             <ToolBadge icon={formHeaderDetails.badgeIcon} text={formHeaderDetails.badgeTitle} />
           </div>
           <p
-            class="header-text text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl">
+            class="header-text text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl"
+          >
             {formHeaderDetails.title}
           </p>
         </div>
@@ -41,38 +44,29 @@ import { formPositionOptions } from "@/data/career/form";
           <!-- Contents wrap -->
           <div class="flex w-full flex-col gap-11 lg:gap-14">
             <!-- Name -->
-            <InputField label="" name="Name" id="name" placeholder="Name" required={true} />
+            <InputField label="" name="Name" id="name" placeholder="Full Name" />
             <!-- Email and Phone Number -->
             <div class="grid w-full grid-cols-2 gap-5 md:gap-20">
               <InputField
                 label=""
                 name="email"
                 id="email"
-                type="email"
+                type="text"
                 placeholder="E-Mail"
-                required={true}
                 isError={false}
-                errorMessages={[
-                  "This doesn’t look like an email address.",
-                  "This field is required.",
-                ]}
               />
               <InputField
                 label=""
                 name="phone"
                 id="phone"
-                type="tel"
+                type="text"
                 placeholder="Phone Number"
                 isError={false}
-                errorMessages={[
-                  "This field is required.",
-                  "This doesn’t look like a phone number.",
-                ]}
               />
             </div>
             <!-- Resume and Position -->
             <div class="grid w-full grid-cols-2 gap-5 md:gap-20">
-              <FileInput name="resume" placeholder="Upload resume" id="resume" required={true} />
+              <FileInput name="resume" placeholder="Upload resume" id="resume" />
               <DropdownTwo
                 id="position"
                 name="position"
@@ -101,7 +95,8 @@ import { formPositionOptions } from "@/data/career/form";
               // Contact Card
               <a
                 href={contactSectionItem.link}
-                class="hover:bg-n-200 bg-n-100 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5">
+                class="hover:bg-n-200 bg-n-100 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5"
+              >
                 <div class="flex max-w-[80%] items-center gap-5">
                   {/* Icon wrapper */}
                   <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-(--blue-500) to-[#8B77F3] sm:size-16 lg:size-[74px]">
@@ -117,7 +112,8 @@ import { formPositionOptions } from "@/data/career/form";
                       class:list={[
                         "text-n-900 text-sm font-semibold md:text-lg lg:text-xl",
                         contactSectionItem.id === "mail" ? "truncate" : "",
-                      ]}>
+                      ]}
+                    >
                       {contactSectionItem.value}
                     </p>
                   </div>
@@ -126,7 +122,8 @@ import { formPositionOptions } from "@/data/career/form";
                 <Tooltip text="Copy" position="top">
                   <span
                     class="copy-btn relative flex size-5 cursor-pointer items-center justify-center"
-                    data-copy={contactSectionItem.value}>
+                    data-copy={contactSectionItem.value}
+                  >
                     <Icon name="copy" class="icon-copy size-5" />
                     <Icon name="check" class="icon-check hidden size-5" />
                   </span>
@@ -141,12 +138,14 @@ import { formPositionOptions } from "@/data/career/form";
           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactSectionDetails.location.address)}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="group bg-n-100 hover:bg-n-200 flex w-full cursor-pointer flex-col justify-between gap-5 rounded-4xl p-6 md:flex-row lg:w-[520px]">
+          class="group bg-n-100 hover:bg-n-200 flex w-full cursor-pointer flex-col justify-between gap-5 rounded-4xl p-6 md:flex-row lg:w-[520px]"
+        >
           <div class="flex flex-col gap-5 md:gap-9">
             <div class="flex flex-col gap-2.5">
               <!-- Icon wrapper -->
               <div
-                class="flex size-11 items-center justify-center rounded-full bg-gradient-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]">
+                class="flex size-11 items-center justify-center rounded-full bg-gradient-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
+              >
                 <Icon
                   name={contactSectionDetails.location.icon}
                   class="size-5 sm:size-6 lg:size-7"
@@ -176,7 +175,8 @@ import { formPositionOptions } from "@/data/career/form";
           <Tooltip text="View in map" position="center" classes="lg:flex-1">
             <!-- Map View -->
             <div
-              class="border-n-950 overflow-hidden rounded-4xl border md:w-[40%] md:flex-1 lg:w-full">
+              class="border-n-950 overflow-hidden rounded-4xl border md:w-[40%] md:flex-1 lg:w-full"
+            >
               <iframe
                 src={contactSectionDetails.location.mapUrl}
                 width="100%"
@@ -184,7 +184,8 @@ import { formPositionOptions } from "@/data/career/form";
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-                class="w-full border-0">
+                class="w-full border-0"
+              >
               </iframe>
             </div>
           </Tooltip>

@@ -18,6 +18,12 @@ export const formErrors = {
     tooShort: "Message must be at least 10 characters",
     required: "This field is required",
   },
+  file: {
+    required: "This field is required",
+  },
+  position: {
+    required: "This field is required",
+  },
 };
 
 // VALIDATION RULES //

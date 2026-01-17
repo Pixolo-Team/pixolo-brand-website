@@ -52,14 +52,19 @@ function validateInput(input: HTMLInputElement): boolean {
   // Only check format validations if field has a value
   const errors: string[] = [];
 
-  // Check if field is empty (required validation) - ONLY show for name, phone, email (not message)
+  // Check if field is empty (required validation)
   if (!value && input.id !== "message") {
     const requiredError =
       input.id === "name"
         ? formErrors.name.required
         : input.id === "phone"
           ? formErrors.phone.required
-          : formErrors.email.required;
+          : input.id === "email"
+            ? formErrors.email.required
+            : input.id === "position"
+              ? formErrors.position.required
+              : formErrors.file.required;
+
     errorContainer.appendChild(createErrorElement(requiredError));
     return false;
   }
@@ -106,6 +111,7 @@ export const initializeFormValidation = () => {
   const phoneInput = document.getElementById("phone") as HTMLInputElement | null;
   const emailInput = document.getElementById("email") as HTMLInputElement | null;
   const messageInput = document.getElementById("message") as HTMLInputElement | null;
+  const resumeInput = document.getElementById("resume") as HTMLInputElement | null;
 
   // Add validation event listeners to all inputs
   if (nameInput) {
@@ -126,6 +132,10 @@ export const initializeFormValidation = () => {
   if (messageInput) {
     messageInput.addEventListener("blur", () => validateInput(messageInput));
     messageInput.addEventListener("input", () => validateInput(messageInput));
+  }
+  if (resumeInput) {
+    resumeInput.addEventListener("change", () => validateInput(resumeInput));
+    resumeInput.addEventListener("blur", () => validateInput(resumeInput));
   }
 };
 
@@ -310,16 +320,22 @@ export const initializeFormSubmission = () => {
       const nameInput = formElement.querySelector("#name") as HTMLInputElement | null;
       const phoneInput = formElement.querySelector("#phone") as HTMLInputElement | null;
       const emailInput = formElement.querySelector("#email") as HTMLInputElement | null;
+      const resumeInput = formElement.querySelector("#resume") as HTMLInputElement | null;
+      const positionInput = formElement.querySelector("#position") as HTMLInputElement | null;
 
       let isNameValid = true;
       let isPhoneValid = true;
       let isEmailValid = true;
+      let isResumeValid = true;
+      let isPositionValid = true;
 
       if (nameInput) isNameValid = validateInput(nameInput);
       if (phoneInput) isPhoneValid = validateInput(phoneInput);
       if (emailInput) isEmailValid = validateInput(emailInput);
+      if (resumeInput) isResumeValid = validateInput(resumeInput);
+      if (positionInput) isPositionValid = validateInput(positionInput);
 
-      if (!isNameValid || !isPhoneValid || !isEmailValid) {
+      if (!isNameValid || !isPhoneValid || !isEmailValid || !isResumeValid || !isPositionValid) {
         return;
       }
 

@@ -14,52 +14,64 @@ export interface Props {
 const { options = [], label = "", name = "", id = "" } = Astro.props;
 ---
 
-<div class="border-n-300 group w-full border-b pb-2.5">
-  <div
-    id="dropdown"
-    class="relative flex cursor-pointer items-center justify-between"
-    role="combobox"
-    aria-expanded="false"
-    aria-haspopup="listbox"
-    aria-controls="dropdown-options">
+<div class="flex w-full flex-col gap-3">
+  <div class="border-n-300 group w-full border-b pb-4">
     <div
-      id="dropdown-trigger"
-      class="pointer-events-none flex items-center gap-3 select-none"
-      tabindex="0">
-      <label
-        for={id}
-        class="text-n-600 cursor-pointer px-3 text-xs leading-tight tracking-normal md:text-base">
-        {label}
-      </label>
+      id="dropdown"
+      class="relative flex cursor-pointer items-center justify-between"
+      role="combobox"
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-controls="dropdown-options"
+    >
+      <div
+        id="dropdown-trigger"
+        class="pointer-events-none flex items-center gap-3 select-none"
+        tabindex="0"
+      >
+        <label
+          for={id}
+          class="text-n-600 cursor-pointer px-3 text-xs leading-tight tracking-normal md:text-base"
+        >
+          {label}
+        </label>
 
-      <span id="dropdown-selected" class="text-n-950 hidden text-xs font-normal md:text-base">
-        {options[0]}
-      </span>
+        <span id="dropdown-selected" class="text-n-950 hidden text-xs font-normal md:text-base">
+          {options[0]}
+        </span>
+      </div>
+
+      <Icon
+        name={"dropdown-icon"}
+        id="dropdown-arrow"
+        class="text-n-600 pointer-events-none size-3.5 transition-transform duration-200"
+      />
+
+      <ul
+        id="dropdown-options"
+        role="listbox"
+        class="border-n-500 bg-n-950 absolute top-[100%] left-0 z-10 mt-2 hidden w-full min-w-[200px] overflow-hidden rounded-3xl border"
+      >
+        {
+          options.map((optionItem) => (
+            <li
+              role="option"
+              class="text-n-100 hover:bg-n-900 cursor-pointer px-6 py-3 font-normal"
+              data-value={optionItem}
+              tabindex="0"
+            >
+              {optionItem}
+            </li>
+          ))
+        }
+      </ul>
+
+      <input type="hidden" id={id} name={name} value="" />
     </div>
-
-    <Icon
-      name={"dropdown-icon"}
-      id="dropdown-arrow"
-      class="text-n-600 pointer-events-none size-3.5 transition-transform duration-200"
-    />
-
-    <ul
-      id="dropdown-options"
-      role="listbox"
-      class="border-n-500 bg-n-950 absolute top-[100%] left-0 z-10 mt-2 hidden w-full min-w-[200px] overflow-hidden rounded-3xl border">
-      {
-        options.map((optionItem) => (
-          <li
-            role="option"
-            class="text-n-100 hover:bg-n-900 cursor-pointer px-6 py-3 font-normal"
-            data-value={optionItem}
-            tabindex="0">
-            {optionItem}
-          </li>
-        ))
-      }
-    </ul>
   </div>
+
+  {/* Error messages section */}
+  <div class="error-messages-container flex flex-col gap-2.5 md:gap-3"></div>
 </div>
 
 <script>
