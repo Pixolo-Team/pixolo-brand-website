@@ -1,3 +1,4 @@
+// OTHERS //
 import { animate, inView } from "motion";
 
 // Portfolio Section Animation

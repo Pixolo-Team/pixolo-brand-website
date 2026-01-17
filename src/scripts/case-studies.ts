@@ -1,4 +1,4 @@
-// PLUGINS //
+// OTHERS //
 import { animate, inView, stagger } from "motion";
 
 /** Animate the Numbers after Solution Section */
@@ -46,6 +46,24 @@ export const animateNumbersAfterSolution = () => {
       amount: "some",
     },
   );
+};
+
+/** Animate the Gallery Section */
+export const animateGallerySection = () => {
+  // Animate when in view
+  inView("#gallery-section", (gallerySection) => {
+    animate(
+      gallerySection?.querySelectorAll(".gallery-item"),
+      {
+        opacity: [0, 1],
+        x: ["-60px", 0],
+      },
+      {
+        duration: 0.8,
+        delay: 0.6,
+      },
+    );
+  });
 };
 
 /* Animate Case Study Consumption Hero Section */
@@ -197,3 +215,29 @@ export const animateToolsUsedSection = () => {
     );
   });
 };
+
+/** Button Logic in Case Study Gallery Section */
+export const CaseStudyGallerySlider = () => {
+  const viewport = document.querySelector("#embla-cs-gallery-slider");
+
+  if (!viewport) {
+    console.warn("Gallery slider viewport not found");
+    return;
+  }
+
+  const caseStudyGallerySlider = EmblaCarousel(viewport, { loop: true });
+
+  const prevBtn = document.querySelector(".prev-btn");
+  const nextBtn = document.querySelector(".next-btn");
+
+  if (prevBtn) {
+    prevBtn.onclick = () => caseStudyGallerySlider.scrollPrev();
+  }
+
+  if (nextBtn) {
+    nextBtn.onclick = () => caseStudyGallerySlider.scrollNext();
+  }
+};
+
+// Call the function when DOM is ready
+document.addEventListener("DOMContentLoaded", CaseStudyGallerySlider);
