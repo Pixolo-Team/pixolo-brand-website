@@ -14,7 +14,7 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
 <section id="showcase-section">
   <!-- Container -->
   <div
-    class="container mx-auto flex flex-col items-center justify-center gap-8 px-6 py-16 md:gap-11 md:px-0 md:py-24 lg:gap-14 lg:py-28"
+    class="container mx-auto flex flex-col items-center justify-center gap-8 px-6 py-16 md:gap-11 md:py-24 lg:gap-14 lg:py-28"
   >
     <!-- Header -->
     <div class="flex flex-col items-center justify-center gap-4">
@@ -37,18 +37,15 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
       <!-- Portfolio Project Tiles -->
       <div class="flex flex-col gap-10">
         <!-- Tiles -->
-        <div class="flex flex-row justify-end gap-4 px-8 lg:gap-5">
-          <button id="listIconBtn" class="text-n-500 cursor-pointer">
+        <div class="hidden flex-row justify-end gap-4 px-8 md:flex lg:gap-5">
+          <button id="listIconBtn" class="cursor-pointer">
             <Icon
               name={"list"}
               class={`text-n-500 size-5 lg:size-6 hover:size-5.5 lg:hover:size-6.5`}
             />
           </button>
           <button id="gridIconBtn" class="cursor-pointer">
-            <Icon
-              name={"grid"}
-              class={`text-n-100 size-5 lg:size-6 hover:size-5.5 lg:hover:size-6.5`}
-            />
+            <Icon name={"grid"} class={`size-5 lg:size-6 hover:size-5.5 lg:hover:size-6.5`} />
           </button>
         </div>
 
@@ -56,7 +53,7 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
         <div
           id="portfolio-project-cards"
           data-view="list"
-          class={`group grid data-[view=list]:grid-cols-1 data-[view=grid]:grid-cols-2 gap-10`}
+          class={`group grid data-[view=list]:grid-cols-1 data-[view=grid]:grid-cols-2 data-[view=grid]:md:gap-5 data-[view=grid]:lg:gap-10 gap-10`}
         >
           {
             // Project Cards //
@@ -94,7 +91,7 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
               {
                 // Mini Project Cards //
                 portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
-                  <div class="embla__slide mr-6 flex max-w-full min-w-0 flex-1 flex-[1_0_327px] lg:flex-[0_0_413px]">
+                  <div class="embla__slide mr-7 flex max-w-full min-w-0 flex-1 flex-[0_0_327px] lg:flex-[0_0_413px]">
                     <MiniProjectCard
                       id={cardItem.id}
                       title={cardItem.title}

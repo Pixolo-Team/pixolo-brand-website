@@ -18,7 +18,7 @@ export function initShowcaseSlider() {
 
   // Initialize Embla carousel
   const embla = EmblaCarousel(viewportNode, {
-    loop: false,
+    loop: true,
     align: "start",
     skipSnaps: false,
   });
@@ -26,13 +26,7 @@ export function initShowcaseSlider() {
   // Checking and initializing each time event occurs
   const reInitialize = () => {
     const progress = Math.max(0, Math.min(1, embla.scrollProgress()));
-    console.log(embla.scrollProgress());
     progressNode.style.width = `${progress * 100}%`;
-
-    if (embla.canScrollNext()) nextButtonNode.children[0].classList.remove("text-n-500");
-    else nextButtonNode.children[0].classList.add("text-n-500");
-    if (embla.canScrollPrev()) prevButtonNode.children[0].classList.remove("text-n-500");
-    else prevButtonNode.children[0].classList.add("text-n-500");
   };
 
   // Remove Event Listeners Function
@@ -57,12 +51,14 @@ export function initShowcaseSlider() {
 
   // Scroll to next slide on next button click
   nextButtonNode.addEventListener("click", () => {
+    if (!embla.canScrollNext()) embla.scrollTo(0);
     embla.scrollNext();
     reInitialize();
   });
 
   // Scroll to previous slide on prev button click
   prevButtonNode.addEventListener("click", () => {
+    if (!embla.canScrollPrev()) embla.scrollTo(embla.slideNodes().length - 1);
     embla.scrollPrev();
     reInitialize();
   });
@@ -178,11 +174,15 @@ export function initShowcase() {
 
   gridIconBtn.addEventListener("click", () => {
     rootNode.dataset.view = "grid";
+    gridIconBtn.children[0].classList.add("text-n-500");
+    listIconBtn.children[0].classList.remove("text-n-500");
     console.log("clicked grid");
   });
 
   listIconBtn.addEventListener("click", () => {
     rootNode.dataset.view = "list";
+    listIconBtn.children[0].classList.add("text-n-500");
+    gridIconBtn.children[0].classList.remove("text-n-500");
     console.log("clicked list");
   });
 }
