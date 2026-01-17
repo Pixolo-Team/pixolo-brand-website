@@ -1,3 +1,4 @@
+// Blog Section Details
 export const blogSectionDetails = {
   badgeTitle: "Code & Culture",
   heading: "Stories and trends shaping how technology connects us.",
