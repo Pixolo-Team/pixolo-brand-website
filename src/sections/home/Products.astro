@@ -57,15 +57,17 @@ import { homeProductsDetails, productItems } from "@/data/products";
     </div>
 
     <!-- Products -->
-    <div>
+    <div class="relative overflow-visible">
       {
-        productItems.map((productItem) => (
+        productItems.map((productItem, productItemIndex) => (
           <ProductItem
             name={productItem.name}
             logo={productItem.logo}
             thumbnail={productItem.thumbnail}
+            image={productItem.image}
             description={productItem.description}
             href={productItem.href}
+            showLink={productItemIndex === 0}
           />
         ))
       }

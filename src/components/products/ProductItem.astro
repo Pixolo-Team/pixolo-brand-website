@@ -7,16 +7,18 @@ interface Props {
   name: string;
   logo: string;
   thumbnail: string;
+  image: string;
   description: string;
   href: string;
+  showLink?: boolean;
 }
 
-const { name, logo, thumbnail, description, href } = Astro.props as Props;
+const { name, logo, thumbnail, image, description, href, showLink = false } = Astro.props as Props;
 ---
 
 <!-- Product Item -->
 <div
-  class="group border-n-950 flex w-full cursor-pointer flex-col gap-3 border-b-[0.4px] py-7 md:gap-3.5 md:border-b-[0.6px] lg:flex-row lg:justify-between lg:gap-12 lg:border-b-[0.8px]"
+  class="group border-n-950 relative flex w-full cursor-pointer flex-col gap-3 border-b-[0.4px] py-7 md:gap-3.5 md:border-b-[0.6px] lg:flex-row lg:justify-between lg:gap-12 lg:border-b-[0.8px]"
 >
   <!-- Logo Container -->
   <div class="flex gap-2.5 lg:w-2/5">
@@ -26,6 +28,19 @@ const { name, logo, thumbnail, description, href } = Astro.props as Props;
       width={180}
       height={63}
       class="object-contain md:h-[88px] md:w-[250px]"
+    />
+  </div>
+
+  <!-- Hover Image (Desktop only) -->
+  <div
+    class="pointer-events-none absolute top-30 left-[22%] z-50 hidden -translate-y-1/2 scale-95 opacity-0 transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:left-[27%] lg:block xl:left-[22%] 2xl:left-[22%]"
+  >
+    <Image
+      src={`/images/products/${image}`}
+      alt={`${name} preview`}
+      width={200}
+      height={280}
+      class="h-auto w-40 rounded-[28px] object-cover shadow-2xl lg:w-[140px] xl:w-[220px] 2xl:w-[250px]"
     />
   </div>
 
@@ -46,12 +61,16 @@ const { name, logo, thumbnail, description, href } = Astro.props as Props;
     </p>
 
     <!-- Link for more information -->
-    <a
-      href={href}
-      class="border-n-950 flex size-12 shrink-0 items-center justify-center self-center rounded-full border from-(--blue-500) to-[#8B77F3] group-hover:border-none group-hover:bg-gradient-to-r md:size-20"
-      aria-label="View more information"
-    >
-      <Icon name="external-link-icon" class="size-[18px] md:size-[30px]" />
-    </a>
+    {
+      showLink && (
+        <a
+          href={href}
+          class="border-n-950 flex size-12 shrink-0 items-center justify-center self-center rounded-full border from-(--blue-500) to-[#8B77F3] group-hover:border-none group-hover:bg-gradient-to-r md:size-20"
+          aria-label="View more information"
+        >
+          <Icon name="external-link-icon" class="size-[18px] md:size-[30px]" />
+        </a>
+      )
+    }
   </div>
 </div>

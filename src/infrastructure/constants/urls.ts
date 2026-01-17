@@ -1,7 +1,6 @@
 // Links for pages to redirect
 export const URLS = {
   HOME: "/",
-  ABOUT: "/about",
 
   CAREER: "/careers",
   SERVICE: {
