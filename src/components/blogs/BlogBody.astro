@@ -1,6 +1,7 @@
 ---
 // COMPONENTS //
 import { Image } from "astro:assets";
+import PlayButton from "@/components/ui/PlayButton.astro";
 
 // DATA //
 import type { BlogBlock } from "@/data/blogs";
@@ -200,27 +201,20 @@ const { content } = Astro.props as Props;
                 <div class="media-anim flex w-full flex-col items-center gap-4 overflow-hidden md:gap-5 lg:gap-5">
                   <div class="video-container group relative aspect-video w-full overflow-hidden rounded-3xl md:h-[363px] lg:h-[594px]">
                     <iframe
+                      id="blog-video-iframe"
                       class="video-frame h-full w-full object-contain"
-                      src={block.videoId}
+                      src={
+                        "https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&controls=0&rel=0&modestbranding=1&showinfo=0"
+                      }
                       title="YouTube video player"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
                     />
 
                     {/* Custom Play Button Overlay */}
-                    <button
-                      type="button"
-                      aria-label="Play video"
-                      class="play-button text-n-950 hover:bg-n-50 absolute right-1/2 bottom-1/2 z-10 flex size-6 translate-x-1/2 translate-y-1/2 cursor-pointer items-center justify-center rounded-full outline -outline-offset-1 transition-all duration-300 hover:outline-0 md:right-11 md:bottom-11 md:size-12 lg:right-12 lg:bottom-14 lg:size-14"
-                    >
-                      <Image
-                        src="/images/blogs/play-button.png"
-                        width={14}
-                        height={14}
-                        alt="play button"
-                        class="size-2 md:size-3.5"
-                      />
-                    </button>
+                    <div class="absolute right-1/2 bottom-1/2 z-10 translate-x-1/2 translate-y-1/2 md:right-11 md:bottom-11 lg:right-12 lg:bottom-14">
+                      <PlayButton id="play-button" />
+                    </div>
                   </div>
 
                   {/* Video Caption */}
@@ -325,49 +319,9 @@ const { content } = Astro.props as Props;
 <script>
   import { animateHeaderFadeInUp } from "@/scripts/blog-consumption";
   import { animateMediaFadeInUp } from "@/scripts/blog-consumption";
+  import { initVideoPlayPause } from "@/scripts/play-button";
 
   animateHeaderFadeInUp();
   animateMediaFadeInUp();
-
-  // Initialize play buttons when DOM is ready
-  function initializePlayButtons() {
-    const playButtons = document.querySelectorAll(".play-button");
-
-    playButtons.forEach((button) => {
-      button.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        // Find the video container and iframe
-        const videoContainer = button.closest(".video-container");
-        const iframe = videoContainer?.querySelector(".video-frame") as HTMLIFrameElement;
-
-        if (iframe) {
-          const currentSrc = iframe.getAttribute("src") || "";
-
-          // Add autoplay parameter if not already present
-          if (!currentSrc.includes("autoplay=1")) {
-            const newSrc = currentSrc.includes("?")
-              ? `${currentSrc}&autoplay=1`
-              : `${currentSrc}?autoplay=1`;
-
-            iframe.setAttribute("src", newSrc);
-          }
-
-          // Hide the custom play button
-          button.classList.add("hidden");
-        }
-      });
-    });
-  }
-
-  // Run on page load
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initializePlayButtons);
-  } else {
-    initializePlayButtons();
-  }
-
-  // Re-initialize if content changes dynamically
-  document.addEventListener("astro:page-load", initializePlayButtons);
+  initVideoPlayPause("#blog-video-iframe", "#play-button");
 </script>

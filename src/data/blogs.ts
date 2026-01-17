@@ -123,7 +123,7 @@ export interface MediaBlockData {
   src?: string;
   alt?: string;
 
-  videoId?: string;
+  videoSrc?: string;
   caption?: string;
 }
 

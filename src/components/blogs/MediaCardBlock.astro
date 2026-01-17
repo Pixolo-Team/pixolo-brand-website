@@ -20,10 +20,7 @@ const { block } = Astro.props as Props;
   <!-- Video -->
   {
     block.mediaType === "video" && (
-      <iframe
-        class="aspect-video w-full rounded-2xl"
-        src={`https://www.youtube.com/embed/${block.videoId}`}
-      />
+      <iframe class="aspect-video w-full rounded-2xl" src={block.videoSrc} />
     )
   }
 
