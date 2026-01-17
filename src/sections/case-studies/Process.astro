@@ -1,10 +1,9 @@
 ---
 // COMPONENTS //
 import SectionHeader from "@/components/ui/SectionHeader.astro";
-import ClientProcessTimeline from "@/components/case-studies/ClientProcessTimeline.astro";
 
 // DATA //
-import {processSteps} from "@/data/case-studies/case-study-consumption"
+import { processSteps } from "@/data/case-studies/case-study-consumption";
 ---
 
 <!-- Our Process Section -->
@@ -23,20 +22,21 @@ import {processSteps} from "@/data/case-studies/case-study-consumption"
 
       <!-- Timeline  -->
       <div class="relative w-full">
-        <ClientProcessTimeline />
-
         {/* Process Steps */}
-        <div id="process-steps-container" class="flex flex-col gap-32 md:gap-40 lg:gap-60">
+        <div
+          id="process-steps-container"
+          class="process-scroll-line relative flex flex-col gap-32 md:gap-40 lg:gap-60"
+        >
           {
             processSteps.map((processStepItem, processStepIndex) => (
               <div class="process-step relative">
                 {/* Step Dots - positioned at the timeline */}
-                <div class="absolute top-2 left-5 md:top-auto md:left-1/2 md:-translate-x-1/2">
-                  <div class="step-circle bg-n-500 -ml-2.5 flex size-5 items-center justify-center rounded-full transition-colors duration-500 lg:size-7" />
+                <div class="absolute top-1/2 left-5 z-10 -translate-y-1/2 md:left-1/2 md:-translate-x-1/2">
+                  <div class="step-circle -ml-2.5 flex size-5 items-center justify-center rounded-full transition-colors duration-500 md:ml-0 lg:size-7" />
                 </div>
 
                 {/* Mobile Layout (sm): Number first, then Title */}
-                <div class="flex flex-col gap-2 pl-12 md:hidden">
+                <div class="flex gap-2 pl-12 md:hidden">
                   {/* Step Number */}
                   <div class="step-number text-n-500 flex items-center text-[28px] font-semibold transition-colors duration-500">
                     {processStepIndex + 1}
@@ -79,98 +79,45 @@ import {processSteps} from "@/data/case-studies/case-study-consumption"
   </div>
 </section>
 
+<style>
+  .process-scroll-line::before,
+  .process-scroll-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 4px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    left: 20px;
+  }
+
+  .process-scroll-line::before {
+    height: var(--line-height, 0px);
+    top: var(--line-top, 0px);
+    background-color: var(--color-n-500);
+    z-index: 0;
+  }
+
+  .process-scroll-line::after {
+    height: var(--fill-height, 0%);
+    top: var(--line-top, 0px);
+    background-color: var(--color-n-950);
+    z-index: 0;
+    transition: height 150ms linear;
+  }
+
+  @media (min-width: 768px) {
+    .process-scroll-line::before,
+    .process-scroll-line::after {
+      left: 50%;
+    }
+  }
+</style>
+
 <script>
+  import { animateProcessStepScroll } from "@/scripts/case-studies";
+
   window.addEventListener("load", () => {
-    const processSteps = document.querySelectorAll(".process-step");
-    const container = document.getElementById("process-steps-container");
-    const outerLine = document.getElementById("outer-line");
-    const internalLine = document.getElementById("internal-line");
-
-    // Function to calculate and update timeline height
-    const updateTimelineHeight = () => {
-      const firstStep = processSteps[0];
-      const lastStep = processSteps[processSteps.length - 1];
-
-      const firstStepTop = firstStep.getBoundingClientRect().top;
-      const lastStepTop = lastStep.getBoundingClientRect().top;
-
-      const totalHeight = lastStepTop - firstStepTop;
-      outerLine.style.setProperty("--timeline-height", `${totalHeight}px`);
-    };
-
-    // Update timeline height on load and resize
-    updateTimelineHeight();
-    window.addEventListener("resize", updateTimelineHeight);
-
-    // Color transition logic based on moving ball position
-    const updateStepColors = () => {
-      const movingBall = document.getElementById("moving-ball");
-      if (!movingBall) return;
-
-      const movingBallRect = movingBall.getBoundingClientRect();
-      const movingBallCenter = movingBallRect.top + movingBallRect.height / 2;
-
-      processSteps.forEach((step) => {
-        const stepCircle = step.querySelector(".step-circle");
-        if (!stepCircle) return;
-
-        // Get the step's circle position
-        const stepCircleRect = stepCircle.getBoundingClientRect();
-        const stepCircleCenter = stepCircleRect.top + stepCircleRect.height / 2;
-
-        // Check if the moving ball has reached or passed this step's circle
-        // Adding a small offset for better visual feedback
-        const isActive = movingBallCenter >= stepCircleCenter - 5;
-
-        // Get ALL step numbers and titles (both mobile and desktop versions)
-        const stepNumbers = step.querySelectorAll(".step-number");
-        const titles = step.querySelectorAll(".step-title");
-        const descriptions = step.querySelectorAll(".step-description");
-
-        if (isActive) {
-          stepCircle?.classList.remove("bg-n-500");
-          stepCircle?.classList.add("bg-n-950");
-
-          stepNumbers.forEach((num) => {
-            num?.classList.remove("text-n-500");
-            num?.classList.add("text-n-950");
-          });
-
-          titles.forEach((title) => {
-            title?.classList.remove("text-n-500");
-            title?.classList.add("text-n-950");
-          });
-
-          descriptions.forEach((desc) => {
-            desc?.classList.remove("text-n-500");
-            desc?.classList.add("text-n-700");
-          });
-        } else {
-          stepCircle?.classList.remove("bg-n-950");
-          stepCircle?.classList.add("bg-n-500");
-
-          stepNumbers.forEach((num) => {
-            num?.classList.remove("text-n-950");
-            num?.classList.add("text-n-500");
-          });
-
-          titles.forEach((title) => {
-            title?.classList.remove("text-n-950");
-            title?.classList.add("text-n-500");
-          });
-
-          descriptions.forEach((desc) => {
-            desc?.classList.remove("text-n-700");
-            desc?.classList.add("text-n-500");
-          });
-        }
-      });
-    };
-
-    // Initial calculation
-    updateStepColors();
-
-    // Update on scroll
-    window.addEventListener("scroll", updateStepColors);
+    animateProcessStepScroll();
   });
 </script>

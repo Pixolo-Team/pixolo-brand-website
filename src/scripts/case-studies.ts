@@ -241,3 +241,152 @@ export const CaseStudyGallerySlider = () => {
 
 // Call the function when DOM is ready
 document.addEventListener("DOMContentLoaded", CaseStudyGallerySlider);
+
+
+/** Function to initialize the scroll line animation and step activation */
+export const animateProcessStepScroll = () => {
+  // Get scroll line element
+  const scrollLineContainer = document.getElementById("process-steps-container");
+  if (!scrollLineContainer) return;
+
+  // Get all step elements
+  const processSteps = document.querySelectorAll(".process-step");
+  if (processSteps.length === 0) return;
+
+  // Multipliers for different breakpoints to control fill speed/offset
+  const FILL_OFFSET_SCREEN_FACTOR = 0.5; // Line fills when it hits center of screen
+
+  // State variables for geometry
+  let containerTop = 0;
+  let lineStartAbsY = 0;
+  let lineHeight = 0;
+  let animationEnabled = false;
+
+  const calculateGeometry = () => {
+    // First Circle Center
+    const firstStep = processSteps[0] as HTMLElement;
+    const firstStepCenterY = firstStep.offsetTop + firstStep.offsetHeight / 2;
+
+    // Last Circle Center
+    const lastStep = processSteps[processSteps.length - 1] as HTMLElement;
+    const lastStepCenterY = lastStep.offsetTop + lastStep.offsetHeight / 2;
+
+    // Calculate Top and Height relative to container
+    const lineTop = firstStepCenterY;
+    const calculatedHeight = lastStepCenterY - firstStepCenterY;
+
+    // Update state
+    lineHeight = calculatedHeight;
+    // lineStartAbsY used for scroll progress needs to be Viewport Absolute.
+    // We can derive it during scroll as: containerViewportTop + lineTop.
+
+    // Set CSS variables
+    scrollLineContainer.style.setProperty("--line-top", `${lineTop}px`);
+    scrollLineContainer.style.setProperty("--line-height", `${calculatedHeight}px`);
+
+    animationEnabled = true;
+  };
+
+  let frameRequested = false;
+
+  const updateProgress = () => {
+    if (!animationEnabled) return;
+
+    // UPDATE LINE FILL
+    const { top: currentContainerTop } = scrollLineContainer.getBoundingClientRect();
+
+    const currentLineTop = parseFloat(
+      scrollLineContainer.style.getPropertyValue("--line-top") || "0",
+    );
+
+    // Absolute Y position of the Line Start in Viewport
+    const lineStartY_Viewport = currentContainerTop + currentLineTop;
+
+    const viewportCenter = window.innerHeight * FILL_OFFSET_SCREEN_FACTOR;
+
+    // Progress = (ViewportCenter - LineStart) / Height
+    const progress = (viewportCenter - lineStartY_Viewport) / lineHeight;
+
+    // Clamp between 0 and 1
+    const clamped = Math.max(0, Math.min(progress, 1));
+    const fillPixels = lineHeight * clamped;
+
+    // Update CSS variable for the fill height in px (relative to line starts at same top)
+    scrollLineContainer.style.setProperty("--fill-height", `${fillPixels}px`);
+
+    // UPDATE STEP ACTIVATION
+    // Current Tip Y in Viewport
+    const currentFillEndY = lineStartY_Viewport + lineHeight * clamped;
+
+    processSteps.forEach((step) => {
+      const stepCircle = step.querySelector(".step-circle");
+      if (!stepCircle) return;
+
+      const rect = stepCircle.getBoundingClientRect();
+      const center = rect.top + rect.height / 2;
+      const isActive = currentFillEndY >= center - 1;
+
+      const stepNumbers = step.querySelectorAll(".step-number");
+      const titles = step.querySelectorAll(".step-title");
+      const descriptions = step.querySelectorAll(".step-description");
+
+      if (isActive) {
+        stepCircle.classList.remove("bg-n-500");
+        stepCircle.classList.add("bg-n-950");
+        stepNumbers.forEach((n) => {
+          n.classList.remove("text-n-500");
+          n.classList.add("text-n-950");
+        });
+        titles.forEach((t) => {
+          t.classList.remove("text-n-500");
+          t.classList.add("text-n-950");
+        });
+        descriptions.forEach((d) => {
+          d.classList.remove("text-n-500");
+          d.classList.add("text-n-700");
+        });
+      } else {
+        stepCircle.classList.remove("bg-n-950");
+        stepCircle.classList.add("bg-n-500");
+        stepNumbers.forEach((n) => {
+          n.classList.remove("text-n-950");
+          n.classList.add("text-n-500");
+        });
+        titles.forEach((t) => {
+          t.classList.remove("text-n-950");
+          t.classList.add("text-n-500");
+        });
+        descriptions.forEach((d) => {
+          d.classList.remove("text-n-700");
+          d.classList.add("text-n-500");
+        });
+      }
+    });
+
+    frameRequested = false;
+  };
+
+  const onScroll = () => {
+    if (!frameRequested) {
+      frameRequested = true;
+      requestAnimationFrame(updateProgress);
+    }
+  };
+
+  const onResize = () => {
+    calculateGeometry();
+    updateProgress();
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  // Use ResizeObserver to handle all layout changes (window resize, font load, dynamic content)
+  const resizeObserver = new ResizeObserver(() => {
+    onResize();
+  });
+  resizeObserver.observe(scrollLineContainer);
+
+  // Initial call
+  calculateGeometry();
+  updateProgress();
+};
