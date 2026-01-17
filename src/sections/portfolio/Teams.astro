@@ -61,10 +61,7 @@ const moreTeamMembers: TeamMember[] = [
 <section>
   <!-- OUTER CONTAINER -->
   <div
-    class="mx-auto w-full max-w-screen-2xl flex flex-col gap-16
-           px-6 py-20
-           md:px-8 md:py-24
-           lg:px-12 lg:gap-16 lg:py-28"
+    class="container mx-auto flex w-full max-w-screen-2xl flex-col gap-16 px-6 py-20 md:py-24 xl:gap-16 xl:py-28"
   >
     <!-- TEAM CONTAINER -->
     <div class="flex w-full flex-col gap-12">
@@ -73,35 +70,33 @@ const moreTeamMembers: TeamMember[] = [
         <ToolBadge icon="service-icon" text="Meet the Team" />
 
         <p
-          class="anim-fade-in-up text-n-950 text-3xl leading-[125%] font-normal md:text-4xl lg:text-5xl"
+          class="anim-fade-in-up text-n-950 text-3xl leading-[125%] font-normal md:text-4xl xl:text-5xl"
         >
           Behind the Scenes With Our Creative & Dev Crew
         </p>
       </div>
 
       <!-- CONTENT WRAP -->
-      <div class="flex w-full flex-col gap-4 lg:gap-7">
+      <div class="flex w-full flex-col gap-4 xl:gap-7">
         <!-- FEATURED MEMBER -->
         <div class="flex w-full flex-col gap-10 md:gap-12 lg:gap-7">
           <!-- FEATURED CAROUSEL -->
-          <div class="overflow-hidden lg:overflow-hidden">
-            <div id="featured-carousel" class="flex gap-4 lg:gap-5">
-              {
-                featuredMembers.map((member, index) => (
-                  <div
-                    class={`custom-cursor anim-fade-up-slow w-full shrink-0 lg:w-260.5`}
-                    style={`animation-delay: ${index * 120}ms`}
-                  >
-                    <TeamCard poster={member.image} name={member.name} role={member.role} />
-                  </div>
-                ))
-              }
-            </div>
+          <div id="featured-carousel" class="overflow-hidden flex gap-4 xl:gap-5">
+            {
+              featuredMembers.map((member, index) => (
+                <div
+                  class={`custom-cursor anim-fade-up-slow w-full shrink-0 xl:w-260.5`}
+                  style={`animation-delay: ${index * 120}ms`}
+                >
+                  <TeamCard poster={member.image} name={member.name} role={member.role} />
+                </div>
+              ))
+            }
           </div>
         </div>
 
         <!-- FEATURED ARROWS -->
-        <div class="flex justify-center lg:justify-end">
+        <div class="flex justify-end">
           <SliderArrows prevId="featured-prev" nextId="featured-next" />
         </div>
 
@@ -112,12 +107,12 @@ const moreTeamMembers: TeamMember[] = [
           </p>
 
           <!-- SMALL CAROUSEL -->
-          <div class="overflow-hidden">
-            <div id="small-carousel" class="flex gap-4">
+          <div id="small-carousel" class="overflow-hidden">
+            <div class="flex gap-4">
               {
                 moreTeamMembers.map((member, index) => (
                   <div
-                    class="flex w-[229px] md:w-[250px] lg:w-[291.2px] shrink-0 flex-col gap-3.5"
+                    class="flex w-57.25 shrink-0 flex-col gap-3.5 md:w-57.25 xl:w-[291.2px]"
                     style={`--delay: ${index * 0.15}s`}
                   >
                     <img
@@ -137,7 +132,7 @@ const moreTeamMembers: TeamMember[] = [
           </div>
 
           <!-- SMALL ARROWS -->
-          <div class="flex justify-center lg:justify-end">
+          <div class="flex justify-end">
             <SliderArrows prevId="small-prev" nextId="small-next" />
           </div>
         </div>
