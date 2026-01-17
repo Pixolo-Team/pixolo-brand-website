@@ -40,6 +40,6 @@ export type MediaBlockData = {
   src?: string;
   alt?: string;
 
-  videoId?: string;
+  videoSrc?: string;
   caption?: string;
 };
