@@ -352,6 +352,7 @@ export const initializeFormSubmission = () => {
 
         // Reset form
         formElement.reset();
+        resetCustomComponents(formElement);
       } catch (error) {
         console.error("Form submission error:", error);
         // Show error modal
@@ -388,4 +389,27 @@ export const animateFormHeader = () => {
       { duration: 0.8, delay: 0.4 },
     );
   });
+};
+
+/**
+ * Resets custom UI states for Dropdown and File Input
+ */
+const resetCustomComponents = (form: HTMLFormElement) => {
+  // 1. Reset Dropdown Visuals
+  // Shows the original label and hides the "selected" text span
+  const dropdownLabel = form.querySelector('label[for="position"]');
+  const dropdownSelected = form.querySelector("#dropdown-selected");
+  if (dropdownLabel && dropdownSelected) {
+    dropdownLabel.classList.remove("hidden");
+    dropdownSelected.classList.add("hidden");
+  }
+
+  // 2. Reset File Input Visuals
+  // Reverts the fake display div to the placeholder state
+  const resumeDisplay = form.querySelector("#resume-display");
+  if (resumeDisplay) {
+    resumeDisplay.textContent = "Upload resume"; // Matches your FileInput placeholder
+    resumeDisplay.classList.add("text-n-600");
+    resumeDisplay.classList.remove("text-n-950", "font-medium");
+  }
 };
