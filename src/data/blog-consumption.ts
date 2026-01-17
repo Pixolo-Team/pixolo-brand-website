@@ -1,12 +1,11 @@
-import type { BlogPost } from "@/data/blogs";
+import type { BlogPost } from "@/types/blogs";
 
-const blogPost1Data: BlogPost = {
+export const blogConsumptionDetails: BlogPost = {
   title:
     "It's a Continuous Journey of Learning, Experimenting, and Improving How Technology Works Behind the Scenes",
 
   category: {
     label: "Insights Worth Reading",
-    type: "Coding",
   },
 
   author: {
@@ -64,5 +63,3 @@ const blogPost1Data: BlogPost = {
     },
   ],
 };
-
-export default blogPost1Data;
