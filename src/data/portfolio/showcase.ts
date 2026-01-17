@@ -13,7 +13,7 @@ export const portfolioShowcaseDetails = {
     {
       name: "skorost-united",
       image: "/images/default-showcase-project-image.jpg",
-      title: "Skorost United FC",
+      title: "Skorost United Youth Academy",
       subtitle: "Sports & Community Platform",
       description:
         "Skorost United is a community-driven football club and academy platform focused on youth development, competitive football, and building a strong sporting culture.",
