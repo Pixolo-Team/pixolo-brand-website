@@ -10,10 +10,13 @@ interface Props {
 const { poster, name, role } = Astro.props as Props;
 ---
 
-<div class="flex w-full flex-col gap-4 md:gap-7 xl:flex-col xl:gap-5">
+<div class="flex w-full flex-col gap-4 md:gap-7 lg:flex-col lg:gap-5">
   <!-- Media / Video wrapper -->
   <div
-    class="team-card-hover team-video-hover relative h-69.75 w-full overflow-hidden rounded-3xl md:h-130"
+    class="team-video-hover relative w-full overflow-hidden rounded-3xl
+           h-69.75
+           md:h-auto md:aspect-[16/9]
+           lg:h-130"
   >
     <!-- Poster image preview -->
     <img src={poster} alt={`Portrait of ${name}`} class="h-full w-full object-cover" />
@@ -22,17 +25,17 @@ const { poster, name, role } = Astro.props as Props;
     <button
       type="button"
       aria-label="Play video"
-      class="anim-fade-up-quick border-n-950 hover:bg-n-800 xl:bg-n-200 absolute right-3 bottom-3 flex size-10 items-center justify-center rounded-full border bg-transparent transition-all duration-300 ease-out hover:border-transparent md:right-5 md:bottom-5 md:size-14 md:border-2 xl:border-0"
+      class="anim-fade-up-quick border-n-950 hover:bg-n-800 lg:bg-n-200 absolute right-3 bottom-3 flex size-10 cursor-pointer items-center justify-center rounded-full border bg-transparent transition-all duration-300 ease-out hover:border-transparent md:right-5 md:bottom-5 md:size-14 md:border-2 lg:border-0"
     >
       <Icon
         name="play"
-        class="text-n-950 hover:text-n-950 size-[12.26px] transition-colors duration-300 md:size-[17.16px] xl:text-white"
+        class="hover:text-n-950 size-[12.26px] transition-colors duration-300 md:size-[17.16px] lg:text-white"
       />
     </button>
   </div>
 
   <!-- Name & role -->
-  <div class="flex flex-col gap-0.5 md:justify-center xl:px-5">
+  <div class="flex flex-col gap-0.5 md:justify-center lg:px-5">
     <p class="text-n-950 text-2xl leading-[125%] font-medium md:text-3xl">
       {name}
     </p>
