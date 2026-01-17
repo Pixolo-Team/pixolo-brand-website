@@ -10,7 +10,7 @@
         "image": "images/case-study/landscape-12.png",
         "altText": "A visual representation of a Google Sheet tab transforming into a fully functional website page."
       },
-      "hover-text": {
+      "hoverText": {
         "text": "View Automation Flow",
         "link": "#"
       }

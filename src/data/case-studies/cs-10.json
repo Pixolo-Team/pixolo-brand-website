@@ -10,7 +10,7 @@
         "image": "images/case-study/landscape-10.png",
         "altText": "A mobile screen showing text instantly streaming into a chat window."
       },
-      "hover-text": {
+      "hoverText": {
         "text": "Explore Streaming Responses",
         "link": "#"
       }

@@ -10,7 +10,7 @@
         "image": "images/case-study/landscape-7.png",
         "altText": "A clean, modern interface of the 'Diet Maker' software."
       },
-      "hover-text": {
+      "hoverText": {
         "text": "See the Automation",
         "link": "#"
       }

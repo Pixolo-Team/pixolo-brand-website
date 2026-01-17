@@ -10,7 +10,7 @@
         "image": "images/case-study/landscape-8.png",
         "altText": "A monitor displaying complex financial charts and automated calculation results."
       },
-      "hover-text": {
+      "hoverText": {
         "text": "See the Automation Flow",
         "link": "#"
       }

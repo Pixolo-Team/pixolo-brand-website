@@ -10,7 +10,7 @@
         "image": "images/case-study/landscape-6.png",
         "altText": "A spreadsheet next to a webpage, visually representing the connection."
       },
-      "hover-text": {
+      "hoverText": {
         "text": "Explore Our Solutions",
         "link": "#"
       }

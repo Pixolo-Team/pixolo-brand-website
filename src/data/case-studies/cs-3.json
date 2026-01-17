@@ -10,7 +10,7 @@
         "image": "images/case-study/landscape-3.png",
         "altText": "A visual representation of a simplified, multi-step online form on a desktop screen."
       },
-      "hover-text": {
+      "hoverText": {
         "text": "Start the Journey",
         "link": "#"
       }

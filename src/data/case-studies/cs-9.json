@@ -10,7 +10,7 @@
         "image": "images/case-study/landscape-9.png",
         "altText": "A mobile screen showing a chat interface where a user is requesting a travel itinerary."
       },
-      "hover-text": {
+      "hoverText": {
         "text": "Explore the App",
         "link": "#"
       }

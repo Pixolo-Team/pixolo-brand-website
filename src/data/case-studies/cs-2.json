@@ -10,7 +10,7 @@
         "image": "images/case-study/landscape-2.png",
         "altText": "A clean webpage mockup highlighting call-to-action buttons and clear headings."
       },
-      "hover-text": {
+      "hoverText": {
         "text": "See the New Copy",
         "link": "#"
       }

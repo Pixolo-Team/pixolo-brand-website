@@ -10,7 +10,7 @@
         "image": "images/case-study/landscape-5.png",
         "altText": "A stopwatch showing a low load time next to a clean webpage."
       },
-      "hover-text": {
+      "hoverText": {
         "text": "Experience Instant Loading",
         "link": "#"
       }

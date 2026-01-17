@@ -10,7 +10,7 @@
         "image": "images/case-study/landscape-11.png",
         "altText": "An illustration of a Figma file transforming into HTML code."
       },
-      "hover-text": {
+      "hoverText": {
         "text": "See the Workflow",
         "link": "#"
       }

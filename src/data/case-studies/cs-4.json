@@ -10,7 +10,7 @@
         "image": "images/case-study/landscape-4.png",
         "altText": "A visual representation of cloud costs dropping significantly."
       },
-      "hover-text": {
+      "hoverText": {
         "text": "View Cost Savings Breakdown",
         "link": "#"
       }
