@@ -1,0 +1,205 @@
+---
+// COMPONENTS //
+import DropdownTwo from "@/components/ui/DropdownTwo.astro";
+import InputField from "@/components/ui/InputField.astro";
+import FileInput from "@/components/ui/FileInput.astro";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import Textarea from "@/components/ui/Textarea.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import Tooltip from "@/components/ui/Tooltip.astro";
+import { Icon } from "astro-icon/components";
+
+// DATA //
+import { contactSectionDetails } from "@/data/contact";
+import { formHeaderDetails } from "@/data/career/form";
+import { formPositionOptions } from "@/data/career/form";
+---
+
+<!-- Form Section -->
+<section>
+  <!-- Container -->
+  <div
+    class="container mx-auto flex w-full flex-col gap-16 px-6 py-16 md:gap-28 md:py-24 lg:gap-36 lg:py-28"
+  >
+    <!-- Form -->
+    <div class="flex w-full flex-col gap-14 lg:gap-16 xl:px-80">
+      <!-- Header -->
+      <div
+        id="form-header"
+        class="flex flex-col items-center justify-center gap-3 md:gap-3.5 lg:gap-4"
+      >
+        <div class="tool-badge">
+          <ToolBadge icon={formHeaderDetails.badgeIcon} text={formHeaderDetails.badgeTitle} />
+        </div>
+        <p
+          class="header-text text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl"
+        >
+          {formHeaderDetails.title}
+        </p>
+      </div>
+
+      <!-- Form Contents -->
+      <form class="flex w-full flex-col gap-4 md:gap-5 lg:gap-6" aria-label="Contact form">
+        <!-- Contents wrap -->
+        <div class="flex w-full flex-col gap-11 lg:gap-14">
+          <!-- Name -->
+          <InputField label="" name="Name" id="name" placeholder="Full Name" />
+          <!-- Email and Phone Number -->
+          <div class="grid w-full grid-cols-2 gap-5 md:gap-20">
+            <InputField
+              label=""
+              name="email"
+              id="email"
+              type="text"
+              placeholder="E-Mail"
+              isError={false}
+            />
+            <InputField
+              label=""
+              name="phone"
+              id="phone"
+              type="text"
+              placeholder="Phone Number"
+              isError={false}
+            />
+          </div>
+          <!-- Resume and Position -->
+          <div class="grid w-full grid-cols-2 gap-5 md:gap-20">
+            <FileInput name="resume" placeholder="Upload resume" id="resume" />
+            <DropdownTwo
+              id="position"
+              name="position"
+              label="Position"
+              options={formPositionOptions}
+            />
+          </div>
+          <Textarea
+            iconName="expand-icon"
+            placeholder="Say something about yourself"
+            name="additionalNote"
+            id="additionalNote"
+          />
+        </div>
+        <!-- Submit button -->
+        <div class="self-end">
+          <RoundedButton buttonText="Submit Form" type="submit" aria-label="Submit form" />
+        </div>
+      </form>
+    </div>
+    <!-- Contact wrap -->
+    <div class="anim-fade-up-slow flex flex-col justify-center gap-4 lg:flex-row lg:gap-6">
+      <div class="flex w-full flex-col gap-3.5 lg:w-[440px]">
+        {
+          contactSectionDetails.contactCards.map((contactSectionItem) => (
+            // Contact Card
+            <a
+              href={contactSectionItem.link}
+              class="hover:bg-n-200 bg-n-100 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5"
+            >
+              <div class="flex max-w-[80%] items-center gap-5">
+                {/* Icon wrapper */}
+                <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-(--blue-500) to-[#8B77F3] sm:size-16 lg:size-[74px]">
+                  <Icon name={contactSectionItem.icon} class="size-5 sm:size-6" />
+                </div>
+
+                {/* Contact info */}
+                <div class="flex w-[60%] flex-col gap-0.5">
+                  <p class="text-n-700 text-xs font-bold md:text-sm lg:text-base">
+                    {contactSectionItem.title}
+                  </p>
+                  <p
+                    class:list={[
+                      "text-n-900 text-sm font-semibold md:text-lg lg:text-xl",
+                      contactSectionItem.id === "mail" ? "truncate" : "",
+                    ]}
+                  >
+                    {contactSectionItem.value}
+                  </p>
+                </div>
+              </div>
+              {/* Tooltip with copy icon */}
+              <Tooltip text="Copy" position="top">
+                <span
+                  class="copy-btn relative flex size-5 cursor-pointer items-center justify-center"
+                  data-copy={contactSectionItem.value}
+                >
+                  <Icon name="copy" class="icon-copy size-5" />
+                  <Icon name="check" class="icon-check hidden size-5" />
+                </span>
+              </Tooltip>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Location -->
+      <a
+        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactSectionDetails.location.address)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group bg-n-100 hover:bg-n-200 flex w-full cursor-pointer flex-col justify-between gap-5 rounded-4xl p-6 md:flex-row lg:w-[520px]"
+      >
+        <div class="flex flex-col gap-5 md:gap-9">
+          <div class="flex flex-col gap-2.5">
+            <!-- Icon wrapper -->
+            <div
+              class="flex size-11 items-center justify-center rounded-full bg-gradient-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
+            >
+              <Icon name={contactSectionDetails.location.icon} class="size-5 sm:size-6 lg:size-7" />
+            </div>
+
+            <!-- Location content -->
+            <div class="flex flex-col gap-0.5">
+              <p class="text-n-700 text-xs font-bold sm:text-sm md:text-base lg:text-xl">
+                {contactSectionDetails.location.title}
+              </p>
+              <p class="text-n-900 text-sm font-normal sm:text-lg">
+                {contactSectionDetails.location.subtitle}
+              </p>
+            </div>
+          </div>
+
+          <!-- Address with right arrow icon -->
+          <div class="flex items-center gap-5">
+            <p class="text-xs font-semibold md:text-sm lg:text-base">
+              {contactSectionDetails.location.address}
+            </p>
+            <Icon name="right-arrow" class={"size-5"} />
+          </div>
+        </div>
+
+        <Tooltip text="View in map" position="center" classes="lg:flex-1">
+          <!-- Map View -->
+          <div
+            class="border-n-950 overflow-hidden rounded-4xl border md:w-[40%] md:flex-1 lg:w-full"
+          >
+            <iframe
+              src={contactSectionDetails.location.mapUrl}
+              width="100%"
+              height="100%"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="w-full border-0"
+            >
+            </iframe>
+          </div>
+        </Tooltip>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import {
+    initializeCopyButtons,
+    initializeFormSubmission,
+    animateFormHeader,
+  } from "@/scripts/career/form";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initializeCopyButtons();
+    initializeFormSubmission();
+    animateFormHeader();
+  });
+</script>
