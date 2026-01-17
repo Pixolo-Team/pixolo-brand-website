@@ -96,10 +96,14 @@ const {
     <!-- Buttons -->
     <div class=`flex flex-row gap-3.5 md:gap-4 project-card-buttons`>
       <!-- Primary Button -->
-      <RoundedButton buttonText={buttonOneText} onClick={""} />
+      <RoundedButton buttonText={buttonOneText} onClick={"window.location.href='/404'"} />
 
       <!-- Secondary Button -->
-      <RoundedButton buttonText={buttonTwoText} onClick={""} variant="secondary" />
+      <RoundedButton
+        buttonText={buttonTwoText}
+        onClick={"window.location.href='/404'"}
+        variant="secondary"
+      />
     </div>
   </div>
 </div>

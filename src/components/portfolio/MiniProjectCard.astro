@@ -59,9 +59,13 @@ const { id, title, badges, date, btnOneText, btnTwoText, image } = Astro.props a
     <!-- Cta wrap -->
     <div class="flex flex-row gap-3.5">
       <!-- Primary Button -->
-      <RoundedButton buttonText={btnOneText} />
+      <RoundedButton buttonText={btnOneText} onClick="window.location.href='/404'" />
       <!-- Secondary Button -->
-      <RoundedButton buttonText={btnTwoText} variant="secondary" />
+      <RoundedButton
+        buttonText={btnTwoText}
+        onClick="window.location.href='/404'"
+        variant="secondary"
+      />
     </div>
   </div>
 </div>
