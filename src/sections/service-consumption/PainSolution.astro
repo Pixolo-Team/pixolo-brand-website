@@ -1,0 +1,48 @@
+---
+// COMPONENTS //
+import PainSolutionCard from "@/components/service-consumption/PainSolutionCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// DATA //
+import { painSolutionSectionDetails } from "@/data/service-consumption/pain-solution.ts";
+---
+
+<!-- Pain Solution Section -->
+<section id="pain-solution-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex w-full flex-col gap-10 px-6 py-20 md:gap-12 md:px-3 md:py-24 lg:gap-14 lg:py-28"
+  >
+    <!-- Header -->
+    <div class="flex flex-col items-center gap-3.5 md:gap-5">
+      <div class="tool-badge">
+        <ToolBadge
+          icon={painSolutionSectionDetails.badgeIcon}
+          text={painSolutionSectionDetails.badgeText}
+        />
+      </div>
+      <p
+        class="header-text text-n-950 text-center text-2xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl"
+      >
+        {painSolutionSectionDetails.headerText}
+      </p>
+    </div>
+    <!-- Cards wrap -->
+    <div class="pain-solution-cards flex w-full flex-col gap-5">
+      {
+        painSolutionSectionDetails.painSolutionCardItems.map((painSolutionCardItem) => (
+          <PainSolutionCard
+            problem={painSolutionCardItem.problem}
+            solution={painSolutionCardItem.solution}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animatePainSolutionSection } from "@/scripts/service-consumption/pain-solution.ts";
+
+  animatePainSolutionSection();
+</script>

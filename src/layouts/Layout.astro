@@ -8,16 +8,17 @@ import Loading from "@/components/layout/Loading.astro";
 import Meta from "@/components/layout/Meta.astro";
 import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
+import ContactForm from "@/components/forms/ContactForm.astro";
+import BottomCTA from "@/components/ui/BottomCTA.astro";
 
 // DATA //
 import { siteInfo } from "@/data/site-info";
 
 interface Props {
   meta: any;
-  showLoader: boolean;
 }
 
-const { meta = {}, showLoader = false } = Astro.props;
+const { meta = {} } = Astro.props;
 ---
 
 <!doctype html>
@@ -32,7 +33,7 @@ const { meta = {}, showLoader = false } = Astro.props;
     />
   </head>
   <body>
-    <!-- Show Loader -->
+    <!-- Loading -->
     <Loading />
 
     <!-- Top menu -->
@@ -49,7 +50,7 @@ const { meta = {}, showLoader = false } = Astro.props;
       loop
       playsinline></video>
 
-    <div class="bg-n-50/70 fixed h-full w-full"></div>
+    <div class="bg-n-50/70 fixed -z-5 h-full w-full"></div>
 
     <!-- Background Circle Gradient -->
     <div
@@ -67,9 +68,16 @@ const { meta = {}, showLoader = false } = Astro.props;
 
     <!-- Whatsapp button component -->
     <WhatsappButton
-      href={`https://wa.me/${siteInfo.contact.phone[0].value}`}
-      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-40"
+      href="https://wa.me/9768941186"
+      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-50"
     />
+
+    <!-- Bottom CTA -->
+    <div class="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 md:bottom-10">
+      <BottomCTA />
+    </div>
+
+    <ContactForm />
   </body>
 </html>
 
@@ -81,6 +89,16 @@ const { meta = {}, showLoader = false } = Astro.props;
     height: 100%;
   }
 </style>
+<script is:inline>
+  const loader = document.querySelector("#loading-screen");
+  const hasSeenLoader = sessionStorage.getItem("loaderShown");
+
+  if (hasSeenLoader) {
+    loader.style.display = "none";
+  } else {
+    loader.style.display = "flex";
+  }
+</script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // Select all elements that should animate when visible

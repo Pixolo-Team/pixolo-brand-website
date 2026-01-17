@@ -7,17 +7,19 @@ export function getStaticPaths() {
   ];
 }
 
-const { portfolioId } = Astro.params;
-
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
-import Hero from "@/sections/portfolio/Hero.astro";
+import Hero from "@/sections/project-consumption/Hero.astro";
 import Video from "@/sections/portfolio/Video.astro";
+import ProjectIntroduction from "@/sections/project-consumption/ProjectIntroduction.astro";
+import Impact from "@/sections/project-consumption/Impact.astro";
 ---
 
 <Layout>
   <Hero />
   <Video />
+  <ProjectIntroduction />
+  <Impact />
 </Layout>
