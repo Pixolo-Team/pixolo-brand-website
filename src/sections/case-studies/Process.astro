@@ -1,10 +1,10 @@
 ---
 // COMPONENTS //
-import SectionHeader from "@/components/SectionHeader.astro";
+import SectionHeader from "@/components/ui/SectionHeader.astro";
 import ClientProcessTimeline from "@/components/case-studies/ClientProcessTimeline.astro";
 
 // DATA //
-import { processSteps } from "@/data/case-studies/1";
+import {processSteps} from "@/data/case-studies/case-study-consumption"
 ---
 
 <!-- Our Process Section -->
@@ -130,17 +130,17 @@ import { processSteps } from "@/data/case-studies/1";
         if (isActive) {
           stepCircle?.classList.remove("bg-n-500");
           stepCircle?.classList.add("bg-n-950");
-          
+
           stepNumbers.forEach((num) => {
             num?.classList.remove("text-n-500");
             num?.classList.add("text-n-950");
           });
-          
+
           titles.forEach((title) => {
             title?.classList.remove("text-n-500");
             title?.classList.add("text-n-950");
           });
-          
+
           descriptions.forEach((desc) => {
             desc?.classList.remove("text-n-500");
             desc?.classList.add("text-n-700");
@@ -148,17 +148,17 @@ import { processSteps } from "@/data/case-studies/1";
         } else {
           stepCircle?.classList.remove("bg-n-950");
           stepCircle?.classList.add("bg-n-500");
-          
+
           stepNumbers.forEach((num) => {
             num?.classList.remove("text-n-950");
             num?.classList.add("text-n-500");
           });
-          
+
           titles.forEach((title) => {
             title?.classList.remove("text-n-950");
             title?.classList.add("text-n-500");
           });
-          
+
           descriptions.forEach((desc) => {
             desc?.classList.remove("text-n-700");
             desc?.classList.add("text-n-500");
