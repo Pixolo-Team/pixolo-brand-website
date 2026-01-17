@@ -24,3 +24,36 @@ export const animateFooter = () => {
     },
   );
 };
+
+/** Function to remove Whatsapp sticky logo from footer  */
+
+export function removeStickyWhatsapp() {
+  // Select elements
+  const footer = document.querySelector("footer");
+  const whatsappBtn = document.getElementById("sticky-whatsapp");
+
+  if (!footer || !whatsappBtn) return;
+
+  // Logic to hide Sticky WhatsApp button when Footer is visible
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Footer is visible -> Hide button
+          whatsappBtn.style.opacity = "0";
+          whatsappBtn.style.pointerEvents = "none";
+        } else {
+          // Footer is not visible -> Show button
+          whatsappBtn.style.opacity = "1";
+          whatsappBtn.style.pointerEvents = "auto";
+        }
+      });
+    },
+    {
+      root: null,
+      threshold: 0.1,
+    },
+  );
+
+  observer.observe(footer);
+}
