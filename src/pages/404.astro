@@ -2,24 +2,25 @@
 // COMPONENTS //
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 
 // DATA //
-import { pageErrorDetails } from "@/data/page-error";
+import { pageNotFoundDetails } from "@/data/page-error";
 ---
 
 <Layout>
   <section>
     <div
       id="hero-wrapper"
-      class="hero-padding-top container mx-auto flex flex-col items-center gap-14 px-6 pb-14 text-center md:gap-20 md:px-12 md:pt-36 lg:pt-64"
+      class="container mx-auto flex flex-col items-center gap-14 px-6 pt-40 pb-14 text-center md:gap-24 md:px-12 lg:gap-14 lg:pt-52 xl:pt-60"
     >
       <!-- Larger Astronaut image -->
       <Image
         id="large-astronaut"
-        src={pageErrorDetails.image}
+        src={pageNotFoundDetails.image}
         alt={`Larger Astronaut`}
         width={128}
         height={140}
@@ -29,7 +30,7 @@ import { pageErrorDetails } from "@/data/page-error";
       <!-- Smaller Astronaut image -->
       <Image
         id="small-astronaut"
-        src={pageErrorDetails.image}
+        src={pageNotFoundDetails.image}
         alt={"Smaller Astronaut"}
         width={40}
         height={44}
@@ -37,45 +38,54 @@ import { pageErrorDetails } from "@/data/page-error";
         style="animation-duration: 4s"
       />
 
-      <div class="relative mx-auto w-fit">
+      <div class="relative flex items-center justify-center">
         <div
-          class="absolute top-[-25%] left-[-15%] z-20 -mt-[10px] rotate-[-13.99deg] md:top-[-20%] md:left-[-10%]"
+          class="absolute top-[-45%] left-[-15%] z-20 -mt-[10px] -rotate-18 md:top-[-20%] md:left-[-10%]"
         >
-          <ToolBadge icon={pageErrorDetails.badgeIcon} text={pageErrorDetails.badgeTitle} />
+          <ToolBadge icon={pageNotFoundDetails.badgeIcon} text={pageNotFoundDetails.badgeTitle} />
         </div>
 
         <!-- Not Found 404 image -->
-        <Image
-          src={pageErrorDetails.mainImage}
-          alt={`404`}
-          width={775}
-          height={295}
-          class="floating w-[269px] md:w-[576px] lg:w-[775px]"
-        />
+        <div class="floating w-[270px] md:w-[576px] lg:w-[775px]">
+          <Image
+            src={pageNotFoundDetails.mainImage}
+            alt={`404`}
+            width={775}
+            height={295}
+            class="h-full w-full"
+          />
+        </div>
       </div>
       <!-- Text -->
-      <div class="flex flex-col gap-7 md:gap-8">
-        <h2
-          class="text-n-950 mx-auto text-2xl leading-tight font-bold md:text-3xl lg:max-w-[620px] lg:text-4xl"
-        >
-          {pageErrorDetails.title}
+      <div class="flex flex-col items-center justify-center gap-7 lg:w-[80%] lg:gap-6 xl:w-[65%]">
+        <h2 class="text-n-950 text-2xl leading-tight font-semibold md:text-3xl lg:text-4xl">
+          "{pageNotFoundDetails.title}"
         </h2>
 
-        <p
-          class="text-n-700 mx-auto text-sm leading-tight font-normal md:max-w-[720px] md:text-2xl lg:max-w-[860px] lg:text-balance"
-        >
-          {pageErrorDetails.description}
+        <p class="text-n-700 text-sm leading-tight font-normal md:text-2xl">
+          {pageNotFoundDetails.description}
         </p>
       </div>
 
-      <!-- CTA -->
-      <a
-        href="/"
-        class="group inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 font-bold text-white transition-all hover:-translate-y-1 hover:bg-blue-700 hover:shadow-2xl active:scale-95"
-      >
-        <span class="mr-2 text-xl group-hover:animate-bounce">🚀</span>
-        {pageErrorDetails.ctaText}
-      </a>
+      <!--  Mobile Cta -->
+      <div class="block md:hidden">
+        <RoundedButton
+          type="button"
+          variant="default"
+          leftIcon="rocket"
+          buttonText={"Teleport Home"}
+        />
+      </div>
+
+      <!-- Desktop Cta -->
+      <div class="hidden md:block">
+        <RoundedButton
+          type="button"
+          variant="default"
+          leftIcon="rocket"
+          buttonText={"Abort Mission & Teleport Home"}
+        />
+      </div>
     </div>
   </section>
   <style>

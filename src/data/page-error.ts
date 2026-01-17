@@ -1,5 +1,5 @@
-// Page Error Data
-export const pageErrorDetails = {
+// Page Not Found Data
+export const pageNotFoundDetails = {
   badgeIcon: "package",
   badgeTitle: "404 vibes only",
   image: "/images/astronaut.png",
@@ -7,5 +7,4 @@ export const pageErrorDetails = {
   title: "Captain, something weird just happened… again.",
   description:
     "Oops! You've ventured into the digital void. The page you are looking for has apparently escaped into another dimension.",
-  ctaText: "Teleport Home",
 };
