@@ -28,6 +28,26 @@ export const portfolioSectionDetails = {
         "Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup.",
       badges: ["Product Design", "App Development", "Dashboard Design"],
     },
+    {
+      brandColor: "bg-blue-500",
+      brandName: "Too Yumm",
+      image: "images/portfolio/too-yumm-brand-image.png",
+      logo: "images/portfolio/too-yumm-logo.png",
+      title: "E-commerce Platform for Local Brands",
+      subtitle:
+        "Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup.",
+      badges: ["Product Design", "App Development", "Dashboard Design"],
+    },
+    {
+      brandColor: "bg-red-500",
+      brandName: "Reliance",
+      image: "images/portfolio/reliance-brand-image.png",
+      logo: "images/portfolio/reliance-logo.png",
+      title: "E-commerce Platform for Local Brands",
+      subtitle:
+        "Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup.",
+      badges: ["Product Design", "App Development", "Dashboard Design"],
+    },
   ],
 
   // ARTICLE CARDS //
