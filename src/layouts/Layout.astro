@@ -25,6 +25,7 @@ const { meta = {} } = Astro.props;
 <html lang="en">
   <head>
     <script is:inline>
+      // Theme initialization - runs before page renders
       const theme = (() => {
         if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
           return localStorage.getItem("theme");
@@ -35,27 +36,29 @@ const { meta = {} } = Astro.props;
         return "light";
       })();
 
-      if (theme === "dark") {
-        document.documentElement.classList.add("dark");
-        document.documentElement.classList.remove("light");
-      } else {
-        document.documentElement.classList.add("light");
-        document.documentElement.classList.remove("dark");
-      }
+      // Apply theme immediately
+      document.documentElement.classList.remove("dark", "light");
+      document.documentElement.classList.add(theme);
       window.localStorage.setItem("theme", theme);
 
-      // for system theme changes
+      // Listen for system theme changes (only if no user preference)
       window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
         if (localStorage.getItem("theme")) return;
         const newTheme = e.matches ? "dark" : "light";
-        if (newTheme === "dark") {
-          document.documentElement.classList.add("dark");
-          document.documentElement.classList.remove("light");
-        } else {
-          document.documentElement.classList.add("light");
-          document.documentElement.classList.remove("dark");
-        }
+        document.documentElement.classList.remove("dark", "light");
+        document.documentElement.classList.add(newTheme);
       });
+
+      // Helper function for toggle (use this in your Header or wherever you need it)
+      window.toggleTheme = function () {
+        const html = document.documentElement;
+        const currentTheme = html.classList.contains("dark") ? "dark" : "light";
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+        html.classList.remove("dark", "light");
+        html.classList.add(newTheme);
+        localStorage.setItem("theme", newTheme);
+      };
     </script>
     <!-- Metadata -->
     <Meta
@@ -122,6 +125,7 @@ const { meta = {} } = Astro.props;
     height: 100%;
   }
 </style>
+
 <script is:inline>
   const loader = document.querySelector("#loading-screen");
   const hasSeenLoader = sessionStorage.getItem("loaderShown");
@@ -132,6 +136,7 @@ const { meta = {} } = Astro.props;
     loader.style.display = "flex";
   }
 </script>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // Select all elements that should animate when visible
