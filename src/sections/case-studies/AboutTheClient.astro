@@ -9,7 +9,7 @@ const { data } = Astro.props;
 
 <section>
   <div
-    class="text-n-950 container m-auto flex flex-col gap-8 px-6 py-20 leading-tight md:gap-14 md:py-20 lg:gap-16 lg:px-16 lg:py-28"
+    class="text-n-950 container mx-auto flex flex-col gap-8 px-6 py-20 leading-tight md:gap-14 md:py-20 lg:gap-16 lg:px-16 lg:py-28"
   >
     <!-- Toolbadge & Page Title -->
     <SectionHeader sectionTitle={data.title} badgeIcon="package" badgeText={data.toolbadge} />
@@ -35,7 +35,7 @@ const { data } = Astro.props;
     </div>
 
     <!-- Images Section -->
-    <div class="flex flex-col gap-4 lg:flex-row lg:gap-5">
+    <div class="scrollbar-hide flex flex-col gap-4 overflow-x-auto lg:flex-row lg:gap-5">
       <!-- Top Image -->
       <Image
         class="rounded-3xl md:rounded-4xl lg:w-[60%] lg:rounded-[60px]"

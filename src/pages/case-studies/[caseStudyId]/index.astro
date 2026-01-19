@@ -26,7 +26,7 @@ import Hero from "@/sections/case-studies/Hero.astro";
 import KeyTakeaways from "@/sections/case-studies/KeyTakeaways.astro";
 
 const { caseStudyId } = Astro.params;
-const allData = await import(`@/data/case-studies/cs-${caseStudyId}.json`);
+const allData = await import(`@/data/case-studies/case-study-${caseStudyId}.json`);
 const data = allData.default;
 const getSection = (id: string) => data.sections.find((s: any) => s.id === id);
 ---
