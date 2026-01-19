@@ -1,8 +1,8 @@
 ---
 // COMPONENTS //
 import { Image } from "astro:assets";
-import Badge from "@/components/ui/Badge.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
+import Tag from "./Tag.astro";
 
 // Define Props //
 interface Props {
@@ -12,32 +12,23 @@ interface Props {
   subtitle: string;
   description: string;
   date: string;
-  badgeItems: string[];
+  tagItems: string[];
   buttonOneText: string;
   buttonTwoText: string;
 }
 
-const {
-  name,
-  image,
-  title,
-  subtitle,
-  description,
-  date,
-  badgeItems,
-  buttonOneText,
-  buttonTwoText,
-} = Astro.props as Props;
+const { name, image, title, subtitle, description, date, tagItems, buttonOneText, buttonTwoText } =
+  Astro.props as Props;
 ---
 
 <!-- Project Card -->
 <div
   id="portfolio-showcase-project-card"
-  class=`flex gap-7 lg:gap-12 flex-col group-data-[view=list]:md:flex-row`
+  class=`flex group-data-[view=list]:gap-7 group-data-[view=grid]:gap-3.5 group-data-[view=list]:lg:gap-12 group-data-[view=grid]:lg:gap-5 flex-col group-data-[view=list]:md:flex-row`
 >
   <!-- Project Card Image -->
   <div
-    class=`project-card-image w-full rounded-3xl overflow-hidden group-data-[view=list]:flex-1 group-data-[view=grid]:h-[196px] group-data-[view=grid]:md:h-[224px] group-data-[view=grid]:lg:h-[395px]`
+    class=`project-card-image w-full rounded-3xl overflow-hidden group-data-[view=list]:md:flex-1 group-data-[view=list]:md:h-full group-data-[view=list]:h-[238px] group-data-[view=grid]:h-[196px] group-data-[view=grid]:md:h-[224px] group-data-[view=grid]:lg:h-[394px] group-data-[view=grid]:lg:w-[750px]`
   >
     <Image
       src={image}
@@ -51,10 +42,12 @@ const {
 
   <!-- Content -->
   <div
-    class=`flex flex-1 flex-col justify-between lg:gap-16 gap-8 group-data-[view=list]:lg:gap-40 group-data-[view=list]:md:gap-20`
+    class=`flex flex-1 flex-col justify-between lg:gap-12 gap-8 group-data-[view=grid]:px-1 group-data-[view=grid]:md:px-4 group-data-[view=list]:lg:gap-40 group-data-[view=list]:md:gap-20`
   >
     <!-- Details Wrap -->
-    <div class="flex flex-col gap-7 lg:gap-8">
+    <div
+      class="flex flex-col gap-7 group-data-[view=grid]:gap-5 group-data-[view=grid]:md:gap-6 lg:gap-8 group-data-[view=grid]:lg:gap-6"
+    >
       <!-- Header -->
       <div class="flex flex-col gap-2 md:gap-3">
         <!-- Title -->
@@ -64,37 +57,33 @@ const {
           {title}
         </p>
 
-        <!-- Badges -->
-        <div class=`project-card-badges flex flex-wrap gap-2 md:gap-2.5`>
-          {badgeItems.map((badgeItem) => <Badge badgeText={badgeItem} />)}
+        <!-- Tags -->
+        <div class=`project-card-tags flex flex-wrap gap-2 md:gap-2.5`>
+          {tagItems.map((tagItem) => <Tag tagName={tagItem} />)}
         </div>
       </div>
 
       <!-- About -->
-      <div class="flex flex-col gap-4 md:gap-6 lg:gap-7">
-        <!-- SubTitle -->
-        <p
-          class=`text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg project-card-subtitle`
-        >
-          {subtitle}
-        </p>
-
+      <div class="project-card-content flex flex-col gap-4 md:gap-6 lg:gap-7">
         <!-- Description -->
-        <p
-          class=`text-n-600 text-xs leading-tight font-normal md:text-sm lg:text-base project-card-description`
-        >
+        <p class=`text-n-600 text-xs leading-tight font-normal md:text-sm lg:text-base`>
           {description}
         </p>
 
         <!-- Date -->
-        <p class=`text-n-700 text-xs leading-tight font-normal md:text-sm project-card-date`>
+        <p class=`text-n-700 text-xs leading-tight font-normal md:text-sm`>
           {date}
+        </p>
+
+        <!-- SubTitle -->
+        <p class=`text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg`>
+          {subtitle}
         </p>
       </div>
     </div>
 
     <!-- Buttons -->
-    <div class=`flex flex-row gap-3.5 md:gap-4 project-card-buttons`>
+    <div class=`project-card-buttons flex flex-row group-data-[view=grid]:gap-4 gap-3.5 md:gap-4`>
       <!-- Primary Button -->
       <RoundedButton buttonText={buttonOneText} onClick={"window.location.href='/404'"} />
 

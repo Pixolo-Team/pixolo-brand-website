@@ -2,12 +2,12 @@
 // COMPONENTS //
 import ProjectCard from "@/components/portfolio/ProjectCard.astro";
 import MiniProjectCard from "@/components/portfolio/MiniProjectCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import SliderArrows from "@/components/ui/SliderArrows.astro";
 import { Icon } from "astro-icon/components";
 
 // DATA //
 import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
-import ToolBadge from "@/components/ui/ToolBadge.astro";
-import SliderArrows from "@/components/ui/SliderArrows.astro";
 ---
 
 <!-- Portfolio Showcase Section -->
@@ -40,15 +40,18 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
       <!-- Portfolio Project Tiles -->
       <div class="flex flex-col gap-10">
         <!-- Tiles -->
-        <div class="hidden flex-row justify-end gap-4 px-8 md:flex lg:gap-5">
+        <div class="hidden justify-end gap-4 px-8 md:flex lg:gap-5">
           <button id="listIconBtn" class="cursor-pointer">
             <Icon
               name={"list"}
-              class={`text-n-500 size-5 lg:size-6 hover:size-5.5 lg:hover:size-6.5`}
+              class={`text-n-500 size-5 lg:size-6 hover:scale-120 transition duration-200 ease-in-out`}
             />
           </button>
           <button id="gridIconBtn" class="cursor-pointer">
-            <Icon name={"grid"} class={`size-5 lg:size-6 hover:size-5.5 lg:hover:size-6.5`} />
+            <Icon
+              name={"grid"}
+              class={`size-5 lg:size-6 hover:scale-120 transition duration-200 ease-in-out`}
+            />
           </button>
         </div>
 
@@ -56,7 +59,7 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
         <div
           id="portfolio-project-cards"
           data-view="list"
-          class={`group grid grid-cols-1 data-[view=grid]:md:grid-cols-2 data-[view=grid]:md:gap-5 data-[view=grid]:lg:gap-10 gap-10`}
+          class={`group grid grid-cols-1 data-[view=grid]:md:grid-cols-2 data-[view=grid]:md:gap-5 data-[view=grid]:lg:gap-16 gap-10`}
         >
           {
             // Project Cards //
@@ -68,9 +71,9 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
                 subtitle={projectCard.subtitle}
                 description={projectCard.description}
                 date={projectCard.date}
-                badgeItems={projectCard.badgeItems}
-                buttonOneText={"View Website"}
-                buttonTwoText={"Show Project"}
+                tagItems={projectCard.tagItems}
+                buttonOneText={projectCard.buttonOneText}
+                buttonTwoText={projectCard.buttonTwoText}
               />
             ))
           }
@@ -82,23 +85,25 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
         <!-- Mini Projects Content -->
         <div class="flex flex-col gap-5 md:gap-6 lg:gap-7">
           <!-- Title -->
-          <p class="text-n-950 text-base leading-tight font-normal md:text-xl lg:text-2xl">
+          <p
+            class="text-n-950 text-base leading-tight font-normal md:text-2xl group-data-[view=list]:md:text-xl"
+          >
             Mini Projects
           </p>
 
           <!-- Cards Wrap -->
           <div id="showcase-slider" class="embla__viewport">
             <!-- Embla container -->
-            <div class="embla__container flex flex-row">
+            <div class="embla__container flex">
               <!-- Iterating on Project Cards -->
               {
                 // Mini Project Cards //
                 portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
-                  <div class="embla__slide mr-7 flex max-w-full min-w-0 flex-1 flex-[0_0_327px] lg:flex-[0_0_413px]">
+                  <div class="embla__slide mr-7 flex flex-1">
                     <MiniProjectCard
                       id={cardItem.id}
                       title={cardItem.title}
-                      badges={cardItem.badges}
+                      tagItems={cardItem.tags}
                       date={cardItem.date}
                       btnOneText={cardItem.btnOneText}
                       btnTwoText={cardItem.btnTwoText}
@@ -114,17 +119,17 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
         <!-- Slider Cta Wrap -->
         <div class="relative flex max-w-full flex-col">
           <!-- Cta Wrap -->
-          <div class="self-end justify-self-end">
+          <div class="self-end">
             <SliderArrows />
           </div>
 
           <!-- Slider -->
           <div
-            class="border-n-500 absolute inset-0 m-auto h-0 w-24 border md:w-36 md:border-2 lg:w-96"
+            class="border-n-500 absolute inset-y-0 h-0 w-24 self-center border md:w-36 md:border-2 lg:w-96"
           >
             <div
               id="embla__progress__bar"
-              class="absolute top-[-1px] h-0 w-0 border border-blue-500 md:border-2"
+              class="absolute -top-px h-0 w-0 border border-blue-500 md:border-2"
             >
             </div>
           </div>
