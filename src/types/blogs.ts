@@ -4,10 +4,7 @@ export type BlogPost = {
 
   category: {
     label: string;
-<<<<<<< HEAD
-=======
     type: string;
->>>>>>> 52aa8d1b12a6273e8acc41af023f3aab86b2c126
   };
 
   author: {
@@ -21,17 +18,6 @@ export type BlogPost = {
     alt: string;
   };
 
-<<<<<<< HEAD
-  content: BlogBlockData[];
-};
-
-export type BlogBlockData = HeadingBlockData | ParagraphBlockData | MediaBlockData;
-
-export type HeadingBlockData = {
-  type: "heading";
-  level: 2 | 3;
-  text: string;
-=======
   content: BlogBlock[];
 };
 
@@ -51,7 +37,6 @@ export type HeadingBlockData = {
     text: string;
     href: string;
   };
->>>>>>> 52aa8d1b12a6273e8acc41af023f3aab86b2c126
 };
 
 export type ParagraphBlockData = {
