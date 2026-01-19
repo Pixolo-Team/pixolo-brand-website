@@ -54,8 +54,6 @@ export type MediaBlockData = {
   videoSrc?: string;
   caption?: string;
 };
-<<<<<<< HEAD
-=======
 
 export type ListBlockData = {
   type: "list";
@@ -69,4 +67,3 @@ export type ComparisonBlockData = {
   headers: string[];
   rows: string[][];
 };
->>>>>>> 52aa8d1b12a6273e8acc41af023f3aab86b2c126

@@ -8,8 +8,59 @@ interface Props {
 
 const { block } = Astro.props as Props;
 const Tag = `h${block.level}` as keyof HTMLElementTagNameMap;
+
+// Helper to determine text size based on heading level
+const getTextSize = (level: number) => {
+  switch (level) {
+    case 1:
+      return "text-3xl md:text-5xl md:text-bold";
+    case 2:
+      return "text-3xl md:text-5xl";
+    case 3:
+      return "text-3xl md:text-4xl";
+    case 4:
+      return "text-3xl md:text-4xl";
+    case 5:
+      return "text-2xl md:text-3xl";
+    case 6:
+      return "text-2xl md:text-3xl";
+    default:
+      return "text-base";
+  }
+};
+
+const textSize = getTextSize(block.level);
 ---
 
-<Tag class="mt-12 mb-4 text-2xl font-semibold">
-  {block.text}
-</Tag>
+<div class="header-anim flex flex-col gap-10">
+  <div class="flex flex-col gap-3.5">
+    <Tag class:list={["leading-tight font-medium", textSize]}>
+      {block.text}
+    </Tag>
+
+    {
+      block.paragraph && (
+        <p class="text-n-700 max-w-[270px] text-sm leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
+          {block.paragraph}
+        </p>
+      )
+    }
+  </div>
+
+  {
+    block.link && (
+      <a
+        href={block.link.href}
+        class="relative inline-block w-fit origin-center text-sm leading-normal font-medium text-blue-500 transition-transform after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-[width] after:duration-300 hover:scale-110 hover:after:w-full md:text-lg lg:text-xl"
+      >
+        {block.link.text}
+      </a>
+    )
+  }
+</div>
+
+<script>
+  import { animateHeaderFadeInUp } from "@/scripts/blog-consumption";
+
+  animateHeaderFadeInUp();
+</script>

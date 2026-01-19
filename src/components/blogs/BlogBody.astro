@@ -14,7 +14,7 @@ interface Props {
 const { content } = Astro.props as Props;
 ---
 
-<section class="blog-body container mx-auto space-y-8 px-6">
+<section class="blog-body container mx-auto space-y-8 px-6 lg:max-w-[955px]">
   {
     content.map((block) => {
       if (block.type === "media") {
