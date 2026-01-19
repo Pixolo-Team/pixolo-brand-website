@@ -13,11 +13,24 @@ import Ball from "@/assets/3d-ball.svg";
 import { contactSectionDetails, contactFormDetails } from "@/data/contact";
 ---
 
-<section id="contact-section" class="relative">
+<section id="contact-section" class="relative overflow-hidden">
   <div
     id="contact-wrapper"
     class="container mx-auto flex flex-col gap-11 px-6 py-24 md:gap-20 md:py-28 xl:px-0 xl:py-32"
   >
+    <!-- Decorative Marbles -->
+    <Image
+      id="contact-big-marble"
+      src={Ball}
+      alt="big marble"
+      class="pointer-events-none absolute top-8 left-12 -z-10 w-[59.13px] md:top-12 md:left-20 xl:top-[35%] xl:left-[15%]"
+    />
+    <Image
+      id="contact-small-marble"
+      src={Ball}
+      alt="small marble"
+      class="pointer-events-none absolute top-16 -right-3 -z-10 w-[38.01px] rotate-[-20deg] md:top-20 md:-right-6 xl:top-[55%] xl:right-[8%]"
+    />
     <!-- Section header -->
     <div class="anim-fade-up-slow text-n-950 flex w-full flex-col items-center gap-4.5 xl:gap-6">
       <!--  Tool badge component -->
@@ -68,28 +81,13 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
         class="contact-fill-wrap flex flex-col items-center gap-20 md:gap-24 lg:py-9 xl:flex xl:flex-row xl:gap-48"
       >
         <!-- Decorative text -->
-        <div
-          class="text-n-950 relative w-full text-8xl leading-tight tracking-tight md:text-[150px] md:leading-[100%] lg:leading-[125%] lg:tracking-[-0.08em] xl:w-[724px] xl:text-[200px]"
-        >
-          <p class="-mb-7 text-left md:mb-[-35px] lg:mb-[-46px]">Lets</p>
-          <p class="-mb-7 text-right md:mb-4 xl:text-right">get in</p>
-          <p class="text-left">Touch&nbsp;!</p>
-
-          <!-- Decorative Marbles -->
-          <Image
-            id="contact-big-marble"
-            src={Ball}
-            alt="big marble"
-            class="pointer-events-none absolute top-8 left-12 -z-10 w-[59.13px] md:top-12 md:left-20 xl:top-[35%] xl:left-[15%]"
-          />
-          <Image
-            id="contact-small-marble"
-            src={Ball}
-            alt="small marble"
-            class="pointer-events-none absolute top-16 -right-3 -z-10 w-[38.01px] rotate-[-20deg] md:top-20 md:-right-6 xl:top-[55%] xl:right-[8%]"
-          />
+        <div class="text-n-950 relative w-full text-8xl md:text-[150px] xl:w-1/2 xl:text-[200px]">
+          <p class="text-left tracking-[-8px] md:leading-[100%]">Lets</p>
+          <p class="my-2 text-right tracking-[-8px] md:my-4 md:leading-[100%] xl:text-right">
+            get in
+          </p>
+          <p class="text-left tracking-[-8px] md:leading-[100%]">Touch&nbsp;!</p>
         </div>
-
         <!-- Contact Form -->
         <form
           class="form-fill flex w-full flex-col gap-11 xl:w-1/2 xl:flex-1 xl:gap-12"
@@ -158,9 +156,12 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
     initializeCopyButtons,
     initializeFormSubmission,
   } from "@/scripts/contact-form";
+  import { animateMarble } from "@/scripts/hero";
   document.addEventListener("DOMContentLoaded", () => {
     initializeFormValidation();
     initializeCopyButtons();
     initializeFormSubmission();
+    animateMarble("contact-big-marble", "contact-section");
+    animateMarble("contact-small-marble", "contact-section");
   });
 </script>

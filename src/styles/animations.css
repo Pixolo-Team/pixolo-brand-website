@@ -71,17 +71,6 @@
   transform: translateX(0);
 }
 
-/* Contact form marbles (use same float keyframes with different durations) */
-#contact-big-marble {
-  animation: float 6s ease-in-out infinite;
-  will-change: transform;
-}
-
-#contact-small-marble {
-  animation: float 4s ease-in-out infinite;
-  will-change: transform;
-}
-
 /* Copy button color transition (used on contact cards) */
 [data-copy-btn].active {
   color: #6366f1;
