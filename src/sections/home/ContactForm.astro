@@ -16,10 +16,10 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
 <section id="contact-section" class="relative">
   <div
     id="contact-wrapper"
-    class="container mx-auto flex flex-col gap-14 px-6 py-24 md:gap-20 md:py-28 xl:px-0 xl:py-32"
+    class="container mx-auto flex flex-col gap-11 px-6 py-24 md:gap-20 md:py-28 xl:px-0 xl:py-32"
   >
     <!-- Section header -->
-    <div class="anim-fade-up-slow text-n-950 flex w-full flex-col items-center gap-5 xl:gap-6">
+    <div class="anim-fade-up-slow text-n-950 flex w-full flex-col items-center gap-4.5 xl:gap-6">
       <!--  Tool badge component -->
       <ToolBadge
         icon="comment"
@@ -69,9 +69,9 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
       >
         <!-- Decorative text -->
         <div
-          class="text-n-950 relative w-full text-8xl leading-tight tracking-tight md:text-[150px] md:leading-[100%] xl:w-[724px] xl:text-[200px]"
+          class="text-n-950 relative w-full text-8xl leading-tight tracking-tight md:text-[150px] md:leading-[100%] lg:leading-[125%] lg:tracking-[-0.08em] xl:w-[724px] xl:text-[200px]"
         >
-          <p class="-mb-7 text-left md:mb-4">Lets</p>
+          <p class="-mb-7 text-left md:mb-[-35px] lg:mb-[-46px]">Lets</p>
           <p class="-mb-7 text-right md:mb-4 xl:text-right">get in</p>
           <p class="text-left">Touch&nbsp;!</p>
 
@@ -95,7 +95,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
           class="form-fill flex w-full flex-col gap-11 xl:flex-1 xl:gap-12"
           aria-label="Contact form"
         >
-          <div class="flex flex-col gap-14">
+          <div class="flex flex-col gap-14 lg:gap-16">
             <!-- Name Input field -->
             <InputField
               name="name"
@@ -104,7 +104,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
               required={true}
               placeholder="NAME"
               showPlaceholder={true}
-              extraClasses="pb-6 md:pb-9 lg:pb-8"
+              extraClasses="pb-6 md:pb-9 lg:pb-8 placeholder:text-xl placeholder:text-medium"
             />
 
             <!-- Phone Number Input field -->
