@@ -1,9 +1,13 @@
 ---
 export function getStaticPaths() {
   return [
-    { params: { title: "service-1" } },
-    { params: { title: "service-2" } },
-    { params: { title: "service-3" } },
+    { params: { title: "product-strategy-&-planning" } },
+    { params: { title: "ui-ux-&-brand-experience" } },
+    { params: { title: "full-stack-development" } },
+    { params: { title: "ai-&-automation" } },
+    { params: { title: "cloud,-devops-&-infrastructure" } },
+    { params: { title: "business-tools-&-internal-systems" } },
+    { params: { title: "industry-specific-solutions" } },
   ];
 }
 const { title } = Astro.params;
@@ -18,13 +22,21 @@ import PainSolution from "@/sections/service-consumption/PainSolution.astro";
 import HowWeWork from "@/sections/service-consumption/HowWeWork.astro";
 import Deliverables from "@/sections/service-consumption/Deliverables.astro";
 import FinalCta from "@/sections/service-consumption/FinalCta.astro";
+
+// DATA //
+import { servicesData } from "@/data/service-consumption/service-consumption.ts";
+import { navigate } from "astro:transitions/client";
+
+const service = servicesData[title!];
+
+if (!service)     navigate("/404")
 ---
 
 <Layout>
-  <Hero />
-  <OutcomeFocused />
-  <PainSolution />
-  <HowWeWork />
-  <Deliverables />
-  <FinalCta />
+  <Hero title={service.hero.title} subTitle={service.hero.subTitle} />
+  <OutcomeFocused outcomeFocusedItems={service.outcomeFocused} />
+  <PainSolution painSolutionCardItems={service.painSolution} />
+  <HowWeWork howWeWorkSectionSteps={service.howWeWork} />
+  <Deliverables tabItems={service.deliverables} />
+  <FinalCta subTitle={service.finalCTA} />
 </Layout>

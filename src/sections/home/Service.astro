@@ -6,7 +6,7 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { URLS } from "@/infrastructure/constants/urls";
 
 // DATA //
-import { services } from "@/data/services";
+import { services } from "@/data/services/service";
 
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 // DATA
@@ -44,7 +44,7 @@ const serviceDetails = {
     >
       {
         services.map((serviceItem) => (
-          <a href={URLS.SERVICE.ITEM(serviceItem.id.toString(), serviceItem.title)}>
+          <a href={URLS.SERVICE.ITEM(serviceItem.title)}>
             <ServiceItem
               imageName={serviceItem.imageName}
               title={serviceItem.title}

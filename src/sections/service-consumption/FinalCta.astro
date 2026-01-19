@@ -9,6 +9,8 @@ import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { finalCtaSectionDetails } from "@/data/service-consumption/final-cta";
+
+const { subTitle } = Astro.props;
 ---
 
 <!-- Final CTA Section -->
@@ -57,7 +59,7 @@ import { finalCtaSectionDetails } from "@/data/service-consumption/final-cta";
         class="word-container text-n-700 text-center text-xs leading-tight font-normal tracking-[-0.02em] md:text-lg lg:text-xl"
         data-animate-word
       >
-        {finalCtaSectionDetails.subTitle}
+        {subTitle}
       </p>
     </div>
 
