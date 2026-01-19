@@ -15,13 +15,9 @@ module.exports = [
       "**/dist/**",
     ],
   },
-
   // ---------------------------------------------------------
   // JS + TS
   // ---------------------------------------------------------
-  {
-    ignores: ["/.astro/**", "node_modules/**", "dist/**", ".astro/**"],
-  },
   {
     files: ["**/*.{js,ts}"],
     languageOptions: {
@@ -35,7 +31,8 @@ module.exports = [
     },
     rules: {
       ...tseslint.configs.recommended.rules,
-      "prettier/prettier": "error",
+      "linebreak-style": ["off"], // Allow both LF and CRLF
+      "prettier/prettier": ["error", { endOfLine: "auto" }],
     },
   },
 
@@ -49,7 +46,7 @@ module.exports = [
   // Script blocks inside Astro files
   // ---------------------------------------------------------
   {
-    files: ["**/*.astro/*.ts"],
+    files: ["**/.astro/.ts"],
     languageOptions: {
       parser: tsParser,
     },
@@ -64,7 +61,8 @@ module.exports = [
       prettier,
     },
     rules: {
-      "prettier/prettier": "error",
+      "prettier/prettier": ["error", { endOfLine: "auto" }],
+      "linebreak-style": ["off"], // Allow both LF and CRLF
     },
   },
 ];
