@@ -1,6 +1,5 @@
 export const servicesData = {
   "product-strategy-&-planning": {
-    slug: "product-strategy",
     hero: {
       title: "Build the right product. Not just a functional one.",
       subTitle:
@@ -48,7 +47,6 @@ export const servicesData = {
   },
 
   "ui-ux-&-brand-experience": {
-    slug: "ui-ux",
     hero: {
       title: "Design that feels obvious.",
       subTitle: "If users have to think, something’s already wrong.",
@@ -90,7 +88,6 @@ export const servicesData = {
   },
 
   "full-stack-development": {
-    slug: "full-stack",
     hero: {
       title: "End-to-end development without handoffs or chaos.",
       subTitle: "One team. One codebase. One accountable partner.",
@@ -133,7 +130,6 @@ export const servicesData = {
   },
 
   "ai-&-automation": {
-    slug: "ai-automation",
     hero: {
       title: "Use AI where it saves money.",
       subTitle: "Not where it sounds impressive.",
@@ -176,7 +172,6 @@ export const servicesData = {
   },
 
   "cloud,-devops-&-infrastructure": {
-    slug: "cloud-devops",
     hero: {
       title: "Infrastructure that doesn’t wake you up at night.",
       subTitle: "Stable, secure, and built to scale.",
@@ -217,7 +212,6 @@ export const servicesData = {
   },
 
   "business-tools-&-internal-systems": {
-    slug: "business-tools",
     hero: {
       title: "Custom tools that fit how your team actually works.",
       subTitle: "Not the other way around.",
@@ -258,7 +252,6 @@ export const servicesData = {
   },
 
   "industry-specific-solutions": {
-    slug: "industry-solutions",
     hero: {
       title: "Technology that understands your industry.",
       subTitle: "Not generic software with fancy labels.",

@@ -1,15 +1,10 @@
 ---
 export function getStaticPaths() {
-  return [
-    { params: { title: "product-strategy-&-planning" } },
-    { params: { title: "ui-ux-&-brand-experience" } },
-    { params: { title: "full-stack-development" } },
-    { params: { title: "ai-&-automation" } },
-    { params: { title: "cloud,-devops-&-infrastructure" } },
-    { params: { title: "business-tools-&-internal-systems" } },
-    { params: { title: "industry-specific-solutions" } },
-  ];
+  return Object.keys(servicesData).map((title) => ({
+    params: { title },
+  }));
 }
+
 const { title } = Astro.params;
 
 // OTHERS //

@@ -26,13 +26,13 @@ export const services = [
   },
   {
     id: 3,
-    imageName: "/images/services/ui-ux-branding.jpg",
+    imageName: "/images/services/full-stack-development.jpg",
     title: "Full-Stack Development",
     tags: ["Web Apps", "Mobile Apps", "Backend & APIs", "Admin Panels", "Real-time Systems"],
   },
   {
     id: 4,
-    imageName: "/images/services/ui-ux-branding.jpg",
+    imageName: "/images/services/ai-automation.jpg",
     title: "AI & Automation",
     tags: [
       "Custom AI Models",
@@ -44,7 +44,7 @@ export const services = [
   },
   {
     id: 5,
-    imageName: "/images/services/ui-ux-branding.jpg",
+    imageName: "/images/services/cloud-devops-infrastructure.jpg",
     title: "Cloud, DevOps & Infrastructure",
     tags: [
       "Cloud Setup",
@@ -56,7 +56,7 @@ export const services = [
   },
   {
     id: 6,
-    imageName: "/images/services/ui-ux-branding.jpg",
+    imageName: "/images/services/business-tools-and-internal-systems.jpg",
     title: "Business Tools & Internal Systems",
     tags: [
       "Billing Systems",
@@ -68,7 +68,7 @@ export const services = [
   },
   {
     id: 7,
-    imageName: "/images/services/ui-ux-branding.jpg",
+    imageName: "/images/services/industry-specific-solutions.jpg",
     title: "Industry-Specific Solutions",
     tags: [
       "EdTech Platforms",
