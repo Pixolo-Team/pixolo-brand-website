@@ -3,6 +3,8 @@
 import MediaCardBlock from "@/components/blogs/MediaCardBlock.astro";
 import HeadingBlock from "@/components/blogs/HeadingBlock.astro";
 import ParagraphBlock from "@/components/blogs/ParagraphBlock.astro";
+import ListBlock from "@/components/blogs/ListBlock.astro";
+import ComparisonBlock from "@/components/blogs/ComparisonBlock.astro";
 
 // TYPES //
 import type { BlogBlock } from "@/types/blogs";
@@ -27,6 +29,14 @@ const { content } = Astro.props as Props;
 
       if (block.type === "paragraph") {
         return <ParagraphBlock block={block} />;
+      }
+
+      if (block.type === "list") {
+        return <ListBlock block={block} />;
+      }
+
+      if (block.type === "comparison") {
+        return <ComparisonBlock block={block} />;
       }
 
       return null;
