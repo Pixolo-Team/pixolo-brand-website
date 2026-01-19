@@ -25,7 +25,6 @@ export const productItems = [
     name: "Configo",
     description:
       " A single control panel for all your DevOps needs. Instead of juggling servers across multiple platforms, Configo centralizes your databases, cloud servers, deployments, and access management in one clean, managed space.",
-    href: "/",
   },
   {
     logo: "weddingo-logo.png",
@@ -34,7 +33,6 @@ export const productItems = [
     name: "WeddinGo",
     description:
       "Weddingo is a digital platform for modern weddings — invitations, event timelines, RSVP tracking, and photo galleries all in one place. It gives couples a celebrity-style experience without the traditional chaos.",
-    href: "/",
   },
   {
     logo: "neevo-logo.png",
@@ -43,6 +41,5 @@ export const productItems = [
     name: "Neevo Design System",
     description:
       " Neevo is a clean, flexible design system with ready-to-use components that any brand can adapt to their style in minutes. It helps teams build consistent interfaces fast, even without deep UI/UX expertise. Everything updates automatically with your brand colors, spacing, and typography.",
-    href: "/",
   },
 ];

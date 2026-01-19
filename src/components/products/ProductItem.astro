@@ -9,15 +9,16 @@ interface Props {
   thumbnail: string;
   image: string;
   description: string;
-  href: string;
-  showLink?: boolean;
+  href?: string;
 }
 
-const { name, logo, thumbnail, image, description, href, showLink = false } = Astro.props as Props;
+const { name, logo, thumbnail, image, description, href = "" } = Astro.props as Props;
 ---
 
 <!-- Product Item -->
-<div
+<a
+  href={href !== "" ? href : undefined}
+  target="_blank"
   class="group border-n-950 relative flex w-full cursor-pointer flex-col gap-3 border-b-[0.4px] py-7 md:gap-3.5 md:border-b-[0.6px] lg:flex-row lg:justify-between lg:gap-12 lg:border-b-[0.8px]"
 >
   <!-- Logo Container -->
@@ -62,15 +63,14 @@ const { name, logo, thumbnail, image, description, href, showLink = false } = As
 
     <!-- Link for more information -->
     {
-      showLink && (
-        <a
-          href={href}
-          class="border-n-950 flex size-12 shrink-0 items-center justify-center self-center rounded-full border from-(--blue-500) to-[#8B77F3] group-hover:border-none group-hover:bg-gradient-to-r md:size-20"
+      href !== "" && (
+        <div
+          class="border-n-950 flex size-12 shrink-0 cursor-pointer items-center justify-center self-center rounded-full border from-(--blue-500) to-[#8B77F3] group-hover:border-none group-hover:bg-gradient-to-r md:size-20"
           aria-label="View more information"
         >
           <Icon name="external-link-icon" class="size-[18px] md:size-[30px]" />
-        </a>
+        </div>
       )
     }
   </div>
-</div>
+</a>
