@@ -25,11 +25,9 @@ import FinalCta from "@/sections/service-consumption/FinalCta.astro";
 
 // DATA //
 import { servicesData } from "@/data/service-consumption/service-consumption.ts";
-import { navigate } from "astro:transitions/client";
 
 const service = servicesData[title!];
 
-if (!service)     navigate("/404")
 ---
 
 <Layout>
