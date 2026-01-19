@@ -64,7 +64,7 @@ const moreTeamMembers: TeamMember[] = [
     class="container mx-auto flex w-full max-w-screen-2xl flex-col gap-16 px-6 py-20 md:px-6 md:py-24 xl:gap-16 xl:py-28"
   >
     <!-- TEAM CONTAINER -->
-    <div class="flex w-full flex-col gap-12">
+    <div class="flex w-full flex-col gap-15 md:px-6">
       <!-- HEADER -->
       <div class="flex w-full flex-col items-center gap-4 text-center">
         <ToolBadge icon="service-icon" text="Meet the Team" />
@@ -77,12 +77,12 @@ const moreTeamMembers: TeamMember[] = [
       </div>
 
       <!-- CONTENT WRAP -->
-      <div class="flex w-full flex-col gap-4 xl:gap-7">
+      <div class="flex w-full flex-col gap-4 xl:gap-16">
         <!-- FEATURED MEMBER -->
-        <div class="flex w-full flex-col gap-10 md:gap-12 lg:gap-7">
+        <div class="flex w-full flex-col gap-10 md:gap-5 xl:gap-7">
           <!-- FEATURED CAROUSEL -->
           <div id="featured-carousel" class="embla__viewport overflow-hidden">
-            <div class="flex gap-4 xl:gap-5">
+            <div class="flex gap-4 xl:gap-7">
               {
                 featuredMembers.map((member, index) => (
                   <div
@@ -95,12 +95,12 @@ const moreTeamMembers: TeamMember[] = [
               }
             </div>
           </div>
+          <div class="flex justify-end gap-6">
+            <SliderArrows prevId="featured-prev" nextId="featured-next" />
+          </div>
         </div>
 
         <!-- FEATURED ARROWS -->
-        <div class="flex justify-end">
-          <SliderArrows prevId="featured-prev" nextId="featured-next" />
-        </div>
 
         <!-- MORE TEAM -->
         <div class="flex w-full flex-col gap-6">
@@ -110,22 +110,22 @@ const moreTeamMembers: TeamMember[] = [
 
           <!-- SMALL CAROUSEL -->
           <div id="small-carousel" class="overflow-hidden">
-            <div class="flex gap-4">
+            <div class="flex gap-3.5">
               {
                 moreTeamMembers.map((member, index) => (
                   <div
-                    class="flex w-57.25 shrink-0 flex-col gap-3.5 md:w-57.25 xl:w-[291.2px]"
+                    class="flex w-57.25 shrink-0 flex-col gap-3.5 md:w-57.25"
                     style={`--delay: ${index * 0.15}s`}
                   >
                     <img
                       src={member.image}
                       alt={member.name}
-                      class="h-49.5 w-full rounded-2xl object-cover"
+                      class="w-fill h-49.5 rounded-2xl object-cover md:h-59.5 xl:h-59.5"
                     />
 
-                    <div class="flex flex-col gap-0.5 px-2.5">
-                      <p class="text-n-950 text-xl leading-[125%]">{member.name}</p>
-                      <p class="text-n-700 text-sm leading-[125%]">{member.role}</p>
+                    <div class="flex flex-col gap-0.5 px-2.5 md:gap-2">
+                      <p class="text-n-950 text-xl leading-[125%] xl:text-2xl">{member.name}</p>
+                      <p class="text-n-700 text-sm leading-[125%] xl:text-[16px]">{member.role}</p>
                     </div>
                   </div>
                 ))
@@ -134,7 +134,7 @@ const moreTeamMembers: TeamMember[] = [
           </div>
 
           <!-- SMALL ARROWS -->
-          <div class="flex justify-end">
+          <div class="flex justify-end gap-6">
             <SliderArrows prevId="small-prev" nextId="small-next" />
           </div>
         </div>
