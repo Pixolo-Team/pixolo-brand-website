@@ -67,14 +67,14 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
               role="button"
               aria-label={`View testimonial from ${testimonialItem.clientName} at ${testimonialItem.brandName}`}
             >
-              <div class="bg-n-100 flex size-9 items-center overflow-hidden rounded-full transition-all duration-600 group-hover:scale-125 group-hover:shadow-[0_0_21.7px_0_#2B7FFF] group-[.active]:scale-100 group-[.active]:shadow-none md:size-14 lg:size-16">
+              <div class="flex size-9 items-center overflow-hidden rounded-full transition-shadow duration-600 group-hover:shadow-[0_0_21.7px_0_#2B7FFF] group-[.active]:shadow-none md:size-14 lg:size-16">
                 <Image
                   id="testimonial-image"
                   src={`/images/testimonials/${testimonialItem.clientImage}`}
                   alt={testimonialItem.clientName}
                   width={64}
                   height={64}
-                  class="self-center object-cover"
+                  class="h-full w-full rounded-full object-cover transition-transform duration-500 group-hover:scale-125 group-[.active]:scale-100"
                 />
               </div>
 
@@ -125,9 +125,15 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
     transition: all 0.6s ease;
   }
 
+  .testimonial-info p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   /* Show info only when active */
   .testimonial-item.active .testimonial-info {
-    max-width: 20rem;
+    max-width: 14rem;
     opacity: 1;
     display: block;
   }
