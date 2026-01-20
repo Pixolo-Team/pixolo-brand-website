@@ -7,7 +7,7 @@ export const portfolioIndustryDetails = {
   industryItems: [
     {
       title: "Education, Learning & Institutions",
-      image: "/images/portfolio-industries/digital.jpg",
+      image: "/images/portfolio-industries/education.jpg",
       tags: [
         "Sunalis Classes",
         "INQ App",
@@ -19,7 +19,7 @@ export const portfolioIndustryDetails = {
     },
     {
       title: "Travel, Hospitality & Experiences",
-      image: "/images/portfolio-industries/digital.jpg",
+      image: "/images/portfolio-industries/travel.jpg",
       tags: [
         "Cola Beach Sunset Bay",
         "DTIX Website",
@@ -32,7 +32,7 @@ export const portfolioIndustryDetails = {
     },
     {
       title: "Real Estate, Infrastructure & Communities",
-      image: "/images/portfolio-industries/digital.jpg",
+      image: "/images/portfolio-industries/real-estate.jpg",
       tags: ["Golden Design Interiors", "Neelsidhi", "Ekonomo Housing Society"],
     },
     {
@@ -48,7 +48,7 @@ export const portfolioIndustryDetails = {
     },
     {
       title: "Healthcare, Wellness & Lifestyle",
-      image: "/images/portfolio-industries/digital.jpg",
+      image: "/images/portfolio-industries/healthcare.jpg",
       tags: [
         "Project Now App",
         "Project Now Diet Maker",
@@ -68,7 +68,7 @@ export const portfolioIndustryDetails = {
     },
     {
       title: "Marketing, Campaigns & Brand Activations",
-      image: "/images/portfolio-industries/digital.jpg",
+      image: "/images/portfolio-industries/marketing.jpg",
       tags: [
         "CEAT",
         "Too Yumm",
