@@ -260,7 +260,7 @@ export const serviceDetails = [
       "Custom workflows",
       "Role-based access systems",
     ],
-    deliverableImage: "/images/services/deliverable-business.jpg",
+    deliverableImage: "/images/services/deliverable-bussiness.jpg",
     finalCTA: "If your team is drowning in tools, let’s simplify.",
   },
 ];
