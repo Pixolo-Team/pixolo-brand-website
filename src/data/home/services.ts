@@ -48,7 +48,7 @@ export const serviceDetails = [
       "System overview",
       "Phase-wise roadmap",
     ],
-    deliverableImage: "/images/services/deliverable-product.png",
+    deliverableImage: "/images/services/deliverable-product.jpg",
     finalCTA: "If you’re unsure what to build first, let’s fix that before you build anything.",
   },
 
@@ -242,7 +242,7 @@ export const serviceDetails = [
       { description: "Fewer spreadsheets" },
       { description: "Better internal visibility" },
     ],
-    outcomeFocusedImage: "/images/services/outcome-business.jpg",
+    outcomeFocusedImage: "/images/services/outcome-bussiness.jpg",
     painSolution: [
       { problem: "Spreadsheet dependency", solution: "Custom internal tools" },
       { problem: "Disconnected tools", solution: "Centralized dashboards" },
