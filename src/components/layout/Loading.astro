@@ -1,10 +1,15 @@
 ---
+// STYLES //
+import ThemeImage from "@/components/ui/ThemeImage.astro";
+
 // COMPONENTS //
 import { Image } from "astro:assets";
 
+// OTHERS //
+import { initLoader } from "@/scripts/loader";
+
 // SVG's //
 import pixolo from "@/../public/images/loader/pixolo.svg";
-import ThemeImage from "../ui/ThemeImage.astro";
 ---
 
 <section
@@ -23,7 +28,11 @@ import ThemeImage from "../ui/ThemeImage.astro";
 
     <!-- Step 3: Pixolo -->
     <div class="pixolo flex items-center justify-center gap-1">
-      <Image src={pixolo} alt="Pixolo" />
+      <ThemeImage
+        dark={"/images/brand-logo/dark.png"}
+        light={"/images/brand-logo/light.png"}
+        alt="Pixolo"
+      />
     </div>
 
     <!-- Loader Number -->
@@ -230,6 +239,5 @@ import ThemeImage from "../ui/ThemeImage.astro";
 </style>
 
 <script>
-  import { initLoader } from "@/scripts/loader";
   initLoader();
 </script>
