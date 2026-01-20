@@ -64,7 +64,6 @@ export const contactFormDetails = {
     },
 
     {
-      id: "subject",
       label: "SUBJECT",
       type: "select",
       placeholder: "Select a subject",

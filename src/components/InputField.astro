@@ -34,14 +34,17 @@ const {
 ---
 
 <!-- Container for input field and error message -->
-<div class:list={`flex w-full flex-col gap-3`}>
+<div class="flex w-full flex-col gap-3">
   <!-- Container for label and Input with bottom border -->
   <div
-    class={`border-n-300 focus-within:border-n-900 flex items-center gap-3 border-b pb-3 md:gap-4 md:pb-4 ${extraClasses}`}
+    class:list={[
+      "border-n-300 focus-within:border-n-900 flex items-center gap-3 border-b pb-3 md:gap-4 md:pb-4",
+      extraClasses,
+    ]}
   >
     <!-- Label for the input field -->
     {
-      label !== "" && (
+      label && (
         <label for={id} class="text-sm font-medium md:text-base lg:text-lg">
           {label}
         </label>

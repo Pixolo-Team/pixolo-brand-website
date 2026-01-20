@@ -7,6 +7,7 @@ export const formErrors = {
   },
   phone: {
     invalidFormat: "Please enter a valid phone number",
+    lessThanTenDigits: "The number should be 10 digits",
     required: "This field is required",
   },
   email: {

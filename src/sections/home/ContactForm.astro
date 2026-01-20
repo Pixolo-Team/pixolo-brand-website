@@ -26,6 +26,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
         text={contactFormDetails.badgeTitle}
         class:list={"text-n-950 md:text-base"}
       />
+
       <!-- Title -->
       <p class="text-n-950 text-center text-3xl leading-tight font-medium md:text-4xl xl:text-6xl">
         {contactFormDetails.heading}
@@ -39,12 +40,12 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
       >
         {
           contactSectionDetails.contactCards.map((card) => (
-            <div class="anim-fade-in-right w-full md:w-[440px]">
+            <div class="anim-fade-in-right w-full md:w-110">
               <ContactCard
                 icon={card.icon}
                 title={card.title}
                 value={card.value}
-                type={card?.id}
+                type={card.id}
                 link={card.link}
               />
             </div>
@@ -52,7 +53,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
         }
 
         <!-- Location card -->
-        <div class="anim-fade-in-right w-full md:w-[440px]">
+        <div class="anim-fade-in-right w-full md:w-110">
           <ContactCard
             icon={contactSectionDetails.location.icon}
             title={contactSectionDetails.location.title}
@@ -69,12 +70,11 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
       >
         <!-- Decorative text -->
         <div
-          class="text-n-950 relative w-full text-8xl leading-tight tracking-tight md:text-[150px] md:leading-[100%] xl:w-[724px] xl:text-[200px]"
+          class="text-n-950 relative w-full text-8xl leading-tight tracking-tight md:text-[150px] md:leading-[100%] xl:w-181 xl:text-[200px]"
         >
-          <p class="-mb-7 text-left md:mb-4">Lets</p>
+          <p class="-mb-7 text-left md:mb-4">Let's</p>
           <p class="-mb-7 text-right md:mb-4 xl:text-right">get in</p>
-          <p class="text-left">Touch&nbsp;!</p>
-
+          <p class="text-left">Touch !</p>
           <!-- Decorative Marbles -->
           <Image
             id="contact-big-marble"
@@ -101,7 +101,6 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
               name="name"
               id="name"
               type="text"
-              required={true}
               placeholder="NAME"
               showPlaceholder={true}
               extraClasses="pb-6 md:pb-9 lg:pb-8"
@@ -112,7 +111,6 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
               name="phone"
               id="phone"
               type="tel"
-              required={true}
               placeholder="PHONE NUMBER"
               showPlaceholder={true}
               extraClasses="pb-6 md:pb-9 lg:pb-8"
@@ -122,8 +120,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
             <InputField
               name="email"
               id="email"
-              type="email"
-              required={true}
+              type="text"
               placeholder="E-MAIL"
               showPlaceholder={true}
               extraClasses="pb-6 md:pb-9 lg:pb-8"
@@ -134,14 +131,13 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
               name="message"
               id="message"
               type="text"
-              required={true}
               placeholder="MESSAGE"
               showPlaceholder={true}
               extraClasses="pb-6 md:pb-9 lg:pb-8"
             />
           </div>
 
-          <!-- Submit button-->
+          <!-- Submit button -->
           <div class="self-end">
             <!-- Rounded Button component -->
             <RoundedButton buttonText="Contact Us" type="submit" aria-label="Send message" />
@@ -153,13 +149,8 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
 </section>
 
 <script>
-  import {
-    initializeFormValidation,
-    initializeCopyButtons,
-    initializeFormSubmission,
-  } from "@/scripts/contact-form";
+  import { initializeCopyButtons, initializeFormSubmission } from "@/scripts/contact-form";
   document.addEventListener("DOMContentLoaded", () => {
-    initializeFormValidation();
     initializeCopyButtons();
     initializeFormSubmission();
   });

@@ -50,15 +50,22 @@ function validateInput(input: HTMLInputElement): boolean {
   const errors: string[] = [];
 
   // Check if field is empty (required validation) - ONLY show for name, phone, email (not message)
-  if (!value && input.id !== "message") {
+  if (!value) {
     const requiredError =
       input.id === "name"
         ? formErrors.name.required
         : input.id === "phone"
           ? formErrors.phone.required
-          : formErrors.email.required;
-    errorContainer.appendChild(createErrorElement(requiredError));
-    return false;
+          : input.id === "email"
+            ? formErrors.email.required
+            : input.id === "message"
+              ? formErrors.message.required
+              : null;
+
+    if (requiredError) {
+      errorContainer.appendChild(createErrorElement(requiredError));
+      return false;
+    }
   }
 
   // Validation for Name field - reject numbers
@@ -70,7 +77,11 @@ function validateInput(input: HTMLInputElement): boolean {
 
   // Validation for Phone field - reject non-numeric characters (except common phone formatting)
   if (input.id === "phone" && value) {
-    if (!/^[0-9\s\-\+\(\)]+$/.test(value)) {
+    if (!/^\d+$/.test(value)) {
+      errors.push(formErrors.phone.invalidFormat);
+    } else if (value.length < 10) {
+      errors.push(formErrors.phone.lessThanTenDigits);
+    } else if (value.length > 10) {
       errors.push(formErrors.phone.invalidFormat);
     }
   }
@@ -79,6 +90,11 @@ function validateInput(input: HTMLInputElement): boolean {
   if (input.id === "email" && value) {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
       errors.push(formErrors.email.invalidFormat);
+    }
+  }
+  if (input.id === "message" && value) {
+    if (value.length < 10) {
+      errors.push(formErrors.message.tooShort);
     }
   }
 
@@ -302,16 +318,19 @@ export const initializeFormSubmission = () => {
       const nameInput = formElement.querySelector("#name") as HTMLInputElement | null;
       const phoneInput = formElement.querySelector("#phone") as HTMLInputElement | null;
       const emailInput = formElement.querySelector("#email") as HTMLInputElement | null;
+      const messageInput = formElement.querySelector("#message") as HTMLInputElement | null;
 
       let isNameValid = true;
       let isPhoneValid = true;
       let isEmailValid = true;
+      let isMessageValid = true;
 
       if (nameInput) isNameValid = validateInput(nameInput);
       if (phoneInput) isPhoneValid = validateInput(phoneInput);
       if (emailInput) isEmailValid = validateInput(emailInput);
+      if (messageInput) isMessageValid = validateInput(messageInput);
 
-      if (!isNameValid || !isPhoneValid || !isEmailValid) {
+      if (!isNameValid || !isPhoneValid || !isEmailValid || !isMessageValid) {
         return;
       }
 
