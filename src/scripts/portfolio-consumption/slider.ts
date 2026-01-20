@@ -19,8 +19,22 @@ export function initSlider({ sliderId, prevId, nextId, loop = false }: InitSlide
     loop,
     align: "start",
     skipSnaps: false,
+    containScroll: false,
   });
 
-  nextBtn.addEventListener("click", () => embla.scrollNext());
-  prevBtn.addEventListener("click", () => embla.scrollPrev());
+  nextBtn.addEventListener("click", () => {
+    if (!embla.canScrollNext() && loop) {
+      embla.scrollTo(0);
+    } else {
+      embla.scrollNext();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (!embla.canScrollPrev() && loop) {
+      embla.scrollTo(embla.slideNodes().length - 1); // first → last
+    } else {
+      embla.scrollPrev();
+    }
+  });
 }

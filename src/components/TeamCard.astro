@@ -16,13 +16,13 @@ const { poster, name, role } = Astro.props as Props;
     class="team-video-hover relative h-69.75 w-full overflow-hidden rounded-3xl md:aspect-video md:h-auto lg:h-130"
   >
     <!-- Poster image preview -->
-    <img src={poster} alt={`Portrait of ${name}`} class="h-full w-full object-cover md:h-120.5" />
+    <img src={poster} alt={`Portrait of ${name}`} class="h-full w-full object-cover" />
 
     <!-- Play button -->
     <button
       type="button"
       aria-label="Play video"
-      class="anim-fade-up-quick border-n-950 hover:bg-n-800 xl:bg-n-200 xl:rig absolute right-3 bottom-3 flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-transparent transition-all duration-300 ease-out hover:border-transparent md:right-5 md:bottom-5 md:size-14 md:border-2 xl:right-9 xl:bottom-3 xl:border-0"
+      class="anim-fade-up-quick border-n-950 hover:bg-n-800 xl:bg-n-200 xl:rig absolute right-3 bottom-3 flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-transparent transition-all duration-300 ease-out hover:border-transparent md:right-5 md:bottom-5 md:size-14 md:border-2 xl:right-11 xl:bottom-3 xl:border-0"
     >
       <Icon
         name="play"

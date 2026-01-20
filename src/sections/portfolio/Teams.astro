@@ -55,6 +55,11 @@ const moreTeamMembers: TeamMember[] = [
     role: "Marketing Specialist",
     image: "/images/portfolio/image-video.svg",
   },
+  {
+    name: "David Kim",
+    role: "DevOps Engineer",
+    image: "/images/portfolio/image-video.svg",
+  },
 ];
 ---
 
@@ -82,11 +87,11 @@ const moreTeamMembers: TeamMember[] = [
         <div class="flex w-full flex-col gap-10 md:gap-5 xl:gap-7">
           <!-- FEATURED CAROUSEL -->
           <div id="featured-carousel" class="embla__viewport overflow-hidden">
-            <div class="flex gap-4 xl:gap-7">
+            <div class="embla_container flex">
               {
                 featuredMembers.map((member, index) => (
                   <div
-                    class={`custom-cursor anim-fade-up-slow w-full shrink-0 md:w-full xl:w-260.5`}
+                    class={`embla_slide custom-cursor anim-fade-up-slow w-full shrink-0 md:w-full xl:w-260.5 xl:pr-7`}
                     style={`animation-delay: ${index * 120}ms`}
                   >
                     <TeamCard poster={member.image} name={member.name} role={member.role} />
@@ -109,12 +114,12 @@ const moreTeamMembers: TeamMember[] = [
           </p>
 
           <!-- SMALL CAROUSEL -->
-          <div id="small-carousel" class="overflow-hidden">
-            <div class="flex gap-3.5">
+          <div id="small-carousel" class="embla__viewport overflow-hidden">
+            <div class="embla_container flex">
               {
                 moreTeamMembers.map((member, index) => (
                   <div
-                    class="flex w-57.25 shrink-0 flex-col gap-3.5 md:w-57.25"
+                    class="embla_slide flex w-57.25 shrink-0 flex-col gap-3.5 pr-3.5 md:w-57.25 md:pr-4"
                     style={`--delay: ${index * 0.15}s`}
                   >
                     <img
