@@ -26,7 +26,7 @@ const { meta = {} } = Astro.props;
   <head>
     <script is:inline>
       // Theme initialization - runs before page renders
-      const theme = (() => {
+      const getTheme = () => {
         if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
           return localStorage.getItem("theme");
         }
@@ -34,29 +34,31 @@ const { meta = {} } = Astro.props;
           return "dark";
         }
         return "light";
-      })();
+      };
 
-      // Apply theme immediately
-      document.documentElement.classList.remove("dark", "light");
-      document.documentElement.classList.add(theme);
-      window.localStorage.setItem("theme", theme);
+      const setTheme = (theme) => {
+        const root = document.documentElement;
+        root.classList.remove("dark", "light");
+        root.classList.add(theme);
+      };
+
+      // Apply initial theme (without saving to storage yet)
+      const initialTheme = getTheme();
+      setTheme(initialTheme);
 
       // Listen for system theme changes (only if no user preference)
       window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
         if (localStorage.getItem("theme")) return;
-        const newTheme = e.matches ? "dark" : "light";
-        document.documentElement.classList.remove("dark", "light");
-        document.documentElement.classList.add(newTheme);
+        setTheme(e.matches ? "dark" : "light");
       });
 
-      // Helper function for toggle (use this in your Header or wherever you need it)
+      // Helper function for toggle
       window.toggleTheme = function () {
         const html = document.documentElement;
-        const currentTheme = html.classList.contains("dark") ? "dark" : "light";
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        const isDark = html.classList.contains("dark");
+        const newTheme = isDark ? "light" : "dark";
 
-        html.classList.remove("dark", "light");
-        html.classList.add(newTheme);
+        setTheme(newTheme);
         localStorage.setItem("theme", newTheme);
       };
     </script>
@@ -86,7 +88,7 @@ const { meta = {} } = Astro.props;
       loop
       playsinline></video>
 
-    <div class="bg-n-50/70 fixed -z-5 h-full w-full"></div>
+    <div class="bg-n-50 fixed -z-5 h-full w-full"></div>
 
     <!-- Background Circle Gradient -->
     <div
