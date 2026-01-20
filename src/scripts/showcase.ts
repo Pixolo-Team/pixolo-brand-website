@@ -162,14 +162,16 @@ export const animateProjectCards = () => {
 export function initShowcase() {
   const gridIconBtn = document.getElementById("gridIconBtn");
   const listIconBtn = document.getElementById("listIconBtn");
-  const rootNode = document.getElementById("portfolio-project-cards");
+  const projectCards = document.getElementById("portfolio-project-cards");
+  const miniProjectCards = document.getElementById("portfolio-mini-project-cards");
 
   /** Run only if all required elements exist */
-  if (!gridIconBtn || !listIconBtn || !rootNode) return;
+  if (!gridIconBtn || !listIconBtn || !projectCards || !miniProjectCards) return;
 
   /** Handling the event on grid icon */
   gridIconBtn.addEventListener("click", () => {
-    rootNode.dataset.view = "grid";
+    projectCards.dataset.view = "grid";
+    miniProjectCards.dataset.view = "grid";
     gridIconBtn.children[0].classList.add("text-n-500");
     listIconBtn.children[0].classList.remove("text-n-500");
     // console.log("clicked grid");
@@ -177,7 +179,8 @@ export function initShowcase() {
 
   /** Handling the event on list icon */
   listIconBtn.addEventListener("click", () => {
-    rootNode.dataset.view = "list";
+    projectCards.dataset.view = "list";
+    miniProjectCards.dataset.view = "list";
     listIconBtn.children[0].classList.add("text-n-500");
     gridIconBtn.children[0].classList.remove("text-n-500");
     // console.log("clicked list");

@@ -24,11 +24,11 @@ const { name, image, title, subtitle, description, date, tagItems, buttonOneText
 <!-- Project Card -->
 <div
   id="portfolio-showcase-project-card"
-  class=`flex group-data-[view=list]:gap-7 group-data-[view=grid]:gap-3.5 group-data-[view=list]:lg:gap-12 group-data-[view=grid]:lg:gap-5 flex-col group-data-[view=list]:md:flex-row`
+  class=`flex flex-col group-data-[view=list]:md:flex-row gap-3.5 group-data-[view=list]:md:gap-7 group-data-[view=list]:lg:gap-12 group-data-[view=grid]:lg:gap-5`
 >
   <!-- Project Card Image -->
   <div
-    class=`project-card-image w-full rounded-3xl overflow-hidden group-data-[view=list]:md:flex-1 group-data-[view=list]:md:h-full group-data-[view=list]:h-[238px] group-data-[view=grid]:h-[196px] group-data-[view=grid]:md:h-[224px] group-data-[view=grid]:lg:h-[394px] group-data-[view=grid]:lg:w-[750px]`
+    class=`project-card-image w-full rounded-3xl overflow-hidden group-data-[view=list]:md:flex-1 group-data-[view=list]:md:h-full group-data-[view=list]:h-[238px] group-data-[view=grid]:h-[196px] group-data-[view=grid]:md:h-[224px] group-data-[view=grid]:lg:h-[394px]`
   >
     <Image
       src={image}
@@ -65,6 +65,11 @@ const { name, image, title, subtitle, description, date, tagItems, buttonOneText
 
       <!-- About -->
       <div class="project-card-content flex flex-col gap-4 md:gap-6 lg:gap-7">
+        <!-- SubTitle -->
+        <p class=`text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg`>
+          {subtitle}
+        </p>
+
         <!-- Description -->
         <p class=`text-n-600 text-xs leading-tight font-normal md:text-sm lg:text-base`>
           {description}
@@ -73,11 +78,6 @@ const { name, image, title, subtitle, description, date, tagItems, buttonOneText
         <!-- Date -->
         <p class=`text-n-700 text-xs leading-tight font-normal md:text-sm`>
           {date}
-        </p>
-
-        <!-- SubTitle -->
-        <p class=`text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg`>
-          {subtitle}
         </p>
       </div>
     </div>
