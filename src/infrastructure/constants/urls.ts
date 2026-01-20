@@ -6,8 +6,8 @@ export const URLS = {
   CAREER: "/careers",
   SERVICE: {
     ROOT: "/services",
-    ITEM: (id: string, title: string) =>
-      `/services/${id}/${title.toLowerCase().replaceAll(" ", "-")}`,
+    ITEM: (title: string) =>
+      `/services/${title.toLowerCase().replaceAll(" ", "-").replaceAll("/", "-")}`,
   },
   CONTACT: "/contact",
   PORTFOLIO: "/portfolio",
