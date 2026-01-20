@@ -172,7 +172,7 @@ export const serviceDetails = [
 
   {
     id: 5,
-    imageName: "/images/services/product-planning.jpg",
+    imageName: "/images/services/cloud-devops.jpg",
     title: "Cloud DevOps & Infrastructure",
     tags: [
       "Cloud Setup",
@@ -252,44 +252,44 @@ export const serviceDetails = [
     finalCTA: "If your team is drowning in tools, let’s simplify.",
   },
 
-  {
-    id: 7,
-    imageName: "/images/services/industry-solutions.jpg",
-    title: "Industry-Specific Solutions",
-    tags: [
-      "EdTech Platforms",
-      "Health & Nutrition",
-      "Travel Systems",
-      "Real Estate CMS",
-      "Community Apps",
-    ],
-    hero: {
-      title: "Technology that understands your industry.",
-      subTitle: "Not generic software with fancy labels.",
-    },
-    outcomeFocused: [
-      { description: "Faster adoption" },
-      { description: "Industry-aligned workflows" },
-      { description: "Better ROI" },
-      { description: "Real business impact" },
-    ],
-    painSolution: [
-      { problem: "Generic software", solution: "Domain-specific builds" },
-      { problem: "Low adoption", solution: "Familiar workflows" },
-      { problem: "Scaling bottlenecks", solution: "Growth-ready systems" },
-    ],
-    howWeWork: [
-      { description: "Deep dive into industry workflows" },
-      { description: "Identify gaps in existing tools" },
-      { description: "Build tailored solutions" },
-      { description: "Scale based on real usage" },
-    ],
-    deliverables: [
-      "Industry-specific platforms",
-      "Custom dashboards and systems",
-      "Integrations with existing tools",
-      "Long-term scalability support",
-    ],
-    finalCTA: "If generic software is holding you back, custom might be the answer.",
-  },
+  // {
+  //   id: 7,
+  //   imageName: "/images/services/industry-solutions.jpg",
+  //   title: "Industry-Specific Solutions",
+  //   tags: [
+  //     "EdTech Platforms",
+  //     "Health & Nutrition",
+  //     "Travel Systems",
+  //     "Real Estate CMS",
+  //     "Community Apps",
+  //   ],
+  //   hero: {
+  //     title: "Technology that understands your industry.",
+  //     subTitle: "Not generic software with fancy labels.",
+  //   },
+  //   outcomeFocused: [
+  //     { description: "Faster adoption" },
+  //     { description: "Industry-aligned workflows" },
+  //     { description: "Better ROI" },
+  //     { description: "Real business impact" },
+  //   ],
+  //   painSolution: [
+  //     { problem: "Generic software", solution: "Domain-specific builds" },
+  //     { problem: "Low adoption", solution: "Familiar workflows" },
+  //     { problem: "Scaling bottlenecks", solution: "Growth-ready systems" },
+  //   ],
+  //   howWeWork: [
+  //     { description: "Deep dive into industry workflows" },
+  //     { description: "Identify gaps in existing tools" },
+  //     { description: "Build tailored solutions" },
+  //     { description: "Scale based on real usage" },
+  //   ],
+  //   deliverables: [
+  //     "Industry-specific platforms",
+  //     "Custom dashboards and systems",
+  //     "Integrations with existing tools",
+  //     "Long-term scalability support",
+  //   ],
+  //   finalCTA: "If generic software is holding you back, custom might be the answer.",
+  // },
 ];
