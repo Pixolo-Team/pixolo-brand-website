@@ -82,25 +82,28 @@ import { retainershipDetails } from "@/data/retainership";
           </div>
 
           <!-- Slab component -->
-          <Slab
+          <!-- TODO: UnHide this component later  -->
+          <!-- <Slab
             title={retainershipDetails.slab.title}
             images={retainershipDetails.slab.images}
             btnText={retainershipDetails.slab.btnText}
-          />
+          /> -->
         </div>
 
         <!-- Employee Cards -->
-        <div class="flex w-full flex-col items-center gap-12 md:gap-16">
-          <div class="flex w-full flex-col gap-7">
-            <!-- Employee Cards Title -->
-            <p
-              class="text-n-950 text-lg leading-tight font-medium tracking-[-0.02em] md:text-xl lg:text-2xl"
+        <!-- TODO: UnHide this component later  -->
+        <!-- <div class="flex w-full flex-col items-center gap-14 md:gap-16">
+          <div class="flex w-full flex-col gap-7"> -->
+        <!-- Employee Cards Title -->
+        <!-- <p
+              class="text-n-950 text-lg leading-tight font-medium tracking-tight md:text-xl lg:text-2xl"
+
             >
               {retainershipDetails.employeeCardTitle}
-            </p>
+            </p> -->
 
-            <!-- Employee Card Component -->
-            <div class="employee-cards grid w-full gap-6 lg:gap-4 xl:grid-cols-3">
+        <!-- Employee Card Component -->
+        <!-- <div class="employee-cards grid w-full gap-6 lg:gap-4 xl:grid-cols-3">
               {
                 retainershipDetails.employeeCardItems.map((emp) => (
                   <RetainershipEmployeeCard
@@ -114,16 +117,14 @@ import { retainershipDetails } from "@/data/retainership";
               }
             </div>
           </div>
+        </div> -->
 
-          <!-- Extend Team Button -->
-          <RoundedButton
-            buttonText="Extend your Team Now"
-            rightIcon="right-arrow"
-            variant="tertiary"
-            type="button"
-            onClick="window.location.href='/extend-your-team'"
-          />
-        </div>
+        <!-- Extend Team Button -->
+        <!-- <RoundedButton
+          buttonText="Extend your Team Now"
+          rightIcon="right-arrow"
+          variant="tertiary"
+        /> -->
       </div>
     </div>
   </div>
@@ -168,7 +169,7 @@ import { retainershipDetails } from "@/data/retainership";
 <script>
   import { animateRetainershipSection, initScrollLine } from "@/scripts/retainership.ts";
 
-  // ANimate Retainership Section
+  // Animate Retainership Section
   animateRetainershipSection();
 
   // Vertical Scroll Progress

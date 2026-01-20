@@ -1,5 +1,5 @@
 // OTHERS //
-import { scroll, transform } from "motion";
+import { animate, scroll, transform } from "motion";
 
 /** Function to add animation to footer  */
 export const animateFooter = () => {
@@ -24,3 +24,26 @@ export const animateFooter = () => {
     },
   );
 };
+
+/** Function to remove Whatsapp sticky logo from footer  */
+export function hideStickyWhatsapp() {
+  const footer = document.querySelector("footer");
+  const whatsappBtn = document.getElementById("sticky-whatsapp");
+
+  if (!footer || !whatsappBtn) return;
+
+  // Animate hide/show based on footer visibility
+  scroll(
+    animate(whatsappBtn, {
+      opacity: [1, 0],
+    }),
+    {
+      target: footer,
+    },
+  );
+
+  // Toggle pointer events based on footer visibility
+  scroll((progress) => (whatsappBtn.style.pointerEvents = progress > 0.05 ? "none" : "auto"), {
+    target: footer,
+  });
+}
