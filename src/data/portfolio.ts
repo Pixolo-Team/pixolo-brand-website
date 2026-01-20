@@ -28,32 +28,12 @@ export const portfolioSectionDetails = {
         "Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup.",
       badges: ["Product Design", "App Development", "Dashboard Design"],
     },
-    {
-      brandColor: "bg-blue-500",
-      brandName: "Too Yumm",
-      image: "images/portfolio/too-yumm-brand-image.png",
-      logo: "images/portfolio/too-yumm-logo.png",
-      title: "E-commerce Platform for Local Brands",
-      subtitle:
-        "Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup.",
-      badges: ["Product Design", "App Development", "Dashboard Design"],
-    },
-    {
-      brandColor: "bg-red-500",
-      brandName: "Reliance",
-      image: "images/portfolio/reliance-brand-image.png",
-      logo: "images/portfolio/reliance-logo.png",
-      title: "E-commerce Platform for Local Brands",
-      subtitle:
-        "Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup.",
-      badges: ["Product Design", "App Development", "Dashboard Design"],
-    },
   ],
 
   // ARTICLE CARDS //
   articleCardItems: [
     {
-      thumbnail: "/images/portfolio/eightydays-image.jpg",
+      thumbnail: "/images/portfolio/portfolio-cards/eighty-days.jpg",
       brandName: "Eightydays",
       chipItems: [
         "Mobile App Development",
@@ -71,7 +51,7 @@ export const portfolioSectionDetails = {
       ctaText: "View Case Study",
     },
     {
-      thumbnail: "/images/portfolio/richmonks-image.jpg",
+      thumbnail: "/images/portfolio/portfolio-cards/richmonks.jpg",
       brandName: "RichMonks",
       chipItems: [
         "UI/UX Design",
@@ -88,7 +68,7 @@ export const portfolioSectionDetails = {
       ctaText: "View Case Study",
     },
     {
-      thumbnail: "/images/portfolio/sunali-classes-image.jpg",
+      thumbnail: "/images/portfolio/portfolio-cards/sunali-class.jpg",
       brandName: "Sunali’s Classes",
       chipItems: [
         "EdTech",
@@ -105,7 +85,7 @@ export const portfolioSectionDetails = {
       ctaText: "View Case Study",
     },
     {
-      thumbnail: "/images/portfolio/pango-image.jpg",
+      thumbnail: "/images/portfolio/portfolio-cards/pango.jpg",
       brandName: "Pango",
       chipItems: [
         "UI/UX Design",
@@ -123,7 +103,7 @@ export const portfolioSectionDetails = {
       ctaText: "View Case Study",
     },
     {
-      thumbnail: "/images/portfolio/default-project.jpg",
+      thumbnail: "/images/portfolio/portfolio-cards/gobindgarh.jpg",
       brandName: "Gobindgarh Fort",
       chipItems: [
         "Game Development",
