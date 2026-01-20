@@ -1,10 +1,10 @@
 ---
 // COMPONENTS //
 import Image from "astro/components/Image.astro";
-import ToolBadge from "@/components/ToolBadge.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
 import ContactCard from "@/components/ContactCard.astro";
-import InputField from "@/components/InputField.astro";
-import RoundedButton from "@/components/RoundedButton.astro";
+import InputField from "@/components/ui/InputField.astro";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
 
 // SVG's //
 import Ball from "@/assets/3d-ball.svg";
@@ -16,7 +16,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
 <section id="contact-section" class="relative overflow-hidden">
   <div
     id="contact-wrapper"
-    class="container mx-auto flex flex-col gap-11 px-6 py-24 md:gap-20 md:py-28 xl:px-0 xl:py-32"
+    class="container mx-auto flex flex-col gap-11 px-6 py-24 md:gap-20 md:py-28 xl:py-32"
   >
     <!-- Decorative Marbles -->
     <Image

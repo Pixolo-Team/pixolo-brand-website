@@ -1,8 +1,8 @@
 ---
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
-import ToolBadge from "@/components/ToolBadge.astro";
-import BottomCTA from "@/components/BottomCTA.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import BottomCTA from "@/components/ui/BottomCTA.astro";
 
 // DATA //
 import { menuItems } from "@/data/menu";
@@ -45,11 +45,6 @@ import { footerSectionDetails } from "@/data/footer";
         <p class="text-n-950 text-center text-base leading-tight font-normal md:text-xl lg:text-xl">
           {footerSectionDetails.tagline}
         </p>
-      </div>
-
-      <!-- Bottom CTA -->
-      <div class="self-center">
-        <BottomCTA />
       </div>
     </div>
 
@@ -118,6 +113,8 @@ import { footerSectionDetails } from "@/data/footer";
   }
 </style>
 <script>
-  import { animateFooter } from "../../scripts/footer.ts";
+  import { animateFooter, hideStickyWhatsapp } from "../../scripts/footer.ts";
+  
   animateFooter();
+  hideStickyWhatsapp();
 </script>

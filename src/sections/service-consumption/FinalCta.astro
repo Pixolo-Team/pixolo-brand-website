@@ -1,0 +1,107 @@
+---
+// COMPONENTS //
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+// SVG's //
+import Ball from "@/assets/3d-ball.svg";
+
+// DATA //
+import { finalCtaSectionDetails } from "@/data/service-consumption/final-cta";
+import { siteInfo } from "@/data/site-info";
+
+const { subTitle } = Astro.props;
+---
+
+<!-- Final CTA Section -->
+<section>
+  <!-- Container -->
+  <div
+    id="cta-wrapper"
+    class="relative container mx-auto flex flex-col items-center justify-center gap-9 px-6 py-20 md:gap-12 md:py-28 lg:gap-16 lg:py-36"
+  >
+    <!-- Tool Badge Component -->
+    <div class="tool-badge">
+      <ToolBadge icon="service-icon" text={finalCtaSectionDetails.badgeTitle} />
+    </div>
+
+    <!-- Large 3D Ball Image -->
+    <Image
+      id="big-marble-final-cta"
+      src={Ball}
+      alt="A floating 3D Ball"
+      class="absolute top-[22%] left-6 -z-1 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
+    />
+
+    <!-- Small 3D Ball Image -->
+    <Image
+      id="small-marble-final-cta"
+      src={Ball}
+      alt="A floating 3D Ball"
+      class="absolute right-[10%] bottom-[46%] -z-1 w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
+      style="animation-duration: 4s"
+    />
+
+    <!-- Title Wrap -->
+    <div
+      class="flex w-full flex-col items-center justify-center gap-3 md:gap-4 lg:w-[86%] lg:gap-5 2xl:w-[75%]"
+    >
+      <!-- Title -->
+      <p
+        class="word-container text-n-950 text-center text-4xl leading-tight font-medium tracking-[-0.02em] md:text-7xl md:leading-none lg:text-8xl lg:leading-none"
+        data-animate-word
+      >
+        {finalCtaSectionDetails.title}
+      </p>
+
+      <!-- Sub Title -->
+      <p
+        class="word-container text-n-700 text-center text-xs leading-tight font-normal tracking-[-0.02em] md:text-lg lg:text-xl"
+        data-animate-word
+      >
+        {subTitle}
+      </p>
+    </div>
+
+    <!-- CTA wrap -->
+    <div
+      class="flex flex-col items-center justify-center gap-2.5 md:flex-row md:gap-4 lg:flex-row lg:gap-5"
+    >
+      <!-- Rounded Button for Booking a Strategy Call -->
+      <a href={siteInfo.contact.phone[0].link}>
+        <RoundedButton buttonText="Book a Strategy Call" type="button" />
+      </a>
+
+      <!-- Rounded Button for Sending any requirements -->
+      <a href={`https://wa.me/${siteInfo.contact.phone[0].value}`}>
+        <RoundedButton buttonText="Send Requirements" type="button" variant="secondary" />
+      </a>
+    </div>
+  </div>
+  <style>
+    .word-container {
+      display: inline-block;
+      opacity: 0;
+      transform: translateX(15%);
+      transition:
+        opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition-delay: 0ms; /* This will be set by JS */
+    }
+
+    /* This class is added by JS to trigger the final state */
+    .word-container.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  </style>
+
+  <script>
+    import { animateHeroTitle, animateMarble } from "@/scripts/hero.ts";
+
+    animateHeroTitle();
+    animateMarble("big-marble-final-cta", "cta-wrapper");
+    animateMarble("small-marble-final-cta", "cta-wrapper");
+  </script>
+</section>
