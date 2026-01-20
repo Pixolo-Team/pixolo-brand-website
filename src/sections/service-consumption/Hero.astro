@@ -9,8 +9,8 @@ import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { serviceConsumptionHeroDetails } from "@/data/service-consumption/hero.ts";
+import { siteInfo } from "@/data/site-info";
 const { title, subTitle } = Astro.props;
-
 ---
 
 <!-- Hero Section -->
@@ -63,11 +63,9 @@ const { title, subTitle } = Astro.props;
       </div>
 
       <!-- Rounded Button for Booking a Strategy Call -->
-      <RoundedButton
-        buttonText={serviceConsumptionHeroDetails.buttonText}
-        onClick="window.location.href='/services'"
-        type="button"
-      />
+      <a href={siteInfo.contact.phone[0].link}>
+        <RoundedButton buttonText={serviceConsumptionHeroDetails.buttonText} type="button" />
+      </a>
     </div>
   </div>
 </section>

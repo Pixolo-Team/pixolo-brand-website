@@ -7,7 +7,6 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { howWeWorkSectionDetails } from "@/data/service-consumption/HowWeWork.ts";
 
 const { howWeWorkSectionSteps } = Astro.props;
-
 ---
 
 <!-- How We Work Section -->
@@ -37,7 +36,7 @@ const { howWeWorkSectionSteps } = Astro.props;
     >
       <!-- Solution Cards -->
       {
-        howWeWorkSectionSteps.map((howWeWorkSectionStep:any, howWeWorkSectionIndex:any) => (
+        howWeWorkSectionSteps.map((howWeWorkSectionStep: any, howWeWorkSectionIndex: any) => (
           <SolutionCard
             number={String(howWeWorkSectionIndex + 1).padStart(2, "0")}
             description={howWeWorkSectionStep.description}
