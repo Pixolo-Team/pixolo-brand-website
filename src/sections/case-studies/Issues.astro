@@ -2,27 +2,29 @@
 // COMPONENTS //
 import ClientIssues from "@/components/case-studies/ClientIssue.astro";
 
-// DATA //
-import { clientIssues } from "@/data/case-studies/case-study-consumption";
+// Receive data from the parent page
+const { data } = Astro.props;
 ---
 
 <section>
   <!-- Container -->
-  <div class="flex flex-col gap-11 px-6 py-16 md:gap-14 md:py-20 lg:gap-16 lg:py-24">
+  <div
+    class="container mx-auto flex flex-col gap-11 px-6 py-16 md:gap-14 md:py-20 lg:gap-16 lg:py-24"
+  >
     <!-- Section Title  -->
     <p class="text-n-800 text-center text-3xl leading-tight font-medium md:text-5xl">
-      Key Issues Before Pixolo Joined
+      {data.title}
     </p>
     <!-- Issue Component -->
     <div class="flex flex-col gap-5">
       <!-- Iterating through data -->
       {
-        clientIssues.map((clientIssueItem) => (
+        data.issues.map((clientIssueItem: any) => (
           <ClientIssues
-            title={clientIssueItem.title}
+            title={clientIssueItem.name}
             description={clientIssueItem.description}
-            issue={clientIssueItem.issue}
-            stat={clientIssueItem.stat}
+            issue={clientIssueItem.metric}
+            stat={clientIssueItem.value}
           />
         ))
       }

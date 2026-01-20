@@ -2,8 +2,8 @@
 // COMPONENTS //
 import ClientNumbers from "@/components/case-studies/ClientNumber.astro";
 
-// DATA //
-import { clientNumbers } from "@/data/case-studies/case-study-consumption";
+// Receive data from the parent page
+const { data } = Astro.props;
 ---
 
 <!-- Client in numbers Section -->
@@ -18,12 +18,11 @@ import { clientNumbers } from "@/data/case-studies/case-study-consumption";
       <h1
         class="text-n-950 text-2xl leading-tight font-medium md:min-w-[260px] md:text-3xl lg:min-w-[300px] lg:text-4xl"
       >
-        By the Numbers
+        {data.title}
       </h1>
       <!-- Description -->
       <p class="text-n-800 leading-tight md:text-xl lg:text-2xl">
-        We focus on the metrics that truly reflect our value. Here's a snapshot of the results that
-        drive our success.
+        {data.heading}
       </p>
     </div>
 
@@ -33,8 +32,8 @@ import { clientNumbers } from "@/data/case-studies/case-study-consumption";
     >
       <!-- Iterate through Data -->
       {
-        clientNumbers.map((clientNumberItem) => (
-          <ClientNumbers title={clientNumberItem.title} value={clientNumberItem.value} />
+        data.metrics.map((metricItem: any) => (
+          <ClientNumbers title={metricItem.label} value={metricItem.value} />
         ))
       }
     </div>

@@ -10,5 +10,10 @@ export const URLS = {
       `/services/${title.toLowerCase().replaceAll(" ", "-").replaceAll("/", "-")}`,
   },
   CONTACT: "/contact",
+  CASE_STUDIES: {
+    ROOT: "/case-studies",
+    ITEM: (id: string, pageTitle: string) =>
+      `/case-studies/${id}/${pageTitle.toLowerCase().replaceAll(" ", "-")}`,
+  },
   PORTFOLIO: "/portfolio",
 };

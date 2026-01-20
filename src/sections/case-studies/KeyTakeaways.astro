@@ -1,10 +1,8 @@
 ---
-// COMPONENTS //
 import SectionHeader from "@/components/ui/SectionHeader.astro";
 import LearningCard from "@/components/case-studies/LearningCard.astro";
 
-// DATA //
-import { keyTakeawaysDetails } from "@/data/case-studies/case-study-consumption";
+const { data } = Astro.props;
 ---
 
 <!-- Key Takeaways Section -->
@@ -14,22 +12,18 @@ import { keyTakeawaysDetails } from "@/data/case-studies/case-study-consumption"
     class="container mx-auto flex flex-col justify-center gap-10 px-6 py-16 md:gap-11 md:py-24 lg:gap-16 lg:py-28"
   >
     <!-- Section Header -->
-    <SectionHeader
-      sectionTitle={keyTakeawaysDetails.title}
-      badgeIcon={keyTakeawaysDetails.badgeIcon}
-      badgeText={keyTakeawaysDetails.badgeTitle}
-    />
+    <SectionHeader sectionTitle={data.title} badgeIcon="service-icon" badgeText={data.toolbadge} />
 
     <div class="flex w-full flex-col gap-9 lg:gap-20">
       <!-- Iterating through Learning Cards -->
       {
-        keyTakeawaysDetails.learningItems.map((learningItem, learningItemIndex) => (
+        data.takeaways.map((takeawayItem: any, takeawayItemIndex: number) => (
           // Learning Card Component
           <div class="learning-item-card">
             <LearningCard
-              title={learningItem.title}
-              description={learningItem.description}
-              number={String(learningItemIndex + 1).padStart(2, "0")}
+              title={takeawayItem.title}
+              description={takeawayItem.description}
+              number={String(takeawayItemIndex + 1).padStart(2, "0")}
             />
           </div>
         ))
@@ -40,6 +34,5 @@ import { keyTakeawaysDetails } from "@/data/case-studies/case-study-consumption"
 
 <script>
   import { animateKeyTakeawaySection } from "@/scripts/case-studies";
-
   animateKeyTakeawaySection();
 </script>
