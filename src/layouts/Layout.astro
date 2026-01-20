@@ -24,44 +24,6 @@ const { meta = {} } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <script is:inline>
-      // Theme initialization - runs before page renders
-      const getTheme = () => {
-        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-          return localStorage.getItem("theme");
-        }
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark";
-        }
-        return "light";
-      };
-
-      const setTheme = (theme) => {
-        const root = document.documentElement;
-        root.classList.remove("dark", "light");
-        root.classList.add(theme);
-      };
-
-      // Apply initial theme (without saving to storage yet)
-      const initialTheme = getTheme();
-      setTheme(initialTheme);
-
-      // Listen for system theme changes (only if no user preference)
-      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-        if (localStorage.getItem("theme")) return;
-        setTheme(e.matches ? "dark" : "light");
-      });
-
-      // Helper function for toggle
-      window.toggleTheme = function () {
-        const html = document.documentElement;
-        const isDark = html.classList.contains("dark");
-        const newTheme = isDark ? "light" : "dark";
-
-        setTheme(newTheme);
-        localStorage.setItem("theme", newTheme);
-      };
-    </script>
     <!-- Metadata -->
     <Meta
       title={meta.title}
@@ -81,7 +43,7 @@ const { meta = {} } = Astro.props;
 
     <!-- Background Star Video -->
     <video
-      class="fixed top-0 left-0 -z-10 h-full w-full bg-transparent object-cover hidden dark:block"
+      class="fixed top-0 left-0 -z-10 hidden h-full w-full bg-transparent object-cover dark:block"
       src="/videos/stars.mp4"
       autoplay
       muted
@@ -92,7 +54,7 @@ const { meta = {} } = Astro.props;
 
     <!-- Background Circle Gradient -->
     <div
-      class="fixed top-[30%] left-1/2 h-[885px] w-[885px] -translate-x-1/2 rounded-full hidden dark:block"
+      class="fixed top-[30%] left-1/2 hidden h-[885px] w-[885px] -translate-x-1/2 rounded-full dark:block"
       style="background: linear-gradient(90deg, rgba(22, 125, 229, 0.36) 0%, rgba(95, 74, 200, 0.36) 92.31%); filter: blur(200px);"
     >
     </div>

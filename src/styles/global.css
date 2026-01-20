@@ -91,6 +91,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  @apply transition-colors duration-300;
 }
 
 * {
@@ -125,10 +126,8 @@ body {
   display: none;
 }
 
-/* ===== COLOR VARIABLES - LIGHT MODE (DEFAULT) ===== */
-:root,
-:root.light,
-.light {
+@theme {
+  /* ===== COLOR VARIABLES - LIGHT MODE (DEFAULT) ===== */
   --color-n-50: #ffffff;
   --color-n-100: #f1f5f9;
   --color-n-200: #e2e8f1;
@@ -169,22 +168,6 @@ body {
 }
 
 /* ===== COLOR VARIABLES - DARK MODE ===== */
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --color-n-50: #020617;
-    --color-n-100: #0e172b;
-    --color-n-200: #1d283d;
-    --color-n-300: #324158;
-    --color-n-400: #45556c;
-    --color-n-500: #62748e;
-    --color-n-600: #90a2b9;
-    --color-n-700: #cad5e2;
-    --color-n-800: #e2e8f1;
-    --color-n-900: #f1f5f9;
-    --color-n-950: #ffffff;
-  }
-}
-
 :root.dark,
 .dark {
   /* Blue Shades Dark Mode */
@@ -221,4 +204,20 @@ body {
 /* Common top padding for the hero sections */
 .hero-padding-top {
   padding-top: calc(90px + 20px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-n-50: var(--color-slate-950);
+    --color-n-100: var(--color-slate-900);
+    --color-n-200: var(--color-slate-800);
+    --color-n-300: var(--color-slate-700);
+    --color-n-400: var(--color-slate-600);
+    --color-n-500: var(--color-slate-500);
+    --color-n-600: var(--color-slate-400);
+    --color-n-700: var(--color-slate-300);
+    --color-n-800: var(--color-slate-200);
+    --color-n-900: var(--color-slate-100);
+    --color-n-950: #ffffff;
+  }
 }
