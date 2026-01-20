@@ -6,7 +6,6 @@ import ThemeImage from "@/components/ui/ThemeImage.astro";
 import { Image } from "astro:assets";
 
 // OTHERS //
-import { initLoader } from "@/scripts/loader";
 
 // SVG's //
 import pixolo from "@/../public/images/loader/pixolo.svg";
@@ -239,5 +238,7 @@ import pixolo from "@/../public/images/loader/pixolo.svg";
 </style>
 
 <script>
+  import { initLoader } from "@/scripts/loader";
+
   initLoader();
 </script>

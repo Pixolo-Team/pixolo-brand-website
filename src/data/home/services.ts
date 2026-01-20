@@ -26,6 +26,7 @@ export const serviceDetails = [
       { description: "Fewer reworks and wasted dev hours" },
       { description: "A roadmap your team actually follows" },
     ],
+    outcomeFocusedImage: "/images/services/outcome-product.jpg",
     painSolution: [
       { problem: "Unclear MVP", solution: "Clear MVP definition" },
       { problem: "Scope creep", solution: "Locked feature scope" },
@@ -47,6 +48,7 @@ export const serviceDetails = [
       "System overview",
       "Phase-wise roadmap",
     ],
+    deliverableImage: "/images/services/deliverable-product.png",
     finalCTA: "If you’re unsure what to build first, let’s fix that before you build anything.",
   },
 
@@ -71,6 +73,7 @@ export const serviceDetails = [
       { description: "Clear brand presence" },
       { description: "Interfaces people enjoy using" },
     ],
+    outcomeFocusedImage: "/images/services/outcome-ui.jpg",
     painSolution: [
       { problem: "User confusion", solution: "Intuitive user flows" },
       { problem: "Low conversion", solution: "Conversion-focused design" },
@@ -89,6 +92,7 @@ export const serviceDetails = [
       "Design system / components",
       "Brand-aligned visual language",
     ],
+    deliverableImage: "/images/services/deliverable-ui-ux.jpg",
     finalCTA: "If your product works but doesn’t convert, design is the gap.",
   },
 
@@ -107,6 +111,7 @@ export const serviceDetails = [
       { description: "Clean architecture" },
       { description: "Lower long-term maintenance cost" },
     ],
+    outcomeFocusedImage: "/images/services/outcome-full-stack.jpg",
     painSolution: [
       { problem: "Team silos", solution: "End-to-end ownership" },
       { problem: "Slow releases", solution: "Iterative delivery" },
@@ -125,6 +130,7 @@ export const serviceDetails = [
       "Admin dashboards",
       "Documentation & handover",
     ],
+    deliverableImage: "/images/services/deliverable-full-stack.jpg",
     finalCTA: "If you want your product built right the first time, let’s talk.",
   },
 
@@ -149,6 +155,7 @@ export const serviceDetails = [
       { description: "Smarter decision-making" },
       { description: "Scalable processes" },
     ],
+    outcomeFocusedImage: "/images/services/outcome-ai.jpg",
     painSolution: [
       { problem: "Manual processes", solution: "Workflow automation" },
       { problem: "Data overload", solution: "Insight-driven systems" },
@@ -167,6 +174,7 @@ export const serviceDetails = [
       "Usage tracking",
       "Performance tracking",
     ],
+    deliverableImage: "/images/services/deliverable-ai.jpg",
     finalCTA: "If AI feels confusing or overhyped, we’ll make it practical.",
   },
 
@@ -191,6 +199,7 @@ export const serviceDetails = [
       { description: "Lower infra costs" },
       { description: "Better security" },
     ],
+    outcomeFocusedImage: "/images/services/outcome-cloud.jpg",
     painSolution: [
       { problem: "Risky deployments", solution: "Automated CI/CD" },
       { problem: "Downtime issues", solution: "Scalable infrastructure" },
@@ -208,6 +217,7 @@ export const serviceDetails = [
       "Monitoring and alerts",
       "Documentation and access control",
     ],
+    deliverableImage: "/images/services/deliverable-cloud.jpg",
     finalCTA: "If infra feels fragile, it’s time to fix the foundation.",
   },
 
@@ -232,6 +242,7 @@ export const serviceDetails = [
       { description: "Fewer spreadsheets" },
       { description: "Better internal visibility" },
     ],
+    outcomeFocusedImage: "/images/services/outcome-business.jpg",
     painSolution: [
       { problem: "Spreadsheet dependency", solution: "Custom internal tools" },
       { problem: "Disconnected tools", solution: "Centralized dashboards" },
@@ -249,47 +260,7 @@ export const serviceDetails = [
       "Custom workflows",
       "Role-based access systems",
     ],
+    deliverableImage: "/images/services/deliverable-business.jpg",
     finalCTA: "If your team is drowning in tools, let’s simplify.",
   },
-
-  // {
-  //   id: 7,
-  //   imageName: "/images/services/industry-solutions.jpg",
-  //   title: "Industry-Specific Solutions",
-  //   tags: [
-  //     "EdTech Platforms",
-  //     "Health & Nutrition",
-  //     "Travel Systems",
-  //     "Real Estate CMS",
-  //     "Community Apps",
-  //   ],
-  //   hero: {
-  //     title: "Technology that understands your industry.",
-  //     subTitle: "Not generic software with fancy labels.",
-  //   },
-  //   outcomeFocused: [
-  //     { description: "Faster adoption" },
-  //     { description: "Industry-aligned workflows" },
-  //     { description: "Better ROI" },
-  //     { description: "Real business impact" },
-  //   ],
-  //   painSolution: [
-  //     { problem: "Generic software", solution: "Domain-specific builds" },
-  //     { problem: "Low adoption", solution: "Familiar workflows" },
-  //     { problem: "Scaling bottlenecks", solution: "Growth-ready systems" },
-  //   ],
-  //   howWeWork: [
-  //     { description: "Deep dive into industry workflows" },
-  //     { description: "Identify gaps in existing tools" },
-  //     { description: "Build tailored solutions" },
-  //     { description: "Scale based on real usage" },
-  //   ],
-  //   deliverables: [
-  //     "Industry-specific platforms",
-  //     "Custom dashboards and systems",
-  //     "Integrations with existing tools",
-  //     "Long-term scalability support",
-  //   ],
-  //   finalCTA: "If generic software is holding you back, custom might be the answer.",
-  // },
 ];
