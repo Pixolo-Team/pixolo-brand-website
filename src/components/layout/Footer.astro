@@ -65,7 +65,7 @@ import { footerSectionDetails } from "@/data/footer";
           }
         </div>
         <!-- Social media wrapper -->
-        <div class="flex gap-4 md:gap-6 lg:gap-7">
+        <div class="flex gap-4 pb-14 md:gap-6 md:pb-10 lg:gap-7">
           {
             footerSectionDetails.socialLinks.map((socialItem) => (
               // Link to social media
@@ -114,7 +114,7 @@ import { footerSectionDetails } from "@/data/footer";
 </style>
 <script>
   import { animateFooter, hideStickyWhatsapp } from "../../scripts/footer.ts";
-  
+
   animateFooter();
   hideStickyWhatsapp();
 </script>
