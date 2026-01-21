@@ -12,7 +12,7 @@ export const portfolioShowcaseDetails = {
       name: "project-now",
       image: "/images/default-showcase-project-image.jpg",
       title: "Project Now",
-      subtitle: "Education & Digital Experience",
+      subTitle: "Education & Digital Experience",
       description:
         "A full healthcare ecosystem where users track diets and progress, nutritionists create plans, and admins manage users and content from a central system.",
       date: "July 2024",
@@ -24,7 +24,7 @@ export const portfolioShowcaseDetails = {
       name: "eighty-days",
       image: "/images/default-showcase-project-image.jpg",
       title: "Eighty Days",
-      subtitle: "Sports & Community Platform",
+      subTitle: "Sports & Community Platform",
       description:
         "A travel planning and discovery platform built around user-generated content, moderation workflows, and future monetization.",
       date: "March 2024",
@@ -36,7 +36,7 @@ export const portfolioShowcaseDetails = {
       name: "rich-monks",
       image: "/images/default-showcase-project-image.jpg",
       title: "RichMonks",
-      subtitle: "Football Tournament Discovery",
+      subTitle: "Football Tournament Discovery",
       description:
         "A finance product delivering algorithm-based F&O suggestions with live market data, supported by a trust-focused product website.",
       date: "April 2024",
@@ -48,7 +48,7 @@ export const portfolioShowcaseDetails = {
       name: "sai-international",
       image: "/images/default-showcase-project-image.jpg",
       title: "SAI International",
-      subtitle: "Football Tournament Discovery",
+      subTitle: "Football Tournament Discovery",
       description:
         "A digital platform enabling admissions, content publishing, fee management, assignments, events, and parent communication.",
       date: "April 2024",
@@ -60,7 +60,7 @@ export const portfolioShowcaseDetails = {
       name: "ekonomo-housing-society",
       image: "/images/default-showcase-project-image.jpg",
       title: "Ekonomo Housing Society",
-      subtitle: "Football Tournament Discovery",
+      subTitle: "Football Tournament Discovery",
       description:
         "A society management system handling maintenance collection, penalties, accounting, and automated financial reports.",
       date: "April 2024",
@@ -72,7 +72,7 @@ export const portfolioShowcaseDetails = {
       name: "reliance-digital",
       image: "/images/default-showcase-project-image.jpg",
       title: "Reliance Digital – AI Masterclass",
-      subtitle: "Football Tournament Discovery",
+      subTitle: "Football Tournament Discovery",
       description:
         "A large-scale campaign platform built for Reliance Digital to manage AI Masterclass registrations, store-wise analytics, and backend operations across locations.",
       date: "April 2024",

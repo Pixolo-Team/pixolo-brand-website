@@ -7,9 +7,11 @@ export function initShowcaseSlider() {
   /**  Grab wrapper nodes */
   const rootNode = document.querySelector(".embla");
   const viewportNode = document.getElementById("showcase-slider");
+
   /** Grab button nodes */
   const prevButtonNode = rootNode?.querySelector("#slide-prev");
   const nextButtonNode = rootNode?.querySelector("#slide-next");
+
   /** Grab progress node */
   const progressNode = document.getElementById("embla__progress__bar");
 
@@ -18,7 +20,7 @@ export function initShowcaseSlider() {
 
   /** Initialize Embla carousel */
   const embla = EmblaCarousel(viewportNode, {
-    loop: true,
+    loop: false,
     align: "start",
     skipSnaps: false,
   });
@@ -51,14 +53,16 @@ export function initShowcaseSlider() {
 
   /** Scroll to next slide on next button click */
   nextButtonNode.addEventListener("click", () => {
-    if (!embla.canScrollNext()) embla.scrollTo(0);
+    if (!embla.canScrollNext()) return;
+
     embla.scrollNext();
     reInitialize();
   });
 
   /** Scroll to previous slide on prev button click */
   prevButtonNode.addEventListener("click", () => {
-    if (!embla.canScrollPrev()) embla.scrollTo(embla.slideNodes().length - 1);
+    if (!embla.canScrollPrev()) return;
+
     embla.scrollPrev();
     reInitialize();
   });
@@ -94,18 +98,18 @@ export const animateShowcaseSection = () => {
   });
 };
 
+/** Animate the Project Cards */
 export const animateProjectCards = () => {
   /** Detect when the Project Card comes into the Screen */
   inView("#portfolio-showcase-project-card", (card) => {
     /** Extracting the Project Card Elements */
     const image = card?.querySelectorAll(".project-card-image");
-    const title = card?.querySelectorAll(".project-card-title");
-    const tags = card?.querySelectorAll(".project-card-tags");
+    const header = card?.querySelectorAll(".project-card-header");
     const content = card?.querySelectorAll(".project-card-content");
     const buttons = card?.querySelectorAll(".project-card-buttons");
 
     /** Run only if all required elements exist */
-    if (!card || !image || !title || !tags || !content || !buttons) {
+    if (!card || !image || !header || !content || !buttons) {
       console.log("error");
       return;
     }
@@ -121,20 +125,11 @@ export const animateProjectCards = () => {
     );
 
     animate(
-      title,
+      header,
       { opacity: [0, 1], x: ["30px", 0] },
       {
         duration: 0.2,
         delay: 0.6,
-      },
-    );
-
-    animate(
-      tags,
-      { opacity: [0, 1], x: ["30px", 0] },
-      {
-        duration: 0.2,
-        delay: 0.8,
       },
     );
 
@@ -149,7 +144,7 @@ export const animateProjectCards = () => {
 
     animate(
       buttons,
-      { opacity: [0, 1], x: [20, 0] },
+      { opacity: [0, 1], x: ["30px", 0] },
       {
         duration: 0.2,
         delay: 1.8,
@@ -174,7 +169,6 @@ export function initShowcase() {
     miniProjectCards.dataset.view = "grid";
     gridIconBtn.children[0].classList.add("text-n-500");
     listIconBtn.children[0].classList.remove("text-n-500");
-    // console.log("clicked grid");
   });
 
   /** Handling the event on list icon */
@@ -183,6 +177,5 @@ export function initShowcase() {
     miniProjectCards.dataset.view = "list";
     listIconBtn.children[0].classList.add("text-n-500");
     gridIconBtn.children[0].classList.remove("text-n-500");
-    // console.log("clicked list");
   });
 }

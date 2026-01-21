@@ -41,13 +41,18 @@ import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
       <div class="flex flex-col gap-10">
         <!-- Tiles -->
         <div class="hidden justify-end gap-4 px-8 md:flex lg:gap-5">
+          <!-- List Icon Button-->
           <button id="listIconBtn" class="cursor-pointer">
+            <!-- Icon -->
             <Icon
               name={"list"}
               class={`text-n-500 size-5 lg:size-6 hover:scale-120 transition duration-200 ease-in-out`}
             />
           </button>
+
+          <!-- Grid Icon Button-->
           <button id="gridIconBtn" class="cursor-pointer">
+            <!-- Icon -->
             <Icon
               name={"grid"}
               class={`size-5 lg:size-6 hover:scale-120 transition duration-200 ease-in-out`}
@@ -68,7 +73,7 @@ import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
                 name={projectCard.name}
                 image={projectCard.image}
                 title={projectCard.title}
-                subtitle={projectCard.subtitle}
+                subTitle={projectCard.subTitle}
                 description={projectCard.description}
                 date={projectCard.date}
                 tagItems={projectCard.tagItems}
@@ -98,12 +103,12 @@ import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
           <!-- Cards Wrap -->
           <div id="showcase-slider" class="embla__viewport">
             <!-- Embla container -->
-            <div class="embla__container flex">
+            <div class="embla__container flex gap-6">
               <!-- Iterating on Project Cards -->
               {
-                // Mini Project Cards //
                 portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
-                  <div class="embla__slide mr-7 flex flex-1">
+                  // Mini Project Cards
+                  <div class="embla__slide w-full shrink-0 sm:max-w-[328px] lg:max-w-[412px]">
                     <MiniProjectCard
                       id={cardItem.id}
                       title={cardItem.title}
