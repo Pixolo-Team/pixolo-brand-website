@@ -8,5 +8,5 @@ export const menuItems = [
   { name: "Services", url: URLS.SERVICE.ROOT },
   { name: "Portfolio", url: URLS.PORTFOLIO },
   { name: "Career", url: URLS.CAREER },
-  // { name: "Contact", url: URLS.CONTACT },
+  { name: "Contact", url: URLS.CONTACT },
 ];
