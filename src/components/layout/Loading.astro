@@ -1,19 +1,11 @@
 ---
 // STYLES //
 import ThemeImage from "@/components/ui/ThemeImage.astro";
-
-// COMPONENTS //
-import { Image } from "astro:assets";
-
-// OTHERS //
-
-// SVG's //
-import pixolo from "@/../public/images/loader/pixolo.svg";
 ---
 
 <section
   id="loading-screen"
-  class="bg-n-50 fixed z-[999] flex h-screen w-screen flex-col items-center justify-center overflow-hidden text-center transition-opacity duration-700"
+  class="bg-n-50 fixed z-999 flex h-screen w-screen flex-col items-center justify-center overflow-hidden text-center transition-opacity duration-700"
 >
   <div class="relative flex h-full w-full items-center justify-center">
     <!-- Ball -->
@@ -28,8 +20,8 @@ import pixolo from "@/../public/images/loader/pixolo.svg";
     <!-- Step 3: Pixolo -->
     <div class="pixolo flex items-center justify-center gap-1">
       <ThemeImage
-        dark={"/images/brand-logo/dark.png"}
-        light={"/images/brand-logo/light.png"}
+        dark={"/images/loader/pixolo.svg"}
+        light={"/images/loader/pixolo-light.svg"}
         alt="Pixolo"
       />
     </div>
