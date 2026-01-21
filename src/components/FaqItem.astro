@@ -19,7 +19,7 @@ const { question, answer, isOpen = false } = Astro.props;
     >
       <!-- Question -->
       <p
-        class="text-n-950 text-base leading-tight font-normal transition-transform duration-300 group-hover:scale-105 md:text-2xl lg:text-3xl"
+        class="text-n-950 text-left text-base leading-tight font-normal transition-transform duration-300 group-hover:scale-105 md:text-2xl lg:text-3xl max-w-[90%]"
       >
         {question}
       </p>
@@ -27,14 +27,14 @@ const { question, answer, isOpen = false } = Astro.props;
       <!-- Plus Icon -->
       <Icon
         name="plus"
-        class={`text-n-500 size-2.5 cursor-pointer transition-transform duration-300 md:size-5 lg:size-6 group-hover:scale-105 ${isOpen ? "rotate-45" : ""}`}
+        class={`text-n-500 size-3.5 cursor-pointer transition-transform duration-300 md:size-5 lg:size-6 group-hover:scale-105 ${isOpen ? "rotate-45" : ""}`}
         data-accordion-plus
       />
     </button>
 
     <!-- Answer Block -->
     <div
-      class="text-n-700 overflow-hidden text-xs transition-[height] duration-300 ease-in-out md:text-lg lg:text-xl"
+      class="text-n-700 overflow-hidden text-left text-xs transition-[height] duration-300 ease-in-out md:text-lg lg:text-xl"
       data-accordion-answer
     >
       <!-- Answer -->
