@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
 
 // DATA //
 import { outcomeFocusedDetails } from "@/data/service-consumption/outcome-focused.ts";
-const { outcomeFocusedItems } = Astro.props 
+const { outcomeFocusedItems } = Astro.props;
 ---
 
 <!-- Why us Section -->
@@ -35,7 +35,7 @@ const { outcomeFocusedItems } = Astro.props
       <!-- Image -->
       <div class="h-[250px] w-full overflow-hidden rounded-4xl md:h-[455px] lg:h-full">
         <Image
-          src={outcomeFocusedDetails.image}
+          src={outcomeFocusedItems.outcomeFocusedImage}
           width={768}
           height={455}
           alt="Team collaborating on product planning"
@@ -47,14 +47,16 @@ const { outcomeFocusedItems } = Astro.props
       <!-- Why us -->
       <div class="flex w-full flex-col gap-7">
         {
-          outcomeFocusedItems.map((outcomeFocusedItem:any, outcomeFocusedIndex:any) => (
-            <div class="why-us-card">
-              <WhyUsStep
-                number={String(outcomeFocusedIndex + 1).padStart(2, "0")}
-                description={outcomeFocusedItem.description}
-              />
-            </div>
-          ))
+          outcomeFocusedItems.outcomeFocused.map(
+            (outcomeFocusedItem: any, outcomeFocusedIndex: any) => (
+              <div class="why-us-card">
+                <WhyUsStep
+                  number={String(outcomeFocusedIndex + 1).padStart(2, "0")}
+                  description={outcomeFocusedItem.description}
+                />
+              </div>
+            ),
+          )
         }
       </div>
     </div>

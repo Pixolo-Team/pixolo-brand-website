@@ -42,9 +42,9 @@ const { service } = Astro.props;
 
 <Layout>
   <Hero title={service.hero.title} subTitle={service.hero.subTitle} />
-  <OutcomeFocused outcomeFocusedItems={service.outcomeFocused} />
+  <OutcomeFocused outcomeFocusedItems={service} />
   <PainSolution painSolutionCardItems={service.painSolution} />
   <HowWeWork howWeWorkSectionSteps={service.howWeWork} />
-  <Deliverables tabItems={service.deliverables} />
+  <Deliverables data={service} />
   <FinalCta subTitle={service.finalCTA} />
 </Layout>
