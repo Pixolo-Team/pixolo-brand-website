@@ -1,100 +1,61 @@
 ---
 // COMPONENTS //
-import { Image } from "astro:assets";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
-import Tag from "@/components/portfolio/Tag.astro";
+import Badge from "@/components/portfolio/Badge.astro";
 
-// Define Props //
+// DEFINE PROPS //
 interface Props {
-  name: string;
+  brandColor: string;
+  brandName: string;
   image: string;
+  logo: string;
   title: string;
-  subTitle: string;
-  description: string;
-  date: string;
-  tagItems: string[];
-  buttonOneText: string;
-  buttonTwoText: string;
+  subtitle: string;
+  badges: string[];
 }
 
-const { name, image, title, subTitle, description, date, tagItems, buttonOneText, buttonTwoText } =
-  Astro.props as Props;
+// PROPS //
+const { brandColor, brandName, image, logo, title, subtitle, badges } = Astro.props as Props;
 ---
 
-<!-- Project Card -->
-<div
-  id="portfolio-showcase-project-card"
-  class=`flex flex-col group-data-[view=list]:md:flex-row gap-3.5 group-data-[view=list]:md:gap-7 group-data-[view=list]:lg:gap-10 group-data-[view=list]:xl:gap-12 group-data-[view=grid]:lg:gap-5`
->
-  <!-- Project Card Image -->
-  <div
-    class=`project-card-image w-full rounded-3xl overflow-hidden group-data-[view=list]:md:flex-1 group-data-[view=list]:md:h-full group-data-[view=list]:h-[238px] group-data-[view=grid]:h-[196px] group-data-[view=grid]:md:h-[224px] group-data-[view=grid]:lg:h-[394px]`
-  >
-    <Image
-      src={image}
-      alt={name}
-      width={327}
-      height={238}
-      class="h-full w-full object-cover"
-      loading="lazy"
-    />
-  </div>
+<!-- Main Project Tile -->
+<div class={`rounded-[42px] md:rounded-[64px] xl:flex xl:flex-row xl:gap-10 ${brandColor}`}>
+  <!-- Project Content -->
+  <div class="flex flex-1 flex-col gap-6 px-5 py-6 md:gap-8 md:p-10 xl:gap-14 xl:p-20">
+    <!-- Logo -->
+    <div class="h-[98px] justify-start md:h-[110px]">
+      <img src={logo} alt={`${brandName} logo`} class="h-full object-contain" />
+    </div>
 
-  <!-- Content -->
-  <div
-    class="flex flex-1 flex-col justify-between gap-8 group-data-[view=grid]:px-1 group-data-[view=grid]:md:px-2 group-data-[view=list]:md:gap-20 lg:gap-12 group-data-[view=grid]:lg:px-4 group-data-[view=list]:lg:gap-36"
-  >
-    <!-- Details Wrap -->
-    <div
-      class="flex flex-col gap-7 group-data-[view=grid]:gap-5 group-data-[view=grid]:md:gap-2 lg:gap-8 group-data-[view=grid]:lg:gap-6"
-    >
-      <!-- Header -->
-      <div class="project-card-header flex flex-col gap-2 md:gap-3">
-        <!-- Title -->
-        <p class="text-n-950 text-2xl leading-tight font-normal md:text-3xl lg:text-4xl">
-          {title}
-        </p>
+    <!-- Project Details Wrapper -->
+    <div class="flex flex-col gap-5 md:gap-9 xl:gap-10">
+      <!-- Project Details -->
+      <div class="flex flex-col gap-5 md:gap-6 xl:gap-7">
+        <!-- Chip Wrapper -->
+        <div class="flex flex-wrap gap-2">
+          <!-- Portfolio Chip -->
+          {badges?.map((badgeText) => <Badge text={badgeText} />)}
+        </div>
 
-        <!-- Tags -->
-        <div class="flex flex-wrap gap-2 md:gap-2.5">
-          {tagItems.map((tagItem) => <Tag tagName={tagItem} />)}
+        <!-- Title Details -->
+        <div class="text-n-950 flex flex-col gap-4 xl:gap-5">
+          <!-- Title -->
+          <p class="text-2xl leading-tight font-semibold md:text-3xl xl:text-4xl">{title}</p>
+
+          <!-- Subtitle -->
+          <p class="text-sm leading-tight font-normal md:text-base xl:text-xl">{subtitle}</p>
         </div>
       </div>
 
-      <!-- About -->
-      <div class="project-card-content flex flex-col gap-4 md:gap-6 lg:gap-7">
-        <!-- SubTitle -->
-        {
-          subTitle && (
-            <p class="text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg">
-              {subTitle}
-            </p>
-          )
-        }
-
-        <!-- Description -->
-        <p class="text-n-600 text-xs leading-tight font-normal md:text-sm lg:text-base">
-          {description}
-        </p>
-
-        <!-- Date -->
-        <p class="text-n-700 text-xs leading-tight font-normal md:text-sm">
-          {date}
-        </p>
+      <!-- Rounded Button -->
+      <div>
+        <RoundedButton buttonText={"View Case Study"} onClick={'window.location.href = "/404"'} />
       </div>
     </div>
+  </div>
 
-    <!-- Buttons -->
-    <div class="project-card-buttons flex flex-row gap-3.5 group-data-[view=grid]:gap-4 md:gap-4">
-      <!-- Primary Button -->
-      <RoundedButton buttonText={buttonOneText} onClick={"window.location.href='/404'"} />
-
-      <!-- Secondary Button -->
-      <RoundedButton
-        buttonText={buttonTwoText}
-        onClick={"window.location.href='/404'"}
-        variant="secondary"
-      />
-    </div>
+  <!-- Image -->
+  <div class="hidden h-full w-[42%] self-end xl:block">
+    <img src={image} alt={`${brandName} Project Screenshot`} class="h-full w-full" />
   </div>
 </div>

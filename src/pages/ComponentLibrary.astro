@@ -1,10 +1,12 @@
 ---
 // Components //
-import ProjectCard from "@/components/portfolio-showcase/ProjectCard.astro";
+import ProjectShowcaseCard from "@/components/portfolio-showcase/ProjectShowcaseCard.astro";
+import ArticleCard from "@/components/ArticleCard.astro";
+import ProjectCard from "@/components/portfolio/ProjectCard.astro";
 ---
 
 <div class="container mx-auto flex flex-col items-center justify-center gap-4">
-  <ProjectCard
+  <ProjectShowcaseCard
     name={"default-project"}
     image={"/images/default-showcase-project-image.jpg"}
     title={"Sai International School"}
@@ -15,5 +17,24 @@ import ProjectCard from "@/components/portfolio-showcase/ProjectCard.astro";
     buttonOneText={"View Website"}
     buttonTwoText={"Show Project"}
     view={"grid"}
+  />
+
+  <ArticleCard
+    thumbnail="/images/portfolio/default-project.jpg"
+    brandName="reliance"
+    chipItems={["Product Design", "App Development", "Dashboard Design"]}
+    title="E-commerce Platform for Local Brands"
+    subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+    ctaText="View Case Study"
+  />
+
+  <ProjectCard
+    brandColor="bg-red-500"
+    brandName="Reliance"
+    image="images/portfolio/reliance-brand-image.png"
+    logo="images/portfolio/reliance-logo.png"
+    title="E-commerce Platform for Local Brands"
+    subtitle="Built a scalable e-commerce solution empowering small businesses to sell online with zero code setup."
+    badges={["Product Design", "App Development", "Dashboard Design"]}
   />
 </div>

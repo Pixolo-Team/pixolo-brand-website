@@ -1,7 +1,7 @@
 ---
 // COMPONENTS //
-import ProjectCard from "@/components/portfolio/ProjectCard.astro";
-import MiniProjectCard from "@/components/portfolio/MiniProjectCard.astro";
+import ProjectShowcaseCard from "@/components/portfolio/showcase/ProjectShowcaseCard.astro";
+import MiniProjectCard from "@/components/portfolio/showcase/MiniProjectCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import SliderArrows from "@/components/ui/SliderArrows.astro";
 import { Icon } from "astro-icon/components";
@@ -69,7 +69,7 @@ import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
           {
             // Project Cards //
             portfolioShowcaseDetails.projectCardItems.map((projectCard) => (
-              <ProjectCard
+              <ProjectShowcaseCard
                 name={projectCard.name}
                 image={projectCard.image}
                 title={projectCard.title}

@@ -1,0 +1,65 @@
+---
+// COMPONENTS //
+import Tab from "@/components/deliverables/Tab.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+// DATA //
+import { deliverablesSectionDetails } from "@/data/service-consumption/deliverables";
+
+const { data } = Astro.props;
+---
+
+<!-- Deliverables section under Service Consumption -->
+<section id="deliverables-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-7 px-6 py-20 md:gap-11 md:py-24 lg:gap-14 lg:py-28"
+  >
+    <!-- Header -->
+    <div class="flex flex-col items-center justify-center gap-3.5 md:gap-4 lg:gap-5">
+      <!-- Tool Badge Component -->
+      <div class="tool-badge">
+        <ToolBadge
+          icon={deliverablesSectionDetails.badgeIcon}
+          text={deliverablesSectionDetails.badgeTitle}
+        />
+      </div>
+
+      <!-- Title -->
+      <p
+        class="header-text text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl"
+      >
+        {deliverablesSectionDetails.title}
+      </p>
+    </div>
+
+    <!-- Content Wrap -->
+    <div class="flex w-full flex-col justify-center gap-4 md:flex-row md:gap-5 lg:gap-10 xl:gap-16">
+      <!-- Image -->
+      <div class="deliverables-image w-full overflow-hidden rounded-3xl md:w-[60%] xl:w-[68%]">
+        <Image
+          src={data.deliverableImage}
+          width={250}
+          height={250}
+          alt="An image of team at Pixolo"
+          class="aspect-4/2 h-[250px] w-full object-cover md:h-full"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Tabs Wrap -->
+      <div
+        class="deliverables-tabs flex h-full flex-col items-center justify-center gap-1.5 md:w-[40%] md:gap-2.5 lg:gap-3 xl:w-[32%]"
+        style="transition-delay: 0.4s;"
+      >
+        {data.deliverables.map((tabItem: any) => <Tab text={tabItem} />)}
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import { animateDeliverablesSection } from "@/scripts/service-consumption/deliverables";
+
+  animateDeliverablesSection();
+</script>

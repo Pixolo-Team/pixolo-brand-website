@@ -3,25 +3,21 @@
 import ClientSolution from "@/components/case-studies/ClientSolution.astro";
 import SectionHeader from "@/components/ui/SectionHeader.astro";
 
-// DATA //
-import { clientSolutions } from "@/data/case-studies/1";
+// Receiving data from the parent page
+const { data } = Astro.props;
 ---
 
 <section>
   <div
-    class="container m-auto flex flex-col gap-10 px-6 pt-16 pb-14 md:gap-12 md:pt-28 md:pb-20 lg:gap-16 lg:pt-36 lg:pb-28"
+    class="container mx-auto flex flex-col gap-10 px-6 pt-16 pb-14 md:gap-12 md:pt-28 md:pb-20 lg:gap-16 lg:pt-36 lg:pb-28"
   >
     <!-- Toolbadge & Page Title -->
-    <SectionHeader
-      sectionTitle="Smart, precise solutions for every challenge"
-      badgeIcon="package"
-      badgeText="Our Solutions"
-    />
+    <SectionHeader sectionTitle={data.title} badgeIcon="package" badgeText={data.toolbadge} />
 
     <!-- Solution Cards -->
     <div class="flex flex-col gap-3 md:gap-4 lg:grid lg:grid-cols-2 lg:gap-9">
       {
-        clientSolutions.map((clientSolutionItem, clientSolutionIndex) => (
+        data.solutions.map((clientSolutionItem: any, clientSolutionIndex: number) => (
           <ClientSolution
             title={clientSolutionItem.title}
             description={clientSolutionItem.description}
