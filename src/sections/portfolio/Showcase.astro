@@ -1,49 +1,165 @@
 ---
 // COMPONENTS //
-import ProjectCard from "@/components/portfolio/ProjectCard.astro";
-import MiniProjectCard from "@/components/portfolio/MiniProjectCard.astro";
+import ProjectShowcaseCard from "@/components/portfolio/showcase/ProjectShowcaseCard.astro";
+import MiniProjectCard from "@/components/portfolio/showcase/MiniProjectCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import SliderArrows from "@/components/ui/SliderArrows.astro";
+import { Icon } from "astro-icon/components";
 
 // DATA //
 import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
 ---
 
 <!-- Portfolio Showcase Section -->
-<section>
-  <div class="container mx-auto px-6 py-20">
-    <div class="flex flex-col gap-10">
-      {
-        portfolioShowcaseDetails.projectCardItems.map((projectCard) => (
-          <ProjectCard
-            name={projectCard.name}
-            image={projectCard.image}
-            title={projectCard.title}
-            subtitle={projectCard.subtitle}
-            description={projectCard.description}
-            date={projectCard.date}
-            badgeItems={projectCard.badgeItems}
-            buttonOneText={"View Website"}
-            buttonTwoText={"Show Project"}
-            view="grid"
-          />
-        ))
-      }
+<section id="showcase-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-8 px-6 py-16 md:gap-11 md:py-24 lg:gap-14 lg:py-28"
+  >
+    <!-- Header -->
+    <div class="flex flex-col items-center justify-center gap-4">
+      <!-- Toolbadge -->
+      <div class="tool-badge">
+        <ToolBadge
+          icon={portfolioShowcaseDetails.sectionHeader.badgeIcon}
+          text={portfolioShowcaseDetails.sectionHeader.badgeTitle}
+        />
+      </div>
+
+      <!-- Title -->
+      <p
+        id="header-text"
+        class="text-n-950 text-center text-2xl leading-tight font-normal tracking-[-2%] md:text-4xl lg:text-6xl"
+      >
+        {portfolioShowcaseDetails.sectionHeader.title}
+      </p>
     </div>
 
-    <!-- Mini Project Cards Wrap -->
-    <div class="scrollbar-hide flex flex-col gap-7 overflow-x-auto md:flex-row">
-      {
-        portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
-          <MiniProjectCard
-            id={cardItem.id}
-            title={cardItem.title}
-            badges={cardItem.badges}
-            date={cardItem.date}
-            btnOneText={cardItem.btnOneText}
-            btnTwoText={cardItem.btnTwoText}
-            image={cardItem.image}
-          />
-        ))
-      }
+    <!-- Portfolio Wrap -->
+    <div class="flex max-w-full flex-col gap-10 md:gap-24 lg:gap-32">
+      <!-- Portfolio Project Tiles -->
+      <div class="flex flex-col gap-10">
+        <!-- Tiles -->
+        <div class="hidden justify-end gap-4 px-8 md:flex lg:gap-5">
+          <!-- List Icon Button-->
+          <button id="listIconBtn" class="cursor-pointer">
+            <!-- Icon -->
+            <Icon
+              name={"list"}
+              class={`text-n-500 size-5 lg:size-6 hover:scale-120 transition duration-200 ease-in-out`}
+            />
+          </button>
+
+          <!-- Grid Icon Button-->
+          <button id="gridIconBtn" class="cursor-pointer">
+            <!-- Icon -->
+            <Icon
+              name={"grid"}
+              class={`size-5 lg:size-6 hover:scale-120 transition duration-200 ease-in-out`}
+            />
+          </button>
+        </div>
+
+        <!-- Portfolio Cards Wrap -->
+        <div
+          id="portfolio-project-cards"
+          data-view="list"
+          class={`group grid grid-cols-1 data-[view=grid]:md:grid-cols-2 gap-10`}
+        >
+          {
+            // Project Cards //
+            portfolioShowcaseDetails.projectCardItems.map((projectCard) => (
+              <ProjectShowcaseCard
+                name={projectCard.name}
+                image={projectCard.image}
+                title={projectCard.title}
+                subTitle={projectCard.subTitle}
+                description={projectCard.description}
+                date={projectCard.date}
+                tagItems={projectCard.tagItems}
+                buttonOneText={projectCard.buttonOneText}
+                buttonTwoText={projectCard.buttonTwoText}
+              />
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Mini Projects Wrap -->
+      <div
+        id="portfolio-mini-project-cards"
+        data-view="list"
+        class="group embla flex flex-col gap-8 overflow-hidden md:gap-12 lg:gap-16"
+      >
+        <!-- Mini Projects Content -->
+        <div class="flex flex-col gap-5 md:gap-6 lg:gap-7">
+          <!-- Title -->
+          <p
+            class="text-n-950 text-base leading-tight font-normal md:text-2xl group-data-[view=list]:md:text-xl group-data-[view=list]:lg:text-2xl"
+          >
+            Mini Projects
+          </p>
+
+          <!-- Cards Wrap -->
+          <div id="showcase-slider" class="embla__viewport">
+            <!-- Embla container -->
+            <div class="embla__container flex gap-6">
+              <!-- Iterating on Project Cards -->
+              {
+                portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
+                  // Mini Project Cards
+                  <div class="embla__slide w-full shrink-0 sm:max-w-[328px] lg:max-w-[412px]">
+                    <MiniProjectCard
+                      id={cardItem.id}
+                      title={cardItem.title}
+                      tagItems={cardItem.tags}
+                      date={cardItem.date}
+                      btnOneText={cardItem.btnOneText}
+                      btnTwoText={cardItem.btnTwoText}
+                      image={cardItem.image}
+                    />
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Cta Wrap -->
+        <div class="relative flex max-w-full flex-col">
+          <!-- Cta Wrap -->
+          <div class="self-end">
+            <SliderArrows />
+          </div>
+
+          <!-- Slider -->
+          <div
+            class="border-n-500 absolute inset-y-0 h-0 w-24 self-center border md:w-36 md:border-2 lg:w-96"
+          >
+            <div
+              id="embla__progress__bar"
+              class="absolute -top-px h-0 w-0 border border-blue-500 md:border-2"
+            >
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  import {
+    animateShowcaseSection,
+    initShowcase,
+    initShowcaseSlider,
+    animateProjectCards,
+  } from "@/scripts/showcase";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initShowcase();
+    initShowcaseSlider();
+    animateShowcaseSection();
+    animateProjectCards();
+  });
+</script>
