@@ -5,6 +5,8 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 
 // DATA //
 import { painSolutionSectionDetails } from "@/data/service-consumption/pain-solution.ts";
+const { painSolutionCardItems } = Astro.props;
+
 ---
 
 <!-- Pain Solution Section -->
@@ -30,7 +32,7 @@ import { painSolutionSectionDetails } from "@/data/service-consumption/pain-solu
     <!-- Cards wrap -->
     <div class="pain-solution-cards flex w-full flex-col gap-5">
       {
-        painSolutionSectionDetails.painSolutionCardItems.map((painSolutionCardItem) => (
+        painSolutionCardItems.map((painSolutionCardItem: any) => (
           <PainSolutionCard
             problem={painSolutionCardItem.problem}
             solution={painSolutionCardItem.solution}

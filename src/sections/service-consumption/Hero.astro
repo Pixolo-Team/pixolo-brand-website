@@ -9,6 +9,8 @@ import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { serviceConsumptionHeroDetails } from "@/data/service-consumption/hero.ts";
+import { siteInfo } from "@/data/site-info";
+const { title, subTitle } = Astro.props;
 ---
 
 <!-- Hero Section -->
@@ -48,7 +50,7 @@ import { serviceConsumptionHeroDetails } from "@/data/service-consumption/hero.t
           class="word-container text-n-950 text-center text-3xl leading-tight font-medium tracking-[-0.01em] md:text-6xl lg:text-7xl"
           data-animate-word
         >
-          {serviceConsumptionHeroDetails.title}
+          {title}
         </p>
 
         <!-- Description -->
@@ -56,16 +58,14 @@ import { serviceConsumptionHeroDetails } from "@/data/service-consumption/hero.t
           class="word-container bg-gradient-to-r from-(--blue-500) to-[#8B77F3] bg-clip-text text-center text-base leading-tight text-transparent md:text-xl lg:text-2xl"
           data-animate-word
         >
-          {serviceConsumptionHeroDetails.subTitle}
+          {subTitle}
         </p>
       </div>
 
       <!-- Rounded Button for Booking a Strategy Call -->
-      <RoundedButton
-        buttonText={serviceConsumptionHeroDetails.buttonText}
-        onClick="window.location.href='/services'"
-        type="button"
-      />
+      <a href={siteInfo.contact.phone[0].link}>
+        <RoundedButton buttonText={serviceConsumptionHeroDetails.buttonText} type="button" />
+      </a>
     </div>
   </div>
 </section>

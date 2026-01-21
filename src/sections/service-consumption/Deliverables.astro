@@ -6,6 +6,8 @@ import { Image } from "astro:assets";
 
 // DATA //
 import { deliverablesSectionDetails } from "@/data/service-consumption/deliverables";
+
+const { data } = Astro.props;
 ---
 
 <!-- Deliverables section under Service Consumption -->
@@ -37,7 +39,7 @@ import { deliverablesSectionDetails } from "@/data/service-consumption/deliverab
       <!-- Image -->
       <div class="deliverables-image w-full overflow-hidden rounded-3xl md:w-[60%] xl:w-[68%]">
         <Image
-          src={deliverablesSectionDetails.image}
+          src={data.deliverableImage}
           width={250}
           height={250}
           alt="An image of team at Pixolo"
@@ -51,7 +53,7 @@ import { deliverablesSectionDetails } from "@/data/service-consumption/deliverab
         class="deliverables-tabs flex h-full flex-col items-center justify-center gap-1.5 md:w-[40%] md:gap-2.5 lg:gap-3 xl:w-[32%]"
         style="transition-delay: 0.4s;"
       >
-        {deliverablesSectionDetails.tabItems.map((tabItem) => <Tab text={tabItem} />)}
+        {data.deliverables.map((tabItem: any) => <Tab text={tabItem} />)}
       </div>
     </div>
   </div>

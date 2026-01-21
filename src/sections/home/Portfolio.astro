@@ -57,13 +57,11 @@ import { portfolioSectionDetails } from "@/data/portfolio.ts";
     </div>
 
     <!-- Tile Wrapper -->
-    <div class="project-card-wrapper flex flex-col gap-10">
+    <div class="project-card-wrapper flex flex-col gap-11">
       {
         portfolioSectionDetails.projectCardItems.map((projectCardItem, index) => {
-          const topOffset = 20 + index * 20; // 20vh, 40vh, 60vh...
-
           return (
-            <div class="project-card sticky" style={`top: ${topOffset}vh; margin-top: `}>
+            <div class="project-card sticky top-[10vh]">
               <ProjectCard
                 brandColor={projectCardItem.brandColor}
                 brandName={projectCardItem.brandName}
