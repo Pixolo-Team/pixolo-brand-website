@@ -174,11 +174,14 @@ const currentPath = Astro.url.pathname;
   }
 </style>
 <script>
-  import { menuOpenCloseAnimation, animateMenu } from "@/scripts/menu";
+  import { menuOpenCloseAnimation, animateMenu, hideStickyWhatsapp } from "@/scripts/menu";
 
   /** Menu open close animation  */
   menuOpenCloseAnimation();
 
   /** Menu background logo animation  */
   animateMenu();
+
+  /** Function to remove whatsapp sticky logo  */
+  hideStickyWhatsapp();
 </script>
