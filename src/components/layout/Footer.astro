@@ -39,7 +39,7 @@ import { footerSectionDetails } from "@/data/footer";
       <div class="flex w-full flex-col items-center justify-center gap-6 self-center md:gap-8">
         <!-- Responsive logo block -->
         <div id="footerLogo" class="flex w-full origin-top lg:w-[945px]">
-          <Icon name="pixolo-logo-text" class="text-n-950 h-full w-full" />
+          <Icon name="pixolo-logo-text" class="text-n-950 h-full w-full invert dark:invert-0" />
         </div>
         <!-- Message under logo -->
         <p class="text-n-950 text-center text-base leading-tight font-normal md:text-xl lg:text-xl">
@@ -113,6 +113,8 @@ import { footerSectionDetails } from "@/data/footer";
   }
 </style>
 <script>
-  import { animateFooter } from "@/scripts/footer.ts";
+  import { animateFooter, hideStickyWhatsapp } from "../../scripts/footer.ts";
+  
   animateFooter();
+  hideStickyWhatsapp();
 </script>

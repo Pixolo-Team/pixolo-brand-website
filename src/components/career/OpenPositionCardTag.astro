@@ -1,0 +1,20 @@
+---
+const { label, value } = Astro.props;
+---
+
+<!-- Open Position Card Tags -->
+<div class="flex gap-10 lg:gap-24">
+  <!-- Label -->
+  <p
+    class="font-regular text-n-700 min-w-[138px] text-sm leading-tight tracking-normal md:min-w-[150px] md:text-base lg:min-w-[170px] lg:text-lg"
+  >
+    {label}
+  </p>
+
+  <!-- Value -->
+  <p
+    class="font-regular text-n-950 flex-1 text-base leading-tight tracking-normal md:text-xl lg:text-2xl"
+  >
+    {value}
+  </p>
+</div>
