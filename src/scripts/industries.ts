@@ -17,7 +17,7 @@ export function initIndustrySlider() {
 
   // Initialize Embla carousel
   const embla = EmblaCarousel(slider, {
-    loop: false,
+    loop: true,
     align: "start",
     skipSnaps: false,
   });
