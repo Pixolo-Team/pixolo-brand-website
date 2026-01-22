@@ -11,12 +11,14 @@ interface Props {
   href: string;
 }
 
-const { name, logo, thumbnail, description, href } = Astro.props as Props;
+const { name, logo, thumbnail, description, href = "" } = Astro.props as Props;
 ---
 
 <!-- Product Item -->
-<div
-  class="group relative border-n-950 flex w-full cursor-pointer flex-col gap-3 border-b-[0.4px] py-7 md:gap-3.5 md:border-b-[0.6px] lg:flex-row lg:justify-between lg:gap-12 lg:border-b-[0.8px]"
+<a
+  href={href ? href : undefined}
+  target="_blank"
+  class="group border-n-950 relative flex w-full cursor-pointer flex-col gap-3 border-b-[0.4px] py-7 md:gap-3.5 md:border-b-[0.6px] lg:flex-row lg:justify-between lg:gap-12 lg:border-b-[0.8px]"
 >
   <!-- Logo Container -->
   <div class="flex gap-2.5 lg:w-2/5">
@@ -29,29 +31,36 @@ const { name, logo, thumbnail, description, href } = Astro.props as Props;
     />
   </div>
 
-  <!-- Product Image -->
-  <Image
-    src={`/images/products/${thumbnail}`}
-    alt={`${name} thumbnail`}
-    width={327}
-    height={140}
-    class="h-[166px] w-full rounded-4xl object-[center_25%] object-cover md:h-[293px] lg:absolute lg:top-1/2 lg:left-2/6 lg:z-10 lg:h-auto lg:w-[350px] lg:max-w-none lg:-translate-x-1/2 lg:-translate-y-1/2 lg:rounded-4xl lg:opacity-0 lg:shadow-2xl lg:transition-opacity lg:duration-300 lg:ease-in-out lg:pointer-events-none lg:group-hover:opacity-100"
-  />
+  <!-- Hover Image (Desktop only) -->
+  <div
+    class="pointer-events-none absolute top-30 left-[22%] z-50 hidden h-[350px] w-[358px] -translate-y-1/2 scale-95 overflow-hidden rounded-[28px] opacity-0 shadow-2xl transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100 lg:left-[27%] lg:block xl:left-[22%] xl:w-[220px] 2xl:left-[22%]"
+  >
+    <Image
+      src={`/images/products/${thumbnail}`}
+      alt={`${name} preview`}
+      width={358}
+      height={350}
+      class="h-full w-full object-cover"
+    />
+  </div>
 
   <!-- Content -->
-  <div class="flex w-full items-center justify-center gap-6 md:gap-16 lg:w-1/2 lg:gap-16">
+  <div class="flex w-full items-center justify-center gap-6 md:gap-16 lg:w-3/5 lg:gap-16">
     <!-- Description -->
     <p class="text-n-700 text-xs leading-normal font-normal md:text-base">
       {description}
     </p>
 
     <!-- Link for more information -->
-    <a
-      href={href}
-      class="border-n-950 flex size-12 shrink-0 items-center justify-center self-center rounded-full border from-blue-500 to-[#8B77F3] group-hover:border-none group-hover:bg-linear-to-r md:size-20"
-      aria-label="View more information"
-    >
-      <Icon name="external-link-icon" class="size-[18px] md:size-[30px]" />
-    </a>
+    {
+      href !== "" && (
+        <div
+          class="border-n-950 flex size-12 shrink-0 items-center justify-center self-center rounded-full border from-blue-500 to-[#8B77F3] group-hover:border-none group-hover:bg-linear-to-r md:size-20"
+          aria-label="View more information"
+        >
+          <Icon name="external-link-icon" class="size-[18px] md:size-[30px]" />
+        </div>
+      )
+    }
   </div>
-</div>
+</a>
