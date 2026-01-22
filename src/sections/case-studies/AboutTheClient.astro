@@ -35,25 +35,25 @@ const { data } = Astro.props;
     </div>
 
     <!-- Images Section -->
-    <div class="scrollbar-hide flex flex-col gap-4 overflow-x-auto lg:flex-row lg:gap-5">
+    <div class="flex flex-col gap-4 lg:flex-row lg:gap-5">
       <!-- Top Image -->
       <Image
-        class="rounded-3xl md:rounded-4xl lg:w-[60%] lg:rounded-[60px]"
+        class="h-auto w-full rounded-3xl object-cover md:rounded-4xl lg:w-[60%] lg:rounded-[60px]"
         width={930}
         height={482}
         src={`/${data.visuals[0]}`}
         alt="Pixolo Client"
       />
       <!-- Bottom Images -->
-      <div class="flex w-full gap-4 lg:gap-5">
+      <div class="flex min-w-0 flex-1 gap-4 lg:gap-5">
         {
           data.visuals
             .slice(1, 3)
             .map((visualImgItem: string) => (
               <Image
-                class="flex-1 rounded-3xl lg:rounded-[60px]"
-                width={400}
-                height={300}
+                class="min-w-0 flex-1 rounded-3xl object-cover lg:rounded-[60px]"
+                width={290}
+                height={400}
                 src={`/${visualImgItem}`}
                 alt="Client Detail"
               />

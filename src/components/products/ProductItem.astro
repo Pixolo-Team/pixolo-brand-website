@@ -1,17 +1,21 @@
 ---
+// STYLES //
+import ThemeImage from "@/components/ui/ThemeImage.astro";
+
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
 import Image from "astro/components/Image.astro";
 
 interface Props {
   name: string;
-  logo: string;
+  darkLogo: string;
+  lightLogo: string;
   thumbnail: string;
   description: string;
   href: string;
 }
 
-const { name, logo, thumbnail, description, href } = Astro.props as Props;
+const { name, darkLogo, lightLogo, thumbnail, description, href } = Astro.props as Props;
 ---
 
 <!-- Product Item -->
@@ -19,9 +23,10 @@ const { name, logo, thumbnail, description, href } = Astro.props as Props;
   class="group border-n-950 flex w-full cursor-pointer flex-col gap-3 border-b-[0.4px] py-7 md:gap-3.5 md:border-b-[0.6px] lg:flex-row lg:justify-between lg:gap-12 lg:border-b-[0.8px]"
 >
   <!-- Logo Container -->
-  <div class="text-n-950 flex gap-2.5 lg:w-2/5">
-    <Image
-      src={`/images/products/${logo}`}
+  <div class="flex gap-2.5 lg:w-2/5">
+    <ThemeImage
+      light={`/images/products/${lightLogo}`}
+      dark={`/images/products/${darkLogo}`}
       alt={`${name} logo`}
       width={180}
       height={63}
