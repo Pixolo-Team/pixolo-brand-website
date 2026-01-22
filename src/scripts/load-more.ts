@@ -33,6 +33,7 @@ export function initLoadMore(config: LoadMoreConfig) {
   const totalCards = cards.length;
 
   let visibleCount = 0;
+  let lastWidth = window.innerWidth;
 
   const setInitialVisibleCount = () => {
     const state = getDeviceState();
@@ -66,7 +67,11 @@ export function initLoadMore(config: LoadMoreConfig) {
 
   // Handle resize
   window.addEventListener("resize", () => {
-    setInitialVisibleCount();
-    updateVisibility();
+    const currentWidth = window.innerWidth;
+    if (currentWidth !== lastWidth) {
+      lastWidth = currentWidth;
+      setInitialVisibleCount();
+      updateVisibility();
+    }
   });
 }
