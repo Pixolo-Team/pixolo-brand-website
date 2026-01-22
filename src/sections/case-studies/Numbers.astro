@@ -2,26 +2,27 @@
 // COMPONENTS //
 import ClientNumbers from "@/components/case-studies/ClientNumber.astro";
 
-// DATA //
-import { clientNumbers } from "@/data/case-studies/1";
+// Receive data from the parent page
+const { data } = Astro.props;
 ---
 
 <!-- Client in numbers Section -->
-<section class="pt-20">
+<section>
   <!-- Container -->
   <div
-    class="container m-auto flex flex-col items-center justify-center gap-7 p-5 md:px-12 md:pt-10 md:pb-16 lg:gap-16 lg:pt-10 lg:pb-20"
+    class="container mx-auto flex flex-col items-center justify-center gap-12 px-6 pt-20 md:px-12 md:pt-10 md:pb-16 lg:gap-16 lg:pb-20"
   >
     <!-- Title Content -->
-    <div class="anim-fade-in-right flex flex-col gap-3.5 md:flex-row md:gap-16 lg:gap-40">
+    <div class="anim-fade-in-right flex flex-col gap-3.5 md:flex-row md:gap-16 lg:gap-32 xl:gap-40">
       <!-- Title -->
-      <h1 class="text-n-950 text-2xl leading-tight font-medium md:text-3xl lg:text-4xl">
-        By the Numbers
+      <h1
+        class="text-n-950 text-2xl leading-tight font-medium md:min-w-[260px] md:text-3xl lg:min-w-[300px] lg:text-4xl"
+      >
+        {data.title}
       </h1>
       <!-- Description -->
       <p class="text-n-800 leading-tight md:text-xl lg:text-2xl">
-        We focus on the metrics that truly reflect our value. Here's a snapshot of the results that
-        drive our success.
+        {data.heading}
       </p>
     </div>
 
@@ -31,8 +32,8 @@ import { clientNumbers } from "@/data/case-studies/1";
     >
       <!-- Iterate through Data -->
       {
-        clientNumbers.map((clientNumberItem) => (
-          <ClientNumbers title={clientNumberItem.title} value={clientNumberItem.value} />
+        data.metrics.map((metricItem: any) => (
+          <ClientNumbers title={metricItem.label} value={metricItem.value} />
         ))
       }
     </div>

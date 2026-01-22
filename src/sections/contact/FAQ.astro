@@ -1,0 +1,61 @@
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import Tabs from "@/components/ui/Tabs.astro";
+import FaqItem from "@/components/FaqItem.astro";
+
+// DATA //
+import { faqSectionDetails } from "@/data/faq";
+---
+
+<!-- Faq Section -->
+<section id="faq-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col gap-12 px-6 py-16 md:gap-14 md:py-20 lg:gap-16 lg:py-20"
+  >
+    <!-- Section Header -->
+    <div class="flex flex-col items-center gap-3.5 text-center md:gap-6">
+      <!-- ToolBadge Component -->
+      <div class="tool-badge">
+        <ToolBadge
+          text={faqSectionDetails.sectionHeader.badgeTitle}
+          icon={faqSectionDetails.sectionHeader.badgeIcon}
+        />
+      </div>
+
+      <!-- Title -->
+      <p class="header-text text-n-950 text-3xl leading-tight md:text-5xl lg:text-6xl">
+        {faqSectionDetails.sectionHeader.title}
+      </p>
+    </div>
+
+    <!-- Tabs Component -->
+    <Tabs tabItems={faqSectionDetails.faqTabItems}>
+      {
+        faqSectionDetails.faqTabItems.map((tabItem) => (
+          // Faq Lists
+          <div
+            class="faq-list border-n-700 flex flex-col border-t-[0.8px]"
+            data-tab-content-id={tabItem.id}
+          >
+            {(faqSectionDetails.faqItemsByTab[tabItem.id] || []).map((faqItem, faqItemIndex) => (
+              <FaqItem
+                question={faqItem.question}
+                answer={faqItem.answer}
+                isOpen={faqItemIndex === 0}
+              />
+            ))}
+          </div>
+        ))
+      }
+    </Tabs>
+  </div>
+</section>
+
+<script>
+  import { animateFaqSection, toogleAccordion } from "@/scripts/faq";
+
+  toogleAccordion();
+  animateFaqSection();
+</script>

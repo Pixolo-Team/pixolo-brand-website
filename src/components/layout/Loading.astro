@@ -1,14 +1,11 @@
 ---
-// COMPONENTS //
-import { Image } from "astro:assets";
-
-// SVG's //
-import pixolo from "@/../public/images/loader/pixolo.svg";
+// STYLES //
+import ThemeImage from "@/components/ui/ThemeImage.astro";
 ---
 
 <section
   id="loading-screen"
-  class="bg-n-50 fixed z-[999] flex h-screen w-screen flex-col items-center justify-center overflow-hidden text-center transition-opacity duration-700"
+  class="bg-n-50 fixed z-999 flex inset-0 flex-col items-center justify-center overflow-hidden text-center transition-opacity duration-700"
 >
   <div class="relative flex h-full w-full items-center justify-center">
     <!-- Ball -->
@@ -22,7 +19,11 @@ import pixolo from "@/../public/images/loader/pixolo.svg";
 
     <!-- Step 3: Pixolo -->
     <div class="pixolo flex items-center justify-center gap-1">
-      <Image src={pixolo} alt="Pixolo" />
+      <ThemeImage
+        dark={"/images/loader/pixolo.svg"}
+        light={"/images/loader/pixolo-light.svg"}
+        alt="Pixolo"
+      />
     </div>
 
     <!-- Loader Number -->
@@ -230,5 +231,6 @@ import pixolo from "@/../public/images/loader/pixolo.svg";
 
 <script>
   import { initLoader } from "@/scripts/loader";
+
   initLoader();
 </script>

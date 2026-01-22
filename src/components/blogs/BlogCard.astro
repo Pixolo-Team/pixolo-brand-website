@@ -1,6 +1,6 @@
 ---
 // STYLES //
-import ThemeImage from "../ui/ThemeImage.astro";
+import ThemeImage from "@/components/ui/ThemeImage.astro";
 
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
@@ -13,7 +13,6 @@ interface Props {
   author: string;
   href: string;
 }
-
 const { imageSrc, category, date, title, author, href } = Astro.props;
 ---
 

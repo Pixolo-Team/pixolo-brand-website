@@ -1,0 +1,51 @@
+---
+// COMPONENTS //
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import OpenPositionCardTag from "@/components/career/OpenPositionCardTag.astro";
+
+const { category, title, tags = [], ctaText } = Astro.props;
+---
+
+<!-- Open Position Card -->
+<div
+  class="border-n-500 flex h-full flex-col justify-center gap-10 rounded-4xl border p-5 md:gap-12 md:p-6 lg:gap-14 lg:p-9"
+>
+  <div class="flex flex-col items-start gap-2.5 md:gap-3.5 lg:gap-4">
+    <!-- Category -->
+    <div
+      class="border-n-950 rounded-3xl border-[0.6px] px-3 py-2 md:px-3.5 md:py-2.5 lg:px-4 lg:py-3"
+    >
+      <p class="text-xs leading-tight font-medium tracking-normal lg:text-sm">
+        {category}
+      </p>
+    </div>
+
+    <!-- Title -->
+    <p class="text-xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl">
+      {title}
+    </p>
+  </div>
+
+  <!-- Tags and RoundedButton -->
+  <div class="flex flex-col gap-6 md:gap-10 lg:gap-12">
+    <!-- Tags -->
+    <div class="flex flex-col gap-2 md:gap-3 lg:gap-4">
+      <!-- Tag -->
+      {
+        tags.map((tagItem: any) => (
+          <OpenPositionCardTag label={tagItem.label} value={tagItem.value} />
+        ))
+      }
+    </div>
+
+    <!-- RoundedButton -->
+    <div class="self-start">
+      <RoundedButton
+        buttonText={ctaText}
+        type="button"
+        variant="primary"
+        onClick="window.open('https://forms.gle/iaRyx245ECd2VtwJ6', '_blank')"
+      />
+    </div>
+  </div>
+</div>

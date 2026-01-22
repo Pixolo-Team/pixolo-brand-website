@@ -11,9 +11,15 @@ export function getStaticPaths() {
 import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
-import Impact from "@/sections/portfolio/project-consumption/Impact.astro";
+import Hero from "@/sections/project-consumption/Hero.astro";
+import Video from "@/sections/portfolio/Video.astro";
+import ProjectIntroduction from "@/sections/project-consumption/ProjectIntroduction.astro";
+import Impact from "@/sections/project-consumption/Impact.astro";
 ---
 
 <Layout>
+  <Hero />
+  <Video />
+  <ProjectIntroduction />
   <Impact />
 </Layout>
