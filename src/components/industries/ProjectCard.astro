@@ -19,7 +19,7 @@ const { image, name, websiteLink } = Astro.props as props;
     <img
       src={image}
       alt={name}
-      class="h-36 w-full transform-gpu object-contain transition-transform duration-300 ease-out will-change-transform group-hover:scale-105 md:h-48"
+      class="h-36 w-auto transform-gpu object-contain transition-transform duration-300 ease-out will-change-transform group-hover:scale-105 md:h-48 dark:invert"
     />
   </div>
   <div class="flex items-center justify-between px-4">

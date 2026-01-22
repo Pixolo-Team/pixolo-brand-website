@@ -19,7 +19,7 @@ const { name, logo, thumbnail, description, href } = Astro.props as Props;
   class="group border-n-950 flex w-full cursor-pointer flex-col gap-3 border-b-[0.4px] py-7 md:gap-3.5 md:border-b-[0.6px] lg:flex-row lg:justify-between lg:gap-12 lg:border-b-[0.8px]"
 >
   <!-- Logo Container -->
-  <div class="flex gap-2.5 lg:w-2/5">
+  <div class="text-n-950 flex gap-2.5 lg:w-2/5">
     <Image
       src={`/images/products/${logo}`}
       alt={`${name} logo`}
@@ -51,7 +51,7 @@ const { name, logo, thumbnail, description, href } = Astro.props as Props;
       class="border-n-950 flex size-12 shrink-0 items-center justify-center self-center rounded-full border from-blue-500 to-[#8B77F3] group-hover:border-none group-hover:bg-linear-to-r md:size-20"
       aria-label="View more information"
     >
-      <Icon name="external-link-icon" class="size-[18px] md:size-[30px]" />
+      <Icon name="external-link-icon" class="text-n-950 size-[18px] md:size-[30px]" />
     </a>
   </div>
 </div>
