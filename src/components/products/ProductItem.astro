@@ -2,6 +2,7 @@
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
 import Image from "astro/components/Image.astro";
+import ThemeImage from "../ui/ThemeImage.astro";
 
 interface Props {
   name: string;
@@ -20,8 +21,16 @@ const { name, logo, thumbnail, description, href } = Astro.props as Props;
 >
   <!-- Logo Container -->
   <div class="flex gap-2.5 lg:w-2/5">
-    <Image
+    <!-- <Image
       src={`/images/products/${logo}`}
+      alt={`${name} logo`}
+      width={180}
+      height={63}
+      class="object-contain md:h-[88px] md:w-[250px]"
+    /> -->
+    <ThemeImage
+      light={`/images/products/${logo}-light.png`}
+      dark={`/images/products/${logo}.png`}
       alt={`${name} logo`}
       width={180}
       height={63}

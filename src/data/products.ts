@@ -10,7 +10,7 @@ export const homeProductsDetails = {
 
 export const productItems = [
   {
-    logo: "zizo-logo.png",
+    logo: "zizo-logo",
     thumbnail: "zizo-thumbnail.jpg",
     name: "Zizo",
     description:
@@ -18,7 +18,7 @@ export const productItems = [
     href: "/",
   },
   {
-    logo: "configo-logo.png",
+    logo: "configo-logo",
     thumbnail: "configo-thumbnail.jpg",
     name: "Configo",
     description:
@@ -26,7 +26,7 @@ export const productItems = [
     href: "/",
   },
   {
-    logo: "weddingo-logo.png",
+    logo: "weddingo-logo",
     thumbnail: "weddingo-thumbnail.jpg",
     name: "WeddinGo",
     description:
@@ -34,7 +34,7 @@ export const productItems = [
     href: "/",
   },
   {
-    logo: "neevo-logo.png",
+    logo: "neevo-logo",
     thumbnail: "neevo-thumbnail.jpg",
     name: "Neevo Design System",
     description:
