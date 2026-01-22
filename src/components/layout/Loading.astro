@@ -5,7 +5,7 @@ import ThemeImage from "@/components/ui/ThemeImage.astro";
 
 <section
   id="loading-screen"
-  class="bg-n-50 fixed z-999 flex inset-0 flex-col items-center justify-center overflow-hidden text-center transition-opacity duration-700"
+  class="bg-n-50 fixed inset-0 z-999 flex flex-col items-center justify-center overflow-hidden text-center transition-opacity duration-700"
 >
   <div class="relative flex h-full w-full items-center justify-center">
     <!-- Ball -->
@@ -25,11 +25,11 @@ import ThemeImage from "@/components/ui/ThemeImage.astro";
         alt="Pixolo"
       />
     </div>
+  </div>
 
-    <!-- Loader Number -->
-    <div class="absolute right-[12%] bottom-[4%]">
-      <p id="progress-label" class="text-n-950 text-right text-5xl font-bold">0%</p>
-    </div>
+  <!-- Loader Number -->
+  <div class="absolute right-[4%]] bottom-[4%]">
+    <p id="progress-label" class="text-n-950 text-right text-5xl font-bold">0%</p>
   </div>
 </section>
 <style>
