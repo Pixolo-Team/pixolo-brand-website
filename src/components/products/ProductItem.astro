@@ -1,17 +1,21 @@
 ---
+// STYLES //
+import ThemeImage from "@/components/ui/ThemeImage.astro";
+
 // COMPONENTS //
 import { Icon } from "astro-icon/components";
 import Image from "astro/components/Image.astro";
 
 interface Props {
   name: string;
-  logo: string;
+  darkLogo: string;
+  lightLogo: string;
   thumbnail: string;
   description: string;
   href: string;
 }
 
-const { name, logo, thumbnail, description, href = "" } = Astro.props as Props;
+const { name, darkLogo, lightLogo, thumbnail, description, href = "" } = Astro.props as Props;
 ---
 
 <!-- Product Item -->
@@ -22,8 +26,9 @@ const { name, logo, thumbnail, description, href = "" } = Astro.props as Props;
 >
   <!-- Logo Container -->
   <div class="flex gap-2.5 lg:w-2/5">
-    <Image
-      src={`/images/products/${logo}`}
+    <ThemeImage
+      light={`/images/products/${lightLogo}`}
+      dark={`/images/products/${darkLogo}`}
       alt={`${name} logo`}
       width={180}
       height={63}
@@ -58,7 +63,7 @@ const { name, logo, thumbnail, description, href = "" } = Astro.props as Props;
           class="border-n-950 flex size-12 shrink-0 items-center justify-center self-center rounded-full border from-blue-500 to-[#8B77F3] group-hover:border-none group-hover:bg-linear-to-r md:size-20"
           aria-label="View more information"
         >
-          <Icon name="external-link-icon" class="size-[18px] md:size-[30px]" />
+          <Icon name="external-link-icon" class="text-n-950 size-[18px] md:size-[30px]" />
         </div>
       )
     }

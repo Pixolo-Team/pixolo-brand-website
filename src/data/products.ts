@@ -10,7 +10,8 @@ export const homeProductsDetails = {
 
 export const productItems = [
   {
-    logo: "zizo-logo.png",
+    darkLogo: "zizo-logo.png",
+    lightLogo: "zizo-logo-light.png",
     thumbnail: "zizo-thumbnail.jpg",
     name: "Zizo",
     description:
@@ -18,21 +19,24 @@ export const productItems = [
     href: "https://www.zizoapp.in/football-tournaments",
   },
   {
-    logo: "configo-logo.png",
+    darkLogo: "configo-logo.png",
+    lightLogo: "configo-logo-light.png",
     thumbnail: "configo-thumbnail.jpg",
     name: "Configo",
     description:
       " A single control panel for all your DevOps needs. Instead of juggling servers across multiple platforms, Configo centralizes your databases, cloud servers, deployments, and access management in one clean, managed space.",
   },
   {
-    logo: "weddingo-logo.png",
+    darkLogo: "weddingo-logo.png",
+    lightLogo: "weddingo-logo-light.png",
     thumbnail: "weddingo-thumbnail.jpg",
     name: "WeddinGo",
     description:
       "Weddingo is a digital platform for modern weddings — invitations, event timelines, RSVP tracking, and photo galleries all in one place. It gives couples a celebrity-style experience without the traditional chaos.",
   },
   {
-    logo: "neevo-logo.png",
+    darkLogo: "neevo-logo.png",
+    lightLogo: "neevo-logo-light.png",
     thumbnail: "neevo-thumbnail.jpg",
     name: "Neevo Design System",
     description:
