@@ -69,12 +69,12 @@ const { subTitle } = Astro.props;
       class="flex flex-col items-center justify-center gap-2.5 md:flex-row md:gap-4 lg:flex-row lg:gap-5"
     >
       <!-- Rounded Button for Booking a Strategy Call -->
-      <a href={siteInfo.contact.phone[0].link}>
+      <a href={siteInfo.contact.phone[0].link} target="_blank">
         <RoundedButton buttonText="Book a Strategy Call" type="button" />
       </a>
 
       <!-- Rounded Button for Sending any requirements -->
-      <a href={`https://wa.me/${siteInfo.contact.phone[0].value}`}>
+      <a href={`https://wa.me/${siteInfo.contact.phone[0].value}`} target="_blank">
         <RoundedButton buttonText="Send Requirements" type="button" variant="secondary" />
       </a>
     </div>
