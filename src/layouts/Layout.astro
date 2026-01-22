@@ -9,21 +9,20 @@ import Meta from "@/components/layout/Meta.astro";
 import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
 import ContactForm from "@/components/forms/ContactForm.astro";
+import BottomCTA from "@/components/ui/BottomCTA.astro";
 
 // DATA //
 import { siteInfo } from "@/data/site-info";
-import BottomCTA from "@/components/ui/BottomCTA.astro";
 
 interface Props {
   meta: any;
-  showLoader: boolean;
 }
 
-const { meta = {}, showLoader = false } = Astro.props;
+const { meta = {} } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <!-- Metadata -->
     <Meta
@@ -34,7 +33,7 @@ const { meta = {}, showLoader = false } = Astro.props;
     />
   </head>
   <body>
-    <!-- Show Loader -->
+    <!-- Loading -->
     <Loading />
 
     <!-- Top menu -->
@@ -44,18 +43,18 @@ const { meta = {}, showLoader = false } = Astro.props;
 
     <!-- Background Star Video -->
     <video
-      class="fixed top-0 left-0 -z-10 h-full w-full bg-transparent object-cover"
+      class="fixed top-0 left-0 -z-1 hidden h-full w-full bg-transparent object-cover dark:block"
       src="/videos/stars.mp4"
       autoplay
       muted
       loop
       playsinline></video>
 
-    <div class="bg-n-50/70 fixed -z-5 h-full w-full"></div>
+    <div class="bg-n-50 fixed -z-5 h-full w-full"></div>
 
     <!-- Background Circle Gradient -->
     <div
-      class="fixed top-[30%] left-1/2 h-[885px] w-[885px] -translate-x-1/2 rounded-full"
+      class="fixed top-[30%] left-1/2 hidden h-[885px] w-[885px] -translate-x-1/2 rounded-full dark:block"
       style="background: linear-gradient(90deg, rgba(22, 125, 229, 0.36) 0%, rgba(95, 74, 200, 0.36) 92.31%); filter: blur(200px);"
     >
     </div>
@@ -69,12 +68,12 @@ const { meta = {}, showLoader = false } = Astro.props;
 
     <!-- Whatsapp button component -->
     <WhatsappButton
-      href={`https://wa.me/${siteInfo.contact.phone[0].value}`}
-      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-40"
+      href="https://wa.me/9768941186"
+      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-10"
     />
 
     <!-- Bottom CTA -->
-    <div class="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 md:bottom-10">
+    <div class="fixed bottom-5 left-1/2 z-40 w-full -translate-x-1/2 md:bottom-12">
       <BottomCTA />
     </div>
 
@@ -90,6 +89,18 @@ const { meta = {}, showLoader = false } = Astro.props;
     height: 100%;
   }
 </style>
+
+<script is:inline>
+  const loader = document.querySelector("#loading-screen");
+  const hasSeenLoader = sessionStorage.getItem("loaderShown");
+
+  if (hasSeenLoader) {
+    loader.style.display = "none";
+  } else {
+    loader.style.display = "flex";
+  }
+</script>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // Select all elements that should animate when visible

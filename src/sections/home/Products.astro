@@ -12,7 +12,7 @@ import { homeProductsDetails, productItems } from "@/data/products";
 <section class="flex flex-col items-center justify-center">
   <!-- Container -->
   <div
-    class="lg:32 container flex flex-col items-center justify-center gap-12 px-6 py-40 md:gap-16 md:px-10 lg:gap-20 lg:px-14"
+    class="lg:32 container flex flex-col items-center justify-center gap-12 px-6 py-16 md:gap-16 md:px-10 lg:gap-20 lg:px-14"
   >
     <!-- Header -->
     <div class="flex flex-col items-center justify-center gap-6 lg:gap-7">
@@ -62,7 +62,8 @@ import { homeProductsDetails, productItems } from "@/data/products";
         productItems.map((productItem) => (
           <ProductItem
             name={productItem.name}
-            logo={productItem.logo}
+            darkLogo={productItem.darkLogo}
+            lightLogo={productItem.lightLogo}
             thumbnail={productItem.thumbnail}
             description={productItem.description}
             href={productItem.href}

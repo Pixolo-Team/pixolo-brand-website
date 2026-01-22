@@ -3,36 +3,95 @@
 import CaseStudyCard from "@/components/casestudy/CaseStudyCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
+// CONSTANTS //
+import { URLS } from "@/infrastructure/constants/urls";
+
 // DATA //
-import { caseStudySectionDetails } from "@/data/case-studies";
+import { caseStudySectionDetails, caseStudies } from "@/data/case-studies/case-studies";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
 ---
 
-<section>
+<section id="case-studies-section">
   <div
-    class="container mx-auto flex flex-col gap-12 px-8 py-16 md:gap-14 md:px-0 md:py-16 lg:gap-16 lg:py-32"
+    class="container mx-auto flex flex-col gap-12 px-8 py-16 md:gap-14 md:px-0 md:py-16 lg:gap-16 lg:py-26"
   >
     {/* Header Section */}
     <div class="flex flex-col items-center gap-2.5 text-center md:gap-3.5 lg:gap-4">
       <!-- Tool Badge component -->
-      <ToolBadge icon="puzzle-icon" text={caseStudySectionDetails.badgeTitle} />
+      <div class="tool-badge">
+        <ToolBadge icon="puzzle-icon" text={caseStudySectionDetails.badgeTitle} />
+      </div>
 
       <!-- Title -->
-      <p class="text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-6xl">
+      <p
+        class="header-text text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-6xl"
+      >
         {caseStudySectionDetails.title}
       </p>
     </div>
 
-    {/* Case Studies card */}
-    <div class="grid grid-cols-1 gap-10 md:gap-16 md:px-16 lg:grid-cols-2 xl:grid-cols-3">
-      {
-        caseStudySectionDetails.caseStudyItems.map((caseStudyItem) => (
-          <CaseStudyCard
-            id={caseStudyItem.id}
-            title={caseStudyItem.title}
-            image={caseStudyItem.image}
-          />
-        ))
-      }
+    <div class="flex flex-col items-center gap-10">
+      {/* Case Studies card */}
+
+      <div
+        id="case-studies-cards-container"
+        class="grid grid-cols-1 gap-10 md:gap-16 md:px-16 lg:grid-cols-2 xl:grid-cols-3"
+      >
+        {
+          caseStudies.map((caseStudyItem, caseStudyIndex) => (
+            <div class="case-study-card-item hidden">
+              <CaseStudyCard
+                href={URLS.CASE_STUDIES.ITEM(
+                  caseStudyItem.id.toString(),
+                  caseStudyItem.pageTitle.replaceAll(" ", "-").toLowerCase(),
+                )}
+                id={caseStudyItem.id}
+                title={caseStudyItem.pageTitle}
+                image={caseStudyItem.cardImage || caseStudySectionDetails.defaultImage}
+              />
+            </div>
+          ))
+        }
+      </div>
+      <!-- Load More Button -->
+      <RoundedButton
+        id="load-more-btn"
+        buttonText="Load More Case Studies"
+        type="button"
+        variant="tertiary"
+      />
     </div>
   </div>
 </section>
+<script>
+  import { initLoadMore } from "@/scripts/load-more";
+  import { animateCaseStudiesSection } from "@/scripts/case-study/case-study";
+
+  animateCaseStudiesSection();
+
+  const CONFIG = {
+    containerId: "case-studies-cards-container",
+    loadMoreBtnId: "load-more-btn",
+    cardClass: "case-study-card-item",
+    initialVisible: {
+      desktop: 6,
+      tablet: 4,
+      mobile: 3,
+    },
+    incrementConfig: {
+      desktop: 6,
+      tablet: 2,
+      mobile: 3,
+    },
+  };
+
+  function setupCaseStudies() {
+    initLoadMore(CONFIG);
+  }
+
+  // Run on first page load
+  document.addEventListener("DOMContentLoaded", setupCaseStudies);
+
+  // Run again after Astro View Transitions navigation
+  document.addEventListener("astro:page-load", setupCaseStudies);
+</script>
