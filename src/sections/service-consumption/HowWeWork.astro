@@ -1,0 +1,58 @@
+---
+// COMPONENTS //
+import SolutionCard from "@/components/service-consumption/SolutionCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// DATA //
+import { howWeWorkSectionDetails } from "@/data/service-consumption/HowWeWork.ts";
+
+const { howWeWorkSectionSteps } = Astro.props;
+---
+
+<!-- How We Work Section -->
+<section id="how-we-work-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col gap-7 px-6 py-14 md:gap-10 md:py-22 lg:gap-14 lg:px-8 lg:py-24"
+  >
+    <!-- Header -->
+    <div class="flex w-full flex-col items-center gap-4 md:gap-5">
+      <!-- Tool badge component -->
+      <div class="tool-badge">
+        <ToolBadge icon="service-icon" text={howWeWorkSectionDetails.badgeText} />
+      </div>
+
+      <!-- Header text -->
+      <p
+        class="header-text text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] opacity-0 md:text-4xl lg:text-5xl"
+      >
+        {howWeWorkSectionDetails.headerText}
+      </p>
+    </div>
+
+    <!-- Process Wrap -->
+    <div
+      class="solution-cards flex w-full flex-col gap-3.5 md:gap-5 lg:grid lg:grid-cols-2 lg:gap-8 xl:grid-cols-3"
+    >
+      <!-- Solution Cards -->
+      {
+        howWeWorkSectionSteps.map((howWeWorkSectionStep: any, howWeWorkSectionIndex: any) => (
+          <SolutionCard
+            number={String(howWeWorkSectionIndex + 1).padStart(2, "0")}
+            title={
+              howWeWorkSectionStep.title
+                ? howWeWorkSectionStep.title
+                : howWeWorkSectionStep.description
+            }
+            description={howWeWorkSectionStep.title ? howWeWorkSectionStep.description : ""}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+<script>
+  import { animateHowWeWorkSection } from "@/scripts/service-consumption/how-we-work.ts";
+
+  animateHowWeWorkSection();
+</script>

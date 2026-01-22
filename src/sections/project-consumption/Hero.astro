@@ -1,0 +1,79 @@
+---
+// COMPONENTS //
+import ThemeImage from "@/components/ui/ThemeImage.astro";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import { Image } from "astro:assets";
+
+// SVG's //
+import Ball from "@/assets/3d-ball.svg";
+
+// DATA //
+import { projectConsumptionHero } from "@/data/portfolio/project-consumption.ts";
+---
+
+<!-- Project Consumption Hero Section -->
+<section>
+  <!-- Container -->
+  <div
+    id="hero-wrapper"
+    class="relative container mx-auto flex flex-col items-center gap-14 px-6 pt-24 pb-18 md:gap-16 md:pt-40 md:pb-28 lg:gap-20 lg:pb-16 xl:pt-52 2xl:pt-64"
+  >
+    <!-- 3D Ball -->
+    <Image
+      id="big-marble"
+      src={Ball}
+      alt="Big Marble"
+      class="absolute top-[278px] left-[65px] z-[-1] h-9 w-9 md:top-[400px] md:left-[200px] md:h-16 md:w-16 lg:h-20 lg:w-20 xl:top-[330px] xl:left-[120px]"
+    />
+
+    <Image
+      id="small-marble"
+      src={Ball}
+      alt="Small Marble"
+      class="absolute top-[145px] left-[252.47px] z-[-1] h-5 w-5 rotate-[-22.29deg] md:top-[450px] md:left-[780px] md:h-11 md:w-12 lg:h-11 lg:w-12 xl:top-[300px] xl:left-[1200px]"
+    />
+
+    <!-- Header -->
+    <div class="flex flex-col items-center gap-8 text-center md:gap-10 lg:gap-11">
+      <div class="flex items-center gap-4 md:gap-5 lg:gap-8">
+        <!-- Logo -->
+        <ThemeImage
+          light={projectConsumptionHero.logo}
+          dark={projectConsumptionHero.logo}
+          alt={projectConsumptionHero.title}
+          class="h-9 w-9 md:h-10 md:w-10 lg:h-12 lg:w-12"
+        />
+
+        <!-- Title -->
+        <p class="text-2xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl">
+          {projectConsumptionHero.title}
+        </p>
+      </div>
+
+      <!-- Description -->
+      <p class="text-3xl leading-tight font-medium tracking-normal md:text-5xl lg:text-6xl">
+        {projectConsumptionHero.description}
+      </p>
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex gap-3.5">
+      <!-- Visit Website Button -->
+      <a href={"window.open('/404')"}>
+        <RoundedButton buttonText={"Visit Website"} type="button" />
+      </a>
+
+      <!-- Show Project Button -->
+      <a href={"window.open('/404')"}>
+        <RoundedButton buttonText={"Show Project"} type="button" variant="secondary" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animateMarble } from "@/scripts/hero";
+
+  animateMarble("big-marble", "hero-wrapper");
+  animateMarble("small-marble", "hero-wrapper");
+</script>

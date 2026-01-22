@@ -1,0 +1,113 @@
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+
+// DATA //
+import { pageNotFoundDetails } from "@/data/page-error";
+---
+
+<Layout>
+  <section>
+    <div
+      id="hero-wrapper"
+      class="container mx-auto flex flex-col items-center gap-14 px-6 pt-40 pb-14 text-center md:gap-24 md:px-12 lg:gap-14 lg:pt-52 xl:pt-60"
+    >
+      <!-- Larger Astronaut image -->
+      <Image
+        id="large-astronaut"
+        src={pageNotFoundDetails.image}
+        alt={`Larger Astronaut`}
+        width={128}
+        height={140}
+        class="absolute top-[50%] w-12 md:left-[10%] md:w-28 lg:left-[20%]"
+      />
+
+      <!-- Smaller Astronaut image -->
+      <Image
+        id="small-astronaut"
+        src={pageNotFoundDetails.image}
+        alt={"Smaller Astronaut"}
+        width={40}
+        height={44}
+        class="absolute top-[70%] w-6 md:top-[65%] md:right-[20%] md:w-10"
+        style="animation-duration: 4s"
+      />
+
+      <div class="relative flex items-center justify-center">
+        <div
+          class="absolute top-[-45%] left-[-15%] z-20 -mt-[10px] -rotate-18 md:top-[-20%] md:left-[-10%]"
+        >
+          <ToolBadge icon={pageNotFoundDetails.badgeIcon} text={pageNotFoundDetails.badgeTitle} />
+        </div>
+
+        <!-- Not Found 404 image -->
+        <div class="floating w-[270px] md:w-[576px] lg:w-[775px]">
+          <Image
+            src={pageNotFoundDetails.mainImage}
+            alt={`404`}
+            width={775}
+            height={295}
+            class="h-full w-full"
+          />
+        </div>
+      </div>
+      <!-- Text -->
+      <div class="flex flex-col items-center justify-center gap-7 lg:w-[80%] lg:gap-6 xl:w-[65%]">
+        <h2 class="text-n-950 text-2xl leading-tight font-semibold md:text-3xl lg:text-4xl">
+          "{pageNotFoundDetails.title}"
+        </h2>
+
+        <p class="text-n-700 text-sm leading-tight font-normal md:text-2xl">
+          {pageNotFoundDetails.description}
+        </p>
+      </div>
+
+      <!--  Mobile Cta -->
+      <div class="block md:hidden">
+        <RoundedButton
+          type="button"
+          variant="default"
+          leftIcon="rocket"
+          buttonText={"Teleport Home"}
+        />
+      </div>
+
+      <!-- Desktop Cta -->
+      <div class="hidden md:block">
+        <RoundedButton
+          type="button"
+          variant="default"
+          leftIcon="rocket"
+          buttonText={"Abort Mission & Teleport Home"}
+        />
+      </div>
+    </div>
+  </section>
+  <style>
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    .floating {
+      animation: float 4s ease-in-out infinite;
+    }
+  </style>
+  <script>
+    import { animateMarble } from "@/scripts/hero";
+
+    animateMarble("large-astronaut", "hero-wrapper");
+    animateMarble("small-astronaut", "hero-wrapper");
+  </script>
+</Layout>

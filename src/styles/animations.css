@@ -1,0 +1,129 @@
+/* ===== Animation Classes ===== */
+
+/* Fade in Right animation */
+.anim-fade-in-right {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.8s ease-in-out;
+}
+
+/* Fade in Up animation */
+.anim-fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-in-out;
+}
+
+/* Fade in Up quick animation */
+.anim-fade-up-quick {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+/* Fade Up Slow (Tailwind-like class) */
+.anim-fade-up-slow {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-out;
+}
+
+.anim-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Float animation for decorative elements */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.anim-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Floating icon used in Hero (tag icon) */
+.floating-icon {
+  animation: float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Word animation containers used in Hero title */
+.word-container {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(15%);
+  transition:
+    opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-delay: 0ms; /* JS sets per-word delay */
+}
+
+/* Class added by JS to reveal word containers */
+.word-container.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Copy button color transition (used on contact cards) */
+[data-copy-btn].active {
+  color: var(--blue-500);
+}
+
+[data-copy-btn] {
+  transition: color 0.3s ease;
+}
+/* IMPACT SECTION HEADING */
+.impact-heading {
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards;
+}
+
+/* IMPACT COMPONENT STATVALUE */
+.impact-statValue {
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards;
+  animation-delay: var(--delay);
+}
+
+/* IMPACT COMPONENT TITLE */
+.impact-title {
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards;
+  animation-delay: calc(var(--delay) + 0.5s);
+}
+
+/* IMPACT COMPONENT LINES  */
+.impact-line-right,
+.impact-line-bottom {
+  opacity: 0;
+  transform: translateX(12px);
+  animation: lineIn 0.6s ease-out forwards;
+}
+.impact-line-right {
+  animation-delay: calc(var(--delay) + 0.8s);
+}
+
+.impact-line-bottom {
+  animation-delay: calc(var(--delay) + 1s);
+}
+
+/* OPEN SECTIONS TITLE */
+/* .open-positions-heading {
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out forwards;
+  animation-delay: 0.s; 
+}
+
+.open-positions-card {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+  animation-delay: var(--delay); 
+  animation-play-state: paused;
+} */
