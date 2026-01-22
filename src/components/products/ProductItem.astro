@@ -6,13 +6,14 @@ import ThemeImage from "../ui/ThemeImage.astro";
 
 interface Props {
   name: string;
-  logo: string;
+  darkLogo: string;
+  lightLogo: string;
   thumbnail: string;
   description: string;
   href: string;
 }
 
-const { name, logo, thumbnail, description, href } = Astro.props as Props;
+const { name, darkLogo, lightLogo, thumbnail, description, href } = Astro.props as Props;
 ---
 
 <!-- Product Item -->
@@ -21,16 +22,9 @@ const { name, logo, thumbnail, description, href } = Astro.props as Props;
 >
   <!-- Logo Container -->
   <div class="flex gap-2.5 lg:w-2/5">
-    <!-- <Image
-      src={`/images/products/${logo}`}
-      alt={`${name} logo`}
-      width={180}
-      height={63}
-      class="object-contain md:h-[88px] md:w-[250px]"
-    /> -->
     <ThemeImage
-      light={`/images/products/${logo}-light.png`}
-      dark={`/images/products/${logo}.png`}
+      light={`/images/products/${lightLogo}`}
+      dark={`/images/products/${darkLogo}`}
       alt={`${name} logo`}
       width={180}
       height={63}
