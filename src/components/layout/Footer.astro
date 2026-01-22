@@ -10,9 +10,9 @@ import { footerSectionDetails } from "@/data/footer";
 ---
 
 <!-- Footer section -->
-<footer>
+<footer id="footer">
   <!-- Container -->
-  <div class="container mx-auto flex flex-col px-6 pt-24 pb-8 md:pt-32 md:pb-9 lg:pt-36 lg:pb-10">
+  <div class="container mx-auto flex flex-col px-6 pt-24 pb-24 md:pt-32 md:pb-5 lg:pt-36">
     <!-- Header Section :Logo + Tagline  -->
     <div
       class="flex w-full flex-col items-start gap-4 md:w-[75%] md:items-start md:gap-5 lg:w-[68%] lg:gap-6"
@@ -65,7 +65,7 @@ import { footerSectionDetails } from "@/data/footer";
           }
         </div>
         <!-- Social media wrapper -->
-        <div class="flex gap-4 pb-12 md:gap-6 md:pb-14 lg:gap-7 lg:pb-0">
+        <div class="flex gap-4 md:gap-6 lg:gap-7">
           {
             footerSectionDetails.socialLinks.map((socialItem) => (
               // Link to social media
@@ -84,7 +84,7 @@ import { footerSectionDetails } from "@/data/footer";
         </div>
       </div>
       <!-- Copyright wrapper -->
-      <div class="flex items-center justify-center gap-1 md:gap-1.5">
+      <div class="flex items-center justify-center gap-1 md:gap-1.5 md:pt-18 lg:pt-14">
         <!-- Copyright icon -->
         <Icon name="copyright" class="h-4 w-4 self-center" />
         <!-- Current year -->
@@ -113,7 +113,7 @@ import { footerSectionDetails } from "@/data/footer";
   }
 </style>
 <script>
-  import { animateFooter, hideStickyWhatsapp } from "../../scripts/footer.ts";
+  import { animateFooter, hideStickyWhatsapp } from "@/scripts/footer.ts";
 
   animateFooter();
   hideStickyWhatsapp();
