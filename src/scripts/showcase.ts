@@ -1,4 +1,4 @@
-/** OTHERS */
+// OTHERS //
 import EmblaCarousel from "embla-carousel";
 import { animate, inView, stagger } from "motion";
 
