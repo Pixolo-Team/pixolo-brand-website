@@ -1,3 +1,4 @@
+/** Load more config */
 export interface LoadMoreConfig {
   containerId: string;
   loadMoreBtnId: string;
@@ -33,7 +34,9 @@ export function initLoadMore(config: LoadMoreConfig) {
   const totalCards = cards.length;
 
   let visibleCount = 0;
+  let lastWidth = window.innerWidth;
 
+  /** Set initial visible count */
   const setInitialVisibleCount = () => {
     const state = getDeviceState();
     visibleCount = config.initialVisible[state];
@@ -53,20 +56,28 @@ export function initLoadMore(config: LoadMoreConfig) {
     }
   };
 
-  // Set correctly on load
+  /* Set correctly on load */
   setInitialVisibleCount();
   updateVisibility();
 
-  // Update on "Load More" click
+  /* Update on "Load More" click */
   loadMoreBtn.addEventListener("click", () => {
     const state = getDeviceState();
     visibleCount += config.incrementConfig[state];
     updateVisibility();
   });
 
-  // Handle resize
+  /** Recalculate layout when screen is resized */
   window.addEventListener("resize", () => {
-    setInitialVisibleCount();
-    updateVisibility();
+    const currentWidth = window.innerWidth;
+
+    // Only update if width actually changed
+    if (currentWidth !== lastWidth) {
+      lastWidth = currentWidth;
+
+      // Reset visible count for new device size
+      setInitialVisibleCount();
+      updateVisibility();
+    }
   });
 }

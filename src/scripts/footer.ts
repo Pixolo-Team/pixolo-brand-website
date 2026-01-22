@@ -27,7 +27,7 @@ export const animateFooter = () => {
 
 /** Function to remove Whatsapp sticky logo from footer  */
 export function hideStickyWhatsapp() {
-  const footer = document.querySelector("footer");
+  const footer = document.getElementById("footer");
   const whatsappBtn = document.getElementById("sticky-whatsapp");
 
   if (!footer || !whatsappBtn) return;
