@@ -14,12 +14,15 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
   <div
     class="container mx-auto flex w-full flex-col items-center justify-center gap-10 px-6 py-20 md:gap-12 md:py-24 lg:gap-14 lg:py-28"
   >
+    <!-- Header -->
     <div class="relative flex w-full flex-col gap-20 md:gap-28 lg:gap-36">
       <div class="flex flex-col items-center justify-center gap-4 md:gap-5 lg:gap-6">
+        <!-- ToolBadge component -->
         <div class="tool-badge flex justify-center">
           <ToolBadge icon={badgeIcon} text={badgeTitle} />
         </div>
 
+        <!-- Title -->
         <p
           id="header-text"
           class="text-center text-2xl leading-tight font-medium md:text-4xl lg:text-6xl"
@@ -28,14 +31,16 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
         </p>
       </div>
 
+      <!-- Active Testimonial Text -->
       <div
-        id="testimonial-text-wrapper"
+        id="testimonial-text"
         class="font-regular text-n-950 relative mx-auto min-h-[150px] w-full text-base leading-normal transition-opacity duration-300 md:min-h-[200px] md:w-[72%] md:text-center md:text-xl lg:text-2xl xl:w-[55%]"
       >
         <p id="testimonial-content">
           {testimonialItems[0].testimonial}
         </p>
 
+        <!-- Inverted Commas -->
         <Icon
           name="commas"
           class="absolute -top-[45px] left-1 size-10 sm:-top-[6%] sm:-left-[16%] md:-top-[10%] md:-left-[12%] md:size-12 lg:size-16"
@@ -43,25 +48,28 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
       </div>
     </div>
 
+    <!-- Clients Profiles -->
     <div
       id="testimonial-clients"
       class="flex w-full justify-end gap-3 overflow-hidden md:gap-5 lg:gap-6 lg:pr-6"
     >
+      <!-- Other Clients -->
       <div
-        id="clients-scroll-container"
         class="scrollbar-hide flex items-center justify-start gap-2.5 overflow-x-auto sm:justify-end md:gap-3.5 lg:gap-4"
       >
         {
-          testimonialItems.map((testimonialItem, index) => (
+          testimonialItems.map((testimonialItem, testimonialItemIndex) => (
             <div
-              class={`testimonial-item group flex cursor-pointer items-center gap-2.5 rounded-full px-1 py-1 pl-1 transition-all duration-300 ${index === 0 ? "active" : ""}`}
-              data-index={index}
+              class="testimonial-item group flex cursor-pointer items-center gap-2.5 rounded-full px-1 py-1 pl-1 transition-all duration-300 group-[.active]:pr-5 md:group-[.active]:pr-6 lg:group-[.active]:py-2 lg:group-[.active]:pr-8 lg:group-[.active]:pl-2"
               data-quote={testimonialItem.testimonial}
+              data-name={testimonialItem.clientName}
+              data-company={testimonialItem.brandName}
               role="button"
-              aria-label={`View testimonial from ${testimonialItem.clientName}`}
+              aria-label={`View testimonial from ${testimonialItem.clientName} at ${testimonialItem.brandName}`}
             >
               <div class="flex size-9 items-center overflow-hidden rounded-full transition-shadow duration-600 group-hover:shadow-[0_0_21.7px_0_#2B7FFF] group-[.active]:shadow-none md:size-14 lg:size-16">
                 <Image
+                  id="testimonial-image"
                   src={testimonialItem.clientImage}
                   alt={testimonialItem.clientName}
                   width={64}
@@ -86,23 +94,22 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
     </div>
   </div>
 </section>
-
 <style>
-  /* Base styles for the item */
   .testimonial-item {
     transition:
       background-color 0.6s ease,
-      padding-right 0.6s ease,
-      flex-grow 0.6s ease;
+      transform 0.6s ease,
+      padding-right 0.6s ease;
   }
 
-  /* ACTIVE STATE */
+  /* ACTIVE */
   .testimonial-item.active {
     background-color: var(--color-n-950);
+    transform: scale(1);
     padding-right: 1.25rem; /* pr-5 */
   }
 
-  /* Responsive Padding */
+  /* Responsive */
   @media (min-width: 768px) {
     .testimonial-item.active {
       padding-right: 1.5rem; /* md:pr-6 */
@@ -115,9 +122,7 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
     display: none;
     overflow: hidden;
     white-space: nowrap;
-    transition:
-      opacity 0.4s ease,
-      max-width 0.6s ease;
+    transition: all 0.6s ease;
   }
 
   /* Show info only when active */
@@ -127,94 +132,9 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
     display: block;
   }
 </style>
-
 <script>
-  function initCarousel() {
-    const items = document.querySelectorAll(".testimonial-item");
-    const contentText = document.getElementById("testimonial-content");
-    const textWrapper = document.getElementById("testimonial-text-wrapper");
-    const scrollContainer = document.getElementById("clients-scroll-container");
+  import { animateTestimonials, initTestimonials } from "@/scripts/testimonial";
 
-    // STARTUP VARIABLES
-    let currentIndex = 0;
-    let intervalId;
-    const intervalTime = 4000; // 4 seconds per slide
-
-    // 1. MAIN FUNCTION: Sets the active slide and handles logic
-    const setActiveTestimonial = (index) => {
-      currentIndex = index; // Update global index
-
-      // Reset all items
-      items.forEach((item) => item.classList.remove("active"));
-      
-      // Set new active item
-      const activeItem = items[index];
-      if (!activeItem) return;
-      
-      activeItem.classList.add("active");
-
-      // Update Quote Text with Fade Effect
-      if (textWrapper && contentText) {
-        textWrapper.style.opacity = "0"; // Fade out
-        setTimeout(() => {
-          contentText.textContent = activeItem.getAttribute("data-quote");
-          textWrapper.style.opacity = "1"; // Fade in
-        }, 300);
-      }
-
-      // SCROLL LOGIC (The "No-Jump" Fix)
-      // We calculate exactly where the item is inside the scroll bar
-      if (scrollContainer) {
-        const containerRect = scrollContainer.getBoundingClientRect();
-        const itemRect = activeItem.getBoundingClientRect();
-        const currentScrollLeft = scrollContainer.scrollLeft;
-        
-        // Distance of item from the left edge of the visible container
-        const itemOffsetLeft = itemRect.left - containerRect.left; 
-
-        // Center calculation: Current Scroll + Item Offset - Half Container + Half Item
-        const scrollTo = currentScrollLeft + itemOffsetLeft - (scrollContainer.clientWidth / 2) + (activeItem.clientWidth / 2);
-
-        scrollContainer.scrollTo({
-          left: scrollTo,
-          behavior: "smooth"
-        });
-      }
-    };
-
-    // 2. AUTO PLAY LOGIC
-    const nextSlide = () => {
-      const nextIndex = (currentIndex + 1) % items.length; // Loop back to 0 at end
-      setActiveTestimonial(nextIndex);
-    };
-
-    const startAutoPlay = () => {
-      stopAutoPlay(); // Safety clear
-      intervalId = setInterval(nextSlide, intervalTime);
-    };
-
-    const stopAutoPlay = () => {
-      if (intervalId) clearInterval(intervalId);
-    };
-
-    // 3. EVENT LISTENERS (Clicks)
-    items.forEach((item, index) => {
-      item.addEventListener("click", () => {
-        stopAutoPlay(); // Pause timer
-        setActiveTestimonial(index);
-        startAutoPlay(); // Restart timer
-      });
-    });
-
-    // 4. INITIALIZATION
-    // Ensure the first item is active on load
-    if (items.length > 0) {
-      items[0].classList.add("active");
-      startAutoPlay();
-    }
-  }
-
-  // Run on page load (compatible with View Transitions)
-  document.addEventListener("astro:page-load", initCarousel);
-  initCarousel();
+  initTestimonials();
+  animateTestimonials();
 </script>
