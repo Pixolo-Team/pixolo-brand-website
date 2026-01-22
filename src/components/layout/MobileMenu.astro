@@ -31,7 +31,7 @@ const currentPath = Astro.url.pathname;
       <!-- Close button -->
       <button
         id="mobile-menu-close"
-        class="bg-n-100 flex size-10 items-center justify-center rounded-full"
+        class="bg-n-100 flex size-10 items-center justify-center rounded-full cursor-pointer"
         aria-label="Close mobile menu"
         type="button"
       >
@@ -173,15 +173,17 @@ const currentPath = Astro.url.pathname;
     animation: circular-float 50s linear infinite;
   }
 </style>
+<style is:global>
+  #sticky-whatsapp {
+    z-index: 10;
+  }
+</style>
 <script>
-  import { menuOpenCloseAnimation, animateMenu, hideStickyWhatsapp } from "@/scripts/menu";
+  import { menuOpenCloseAnimation, animateMenu } from "@/scripts/menu";
 
   /** Menu open close animation  */
   menuOpenCloseAnimation();
 
   /** Menu background logo animation  */
   animateMenu();
-
-  /** Function to remove whatsapp sticky logo  */
-  hideStickyWhatsapp();
 </script>

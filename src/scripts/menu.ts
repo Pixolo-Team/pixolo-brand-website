@@ -1,5 +1,3 @@
-import { animate, inView } from "motion";
-
 /** Function for open close menu with animation */
 export const menuOpenCloseAnimation = () => {
   const openBtn = document.getElementById("open-mobile-menu-button");
@@ -97,23 +95,3 @@ export const animateMenu = () => {
   // Move every 4 seconds
   setInterval(randomFloat, 4000);
 };
-
-/** Function to remove whatsapp sticky logo  */
-export function hideStickyWhatsapp() {
-  const whatsappBtn = document.getElementById("sticky-whatsapp");
-  
-  if (!whatsappBtn) return;
-
-  // Detects if menu is hidden or not
-  inView("#mobile-menu", () => {
-    // Hide whatsapp logo if it is not in view
-    animate(whatsappBtn, { opacity: 0, transform: "translateY(20px)" }, { duration: 0.3 });
-    whatsappBtn.style.pointerEvents = "none";
-
-    // Show whatsapp logo if it is in view
-    return () => {
-      animate(whatsappBtn, { opacity: 1, transform: "translateY(0)" }, { duration: 0.3 });
-      whatsappBtn.style.pointerEvents = "auto";
-    };
-  });
-}
