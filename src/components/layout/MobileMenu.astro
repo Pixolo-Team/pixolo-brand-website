@@ -23,7 +23,7 @@ const currentPath = Astro.url.pathname;
   role="navigation"
   aria-label="Mobile navigation menu"
 >
-  <div class="container mx-auto flex h-full flex-col justify-between px-6 py-6">
+  <div class="container mx-auto flex h-full w-full flex-col justify-between px-6 py-6">
     <!-- Logo + Close Button -->
     <div class="z-10 flex items-center justify-between">
       <a href="/">
@@ -33,7 +33,7 @@ const currentPath = Astro.url.pathname;
       <!-- Close button -->
       <button
         id="mobile-menu-close"
-        class="bg-n-100 flex size-10 items-center justify-center rounded-full"
+        class="bg-n-100 flex size-10 cursor-pointer items-center justify-center rounded-full"
         aria-label="Close mobile menu"
         type="button"
       >
@@ -113,7 +113,7 @@ const currentPath = Astro.url.pathname;
 
   /* When menu becomes visible */
   #mobile-menu.menu-open::before {
-    transform: scale(26);
+    transform: scale(30);
   }
   .nav-link.hidden-pos {
     opacity: 0;
