@@ -43,7 +43,11 @@ const currentPath = Astro.url.pathname;
     <div class="z-10 flex flex-1 flex-col gap-6 pt-28 leading-tight">
       {
         menuItems.map((menuItems) => {
-          const isActive = currentPath === menuItems.url;
+          const isActive =
+            menuItems.url === "/"
+              ? currentPath === menuItems.url
+              : currentPath.startsWith(menuItems.url);
+
           return (
             <a
               href={menuItems.url}
