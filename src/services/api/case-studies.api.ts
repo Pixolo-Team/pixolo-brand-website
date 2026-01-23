@@ -22,7 +22,6 @@ export const getCaseStudiesRequest = async () => {
 
     // Make the API request
     const response = await axios.request(config);
-    console.log(response.data);
 
     // Return the response data
     return response.data;
