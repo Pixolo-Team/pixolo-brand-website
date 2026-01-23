@@ -8,7 +8,6 @@ import Textarea from "./Textarea.astro";
 
 // DATA //
 import { dropdownOptionData } from "@/data/dropdown";
-
 ---
 
 <!-- Backdrop with Contact form modal -->
@@ -24,9 +23,7 @@ import { dropdownOptionData } from "@/data/dropdown";
     class="bg-n-50 border-n-400 z-20 flex w-full flex-col overflow-hidden rounded-3xl border md:w-[680px] lg:w-[800px]"
   >
     <!-- Title Bar -->
-    <div
-      class="bg-n-400 flex w-full gap-1.5 px-6 py-3 md:gap-2 md:px-7 lg:px-11 lg:py-4"
-    >
+    <div class="bg-n-400 flex w-full gap-1.5 px-6 py-3 md:gap-2 md:px-7 lg:px-11 lg:py-4">
       <!-- 3 Buttons (macOS style window controls) -->
       <div
         id="close-btn"
@@ -47,7 +44,6 @@ import { dropdownOptionData } from "@/data/dropdown";
       method="POST"
       novalidate
       class="flex flex-col items-start gap-5 p-5 md:px-7 md:py-7"
-
     >
       <!-- Input Wrapper -->
       <div class="flex w-full flex-col gap-5 md:gap-6">
@@ -63,16 +59,12 @@ import { dropdownOptionData } from "@/data/dropdown";
           />
 
           <!-- For tablets and desktops -->
-          <div
-            class="absolute bottom-1.5 left-9 md:bottom-3 md:flex md:items-center md:gap-4"
-          >
+          <div class="absolute bottom-1.5 left-9 md:bottom-3 md:flex md:items-center md:gap-4">
             <!-- Chip component -->
             <Chip iconName="pixolo-logo" text="Pixolo Technologies" />
 
             <!-- Email address display -->
-            <p class="hidden font-normal md:flex md:text-sm">
-              (business@pixolotechnologies.com)
-            </p>
+            <p class="hidden font-normal md:flex md:text-sm">(business@pixolotechnologies.com)</p>
           </div>
         </div>
 
@@ -125,9 +117,7 @@ import { dropdownOptionData } from "@/data/dropdown";
     const closeBtn = document.getElementById("close-btn");
 
     if (!backdrop || !closeBtn) {
-      console.warn(
-        "ContactForm: Required elements not found. Modal functionality may not work."
-      );
+      console.warn("ContactForm: Required elements not found. Modal functionality may not work.");
       return;
     }
 
@@ -179,7 +169,7 @@ import { dropdownOptionData } from "@/data/dropdown";
     requiredBox.classList.add("hidden");
     invalidBox.classList.add("hidden");
 
-     // Check for an empty value
+    // Check for an empty value
     if (value === "") {
       requiredBox.classList.remove("hidden");
       return false;
@@ -239,7 +229,7 @@ import { dropdownOptionData } from "@/data/dropdown";
 
       let allValid = true;
 
-     // Run all validator functions in the validators array
+      // Run all validator functions in the validators array
       validators.forEach((fn) => {
         if (!fn()) allValid = false;
       });
@@ -251,8 +241,3 @@ import { dropdownOptionData } from "@/data/dropdown";
     });
   });
 </script>
-
-
-
-
-

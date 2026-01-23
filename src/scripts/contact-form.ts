@@ -1,11 +1,238 @@
 // OTHERS //
 import { animate } from "motion";
 
-/** Function open and close contact form modal */
+// CONSTANTS //
+const FORM_ERRORS = {
+  email: {
+    required: "This field is required.",
+    invalidFormat: "Please enter a valid email address.",
+  },
+  phone: {
+    required: "This field is required.",
+    invalidFormat: "Please enter a valid 10-digit phone number.",
+  },
+};
+
+// HELPER FUNCTIONS //
+
+/** * Helper: Create error element with icon and message
+ * Matches the visual style of the provided image (Red text + SVG)
+ */
+const createErrorElement = (message: string): HTMLElement => {
+  const errorDiv = document.createElement("div");
+  // Matching the gap and alignment from InputField.astro logic
+  errorDiv.className = "flex items-center gap-1.5 md:gap-2";
+  errorDiv.innerHTML = `
+    <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="8" x2="12" y2="12"></line>
+      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    </svg>
+    <p class="text-xs leading-[17px] font-normal text-red-600 md:text-sm lg:text-base">${message}</p>
+  `;
+  return errorDiv;
+};
+
+/** * Helper: Get or create error messages container for input
+ * Navigates the specific DOM structure of InputField.astro
+ */
+const getOrCreateErrorContainer = (input: HTMLInputElement): HTMLElement | null => {
+  // InputField.astro structure: Outer Div > Border Div > Input
+  // We need to find the Outer Div (Grandparent of input, or specific class match)
+  const wrapper = input.closest(".flex.w-full.flex-col");
+
+  if (!wrapper) return null;
+
+  let errorContainer = wrapper.querySelector(".error-messages-container") as HTMLElement | null;
+
+  // If container doesn't exist, create it and append to the wrapper
+  // This places it below the border-bottom div, matching the screenshot
+  if (!errorContainer) {
+    errorContainer = document.createElement("div");
+    // Matches the gap-2.5 md:gap-3 from InputField.astro logic
+    errorContainer.className = "error-messages-container flex flex-col gap-2.5 md:gap-3 mt-2";
+    wrapper.appendChild(errorContainer);
+  }
+  return errorContainer;
+};
+
+/** * Helper: Validate input value against rules
+ */
+const validateInput = (input: HTMLInputElement): boolean => {
+  const value = input.value.trim();
+  const errorContainer = getOrCreateErrorContainer(input);
+
+  if (!errorContainer) return true;
+
+  // Clear previous state
+  errorContainer.innerHTML = "";
+
+  const errors: string[] = [];
+
+  // 1. Check Required (Only for emailFrom and phoneNo)
+  if (!value) {
+    if (input.id === "phoneNo") errors.push(FORM_ERRORS.phone.required);
+    if (input.id === "emailFrom") errors.push(FORM_ERRORS.email.required);
+  }
+
+  // 2. Check Format (only if value exists)
+  if (value) {
+    // Email Validation
+    if (input.id === "emailFrom") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) {
+        errors.push(FORM_ERRORS.email.invalidFormat);
+      }
+    }
+
+    // Phone Validation
+    if (input.id === "phoneNo") {
+      // Strictly 10 digits
+      const phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(value)) {
+        errors.push(FORM_ERRORS.phone.invalidFormat);
+      }
+    }
+  }
+
+  // 3. Render errors if any
+  if (errors.length > 0) {
+    errors.forEach((error) => {
+      errorContainer.appendChild(createErrorElement(error));
+    });
+
+    // Attach listener to clear error on typing
+    // { once: true } ensures it cleans itself up immediately
+    input.addEventListener(
+      "input",
+      () => {
+        errorContainer.innerHTML = "";
+      },
+      { once: true },
+    );
+
+    return false;
+  }
+
+  return true;
+};
+
+/** * Helper: Create and show Success/Error modal
+ */
+const createAndShowModal = (title: string, message: string, isSuccess: boolean): void => {
+  // Create backdrop
+  const backdrop = document.createElement("div");
+  backdrop.className =
+    "fixed inset-0 z-[60] flex h-screen w-full items-center justify-center bg-black/50 px-6 py-24 opacity-0 transition-opacity duration-300";
+  backdrop.style.visibility = "hidden";
+
+  // Create modal container
+  const modalContainer = document.createElement("div");
+  modalContainer.className =
+    "relative z-20 w-full max-w-[596px] flex flex-col items-center rounded-[32px] bg-[rgb(14,23,43)] px-[34px] py-8 gap-[10px]";
+
+  // Success State (Animation)
+  if (isSuccess) {
+    const animationContainer = document.createElement("div");
+    animationContainer.className = "mb-6 flex justify-center";
+
+    const dotLottie = document.createElement("dotlottie-wc");
+    dotLottie.setAttribute(
+      "src",
+      "https://lottie.host/96cc3437-7213-4529-b27e-2aa9f4dee926/JouyZx5mvC.lottie",
+    );
+    dotLottie.setAttribute("style", "width: 96px; height: 96px;");
+    dotLottie.setAttribute("autoplay", "");
+    dotLottie.setAttribute("loop", "");
+
+    animationContainer.appendChild(dotLottie);
+    modalContainer.appendChild(animationContainer);
+  } else {
+    // Error State (Icon)
+    const iconDiv = document.createElement("div");
+    iconDiv.className =
+      "mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-500/20";
+
+    const icon = document.createElement("svg");
+    icon.className = "h-8 w-8 text-red-500";
+    icon.setAttribute("fill", "none");
+    icon.setAttribute("stroke", "currentColor");
+    icon.setAttribute("viewBox", "0 0 24 24");
+    icon.setAttribute("stroke-width", "2");
+    icon.innerHTML = `<circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line>`;
+    iconDiv.appendChild(icon);
+    modalContainer.appendChild(iconDiv);
+  }
+
+  // Content Wrapper
+  const contentWrapper = document.createElement("div");
+  contentWrapper.className = "flex w-full flex-col gap-[17px]";
+
+  const titleEl = document.createElement("h2");
+  titleEl.className = "font-neometric text-2xl font-normal text-white text-center";
+  titleEl.textContent = title;
+  contentWrapper.appendChild(titleEl);
+
+  const messageEl = document.createElement("p");
+  messageEl.className = "font-neometric text-xl font-normal text-slate-400 text-center";
+  messageEl.textContent = message;
+  contentWrapper.appendChild(messageEl);
+
+  modalContainer.appendChild(contentWrapper);
+
+  // Close Button
+  const closeBtn = document.createElement("button");
+  closeBtn.className =
+    "absolute top-3 right-3 flex h-6 w-6 items-center justify-center bg-transparent p-0 cursor-pointer text-slate-300 transition-opacity hover:opacity-70";
+  closeBtn.innerHTML =
+    '<svg class="h-full w-full" fill="currentColor" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2"></line><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2"></line></svg>';
+
+  const closeModal = () => {
+    backdrop.classList.remove("opacity-100");
+    backdrop.classList.add("opacity-0");
+    backdrop.style.visibility = "hidden";
+    setTimeout(() => {
+      backdrop.remove();
+    }, 300);
+  };
+
+  closeBtn.addEventListener("click", closeModal);
+  backdrop.addEventListener("click", (e) => {
+    if (e.target === backdrop) closeModal();
+  });
+
+  modalContainer.appendChild(closeBtn);
+  backdrop.appendChild(modalContainer);
+  document.body.appendChild(backdrop);
+
+  // Trigger animation
+  setTimeout(() => {
+    backdrop.style.visibility = "visible";
+    backdrop.classList.remove("opacity-0");
+    backdrop.classList.add("opacity-100");
+  }, 10);
+};
+
+/** * Function to open and close contact form modal
+ * Also handles validation and submission logic
+ */
 export const initContactFormModal = () => {
   /** Get required elements */
   const backdrop = document.getElementById("backdrop-modal");
   const closeBtn = document.getElementById("close-btn");
+
+  /** Get Form Elements for Validation and Data */
+  const contactForm = document.getElementById("contact-form") as HTMLFormElement;
+  const submitBtn = contactForm?.querySelector("button");
+  const emailInput = document.getElementById("emailFrom") as HTMLInputElement;
+  const phoneInput = document.getElementById("phoneNo") as HTMLInputElement;
+
+  // We use type assertion to ensure we can access .value
+  const subjectInput = document.getElementById("Subject") as
+    | HTMLInputElement
+    | HTMLSelectElement
+    | null;
+  const messageInput = document.getElementById("additionalNote") as HTMLTextAreaElement;
 
   /** Check if required elements are present */
   if (!backdrop || !closeBtn) {
@@ -32,13 +259,15 @@ export const initContactFormModal = () => {
     e.preventDefault();
   };
 
-  /** Function to prevent scroll when modal is open */
+  /** Function to prevent scroll keys when modal is open */
   const preventScrollKeys = (e: KeyboardEvent) => {
     const keys = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
     if (keys.includes(e.key)) e.preventDefault();
   };
 
-  /** Function to animte the modal on open */
+  // --- Modal Animation Handling ---
+
+  /** Function to animate the modal on open */
   const fadeIn = (formElement: HTMLElement) => {
     animate(
       formElement,
@@ -50,7 +279,7 @@ export const initContactFormModal = () => {
     );
   };
 
-  /** Function to animte the modal on close */
+  /** Function to animate the modal on close */
   const fadeOut = (formElement: HTMLElement, onFinish: () => void) => {
     animate(
       formElement,
@@ -65,10 +294,8 @@ export const initContactFormModal = () => {
   /** Function to open the modal */
   const openModal = () => {
     if (backdrop.classList.contains("visible")) return;
-
     backdrop.classList.remove("opacity-0", "invisible");
     backdrop.classList.add("opacity-100", "visible");
-
     fadeIn(backdrop);
     disableScroll();
   };
@@ -97,4 +324,74 @@ export const initContactFormModal = () => {
       closeModal();
     }
   });
+
+  // --- Validation & Submission Logic ---
+
+  // Initialize DotLottie for success modal if missing
+  if (!document.querySelector('script[src*="dotlottie-wc"]')) {
+    const script = document.createElement("script");
+    script.src = "https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js";
+    script.type = "module";
+    document.head.appendChild(script);
+  }
+
+  // Submit Handler
+  if (submitBtn && contactForm) {
+    submitBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      // Validate fields before submitting
+      const isEmailValid = emailInput ? validateInput(emailInput) : true;
+      const isPhoneValid = phoneInput ? validateInput(phoneInput) : true;
+
+      if (!isEmailValid || !isPhoneValid) {
+        return;
+      }
+
+      try {
+        submitBtn.disabled = true;
+        const originalText = submitBtn.innerText;
+        submitBtn.innerText = "Sending...";
+
+        // Prepare JSON payload for the API
+        const payload = {
+          from_email: emailInput.value.trim(),
+          phone_number: phoneInput.value.trim(),
+          subject: subjectInput ? subjectInput.value : "Website enquiry", // Default if not found
+          message: messageInput ? messageInput.value.trim() : "",
+        };
+
+        // Real API Call
+        const response = await fetch(
+          "https://pixoloproductions.com/api/pixolo-website/contact-form.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          },
+        );
+
+        if (!response.ok) {
+          throw new Error(`API Error: ${response.status}`);
+        }
+
+        // Close form, show success
+        closeModal();
+        createAndShowModal("Cheers!", "You're good to go—your form has been submitted", true);
+        contactForm.reset();
+      } catch (error) {
+        console.error("Submission error", error);
+        createAndShowModal(
+          "Oops!",
+          "An unexpected issue has occurred—please try again shortly",
+          false,
+        );
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Send Message";
+      }
+    });
+  }
 };
