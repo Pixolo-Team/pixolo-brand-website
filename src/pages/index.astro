@@ -13,6 +13,18 @@ import Service from "@/sections/home/Service.astro";
 import Contact from "@/sections/home/Contact.astro";
 import Testimonials from "@/sections/home/Testimonials.astro";
 import CaseStudies from "@/sections/home/CaseStudies.astro";
+
+import { getCaseStudiesRequest } from "@/services/API/case-studies.api";
+
+let caseStudies = [];
+let error = null;
+
+try {
+  caseStudies = await getCaseStudiesRequest();
+  console.log(caseStudies);
+} catch (err) {
+  error = "Failed to load case studies";
+}
 ---
 
 <Layout>
@@ -21,7 +33,7 @@ import CaseStudies from "@/sections/home/CaseStudies.astro";
   <Service />
   <Retainership />
   <Portfolio />
-  <CaseStudies />
+  <CaseStudies caseStudies={caseStudies} />
   <Products />
   <Testimonials />
   <Industries />

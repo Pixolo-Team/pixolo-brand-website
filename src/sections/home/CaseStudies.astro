@@ -7,8 +7,16 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { URLS } from "@/infrastructure/constants/urls";
 
 // DATA //
-import { caseStudySectionDetails, caseStudies } from "@/data/case-studies/case-studies";
+import { caseStudySectionDetails } from "@/data/case-studies/case-studies";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
+
+// PROPS //
+
+interface Props {
+  caseStudies?: any[];
+}
+
+const { caseStudies: caseStudies = [] } = Astro.props;
 ---
 
 <section id="case-studies-section">
@@ -38,19 +46,24 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
         class="grid grid-cols-1 gap-10 md:gap-16 md:px-16 lg:grid-cols-2 xl:grid-cols-3"
       >
         {
-          caseStudies.map((caseStudyItem, caseStudyIndex) => (
-            <div class="case-study-card-item hidden">
-              <CaseStudyCard
-                href={URLS.CASE_STUDIES.ITEM(
-                  caseStudyItem.id.toString(),
-                  caseStudyItem.pageTitle.replaceAll(" ", "-").toLowerCase(),
-                )}
-                id={caseStudyItem.id}
-                title={caseStudyItem.pageTitle}
-                image={caseStudyItem.cardImage || caseStudySectionDetails.defaultImage}
-              />
-            </div>
-          ))
+          caseStudies.length == 0 ? (
+            <p>No caseStudies found</p>
+          ) : (
+            caseStudies
+              .filter((study) => study.showInHome === 1 || study.showInHome === "1")
+              .map((caseStudyItem, filteredIndex) => (
+                <div class="case-study-card-item hidden">
+                  <CaseStudyCard
+                    href={URLS.CASE_STUDIES.ITEM(
+                      caseStudyItem.name?.replaceAll(" ", "-").toLowerCase(),
+                    )}
+                    id={filteredIndex}
+                    title={caseStudyItem.name}
+                    image={caseStudyItem.thumbnail}
+                  />
+                </div>
+              ))
+          )
         }
       </div>
       <!-- Load More Button -->
