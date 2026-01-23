@@ -7,20 +7,17 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
 // CONSTANTS //
 import { URLS } from "@/infrastructure/constants/urls";
 
-// OTHERS //
-import { initLoadMore } from "@/scripts/load-more";
-import { animateCaseStudiesSection } from "@/scripts/case-study/case-study";
 
 // DATA //
 import { caseStudySectionDetails } from "@/data/case-studies/case-studies";
+import type { CaseStudyData } from "@/types/case-studies.types";
 
 // PROPS //
-
 interface Props {
-  caseStudies?: any[];
+  caseStudies?: CaseStudyData[];
 }
 
-const { caseStudies: caseStudies = [] } = Astro.props;
+const { caseStudies = [] } = Astro.props;
 ---
 
 <section id="case-studies-section">
@@ -50,11 +47,11 @@ const { caseStudies: caseStudies = [] } = Astro.props;
         class="grid grid-cols-1 gap-10 md:gap-16 md:px-16 lg:grid-cols-2 xl:grid-cols-3"
       >
         {
-          caseStudies.length == 0 ? (
+          caseStudies.length === 0 ? (
             <p>No caseStudies found</p>
           ) : (
             caseStudies
-              .filter((study) => study.showInHome === 1 || study.showInHome === "1")
+              .filter((study) => study.showInHome === "1")
               .map((caseStudyItem, filteredIndex) => (
                 <div class="case-study-card-item hidden">
                   <CaseStudyCard
@@ -81,6 +78,8 @@ const { caseStudies: caseStudies = [] } = Astro.props;
   </div>
 </section>
 <script>
+  import { initLoadMore } from "@/scripts/load-more";
+  import { animateCaseStudiesSection } from "@/scripts/case-study/case-study";
   animateCaseStudiesSection();
 
   const CONFIG = {
