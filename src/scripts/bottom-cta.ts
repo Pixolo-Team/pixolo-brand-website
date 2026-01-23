@@ -5,7 +5,7 @@ export const bottomCtaClick = () => {
     const target = event.target;
 
     // Ensure the target is an HTMLElement
-    if (!(target instanceof HTMLElement)) return;
+    if (!(target instanceof Element)) return;
     // Check if the click happened inside the CTA
     const ctaButton = target.closest("#open-contact-modal");
 
