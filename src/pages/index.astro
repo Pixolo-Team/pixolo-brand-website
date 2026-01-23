@@ -1,10 +1,4 @@
 ---
-// TYPES //
-import { type CaseStudyData } from "@/types/case-studies.types";
-
-// SERVICES //
-import { getCaseStudiesRequest } from "@/services/API/case-studies.api";
-
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 
@@ -19,8 +13,6 @@ import Service from "@/sections/home/Service.astro";
 import Contact from "@/sections/home/Contact.astro";
 import Testimonials from "@/sections/home/Testimonials.astro";
 import CaseStudies from "@/sections/home/CaseStudies.astro";
-
-const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
 ---
 
 <Layout>
@@ -29,7 +21,7 @@ const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
   <Service />
   <Retainership />
   <Portfolio />
-  <CaseStudies caseStudies={caseStudies} />
+  <CaseStudies />
   <Products />
   <Testimonials />
   <Industries />

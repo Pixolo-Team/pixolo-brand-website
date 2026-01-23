@@ -7,17 +7,17 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
 // CONSTANTS //
 import { URLS } from "@/infrastructure/constants/urls";
 
-
 // DATA //
 import { caseStudySectionDetails } from "@/data/case-studies/case-studies";
 import type { CaseStudyData } from "@/types/case-studies.types";
+import { getCaseStudiesRequest } from "@/services/API/case-studies.api";
 
 // PROPS //
 interface Props {
   caseStudies?: CaseStudyData[];
 }
 
-const { caseStudies = [] } = Astro.props;
+const caseStudies = await getCaseStudiesRequest();
 ---
 
 <section id="case-studies-section">
