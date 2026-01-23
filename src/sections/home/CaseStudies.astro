@@ -1,23 +1,22 @@
 ---
+// TYPES //
+import type { CaseStudyData } from "@/types/case-studies.types";
+
 // COMPONENTS //
 import CaseStudyCard from "@/components/casestudy/CaseStudyCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
+
+// SERVICES //
+import { getCaseStudiesRequest } from "@/services/API/case-studies.api";
 
 // CONSTANTS //
 import { URLS } from "@/infrastructure/constants/urls";
 
 // DATA //
 import { caseStudySectionDetails } from "@/data/case-studies/case-studies";
-import type { CaseStudyData } from "@/types/case-studies.types";
-import { getCaseStudiesRequest } from "@/services/API/case-studies.api";
 
-// PROPS //
-interface Props {
-  caseStudies?: CaseStudyData[];
-}
-
-const caseStudies = await getCaseStudiesRequest();
+const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
 ---
 
 <section id="case-studies-section">
