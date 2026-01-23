@@ -2,13 +2,17 @@
 // COMPONENTS //
 import CaseStudyCard from "@/components/casestudy/CaseStudyCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
 
 // CONSTANTS //
 import { URLS } from "@/infrastructure/constants/urls";
 
+// OTHERS //
+import { initLoadMore } from "@/scripts/load-more";
+import { animateCaseStudiesSection } from "@/scripts/case-study/case-study";
+
 // DATA //
 import { caseStudySectionDetails } from "@/data/case-studies/case-studies";
-import RoundedButton from "@/components/ui/RoundedButton.astro";
 
 // PROPS //
 
@@ -77,9 +81,6 @@ const { caseStudies: caseStudies = [] } = Astro.props;
   </div>
 </section>
 <script>
-  import { initLoadMore } from "@/scripts/load-more";
-  import { animateCaseStudiesSection } from "@/scripts/case-study/case-study";
-
   animateCaseStudiesSection();
 
   const CONFIG = {

@@ -1,4 +1,7 @@
 ---
+// SERVICES //
+import { getCaseStudiesRequest } from "@/services/API/case-studies.api";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 
@@ -13,8 +16,6 @@ import Service from "@/sections/home/Service.astro";
 import Contact from "@/sections/home/Contact.astro";
 import Testimonials from "@/sections/home/Testimonials.astro";
 import CaseStudies from "@/sections/home/CaseStudies.astro";
-
-import { getCaseStudiesRequest } from "@/services/API/case-studies.api";
 
 let caseStudies = [];
 let error = null;

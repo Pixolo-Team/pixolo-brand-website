@@ -1,3 +1,4 @@
+// MODULES //
 import axios, { type AxiosRequestConfig } from "axios";
 
 const API_URL = import.meta.env.PUBLIC_API_URL;
