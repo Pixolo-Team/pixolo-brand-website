@@ -12,17 +12,17 @@ const { data } = Astro.props;
     class="text-n-950 container mx-auto flex flex-col gap-8 px-6 py-20 leading-tight md:gap-14 md:py-20 lg:gap-16 lg:px-16 lg:py-28"
   >
     <!-- Toolbadge & Page Title -->
-    <SectionHeader sectionTitle={data.title} badgeIcon="package" badgeText={data.toolbadge} />
+    <SectionHeader sectionTitle="Our Clients at a Glance" badgeIcon="package" badgeText="Our Clients at a Glance" />
 
     <!-- Content Part -->
     <div class="flex flex-col gap-7 md:gap-12">
       <!-- Iterating About the client Data -->
       {
-        data.projectDescription.map((projectDescriptionItem: any) => (
+        data.aboutPointers?.map((projectDescriptionItem: any) => (
           <div class="flex flex-col gap-4 lg:flex-row">
             {/* Title */}
             <h2 class="text-2xl font-medium md:text-4xl lg:w-[30%]">
-              {projectDescriptionItem.label}
+              {projectDescriptionItem.title}
             </h2>
 
             {/* Work Description */}
@@ -41,21 +41,20 @@ const { data } = Astro.props;
         class="h-auto w-full rounded-3xl object-cover md:rounded-4xl lg:w-[60%] lg:rounded-[60px]"
         width={930}
         height={482}
-        src={`/${data.visuals[0]}`}
+        src={`/${data.aboutImagesMainImage}`}
         alt="Pixolo Client"
       />
       <!-- Bottom Images -->
       <div class="flex min-w-0 flex-1 gap-4 lg:gap-5">
         {
-          data.visuals
-            .slice(1, 3)
-            .map((visualImgItem: string) => (
+          data.aboutImagesOtherImages?.slice(1, 3)
+            .map((visualImgItem: any) => (
               <Image
                 class="min-w-0 flex-1 rounded-3xl object-cover lg:rounded-[60px]"
                 width={290}
                 height={400}
-                src={`/${visualImgItem}`}
-                alt="Client Detail"
+                src={`/${visualImgItem.imagePath}`}
+                alt={visualImgItem.alt}
               />
             ))
         }

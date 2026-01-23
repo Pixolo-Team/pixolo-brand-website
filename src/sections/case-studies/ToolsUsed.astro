@@ -4,19 +4,21 @@ import ToolCard from "@/components/case-studies/ToolCard.astro";
 
 // DATA //
 import { toolsUsedDetails } from "@/data/case-studies/case-study-consumption";
+const { data } = Astro.props;
+
 ---
 
 <section id="tools-used-section">
   <div class="container mx-auto flex flex-col gap-10 px-6 py-16 md:gap-14 lg:gap-16">
     <!-- Title -->
     <p class="header-text text-center text-2xl capitalize md:text-3xl lg:text-4xl">
-      {toolsUsedDetails.headerText}
+      {data.toolsUsedDetailsHeaderText}
     </p>
 
     <!-- Iterating through Data -->
     <div class="tool-items flex flex-col gap-4 md:gap-9 lg:grid lg:grid-cols-2">
       {
-        toolsUsedDetails.toolItems.map((toolItem) => (
+        data.toolItems?.map((toolItem) => (
           <ToolCard
             logo={toolItem.logo}
             title={toolItem.title}

@@ -13,18 +13,18 @@ const { data } = Astro.props;
   >
     <!-- Section Title  -->
     <p class="text-n-800 text-center text-3xl leading-tight font-medium md:text-5xl">
-      {data.title}
+      Limitations That Guided the Process
     </p>
     <!-- Issue Component -->
     <div class="flex flex-col gap-5">
       <!-- Iterating through data -->
       {
-        data.issues.map((clientIssueItem: any) => (
+        data.map((clientIssueItem: any) => (
           <ClientIssues
-            title={clientIssueItem.name}
+            title={clientIssueItem.title}
             description={clientIssueItem.description}
-            issue={clientIssueItem.metric}
-            stat={clientIssueItem.value}
+            issue={clientIssueItem.issue}
+            stat={clientIssueItem.stat}
           />
         ))
       }

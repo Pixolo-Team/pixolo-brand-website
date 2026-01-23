@@ -1,0 +1,34 @@
+---
+interface Props {
+  title?: string;
+  message?: string;
+  icon?: string;
+}
+
+const { 
+  title = "Unable to load data", 
+  message = "We encountered an issue fetching the latest content. Please try again later.",
+  icon = "⚠️" 
+} = Astro.props;
+---
+
+<div class="flex flex-col items-center justify-center py-20 px-4 text-center border-2 border-dashed border-gray-200 rounded-3xl bg-gray-50 my-12">
+  <div class="text-6xl mb-6 opacity-80">
+    {icon}
+  </div>
+  
+  <h3 class="text-2xl font-bold text-gray-900 mb-3">
+    {title}
+  </h3>
+  
+  <p class="text-gray-600 max-w-md mb-8 leading-relaxed">
+    {message}
+  </p>
+
+  <a 
+    href="/" 
+    class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+  >
+    Return Home
+  </a>
+</div>

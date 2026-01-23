@@ -18,11 +18,11 @@ const { data } = Astro.props;
       <h1
         class="text-n-950 text-2xl leading-tight font-medium md:min-w-[260px] md:text-3xl lg:min-w-[300px] lg:text-4xl"
       >
-        {data.title}
+        By the Numbers
       </h1>
       <!-- Description -->
       <p class="text-n-800 leading-tight md:text-xl lg:text-2xl">
-        {data.heading}
+        We focus on the metrics that truly reflect our value. Here’s a snapshot of the results that drive our success.
       </p>
     </div>
 
@@ -32,7 +32,7 @@ const { data } = Astro.props;
     >
       <!-- Iterate through Data -->
       {
-        data.metrics.map((metricItem: any) => (
+        data?.map((metricItem: any) => (
           <ClientNumbers title={metricItem.label} value={metricItem.value} />
         ))
       }

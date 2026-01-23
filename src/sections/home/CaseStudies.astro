@@ -1,14 +1,15 @@
 ---
-// COMPONENTS //
 import CaseStudyCard from "@/components/casestudy/CaseStudyCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
-// CONSTANTS //
 import { URLS } from "@/infrastructure/constants/urls";
 
-// DATA //
-import { caseStudySectionDetails, caseStudies } from "@/data/case-studies/case-studies";
+// import { caseStudySectionDetails, caseStudies } from "@/data/case-studies/case-studies";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
+import { getCaseStudies } from "@/services/api/case-studies.api";
+import type { CaseStudyData } from "@/types/case-studies";
+
+const caseStudies: CaseStudyData[] = await getCaseStudies();
 ---
 
 <section id="case-studies-section">
@@ -19,14 +20,14 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
     <div class="flex flex-col items-center gap-2.5 text-center md:gap-3.5 lg:gap-4">
       <!-- Tool Badge component -->
       <div class="tool-badge">
-        <ToolBadge icon="puzzle-icon" text={caseStudySectionDetails.badgeTitle} />
+        <!-- <ToolBadge icon="puzzle-icon" text={caseStudySectionDetails.badgeTitle} /> -->
       </div>
 
       <!-- Title -->
       <p
         class="header-text text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-5xl"
       >
-        {caseStudySectionDetails.title}
+        <!-- {caseStudySectionDetails.title} -->
       </p>
     </div>
 
@@ -41,13 +42,10 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
           caseStudies.map((caseStudyItem, caseStudyIndex) => (
             <div class="case-study-card-item hidden">
               <CaseStudyCard
-                href={URLS.CASE_STUDIES.ITEM(
-                  caseStudyItem.id.toString(),
-                  caseStudyItem.pageTitle.replaceAll(" ", "-").toLowerCase(),
-                )}
-                id={caseStudyItem.id}
-                title={caseStudyItem.pageTitle}
-                image={caseStudyItem.cardImage || caseStudySectionDetails.defaultImage}
+                href={URLS.CASE_STUDIES.ITEM(caseStudyItem.name.replaceAll(" ", "-").toLowerCase())}
+                id={caseStudyIndex}
+                title={caseStudyItem.title}
+                image={caseStudyItem.thumbnail}
               />
             </div>
           ))

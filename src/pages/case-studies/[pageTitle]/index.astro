@@ -1,0 +1,112 @@
+---
+// TYPES //
+import type { CaseStudyData } from "@/types/case-studies";
+
+// API SERVICES //
+import { getCaseStudies } from "@/services/api/case-studies.api";
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+import type { CaseStudy } from "@/service/case-studies";
+
+// SECTIONS //
+import Numbers from "@/sections/case-studies/Numbers.astro";
+import ClientVision from "@/sections/case-studies/ClientVision.astro";
+import Solutions from "@/sections/case-studies/Solutions.astro";
+import Issues from "@/sections/case-studies/Issues.astro";
+import AboutTheClient from "@/sections/case-studies/AboutTheClient.astro";
+import Gallery from "@/sections/case-studies/Gallery.astro";
+import ToolsUsed from "@/sections/case-studies/ToolsUsed.astro";
+import ClientTestimonial from "@/sections/case-studies/ClientTestimonial.astro";
+import SolutionNumbers from "@/sections/case-studies/SolutionNumbers.astro";
+import Hero from "@/sections/case-studies/Hero.astro";
+import KeyTakeaways from "@/sections/case-studies/KeyTakeaways.astro";
+
+// DATA //
+import { caseStudies } from "@/data/case-studies/case-studies";
+
+/**
+ * Generate static paths for all service pages
+ * @returns Array of static paths with service data
+ */
+export async function getStaticPaths() {
+  const caseStudies: CaseStudyData[] = await getCaseStudies();
+
+  return caseStudies.map((study, index) => {
+    // Create Slug
+    console.log(study.name, "Name");
+
+    const slug = study.name.toLowerCase().replaceAll(" ", "-");
+    console.log(slug, "slug");
+
+    return {
+      params: {
+        pageTitle: slug,
+      },
+      props: { caseStudy: study },
+    };
+  });
+}
+
+const { caseStudy }: { caseStudy: CaseStudyData } = Astro.props;
+---
+
+<Layout>
+  <Hero data={caseStudy} />
+  <!-- <Numbers data={caseStudy.clientNumbers || []} />
+  <AboutTheClient
+    data={{
+      aboutPointers: caseStudy.aboutPointers,
+      aboutImagesMainImage: caseStudy.aboutImagesMainImage,
+      aboutImagesOtherImages: caseStudy.aboutImagesOtherImages,
+    }}
+  />
+  <Issues data={caseStudy.clientIssues} />
+  <ClientVision
+    data={{
+      mainImage: caseStudy.clientVisionSectionMainImage,
+      imageAlt: caseStudy.clientVisionSectionImageAlt,
+      clientVisions: caseStudy.clientVisions || [],
+    }}
+  />
+  <Solutions data={caseStudy.clientSolutions || []} />
+
+  <Gallery
+    data={{
+      badgeIcon: caseStudy.gallerySectionDetailsBadgeIcon,
+      badgeText: caseStudy.gallerySectionDetailsBadgeText,
+      sectionTitle: caseStudy.gallerySectionDetailsSectionTitle,
+      galleryImages: caseStudy.galleryImages,
+    }}
+  />
+  <KeyTakeaways
+    data={{
+      keyTakeawaysDetailsBadgeIcon: caseStudy.keyTakeawaysDetailsBadgeIcon,
+      keyTakeawaysDetailsBadgeTitle: caseStudy.keyTakeawaysDetailsBadgeTitle,
+      keyTakeawaysDetailsTitle: caseStudy.keyTakeawaysDetailsTitle,
+      learningItems: caseStudy.learningItems,
+    }}
+  />
+  <ToolsUsed
+    data={{
+      toolsUsedDetailsHeaderText: caseStudy.toolsUsedDetailsHeaderText,
+      toolItems: caseStudy.toolItems,
+    }}
+  />
+  <ClientTestimonial
+    data={{
+      badgeIcon: caseStudy.clientTestimonialDetailsBadgeIcon,
+      badgeText: caseStudy.clientTestimonialDetailsBadgeText,
+      title: caseStudy.clientTestimonialDetailsTitle,
+      image: caseStudy.clientTestimonialDetailsImage,
+      name: caseStudy.clientTestimonialDetailsName,
+      role: caseStudy.clientTestimonialDetailsRole,
+      message: caseStudy.clientTestimonialDetailsMessage,
+    }}
+  /> -->
+
+  <!-- <ToolsUsed />
+  <ClientTestimonial /> -->
+
+  <!-- <SolutionNumbers data={caseStudy.solutionNumbers || []} /> -->
+</Layout>
