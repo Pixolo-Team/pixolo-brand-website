@@ -33,21 +33,25 @@ const { meta = {} } = Astro.props;
     />
 
     <!-- Google Analytics -->
-    <script
-      async
-      src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_ID}`}></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9E7P2PLT8"></script>
 
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
+      window.gtag = gtag;
       gtag("js", new Date());
-      gtag("config", `${import.meta.env.PUBLIC_GA_ID}`, {
-        page_path: window.location.pathname,
-      });
+      gtag("config", "G-T9E7P2PLT8");
     </script>
   </head>
+  <script type="module">
+    import { trackPageView, setupScrollTracking } from "/src/scripts/analytics";
+
+    // Initial page load
+    trackPageView();
+    setupScrollTracking();
+  </script>
   <body>
     <!-- Loading -->
     <Loading />
