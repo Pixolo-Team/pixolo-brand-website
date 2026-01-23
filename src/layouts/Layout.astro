@@ -31,6 +31,22 @@ const { meta = {} } = Astro.props;
       image={meta.image}
       noIndex={meta.noIndex}
     />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_ID}`}></script>
+
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", `${import.meta.env.PUBLIC_GA_ID}`, {
+        page_path: window.location.pathname,
+      });
+    </script>
   </head>
   <body>
     <!-- Loading -->
@@ -69,7 +85,7 @@ const { meta = {} } = Astro.props;
     <!-- Whatsapp button component -->
     <WhatsappButton
       href="https://wa.me/9768941186"
-      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-10 hidden md:block"
+      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-10"
     />
 
     <!-- Bottom CTA -->
