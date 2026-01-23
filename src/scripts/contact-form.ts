@@ -1,27 +1,18 @@
 // OTHERS //
 import { animate } from "motion";
 
-// CONSTANTS //
-const FORM_ERRORS = {
-  email: {
-    required: "This field is required.",
-    invalidFormat: "Please enter a valid email address.",
-  },
-  phone: {
-    required: "This field is required.",
-    invalidFormat: "Please enter a valid 10-digit phone number.",
-  },
-};
+// DATA //
+// Importing only for Email logic and generic required messages
+import { formErrors, validationRules } from "@/data/errors";
 
 // HELPER FUNCTIONS //
 
-/** * Helper: Create error element with icon and message
- * Matches the visual style of the provided image (Red text + SVG)
+/** * Helper: Create error element with icon and message 
+ * Matches the visual style (Red text + SVG)
  */
 const createErrorElement = (message: string): HTMLElement => {
   const errorDiv = document.createElement("div");
-  // Matching the gap and alignment from InputField.astro logic
-  errorDiv.className = "flex items-center gap-1.5 md:gap-2";
+  errorDiv.className = "flex items-center gap-1.5 md:gap-2"; 
   errorDiv.innerHTML = `
     <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <circle cx="12" cy="12" r="10"></circle>
@@ -37,26 +28,20 @@ const createErrorElement = (message: string): HTMLElement => {
  * Navigates the specific DOM structure of InputField.astro
  */
 const getOrCreateErrorContainer = (input: HTMLInputElement): HTMLElement | null => {
-  // InputField.astro structure: Outer Div > Border Div > Input
-  // We need to find the Outer Div (Grandparent of input, or specific class match)
   const wrapper = input.closest(".flex.w-full.flex-col");
-
   if (!wrapper) return null;
 
   let errorContainer = wrapper.querySelector(".error-messages-container") as HTMLElement | null;
-
-  // If container doesn't exist, create it and append to the wrapper
-  // This places it below the border-bottom div, matching the screenshot
+  
   if (!errorContainer) {
     errorContainer = document.createElement("div");
-    // Matches the gap-2.5 md:gap-3 from InputField.astro logic
     errorContainer.className = "error-messages-container flex flex-col gap-2.5 md:gap-3 mt-2";
     wrapper.appendChild(errorContainer);
   }
   return errorContainer;
 };
 
-/** * Helper: Validate input value against rules
+/** * Helper: Validate input value against rules 
  */
 const validateInput = (input: HTMLInputElement): boolean => {
   const value = input.value.trim();
@@ -69,28 +54,29 @@ const validateInput = (input: HTMLInputElement): boolean => {
 
   const errors: string[] = [];
 
-  // 1. Check Required (Only for emailFrom and phoneNo)
+  // 1. Check Required
   if (!value) {
-    if (input.id === "phoneNo") errors.push(FORM_ERRORS.phone.required);
-    if (input.id === "emailFrom") errors.push(FORM_ERRORS.email.required);
+    // We can use the imported "This field is required" message for consistency
+    if (input.id === "phoneNo") errors.push(formErrors.phone.required);
+    if (input.id === "emailFrom") errors.push(formErrors.email.required);
   }
 
   // 2. Check Format (only if value exists)
   if (value) {
-    // Email Validation
+    // --- EMAIL: Use Imported Rules (error.ts) ---
     if (input.id === "emailFrom") {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(value)) {
-        errors.push(FORM_ERRORS.email.invalidFormat);
+      if (!validationRules.email.pattern.test(value)) {
+        // @ts-ignore - Accessing the error key dynamically from the config
+        errors.push(formErrors.email[validationRules.email.errorKey]);
       }
     }
 
-    // Phone Validation
+    // --- PHONE: Use Local Strict Logic (Your custom code) ---
     if (input.id === "phoneNo") {
-      // Strictly 10 digits
-      const phoneRegex = /^\d{10}$/;
-      if (!phoneRegex.test(value)) {
-        errors.push(FORM_ERRORS.phone.invalidFormat);
+      // Strictly 10 digits only
+      const strictPhoneRegex = /^\d{10}$/;
+      if (!strictPhoneRegex.test(value)) {
+        errors.push("Please enter a valid 10-digit phone number.");
       }
     }
   }
@@ -102,7 +88,6 @@ const validateInput = (input: HTMLInputElement): boolean => {
     });
 
     // Attach listener to clear error on typing
-    // { once: true } ensures it cleans itself up immediately
     input.addEventListener(
       "input",
       () => {
@@ -117,7 +102,7 @@ const validateInput = (input: HTMLInputElement): boolean => {
   return true;
 };
 
-/** * Helper: Create and show Success/Error modal
+/** * Helper: Create and show Success/Error modal 
  */
 const createAndShowModal = (title: string, message: string, isSuccess: boolean): void => {
   // Create backdrop
@@ -213,85 +198,64 @@ const createAndShowModal = (title: string, message: string, isSuccess: boolean):
   }, 10);
 };
 
-/** * Function to open and close contact form modal
+/** * Function to open and close contact form modal 
  * Also handles validation and submission logic
  */
 export const initContactFormModal = () => {
-  /** Get required elements */
   const backdrop = document.getElementById("backdrop-modal");
   const closeBtn = document.getElementById("close-btn");
 
-  /** Get Form Elements for Validation and Data */
   const contactForm = document.getElementById("contact-form") as HTMLFormElement;
   const submitBtn = contactForm?.querySelector("button");
   const emailInput = document.getElementById("emailFrom") as HTMLInputElement;
   const phoneInput = document.getElementById("phoneNo") as HTMLInputElement;
+  
+  // Optional elements
+  const subjectInput = document.getElementById("Subject") as HTMLInputElement | HTMLSelectElement | null;
+  const messageInput = document.getElementById("additionalNote") as HTMLTextAreaElement | null;
 
-  // We use type assertion to ensure we can access .value
-  const subjectInput = document.getElementById("Subject") as
-    | HTMLInputElement
-    | HTMLSelectElement
-    | null;
-  const messageInput = document.getElementById("additionalNote") as HTMLTextAreaElement;
-
-  /** Check if required elements are present */
   if (!backdrop || !closeBtn) {
     console.warn("ContactForm: Required elements not found. Modal functionality may not work.");
     return;
   }
 
-  /** Function to disable scroll when modal is open */
+  // --- Modal Scroll Handling ---
   const disableScroll = () => {
     window.addEventListener("wheel", preventScroll, { passive: false });
     window.addEventListener("touchmove", preventScroll, { passive: false });
     window.addEventListener("keydown", preventScrollKeys);
   };
 
-  /** Function to enable scroll when modal is closed */
   const enableScroll = () => {
     window.removeEventListener("wheel", preventScroll);
     window.removeEventListener("touchmove", preventScroll);
     window.removeEventListener("keydown", preventScrollKeys);
   };
 
-  /** Function to prevent scroll when modal is open */
-  const preventScroll = (e: Event) => {
-    e.preventDefault();
-  };
-
-  /** Function to prevent scroll keys when modal is open */
+  const preventScroll = (e: Event) => e.preventDefault();
+  
   const preventScrollKeys = (e: KeyboardEvent) => {
     const keys = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
     if (keys.includes(e.key)) e.preventDefault();
   };
 
   // --- Modal Animation Handling ---
-
-  /** Function to animate the modal on open */
   const fadeIn = (formElement: HTMLElement) => {
     animate(
       formElement,
       { opacity: [0, 1], scale: [0.96, 1] },
-      {
-        duration: 0.3,
-        easing: "ease-out",
-      },
+      { duration: 0.3, easing: "ease-out" },
     );
   };
 
-  /** Function to animate the modal on close */
   const fadeOut = (formElement: HTMLElement, onFinish: () => void) => {
     animate(
       formElement,
       { opacity: [1, 0], scale: [1, 0.96] },
-      {
-        duration: 0.2,
-        easing: "ease-in",
-      },
+      { duration: 0.2, easing: "ease-in" },
     ).finished.then(onFinish);
   };
 
-  /** Function to open the modal */
   const openModal = () => {
     if (backdrop.classList.contains("visible")) return;
     backdrop.classList.remove("opacity-0", "invisible");
@@ -300,7 +264,6 @@ export const initContactFormModal = () => {
     disableScroll();
   };
 
-  /** Function to close the modal */
   const closeModal = () => {
     fadeOut(backdrop, () => {
       backdrop.classList.remove("visible");
@@ -309,16 +272,14 @@ export const initContactFormModal = () => {
     });
   };
 
-  /** Event Listeners */
+  // --- Event Listeners (Modal) ---
   window.addEventListener("open-contact-modal", openModal);
   closeBtn.addEventListener("click", closeModal);
 
-  /** Close modal when backdrop is clicked */
   backdrop.addEventListener("click", (e) => {
     if (e.target === backdrop) closeModal();
   });
 
-  /** Close modal when escape key is pressed */
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && backdrop.classList.contains("visible")) {
       closeModal();
@@ -327,7 +288,6 @@ export const initContactFormModal = () => {
 
   // --- Validation & Submission Logic ---
 
-  // Initialize DotLottie for success modal if missing
   if (!document.querySelector('script[src*="dotlottie-wc"]')) {
     const script = document.createElement("script");
     script.src = "https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js";
@@ -335,12 +295,10 @@ export const initContactFormModal = () => {
     document.head.appendChild(script);
   }
 
-  // Submit Handler
   if (submitBtn && contactForm) {
     submitBtn.addEventListener("click", async (e) => {
       e.preventDefault();
 
-      // Validate fields before submitting
       const isEmailValid = emailInput ? validateInput(emailInput) : true;
       const isPhoneValid = phoneInput ? validateInput(phoneInput) : true;
 
@@ -350,37 +308,33 @@ export const initContactFormModal = () => {
 
       try {
         submitBtn.disabled = true;
-        const originalText = submitBtn.innerText;
         submitBtn.innerText = "Sending...";
 
-        // Prepare JSON payload for the API
+        // Prepare JSON payload using optional chaining for safety
         const payload = {
           from_email: emailInput.value.trim(),
           phone_number: phoneInput.value.trim(),
-          subject: subjectInput ? subjectInput.value : "Website enquiry", // Default if not found
-          message: messageInput ? messageInput.value.trim() : "",
+          subject: subjectInput ? subjectInput.value : "Website enquiry", 
+          message: messageInput ? messageInput.value.trim() : "", 
         };
 
         // Real API Call
-        const response = await fetch(
-          "https://pixoloproductions.com/api/pixolo-website/contact-form.php",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
+        const response = await fetch("https://pixoloproductions.com/api/pixolo-website/contact-form.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-        );
+          body: JSON.stringify(payload),
+        });
 
         if (!response.ok) {
-          throw new Error(`API Error: ${response.status}`);
+           throw new Error(`API Error: ${response.status}`);
         }
 
-        // Close form, show success
         closeModal();
         createAndShowModal("Cheers!", "You're good to go—your form has been submitted", true);
         contactForm.reset();
+
       } catch (error) {
         console.error("Submission error", error);
         createAndShowModal(
