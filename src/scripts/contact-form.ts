@@ -342,6 +342,7 @@ export const initContactFormModal = () => {
           "An unexpected issue has occurred—please try again shortly",
           false,
         );
+        contactForm.reset();
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerText = "Send Message";
