@@ -39,7 +39,12 @@ const { howWeWorkSectionSteps } = Astro.props;
         howWeWorkSectionSteps.map((howWeWorkSectionStep: any, howWeWorkSectionIndex: any) => (
           <SolutionCard
             number={String(howWeWorkSectionIndex + 1).padStart(2, "0")}
-            description={howWeWorkSectionStep.description}
+            title={
+              howWeWorkSectionStep.title
+                ? howWeWorkSectionStep.title
+                : howWeWorkSectionStep.description
+            }
+            description={howWeWorkSectionStep.title ? howWeWorkSectionStep.description : ""}
           />
         ))
       }

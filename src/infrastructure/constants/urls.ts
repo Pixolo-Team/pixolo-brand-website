@@ -12,8 +12,7 @@ export const URLS = {
   CONTACT: "/contact",
   CASE_STUDIES: {
     ROOT: "/case-studies",
-    ITEM: (id: string, pageTitle: string) =>
-      `/case-studies/${id}/${pageTitle.toLowerCase().replaceAll(" ", "-")}`,
+    ITEM: (pageTitle: string) => `/case-studies/${pageTitle.toLowerCase().replaceAll(" ", "-")}`,
   },
   PORTFOLIO: "/portfolio",
 };
