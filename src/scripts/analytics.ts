@@ -64,8 +64,18 @@ export const setupScrollTracking = () => {
   window.addEventListener("scroll", onScroll);
 };
 
+/** Setup click tracking of an element */
+export const setupClickTracking = (elementId: string, trackingFn: () => void) => {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.addEventListener("click", trackingFn);
+  }
+};
+
 /** CTA CLICKS */
-export const trackContactCTAClick = (source: "nav" | "footer" | "hero") => {
+export const trackContactCTAClick = (
+  source: "nav" | "footer" | "hero" | "floating" | "mob-menu",
+) => {
   trackEvent(EVENTS.CTA_CLICK_CONTACT, {
     button_text: "Contact",
     source,
@@ -73,12 +83,12 @@ export const trackContactCTAClick = (source: "nav" | "footer" | "hero") => {
 };
 
 /** WHATSAPP CLICK */
-export const trackWhatsappClick = (source: "footer" | "floating") => {
+export const trackWhatsappClick = (source: "mob-menu" | "floating") => {
   trackEvent(EVENTS.CTA_CLICK_WHATSAPP, { source });
 };
 
 /** CALL CLICK */
-export const trackCallClick = (source: "header" | "footer") => {
+export const trackCallClick = (source: "mob-menu" | "home-contact" | "contact-form") => {
   trackEvent(EVENTS.CTA_CLICK_CALL, { source });
 };
 

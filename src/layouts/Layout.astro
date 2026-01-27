@@ -45,13 +45,7 @@ const { meta = {} } = Astro.props;
       gtag("config", "G-T9E7P2PLT8");
     </script>
   </head>
-  <script type="module">
-    import { trackPageView, setupScrollTracking } from "/src/scripts/analytics";
 
-    // Initial page load
-    trackPageView();
-    setupScrollTracking();
-  </script>
   <body>
     <!-- Loading -->
     <Loading />
@@ -109,6 +103,23 @@ const { meta = {} } = Astro.props;
     height: 100%;
   }
 </style>
+<script type="module">
+  import { trackContactCTAClick, trackContactFormView } from "@/scripts/analytics";
+  import {
+    trackPageView,
+    setupScrollTracking,
+    setupClickTracking,
+    trackWhatsappClick,
+  } from "/src/scripts/analytics";
+
+  setupClickTracking("sticky-whatsapp", () => trackWhatsappClick("floating"));
+  setupClickTracking("open-contact-modal", () => trackContactCTAClick("floating"));
+  setupClickTracking("open-contact-modal", () => trackContactFormView("contact_form"));
+
+  // Initial page load
+  trackPageView();
+  setupScrollTracking();
+</script>
 
 <script is:inline>
   const loader = document.querySelector("#loading-screen");
