@@ -1,3 +1,6 @@
+// API URL
+export const API_URL = "https://pixoloproductions.com/api/pixolo-website";
+
 // Links for pages to redirect
 export const URLS = {
   HOME: "/",

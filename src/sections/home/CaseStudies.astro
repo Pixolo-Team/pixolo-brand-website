@@ -8,7 +8,7 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 
 // SERVICES //
-import { getCaseStudiesRequest } from "@/services/API/case-studies.api";
+import { getCaseStudiesRequest } from "@/services/api/case-studies.api.ts";
 
 // CONSTANTS //
 import { URLS } from "@/infrastructure/constants/urls";
@@ -16,6 +16,7 @@ import { URLS } from "@/infrastructure/constants/urls";
 // DATA //
 import { caseStudySectionDetails } from "@/data/case-studies/case-studies";
 
+/** API Call to get case studies */
 const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
 ---
 
@@ -50,7 +51,7 @@ const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
             <p>No caseStudies found</p>
           ) : (
             caseStudies
-              .filter((study) => study.showInHome === "1")
+              .filter((caseStudy) => caseStudy.showInHome === "1")
               .map((caseStudyItem, filteredIndex) => (
                 <div class="case-study-card-item hidden">
                   <CaseStudyCard

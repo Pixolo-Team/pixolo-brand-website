@@ -1,20 +1,19 @@
 // MODULES //
 import axios, { type AxiosRequestConfig } from "axios";
 
-const API_URL = import.meta.env.PUBLIC_API_URL;
+// CONSTANTS //
+import { API_URL } from "@/infrastructure/constants/urls.ts";
 
 /**
  * Fetches case studies from the API.
- *
- * @returns A promise that resolves to the API response data containing case studies,
- *                         or an object with status false and error message if the request fails.
+ * @returns A promise that resolves to the API response data containing case studies, or an object with status false and error message if the request fails.
  */
 export const getCaseStudiesRequest = async () => {
   try {
     // Configure the GET request with headers
     const config: AxiosRequestConfig = {
       method: "get",
-      url: `${API_URL}`,
+      url: `${API_URL}/section-content.php?key=case-studies`,
       headers: {
         "Content-Type": "application/json",
       },
