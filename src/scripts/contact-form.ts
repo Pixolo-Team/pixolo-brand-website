@@ -7,12 +7,12 @@ import { formErrors, validationRules } from "@/data/errors";
 
 // HELPER FUNCTIONS //
 
-/** * Helper: Create error element with icon and message 
+/** * Helper: Create error element with icon and message
  * Matches the visual style (Red text + SVG)
  */
 const createErrorElement = (message: string): HTMLElement => {
   const errorDiv = document.createElement("div");
-  errorDiv.className = "flex items-center gap-1.5 md:gap-2"; 
+  errorDiv.className = "flex items-center gap-1.5 md:gap-2";
   errorDiv.innerHTML = `
     <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <circle cx="12" cy="12" r="10"></circle>
@@ -32,7 +32,7 @@ const getOrCreateErrorContainer = (input: HTMLInputElement): HTMLElement | null 
   if (!wrapper) return null;
 
   let errorContainer = wrapper.querySelector(".error-messages-container") as HTMLElement | null;
-  
+
   if (!errorContainer) {
     errorContainer = document.createElement("div");
     errorContainer.className = "error-messages-container flex flex-col gap-2.5 md:gap-3 mt-2";
@@ -41,7 +41,7 @@ const getOrCreateErrorContainer = (input: HTMLInputElement): HTMLElement | null 
   return errorContainer;
 };
 
-/** * Helper: Validate input value against rules 
+/** * Helper: Validate input value against rules
  */
 const validateInput = (input: HTMLInputElement): boolean => {
   const value = input.value.trim();
@@ -66,7 +66,6 @@ const validateInput = (input: HTMLInputElement): boolean => {
     // --- EMAIL: Use Imported Rules (error.ts) ---
     if (input.id === "emailFrom") {
       if (!validationRules.email.pattern.test(value)) {
-        // @ts-ignore - Accessing the error key dynamically from the config
         errors.push(formErrors.email[validationRules.email.errorKey]);
       }
     }
@@ -102,7 +101,7 @@ const validateInput = (input: HTMLInputElement): boolean => {
   return true;
 };
 
-/** * Helper: Create and show Success/Error modal 
+/** * Helper: Create and show Success/Error modal
  */
 const createAndShowModal = (title: string, message: string, isSuccess: boolean): void => {
   // Create backdrop
@@ -198,7 +197,7 @@ const createAndShowModal = (title: string, message: string, isSuccess: boolean):
   }, 10);
 };
 
-/** * Function to open and close contact form modal 
+/** * Function to open and close contact form modal
  * Also handles validation and submission logic
  */
 export const initContactFormModal = () => {
@@ -209,9 +208,12 @@ export const initContactFormModal = () => {
   const submitBtn = contactForm?.querySelector("button");
   const emailInput = document.getElementById("emailFrom") as HTMLInputElement;
   const phoneInput = document.getElementById("phoneNo") as HTMLInputElement;
-  
+
   // Optional elements
-  const subjectInput = document.getElementById("Subject") as HTMLInputElement | HTMLSelectElement | null;
+  const subjectInput = document.getElementById("Subject") as
+    | HTMLInputElement
+    | HTMLSelectElement
+    | null;
   const messageInput = document.getElementById("additionalNote") as HTMLTextAreaElement | null;
 
   if (!backdrop || !closeBtn) {
@@ -219,27 +221,30 @@ export const initContactFormModal = () => {
     return;
   }
 
-  // --- Modal Scroll Handling ---
+  /** Function to disable scroll when modal is open */
   const disableScroll = () => {
     window.addEventListener("wheel", preventScroll, { passive: false });
     window.addEventListener("touchmove", preventScroll, { passive: false });
     window.addEventListener("keydown", preventScrollKeys);
   };
 
+  /** Function to enable scroll when modal is closed */
   const enableScroll = () => {
     window.removeEventListener("wheel", preventScroll);
     window.removeEventListener("touchmove", preventScroll);
     window.removeEventListener("keydown", preventScrollKeys);
   };
 
+  /** Function to prevent scroll when modal is open */
   const preventScroll = (e: Event) => e.preventDefault();
-  
+
+  /** Function to prevent scroll when modal is open */
   const preventScrollKeys = (e: KeyboardEvent) => {
     const keys = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
     if (keys.includes(e.key)) e.preventDefault();
   };
 
-  // --- Modal Animation Handling ---
+  /** Function to animte the modal on open */
   const fadeIn = (formElement: HTMLElement) => {
     animate(
       formElement,
@@ -248,6 +253,7 @@ export const initContactFormModal = () => {
     );
   };
 
+  /** Function to animte the modal on close */
   const fadeOut = (formElement: HTMLElement, onFinish: () => void) => {
     animate(
       formElement,
@@ -256,6 +262,7 @@ export const initContactFormModal = () => {
     ).finished.then(onFinish);
   };
 
+  /** Function to open the modal */
   const openModal = () => {
     if (backdrop.classList.contains("visible")) return;
     backdrop.classList.remove("opacity-0", "invisible");
@@ -264,6 +271,7 @@ export const initContactFormModal = () => {
     disableScroll();
   };
 
+  /** Function to close the modal */
   const closeModal = () => {
     fadeOut(backdrop, () => {
       backdrop.classList.remove("visible");
@@ -272,14 +280,16 @@ export const initContactFormModal = () => {
     });
   };
 
-  // --- Event Listeners (Modal) ---
+  /** Event Listeners */
   window.addEventListener("open-contact-modal", openModal);
   closeBtn.addEventListener("click", closeModal);
 
+  /** Close modal when backdrop is clicked */
   backdrop.addEventListener("click", (e) => {
     if (e.target === backdrop) closeModal();
   });
 
+  /** Close modal when escape key is pressed */
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && backdrop.classList.contains("visible")) {
       closeModal();
@@ -314,27 +324,29 @@ export const initContactFormModal = () => {
         const payload = {
           from_email: emailInput.value.trim(),
           phone_number: phoneInput.value.trim(),
-          subject: subjectInput ? subjectInput.value : "Website enquiry", 
-          message: messageInput ? messageInput.value.trim() : "", 
+          subject: subjectInput ? subjectInput.value : "Website enquiry",
+          message: messageInput ? messageInput.value.trim() : "",
         };
 
         // Real API Call
-        const response = await fetch("https://pixoloproductions.com/api/pixolo-website/contact-form.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+        const response = await fetch(
+          "https://pixoloproductions.com/api/pixolo-website/contact-form.php",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
           },
-          body: JSON.stringify(payload),
-        });
+        );
 
         if (!response.ok) {
-           throw new Error(`API Error: ${response.status}`);
+          throw new Error(`API Error: ${response.status}`);
         }
 
         closeModal();
         createAndShowModal("Cheers!", "You're good to go—your form has been submitted", true);
         contactForm.reset();
-
       } catch (error) {
         console.error("Submission error", error);
         createAndShowModal(
