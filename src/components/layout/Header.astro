@@ -1,6 +1,6 @@
 ---
 // COMPONENTS //
-// import BrandLogo from "@/components/ui/BrandLogo.astro";
+import BrandLogo from "@/components/ui/BrandLogo.astro";
 import MenuBar from "@/components/ui/MenuBar.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import MobileMenu from "@/components/layout/MobileMenu.astro";
@@ -10,12 +10,13 @@ import { Icon } from "astro-icon/components";
 import { menuItems } from "@/data/menu";
 ---
 
-<header class="relative z-20 bg-linear-to-b from-[#020617C4] via-[#020617A1] to-transparent">
+<header
+  class="relative z-20 dark:bg-linear-to-b dark:from-[#020617C4] dark:via-[#020617A1] dark:to-transparent"
+>
   <div class="container mx-auto flex items-center justify-between p-6 lg:p-4">
     <!-- Brand logo Component -->
     <a href="/">
-      <!-- <BrandLogo width={140} /> -->
-      <Icon name={"pixolo-logo-with-text"} width={140} height={120} class={"text-n-950"} />
+      <BrandLogo width={140} />
     </a>
 
     <!-- Menubar -->
