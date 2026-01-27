@@ -1,19 +1,29 @@
 // MODULES //
-import axios from "axios";
+import axios, { type AxiosRequestConfig } from "axios";
 
-const API_URL = import.meta.env.PUBLIC_API_URL;
+// CONSTANTS //
+import { API_URL } from "@/infrastructure/constants/urls.ts";
 
-export const getCaseStudies = async () => {
+/** API Call to get all case studies request. */
+export const getCaseStudiesRequest = async () => {
   try {
-    const response = await axios(API_URL);
-    const json = response.data;
+    // Configure the GET request with headers
+    const config: AxiosRequestConfig = {
+      method: "get",
+      url: `${API_URL}/section-content.php?key=case-studies`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-    // const studies = json?.structure?.["case-studies"];
-    // console.log(json);
+    // Make the API request
+    const response = await axios.request(config);
 
-    return json;
+    // Return the response data
+    return response.data;
   } catch (error) {
-    console.error("Error fetching case studies:", error);
-    return [];
+    // Log and return error details
+    console.error("API error:", error);
+    return { status: false, message: error };
   }
 };

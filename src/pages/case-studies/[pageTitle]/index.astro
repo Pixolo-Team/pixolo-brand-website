@@ -1,13 +1,6 @@
 ---
-// TYPES //
-import type { CaseStudyData } from "@/types/case-studies";
-
-// API SERVICES //
-import { getCaseStudies } from "@/services/api/case-studies.api";
-
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
-import type { CaseStudy } from "@/service/case-studies";
 
 // SECTIONS //
 import Numbers from "@/sections/case-studies/Numbers.astro";
@@ -21,92 +14,47 @@ import ClientTestimonial from "@/sections/case-studies/ClientTestimonial.astro";
 import SolutionNumbers from "@/sections/case-studies/SolutionNumbers.astro";
 import Hero from "@/sections/case-studies/Hero.astro";
 import KeyTakeaways from "@/sections/case-studies/KeyTakeaways.astro";
-
-// DATA //
 import { caseStudies } from "@/data/case-studies/case-studies";
 
 /**
  * Generate static paths for all service pages
  * @returns Array of static paths with service data
  */
-export async function getStaticPaths() {
-  const caseStudies: CaseStudyData[] = await getCaseStudies();
+export function getStaticPaths() {
+  const paths: Array<{
+    params: { pageTitle: string };
+    props: { caseStudy: any };
+  }> = [];
 
-  return caseStudies.map((study, index) => {
-    // Create Slug
-    console.log(study.name, "Name");
-
-    const slug = study.name.toLowerCase().replaceAll(" ", "-");
-    console.log(slug, "slug");
-
-    return {
+  caseStudies.forEach((caseStudy) => {
+    paths.push({
       params: {
-        pageTitle: slug,
+        pageTitle: caseStudy.pageTitle.replaceAll(" ", "-").toLowerCase(),
       },
-      props: { caseStudy: study },
-    };
+      props: {
+        caseStudy,
+      },
+    });
   });
+
+  return paths;
 }
 
-const { caseStudy }: { caseStudy: CaseStudyData } = Astro.props;
+const { caseStudy } = Astro.props;
 ---
 
 <Layout>
-  <Hero data={caseStudy} />
-  <!-- <Numbers data={caseStudy.clientNumbers || []} />
-  <AboutTheClient
-    data={{
-      aboutPointers: caseStudy.aboutPointers,
-      aboutImagesMainImage: caseStudy.aboutImagesMainImage,
-      aboutImagesOtherImages: caseStudy.aboutImagesOtherImages,
-    }}
-  />
-  <Issues data={caseStudy.clientIssues} />
-  <ClientVision
-    data={{
-      mainImage: caseStudy.clientVisionSectionMainImage,
-      imageAlt: caseStudy.clientVisionSectionImageAlt,
-      clientVisions: caseStudy.clientVisions || [],
-    }}
-  />
-  <Solutions data={caseStudy.clientSolutions || []} />
-
-  <Gallery
-    data={{
-      badgeIcon: caseStudy.gallerySectionDetailsBadgeIcon,
-      badgeText: caseStudy.gallerySectionDetailsBadgeText,
-      sectionTitle: caseStudy.gallerySectionDetailsSectionTitle,
-      galleryImages: caseStudy.galleryImages,
-    }}
-  />
-  <KeyTakeaways
-    data={{
-      keyTakeawaysDetailsBadgeIcon: caseStudy.keyTakeawaysDetailsBadgeIcon,
-      keyTakeawaysDetailsBadgeTitle: caseStudy.keyTakeawaysDetailsBadgeTitle,
-      keyTakeawaysDetailsTitle: caseStudy.keyTakeawaysDetailsTitle,
-      learningItems: caseStudy.learningItems,
-    }}
-  />
-  <ToolsUsed
-    data={{
-      toolsUsedDetailsHeaderText: caseStudy.toolsUsedDetailsHeaderText,
-      toolItems: caseStudy.toolItems,
-    }}
-  />
-  <ClientTestimonial
-    data={{
-      badgeIcon: caseStudy.clientTestimonialDetailsBadgeIcon,
-      badgeText: caseStudy.clientTestimonialDetailsBadgeText,
-      title: caseStudy.clientTestimonialDetailsTitle,
-      image: caseStudy.clientTestimonialDetailsImage,
-      name: caseStudy.clientTestimonialDetailsName,
-      role: caseStudy.clientTestimonialDetailsRole,
-      message: caseStudy.clientTestimonialDetailsMessage,
-    }}
-  /> -->
-
+  <Hero data={caseStudy.sections.find((s: any) => s.id === "hero")} />
+  <Numbers data={caseStudy.sections.find((s: any) => s.id === "by_the_numbers")} />
+  <AboutTheClient data={caseStudy.sections.find((s: any) => s.id === "about_client")} />
+  <Issues data={caseStudy.sections.find((s: any) => s.id === "client_issues")} />
+  <ClientVision data={caseStudy.sections.find((s: any) => s.id === "client_vision")} />
+  <Solutions data={caseStudy.sections.find((s: any) => s.id === "solutions")} />
+  <Gallery data={caseStudy.sections.find((s: any) => s.id === "gallery")} />
+  <KeyTakeaways data={caseStudy.sections.find((s: any) => s.id === "key_takeaways")} />
   <!-- <ToolsUsed />
   <ClientTestimonial /> -->
-
-  <!-- <SolutionNumbers data={caseStudy.solutionNumbers || []} /> -->
+  <SolutionNumbers
+    data={caseStudy.sections.find((s: any) => s.id === "numbers_after_the_solution")}
+  />
 </Layout>
