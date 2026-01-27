@@ -1,14 +1,23 @@
 ---
+// TYPES //
+import type { CaseStudyData } from "@/types/case-studies.types";
+
 // COMPONENTS //
 import CaseStudyCard from "@/components/casestudy/CaseStudyCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+
+// SERVICES //
+import { getCaseStudiesRequest } from "@/services/api/case-studies.api.ts";
 
 // CONSTANTS //
 import { URLS } from "@/infrastructure/constants/urls";
 
 // DATA //
-import { caseStudySectionDetails, caseStudies } from "@/data/case-studies/case-studies";
-import RoundedButton from "@/components/ui/RoundedButton.astro";
+import { caseStudySectionDetails } from "@/data/case-studies/case-studies";
+
+/** API Call to get case studies */
+const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
 ---
 
 <section id="case-studies-section">
@@ -24,7 +33,7 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
 
       <!-- Title -->
       <p
-        class="header-text text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-6xl"
+        class="header-text text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-5xl"
       >
         {caseStudySectionDetails.title}
       </p>
@@ -38,19 +47,24 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
         class="grid grid-cols-1 gap-10 md:gap-16 md:px-16 lg:grid-cols-2 xl:grid-cols-3"
       >
         {
-          caseStudies.map((caseStudyItem, caseStudyIndex) => (
-            <div class="case-study-card-item hidden">
-              <CaseStudyCard
-                href={URLS.CASE_STUDIES.ITEM(
-                  caseStudyItem.id.toString(),
-                  caseStudyItem.pageTitle.replaceAll(" ", "-").toLowerCase(),
-                )}
-                id={caseStudyItem.id}
-                title={caseStudyItem.pageTitle}
-                image={caseStudyItem.cardImage || caseStudySectionDetails.defaultImage}
-              />
-            </div>
-          ))
+          caseStudies.length === 0 ? (
+            <p>No caseStudies found</p>
+          ) : (
+            caseStudies
+              .filter((caseStudy) => caseStudy.showInHome === "1")
+              .map((caseStudyItem, filteredIndex) => (
+                <div class="case-study-card-item hidden">
+                  <CaseStudyCard
+                    href={URLS.CASE_STUDIES.ITEM(
+                      caseStudyItem.name?.replaceAll(" ", "-").toLowerCase(),
+                    )}
+                    id={filteredIndex}
+                    title={caseStudyItem.name}
+                    image={caseStudyItem.thumbnail}
+                  />
+                </div>
+              ))
+          )
         }
       </div>
       <!-- Load More Button -->
@@ -66,7 +80,6 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
 <script>
   import { initLoadMore } from "@/scripts/load-more";
   import { animateCaseStudiesSection } from "@/scripts/case-study/case-study";
-
   animateCaseStudiesSection();
 
   const CONFIG = {
