@@ -44,17 +44,15 @@ const { caseStudy } = Astro.props;
 ---
 
 <Layout>
-  <Hero data={caseStudy.sections.find((s: any) => s.id === "hero")} />
-  <Numbers data={caseStudy.sections.find((s: any) => s.id === "by_the_numbers")} />
-  <AboutTheClient data={caseStudy.sections.find((s: any) => s.id === "about_client")} />
-  <Issues data={caseStudy.sections.find((s: any) => s.id === "client_issues")} />
-  <ClientVision data={caseStudy.sections.find((s: any) => s.id === "client_vision")} />
-  <Solutions data={caseStudy.sections.find((s: any) => s.id === "solutions")} />
-  <Gallery data={caseStudy.sections.find((s: any) => s.id === "gallery")} />
-  <KeyTakeaways data={caseStudy.sections.find((s: any) => s.id === "key_takeaways")} />
+  <Hero data={caseStudy} />
+  <Numbers data={caseStudy} />
+  <AboutTheClient data={caseStudy} />
+  <Issues data={caseStudy} />
+  <ClientVision data={caseStudy} />
+  <Solutions data={caseStudy} />
+  <Gallery data={caseStudy} />
+  <KeyTakeaways data={caseStudy} />
   <!-- <ToolsUsed />
   <ClientTestimonial /> -->
-  <SolutionNumbers
-    data={caseStudy.sections.find((s: any) => s.id === "numbers_after_the_solution")}
-  />
+  <SolutionNumbers data={caseStudy} />
 </Layout>

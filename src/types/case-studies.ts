@@ -1,55 +1,55 @@
 export type ClientNumber = {
   title: string;
-}
+};
 
 export type ClientVisionItem = {
   title: string;
   description: string;
-}
+};
 
 export type ClientSolution = {
   title: string;
   description: string;
-}
+};
 
 export type ClientIssuesData = {
   title: string;
   description: string;
   issue: string;
   stat: string;
-}
+};
 
 export type AboutPointer = {
   title: string;
   description: string;
-}
+};
 
-export type AboutImage {
+export type AboutImage = {
   imagePath: string;
   alt: string;
-}
+};
 
 export type AboutImages = {
   mainImage: string;
   otherImages: AboutImage[]; // Assuming this is an array of strings (paths)
-}
+};
 
 export type AboutClient = {
   aboutPointers: AboutPointer[];
   aboutImages: AboutImages;
-}
+};
 
-export type GalleryImage {
+export type GalleryImage = {
   imagePath: string;
   alt: string;
-}
+};
 
 export type GallerySectionDetails = {
   badgeIcon: string;
   badgeText: string;
   sectionTitle: string;
   galleryImages: GalleryImage[];
-}
+};
 
 export type ClientTestimonialDetails = {
   badgeIcon: string;
@@ -59,37 +59,36 @@ export type ClientTestimonialDetails = {
   name: string;
   role: string;
   message: string;
-}
+};
 
 export type ToolItem = {
   logo: string;
   title: string;
   description: string;
-}
+};
 
 export type ToolsUsedDetails = {
   headerText: string;
-  
-}
+};
 
 export type SolutionNumber = {
   title: string;
   description: string;
   issue: string;
   stat: string;
-}
+};
 
 export type LearningItem = {
   title: string;
   description: string;
-}
+};
 
 export type KeyTakeawaysDetails = {
   badgeIcon: string;
   badgeTitle: string;
   title: string;
   learningItems: LearningItem[];
-}
+};
 
 export type CaseStudyData = {
   showInHome: string;
@@ -101,9 +100,9 @@ export type CaseStudyData = {
   name: string;
   thumbnail: string;
   clientNumbers: ClientNumber[];
-  clientVisionSectionMainImage: string,
-  clientVisionSectionImageAlt: string,
-  clientVisions: ClientVisionItem[],
+  clientVisionSectionMainImage: string;
+  clientVisionSectionImageAlt: string;
+  clientVisions: ClientVisionItem[];
   clientSolutions: ClientSolution[];
   clientIssues: ClientIssuesData[];
   aboutPointers: AboutPointer[];
@@ -128,11 +127,11 @@ export type CaseStudyData = {
   keyTakeawaysDetailsBadgeTitle: string;
   keyTakeawaysDetailsTitle: string;
   learningItems: LearningItem[];
-}
+};
 
 export type CaseStudyApiResponse = {
   template_structures: Record<string, any>;
   structure: {
     "case-studies": CaseStudyData[];
   };
-}
+};
