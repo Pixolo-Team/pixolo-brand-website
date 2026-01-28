@@ -18,7 +18,10 @@ export const getCurrentVisibleSection = (): string => {
 };
 
 /** Base GA event sender */
-export const trackEvent = (eventName: EVENTS, params: Record<string, any> = {}) => {
+export const trackEvent = (
+  eventName: EVENTS,
+  params: Record<string, string | number | boolean> = {},
+) => {
   if (typeof window === "undefined") return;
   if (!window.gtag) return;
 
@@ -42,23 +45,41 @@ export const trackPageView = () => {
 export const setupScrollTracking = () => {
   let fired50 = false;
   let fired90 = false;
+  let isTicking = false;
 
+  /** Scroll event handler */
   const onScroll = () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = Math.round((scrollTop / docHeight) * 100);
-
-    if (!fired50 && scrollPercent >= 50) {
-      fired50 = true;
-      trackEvent(EVENTS.SCROLL_50_PERCENT, { scroll_depth: 50 });
+    if (isTicking) {
+      return;
     }
 
-    if (!fired90 && scrollPercent >= 90) {
-      fired90 = true;
-      trackEvent(EVENTS.SCROLL_90_PERCENT, { scroll_depth: 90 });
-    }
+    // Set the flag to true to prevent multiple scroll events
+    isTicking = true;
+
+    // Using requestAnimationFrame to throttle scroll events
+    window.requestAnimationFrame(() => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+
+      // Track 50% scroll
+      if (!fired50 && scrollPercent >= 50) {
+        fired50 = true;
+        trackEvent(EVENTS.SCROLL_50_PERCENT, { scroll_depth: 50 });
+      }
+
+      // Track 90% scroll
+      if (!fired90 && scrollPercent >= 90) {
+        fired90 = true;
+        trackEvent(EVENTS.SCROLL_90_PERCENT, { scroll_depth: 90 });
+      }
+
+      // Reset the flag to allow the next scroll event
+      isTicking = false;
+    });
   };
 
+  // Add scroll event listener
   window.addEventListener("scroll", onScroll);
 };
 
@@ -174,7 +195,11 @@ export const trackCaseStudyView = (name: string, category: string, viewType: "fu
 /** GLOBAL TYPE */
 declare global {
   interface Window {
-    gtag?: (command: string, eventName: string, eventParams?: Record<string, any>) => void;
-    dataLayer?: any[];
+    gtag?: (
+      command: string,
+      eventName: string,
+      eventParams?: Record<string, string | number | boolean>,
+    ) => void;
+    dataLayer?: Array<unknown>;
   }
 }
