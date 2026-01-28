@@ -165,11 +165,7 @@ export const trackFaqEngagement = (
 };
 
 /** CASE STUDIES */
-export const trackCaseStudyView = (
-  name: string,
-  category: string,
-  viewType: "full_page" | "modal",
-) => {
+export const trackCaseStudyView = (name: string, category: string, viewType: "full_page") => {
   trackEvent(EVENTS.CASE_STUDY_VIEW, {
     case_study_name: name,
     case_study_category: category,

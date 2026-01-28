@@ -66,6 +66,18 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
 <script>
   import { initLoadMore } from "@/scripts/load-more";
   import { animateCaseStudiesSection } from "@/scripts/case-study/case-study";
+  import { trackCaseStudyView } from "@/scripts/analytics";
+
+  // Single event listener for ALL cards (event delegation)
+  document.addEventListener("click", (e) => {
+    const card = (e.target as HTMLElement).closest(".case-study-card");
+    if (card) {
+      const caseStudyName = card.getAttribute("data-case-study-item");
+      if (caseStudyName) {
+        trackCaseStudyView(caseStudyName, "case-studies", "full_page");
+      }
+    }
+  });
 
   animateCaseStudiesSection();
 

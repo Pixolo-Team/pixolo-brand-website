@@ -55,6 +55,18 @@ import { faqSectionDetails } from "@/data/faq";
 
 <script>
   import { animateFaqSection, toogleAccordion } from "@/scripts/faq";
+  import { trackFaqExpand } from "@/scripts/analytics";
+
+  // Single event listener for ALL cards (event delegation)
+  document.addEventListener("click", (e) => {
+    const card = (e.target as HTMLElement).closest(".faq-item-list");
+    if (card) {
+      const faqItemName = card.getAttribute("data-faq-item");
+      if (faqItemName) {
+        trackFaqExpand(faqItemName);
+      }
+    }
+  });
 
   toogleAccordion();
   animateFaqSection();

@@ -103,18 +103,18 @@ const { meta = {} } = Astro.props;
     height: 100%;
   }
 </style>
-<script type="module">
+<script>
   import { trackContactCTAClick, trackContactFormView } from "@/scripts/analytics";
   import {
     trackPageView,
     setupScrollTracking,
     setupClickTracking,
     trackWhatsappClick,
-  } from "/src/scripts/analytics";
+  } from "@/scripts/analytics";
 
   setupClickTracking("sticky-whatsapp", () => trackWhatsappClick("floating"));
   setupClickTracking("open-contact-modal", () => trackContactCTAClick("floating"));
-  setupClickTracking("open-contact-modal", () => trackContactFormView("contact_form"));
+  setupClickTracking("open-contact-modal", () => trackContactFormView());
 
   // Initial page load
   trackPageView();
