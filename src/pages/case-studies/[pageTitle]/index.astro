@@ -1,4 +1,10 @@
 ---
+// TYPES //
+import type { CaseStudyData } from "@/types/case-studies";
+
+// API SERVICES //
+import { getCaseStudiesRequest } from "@/services/api/case-studies.api";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 
@@ -14,44 +20,37 @@ import ClientTestimonial from "@/sections/case-studies/ClientTestimonial.astro";
 import SolutionNumbers from "@/sections/case-studies/SolutionNumbers.astro";
 import Hero from "@/sections/case-studies/Hero.astro";
 import KeyTakeaways from "@/sections/case-studies/KeyTakeaways.astro";
-import { caseStudies } from "@/data/case-studies/case-studies";
 
 /**
  * Generate static paths for all service pages
  * @returns Array of static paths with service data
  */
-export function getStaticPaths() {
-  const paths: Array<{
-    params: { pageTitle: string };
-    props: { caseStudy: any };
-  }> = [];
+export async function getStaticPaths() {
+  /** API Call to get case studies */
+  const caseStudies = await getCaseStudiesRequest();
 
-  caseStudies.forEach((caseStudy) => {
-    paths.push({
-      params: {
-        pageTitle: caseStudy.pageTitle.replaceAll(" ", "-").toLowerCase(),
-      },
-      props: {
-        caseStudy,
-      },
-    });
-  });
-
-  return paths;
+  return caseStudies.map((caseStudyItem: CaseStudyData) => ({
+    params: {
+      pageTitle: caseStudyItem.name.replaceAll(" ", "-").toLowerCase(),
+    },
+    props: {
+      caseStudyItem,
+    },
+  }));
 }
 
-const { caseStudy } = Astro.props;
+const { caseStudyItem } = Astro.props;
 ---
 
 <Layout>
-  <Hero data={caseStudy} />
-  <Numbers data={caseStudy} />
-  <AboutTheClient data={caseStudy} />
-  <Issues data={caseStudy} />
-  <ClientVision data={caseStudy} />
-  <Solutions data={caseStudy} />
-  <Gallery data={caseStudy} />
-  <KeyTakeaways data={caseStudy} />
+  <Hero data={caseStudyItem} />
+  <Numbers data={caseStudyItem} />
+  <AboutTheClient data={caseStudyItem} />
+  <Issues data={caseStudyItem} />
+  <ClientVision data={caseStudyItem} />
+  <Solutions data={caseStudyItem} />
+  <Gallery data={caseStudyItem} />
+  <KeyTakeaways data={caseStudyItem} />
   <!-- <ToolsUsed />
   <ClientTestimonial /> -->
   <SolutionNumbers data={caseStudy} />

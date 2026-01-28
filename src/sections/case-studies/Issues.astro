@@ -19,7 +19,7 @@ const { data } = Astro.props;
     <div class="flex flex-col gap-5">
       <!-- Iterating through data -->
       {
-        data.map((clientIssueItem: any) => (
+        data.clientIssues?.map((clientIssueItem: any) => (
           <ClientIssues
             title={clientIssueItem.title}
             description={clientIssueItem.description}
