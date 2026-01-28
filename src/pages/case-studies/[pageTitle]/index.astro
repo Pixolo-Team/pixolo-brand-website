@@ -22,14 +22,13 @@ import { caseStudies } from "@/data/case-studies/case-studies";
  */
 export function getStaticPaths() {
   const paths: Array<{
-    params: { id: string; pageTitle: string };
+    params: { pageTitle: string };
     props: { caseStudy: any };
   }> = [];
 
   caseStudies.forEach((caseStudy) => {
     paths.push({
       params: {
-        id: caseStudy.id.toString(),
         pageTitle: caseStudy.pageTitle.replaceAll(" ", "-").toLowerCase(),
       },
       props: {
