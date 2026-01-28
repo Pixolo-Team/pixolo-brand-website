@@ -19,3 +19,13 @@ export type FaqSectionData = {
   faqTabItems: FaqTabItemData[];
   faqItemsByTab: Record<number, FaqItemData[]>;
 };
+
+export type FaqApiItem = {
+  question: string;
+  answer: string;
+};
+export type FaqApiCategory = {
+  category: string;
+  faq_items: FaqApiItem[];
+};
+export type FaqApiResponse = FaqApiCategory[];
