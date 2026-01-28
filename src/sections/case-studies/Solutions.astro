@@ -21,7 +21,7 @@ const { data } = Astro.props;
     <!-- Solution Cards -->
     <div class="flex flex-col gap-3 md:gap-4 lg:grid lg:grid-cols-2 lg:gap-9">
       {
-        data.solutionNumbers?.map((clientSolutionItem: any, clientSolutionIndex: number) => (
+        data.clientSolutions?.map((clientSolutionItem: any, clientSolutionIndex: number) => (
           <ClientSolution
             title={clientSolutionItem.title}
             description={clientSolutionItem.description}

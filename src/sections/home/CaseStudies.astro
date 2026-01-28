@@ -12,11 +12,9 @@ import { URLS } from "@/infrastructure/constants/urls";
 // DATA //
 import { caseStudySectionDetails } from "@/data/case-studies/case-studies";
 import type { CaseStudyData } from "@/types/case-studies";
-import { toDirectDriveLink } from "@/utilities/helper";
 
 /** API Call to get case studies */
 const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
-console.log(caseStudies[1].thumbnail);
 ---
 
 <section id="case-studies-section">
@@ -54,12 +52,12 @@ console.log(caseStudies[1].thumbnail);
               .map((caseStudyItem, filteredIndex) => (
                 <div class="case-study-card-item hidden">
                   <CaseStudyCard
+                    image={caseStudyItem.thumbnail}
                     href={URLS.CASE_STUDIES.ITEM(
                       caseStudyItem.name?.replaceAll(" ", "-").toLowerCase(),
                     )}
                     id={filteredIndex}
                     title={caseStudyItem.name}
-                    image={toDirectDriveLink(caseStudyItem.thumbnail)}
                   />
                 </div>
               ))

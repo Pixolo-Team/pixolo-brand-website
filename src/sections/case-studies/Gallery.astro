@@ -4,8 +4,6 @@ import SectionHeader from "@/components/ui/SectionHeader.astro";
 import Image from "astro/components/Image.astro";
 import NavigationArrows from "@/components/case-studies/NavigationArrows.astro";
 
-// DATA //
-import { gallerySectionDetails } from "@/data/case-studies/case-study-consumption";
 // Receive data from the parent page
 const { data } = Astro.props;
 ---
@@ -18,8 +16,8 @@ const { data } = Astro.props;
     <!-- Section Header -->
     <SectionHeader
       badgeIcon={"service-icon"}
-      badgeText={data.badgeText}
-      sectionTitle={data.sectionTitle}
+      badgeText={data.gallerySectionDetailsBadgeText}
+      sectionTitle={data.gallerySectionDetailsSectionTitle}
     />
 
     <!-- Image Slideshow -->
@@ -37,11 +35,11 @@ const { data } = Astro.props;
                 {/* Image Container */}
                 <div class="h-44 w-full md:h-[350px] lg:h-[460px] xl:h-[600px] 2xl:h-[665px]">
                   <Image
+                    src={`${galleryImageItem.imagePath}`}
+                    alt={galleryImageItem.alt}
                     class="h-full w-full object-cover"
                     width={1536}
                     height={665}
-                    src={`/${galleryImageItem.imagePath}`}
-                    alt={galleryImageItem.alt}
                     loading="lazy"
                   />
                 </div>

@@ -20,9 +20,9 @@ const { data } = Astro.props;
     <div id="sol-num-wrap" class="flex flex-col gap-5">
       <!-- Iterate through Data -->
       {
-        data.clientIssues?.map((limitationItem: any) => (
+        data.solutionNumbers?.map((limitationItem: any) => (
           <ClientIssues
-            title={limitationItem.name}
+            title={limitationItem.title}
             description={limitationItem.description}
             issue={limitationItem.issue}
             stat={limitationItem.stat}

@@ -51,14 +51,14 @@ const { data } = Astro.props;
       <!-- Bottom Images -->
       <div class="flex min-w-0 flex-1 gap-4 lg:gap-5">
         {
-          data.aboutImages
+          data.aboutImagesOtherImages
             ?.slice(1, 3)
             .map((visualImgItem: any) => (
               <Image
                 class="min-w-0 flex-1 rounded-3xl object-cover lg:rounded-[60px]"
                 width={290}
                 height={400}
-                src={`/${visualImgItem.imagePath}`}
+                src={`${visualImgItem.imagePath}`}
                 alt={visualImgItem.alt}
               />
             ))

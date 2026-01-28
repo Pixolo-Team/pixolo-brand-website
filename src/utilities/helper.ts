@@ -16,11 +16,3 @@ export const buildAllFaqs = (faqItemsByTab: Record<number, any[]>) => {
 
   return Array.from(allFaqsMap.values());
 };
-
-export function toDirectDriveLink(url: string): string {
-  // Already a direct Google image CDN link
-  if (url.includes("googleusercontent.com")) return url;
-
-  const match = url.match(/[-\w]{25,}/);
-  return match ? `https://drive.google.com/thumbnail?id=${match[0]}&sz=w1920` : url;
-}
