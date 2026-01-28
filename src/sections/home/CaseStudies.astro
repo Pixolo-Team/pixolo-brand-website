@@ -12,9 +12,11 @@ import { URLS } from "@/infrastructure/constants/urls";
 // DATA //
 import { caseStudySectionDetails } from "@/data/case-studies/case-studies";
 import type { CaseStudyData } from "@/types/case-studies";
+import { toDirectDriveLink } from "@/utilities/helper";
 
 /** API Call to get case studies */
 const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
+console.log(caseStudies[1].thumbnail);
 ---
 
 <section id="case-studies-section">
@@ -57,7 +59,7 @@ const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
                     )}
                     id={filteredIndex}
                     title={caseStudyItem.name}
-                    image={caseStudyItem.thumbnail}
+                    image={toDirectDriveLink(caseStudyItem.thumbnail)}
                   />
                 </div>
               ))
