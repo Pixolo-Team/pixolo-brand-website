@@ -23,6 +23,6 @@ export const getFaqsRequest = async () => {
   } catch (error) {
     // Log and return error details
     console.error("FAQ API error:", error);
-    return { status: false, message: error };
+    return error;
   }
 };
