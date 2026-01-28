@@ -1,5 +1,5 @@
 // API URL
-export const API_URL = "https://pixoloproductions.com/api/pixolo-website";
+export const API_URL = "https://pixoloproductions.com/api/pixolo-website/section-content.php?key=";
 
 // Links for pages to redirect
 export const URLS = {

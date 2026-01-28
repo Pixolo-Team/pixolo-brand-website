@@ -13,7 +13,7 @@ export const getCaseStudiesRequest = async () => {
     // Configure the GET request with headers
     const config: AxiosRequestConfig = {
       method: "get",
-      url: `${API_URL}/section-content.php?key=case-studies`,
+      url: `${API_URL}case-studies`,
       headers: {
         "Content-Type": "application/json",
       },
