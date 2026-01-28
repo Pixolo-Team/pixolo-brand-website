@@ -1,6 +1,6 @@
 // SCRIPTS //
 import { EVENTS } from "@/enums/analytics.enum";
-import { getDeviceType } from "./device";
+import { getDeviceType } from "@/utilities/helper.ts";
 
 /** GET CURRENT VISIBLE SECTION */
 export const getCurrentVisibleSection = (): string => {
@@ -29,8 +29,6 @@ export const trackEvent = (eventName: EVENTS, params: Record<string, any> = {}) 
     current_section: getCurrentVisibleSection(),
     ...params,
   };
-
-  console.log("[GA EVENT]", eventName, eventParams);
 
   window.gtag("event", eventName, eventParams);
 };
