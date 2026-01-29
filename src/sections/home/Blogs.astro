@@ -4,74 +4,81 @@ import BlogCard from "@/components/blogs/BlogCard.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
+// API SERVICES //
+import { getBlogsRequest } from "@/services/api/blogs.api";
+
+// CONSTANTS //
+import { URLS } from "@/infrastructure/constants/urls";
+
 // DATA //
 import { blogSectionDetails } from "@/data/blogs";
-import { getBlogsRequest } from "@/services/api/blogs.api";
 
 /** Makes an API Call to fetch blogs data */
 const blogs = await getBlogsRequest();
 console.log(blogs);
+
+/** Show only blogs marked for home */
+const homeBlogs = blogs.filter((blog: { show_in_home: string }) => blog.show_in_home === "1");
 ---
 
-<!-- Blogs Section -->
-<section id="blogs-section">
-  <div class="container mx-auto flex flex-col gap-16 px-6 py-20 md:gap-20 md:py-28 lg:gap-24">
-    <div class="flex flex-col items-start gap-4 md:gap-5 lg:gap-6">
-      <!-- Tool Badge -->
-      <div class="tool-badge">
-        <ToolBadge icon={"comment"} text={blogSectionDetails.badgeTitle} />
+{
+  homeBlogs.length > 0 && (
+    // Blogs Section
+    <section id="blogs-section">
+      {/* Container */}
+      <div class="container mx-auto flex flex-col gap-16 px-6 py-20 md:gap-20 md:py-28 lg:gap-24">
+        <div class="flex flex-col items-start gap-4 md:gap-5 lg:gap-6">
+          {/* Tool Badge  */}
+          <div class="tool-badge">
+            <ToolBadge icon={"comment"} text={blogSectionDetails.badgeTitle} />
+          </div>
+
+          {/* Heading */}
+          <p
+            id="header-text"
+            class="text-n-950 text-2xl leading-tight font-normal tracking-tighter md:text-4xl lg:text-6xl"
+          >
+            {blogSectionDetails.heading}
+          </p>
+        </div>
+
+        {/* Blog Cards and Add More Button */}
+        <div class="flex flex-col items-center gap-16">
+          {/* Blog Cards Wrapper */}
+          <div
+            id="blog-cards-container"
+            class="grid w-full grid-cols-1 gap-12 md:grid-cols-2 md:gap-7 lg:grid-cols-3 lg:gap-12"
+          >
+            {/* Blog Cards */}
+            {homeBlogs.map((blogItem) => (
+              <div class="blog-card-item hidden">
+                <BlogCard
+                  imageSrc={blogItem.image}
+                  category={blogItem.category}
+                  date={blogItem.date}
+                  title={blogItem.title}
+                  author={blogItem.author}
+                  href={URLS.BLOGS.ITEM(blogItem.title.replaceAll(" ", "-").toLowerCase())}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Load More Button */}
+          <RoundedButton
+            id="load-more-blogs"
+            buttonText={blogSectionDetails.loadMoreButton}
+            type="button"
+            variant="tertiary"
+          />
+        </div>
       </div>
-
-      <!-- Heading -->
-      <p
-        id="header-text"
-        class="text-n-950 text-2xl leading-tight font-normal tracking-tighter md:text-4xl lg:text-6xl"
-      >
-        {blogSectionDetails.heading}
-      </p>
-    </div>
-
-    <!-- Blog Cards and Add More Button -->
-    <div class="flex flex-col items-center gap-16">
-      <!-- Blog Cards Wrapper -->
-      <div
-        id="blog-cards-container"
-        class="grid w-full grid-cols-1 gap-12 md:grid-cols-2 md:gap-7 lg:grid-cols-3 lg:gap-12"
-      >
-        <!-- Blog Cards -->
-        {
-          blogs.map(
-            (blogItem) => (
-              console.log(blogItem),
-              (
-                <div class="blog-card-item hidden">
-                  <BlogCard
-                    imageSrc={blogItem.imageSrc}
-                    category={blogItem.category}
-                    date={blogItem.date}
-                    title={blogItem.title}
-                    author={blogItem.author}
-                    href={blogItem.href}
-                  />
-                </div>
-              )
-            ),
-          )
-        }
-      </div>
-
-      <!-- Load More Button -->
-      <RoundedButton
-        id="load-more-btn"
-        buttonText={blogSectionDetails.loadMoreButton}
-        type="button"
-        variant="tertiary"
-      />
-    </div>
-  </div>
-</section>
+    </section>
+  )
+}
 
 <script>
+  // OTHERS //
   import { initLoadMore } from "@/scripts/load-more";
   import { animateBlogsSection } from "@/scripts/blogs";
 
@@ -81,7 +88,7 @@ console.log(blogs);
   function setupBlogs() {
     initLoadMore({
       containerId: "blog-cards-container",
-      loadMoreBtnId: "load-more-btn",
+      loadMoreBtnId: "load-more-blogs",
       cardClass: "blog-card-item",
       initialVisible: {
         desktop: 3,
