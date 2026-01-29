@@ -6,36 +6,35 @@ import ClientNumbers from "@/components/case-studies/ClientNumber.astro";
 const { data } = Astro.props;
 ---
 
-<!-- Client in numbers Section -->
-<section>
-  <!-- Container -->
-  <div
-    class="container mx-auto flex flex-col items-center justify-center gap-12 px-6 pt-20 md:px-12 md:pt-10 md:pb-16 lg:gap-16 lg:pb-20"
-  >
-    <!-- Title Content -->
-    <div class="anim-fade-in-right flex flex-col gap-3.5 md:flex-row md:gap-16 lg:gap-32 xl:gap-40">
-      <!-- Title -->
-      <h1
-        class="text-n-950 text-2xl leading-tight font-medium md:min-w-[260px] md:text-3xl lg:min-w-[300px] lg:text-4xl"
-      >
-        Impact By the Numbers
-      </h1>
-      <!-- Description -->
-      <p class="text-n-800 leading-tight md:text-xl lg:text-2xl">
-        {data.clientNumbersHeading}
-      </p>
-    </div>
+{
+  data.clientNumbers.length > 0 && (
+    // Client in numbers Section
+    <section>
+      {/* Container  */}
+      <div class="container mx-auto flex flex-col items-center justify-center gap-12 px-6 pt-20 md:px-12 md:pt-10 md:pb-16 lg:gap-16 lg:pb-20">
+        {/* Title Content */}
+        <div class="anim-fade-in-right flex flex-col gap-3.5 md:flex-row md:gap-16 lg:gap-32 xl:gap-40">
+          {/* Title */}
+          <h1 class="text-n-950 text-2xl leading-tight font-medium md:min-w-[260px] md:text-3xl lg:min-w-[300px] lg:text-4xl">
+            Impact By the Numbers
+          </h1>
 
-    <!-- Numbers Component -->
-    <div
-      class="anim-fade-in-up grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-9"
-    >
-      <!-- Iterate through Data -->
-      {
-        data.clientNumbers?.map((metricItem: any) => (
-          <ClientNumbers title={metricItem.title} value={metricItem.numbers} />
-        ))
-      }
-    </div>
-  </div>
-</section>
+          {/* Description */}
+          {data.clientNumbersHeading && (
+            <p class="text-n-800 leading-tight md:text-xl lg:text-2xl">
+              {data.clientNumbersHeading}
+            </p>
+          )}
+        </div>
+
+        {/* Numbers Component */}
+        <div class="anim-fade-in-up grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-9">
+          {/* Iterate through Data */}
+          {data.clientNumbers?.map((metricItem: any) => (
+            <ClientNumbers title={metricItem.title} value={metricItem.numbers} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

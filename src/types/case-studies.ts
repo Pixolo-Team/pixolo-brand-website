@@ -1,5 +1,6 @@
-export type ClientNumber = {
+export type ClientNumbersData = {
   title: string;
+  description: string;
 };
 
 export type ClientVisionItem = {
@@ -99,7 +100,7 @@ export type CaseStudyData = {
   logo: string;
   name: string;
   thumbnail: string;
-  clientNumbers: ClientNumber[];
+  clientNumbers: ClientNumbersData[];
   clientVisionSectionMainImage: string;
   clientVisionSectionImageAlt: string;
   clientVisions: ClientVisionItem[];
