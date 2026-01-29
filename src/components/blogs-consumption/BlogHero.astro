@@ -21,7 +21,7 @@ const { post } = Astro.props as Props;
   >
     <!-- ToolBadge -->
     <div class="tool-badge">
-      <ToolBadge icon="package" text={post.category.label} />
+      <ToolBadge icon="package" text="Insights Worth Reading" />
     </div>
 
     <!-- Content Section -->
@@ -32,7 +32,7 @@ const { post } = Astro.props as Props;
         <div class="flex items-center justify-center gap-3.5 md:gap-5">
           <!-- Label -->
           <p class="text-n-950 text-xs leading-normal font-normal capitalize md:text-lg lg:text-xl">
-            {post.category.label}
+            {post.category}
           </p>
 
           <!-- Divider line -->
@@ -40,7 +40,7 @@ const { post } = Astro.props as Props;
 
           <!-- Published Date -->
           <p class="text-n-700 justify-start text-xs leading-normal md:text-lg lg:text-xl">
-            {post.publishedAt}
+            {post.date}
           </p>
         </div>
 
@@ -51,7 +51,7 @@ const { post } = Astro.props as Props;
 
         <!-- Author -->
         <div class="text-n-700 text-center text-xs leading-normal md:text-lg lg:text-xl">
-          By: {post.author.name}
+          By: {post.author}
         </div>
       </div>
 
@@ -60,11 +60,12 @@ const { post } = Astro.props as Props;
         class="blog-hero-image h-[295px] overflow-hidden rounded-3xl md:h-[450px] md:rounded-4xl xl:h-[650px]"
       >
         <Image
-          src={post.hero.image}
-          alt={post.hero.alt}
+          src={post.image}
+          alt={post.alt}
           class="h-full w-full object-cover"
           width={1536}
           height={650}
+          referrerpolicy="no-referrer"
         />
       </div>
     </div>
