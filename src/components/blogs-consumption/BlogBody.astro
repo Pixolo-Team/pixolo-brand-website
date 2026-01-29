@@ -9,37 +9,20 @@ import ParagraphBlock from "@/components/blogs-consumption/ParagraphBlock.astro"
 import ListBlock from "@/components/blogs-consumption/ListBlock.astro";
 import ComparisonBlock from "@/components/blogs-consumption/ComparisonBlock.astro";
 
-interface Props {
-  content: BlogBlock[];
-}
-
-const { content } = Astro.props as Props;
+const { data } = Astro.props;
 ---
 
-<section class="blog-body container mx-auto space-y-8 px-6 lg:max-w-[955px]">
-  {
-    content.map((block) => {
-      if (block.type === "media") {
-        return <MediaCardBlock block={block} />;
-      }
-
-      if (block.type === "heading") {
-        return <HeadingBlock block={block} />;
-      }
-
-      if (block.type === "paragraph") {
-        return <ParagraphBlock block={block} />;
-      }
-
-      if (block.type === "list") {
-        return <ListBlock block={block} />;
-      }
-
-      if (block.type === "comparison") {
-        return <ComparisonBlock block={block} />;
-      }
-
-      return null;
-    })
-  }
+<section class="blog-body">
+  <div class="container mx-auto px-6">
+    {
+      data?.content.map((block: BlogBlock) => {
+        if (block.type === "media") return <MediaCardBlock block={block} />;
+        if (block.type === "heading") return <HeadingBlock block={block} />;
+        if (block.type === "paragraph") return <ParagraphBlock block={block} />;
+        if (block.type === "list") return <ListBlock block={block} />;
+        if (block.type === "comparison") return <ComparisonBlock block={block} />;
+        return null;
+      })
+    }
+  </div>
 </section>
