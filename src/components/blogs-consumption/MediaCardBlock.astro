@@ -64,7 +64,8 @@ const { block } = Astro.props as Props;
 
 <script>
   import { initVideoPlayPause } from "@/scripts/play-button";
-  import { animateMediaFadeInUp } from "@/scripts/blog-consumption";
+  import { animateMediaFadeInUp } from "@/scripts/blogs-consumption";
+
   initVideoPlayPause("#blog-video-iframe", "#play-button");
 
   animateMediaFadeInUp();
