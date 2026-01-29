@@ -39,19 +39,50 @@ export async function getStaticPaths() {
   }));
 }
 
-const { caseStudyItem }: { caseStudyItem: CaseStudyData[] } = Astro.props;
+const { caseStudyItem }: { caseStudyItem: CaseStudyData } = Astro.props;
 ---
 
 <Layout>
-  <Hero data={caseStudyItem} />
-  <Numbers data={caseStudyItem} />
-  <AboutTheClient data={caseStudyItem} />
-  <Issues data={caseStudyItem} />
-  <ClientVision data={caseStudyItem} />
-  <Solutions data={caseStudyItem} />
-  <Gallery data={caseStudyItem} />
-  <KeyTakeaways data={caseStudyItem} />
+  <Hero
+    badgeTitle={caseStudyItem.badgeTitle}
+    title={caseStudyItem.title}
+    description={caseStudyItem.description}
+    thumbnail={caseStudyItem.thumbnail}
+    websiteLink={""}
+    name={caseStudyItem.name}
+  />
+  <Numbers
+    clientNumbersHeading={caseStudyItem.clientNumbersHeading}
+    clientNumbers={caseStudyItem.clientNumbers}
+  />
+  <AboutTheClient
+    aboutPointers={caseStudyItem.aboutPointers}
+    aboutImagesMainImage={caseStudyItem.aboutImagesMainImage}
+    aboutImagesOtherImages={caseStudyItem.aboutImagesOtherImages}
+  />
+  <Issues
+    clientIssuesHeading={caseStudyItem.clientIssuesHeading}
+    clientIssues={caseStudyItem.clientIssues}
+  />
+  <ClientVision
+    clientVisionSectionMainImage={caseStudyItem.clientVisionSectionMainImage}
+    clientVisionSectionImageAlt={caseStudyItem.clientVisionSectionImageAlt}
+    clientVisions={caseStudyItem.clientVisions}
+  />
+  <Solutions clientSolutions={caseStudyItem.clientSolutions} />
+  <Gallery
+    badgeIcon={caseStudyItem.gallerySectionDetailsBadgeIcon}
+    badgeText={caseStudyItem.gallerySectionDetailsBadgeText}
+    sectionTitle={caseStudyItem.gallerySectionDetailsSectionTitle}
+    galleryImages={caseStudyItem.galleryImages}
+  />
+  <KeyTakeaways
+    badgeIcon={caseStudyItem.keyTakeawaysDetailsBadgeIcon}
+    badgeText={caseStudyItem.keyTakeawaysDetailsBadgeTitle}
+    sectionTitle={caseStudyItem.keyTakeawaysDetailsTitle}
+    learningItems={caseStudyItem.learningItems}
+  />
   <!-- <ToolsUsed />
   <ClientTestimonial /> -->
-  <SolutionNumbers data={caseStudyItem} />
+  <SolutionNumbers solutionNumbers={caseStudyItem.solutionNumbers} />
 </Layout>

@@ -3,11 +3,19 @@
 import ClientNumbers from "@/components/case-studies/ClientNumber.astro";
 
 // Receive data from the parent page
-const { data } = Astro.props;
+
+interface props {
+  clientNumbersHeading: string;
+  clientNumbers: {
+    title: string;
+    numbers: string;
+  }[];
+}
+const { clientNumbersHeading, clientNumbers } = Astro.props;
 ---
 
 {
-  data.clientNumbers.length > 0 && (
+  clientNumbers.length > 0 && (
     // Client in numbers Section
     <section>
       {/* Container  */}
@@ -20,17 +28,15 @@ const { data } = Astro.props;
           </h1>
 
           {/* Description */}
-          {data.clientNumbersHeading && (
-            <p class="text-n-800 leading-tight md:text-xl lg:text-2xl">
-              {data.clientNumbersHeading}
-            </p>
+          {clientNumbersHeading && (
+            <p class="text-n-800 leading-tight md:text-xl lg:text-2xl">{clientNumbersHeading}</p>
           )}
         </div>
 
         {/* Numbers Component */}
         <div class="anim-fade-in-up grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-9">
           {/* Iterate through Data */}
-          {data.clientNumbers?.map((metricItem: any) => (
+          {clientNumbers?.map((metricItem: any) => (
             <ClientNumbers title={metricItem.title} value={metricItem.numbers} />
           ))}
         </div>

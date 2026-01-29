@@ -100,6 +100,8 @@ export type CaseStudyData = {
   logo: string;
   name: string;
   thumbnail: string;
+  clientNumbersHeading: string;
+  clientIssuesHeading: string;
   clientNumbers: ClientNumbersData[];
   clientVisionSectionMainImage: string;
   clientVisionSectionImageAlt: string;

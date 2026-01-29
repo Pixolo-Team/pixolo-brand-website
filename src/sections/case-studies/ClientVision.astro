@@ -3,11 +3,19 @@
 import Image from "astro/components/Image.astro";
 import ClientVisionItem from "@/components/case-studies/ClientVisionItem.astro";
 
-const { data } = Astro.props;
+interface props {
+  clientVisionSectionMainImage: string;
+  clientVisionSectionImageAlt: string;
+  clientVisions: {
+    title: string;
+    description: string;
+  }[];
+}
+const { clientVisionSectionMainImage, clientVisionSectionImageAlt, clientVisions } = Astro.props;
 ---
 
 {
-  data.clientVisionSectionMainImage && data.clientVisions.length > 0 && (
+  clientVisionSectionMainImage && clientVisions.length > 0 && (
     // Clients Vision Section
     <section>
       {/* Container  */}
@@ -18,10 +26,10 @@ const { data } = Astro.props;
         {/* Content Part */}
         <div class="flex flex-col gap-10 md:gap-12 lg:flex-row lg:items-center lg:gap-14">
           {/* Client Image */}
-          {data.clientVisionSectionMainImage && (
+          {clientVisionSectionMainImage && (
             <Image
-              src={`${data.clientVisionSectionMainImage}`}
-              alt={data.clientVisionSectionImageAlt}
+              src={`${clientVisionSectionMainImage}`}
+              alt={clientVisionSectionImageAlt}
               class="w-full rounded-3xl md:rounded-4xl lg:w-auto lg:max-w-[50%]"
               width={700}
               height={700}
@@ -29,11 +37,11 @@ const { data } = Astro.props;
             />
           )}
 
-          {data.clientVisions.length > 0 && (
+          {clientVisions.length > 0 && (
             // Client Vision Component
             <div class="flex w-full flex-col items-center gap-9 lg:gap-10">
               {/* Iterating through Data  */}
-              {data.clientVisions?.map((goalItem: any, goalItemIndex: number) => (
+              {clientVisions?.map((goalItem: any, goalItemIndex: number) => (
                 <ClientVisionItem
                   title={goalItem.title}
                   description={goalItem.description}

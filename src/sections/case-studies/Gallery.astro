@@ -5,19 +5,28 @@ import Image from "astro/components/Image.astro";
 import NavigationArrows from "@/components/case-studies/NavigationArrows.astro";
 
 // Receive data from the parent page
-const { data } = Astro.props;
+interface props {
+  badgeIcon?: string;
+  badgeText: string;
+  sectionTitle: string;
+  galleryImages: {
+    imagePath: string;
+    alt: string;
+  }[];
+}
+const { badgeIcon, badgeText, sectionTitle, galleryImages } = Astro.props;
 ---
 
 {
-  data.galleryImages.length > 0 && (
+  galleryImages.length > 0 && (
     // Gallery Section
     <section id="gallery-section">
       <div class="container mx-auto flex flex-col gap-7 px-6 py-16 md:gap-12 md:py-24 lg:gap-16 lg:py-28">
         {/* Section Header */}
         <SectionHeader
           badgeIcon={"service-icon"}
-          badgeText={data.gallerySectionDetailsBadgeText}
-          sectionTitle={data.gallerySectionDetailsSectionTitle}
+          badgeText={badgeText}
+          sectionTitle={sectionTitle}
         />
 
         {/* Image Slideshow */}
@@ -29,7 +38,7 @@ const { data } = Astro.props;
             {/* Embla Slide Container */}
             <div class="flex">
               {/* Iterating through Data & Embla Slides*/}
-              {data.galleryImages?.map((galleryImageItem: any) => (
+              {galleryImages?.map((galleryImageItem: any) => (
                 <div class="gallery-item flex-none basis-full">
                   {/* Image Container */}
                   <div class="h-44 w-full md:h-[350px] lg:h-[460px] xl:h-[600px] 2xl:h-[665px]">

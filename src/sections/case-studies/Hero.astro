@@ -3,7 +3,16 @@
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
 
-const { data } = Astro.props;
+interface props {
+  badgeTitle: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+  websiteLink: string;
+  name: string;
+}
+
+const { badgeTitle, title, description, thumbnail, websiteLink, name } = Astro.props;
 ---
 
 <!-- Case Study Consumption Hero Section -->
@@ -14,29 +23,29 @@ const { data } = Astro.props;
   >
     <div class="flex flex-col items-center justify-start gap-6 md:gap-6 lg:gap-7">
       {
-        data.badgeTitle && (
+        badgeTitle && (
           // ToolBadge
           <div class="tool-badge">
-            <ToolBadge icon={"building"} text={data.badgeTitle} />
+            <ToolBadge icon={"building"} text={badgeTitle} />
           </div>
         )
       }
 
       {
-        data.title && (
+        title && (
           // Main Heading Content
           <div class="header-text flex flex-col items-center justify-center gap-4 md:gap-4 lg:gap-5">
             <div class="flex items-center justify-center gap-5 md:gap-7 lg:gap-8">
               {/* Client Name */}
               <p class="text-n-950 text-center text-3xl leading-tight font-medium md:text-5xl lg:text-6xl">
-                {data.title}
+                {title}
               </p>
             </div>
 
             {/* Description */}
-            {data.description && (
+            {description && (
               <p class="text-n-950 text-center leading-tight md:text-2xl lg:text-3xl xl:w-[80%]">
-                {data.description}
+                {description}
               </p>
             )}
           </div>
@@ -45,16 +54,16 @@ const { data } = Astro.props;
     </div>
 
     {
-      data.thumbnail && (
+      thumbnail && (
         // Main Image Container
         <div class="relative w-full" id="main-image-container">
           <div class="hero-thumbnail h-[148px] overflow-hidden rounded-3xl md:h-[310px] md:rounded-4xl lg:h-[420px] lg:rounded-[60px] xl:h-[620px]">
-            {data.websiteLink ? (
+            {websiteLink ? (
               // Clickable Thumbnail Image
-              <a href={data.websiteLink} target="_blank" rel="noopener noreferrer">
+              <a href={websiteLink} target="_blank" rel="noopener noreferrer">
                 <Image
-                  src={data.thumbnail}
-                  alt={data.name}
+                  src={thumbnail}
+                  alt={name}
                   width={1536}
                   height={616}
                   class="h-full w-full object-cover"
@@ -64,8 +73,8 @@ const { data } = Astro.props;
               </a>
             ) : (
               <Image
-                src={data.thumbnail}
-                alt={data.name}
+                src={thumbnail}
+                alt={name}
                 width={1536}
                 height={616}
                 class="h-full w-full object-cover"
@@ -74,14 +83,14 @@ const { data } = Astro.props;
             )}
           </div>
 
-          {data.websiteLink && (
+          {websiteLink && (
             // Visit Website show on Hover
             <div
               id="custom-cursor"
               class="bg-n-50 pointer-events-none absolute z-50 hidden -translate-x-1/2 items-center justify-center rounded-3xl p-2 md:p-2.5"
             >
               <a
-                href={data.webLink}
+                href={websiteLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="text-n-950 text-center text-xs leading-tight whitespace-nowrap md:text-sm lg:text-base"

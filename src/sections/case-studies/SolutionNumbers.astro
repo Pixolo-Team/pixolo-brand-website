@@ -3,11 +3,19 @@
 import ClientIssues from "@/components/case-studies/ClientIssue.astro";
 
 // Receive data from the parent page
-const { data } = Astro.props;
+interface props {
+  solutionNumbers: {
+    title: string;
+    description: string;
+    issue: string;
+    stat: string;
+  }[];
+}
+const { solutionNumbers } = Astro.props;
 ---
 
 {
-  data.solutionNumbers.length > 0 && (
+  solutionNumbers.length > 0 && (
     // Solution Numbers Section
     <section id="solution-numbers">
       {/* Container */}
@@ -17,13 +25,13 @@ const { data } = Astro.props;
           id="solution-numbers-header"
           class="text-center text-2xl leading-tight md:text-3xl lg:text-4xl"
         >
-          {data.title}
+          Limitations That Guided the Process
         </p>
 
         {/* Solution Numbers */}
         <div id="sol-num-wrap" class="flex flex-col gap-5">
           {/* Iterate through Data  */}
-          {data.solutionNumbers?.map((limitationItem: any) => (
+          {solutionNumbers?.map((limitationItem: any) => (
             <ClientIssues
               title={limitationItem.title}
               description={limitationItem.description}
