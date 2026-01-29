@@ -3,6 +3,7 @@ export const blogSectionDetails = {
   badgeTitle: "Code & Culture",
   heading: "Stories and trends shaping how technology connects us.",
   loadMoreButton: "Load More Blogs",
+  defaultImage: "/images/blogs/blog-card.jpg",
   blogItems: [
     {
       imageSrc: "/images/blogs/blog-card.jpg",

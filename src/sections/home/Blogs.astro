@@ -53,7 +53,7 @@ const homeBlogs = blogs.filter((blog: { show_in_home: string }) => blog.show_in_
             {homeBlogs.map((blogItem) => (
               <div class="blog-card-item hidden">
                 <BlogCard
-                  imageSrc={blogItem.image}
+                  imageSrc={blogItem.image && blogSectionDetails.defaultImage}
                   category={blogItem.category}
                   date={blogItem.date}
                   title={blogItem.title}
