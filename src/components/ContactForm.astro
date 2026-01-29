@@ -1,0 +1,243 @@
+---
+// OTHERS //
+import Chip from "./Chip.astro";
+import Dropdown from "./Dropdown.astro";
+import InputField from "./InputField.astro";
+import RoundedButton from "./RoundedButton.astro";
+import Textarea from "./Textarea.astro";
+
+// DATA //
+import { dropdownOptionData } from "@/data/dropdown";
+---
+
+<!-- Backdrop with Contact form modal -->
+<div
+  class="invisible fixed inset-0 z-50 flex h-screen w-full items-center justify-center gap-10 bg-black/50 px-6 py-24 opacity-0 transition-opacity duration-300"
+  id="backdrop-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="contact-form-title"
+>
+  <!-- Contact Form wrapper -->
+  <div
+    class="bg-n-50 border-n-400 z-20 flex w-full flex-col overflow-hidden rounded-3xl border md:w-[680px] lg:w-[800px]"
+  >
+    <!-- Title Bar -->
+    <div class="bg-n-400 flex w-full gap-1.5 px-6 py-3 md:gap-2 md:px-7 lg:px-11 lg:py-4">
+      <!-- 3 Buttons (macOS style window controls) -->
+      <div
+        id="close-btn"
+        class="size-3 cursor-pointer rounded-full bg-[#C45E52] md:size-4"
+        role="button"
+        tabindex="0"
+        aria-label="Close contact form"
+      >
+      </div>
+      <div class="size-3 rounded-full bg-[#CAA144] md:size-4"></div>
+      <div class="bg-n-500 size-3 rounded-full md:size-4"></div>
+    </div>
+
+    <!-- Form Container -->
+    <form
+      id="contact-form"
+      action="#"
+      method="POST"
+      novalidate
+      class="flex flex-col items-start gap-5 p-5 md:px-7 md:py-7"
+    >
+      <!-- Input Wrapper -->
+      <div class="flex w-full flex-col gap-5 md:gap-6">
+        <!-- Email To  -->
+        <div class="relative flex w-full gap-4 md:gap-3 lg:gap-4">
+          <InputField
+            label="To"
+            name="emailTo"
+            id="emailTo"
+            type="text"
+            isDisabled={true}
+            showPlaceholder={false}
+          />
+
+          <!-- For tablets and desktops -->
+          <div class="absolute bottom-1.5 left-9 md:bottom-3 md:flex md:items-center md:gap-4">
+            <!-- Chip component -->
+            <Chip iconName="pixolo-logo" text="Pixolo Technologies" />
+
+            <!-- Email address display -->
+            <p class="hidden font-normal md:flex md:text-sm">(business@pixolotechnologies.com)</p>
+          </div>
+        </div>
+
+        <!-- Email From -->
+        <InputField
+          id="emailFrom"
+          name="emailFrom"
+          type="email"
+          label="From"
+          placeholder="your@email.com"
+        />
+
+        <!-- Phone Number -->
+        <InputField
+          id="phoneNo"
+          name="phoneNo"
+          type="tel"
+          label="Phone No"
+          placeholder="your phone number"
+        />
+
+        <!-- Subjects Dropdown  -->
+        <Dropdown
+          label="Subject"
+          name="Subject"
+          id="Subject"
+          options={dropdownOptionData}
+          iconName="dropdown-icon"
+        />
+
+        <!-- Additional Note -->
+        <Textarea
+          iconName="expand-icon"
+          placeholder="Say something about your project..."
+          name="additionalNote"
+          id="additionalNote"
+        />
+      </div>
+      <!-- SendMessage Button -->
+      <div class="self-end">
+        <RoundedButton buttonText="Send Message" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const backdrop = document.getElementById("backdrop-modal");
+    const closeBtn = document.getElementById("close-btn");
+
+    if (!backdrop || !closeBtn) {
+      console.warn("ContactForm: Required elements not found. Modal functionality may not work.");
+      return;
+    }
+
+    // Opens Modal
+    window.addEventListener("open-contact-modal", () => {
+      backdrop.classList.remove("opacity-0", "invisible");
+      backdrop.classList.add("opacity-100", "visible");
+
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = "hidden";
+    });
+
+    // CLOSE BUTTON - with click handler
+    closeBtn.addEventListener("click", closeModal);
+
+    // Click backdrop only (not the form box)
+    backdrop.addEventListener("click", (e) => {
+      if (e.target === backdrop) closeModal();
+    });
+
+    // ESC key to close modal
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && backdrop.classList.contains("visible")) {
+        closeModal();
+      }
+    });
+
+    /** Closes the modal by toggling visibility classes */
+    function closeModal() {
+      backdrop.classList.remove("opacity-100", "visible");
+      backdrop.classList.add("opacity-0", "invisible");
+
+      // Restore body scroll when modal is closed
+      document.body.style.overflow = "";
+    }
+  });
+</script>
+
+<script is:inline>
+  /** Function to Validate Email Field */
+  function validateEmailField() {
+    const email = document.getElementById("emailFrom");
+    const requiredBox = document.getElementById("emailFrom-required");
+    const invalidBox = document.getElementById("emailFrom-invalid");
+
+    const value = email.value.trim();
+
+    // Hide both errors first
+    requiredBox.classList.add("hidden");
+    invalidBox.classList.add("hidden");
+
+    // Check for an empty value
+    if (value === "") {
+      requiredBox.classList.remove("hidden");
+      return false;
+    }
+
+    // Check for correct email format
+    const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    if (!isValid) {
+      invalidBox.classList.remove("hidden");
+      return false;
+    }
+
+    return true;
+  }
+
+  /** Function to Validate Phone number Field */
+  function validatePhoneField() {
+    const phone = document.getElementById("phoneNo");
+    const requiredBox = document.getElementById("phoneNo-required");
+    const invalidBox = document.getElementById("phoneNo-invalid");
+
+    const value = phone.value.trim();
+
+    // Hide both errors first
+    requiredBox.classList.add("hidden");
+    invalidBox.classList.add("hidden");
+
+    // Check for an empty value
+    if (value === "") {
+      requiredBox.classList.remove("hidden");
+      return false;
+    }
+
+    // Check for correct phone format
+    const isValid = /^[0-9]{10}$/.test(value);
+    if (!isValid) {
+      invalidBox.classList.remove("hidden");
+      return false;
+    }
+
+    return true;
+  }
+
+  // Master validator
+  const validators = [
+    validateEmailField,
+    validatePhoneField,
+    // Add more validation functions here later
+  ];
+
+  /** Form Submit Handler Runs all validators in the list and Stops submission if any validator fails */
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contact-form");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      let allValid = true;
+
+      // Run all validator functions in the validators array
+      validators.forEach((fn) => {
+        if (!fn()) allValid = false;
+      });
+
+      if (!allValid) return;
+
+      // TODO: Remove later
+      console.log("Form Submitted!");
+    });
+  });
+</script>

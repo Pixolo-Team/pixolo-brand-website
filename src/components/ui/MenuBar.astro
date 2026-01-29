@@ -15,7 +15,8 @@ const currentPath = Astro.url.pathname;
     <!-- Loop through menu items -->
     {
       items.map((item: MenuItem) => {
-        const isActive = currentPath === item.url;
+        const isActive =
+          item.url === "/" ? currentPath === item.url : currentPath.startsWith(item.url);
         return (
           <li>
             <a

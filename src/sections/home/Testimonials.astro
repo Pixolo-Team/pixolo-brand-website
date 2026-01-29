@@ -25,7 +25,7 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
         <!-- Title -->
         <p
           id="header-text"
-          class="text-center text-2xl leading-tight font-medium md:text-4xl lg:text-6xl"
+          class="text-center text-2xl leading-tight font-medium md:text-4xl lg:text-5xl"
         >
           {title}
         </p>
@@ -60,20 +60,21 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
         {
           testimonialItems.map((testimonialItem, testimonialItemIndex) => (
             <div
-              class="testimonial-item flex cursor-pointer items-center gap-2.5 rounded-full px-1 py-1 pl-1 transition-all duration-300 md:gap-3.5 md:py-2 md:pl-2 lg:gap-4 lg:py-2 lg:pl-2"
+              class="testimonial-item group flex cursor-pointer items-center gap-2.5 rounded-full px-1 py-1 pl-1 transition-all duration-300 group-[.active]:pr-5 md:group-[.active]:pr-6 lg:group-[.active]:py-2 lg:group-[.active]:pr-8 lg:group-[.active]:pl-2"
               data-quote={testimonialItem.testimonial}
               data-name={testimonialItem.clientName}
               data-company={testimonialItem.brandName}
               role="button"
               aria-label={`View testimonial from ${testimonialItem.clientName} at ${testimonialItem.brandName}`}
             >
-              <div class="size-9 overflow-hidden rounded-full transition-all duration-600 hover:scale-125 hover:shadow-[0_0_21.7px_0_#2B7FFF] md:size-14 lg:size-16">
+              <div class="flex size-9 items-center overflow-hidden rounded-full transition-shadow duration-600 group-hover:shadow-[0_0_21.7px_0_#2B7FFF] group-[.active]:shadow-none md:size-14 lg:size-16">
                 <Image
+                  id="testimonial-image"
                   src={testimonialItem.clientImage}
                   alt={testimonialItem.clientName}
                   width={64}
                   height={64}
-                  class="object-cover"
+                  class="h-full w-full rounded-full object-cover"
                 />
               </div>
 
@@ -82,7 +83,7 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
                 <p class="text-sm leading-tight font-medium md:text-lg lg:text-xl">
                   {testimonialItem.clientName}
                 </p>
-                <p class="text-xs leading-tight md:text-sm lg:text-base">
+                <p class="overflow-hidden text-xs leading-tight text-ellipsis whitespace-nowrap md:text-sm lg:text-base">
                   {testimonialItem.brandName}
                 </p>
               </div>
@@ -126,7 +127,7 @@ const { badgeIcon, badgeTitle, title, testimonialItems } = testimonialSectionDet
 
   /* Show info only when active */
   .testimonial-item.active .testimonial-info {
-    max-width: 20rem;
+    max-width: 200px;
     opacity: 1;
     display: block;
   }

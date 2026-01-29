@@ -16,7 +16,7 @@ import { portfolioSectionDetails } from "@/data/portfolio.ts";
 <section id="portfolio-section">
   <!-- Container -->
   <div
-    class="container mx-auto flex flex-col items-center justify-center gap-20 px-6 py-16 md:gap-28 md:py-28 lg:gap-40 lg:px-14 lg:py-52"
+    class="container mx-auto flex flex-col items-center justify-center gap-20 px-6 py-16 md:gap-28 md:py-28 lg:gap-40 lg:px-14 lg:py-30"
   >
     <!-- Header -->
     <div
@@ -32,7 +32,7 @@ import { portfolioSectionDetails } from "@/data/portfolio.ts";
 
       <!-- Header Text -->
       <div
-        class="header-text z-10 flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-8xl"
+        class="header-text z-10 flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-5xl"
       >
         <p class="text-balance">{portfolioSectionDetails.title}</p>
         <p class="bg-gradient-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent">
@@ -57,13 +57,11 @@ import { portfolioSectionDetails } from "@/data/portfolio.ts";
     </div>
 
     <!-- Tile Wrapper -->
-    <div class="project-card-wrapper flex flex-col gap-10">
+    <div class="project-card-wrapper flex flex-col gap-11">
       {
         portfolioSectionDetails.projectCardItems.map((projectCardItem, index) => {
-          const topOffset = 20 + index * 20; // 20vh, 40vh, 60vh...
-
           return (
-            <div class="project-card sticky" style={`top: ${topOffset}vh; margin-top: `}>
+            <div class="project-card sticky top-[10vh]">
               <ProjectCard
                 brandColor={projectCardItem.brandColor}
                 brandName={projectCardItem.brandName}

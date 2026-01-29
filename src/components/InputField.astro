@@ -1,0 +1,66 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+// Define props interface with all field properties
+export interface Props {
+  id: string;
+  name: string;
+  label: string;
+  placeholder?: string;
+  type?: astroHTML.JSX.HTMLInputTypeAttribute;
+  showPlaceholder?: boolean;
+  isDisabled?: boolean;
+}
+
+// Destructure props with default values
+const {
+  id = "",
+  name = "",
+  label = "",
+  placeholder = "",
+  type = "text",
+  showPlaceholder = true,
+  isDisabled = false,
+} = Astro.props;
+---
+
+<!-- Container for input field and error message -->
+<div class="flex w-full flex-col gap-3">
+  <!-- Container for label and Input with bottom border -->
+  <div
+    class="border-n-300 focus-within:border-n-900 flex items-center gap-3 border-b pb-3 md:gap-4 md:pb-4"
+  >
+    <!-- Label for the input field -->
+    <label for={id} class="text-sm font-medium md:text-base lg:text-lg">{label}</label>
+
+    <input
+      id={id}
+      name={name}
+      placeholder={showPlaceholder ? placeholder : undefined}
+      type={type}
+      disabled={isDisabled}
+      class="placeholder-n-600 flex-1 text-sm outline-none focus:border-none lg:text-base"
+    />
+  </div>
+
+  <!-- Error Messages (always present, hidden by default) -->
+  <div id={`${id}-required`} class="flex hidden items-center gap-1.5 md:gap-2">
+    {/* Error icon */}
+    <Icon name="error-icon" class="size-4" />
+    {/* Empty Error message text */}
+    <p class="text-xs leading-[17px] font-normal text-red-600 md:text-sm lg:text-base">
+      This field is required.
+    </p>
+  </div>
+
+  <div id={`${id}-invalid`} class="flex hidden items-center gap-1.5 md:gap-2">
+    {/* Error icon */}
+    <Icon name="error-icon" class="size-4" />
+
+    <!-- Invalid Error message text -->
+    <p class="text-xs leading-[17px] font-normal text-red-600 md:text-sm lg:text-base">
+      This doesn’t look like a valid {type}.
+    </p>
+  </div>
+</div>
