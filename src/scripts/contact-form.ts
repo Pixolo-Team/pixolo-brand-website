@@ -231,7 +231,7 @@ export const initContactFormModal = () => {
       if (response?.status) {
         trackContactFormSubmit(filledFieldsCount);
       } else {
-        trackContactFormError("api_error");
+        trackContactFormError(response.message);
       }
 
       // Close Modal
