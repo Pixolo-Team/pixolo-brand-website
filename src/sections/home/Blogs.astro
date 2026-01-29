@@ -6,6 +6,11 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 
 // DATA //
 import { blogSectionDetails } from "@/data/blogs";
+import { getBlogsRequest } from "@/services/api/blogs.api";
+
+/** Makes an API Call to fetch blogs data */
+const blogs = await getBlogsRequest();
+console.log(blogs);
 ---
 
 <!-- Blogs Section -->
@@ -35,18 +40,23 @@ import { blogSectionDetails } from "@/data/blogs";
       >
         <!-- Blog Cards -->
         {
-          blogSectionDetails.blogItems.map((blogItem) => (
-            <div class="blog-card-item hidden">
-              <BlogCard
-                imageSrc={blogItem.imageSrc}
-                category={blogItem.category}
-                date={blogItem.date}
-                title={blogItem.title}
-                author={blogItem.author}
-                href={blogItem.href}
-              />
-            </div>
-          ))
+          blogs.map(
+            (blogItem) => (
+              console.log(blogItem),
+              (
+                <div class="blog-card-item hidden">
+                  <BlogCard
+                    imageSrc={blogItem.imageSrc}
+                    category={blogItem.category}
+                    date={blogItem.date}
+                    title={blogItem.title}
+                    author={blogItem.author}
+                    href={blogItem.href}
+                  />
+                </div>
+              )
+            ),
+          )
         }
       </div>
 
