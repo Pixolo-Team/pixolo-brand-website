@@ -9,9 +9,20 @@ import { submitContactFormRequest } from "@/services/api/contact.api";
 /* SCROLL UTILITIES */
 const preventScroll = (e: Event) => e.preventDefault();
 
+/** Prevent Scroll on key press when modal is open */
 const preventScrollKeys = (e: KeyboardEvent) => {
+  const target = e.target as HTMLElement;
+
+  // Allow typing in inputs & textareas
+  if (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable) {
+    return;
+  }
+
   const keys = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
-  if (keys.includes(e.key)) e.preventDefault();
+
+  if (keys.includes(e.key)) {
+    e.preventDefault();
+  }
 };
 
 /** Function to disable scroll */
