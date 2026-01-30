@@ -31,6 +31,12 @@ const { blogItem }: { blogItem: BlogPost } = Astro.props;
 ---
 
 <Layout>
-  <BlogHero post={blogItem} />
-  <BlogBody content={blogItem} />
+  <BlogHero
+    image={blogItem.image}
+    category={blogItem.category}
+    date={blogItem.date}
+    title={blogItem.title}
+    author={blogItem.author}
+  />
+  <BlogBody content={blogItem.content} />
 </Layout>

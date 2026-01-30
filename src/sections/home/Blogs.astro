@@ -15,7 +15,6 @@ import { blogSectionDetails } from "@/data/blogs";
 
 /** Makes an API Call to fetch blogs data */
 const blogs = await getBlogsRequest();
-console.log(blogs);
 
 /** Show only blogs marked for home */
 const homeBlogs = blogs.filter((blog: { show_in_home: string }) => blog.show_in_home === "1");
