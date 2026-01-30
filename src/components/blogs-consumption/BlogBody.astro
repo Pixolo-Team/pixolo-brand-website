@@ -5,8 +5,8 @@ const { content } = Astro.props;
 <!-- Blog Consumption Body section -->
 <section class="blog-body-section">
   <!-- Container -->
-  <div class="body-root container mx-auto px-6">
-    <div set:html={content} />
+  <div class="body-root align-center container mx-auto flex justify-center px-6">
+    <div class="md:w-[78%] xl:w-[70%]" set:html={content} />
   </div>
 </section>
 

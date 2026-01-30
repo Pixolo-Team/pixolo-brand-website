@@ -6,6 +6,9 @@ import type { BlogPost } from "@/types/blogs";
 import { Image } from "astro:assets";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
+// DATA //
+import { blogSectionDetails } from "@/data/blogs";
+
 interface Props {
   image: string;
   category: string;
@@ -64,7 +67,7 @@ const { image, category, date, title, author } = Astro.props;
         class="blog-hero-image h-[295px] overflow-hidden rounded-3xl md:h-[450px] md:rounded-4xl xl:h-[650px]"
       >
         <Image
-          src={image}
+          src={image || blogSectionDetails.defaultImage}
           alt={"Blog Hero Image"}
           class="h-full w-full object-cover"
           width={1536}
