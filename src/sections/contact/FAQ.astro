@@ -22,21 +22,21 @@ try {
   console.error("Failed to load FAQs", error);
 }
 
-// Tabs from API categories
+/** Tabs from API categories  */
 const faqTabItems: FaqTabItemData[] = faqs.map((item, index) => ({
   id: item.category,
   name: item.category.replace(/^\w/, (c) => c.toUpperCase()),
   isActive: index === 0,
 }));
 
-// Map FAQs by category
+/** Converts the API FAQ array into an object where each key is a category name each value is an array of FAQ items belonging to that category */
 const faqItemsByTab: Record<string, FaqItemData[]> = faqs.reduce(
-  (acc, categoryItem) => {
-    acc[categoryItem.category] = categoryItem.faq_items.map((faq) => ({
+  (faqItemsByCategory, categoryItem) => {
+    faqItemsByCategory[categoryItem.category] = categoryItem.faq_items.map((faq) => ({
       question: faq.question,
       answer: faq.answer,
     }));
-    return acc;
+    return faqItemsByCategory;
   },
   {} as Record<string, FaqItemData[]>,
 );
