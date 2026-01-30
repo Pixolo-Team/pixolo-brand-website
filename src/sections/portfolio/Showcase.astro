@@ -1,13 +1,15 @@
 ---
-// COMPONENTS //
 import ProjectShowcaseCard from "@/components/portfolio/showcase/ProjectShowcaseCard.astro";
 import MiniProjectCard from "@/components/portfolio/showcase/MiniProjectCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import SliderArrows from "@/components/ui/SliderArrows.astro";
 import { Icon } from "astro-icon/components";
-
-// DATA //
 import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
+import { getPortfolioShowcaseDataRequest } from "@/services/api/portfolio-showcase.api";
+import type { PortfolioShowcaseData } from "@/types/portfolio-showcase.types";
+
+const portfolioShowcaseData: PortfolioShowcaseData[] = await getPortfolioShowcaseDataRequest();
+console.log(portfolioShowcaseData);
 ---
 
 <!-- Portfolio Showcase Section -->
@@ -68,19 +70,24 @@ import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
         >
           {
             // Project Cards //
-            portfolioShowcaseDetails.projectCardItems.map((projectCard) => (
-              <ProjectShowcaseCard
-                name={projectCard.name}
-                image={projectCard.image}
-                title={projectCard.title}
-                subTitle={projectCard.subTitle}
-                description={projectCard.description}
-                date={projectCard.date}
-                tagItems={projectCard.tagItems}
-                buttonOneText={projectCard.buttonOneText}
-                buttonTwoText={projectCard.buttonTwoText}
-              />
-            ))
+            portfolioShowcaseData
+              .filter((projectCard) => projectCard.show_in_home === "FALSE")
+              .map((projectCard) => (
+                <ProjectShowcaseCard
+                  id={projectCard.id}
+                  name={projectCard.brand_name}
+                  image={
+                    projectCard.thumbnail_image
+                      ? projectCard.thumbnail_image
+                      : "/images/default-showcase-project-image.jpg"
+                  }
+                  title={projectCard.title}
+                  subTitle={projectCard.subtitle}
+                  description={projectCard.subtitle}
+                  date={""}
+                  tagItems={projectCard.badges}
+                />
+              ))
           }
         </div>
       </div>
