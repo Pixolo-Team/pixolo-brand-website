@@ -5,6 +5,10 @@ import OpenPositionCard from "@/components/career/OpenPositionCard.astro";
 
 // DATA //
 import { openPositions } from "@/data/career/open-positions";
+import { getOpenPositionsRequest } from "@/services/api/career-open-position.api";
+import type { CareerOpenPositions } from "@/types/career-openPositions.types";
+
+const openPositionData: CareerOpenPositions[] = await getOpenPositionsRequest();
 ---
 
 <!-- Open Positions Section -->
@@ -34,13 +38,16 @@ import { openPositions } from "@/data/career/open-positions";
       class="open-position-cards grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-6 xl:gap-10 2xl:grid-cols-3"
     >
       {
-        openPositions.positions.map((position) => (
+        openPositionData.map((position) => (
           // Open Position Card Component
           <div class="open-position-card">
             <OpenPositionCard
               category={position.category}
               title={position.title}
-              tags={position.tags}
+              applyUrl={position.apply_url}
+              experience={position.experience}
+              location={position.location}
+              openSpots={position.open_spots}
               ctaText="Apply Now"
             />
           </div>
