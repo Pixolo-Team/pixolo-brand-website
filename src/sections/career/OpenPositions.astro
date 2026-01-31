@@ -1,13 +1,18 @@
 ---
+// TYPES //
+import type { CareerOpenPositions } from "@/types/career.types";
+
 // COMPONENTS //
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import OpenPositionCard from "@/components/career/OpenPositionCard.astro";
 
+// API SERVICES //
+import { getOpenPositionsRequest } from "@/services/api/career.api";
+
 // DATA //
 import { openPositions } from "@/data/career/open-positions";
-import { getOpenPositionsRequest } from "@/services/api/career-open-position.api";
-import type { CareerOpenPositions } from "@/types/career-openPositions.types";
 
+/** API Call to get all open positions */
 const openPositionData: CareerOpenPositions[] = await getOpenPositionsRequest();
 ---
 

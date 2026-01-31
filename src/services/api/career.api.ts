@@ -5,8 +5,8 @@ import axios, { type AxiosRequestConfig } from "axios";
 import { API_URL } from "@/infrastructure/constants/urls.ts";
 
 /**
- * Fetches case studies from the API.
- * @returns A promise that resolves to the API response data containing case studies, or an object with status false and error message if the request fails.
+ * Fetches open positions from the API.
+ * @returns A promise that resolves to the API response data containing open positions, or an object with status false and error message if the request fails.
  */
 export const getOpenPositionsRequest = async () => {
   try {
@@ -21,6 +21,12 @@ export const getOpenPositionsRequest = async () => {
 
     // Make the API request
     const response = await axios.request(config);
+
+    // Defensive check
+    if (!Array.isArray(response.data)) {
+      console.error("Unexpected response:", response.data);
+      return [];
+    }
 
     // Return the response data
     return response.data;
