@@ -38,7 +38,11 @@ import { serviceDetails, serviceSectionDetails } from "@/data/home/services";
       {
         // Iterating over an array of objects  - services
         serviceDetails.map((serviceItem) => (
-          <a href={URLS.SERVICE.ITEM(serviceItem.title)}>
+          <a
+            href={URLS.SERVICE.ITEM(serviceItem.title)}
+            data-service-item={serviceItem.title}
+            class="service-card"
+          >
             <ServiceItem
               imageName={serviceItem.imageName}
               title={serviceItem.title}
@@ -50,3 +54,17 @@ import { serviceDetails, serviceSectionDetails } from "@/data/home/services";
     </div>
   </div>
 </section>
+<script>
+  import { trackServiceInterest } from "@/scripts/analytics";
+
+  // Single event listener for ALL cards (event delegation)
+  document.addEventListener("click", (e) => {
+    const card = (e.target as HTMLElement).closest(".service-card");
+    if (card) {
+      const serviceName = card.getAttribute("data-service-item");
+      if (serviceName) {
+        trackServiceInterest(serviceName);
+      }
+    }
+  });
+</script>

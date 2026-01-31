@@ -12,6 +12,7 @@ import { URLS } from "@/infrastructure/constants/urls";
 
 // DATA //
 import { blogSectionDetails } from "@/data/blogs";
+import type { BlogPost } from "@/types/blogs";
 
 /** Makes an API Call to fetch blogs data */
 const blogsList = await getBlogsRequest();
@@ -49,7 +50,7 @@ const homeBlogs = blogsList.filter((blog: { show_in_home: string }) => blog.show
             class="grid w-full grid-cols-1 gap-12 md:grid-cols-2 md:gap-7 lg:grid-cols-3 lg:gap-12"
           >
             {/* Blog Cards */}
-            {homeBlogs.map((blogItem) => (
+            {homeBlogs.map((blogItem: BlogPost) => (
               <div class="blog-card-item hidden">
                 <BlogCard
                   imageSrc={blogItem.image || blogSectionDetails.defaultImage}
