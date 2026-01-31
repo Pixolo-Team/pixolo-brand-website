@@ -50,7 +50,7 @@ const { id, name, image, title, subTitle, description, date, tagItems } = Astro.
       <div class="project-card-header flex flex-col gap-2 md:gap-3">
         <!-- Title -->
         <p class="text-n-950 text-2xl leading-tight font-normal md:text-3xl lg:text-4xl">
-          {title}
+          {name}
         </p>
 
         <!-- Tags -->
@@ -63,16 +63,16 @@ const { id, name, image, title, subTitle, description, date, tagItems } = Astro.
       <div class="project-card-content flex flex-col gap-4 md:gap-6 lg:gap-7">
         <!-- SubTitle -->
         {
-          subTitle && (
+          title && (
             <p class="text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg">
-              {subTitle}
+              {title}
             </p>
           )
         }
 
         <!-- Description -->
         <p class="text-n-600 text-xs leading-tight font-normal md:text-sm lg:text-base">
-          {description}
+          {subTitle}
         </p>
 
         <!-- Date -->

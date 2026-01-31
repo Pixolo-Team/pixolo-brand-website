@@ -9,12 +9,10 @@ interface Props {
   title: string;
   tagItems: string[];
   date: string;
-  btnOneText: string;
-  btnTwoText: string;
   image: string;
 }
 
-const { id, title, tagItems, date, btnOneText, btnTwoText, image } = Astro.props as Props;
+const { id, title, tagItems, date, image } = Astro.props as Props;
 ---
 
 <!-- MiniProjectCard Component -->
@@ -54,11 +52,11 @@ const { id, title, tagItems, date, btnOneText, btnTwoText, image } = Astro.props
     <!-- Cta wrap -->
     <div class="flex flex-row gap-3.5">
       <!-- Primary Button -->
-      <RoundedButton buttonText={btnOneText} onClick="window.location.href='/404'" />
+      <RoundedButton buttonText={"Visit Website"} onClick="window.location.href='/404'" />
 
       <!-- Secondary Button -->
       <RoundedButton
-        buttonText={btnTwoText}
+        buttonText={"Show Project"}
         onClick="window.location.href='/404'"
         variant="secondary"
       />

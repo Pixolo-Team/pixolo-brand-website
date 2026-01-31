@@ -71,7 +71,11 @@ console.log(portfolioShowcaseData);
           {
             // Project Cards //
             portfolioShowcaseData
-              .filter((projectCard) => projectCard.show_in_home === "FALSE")
+              .filter(
+                (projectCard) =>
+                  projectCard.show_in_home === "FALSE" && projectCard.is_highlight === "TRUE",
+              )
+
               .map((projectCard) => (
                 <ProjectShowcaseCard
                   id={projectCard.id}
@@ -113,20 +117,24 @@ console.log(portfolioShowcaseData);
             <div class="embla__container flex gap-6">
               <!-- Iterating on Project Cards -->
               {
-                portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
-                  // Mini Project Cards
-                  <div class="embla__slide w-full shrink-0 sm:max-w-[328px] lg:max-w-[412px]">
-                    <MiniProjectCard
-                      id={cardItem.id}
-                      title={cardItem.title}
-                      tagItems={cardItem.tags}
-                      date={cardItem.date}
-                      btnOneText={cardItem.btnOneText}
-                      btnTwoText={cardItem.btnTwoText}
-                      image={cardItem.image}
-                    />
-                  </div>
-                ))
+                portfolioShowcaseData
+                  .filter((cardItem) => cardItem.is_highlight === "FALSE")
+                  .map((cardItem) => (
+                    // Mini Project Cards
+                    <div class="embla__slide w-full shrink-0 sm:max-w-[328px] lg:max-w-[412px]">
+                      <MiniProjectCard
+                        id={cardItem.id}
+                        title={cardItem.brand_name}
+                        tagItems={cardItem.badges}
+                        date={""}
+                        image={
+                          cardItem.thumbnail_image
+                            ? cardItem.thumbnail_image
+                            : "/images/default-showcase-project-image.jpg"
+                        }
+                      />
+                    </div>
+                  ))
               }
             </div>
           </div>
