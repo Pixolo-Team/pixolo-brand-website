@@ -70,6 +70,7 @@ import { footerSectionDetails } from "@/data/footer";
             footerSectionDetails.socialLinks.map((socialItem) => (
               // Link to social media
               <a
+                id={socialItem.id}
                 href={socialItem.link}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -114,6 +115,10 @@ import { footerSectionDetails } from "@/data/footer";
 </style>
 <script>
   import { animateFooter, hideStickyWhatsapp } from "@/scripts/footer.ts";
+  import { setupClickTracking, trackSocialLinkClick } from "@/scripts/analytics";
+
+  setupClickTracking("instagram", () => trackSocialLinkClick("instagram"));
+  setupClickTracking("linkedin", () => trackSocialLinkClick("linkedin"));
 
   animateFooter();
   hideStickyWhatsapp();

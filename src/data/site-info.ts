@@ -29,10 +29,12 @@ export const siteInfo = {
 
     socialLinks: [
       {
+        id: "instagram",
         iconName: "instagram",
         link: "https://www.instagram.com/pixolotechnologies/",
       },
       {
+        id: "linkedin",
         iconName: "linkedin",
         link: "https://in.linkedin.com/company/pixolo-technologies",
       },

@@ -13,7 +13,7 @@ interface Props {
 const { id, title, image, href } = Astro.props as Props;
 ---
 
-<a href={href} class="group">
+<a href={href} class="group case-study-card" data-case-study-item={title}>
   <div class="flex flex-col gap-3.5 hover:cursor-pointer">
     {/* Image Container */}
     <div class="relative w-full">

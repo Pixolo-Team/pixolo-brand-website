@@ -65,7 +65,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
         }
 
         <!-- Location card -->
-        <div class="anim-fade-in-right w-full md:w-[440px] text-n-950">
+        <div class="anim-fade-in-right text-n-950 w-full md:w-[440px]">
           <ContactCard
             icon={contactSectionDetails.location.icon}
             title={contactSectionDetails.location.title}
@@ -157,6 +157,8 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
     initializeFormSubmission,
   } from "@/scripts/contact/contact-form";
   import { animateMarble } from "@/scripts/hero";
+  import { trackContactFormView } from "@/scripts/analytics";
+
   document.addEventListener("DOMContentLoaded", () => {
     initializeFormValidation();
     initializeCopyButtons();
@@ -164,4 +166,6 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
     animateMarble("contact-big-marble", "contact-section");
     animateMarble("contact-small-marble", "contact-section");
   });
+
+  trackContactFormView();
 </script>

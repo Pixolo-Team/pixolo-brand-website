@@ -22,21 +22,21 @@ try {
   console.error("Failed to load FAQs", error);
 }
 
-// Tabs from API categories
+/** Tabs from API categories  */
 const faqTabItems: FaqTabItemData[] = faqs.map((item, index) => ({
   id: item.category,
   name: item.category.replace(/^\w/, (c) => c.toUpperCase()),
   isActive: index === 0,
 }));
 
-// Map FAQs by category
+/** Converts the API FAQ array into an object where each key is a category name each value is an array of FAQ items belonging to that category */
 const faqItemsByTab: Record<string, FaqItemData[]> = faqs.reduce(
-  (acc, categoryItem) => {
-    acc[categoryItem.category] = categoryItem.faq_items.map((faq) => ({
+  (faqItemsByCategory, categoryItem) => {
+    faqItemsByCategory[categoryItem.category] = categoryItem.faq_items.map((faq) => ({
       question: faq.question,
       answer: faq.answer,
     }));
-    return acc;
+    return faqItemsByCategory;
   },
   {} as Record<string, FaqItemData[]>,
 );
@@ -77,6 +77,18 @@ const faqItemsByTab: Record<string, FaqItemData[]> = faqs.reduce(
 
 <script>
   import { animateFaqSection, toogleAccordion } from "@/scripts/faq";
+  import { trackFaqExpand } from "@/scripts/analytics";
+
+  // Single event listener for ALL cards (event delegation)
+  document.addEventListener("click", (e) => {
+    const card = (e.target as HTMLElement).closest(".faq-item-list");
+    if (card) {
+      const faqItemName = card.getAttribute("data-faq-item");
+      if (faqItemName) {
+        trackFaqExpand(faqItemName);
+      }
+    }
+  });
 
   toogleAccordion();
   animateFaqSection();
