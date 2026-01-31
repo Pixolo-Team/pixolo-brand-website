@@ -1,7 +1,4 @@
 ---
-// TYPES //
-import type { CaseStudyData } from "@/types/case-studies.types";
-
 // COMPONENTS //
 import CaseStudyCard from "@/components/casestudy/CaseStudyCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
@@ -10,11 +7,11 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
 // SERVICES //
 import { getCaseStudiesRequest } from "@/services/api/case-studies.api.ts";
 
-// CONSTANTS //
 import { URLS } from "@/infrastructure/constants/urls";
 
 // DATA //
 import { caseStudySectionDetails } from "@/data/case-studies/case-studies";
+import type { CaseStudyData } from "@/types/case-studies";
 
 /** API Call to get case studies */
 const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
@@ -55,12 +52,12 @@ const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
               .map((caseStudyItem, filteredIndex) => (
                 <div class="case-study-card-item hidden">
                   <CaseStudyCard
+                    image={caseStudyItem.thumbnail}
                     href={URLS.CASE_STUDIES.ITEM(
                       caseStudyItem.name?.replaceAll(" ", "-").toLowerCase(),
                     )}
                     id={filteredIndex}
                     title={caseStudyItem.name}
-                    image={caseStudyItem.thumbnail}
                   />
                 </div>
               ))

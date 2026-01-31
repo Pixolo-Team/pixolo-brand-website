@@ -4,10 +4,7 @@ import axios, { type AxiosRequestConfig } from "axios";
 // CONSTANTS //
 import { API_URL } from "@/infrastructure/constants/urls.ts";
 
-/**
- * Fetches case studies from the API.
- * @returns A promise that resolves to the API response data containing case studies, or an object with status false and error message if the request fails.
- */
+/** API Call to get all case studies request. */
 export const getCaseStudiesRequest = async () => {
   try {
     // Configure the GET request with headers
