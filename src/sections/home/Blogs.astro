@@ -14,10 +14,10 @@ import { URLS } from "@/infrastructure/constants/urls";
 import { blogSectionDetails } from "@/data/blogs";
 
 /** Makes an API Call to fetch blogs data */
-const blogs = await getBlogsRequest();
+const blogsList = await getBlogsRequest();
 
 /** Show only blogs marked for home */
-const homeBlogs = blogs.filter((blog: { show_in_home: string }) => blog.show_in_home === "1");
+const homeBlogs = blogsList.filter((blog: { show_in_home: string }) => blog.show_in_home === "1");
 ---
 
 {
@@ -52,7 +52,7 @@ const homeBlogs = blogs.filter((blog: { show_in_home: string }) => blog.show_in_
             {homeBlogs.map((blogItem) => (
               <div class="blog-card-item hidden">
                 <BlogCard
-                  imageSrc={blogItem.image && blogSectionDetails.defaultImage}
+                  imageSrc={blogItem.image || blogSectionDetails.defaultImage}
                   category={blogItem.category}
                   date={blogItem.date}
                   title={blogItem.title}

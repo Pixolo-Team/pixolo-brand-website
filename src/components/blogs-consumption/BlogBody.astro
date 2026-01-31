@@ -11,7 +11,7 @@ const { content } = Astro.props;
 </section>
 
 <style is:global>
-  .article-root div {
+  .body-root div {
     margin-bottom: 40px;
   }
   .body-root img {
@@ -79,7 +79,7 @@ const { content } = Astro.props;
     text-decoration: none;
   }
 
-  .body-root ul,
+  .body-root ol,
   .body-root ul {
     color: var(--color-n-700);
     padding-left: 1.25rem;
@@ -110,7 +110,6 @@ const { content } = Astro.props;
 
   .body-root thead th {
     color: var(--color-n-600);
-    font-family: "Poppins", sans-serif;
     font-size: var(--text-xl);
     font-weight: 600;
     padding: 20px;
@@ -120,7 +119,6 @@ const { content } = Astro.props;
 
   .body-root tbody th {
     color: var(--color-n-600);
-    font-family: "Poppins", sans-serif;
     font-size: var(--text-xl);
     font-weight: 500;
     padding: 20px;
@@ -130,7 +128,6 @@ const { content } = Astro.props;
 
   .body-root tbody td {
     color: var(--color-n-600);
-    font-family: "Poppins", sans-serif;
     font-size: var(--text-lg);
     padding: 20px;
     text-align: center;
