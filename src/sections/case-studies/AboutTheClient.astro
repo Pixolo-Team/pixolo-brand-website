@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 import SectionHeader from "@/components/ui/SectionHeader.astro";
 
 // Receive data from the parent page
-interface Props {
+interface props {
   aboutPointers: {
     title: string;
     description: string;
@@ -16,7 +16,11 @@ interface Props {
   }[];
 }
 
-const { aboutPointers, aboutImagesMainImage, aboutImagesOtherImages } = Astro.props;
+const {
+  aboutPointers = [],
+  aboutImagesMainImage = "",
+  aboutImagesOtherImages = [],
+} = Astro.props as props;
 ---
 
 <!-- About The Client Section -->
@@ -57,7 +61,7 @@ const { aboutPointers, aboutImagesMainImage, aboutImagesOtherImages } = Astro.pr
     <div class="flex flex-col gap-4 lg:flex-row lg:gap-5">
       {/* Top Image */}
       {
-        aboutImagesMainImage && (
+        aboutImagesMainImage !== "" && (
           <Image
             class="h-auto w-full rounded-3xl object-cover md:rounded-4xl lg:w-[60%] lg:rounded-[60px]"
             width={930}

@@ -93,43 +93,52 @@ export type KeyTakeawaysDetails = {
 
 export type CaseStudyData = {
   showInHome: string;
-  badgeIcon: string;
   badgeTitle: string;
   title: string;
   description: string;
-  logo: string;
   name: string;
   thumbnail: string;
+  websiteLink: string;
+
+  /* Client Numbers */
   clientNumbersHeading: string;
-  clientIssuesHeading: string;
   clientNumbers: ClientNumbersData[];
+
+  /* Client Vision */
+  clientVisionHeading: string;
   clientVisionSectionMainImage: string;
   clientVisionSectionImageAlt: string;
   clientVisions: ClientVisionItem[];
-  clientSolutions: ClientSolution[];
+
+  /* Client Issues */
+  clientIssuesHeading: string;
   clientIssues: ClientIssuesData[];
+
+  /* Client Solutions */
+  clientSolutions: ClientSolution[];
+
+  /* About Client */
   aboutPointers: AboutPointer[];
   aboutImagesMainImage: string;
   aboutImagesOtherImages: AboutImage[];
-  gallerySectionDetails: GallerySectionDetails;
-  gallerySectionDetailsBadgeIcon: string;
-  gallerySectionDetailsBadgeText: string;
-  gallerySectionDetailsSectionTitle: string;
+
+  /* Gallery */
   galleryImages: GalleryImage[];
-  clientTestimonialDetailsBadgeIcon: string;
-  clientTestimonialDetailsBadgeText: string;
-  clientTestimonialDetailsTitle: string;
-  clientTestimonialDetailsImage: string;
-  clientTestimonialDetailsName: string;
-  clientTestimonialDetailsRole: string;
-  clientTestimonialDetailsMessage: string;
-  toolsUsedDetailsHeaderText: string;
+
+  /* Tools Used */
   toolItems: ToolItem[];
+
+  /* Solution Timeline / Numbers */
   solutionNumbers: SolutionNumber[];
-  keyTakeawaysDetailsBadgeIcon: string;
-  keyTakeawaysDetailsBadgeTitle: string;
-  keyTakeawaysDetailsTitle: string;
+
+  /* Learnings */
   learningItems: LearningItem[];
+
+  /* Client Testimonial (flat, as per JSON) */
+  clientImage: string;
+  clientName: string;
+  clientRole: string;
+  clientMessage: string;
 };
 
 export type CaseStudyApiResponse = {

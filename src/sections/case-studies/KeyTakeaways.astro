@@ -3,15 +3,12 @@ import SectionHeader from "@/components/ui/SectionHeader.astro";
 import LearningCard from "@/components/case-studies/LearningCard.astro";
 
 interface props {
-  badgeIcon?: string;
-  badgeText: string;
-  sectionTitle: string;
   learningItems: {
     title: string;
     description: string;
   }[];
 }
-const { badgeIcon, badgeText, sectionTitle, learningItems } = Astro.props;
+const { learningItems = [] } = Astro.props as props;
 ---
 
 {
@@ -23,8 +20,8 @@ const { badgeIcon, badgeText, sectionTitle, learningItems } = Astro.props;
         {/* Section Header */}
         <SectionHeader
           badgeIcon={"service-icon"}
-          badgeText={badgeText}
-          sectionTitle={sectionTitle}
+          badgeText={"Key Takeaways"}
+          sectionTitle={"Main Learnings & Highlights"}
         />
 
         <div class="flex w-full flex-col gap-9 lg:gap-20">

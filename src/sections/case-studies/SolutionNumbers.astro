@@ -11,7 +11,7 @@ interface props {
     stat: string;
   }[];
 }
-const { solutionNumbers } = Astro.props;
+const { solutionNumbers = [] } = Astro.props as props;
 ---
 
 {

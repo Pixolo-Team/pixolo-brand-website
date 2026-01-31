@@ -10,7 +10,7 @@ interface props {
     description: string;
   }[];
 }
-const { clientSolutions } = Astro.props;
+const { clientSolutions = [] } = Astro.props as props;
 ---
 
 {

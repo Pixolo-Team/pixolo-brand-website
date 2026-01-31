@@ -11,7 +11,7 @@ interface props {
     numbers: string;
   }[];
 }
-const { clientNumbersHeading, clientNumbers } = Astro.props;
+const { clientNumbersHeading = "", clientNumbers = [] } = Astro.props as props;
 ---
 
 {
@@ -28,7 +28,7 @@ const { clientNumbersHeading, clientNumbers } = Astro.props;
           </h1>
 
           {/* Description */}
-          {clientNumbersHeading && (
+          {clientNumbersHeading !== "" && (
             <p class="text-n-800 leading-tight md:text-xl lg:text-2xl">{clientNumbersHeading}</p>
           )}
         </div>

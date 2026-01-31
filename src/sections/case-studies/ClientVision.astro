@@ -11,11 +11,15 @@ interface props {
     description: string;
   }[];
 }
-const { clientVisionSectionMainImage, clientVisionSectionImageAlt, clientVisions } = Astro.props;
+const {
+  clientVisionSectionMainImage = "",
+  clientVisionSectionImageAlt,
+  clientVisions = [],
+} = Astro.props as props;
 ---
 
 {
-  clientVisionSectionMainImage && clientVisions.length > 0 && (
+  clientVisionSectionMainImage !== "" && clientVisions.length > 0 && (
     // Clients Vision Section
     <section>
       {/* Container  */}
@@ -26,7 +30,7 @@ const { clientVisionSectionMainImage, clientVisionSectionImageAlt, clientVisions
         {/* Content Part */}
         <div class="flex flex-col gap-10 md:gap-12 lg:flex-row lg:items-center lg:gap-14">
           {/* Client Image */}
-          {clientVisionSectionMainImage && (
+          {clientVisionSectionMainImage !== "" && (
             <Image
               src={`${clientVisionSectionMainImage}`}
               alt={clientVisionSectionImageAlt}

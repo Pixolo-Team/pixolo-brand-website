@@ -6,15 +6,12 @@ import NavigationArrows from "@/components/case-studies/NavigationArrows.astro";
 
 // Receive data from the parent page
 interface props {
-  badgeIcon?: string;
-  badgeText: string;
-  sectionTitle: string;
   galleryImages: {
     imagePath: string;
     alt: string;
   }[];
 }
-const { badgeIcon, badgeText, sectionTitle, galleryImages } = Astro.props;
+const { galleryImages = [] } = Astro.props as props;
 ---
 
 {
@@ -25,8 +22,8 @@ const { badgeIcon, badgeText, sectionTitle, galleryImages } = Astro.props;
         {/* Section Header */}
         <SectionHeader
           badgeIcon={"service-icon"}
-          badgeText={badgeText}
-          sectionTitle={sectionTitle}
+          badgeText={"Project Visuals"}
+          sectionTitle={"Behind the Transformation"}
         />
 
         {/* Image Slideshow */}
