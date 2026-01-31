@@ -9,5 +9,5 @@ export type PortfolioShowcaseData = {
   subtitle: string;
   badges: string[];
   show_in_home: string;
-  is_highlighted: string;
+  is_highlight: string;
 };
