@@ -26,7 +26,11 @@ import { menuItems } from "@/data/menu";
 
     <!-- Rounded Button component -->
     <div class="hidden lg:block">
-      <RoundedButton buttonText="Contact Us" onClick="window.location.href='/contact'" />
+      <RoundedButton
+        id="header-contact-cta"
+        buttonText="Contact Us"
+        onClick="window.location.href='/contact'"
+      />
     </div>
 
     <!-- Mobile Hamburger -->
@@ -44,6 +48,9 @@ import { menuItems } from "@/data/menu";
 
 <script>
   import { menuOpenCloseAnimation, animateMenu } from "@/scripts/menu";
+  import { trackContactCTAClick, setupClickTracking } from "@/scripts/analytics";
+
+  setupClickTracking("header-contact-cta", () => trackContactCTAClick("nav"));
 
   /** Menu open close animation  */
   menuOpenCloseAnimation();

@@ -17,7 +17,10 @@ const { imageSrc, category, date, title, author, href } = Astro.props;
 ---
 
 <!-- Card Wrapper -->
-<div
+<a
+  href={href}
+  aria-label={`Read more about ${title}`}
+  rel="noopener noreferrer"
   class="bg-n-100 hover:bg-n-200 flex flex-auto cursor-pointer flex-col overflow-hidden rounded-3xl"
 >
   <!-- Blog Image -->
@@ -57,9 +60,9 @@ const { imageSrc, category, date, title, author, href } = Astro.props;
       </p>
 
       <!-- Arrow Link -->
-      <a href={href} aria-label={`Read more about ${title}`}>
+      <div>
         <Icon name="right-arrow" class="h-7 w-7" />
-      </a>
+      </div>
     </div>
   </div>
-</div>
+</a>

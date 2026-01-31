@@ -1,45 +1,245 @@
 ---
-// TYPES //
-import type { BlogBlock } from "@/types/blogs";
-
-// COMPONENTS //
-import MediaCardBlock from "@/components/blogs-consumption/MediaCardBlock.astro";
-import HeadingBlock from "@/components/blogs-consumption/HeadingBlock.astro";
-import ParagraphBlock from "@/components/blogs-consumption/ParagraphBlock.astro";
-import ListBlock from "@/components/blogs-consumption/ListBlock.astro";
-import ComparisonBlock from "@/components/blogs-consumption/ComparisonBlock.astro";
-
-interface Props {
-  content: BlogBlock[];
-}
-
-const { content } = Astro.props as Props;
+const { content } = Astro.props;
 ---
 
-<section class="blog-body container mx-auto space-y-8 px-6 lg:max-w-[955px]">
-  {
-    content.map((block) => {
-      if (block.type === "media") {
-        return <MediaCardBlock block={block} />;
-      }
-
-      if (block.type === "heading") {
-        return <HeadingBlock block={block} />;
-      }
-
-      if (block.type === "paragraph") {
-        return <ParagraphBlock block={block} />;
-      }
-
-      if (block.type === "list") {
-        return <ListBlock block={block} />;
-      }
-
-      if (block.type === "comparison") {
-        return <ComparisonBlock block={block} />;
-      }
-
-      return null;
-    })
-  }
+<!-- Blog Consumption Body section -->
+<section class="blog-body-section">
+  <!-- Container -->
+  <div class="body-root align-center container mx-auto flex justify-center px-6">
+    <div class="md:w-[78%] xl:w-[70%]" set:html={content} />
+  </div>
 </section>
+
+<style is:global>
+  .body-root div {
+    margin-bottom: 40px;
+  }
+  .body-root img {
+    border-radius: 24px;
+    margin-bottom: 32px;
+    object-fit: cover;
+  }
+
+  .body-root h1 {
+    font-size: var(--text-6xl);
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--color-n-800);
+  }
+
+  .body-root h2 {
+    font-size: var(--text-5xl);
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--color-n-800);
+  }
+
+  .body-root h3 {
+    font-size: var(--text-4xl);
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--color-n-800);
+  }
+
+  .body-root h4 {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--color-n-800);
+  }
+
+  .body-root h5 {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--color-n-800);
+  }
+
+  .body-root h6 {
+    font-size: var(--text-base);
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--color-n-800);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .body-root p {
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: var(--color-n-700);
+  }
+
+  .body-root a {
+    color: var(--color-blue-500);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .body-root ol,
+  .body-root ul {
+    color: var(--color-n-700);
+    padding-left: 1.25rem;
+    margin-bottom: 20px;
+    list-style-type: disc;
+    font-weight: 400;
+    font-size: var(--text-xl);
+  }
+
+  .table-wrapper {
+    width: 100%;
+    padding-top: 64px;
+  }
+
+  .body-root table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--color-n-800);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--color-n-50);
+  }
+
+  .body-root thead {
+    background-color: var(--color-n-100);
+  }
+
+  .body-root thead th {
+    color: var(--color-n-600);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    padding: 20px;
+    text-align: center;
+    min-width: 200px;
+  }
+
+  .body-root tbody th {
+    color: var(--color-n-600);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    padding: 20px;
+    text-align: center;
+    min-width: 200px;
+  }
+
+  .body-root tbody td {
+    color: var(--color-n-600);
+    font-size: var(--text-lg);
+    padding: 20px;
+    text-align: center;
+    min-width: 200px;
+  }
+
+  @media (max-width: 1023px) and (min-width: 768px) {
+    .body-root h1 {
+      font-size: var(--text-5xl);
+      margin-bottom: 14px;
+    }
+
+    .body-root h2 {
+      font-size: var(--text-4xl);
+      margin-bottom: 14px;
+    }
+
+    .body-root h3 {
+      font-size: var(--text-3xl);
+      margin-bottom: 14px;
+    }
+
+    .body-root h4 {
+      font-size: var(--text-2xl);
+      margin-bottom: 12px;
+    }
+
+    .body-root h5 {
+      font-size: var(--text-xl);
+      margin-bottom: 12px;
+    }
+
+    .body-root h6 {
+      font-size: var(--text-base);
+      margin-bottom: 12px;
+    }
+
+    .body-root p {
+      font-size: var(--text-lg);
+      margin-bottom: 18px;
+    }
+
+    .body-root a {
+      font-size: var(--text-lg);
+    }
+
+    .body-root ul {
+      font-size: var(--text-lg);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .body-root h1 {
+      font-size: var(--text-4xl);
+      margin-bottom: 12px;
+    }
+
+    .body-root h2 {
+      font-size: var(--text-3xl);
+      margin-bottom: 12px;
+    }
+
+    .body-root h3 {
+      font-size: var(--text-2xl);
+      margin-bottom: 12px;
+    }
+
+    .body-root h4 {
+      font-size: var(--text-xl);
+      margin-bottom: 10px;
+    }
+
+    .body-root h5 {
+      font-size: var(--text-lg);
+      margin-bottom: 10px;
+    }
+
+    .body-root h6 {
+      font-size: var(--text-sm);
+      margin-bottom: 10px;
+    }
+
+    .body-root p {
+      font-size: var(--text-base);
+      margin-bottom: 16px;
+    }
+
+    .body-root a {
+      font-size: var(--text-base);
+    }
+
+    .body-root ul {
+      font-size: var(--text-base);
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const articleRoot = document.querySelector(".body-root");
+    if (!articleRoot) return;
+
+    const tables = articleRoot.querySelectorAll("table");
+
+    tables.forEach((table) => {
+      // If already wrapped, skip
+      if (table.parentElement?.classList.contains("table-wrapper")) return;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "table-wrapper overflow-x-auto";
+      table.parentNode.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
+    });
+  });
+</script>

@@ -4,13 +4,16 @@ import axios, { type AxiosRequestConfig } from "axios";
 // CONSTANTS //
 import { API_URL } from "@/infrastructure/constants/urls.ts";
 
-/** API Call to get all case studies request. */
-export const getCaseStudiesRequest = async () => {
+/**
+ * Fetches open positions from the API.
+ * @returns A promise that resolves to the API response data containing open positions, or an object with status false and error message if the request fails.
+ */
+export const getOpenPositionsRequest = async () => {
   try {
-    // Configure the GET request with headers
+    // Configure the GET request
     const config: AxiosRequestConfig = {
       method: "get",
-      url: `${API_URL}case-studies`,
+      url: `${API_URL}open_positions`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -18,6 +21,12 @@ export const getCaseStudiesRequest = async () => {
 
     // Make the API request
     const response = await axios.request(config);
+
+    // Defensive check
+    if (!Array.isArray(response.data)) {
+      console.error("Unexpected response:", response.data);
+      return [];
+    }
 
     // Return the response data
     return response.data;

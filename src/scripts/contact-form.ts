@@ -1,10 +1,14 @@
+// API SERVICES //
+import { submitContactFormRequest } from "@/services/api/contact.api";
+
 // OTHERS //
 import { animate } from "motion";
+import { trackContactFormError, trackContactFormSubmit } from "./analytics";
 
 // DATA //
-// Importing only for Email logic and generic required messages
 import { formErrors, validationRules } from "@/data/errors";
-import { submitContactFormRequest } from "@/services/api/contact.api";
+
+// Importing only for Email logic and generic required messages
 
 /* SCROLL UTILITIES */
 const preventScroll = (e: Event) => e.preventDefault();
@@ -207,7 +211,17 @@ export const initContactFormModal = () => {
     e.preventDefault();
     const isEmailValid = emailInput ? validateInput(emailInput) : true;
     const isPhoneValid = phoneInput ? validateInput(phoneInput) : true;
-    if (!isEmailValid || !isPhoneValid) return;
+
+    /** Track form error when validation fails */
+    if (!isEmailValid || !isPhoneValid) {
+      trackContactFormError("validation_error");
+      return;
+    }
+
+    /** Track form submission fields */
+    const filledFieldsCount = [emailInput, phoneInput, subjectInput, messageInput]
+      .filter(Boolean)
+      .filter((el) => (el as HTMLInputElement).value?.trim().length > 0).length;
 
     submitBtn.disabled = true;
     submitBtn.innerText = "Sending...";
@@ -223,12 +237,28 @@ export const initContactFormModal = () => {
     try {
       // API call for form submission
       const response = await submitContactFormRequest(payload);
+
+      // Track form submission success or error
+      if (response?.status) {
+        trackContactFormSubmit(filledFieldsCount);
+      } else {
+        trackContactFormError(response.message);
+      }
+
+      // Close Modal
       closeModal();
 
+      // Show result modal
       showResultModal(response?.status ? "success" : "error");
+
+      // Reset form
       form.reset();
     } catch {
+      // Track form error
+      trackContactFormError("api_failure");
       showResultModal("error");
+
+      // Reset form
       form.reset();
     } finally {
       submitBtn.disabled = false;
