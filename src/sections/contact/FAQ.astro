@@ -1,55 +1,77 @@
 ---
+// TYPES //
+import type { FaqApiCategory, FaqItemData, FaqTabItemData } from "@/types/faq";
+
 // COMPONENTS //
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import Tabs from "@/components/ui/Tabs.astro";
 import FaqItem from "@/components/FaqItem.astro";
 
+// API SERVICES //
+import { getFaqsRequest } from "@/services/api/faq.api";
+
 // DATA //
 import { faqSectionDetails } from "@/data/faq";
+
+// Fetch FAQs from API
+let faqs: FaqApiCategory[] = [];
+
+try {
+  faqs = await getFaqsRequest();
+} catch (error) {
+  console.error("Failed to load FAQs", error);
+}
+
+/** Tabs from API categories  */
+const faqTabItems: FaqTabItemData[] = faqs.map((item, index) => ({
+  id: item.category,
+  name: item.category.replace(/^\w/, (c) => c.toUpperCase()),
+  isActive: index === 0,
+}));
+
+/** Converts the API FAQ array into an object where each key is a category name each value is an array of FAQ items belonging to that category */
+const faqItemsByTab: Record<string, FaqItemData[]> = faqs.reduce(
+  (faqItemsByCategory, categoryItem) => {
+    faqItemsByCategory[categoryItem.category] = categoryItem.faq_items.map((faq) => ({
+      question: faq.question,
+      answer: faq.answer,
+    }));
+    return faqItemsByCategory;
+  },
+  {} as Record<string, FaqItemData[]>,
+);
 ---
 
-<!-- Faq Section -->
-<section id="faq-section" data-section="FAQ">
-  <!-- Container -->
-  <div
-    class="container mx-auto flex flex-col gap-12 px-6 py-16 md:gap-14 md:py-20 lg:gap-16 lg:py-20"
-  >
-    <!-- Section Header -->
-    <div class="flex flex-col items-center gap-3.5 text-center md:gap-6">
-      <!-- ToolBadge Component -->
-      <div class="tool-badge">
-        <ToolBadge
-          text={faqSectionDetails.sectionHeader.badgeTitle}
-          icon={faqSectionDetails.sectionHeader.badgeIcon}
-        />
-      </div>
-
-      <!-- Title -->
-      <p class="header-text text-n-950 text-3xl leading-tight md:text-5xl lg:text-6xl">
+<section id="faq-section" data-section="Faq">
+  <div class="container mx-auto flex flex-col gap-12 px-6 py-16">
+    <!-- Header -->
+    <div class="flex flex-col items-center gap-4 text-center">
+      <ToolBadge
+        text={faqSectionDetails.sectionHeader.badgeTitle}
+        icon={faqSectionDetails.sectionHeader.badgeIcon}
+      />
+      <p class="text-n-950 text-3xl md:text-5xl lg:text-6xl">
         {faqSectionDetails.sectionHeader.title}
       </p>
     </div>
 
-    <!-- Tabs Component -->
-    <Tabs tabItems={faqSectionDetails.faqTabItems}>
-      {
-        faqSectionDetails.faqTabItems.map((tabItem) => (
-          // Faq Lists
-          <div
-            class="faq-list border-n-700 flex flex-col border-t-[0.8px]"
-            data-tab-content-id={tabItem.id}
-          >
-            {(faqSectionDetails.faqItemsByTab[tabItem.id] || []).map((faqItem, faqItemIndex) => (
-              <FaqItem
-                question={faqItem.question}
-                answer={faqItem.answer}
-                isOpen={faqItemIndex === 0}
-              />
-            ))}
-          </div>
-        ))
-      }
-    </Tabs>
+    <!-- Tabs -->
+    {
+      faqTabItems.length > 0 && (
+        <Tabs tabItems={faqTabItems}>
+          {faqTabItems.map((tabItem) => (
+            <div
+              class="faq-list border-n-700 flex flex-col border-t"
+              data-tab-content-id={tabItem.id}
+            >
+              {(faqItemsByTab[tabItem.id] || []).map((faqItem, index) => (
+                <FaqItem question={faqItem.question} answer={faqItem.answer} isOpen={index === 0} />
+              ))}
+            </div>
+          ))}
+        </Tabs>
+      )
+    }
   </div>
 </section>
 

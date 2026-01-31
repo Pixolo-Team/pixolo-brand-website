@@ -1,0 +1,14 @@
+---
+// TYPES //
+import type { ParagraphBlockData } from "@/types/blogs";
+
+interface Props {
+  block: ParagraphBlockData;
+}
+
+const { block } = Astro.props as Props;
+---
+
+<p class="text-base leading-7">
+  {block.text}
+</p>

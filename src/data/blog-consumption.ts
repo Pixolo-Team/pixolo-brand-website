@@ -3,21 +3,11 @@ import type { BlogPost } from "@/types/blogs";
 export const blogConsumptionDetails: BlogPost = {
   title:
     "It's a Continuous Journey of Learning, Experimenting, and Improving How Technology Works Behind the Scenes",
-
-  category: {
-    label: "Insights Worth Reading",
-  },
-
-  author: {
-    name: "Omkar Mitake",
-  },
-
-  publishedAt: "Nov 18, 2025",
-
-  hero: {
-    image: "/images/blogs/blog-hero.png",
-    alt: "Developer working on a laptop",
-  },
+  category: "Insights Worth Reading",
+  author: "Omkar Mitake",
+  date: "Nov 18, 2025",
+  image: "/images/blogs/blog-hero.png",
+  alt: "Developer working on a laptop",
 
   content: [
     {
@@ -47,7 +37,7 @@ export const blogConsumptionDetails: BlogPost = {
     {
       type: "media",
       mediaType: "video",
-      videoId: "dQw4w9WgXcQ",
+      videoSrc: "dQw4w9WgXcQ",
       caption: "A short explanation of the learning mindset",
     },
 
