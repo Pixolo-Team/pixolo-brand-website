@@ -8,10 +8,11 @@ export interface Props {
   label: string;
   name: string;
   id: string;
+  iconName: string;
 }
 
 // Destructure props with default values
-const { options = [], label = "", name = "", id = "" } = Astro.props;
+const { options = [], label = "", name = "", id = "", iconName } = Astro.props;
 ---
 
 <!-- Dropdown container with label -->
@@ -41,7 +42,7 @@ const { options = [], label = "", name = "", id = "" } = Astro.props;
 
       <!-- Dropdown arrow icon -->
       <Icon
-        name={"dropdown-icon"}
+        name={iconName}
         id="dropdown-arrow"
         class="text-n-600 size-3.5 transition-transform duration-200"
       />
@@ -54,14 +55,14 @@ const { options = [], label = "", name = "", id = "" } = Astro.props;
       class="border-n-500 bg-n-950 absolute top-[100%] left-0 z-10 mt-2 hidden w-full min-w-[200px] overflow-hidden rounded-3xl border"
     >
       {
-        options.map((optionItem) => (
+        options.map((opt) => (
           <li
             role="option"
             class="text-n-100 hover:bg-n-900 cursor-pointer px-6 py-3 font-normal"
-            data-value={optionItem}
+            data-value={opt}
             tabindex="0"
           >
-            {optionItem}
+            {opt}
           </li>
         ))
       }

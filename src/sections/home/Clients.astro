@@ -1,7 +1,7 @@
 ---
 // COMPONENTS //
-import ThemeImage from "@/components/ThemeImage.astro";
-import ToolBadge from "@/components/ToolBadge.astro";
+import ThemeImage from "@/components/ui/ThemeImage.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
 
 // DATA //
 import { clientSectionDetails, clientItems } from "@/data/clients";
@@ -11,7 +11,7 @@ import { clientSectionDetails, clientItems } from "@/data/clients";
 <section id="client-logos-section" class="flex items-center justify-center">
   <!-- Container -->
   <div
-    class="container flex flex-col flex-wrap items-center justify-center gap-10 px-6 py-24 md:gap-16 md:px-6 md:py-32 lg:gap-20 lg:px-8 lg:py-32"
+    class="container flex flex-col flex-wrap items-center justify-center gap-10 px-6 py-16 md:gap-16 md:px-6 md:py-24 lg:gap-20 lg:px-8 lg:py-22"
   >
     <!-- Header Wrapper -->
     <div class="m-auto flex w-full flex-col flex-wrap items-center justify-center gap-6 lg:gap-7">
@@ -50,6 +50,6 @@ import { clientSectionDetails, clientItems } from "@/data/clients";
 </section>
 
 <script>
-  import { animateClientLogos } from "../../scripts/clients.ts";
+  import { animateClientLogos } from "@/scripts/clients.ts";
   animateClientLogos();
 </script>

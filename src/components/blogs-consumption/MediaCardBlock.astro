@@ -1,0 +1,72 @@
+---
+// TYPES //
+import type { MediaBlockData } from "@/types/blogs";
+
+// COMPONENTS //
+import { Image } from "astro:assets";
+import PlayButton from "@/components/ui/PlayButton.astro";
+
+interface Props {
+  block: MediaBlockData;
+}
+
+const { block } = Astro.props as Props;
+---
+
+<div class="mt-8 mb-8 flex flex-col gap-4">
+  <!-- Image -->
+  {
+    block.mediaType === "image" && block.src && block.alt && (
+      <div class="media-anim container flex flex-col items-center gap-4 object-contain md:gap-5 lg:gap-5">
+        <Image
+          src={block.src}
+          alt={block.alt}
+          class="h-60 w-full rounded-3xl object-cover md:h-[363px] lg:h-[594px]"
+          width={995}
+          height={594}
+        />
+      </div>
+    )
+  }
+
+  <!-- Video -->
+  {
+    block.mediaType === "video" && (
+      <div class="media-anim flex w-full flex-col items-center gap-4 overflow-hidden md:gap-5 lg:gap-5">
+        <div class="group relative aspect-video w-full overflow-hidden rounded-3xl md:h-[363px] lg:h-[594px]">
+          <iframe
+            id="blog-video-iframe"
+            class="js-youtube-iframe h-full w-full object-contain"
+            src={
+              "https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&controls=0&rel=0&modestbranding=1&showinfo=0"
+            }
+            title="YouTube video player"
+          />
+
+          {/* <!-- Custom Play Button Overlay --> */}
+          <div class="absolute right-1/2 bottom-1/2 z-10 translate-x-1/2 translate-y-1/2 md:right-11 md:bottom-11 lg:right-12 lg:bottom-14">
+            <PlayButton id="play-button" />
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  <!-- Caption -->
+  {
+    block.caption && (
+      <p class="text-n-700 max-w-[270px] text-left text-xs leading-normal md:max-w-[560px] md:text-lg lg:max-w-full lg:text-xl">
+        {block.caption}
+      </p>
+    )
+  }
+</div>
+
+<script>
+  import { initVideoPlayPause } from "@/scripts/play-button";
+  import { animateMediaFadeInUp } from "@/scripts/blogs-consumption";
+
+  initVideoPlayPause("#blog-video-iframe", "#play-button");
+
+  animateMediaFadeInUp();
+</script>

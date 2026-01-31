@@ -1,0 +1,59 @@
+---
+// COMPONENTS //
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import Image from "astro/components/Image.astro";
+
+interface Props {
+  title: string;
+  btnText: string;
+  images: string[];
+}
+const { title, btnText, images } = Astro.props as Props;
+
+const maxVisible = 4;
+const badgeCount = Math.max(0, images.length - maxVisible);
+---
+
+<div
+  class="bg-n-100 flex w-full flex-col items-start justify-between gap-9 rounded-4xl px-5 py-10 backdrop-blur-xl md:gap-7 md:py-7 lg:h-fit lg:max-h-18 lg:flex-row lg:items-center lg:p-3"
+>
+  <!-- Images + Text -->
+  <div
+    class="flex flex-1 flex-col items-start gap-4 md:gap-5 lg:flex-row lg:items-center lg:gap-16"
+  >
+    <!-- Avatars + Badge count -->
+    <div class="flex items-center gap-3">
+      <!-- Avatars -->
+      <div class="flex items-center">
+        {
+          images.slice(0, maxVisible).map((imageItem, imageItemIndex) => (
+            <div
+              class={`size-[50px] overflow-hidden rounded-full ${imageItemIndex > 0 ? "-ml-2" : ""}`}
+            >
+              <Image
+                src={imageItem}
+                alt={`Profile ${imageItemIndex + 1}`}
+                width={50}
+                height={50}
+                class="h-full w-full object-cover"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Badge count -->
+      {
+        badgeCount > 0 && (
+          <span class="text-n-950 text-xl leading-tight font-normal">+{badgeCount}</span>
+        )
+      }
+    </div>
+
+    <!-- Title -->
+    <p class="text-n-950 text-xl leading-tight font-medium">{title}</p>
+  </div>
+
+  <!-- CTA Button -->
+  <RoundedButton buttonText={btnText} type="button" onClick="window.location.href='/contact'" />
+</div>

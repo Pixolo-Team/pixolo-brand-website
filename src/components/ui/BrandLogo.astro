@@ -1,0 +1,32 @@
+---
+// STYLES //
+import ThemeImage from "@/components/ui/ThemeImage.astro";
+
+// Define props
+interface Props {
+  variant?: "default" | "light" | "dark";
+  classes?: string;
+  width?: number;
+  height?: number;
+}
+
+const { variant = "default", width = 120, height = 120, classes = "" } = Astro.props;
+
+const logos = {
+  default: "/images/brand-logo/default.png",
+  light: "/images/brand-logo/light.png",
+  dark: "/images/brand-logo/dark.png",
+};
+
+const selectedLogo = logos[variant];
+---
+
+<!-- Brand Logo -->
+<ThemeImage
+  dark={selectedLogo}
+  light={logos["light"]}
+  alt="Pixolo Logo"
+  width={width}
+  height={height}
+  class={classes}
+/>

@@ -3,14 +3,20 @@
 import "@/styles/global.css";
 
 // COMPONENTS //
-import WhatsappButton from "@/components/WhatsappButton.astro";
+import WhatsappButton from "@/components/ui/WhatsappButton.astro";
 import Loading from "@/components/layout/Loading.astro";
 import Meta from "@/components/layout/Meta.astro";
 import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
+import ContactForm from "@/components/forms/ContactForm.astro";
+import BottomCTA from "@/components/ui/BottomCTA.astro";
 
 // DATA //
 import { siteInfo } from "@/data/site-info";
+
+interface Props {
+  meta: any;
+}
 
 const { meta = {} } = Astro.props;
 ---
@@ -27,7 +33,8 @@ const { meta = {} } = Astro.props;
     />
   </head>
   <body>
-    <!-- <Loading /> -->
+    <!-- Loading -->
+    <Loading />
 
     <!-- Top menu -->
     <div class="fixed top-0 left-0 z-50 w-full">
@@ -36,17 +43,19 @@ const { meta = {} } = Astro.props;
 
     <!-- Background Star Video -->
     <video
-      class="fixed top-0 left-0 -z-10 h-full w-full bg-transparent object-cover"
+      class="fixed top-0 left-0 -z-1 hidden h-full w-full bg-transparent object-cover dark:block"
       src="/videos/stars.mp4"
       autoplay
       muted
       loop
       playsinline></video>
 
+    <div class="bg-n-50 fixed -z-5 h-full w-full"></div>
+
     <!-- Background Circle Gradient -->
     <div
-      class="fixed top-[30%] left-1/2 h-[885px] w-[885px] -translate-x-1/2 rounded-full"
-      style="background: linear-gradient(90deg, rgba(22, 125, 229, 0.36) 0%, rgba(95, 74, 200, 0.36) 92.31%); filter: blur(250px);"
+      class="fixed top-[30%] left-1/2 hidden h-[885px] w-[885px] -translate-x-1/2 rounded-full dark:block"
+      style="background: linear-gradient(90deg, rgba(22, 125, 229, 0.36) 0%, rgba(95, 74, 200, 0.36) 92.31%); filter: blur(200px);"
     >
     </div>
 
@@ -59,9 +68,16 @@ const { meta = {} } = Astro.props;
 
     <!-- Whatsapp button component -->
     <WhatsappButton
-      href={`https://wa.me/${siteInfo.contact.phone[0].value}`}
-      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-40"
+      href="https://wa.me/9768941186"
+      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-10 hidden md:block"
     />
+
+    <!-- Bottom CTA -->
+    <div class="fixed bottom-5 z-40 justify-self-center md:bottom-12">
+      <BottomCTA />
+    </div>
+
+    <ContactForm />
   </body>
 </html>
 
@@ -73,6 +89,18 @@ const { meta = {} } = Astro.props;
     height: 100%;
   }
 </style>
+
+<script is:inline>
+  const loader = document.querySelector("#loading-screen");
+  const hasSeenLoader = sessionStorage.getItem("loaderShown");
+
+  if (hasSeenLoader) {
+    loader.style.display = "none";
+  } else {
+    loader.style.display = "flex";
+  }
+</script>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // Select all elements that should animate when visible

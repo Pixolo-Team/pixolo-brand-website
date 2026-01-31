@@ -1,0 +1,97 @@
+---
+// COMPONENTS //
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+// SVG's //
+import Ball from "@/assets/3d-ball.svg";
+
+// DATA //
+import { serviceConsumptionHeroDetails } from "@/data/service-consumption/hero.ts";
+import { siteInfo } from "@/data/site-info";
+
+const { title, subTitle } = Astro.props;
+---
+
+<!-- Hero Section -->
+<section>
+  <!-- Container -->
+  <div
+    id="hero-wrapper"
+    class="relative container mx-auto flex flex-col items-center justify-center gap-9 overflow-hidden px-6 pt-24 pb-14 md:gap-12 md:py-24 lg:gap-12 lg:pt-52 lg:pb-12 2xl:pt-64"
+  >
+    <!-- Large 3D Ball Image -->
+    <Image
+      id="big-marble-service-consumption"
+      src={Ball}
+      alt="A floating 3D Ball"
+      class="absolute top-[22%] left-6 -z-10 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
+    />
+
+    <!-- Small 3D Ball Image -->
+    <Image
+      id="small-marble-service-consumption"
+      src={Ball}
+      alt="A floating 3D Ball"
+      class="absolute right-[10%] bottom-[46%] -z-1 w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
+      style="animation-duration: 4s"
+    />
+
+    <!-- Content -->
+    <div class="flex flex-col items-center justify-center gap-8 md:gap-9 lg:gap-10">
+      <div class="tool-badge">
+        <ToolBadge icon="comment" text={serviceConsumptionHeroDetails.badgeTitle} />
+      </div>
+
+      <!-- Text Section -->
+      <div class="flex flex-col items-center justify-center gap-3.5 md:gap-4 lg:gap-5">
+        <!-- Title -->
+        <p
+          class="word-container text-n-950 text-center text-3xl leading-tight font-medium tracking-[-0.01em] md:text-6xl lg:text-7xl"
+          data-animate-word
+        >
+          {title}
+        </p>
+
+        <!-- Description -->
+        <p
+          class="word-container bg-gradient-to-r from-blue-500 to-[#8B77F3] bg-clip-text text-center text-base leading-tight text-transparent md:text-xl lg:text-2xl"
+          data-animate-word
+        >
+          {subTitle}
+        </p>
+      </div>
+
+      <!-- Rounded Button for Booking a Strategy Call -->
+      <a href={siteInfo.contact.phone[0].link}>
+        <RoundedButton buttonText={serviceConsumptionHeroDetails.buttonText} type="button" />
+      </a>
+    </div>
+  </div>
+</section>
+<style>
+  .word-container {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(15%);
+    transition:
+      opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: 0ms; /* This will be set by JS */
+  }
+
+  /* This class is added by JS to trigger the final state */
+  .word-container.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>
+
+<script>
+  import { animateHeroTitle, animateMarble } from "@/scripts/hero.ts";
+
+  animateHeroTitle();
+  animateMarble("big-marble-service-consumption", "hero-wrapper");
+  animateMarble("small-marble-service-consumption", "hero-wrapper");
+</script>
