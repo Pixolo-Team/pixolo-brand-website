@@ -10,7 +10,7 @@ import { API_URL } from "@/infrastructure/constants/urls.ts";
  */
 export const getOpenPositionsRequest = async () => {
   try {
-    // Configure the GET request with headers
+    // Configure the GET request
     const config: AxiosRequestConfig = {
       method: "get",
       url: `${API_URL}open_positions`,
