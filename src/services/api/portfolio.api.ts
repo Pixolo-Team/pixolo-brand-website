@@ -3,11 +3,12 @@ import axios, { type AxiosRequestConfig } from "axios";
 
 // CONSTANTS //
 import { API_URL } from "@/infrastructure/constants/urls.ts";
+import type { PortfolioData } from "@/types/portfolio";
 
-/** API Call to get all case studies request. */
-export const getPortfolioContent = async () => {
+/** API Call to get all portfolio request. */
+export const getPortfoliosRequest = async () => {
   try {
-    // Configure the GET request with headers
+    // Configure the GET request
     const config: AxiosRequestConfig = {
       method: "get",
       url: `${API_URL}portfolio`,
@@ -17,12 +18,16 @@ export const getPortfolioContent = async () => {
     };
 
     // Make the API request
-    const response = await axios.request(config);
-    console.log(response.data);
-    
-    // Return the response data  
-    return response.data;
+    const response = await axios.request<PortfolioData>(config);
 
+    // Defensive check
+    if (!Array.isArray(response.data)) {
+      console.error("[getBlogsRequest] Unexpected response:", response.data);
+      return [];
+    }
+
+    // Return the response data
+    return response.data;
   } catch (error) {
     // Log and return error details
     console.error("API error:", error);

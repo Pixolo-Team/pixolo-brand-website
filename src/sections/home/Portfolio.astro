@@ -1,6 +1,6 @@
 ---
 // TYPES //
-import type { Portfolio } from "@/types/portfolio";
+import type { PortfolioData } from "@/types/portfolio";
 
 // COMPONENTS //
 import ArticleCard from "@/components/ArticleCard.astro";
@@ -9,7 +9,7 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
 
 // API SERVICES //
-import { getPortfolioContent } from "@/services/api/portfolio-section-home";
+import { getPortfoliosRequest } from "@/services/api/portfolio.api";
 
 // SVG's //
 import Ball from "@/assets/3d-ball.svg";
@@ -17,7 +17,8 @@ import Ball from "@/assets/3d-ball.svg";
 // DATA //
 import { portfolioSectionDetails } from "@/data/portfolio.ts";
 
-const portfolios: Portfolio[] = await getPortfolioContent();
+/** API Call to get all portfolio */
+const portfolios: PortfolioData[] = await getPortfoliosRequest();
 ---
 
 <!-- Portfolio Section -->
@@ -67,15 +68,15 @@ const portfolios: Portfolio[] = await getPortfolioContent();
     <!-- Tile Wrapper -->
     <div class="project-card-wrapper flex flex-col gap-11">
       {
-        portfolios.map((projectCardItem, index) => {
+        portfolios.map((projectCardItem) => {
           return (
-            projectCardItem.show_in_home == "TRUE" &&
-            projectCardItem.is_highlight == "TRUE" && (
+            projectCardItem.showInHome == "TRUE" &&
+            projectCardItem.isHightlight == "TRUE" && (
               <div class="project-card sticky top-[10vh]">
                 <ProjectCard
-                  brandColor={projectCardItem.brand_color}
-                  brandName={projectCardItem.brand_name}
-                  image={projectCardItem.hero_image}
+                  brandColor={projectCardItem.brandColor}
+                  brandName={projectCardItem.brandName}
+                  image={projectCardItem.heroImage}
                   logo={projectCardItem.logo}
                   title={projectCardItem.title}
                   subtitle={projectCardItem.subtitle}
@@ -93,11 +94,11 @@ const portfolios: Portfolio[] = await getPortfolioContent();
       {
         portfolios.map(
           (articleCardItem) =>
-            articleCardItem.show_in_home == "TRUE" &&
-            articleCardItem.is_highlight == "FALSE" && (
+            articleCardItem.showInHome == "TRUE" &&
+            articleCardItem.isHightlight == "FALSE" && (
               <ArticleCard
-                thumbnail={articleCardItem.thumbnail_image}
-                brandName={articleCardItem.brand_name}
+                thumbnail={articleCardItem.thumbnailImage}
+                brandName={articleCardItem.brandName}
                 chipItems={articleCardItem.badges}
                 title={articleCardItem.title}
                 animateClass={"anim-fade-in-up"}

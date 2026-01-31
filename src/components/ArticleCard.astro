@@ -1,9 +1,10 @@
 ---
+// STYLES //
+import ThemeImage from "@/components/ui/ThemeImage.astro";
+
 // COMPONENTS //
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import Badge from "@/components/portfolio/Badge.astro";
-import { Image } from "astro:assets";
-import ThemeImage from "@/components/ui/ThemeImage.astro";
 
 // DEFINE PROPS //
 interface Props {
@@ -32,9 +33,13 @@ const {
 <div class="group flex flex-col gap-4 md:gap-5 lg:gap-6">
   <!-- Thumbnail -->
   <div class={`${animateClass} relative h-[224px] rounded-3xl overflow-hidden md:h-[350px]`}>
-    
-    <ThemeImage light={thumbnail} dark={thumbnail} alt={`Thumbnail image for ${brandName}`} class="h-full w-full  object-cover" />
-    
+    <ThemeImage
+      light={thumbnail}
+      dark={thumbnail}
+      alt={`Thumbnail image for ${brandName}`}
+      class="h-full w-full object-cover"
+    />
+
     <div
       class="absolute right-[15px] bottom-[16.46px] block transition ease-in-out group-hover:block md:right-[22px] md:bottom-[28px] lg:right-[19px] lg:bottom-[47px] lg:hidden"
     >
