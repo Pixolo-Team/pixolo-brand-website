@@ -1,15 +1,24 @@
 ---
+// TYPES //
+import type { PortfolioData } from "@/types/portfolio";
+
 // COMPONENTS //
 import ArticleCard from "@/components/ArticleCard.astro";
 import ProjectCard from "@/components/portfolio/ProjectCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
 
+// API SERVICES //
+import { getPortfoliosRequest } from "@/services/api/portfolio.api";
+
 // SVG's //
 import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { portfolioSectionDetails } from "@/data/portfolio.ts";
+
+/** API Call to get all portfolio */
+const portfolios: PortfolioData[] = await getPortfoliosRequest();
 ---
 
 <!-- Portfolio Section -->
@@ -59,19 +68,22 @@ import { portfolioSectionDetails } from "@/data/portfolio.ts";
     <!-- Tile Wrapper -->
     <div class="project-card-wrapper flex flex-col gap-11">
       {
-        portfolioSectionDetails.projectCardItems.map((projectCardItem, index) => {
+        portfolios.map((projectCardItem) => {
           return (
-            <div class="project-card sticky top-[10vh]">
-              <ProjectCard
-                brandColor={projectCardItem.brandColor}
-                brandName={projectCardItem.brandName}
-                image={projectCardItem.image}
-                logo={projectCardItem.logo}
-                title={projectCardItem.title}
-                subtitle={projectCardItem.subtitle}
-                badges={projectCardItem.badges}
-              />
-            </div>
+            projectCardItem.showInHome == "TRUE" &&
+            projectCardItem.isHightlight == "TRUE" && (
+              <div class="project-card sticky top-[10vh]">
+                <ProjectCard
+                  brandColor={projectCardItem.brandColor}
+                  brandName={projectCardItem.brandName}
+                  image={projectCardItem.heroImage}
+                  logo={projectCardItem.logo}
+                  title={projectCardItem.title}
+                  subtitle={projectCardItem.subtitle}
+                  badges={projectCardItem.badges}
+                />
+              </div>
+            )
           );
         })
       }
@@ -80,16 +92,20 @@ import { portfolioSectionDetails } from "@/data/portfolio.ts";
     <!-- Article Cards -->
     <div class="grid grid-cols-1 gap-24 lg:grid-cols-2 lg:gap-20 xl:gap-28 2xl:gap-32">
       {
-        portfolioSectionDetails.articleCardItems.map((articleCardItem) => (
-          <ArticleCard
-            thumbnail={articleCardItem.thumbnail}
-            brandName={articleCardItem.brandName}
-            chipItems={articleCardItem.chipItems}
-            title={articleCardItem.title}
-            animateClass={"anim-fade-in-up"}
-            ctaText={articleCardItem.ctaText}
-          />
-        ))
+        portfolios.map(
+          (articleCardItem) =>
+            articleCardItem.showInHome == "TRUE" &&
+            articleCardItem.isHightlight == "FALSE" && (
+              <ArticleCard
+                thumbnail={articleCardItem.thumbnailImage}
+                brandName={articleCardItem.brandName}
+                chipItems={articleCardItem.badges}
+                title={articleCardItem.title}
+                animateClass={"anim-fade-in-up"}
+                ctaText={"View Project"}
+              />
+            ),
+        )
       }
     </div>
   </div>
@@ -105,7 +121,6 @@ import { portfolioSectionDetails } from "@/data/portfolio.ts";
   }
 </style>
 <script>
-  // OTHERS //
   import { animateMarble } from "@/scripts/hero";
   import { animatePortfolioSection } from "@/scripts/portfolio";
 
