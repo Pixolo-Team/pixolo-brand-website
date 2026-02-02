@@ -1,6 +1,6 @@
 // SCRIPTS //
 import { EVENTS } from "@/enums/analytics.enum";
-import { getDeviceType } from "@/utilities/helper.ts";
+import { getDeviceType } from "@/utils/helper";
 
 /** GET CURRENT VISIBLE SECTION */
 export const getCurrentVisibleSection = (): string => {
