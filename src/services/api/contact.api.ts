@@ -1,27 +1,18 @@
 // MODULES //
 import axios, { type AxiosRequestConfig } from "axios";
 
-// CONSTANTS //
-import { API_URL } from "@/infrastructure/constants/urls.ts";
-
 /** API Call for Contact Form Submission */
 export const submitContactFormRequest = async (payload: any) => {
-  console.log(payload);
-
   try {
     // Configure the GET request with headers
     const config: AxiosRequestConfig = {
       method: "post",
-      url: `${API_URL}/contact-form.php`,
+      url: `https://pixoloproductions.com/api/pixolo-website/contact-form.php`,
       headers: {
         "Content-Type": "application/json",
       },
-      data: {
-        name: payload.name,
-        email: payload.email,
-        phone: payload.phone,
-        message: payload.message,
-      },
+
+      data: payload,
     };
 
     // Make the API request

@@ -62,10 +62,10 @@ export const initializeFormSubmission = () => {
 
     // Prepare payload
     const payload = {
-      from_email: emailInput?.value.trim() || "",
-      phone_number: phoneInput?.value.trim() || "",
-      name: nameInput?.value.trim() || "",
-      message: messageInput?.value.trim() || "",
+      from_email: emailInput?.value.trim(),
+      phone_number: phoneInput?.value.trim(),
+      name: nameInput?.value.trim(),
+      message: messageInput?.value.trim(),
     };
 
     // Submit form
