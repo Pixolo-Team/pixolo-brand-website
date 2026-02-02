@@ -6,19 +6,30 @@ import Tag from "@/components/portfolio/showcase/Tag.astro";
 
 // Define Props //
 interface Props {
+  id?: string;
   name: string;
   image: string;
   title: string;
   subTitle: string;
   description: string;
-  date: string;
+  date?: string;
   tagItems: string[];
   buttonOneText: string;
   buttonTwoText: string;
 }
 
-const { name, image, title, subTitle, description, date, tagItems, buttonOneText, buttonTwoText } =
-  Astro.props as Props;
+const {
+  id = "",
+  name,
+  image,
+  title,
+  subTitle,
+  description,
+  date = "",
+  tagItems,
+  buttonOneText,
+  buttonTwoText,
+} = Astro.props as Props;
 ---
 
 <!-- Project Card -->
@@ -77,10 +88,12 @@ const { name, image, title, subTitle, description, date, tagItems, buttonOneText
           {subTitle}
         </p>
 
-        <!-- Date -->
-        <p class="text-n-700 text-xs leading-tight font-normal md:text-sm">
-          {date}
-        </p>
+        {
+          date !== "" && (
+            // Date
+            <p class="text-n-700 text-xs leading-tight font-normal md:text-sm">{date}</p>
+          )
+        }
       </div>
     </div>
 

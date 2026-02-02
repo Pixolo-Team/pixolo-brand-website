@@ -1,15 +1,22 @@
 ---
+// TYPES //
+import type { PortfolioData } from "@/types/portfolio.ts";
+
+// COMPONENTS //
 import ProjectShowcaseCard from "@/components/portfolio/showcase/ProjectShowcaseCard.astro";
 import MiniProjectCard from "@/components/portfolio/showcase/MiniProjectCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import SliderArrows from "@/components/ui/SliderArrows.astro";
 import { Icon } from "astro-icon/components";
-import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
-import type { PortfolioData } from "@/types/portfolio.ts";
+
+// API SERVICES //
 import { getPortfoliosRequest } from "@/services/api/portfolio.api";
 
+// DATA //
+import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
+
+/** API Call to get all portfolio */
 const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
-console.log(portfolioItems);
 ---
 
 <!-- Portfolio Showcase Section -->
@@ -70,29 +77,27 @@ console.log(portfolioItems);
         >
           {
             // Project Cards //
-            portfolioItems
-              .filter(
-                (projectCard) =>
-                  projectCard.show_in_home === "TRUE" && projectCard.is_highlight === "TRUE",
-              )
-
-              .map((projectCard) => (
-                <ProjectShowcaseCard
-                  name={projectCard.brand_name}
-                  image={
-                    projectCard.thumbnail_image
-                      ? projectCard.thumbnail_image
-                      : "/images/default-showcase-project-image.jpg"
-                  }
-                  title={projectCard.title}
-                  subTitle={projectCard.subtitle}
-                  description={projectCard.subtitle}
-                  date={""}
-                  tagItems={projectCard.badges}
-                  buttonOneText={"Visit Website"}
-                  buttonTwoText={"Show Project"}
-                />
-              ))
+            portfolioItems.map((projectCard) => {
+              return (
+                projectCard.show_in_home === "TRUE" &&
+                projectCard.is_highlight === "TRUE" && (
+                  <ProjectShowcaseCard
+                    name={projectCard.brand_name}
+                    image={
+                      projectCard.thumbnail_image
+                        ? projectCard.thumbnail_image
+                        : "/images/default-showcase-project-image.jpg"
+                    }
+                    title={projectCard.title}
+                    subTitle={projectCard.subtitle}
+                    description={projectCard.subtitle}
+                    tagItems={projectCard.badges}
+                    buttonOneText={"Visit Website"}
+                    buttonTwoText={"Show Project"}
+                  />
+                )
+              );
+            })
           }
         </div>
       </div>
@@ -118,25 +123,27 @@ console.log(portfolioItems);
             <div class="embla__container flex gap-6">
               <!-- Iterating on Project Cards -->
               {
-                portfolioItems
-                  .filter((cardItem) => cardItem.is_highlight === "FALSE")
-                  .map((cardItem) => (
-                    // Mini Project Cards
-                    <div class="embla__slide w-full shrink-0 sm:max-w-[328px] lg:max-w-[412px]">
-                      <MiniProjectCard
-                        title={cardItem.brand_name}
-                        tagItems={cardItem.badges}
-                        date={""}
-                        image={
-                          cardItem.thumbnail_image
-                            ? cardItem.thumbnail_image
-                            : "/images/default-showcase-project-image.jpg"
-                        }
-                        btnOneText={"Visit Website"}
-                        btnTwoText={"Show Project"}
-                      />
-                    </div>
-                  ))
+                portfolioItems.map((cardItem) => {
+                  return (
+                    cardItem.show_in_home === "TRUE" &&
+                    cardItem.is_highlight === "FALSE" && (
+                      // Mini Project Cards
+                      <div class="embla__slide w-full shrink-0 sm:max-w-[328px] lg:max-w-[412px]">
+                        <MiniProjectCard
+                          title={cardItem.brand_name}
+                          tagItems={cardItem.badges}
+                          image={
+                            cardItem.thumbnail_image
+                              ? cardItem.thumbnail_image
+                              : "/images/default-showcase-project-image.jpg"
+                          }
+                          btnOneText={"Visit Website"}
+                          btnTwoText={"Show Project"}
+                        />
+                      </div>
+                    )
+                  );
+                })
               }
             </div>
           </div>
