@@ -1,7 +1,7 @@
 // Data for the Client Section (Header etc)
 export const clientSectionDetails = {
   badgeTitle: "Powering Ideas into Impact",
-  title: "Brands that believe in our code",
+  title: "Brands that trust Pixolo",
 };
 
 // Clients data that can be reused across the application

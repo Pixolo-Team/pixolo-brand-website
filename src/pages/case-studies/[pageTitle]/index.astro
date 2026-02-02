@@ -1,0 +1,84 @@
+---
+// TYPES //
+import type { CaseStudyData } from "@/types/case-studies";
+
+// API SERVICES //
+import { getCaseStudiesRequest } from "@/services/api/case-studies.api";
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+
+// SECTIONS //
+import Numbers from "@/sections/case-studies/Numbers.astro";
+import ClientVision from "@/sections/case-studies/ClientVision.astro";
+import Solutions from "@/sections/case-studies/Solutions.astro";
+import Issues from "@/sections/case-studies/Issues.astro";
+import AboutTheClient from "@/sections/case-studies/AboutTheClient.astro";
+import Gallery from "@/sections/case-studies/Gallery.astro";
+import ToolsUsed from "@/sections/case-studies/ToolsUsed.astro";
+import ClientTestimonial from "@/sections/case-studies/ClientTestimonial.astro";
+import SolutionNumbers from "@/sections/case-studies/SolutionNumbers.astro";
+import Hero from "@/sections/case-studies/Hero.astro";
+import KeyTakeaways from "@/sections/case-studies/KeyTakeaways.astro";
+
+/**
+ * Generates static paths for all Case Studies Consumption pages
+ * @returns Array of static paths with Case Studies data
+ */
+export async function getStaticPaths() {
+  /** API Call to get case studies */
+  const caseStudies = await getCaseStudiesRequest();
+
+  return caseStudies.map((caseStudyItem: CaseStudyData) => ({
+    params: {
+      pageTitle: caseStudyItem.name.replaceAll(" ", "-").toLowerCase(),
+    },
+    props: {
+      caseStudyItem,
+    },
+  }));
+}
+
+const { caseStudyItem }: { caseStudyItem: CaseStudyData } = Astro.props;
+console.log(caseStudyItem.clientMessage);
+---
+
+<Layout>
+  <Hero
+    badgeTitle={caseStudyItem.badgeTitle}
+    title={caseStudyItem.title}
+    description={caseStudyItem.description}
+    thumbnail={caseStudyItem.thumbnail}
+    websiteLink={caseStudyItem.websiteLink}
+    name={caseStudyItem.name}
+  />
+  <Numbers
+    clientNumbersHeading={caseStudyItem.clientNumbersHeading}
+    clientNumbers={caseStudyItem.clientNumbers}
+  />
+  <AboutTheClient
+    aboutPointers={caseStudyItem.aboutPointers}
+    aboutImagesMainImage={caseStudyItem.aboutImagesMainImage}
+    aboutImagesOtherImages={caseStudyItem.aboutImagesOtherImages}
+  />
+  <Issues
+    clientIssuesHeading={caseStudyItem.clientIssuesHeading}
+    clientIssues={caseStudyItem.clientIssues}
+  />
+  <ClientVision
+    clientVisionSectionMainImage={caseStudyItem.clientVisionSectionMainImage}
+    clientVisionSectionImageAlt={caseStudyItem.clientVisionSectionImageAlt}
+    clientVisions={caseStudyItem.clientVisions}
+  />
+  <Solutions clientSolutions={caseStudyItem.clientSolutions} />
+  <Gallery galleryImages={caseStudyItem.galleryImages} />
+  <KeyTakeaways learningItems={caseStudyItem.learningItems} />
+  <!-- <ToolsUsed /> -->
+  <ClientTestimonial
+    image={caseStudyItem.clientImage}
+    name={caseStudyItem.clientName}
+    role={caseStudyItem.clientRole}
+    message={caseStudyItem.clientMessage}
+  />
+  <SolutionNumbers solutionNumbers={caseStudyItem.solutionNumbers} />
+</Layout>

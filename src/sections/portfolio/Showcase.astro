@@ -1,4 +1,7 @@
 ---
+// TYPES //
+import type { PortfolioData } from "@/types/portfolio.ts";
+
 // COMPONENTS //
 import ProjectShowcaseCard from "@/components/portfolio/showcase/ProjectShowcaseCard.astro";
 import MiniProjectCard from "@/components/portfolio/showcase/MiniProjectCard.astro";
@@ -6,8 +9,14 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 import SliderArrows from "@/components/ui/SliderArrows.astro";
 import { Icon } from "astro-icon/components";
 
+// API SERVICES //
+import { getPortfoliosRequest } from "@/services/api/portfolio.api";
+
 // DATA //
 import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
+
+/** API Call to get all portfolio */
+const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
 ---
 
 <!-- Portfolio Showcase Section -->
@@ -68,19 +77,27 @@ import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
         >
           {
             // Project Cards //
-            portfolioShowcaseDetails.projectCardItems.map((projectCard) => (
-              <ProjectShowcaseCard
-                name={projectCard.name}
-                image={projectCard.image}
-                title={projectCard.title}
-                subTitle={projectCard.subTitle}
-                description={projectCard.description}
-                date={projectCard.date}
-                tagItems={projectCard.tagItems}
-                buttonOneText={projectCard.buttonOneText}
-                buttonTwoText={projectCard.buttonTwoText}
-              />
-            ))
+            portfolioItems.map((projectCard) => {
+              return (
+                projectCard.show_in_home === "TRUE" &&
+                projectCard.is_highlight === "TRUE" && (
+                  <ProjectShowcaseCard
+                    name={projectCard.brand_name}
+                    image={
+                      projectCard.thumbnail_image
+                        ? projectCard.thumbnail_image
+                        : "/images/default-showcase-project-image.jpg"
+                    }
+                    title={projectCard.title}
+                    subTitle={projectCard.subtitle}
+                    description={projectCard.subtitle}
+                    tagItems={projectCard.badges}
+                    buttonOneText={"Visit Website"}
+                    buttonTwoText={"Show Project"}
+                  />
+                )
+              );
+            })
           }
         </div>
       </div>
@@ -106,41 +123,45 @@ import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
             <div class="embla__container flex gap-6">
               <!-- Iterating on Project Cards -->
               {
-                portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
-                  // Mini Project Cards
-                  <div class="embla__slide w-full shrink-0 sm:max-w-[328px] lg:max-w-[412px]">
-                    <MiniProjectCard
-                      id={cardItem.id}
-                      title={cardItem.title}
-                      tagItems={cardItem.tags}
-                      date={cardItem.date}
-                      btnOneText={cardItem.btnOneText}
-                      btnTwoText={cardItem.btnTwoText}
-                      image={cardItem.image}
-                    />
-                  </div>
-                ))
+                portfolioItems.map((cardItem) => {
+                  return (
+                    cardItem.show_in_home === "TRUE" &&
+                    cardItem.is_highlight === "FALSE" && (
+                      // Mini Project Cards
+                      <div class="embla__slide w-full shrink-0 sm:max-w-[328px] lg:max-w-[412px]">
+                        <MiniProjectCard
+                          title={cardItem.brand_name}
+                          tagItems={cardItem.badges}
+                          image={
+                            cardItem.thumbnail_image
+                              ? cardItem.thumbnail_image
+                              : "/images/default-showcase-project-image.jpg"
+                          }
+                          btnOneText={"Visit Website"}
+                          btnTwoText={"Show Project"}
+                        />
+                      </div>
+                    )
+                  );
+                })
               }
             </div>
           </div>
         </div>
 
         <!-- Slider Cta Wrap -->
-        <div class="relative flex max-w-full flex-col">
-          <!-- Cta Wrap -->
-          <div class="self-end">
-            <SliderArrows />
+        <div class="flex w-full items-center justify-between gap-6">
+          <!-- Left spacer -->
+          <div class="flex-1"></div>
+
+          <!-- Progress bar (centered) -->
+          <div class="bg-n-500 h-[2px] w-24 overflow-hidden rounded-2xl md:w-36 lg:w-96">
+            <div id="embla__progress__bar" class="h-full w-0 bg-blue-500"></div>
           </div>
 
-          <!-- Slider -->
-          <div
-            class="border-n-500 absolute inset-y-0 h-0 w-24 self-center border md:w-36 md:border-2 lg:w-96"
-          >
-            <div
-              id="embla__progress__bar"
-              class="absolute -top-px h-0 w-0 border border-blue-500 md:border-2"
-            >
-            </div>
+          <!-- Slider arrows (right) -->
+          <div class="flex flex-1 justify-end">
+            <SliderArrows />
           </div>
         </div>
       </div>

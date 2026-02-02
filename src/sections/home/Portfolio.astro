@@ -1,19 +1,28 @@
 ---
+// TYPES //
+import type { PortfolioData } from "@/types/portfolio";
+
 // COMPONENTS //
 import ArticleCard from "@/components/ArticleCard.astro";
 import ProjectCard from "@/components/portfolio/ProjectCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
 
+// API SERVICES //
+import { getPortfoliosRequest } from "@/services/api/portfolio.api";
+
 // SVG's //
 import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { portfolioSectionDetails } from "@/data/portfolio.ts";
+
+/** API Call to get all portfolio */
+const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
 ---
 
 <!-- Portfolio Section -->
-<section id="portfolio-section">
+<section id="portfolio-section" data-section="Portfolio">
   <!-- Container -->
   <div
     class="container mx-auto flex flex-col items-center justify-center gap-20 px-6 py-16 md:gap-28 md:py-28 lg:gap-40 lg:px-14 lg:py-30"
@@ -32,7 +41,7 @@ import { portfolioSectionDetails } from "@/data/portfolio.ts";
 
       <!-- Header Text -->
       <div
-        class="header-text z-10 flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-8xl"
+        class="header-text z-10 flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-5xl"
       >
         <p class="text-balance">{portfolioSectionDetails.title}</p>
         <p class="bg-gradient-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent">
@@ -59,19 +68,22 @@ import { portfolioSectionDetails } from "@/data/portfolio.ts";
     <!-- Tile Wrapper -->
     <div class="project-card-wrapper flex flex-col gap-11">
       {
-        portfolioSectionDetails.projectCardItems.map((projectCardItem, index) => {
+        portfolioItems.map((projectCardItem) => {
           return (
-            <div class="project-card sticky top-[10vh]">
-              <ProjectCard
-                brandColor={projectCardItem.brandColor}
-                brandName={projectCardItem.brandName}
-                image={projectCardItem.image}
-                logo={projectCardItem.logo}
-                title={projectCardItem.title}
-                subtitle={projectCardItem.subtitle}
-                badges={projectCardItem.badges}
-              />
-            </div>
+            projectCardItem.show_in_home === "TRUE" &&
+            projectCardItem.is_highlight === "TRUE" && (
+              <div class="project-card sticky top-[10vh]">
+                <ProjectCard
+                  brandColor={projectCardItem.brand_color}
+                  brandName={projectCardItem.brand_name}
+                  image={projectCardItem.hero_image}
+                  logo={projectCardItem.logo}
+                  title={projectCardItem.title}
+                  subtitle={projectCardItem.subtitle}
+                  badges={projectCardItem.badges}
+                />
+              </div>
+            )
           );
         })
       }
@@ -80,16 +92,20 @@ import { portfolioSectionDetails } from "@/data/portfolio.ts";
     <!-- Article Cards -->
     <div class="grid grid-cols-1 gap-24 lg:grid-cols-2 lg:gap-20 xl:gap-28 2xl:gap-32">
       {
-        portfolioSectionDetails.articleCardItems.map((articleCardItem) => (
-          <ArticleCard
-            thumbnail={articleCardItem.thumbnail}
-            brandName={articleCardItem.brandName}
-            chipItems={articleCardItem.chipItems}
-            title={articleCardItem.title}
-            animateClass={"anim-fade-in-up"}
-            ctaText={articleCardItem.ctaText}
-          />
-        ))
+        portfolioItems.map(
+          (articleCardItem) =>
+            articleCardItem.show_in_home == "TRUE" &&
+            articleCardItem.is_highlight == "FALSE" && (
+              <ArticleCard
+                thumbnail={articleCardItem.thumbnail_image}
+                brandName={articleCardItem.brand_name}
+                chipItems={articleCardItem.badges}
+                title={articleCardItem.title}
+                animateClass={"anim-fade-in-up"}
+                ctaText={"View Project"}
+              />
+            ),
+        )
       }
     </div>
   </div>
@@ -105,7 +121,6 @@ import { portfolioSectionDetails } from "@/data/portfolio.ts";
   }
 </style>
 <script>
-  // OTHERS //
   import { animateMarble } from "@/scripts/hero";
   import { animatePortfolioSection } from "@/scripts/portfolio";
 

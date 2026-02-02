@@ -5,16 +5,16 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
 import Tag from "@/components/portfolio/showcase/Tag.astro";
 
 interface Props {
-  id: string;
+  id?: string;
   title: string;
   tagItems: string[];
-  date: string;
+  date?: string;
   btnOneText: string;
   btnTwoText: string;
   image: string;
 }
 
-const { id, title, tagItems, date, btnOneText, btnTwoText, image } = Astro.props as Props;
+const { id = "", title, tagItems, date = "", btnOneText, btnTwoText, image } = Astro.props as Props;
 ---
 
 <!-- MiniProjectCard Component -->
@@ -47,8 +47,12 @@ const { id, title, tagItems, date, btnOneText, btnTwoText, image } = Astro.props
         </div>
       </div>
 
-      <!-- Date -->
-      <p class="text-n-700 text-sm font-normal">{date}</p>
+      {
+        date !== "" && (
+          // Date
+          <p class="text-n-700 text-sm font-normal">{date}</p>
+        )
+      }
     </div>
 
     <!-- Cta wrap -->

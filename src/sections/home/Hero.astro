@@ -11,7 +11,7 @@ import { heroSectionDetails } from "@/data/hero";
 ---
 
 <!-- Hero Section Start -->
-<section>
+<section id="hero-section" data-section="Hero">
   <div
     id="hero-wrapper"
     class="relative container mx-auto flex flex-col items-center justify-center gap-9 overflow-hidden px-6 pt-34 pb-16 text-center md:pt-52 md:pb-28 lg:pt-40 lg:pb-22 xl:pt-52 2xl:pt-64 2xl:pb-52"
@@ -105,7 +105,7 @@ import { heroSectionDetails } from "@/data/hero";
   .word-container {
     display: inline-block;
     opacity: 0;
-    transform: translateX(15%);
+    transform: translateY(20%);
     transition:
       opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
       transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -115,7 +115,7 @@ import { heroSectionDetails } from "@/data/hero";
   /* This class is added by JS to trigger the final state */
   .word-container.is-visible {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 </style>
 <script>

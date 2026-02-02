@@ -12,7 +12,7 @@ import { serviceDetails, serviceSectionDetails } from "@/data/home/services.ts";
 ---
 
 <!-- Service Section -->
-<section>
+<section id="services-section" data-section="Services">
   <!-- Container -->
   <div
     class="container mx-auto flex w-full flex-col flex-wrap items-center justify-center gap-12 px-6 py-16 md:gap-16 md:px-4 md:py-24 lg:gap-20 lg:px-0 lg:px-8 lg:py-26"
@@ -25,9 +25,7 @@ import { serviceDetails, serviceSectionDetails } from "@/data/home/services.ts";
       </div>
 
       <!-- Text -->
-      <p
-        class="anim-fade-in-right text-n-950 w-fit text-2xl leading-tight font-normal md:text-5xl lg:text-6xl"
-      >
+      <p class="anim-fade-in-right text-n-950 w-fit text-2xl leading-tight font-normal md:text-5xl">
         {serviceSectionDetails.title}
       </p>
     </div>
@@ -38,7 +36,11 @@ import { serviceDetails, serviceSectionDetails } from "@/data/home/services.ts";
     >
       {
         serviceDetails.map((serviceItem) => (
-          <a href={URLS.SERVICE.ITEM(serviceItem.title)}>
+          <a
+            href={URLS.SERVICE.ITEM(serviceItem.title)}
+            data-service-item={serviceItem.title}
+            class="service-card"
+          >
             <ServiceItem
               imageName={serviceItem.imageName}
               title={serviceItem.title}
@@ -54,3 +56,17 @@ import { serviceDetails, serviceSectionDetails } from "@/data/home/services.ts";
     >
   </div>
 </section>
+<script>
+  import { trackServiceInterest } from "@/scripts/analytics";
+
+  // Single event listener for ALL cards (event delegation)
+  document.addEventListener("click", (e) => {
+    const card = (e.target as HTMLElement).closest(".service-card");
+    if (card) {
+      const serviceName = card.getAttribute("data-service-item");
+      if (serviceName) {
+        trackServiceInterest(serviceName);
+      }
+    }
+  });
+</script>

@@ -1,3 +1,6 @@
+// API URL
+export const API_URL = "https://pixoloproductions.com/api/pixolo-website/section-content.php?key=";
+
 // Links for pages to redirect
 export const URLS = {
   HOME: "/",
@@ -12,8 +15,11 @@ export const URLS = {
   CONTACT: "/contact",
   CASE_STUDIES: {
     ROOT: "/case-studies",
-    ITEM: (id: string, pageTitle: string) =>
-      `/case-studies/${id}/${pageTitle.toLowerCase().replaceAll(" ", "-")}`,
+    ITEM: (pageTitle: string) => `/case-studies/${pageTitle.toLowerCase().replaceAll(" ", "-")}`,
   },
   PORTFOLIO: "/portfolio",
+  BLOGS: {
+    ROOT: "/blogs",
+    ITEM: (pageTitle: string) => `/blogs/${pageTitle.toLowerCase().replaceAll(" ", "-")}`,
+  },
 };

@@ -66,7 +66,7 @@ import { Icon } from "astro-icon/components";
         }
 
         <!-- Location card -->
-        <div class="anim-fade-in-right w-full md:w-[440px]">
+        <div class="anim-fade-in-right text-n-950 w-full md:w-[440px]">
           <ContactCard
             icon={contactSectionDetails.location.icon}
             title={contactSectionDetails.location.title}
@@ -116,6 +116,7 @@ import { Icon } from "astro-icon/components";
               type="tel"
               required={true}
               placeholder="PHONE NUMBER"
+              isError={false}
               showPlaceholder={true}
               extraClasses="pb-6 md:pb-9 lg:pb-8"
             />
@@ -127,6 +128,7 @@ import { Icon } from "astro-icon/components";
               type="email"
               required={true}
               placeholder="E-MAIL"
+              isError={false}
               showPlaceholder={true}
               extraClasses="pb-6 md:pb-9 lg:pb-8"
             />
@@ -187,7 +189,7 @@ import { Icon } from "astro-icon/components";
         </div>
       </div>
       <button
-        id="close-result-modal"
+        id="close-contact-result-modal"
         class="text-n-700 absolute top-6 right-6 cursor-pointer hover:opacity-70"
       >
         <Icon name="close" class="text-n-700" />
@@ -197,17 +199,15 @@ import { Icon } from "astro-icon/components";
 </section>
 
 <script>
-  import {
-    initializeFormValidation,
-    initializeCopyButtons,
-    initializeFormSubmission,
-  } from "@/scripts/contact/contact-form";
+  import { initializeFormSubmission } from "@/scripts/contact/contact-form";
   import { animateMarble } from "@/scripts/hero";
-  document.addEventListener("DOMContentLoaded", () => {
-    initializeFormValidation();
-    initializeCopyButtons();
-    initializeFormSubmission();
-    animateMarble("contact-big-marble", "contact-section");
-    animateMarble("contact-small-marble", "contact-section");
-  });
+  import { trackContactFormView } from "@/scripts/analytics";
+  import { initCopyButtons } from "@/scripts/contact-copy";
+
+  initializeFormSubmission();
+  animateMarble("contact-big-marble", "contact-section");
+  animateMarble("contact-small-marble", "contact-section");
+
+  trackContactFormView();
+  initCopyButtons();
 </script>

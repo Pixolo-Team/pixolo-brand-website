@@ -2,16 +2,22 @@
 // COMPONENTS //
 import CaseStudyCard from "@/components/casestudy/CaseStudyCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
 
-// CONSTANTS //
+// SERVICES //
+import { getCaseStudiesRequest } from "@/services/api/case-studies.api.ts";
+
 import { URLS } from "@/infrastructure/constants/urls";
 
 // DATA //
-import { caseStudySectionDetails, caseStudies } from "@/data/case-studies/case-studies";
-import RoundedButton from "@/components/ui/RoundedButton.astro";
+import { caseStudySectionDetails } from "@/data/case-studies/case-studies";
+import type { CaseStudyData } from "@/types/case-studies";
+
+/** API Call to get case studies */
+const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
 ---
 
-<section id="case-studies-section">
+<section id="case-studies-section" data-section="Case Studies">
   <div
     class="container mx-auto flex flex-col gap-12 px-8 py-16 md:gap-14 md:px-0 md:py-16 lg:gap-16 lg:py-26"
   >
@@ -24,7 +30,7 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
 
       <!-- Title -->
       <p
-        class="header-text text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-6xl"
+        class="header-text text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-5xl"
       >
         {caseStudySectionDetails.title}
       </p>
@@ -38,19 +44,24 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
         class="grid grid-cols-1 gap-10 md:gap-16 md:px-16 lg:grid-cols-2 xl:grid-cols-3"
       >
         {
-          caseStudies.map((caseStudyItem, caseStudyIndex) => (
-            <div class="case-study-card-item hidden">
-              <CaseStudyCard
-                href={URLS.CASE_STUDIES.ITEM(
-                  caseStudyItem.id.toString(),
-                  caseStudyItem.pageTitle.replaceAll(" ", "-").toLowerCase(),
-                )}
-                id={caseStudyItem.id}
-                title={caseStudyItem.pageTitle}
-                image={caseStudyItem.cardImage || caseStudySectionDetails.defaultImage}
-              />
-            </div>
-          ))
+          caseStudies.length === 0 ? (
+            <p>No caseStudies found</p>
+          ) : (
+            caseStudies
+              .filter((caseStudy) => caseStudy.showInHome === "1")
+              .map((caseStudyItem, filteredIndex) => (
+                <div class="case-study-card-item hidden">
+                  <CaseStudyCard
+                    image={caseStudyItem.thumbnail}
+                    href={URLS.CASE_STUDIES.ITEM(
+                      caseStudyItem.name?.replaceAll(" ", "-").toLowerCase(),
+                    )}
+                    id={filteredIndex}
+                    title={caseStudyItem.name}
+                  />
+                </div>
+              ))
+          )
         }
       </div>
       <!-- Load More Button -->
@@ -66,6 +77,18 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
 <script>
   import { initLoadMore } from "@/scripts/load-more";
   import { animateCaseStudiesSection } from "@/scripts/case-study/case-study";
+  import { trackCaseStudyView } from "@/scripts/analytics";
+
+  // Single event listener for ALL cards (event delegation)
+  document.addEventListener("click", (e) => {
+    const card = (e.target as HTMLElement).closest(".case-study-card");
+    if (card) {
+      const caseStudyName = card.getAttribute("data-case-study-item");
+      if (caseStudyName) {
+        trackCaseStudyView(caseStudyName, "case-studies", "full_page");
+      }
+    }
+  });
 
   animateCaseStudiesSection();
 

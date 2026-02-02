@@ -8,6 +8,7 @@ const { question, answer, isOpen = false } = Astro.props;
 <div
   class={`group faq-item text-n-700 cursor-pointer border-n-700 border-b-[0.8px] px-2 py-8 md:py-12 lg:px-2.5 lg:py-14`}
   data-faq-accordion
+  data-faq-item={question}
   data-open={isOpen}
 >
   <div class="flex w-full flex-col">
@@ -34,7 +35,7 @@ const { question, answer, isOpen = false } = Astro.props;
 
     <!-- Answer Block -->
     <div
-      class="text-n-700 overflow-hidden text-left text-xs transition-[height] duration-300 ease-in-out md:text-lg lg:text-xl"
+      class="text-n-700 overflow-hidden text-left text-sm transition-[height] duration-300 ease-in-out md:text-lg lg:text-xl"
       data-accordion-answer
     >
       <!-- Answer -->

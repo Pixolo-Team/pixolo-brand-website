@@ -2,7 +2,7 @@
 import type { FaqSectionData } from "@/types/faq";
 
 // OTHERS //
-import { buildAllFaqs } from "@/utilities/helper";
+import { buildAllFaqs } from "@/utils/helper";
 
 // 1) Define this OUTSIDE the export (so you can reuse it)
 const faqItemsByTabBase: Record<number, { question: string; answer: string }[]> = {
