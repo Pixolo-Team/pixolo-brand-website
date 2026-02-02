@@ -5,11 +5,11 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 import SliderArrows from "@/components/ui/SliderArrows.astro";
 import { Icon } from "astro-icon/components";
 import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
-import { getPortfolioShowcaseDataRequest } from "@/services/api/portfolio-showcase.api";
-import type { PortfolioShowcaseData } from "@/types/portfolio-showcase.types";
+import type { PortfolioData } from "@/types/portfolio.ts";
+import { getPortfoliosRequest } from "@/services/api/portfolio.api";
 
-const portfolioShowcaseData: PortfolioShowcaseData[] = await getPortfolioShowcaseDataRequest();
-console.log(portfolioShowcaseData);
+const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
+console.log(portfolioItems);
 ---
 
 <!-- Portfolio Showcase Section -->
@@ -70,15 +70,14 @@ console.log(portfolioShowcaseData);
         >
           {
             // Project Cards //
-            portfolioShowcaseData
+            portfolioItems
               .filter(
                 (projectCard) =>
-                  projectCard.show_in_home === "FALSE" && projectCard.is_highlight === "TRUE",
+                  projectCard.show_in_home === "TRUE" && projectCard.is_highlight === "TRUE",
               )
 
               .map((projectCard) => (
                 <ProjectShowcaseCard
-                  id={projectCard.id}
                   name={projectCard.brand_name}
                   image={
                     projectCard.thumbnail_image
@@ -90,6 +89,8 @@ console.log(portfolioShowcaseData);
                   description={projectCard.subtitle}
                   date={""}
                   tagItems={projectCard.badges}
+                  buttonOneText={"Visit Website"}
+                  buttonTwoText={"Show Project"}
                 />
               ))
           }
@@ -117,13 +118,12 @@ console.log(portfolioShowcaseData);
             <div class="embla__container flex gap-6">
               <!-- Iterating on Project Cards -->
               {
-                portfolioShowcaseData
+                portfolioItems
                   .filter((cardItem) => cardItem.is_highlight === "FALSE")
                   .map((cardItem) => (
                     // Mini Project Cards
                     <div class="embla__slide w-full shrink-0 sm:max-w-[328px] lg:max-w-[412px]">
                       <MiniProjectCard
-                        id={cardItem.id}
                         title={cardItem.brand_name}
                         tagItems={cardItem.badges}
                         date={""}
@@ -132,6 +132,8 @@ console.log(portfolioShowcaseData);
                             ? cardItem.thumbnail_image
                             : "/images/default-showcase-project-image.jpg"
                         }
+                        btnOneText={"Visit Website"}
+                        btnTwoText={"Show Project"}
                       />
                     </div>
                   ))

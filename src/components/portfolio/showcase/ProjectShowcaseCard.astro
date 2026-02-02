@@ -6,7 +6,6 @@ import Tag from "@/components/portfolio/showcase/Tag.astro";
 
 // Define Props //
 interface Props {
-  id: string;
   name: string;
   image: string;
   title: string;
@@ -14,9 +13,12 @@ interface Props {
   description: string;
   date: string;
   tagItems: string[];
+  buttonOneText: string;
+  buttonTwoText: string;
 }
 
-const { id, name, image, title, subTitle, description, date, tagItems } = Astro.props as Props;
+const { name, image, title, subTitle, description, date, tagItems, buttonOneText, buttonTwoText } =
+  Astro.props as Props;
 ---
 
 <!-- Project Card -->
@@ -85,11 +87,11 @@ const { id, name, image, title, subTitle, description, date, tagItems } = Astro.
     <!-- Buttons -->
     <div class="project-card-buttons flex flex-row gap-3.5 group-data-[view=grid]:gap-4 md:gap-4">
       <!-- Primary Button -->
-      <RoundedButton buttonText={"Visit Website"} onClick={"window.location.href='/404'"} />
+      <RoundedButton buttonText={buttonOneText} onClick={"window.location.href='/404'"} />
 
       <!-- Secondary Button -->
       <RoundedButton
-        buttonText={"Show Project"}
+        buttonText={buttonTwoText}
         onClick={"window.location.href='/404'"}
         variant="secondary"
       />
