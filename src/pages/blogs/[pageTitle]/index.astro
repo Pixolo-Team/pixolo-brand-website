@@ -1,27 +1,42 @@
 ---
-/** Get Static Paths */
-export function getStaticPaths() {
-  return [
-    { params: { pageTitle: "blog-1" } },
-    { params: { pageTitle: "blog-2" } },
-    { params: { pageTitle: "blog-3" } },
-  ];
-}
-
-const { pageTitle } = Astro.params;
+// TYPES //
+import type { BlogPost } from "@/types/blogs";
 
 // COMPONENTS //
 import BlogHero from "@/components/blogs-consumption/BlogHero.astro";
 import BlogBody from "@/components/blogs-consumption/BlogBody.astro";
 
+// API SERVICES //
+import { getBlogsRequest } from "@/services/api/blogs.api";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 
-// DATA //
-import { blogConsumptionDetails } from "@/data/blog-consumption.ts";
+/** Generates static paths for all blogs */
+export async function getStaticPaths() {
+  /** API Call to get Blogs */
+  const blogsList = await getBlogsRequest();
+
+  return blogsList.map((blogItem: BlogPost) => ({
+    params: {
+      pageTitle: blogItem.title.toLowerCase().replaceAll(" ", "-"),
+    },
+    props: {
+      blogItem,
+    },
+  }));
+}
+
+const { blogItem }: { blogItem: BlogPost } = Astro.props;
 ---
 
 <Layout>
-  <BlogHero post={blogConsumptionDetails} />
-  <BlogBody content={blogConsumptionDetails.content} />
+  <BlogHero
+    image={blogItem.image}
+    category={blogItem.category}
+    date={blogItem.date}
+    title={blogItem.title}
+    author={blogItem.author}
+  />
+  <BlogBody content={blogItem.content} />
 </Layout>

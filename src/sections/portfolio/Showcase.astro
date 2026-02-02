@@ -141,21 +141,18 @@ console.log(portfolioShowcaseData);
         </div>
 
         <!-- Slider Cta Wrap -->
-        <div class="relative flex max-w-full flex-col">
-          <!-- Cta Wrap -->
-          <div class="self-end">
-            <SliderArrows />
+        <div class="flex w-full items-center justify-between gap-6">
+          <!-- Left spacer -->
+          <div class="flex-1"></div>
+
+          <!-- Progress bar (centered) -->
+          <div class="bg-n-500 h-[2px] w-24 overflow-hidden rounded-2xl md:w-36 lg:w-96">
+            <div id="embla__progress__bar" class="h-full w-0 bg-blue-500"></div>
           </div>
 
-          <!-- Slider -->
-          <div
-            class="border-n-500 absolute inset-y-0 h-0 w-24 self-center border md:w-36 md:border-2 lg:w-96"
-          >
-            <div
-              id="embla__progress__bar"
-              class="absolute -top-px h-0 w-0 border border-blue-500 md:border-2"
-            >
-            </div>
+          <!-- Slider arrows (right) -->
+          <div class="flex flex-1 justify-end">
+            <SliderArrows />
           </div>
         </div>
       </div>

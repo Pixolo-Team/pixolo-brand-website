@@ -9,7 +9,18 @@ import path from "path";
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.pixolotechnologies.com",
-  integrations: [icon()],
+  integrations: [
+    icon(),
+    sitemap({
+    customPages: [
+      "https://www.pixolotechnologies.com/",
+      "https://www.pixolotechnologies.com/services",
+      "https://www.pixolotechnologies.com/portfolio",
+      "https://www.pixolotechnologies.com/careers",
+      "https://www.pixolotechnologies.com/contact",
+    ],
+  }),
+  ],
 
   vite: {
     resolve: {
@@ -17,6 +28,6 @@ export default defineConfig({
         "@": path.resolve("./src"),
       },
     },
-    plugins: [tailwindcss(), sitemap()],
+    plugins: [tailwindcss()],
   },
 });

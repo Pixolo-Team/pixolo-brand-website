@@ -31,7 +31,21 @@ const { meta = {} } = Astro.props;
       image={meta.image}
       noIndex={meta.noIndex}
     />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9E7P2PLT8"></script>
+
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag("js", new Date());
+      gtag("config", "G-T9E7P2PLT8");
+    </script>
   </head>
+
   <body>
     <!-- Loading -->
     <Loading />
@@ -69,7 +83,7 @@ const { meta = {} } = Astro.props;
     <!-- Whatsapp button component -->
     <WhatsappButton
       href="https://wa.me/9768941186"
-      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-10 hidden md:block"
+      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-10 hidden md:flex"
     />
 
     <!-- Bottom CTA -->
@@ -89,6 +103,23 @@ const { meta = {} } = Astro.props;
     height: 100%;
   }
 </style>
+<script>
+  import { trackContactCTAClick, trackContactFormView } from "@/scripts/analytics";
+  import {
+    trackPageView,
+    setupScrollTracking,
+    setupClickTracking,
+    trackWhatsappClick,
+  } from "@/scripts/analytics";
+
+  setupClickTracking("sticky-whatsapp", () => trackWhatsappClick("floating"));
+  setupClickTracking("open-contact-modal", () => trackContactCTAClick("floating"));
+  setupClickTracking("open-contact-modal", () => trackContactFormView());
+
+  // Initial page load
+  trackPageView();
+  setupScrollTracking();
+</script>
 
 <script is:inline>
   const loader = document.querySelector("#loading-screen");
