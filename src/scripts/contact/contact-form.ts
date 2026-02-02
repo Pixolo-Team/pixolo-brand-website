@@ -6,7 +6,7 @@ import { validateInput } from "@/utils/validations";
 import { showResultModal, hideResultModal } from "@/utils/modal";
 
 // OTHERS //
-import { trackContactFormError, trackContactFormSubmit } from "../analytics";
+import { trackContactFormError, trackContactFormSubmit } from "@/scripts/analytics";
 
 /** Initialize form submission */
 export const initializeFormSubmission = () => {
