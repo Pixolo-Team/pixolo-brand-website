@@ -10,7 +10,7 @@ const { number, title, description } = Astro.props as props;
 ---
 
 <div
-  class="retainership-card bg-n-100 flex min-h-[311px] w-full flex-col justify-between gap-4 rounded-4xl from-[#4254D4] to-[#8B77F3] py-14 pr-14 pl-6 hover:bg-gradient-to-br md:min-h-[380px] lg:min-h-[428px]"
+  class="retainership-card group bg-n-100 flex min-h-[311px] w-full flex-col justify-between gap-4 rounded-4xl from-[#4254D4] to-[#8B77F3] py-14 pr-14 pl-6 hover:bg-gradient-to-br md:min-h-[380px] lg:min-h-[428px]"
 >
   <!-- Header -->
   <div class="flex flex-col gap-2">
@@ -26,7 +26,9 @@ const { number, title, description } = Astro.props as props;
   </div>
 
   <!-- Description -->
-  <p class="text-n-700 text-base leading-tight font-normal">{description}</p>
+  <p class="text-n-800 text-base leading-tight font-normal group-hover:font-medium">
+    {description}
+  </p>
 </div>
 <style>
   .retainership-card {
