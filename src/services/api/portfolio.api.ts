@@ -18,7 +18,7 @@ export const getPortfoliosRequest = async () => {
     };
 
     // Make the API request
-    const response = await axios.request<PortfolioData>(config);
+    const response = await axios.request<PortfolioData[]>(config);
 
     // Defensive check
     if (!Array.isArray(response.data)) {
