@@ -11,6 +11,7 @@ import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { contactSectionDetails, contactFormDetails } from "@/data/contact";
+import { Icon } from "astro-icon/components";
 ---
 
 <section id="contact-section" class="relative overflow-hidden">
@@ -92,6 +93,8 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
         <form
           class="form-fill flex w-full flex-col gap-11 xl:w-1/2 xl:flex-1 xl:gap-12"
           aria-label="Contact form"
+          novalidate
+          id="contact-form-section"
         >
           <div class="flex flex-col gap-14 lg:gap-16">
             <!-- Name Input field -->
@@ -100,6 +103,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
               id="name"
               type="text"
               required={true}
+              isError={false}
               placeholder="NAME"
               showPlaceholder={true}
               extraClasses="pb-6 md:pb-9 lg:pb-8 placeholder:text-xl placeholder:text-medium"
@@ -146,6 +150,48 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
           </div>
         </form>
       </div>
+    </div>
+  </div>
+
+  <!-- Success Result/Error Modal -->
+  <div
+    id="contact-result-modal"
+    class="fixed inset-0 z-60 hidden items-center justify-center bg-black/50 px-6 py-24"
+  >
+    <div class="bg-n-100 relative w-full max-w-[596px] rounded-[32px] px-10 py-8 text-center">
+      <!-- Success -->
+      <div data-state="success" class="flex hidden flex-col items-center gap-2">
+        <!-- Success Icon -->
+        <Icon class={"size-6"} name="success" />
+
+        <!-- Success message text -->
+        <div class="space-y-4">
+          <h2 class="text-n-950 text-2xl font-normal">Cheers!</h2>
+          <p class="text-n-400 text-xl font-normal">
+            You're good to go—your form has been submitted
+          </p>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div data-state="error" class="flex hidden flex-col items-center gap-2">
+        <!-- Error Icon -->
+        <Icon name="error" class="size-6" />
+
+        <!-- Error Message text -->
+        <div class="space-y-4">
+          <h2 class="text-n-950 text-2xl font-normal">Oops!</h2>
+          <p class="text-n-400 text-xl font-normal">
+            An unexpected issue has occurred—please try again shortly
+          </p>
+        </div>
+      </div>
+      <button
+        id="close-result-modal"
+        class="text-n-700 absolute top-6 right-6 cursor-pointer hover:opacity-70"
+      >
+        <Icon name="close" class="text-n-700" />
+      </button>
     </div>
   </div>
 </section>
