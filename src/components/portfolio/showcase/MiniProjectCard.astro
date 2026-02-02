@@ -8,13 +8,13 @@ interface Props {
   id: string;
   title: string;
   tagItems: string[];
+  date: string;
   btnOneText: string;
   btnTwoText: string;
-  date: string;
   image: string;
 }
 
-const { id, title, tagItems, date, image, btnOneText, btnTwoText } = Astro.props as Props;
+const { id, title, tagItems, date, btnOneText, btnTwoText, image } = Astro.props as Props;
 ---
 
 <!-- MiniProjectCard Component -->
