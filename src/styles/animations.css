@@ -58,7 +58,7 @@
 .word-container {
   display: inline-block;
   opacity: 0;
-  transform: translateX(15%);
+  transform: translateY(20%);
   transition:
     opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -68,7 +68,7 @@
 /* Class added by JS to reveal word containers */
 .word-container.is-visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 /* Copy button color transition (used on contact cards) */
