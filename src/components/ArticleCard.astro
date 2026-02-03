@@ -18,26 +18,19 @@ interface Props {
 }
 
 // PROPS //
-const {
-  thumbnail = "default-project",
-  brandName,
-  chipItems,
-  title,
-  subtitle,
-  animateClass,
-  ctaText,
-} = Astro.props as Props;
+const { thumbnail, brandName, chipItems, title, subtitle, animateClass, ctaText } =
+  Astro.props as Props;
 ---
 
 <!-- Article Card -->
 <div class="group flex flex-col gap-4 md:gap-5 lg:gap-6">
   <!-- Thumbnail -->
-  <div class={`${animateClass} relative h-[224px] rounded-3xl overflow-hidden md:h-[350px]`}>
+  <div class={`${animateClass} relative h-auto rounded-3xl overflow-hidden`}>
     <ThemeImage
       light={thumbnail}
       dark={thumbnail}
       alt={`Thumbnail image for ${brandName}`}
-      class="h-full w-full object-cover"
+      class="h-full w-full object-contain"
     />
 
     <div

@@ -40,6 +40,11 @@ export const validateInput = (input: HTMLInputElement): boolean => {
     errors.push(formErrors.phone.invalidFormat);
   }
 
+  // Validate name format
+  if (value && input.id === "name" && !validationRules.name.pattern.test(value)) {
+    errors.push(formErrors.name.containsNumbers);
+  }
+
   // If no errors, return true
   if (!errors.length) return true;
 

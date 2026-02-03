@@ -7,7 +7,7 @@ import MobileMenu from "@/components/layout/MobileMenu.astro";
 import { Icon } from "astro-icon/components";
 
 // DATA //
-import { menuItems } from "@/data/menu";
+import { menuItems, mobileMenuItems } from "@/data/menu";
 ---
 
 <header
@@ -44,7 +44,7 @@ import { menuItems } from "@/data/menu";
 </header>
 
 <!-- Mobile Menu -->
-<MobileMenu menuItems={menuItems} />
+<MobileMenu menuItems={mobileMenuItems} />
 
 <script>
   import { menuOpenCloseAnimation, animateMenu } from "@/scripts/menu";

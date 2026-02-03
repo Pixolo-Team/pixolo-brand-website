@@ -20,13 +20,13 @@ const { id = "", title, tagItems, date = "", btnOneText, btnTwoText, image } = A
 <!-- MiniProjectCard Component -->
 <div id={id} class="flex h-full w-full flex-col gap-2.5 md:gap-4 lg:gap-6">
   <!-- Image part -->
-  <div class="h-[218px] overflow-hidden rounded-2xl md:h-[310px] lg:h-[380px]">
+  <div class="h-full overflow-hidden rounded-2xl">
     <!-- Card Image -->
     <ThemeImage
       light={image}
       dark={image}
       alt={title}
-      class="h-full w-full object-cover"
+      class="h-full w-full object-contain"
       width={400}
       height={250}
     />
