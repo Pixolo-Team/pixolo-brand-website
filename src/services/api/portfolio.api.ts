@@ -3,7 +3,6 @@ import axios, { type AxiosRequestConfig } from "axios";
 
 // CONSTANTS //
 import { API_URL } from "@/infrastructure/constants/urls.ts";
-import type { PortfolioData } from "@/types/portfolio";
 
 /** API Call to get all portfolio request. */
 export const getPortfoliosRequest = async () => {
@@ -18,7 +17,7 @@ export const getPortfoliosRequest = async () => {
     };
 
     // Make the API request
-    const response = await axios.request<PortfolioData[]>(config);
+    const response = await axios.request(config);
 
     // Defensive check
     if (!Array.isArray(response.data)) {
