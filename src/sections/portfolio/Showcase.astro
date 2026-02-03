@@ -17,6 +17,14 @@ import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
 
 /** API Call to get all portfolio */
 const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
+
+const miniProjects = portfolioItems.filter(
+  (item) => item.show_in_home === "TRUE" && item.is_highlight === "FALSE"
+);
+
+// We need arrows on Desktop only if there are more than 3 items
+const showArrowsOnDesktop = miniProjects.length > 3;
+
 ---
 
 <!-- Portfolio Showcase Section -->
@@ -150,9 +158,9 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
         </div>
 
         <!-- Slider Cta Wrap -->
-        <div class="flex w-full items-center justify-between gap-6">
+        <div class={`flex w-full items-center gap-6 ${showArrowsOnDesktop ? "justify-between" : "justify-between lg:justify-center"}`}>
           <!-- Left spacer -->
-          <div class="flex-1"></div>
+          <div class={`flex-1 ${!showArrowsOnDesktop ? "lg:hidden" : ""}`}></div>
 
           <!-- Progress bar (centered) -->
           <div class="bg-n-500 h-[2px] w-24 overflow-hidden rounded-2xl md:w-36 lg:w-96">
@@ -160,7 +168,7 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
           </div>
 
           <!-- Slider arrows (right) -->
-          <div class="flex flex-1 justify-end">
+          <div class={`flex flex-1 justify-end ${!showArrowsOnDesktop ? "lg:hidden" : ""}`}>
             <SliderArrows />
           </div>
         </div>

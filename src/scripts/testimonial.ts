@@ -6,10 +6,28 @@ export function initTestimonials() {
   const textWrapper = document.getElementById("testimonial-text");
   const textEl = document.getElementById("testimonial-content");
 
+  const SLIDE_DURATION = 5000; 
+  let activeIndex = 0;
+  let intervalId: ReturnType<typeof setInterval>;
+
   if (!items.length || !textWrapper || !textEl) return;
 
   const container = items[0].parentElement;
   if (!container) return;
+
+  // Start auto slide
+  const startAutoSlide = () => {
+    stopAutoSlide(); // Ensure no duplicate intervals
+    intervalId = setInterval(() => {
+      // Calculate next index (loop back to 0 if at the end)
+      const nextIndex = (activeIndex + 1) % items.length;
+      setActive(items[nextIndex]);
+    }, SLIDE_DURATION);
+  };
+
+  const stopAutoSlide = () => {
+    if (intervalId) clearInterval(intervalId);
+  };
 
   container.addEventListener("click", (e) => {
     const target = (e.target as HTMLElement).closest(".testimonial-item") as HTMLElement | null;
@@ -17,12 +35,16 @@ export function initTestimonials() {
 
     /** Set the active testimonial item and update the displayed text. */
     setActive(target);
+
+    startAutoSlide();
   });
 
   const setActive = (activeItem: HTMLElement) => {
     // If Already active then do nothing
     if (activeItem.classList.contains("active")) return;
 
+    activeIndex = Array.from(items).indexOf(activeItem);
+    
     items.forEach((item) => item.classList.remove("active"));
     activeItem.classList.add("active");
 
@@ -36,6 +58,13 @@ export function initTestimonials() {
 
   // Set first active
   setActive(items[0]);
+
+  // Starts when the section is in view
+  inView("#testimonials-section", () => {
+    startAutoSlide();
+
+    return () => stopAutoSlide();
+  });
 }
 
 /** Animate the Testimonials Section */
