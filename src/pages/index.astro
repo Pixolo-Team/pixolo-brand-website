@@ -14,9 +14,17 @@ import Contact from "@/sections/home/Contact.astro";
 import Testimonials from "@/sections/home/Testimonials.astro";
 import CaseStudies from "@/sections/home/CaseStudies.astro";
 import Blogs from "@/sections/home/Blogs.astro";
+
+const homePageMetaData = {
+  title: "Product, Mobile App & MVP Developers in India | Pixolo",
+  description:
+    "Pixolo Technologies is an end-to-end mobile app and custom software development company in India. From product planning and UI/UX to development, QA, and deployment, we build scalable products for startups, growing businesses, and white-label partners.",
+  keywords:
+    "mobile app development company, custom software development, end to end software development, product development services, UI UX design and development, web application development, SaaS product development, backend and cloud development, QA testing services, software deployment, software development company in india",
+};
 ---
 
-<Layout>
+<Layout meta={homePageMetaData}>
   <Hero />
   <Clients />
   <Service />

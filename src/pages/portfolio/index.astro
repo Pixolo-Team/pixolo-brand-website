@@ -6,9 +6,17 @@ import Layout from "@/layouts/Layout.astro";
 import Hero from "@/sections/portfolio/Hero.astro";
 import Industries from "@/sections/portfolio/Industries.astro";
 import Showcase from "@/sections/portfolio/Showcase.astro";
+
+const portfolioMetaData = {
+  title: "Product & Mobile App Development Portfolio | Pixolo",
+  description:
+    "View Pixolo’s portfolio of mobile apps, MVPs, and custom software products built for startups and fast-growing teams.",
+  keywords:
+    "mobile app development company, custom software development, end to end software development, product development services, UI UX design and development, web application development, SaaS product development, backend and cloud development, QA testing services, software deployment, software development company in india",
+};
 ---
 
-<Layout>
+<Layout meta={portfolioMetaData}>
   <Hero />
   <Industries />
   <Showcase />
