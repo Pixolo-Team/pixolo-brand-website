@@ -1,0 +1,201 @@
+---
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Leads Admin</title>
+
+    <script>
+      import { supabase } from "@/services/supabase";
+
+      // Check session on page load (client-side)
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (session) {
+        window.location.href = "/leads/";
+      }
+    </script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+        background-color: #f5f5f5;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .login-container {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+      h1 {
+        font-size: 1.5rem;
+        color: #1a1a1a;
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+      .subtitle {
+        color: #666;
+        font-size: 0.875rem;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .form-group {
+        margin-bottom: 1.25rem;
+      }
+      label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 0.5rem;
+      }
+      input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        font-size: 1rem;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      input:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+      .submit-btn {
+        width: 100%;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        padding: 0.75rem 1rem;
+        border-radius: 0.375rem;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .submit-btn:hover {
+        background-color: #1d4ed8;
+      }
+      .submit-btn:disabled {
+        background-color: #93c5fd;
+        cursor: not-allowed;
+      }
+      .error-message {
+        background-color: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #dc2626;
+        padding: 0.75rem 1rem;
+        border-radius: 0.375rem;
+        margin-bottom: 1rem;
+        font-size: 0.875rem;
+        display: none;
+      }
+      .error-message.visible {
+        display: block;
+      }
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 1.5rem;
+        color: #2563eb;
+        text-decoration: none;
+        font-size: 0.875rem;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h1>Leads Admin</h1>
+      <p class="subtitle">Sign in to manage your leads</p>
+      <div id="error-message" class="error-message"></div>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+            placeholder="you@company.com"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            autocomplete="current-password"
+            placeholder="••••••••"
+          />
+        </div>
+        <button type="submit" class="submit-btn" id="submit-btn"> Sign In </button>
+      </form>
+      <a href="/" class="back-link">← Back to website</a>
+    </div>
+    <script>
+      import { supabase } from "@/services/supabase";
+      const form = document.getElementById("login-form") as HTMLFormElement;
+      const errorMessage = document.getElementById("error-message") as HTMLDivElement;
+      const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const email = (document.getElementById("email") as HTMLInputElement).value;
+        const password = (document.getElementById("password") as HTMLInputElement).value;
+        // Disable button and show loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Signing in...";
+        errorMessage.classList.remove("visible");
+        try {
+          const { data, error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+          });
+          console.log(data);
+          if (error) {
+            errorMessage.textContent = error.message;
+            errorMessage.classList.add("visible");
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Sign In";
+            return;
+          }
+          // Redirect to leads page on success
+          window.location.href = "/leads";
+        } catch (err) {
+          console.log(err);
+          errorMessage.textContent = "An unexpected error occurred. Please try again.";
+          errorMessage.classList.add("visible");
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Sign In";
+        }
+      });
+    </script>
+  </body>
+</html>
