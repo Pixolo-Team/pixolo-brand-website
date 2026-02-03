@@ -26,7 +26,7 @@ export function getStaticPaths() {
   serviceDetails.forEach((service) => {
     paths.push({
       params: {
-        title: service.title.replaceAll(" ", "-").toLowerCase(),
+        title: service.title.toLowerCase().replaceAll("&", "and").replaceAll(" ", "-"),
       },
       props: {
         service,
