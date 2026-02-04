@@ -18,8 +18,12 @@ import { URLS } from "@/infrastructure/constants/urls";
 // DATA //
 import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
 
+interface Props {
+  clientSpecificPortfolios: number[];
+}
+
 // Astro Props
-const { clientSpecificPortfolios } = Astro.props;
+const { clientSpecificPortfolios } = Astro.props as Props;
 
 /** API Call to get all portfolio */
 const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
@@ -92,30 +96,31 @@ const filteredPortfolioItems = isCuratedView
           class={`group grid grid-cols-1 data-[view=grid]:md:grid-cols-2 gap-10`}
         >
           {
-            filteredPortfolioItems.map((projectCard) => {
+            filteredPortfolioItems.map((projectCardItem) => {
               // Checking if the project card should be rendered based on the view
               const shouldRender = isCuratedView
                 ? true
-                : projectCard?.show_in_home === "TRUE" && projectCard?.is_highlight === "TRUE";
+                : projectCardItem?.show_in_home === "TRUE" &&
+                  projectCardItem?.is_highlight === "TRUE";
 
               if (!shouldRender) return null;
 
               return (
                 <ProjectShowcaseCard
-                  name={projectCard.brand_name}
+                  name={projectCardItem.brand_name}
                   image={
-                    projectCard.thumbnail_image
-                      ? projectCard.thumbnail_image
+                    projectCardItem.thumbnail_image
+                      ? projectCardItem.thumbnail_image
                       : "/images/default-showcase-project-image.jpg"
                   }
-                  title={projectCard.title}
-                  subTitle={projectCard.subtitle}
-                  description={projectCard.subtitle}
-                  tagItems={projectCard.badges}
+                  title={projectCardItem.title}
+                  subTitle={projectCardItem.subtitle}
+                  description={projectCardItem.subtitle}
+                  tagItems={projectCardItem.badges}
                   buttonOneText={"Visit Website"}
                   buttonTwoText={"Show Project"}
                   buttonOneClick={""}
-                  buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCard.title)}'`}
+                  buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCardItem.title)}'`}
                 />
               );
             })

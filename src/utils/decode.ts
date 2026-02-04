@@ -1,5 +1,5 @@
 /** Decodes a base64 encoded string of comma-separated numbers into an array of numbers. */
-export function decodePortfolioIds(encoded: string | null): number[] {
+export const decodePortfolioIds = (encoded: string | null): number[] => {
   if (!encoded) return [];
 
   try {
@@ -15,4 +15,4 @@ export function decodePortfolioIds(encoded: string | null): number[] {
     // Returns an empty array if the decoding fails
     return [];
   }
-}
+};
