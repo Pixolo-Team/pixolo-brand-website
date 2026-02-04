@@ -1,1 +1,0 @@
-import{e as g}from"./index.Cn0a9Pkm.js";function f(t,e){if(t==="first")return 0;{const n=e-1;return t==="last"?n:n/2}}function d(t=.1,{startDelay:e=0,from:n=0,ease:s}={}){return(a,o)=>{const c=typeof n=="number"?n:f(n,o),u=Math.abs(c-a);let i=t*u;if(s){const r=o*t;i=g(s)(i/r)*r}return e+i}}export{d as s};
