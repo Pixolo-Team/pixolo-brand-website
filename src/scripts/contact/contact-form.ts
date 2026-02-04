@@ -29,7 +29,7 @@ export const initializeFormSubmission = () => {
   closeResultBtn?.addEventListener("click", () => hideResultModal("contact-result-modal"));
 
   /** Handle form submission  */
-  submitBtn.addEventListener("click", async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     // Get all inputs
@@ -99,3 +99,9 @@ export const initializeFormSubmission = () => {
     }
   });
 };
+if (typeof window !== "undefined") {
+  window.addEventListener("DOMContentLoaded", () => {
+    console.log("Contact form JS mounted");
+    initializeFormSubmission();
+  });
+}

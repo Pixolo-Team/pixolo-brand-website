@@ -12,6 +12,7 @@ import Ball from "@/assets/3d-ball.svg";
 // DATA //
 import { contactSectionDetails, contactFormDetails } from "@/data/contact";
 import { Icon } from "astro-icon/components";
+import ThemeImage from "@/components/ui/ThemeImage.astro";
 ---
 
 <section id="contact-section" class="relative overflow-hidden">
@@ -91,7 +92,7 @@ import { Icon } from "astro-icon/components";
         </div>
         <!-- Contact Form -->
         <form
-          class="form-fill flex w-full flex-col gap-11 xl:w-1/2 xl:flex-1 xl:gap-12"
+          class="form-fill relative flex w-full flex-col gap-11 xl:w-1/2 xl:flex-1 xl:gap-12"
           aria-label="Contact form"
           novalidate
           id="contact-form-section"
@@ -150,53 +151,75 @@ import { Icon } from "astro-icon/components";
             <!-- Rounded Button component -->
             <RoundedButton buttonText="Contact Us" type="submit" aria-label="Send message" />
           </div>
+
+          <!-- Success Result/Error Modal -->
+          <div
+            id="contact-result-modal"
+            class="absolute inset-0 z-50 hidden flex-col items-center justify-center bg-black/1 transition-all duration-300"
+          >
+            <div
+              class="relative flex w-full max-w-[95%] flex-col items-center rounded-[32px] bg-[radial-gradient(95%_95%_at_50%_120%,_#2A3B7A_0%,_#0E172B_65%)] pt-18 pb-8 text-center"
+            >
+              <button
+                id="close-contact-result-modal"
+                class="bg-n-200 text-n-950 absolute top-4 right-4 flex h-12 w-12 cursor-pointer items-center justify-center gap-2.5 rounded-full p-3"
+                type="button"
+              >
+                <Icon name="close" class="w-4 h-4" />
+              </button>
+
+              <div data-state="success" class="hidden w-full flex-col items-center gap-6">
+                <ThemeImage
+                  light="src/icons/form-success.svg"
+                  dark="src/icons/form-success.svg"
+                  alt="form-error"
+                  class="h-full w-full object-contain"
+                />
+
+                <p class="text-n-950 text-3xl leading-none font-extrabold tracking-normal">
+                  Message Delivered
+                </p>
+                <p class="text-n-700 max-w-[60%] text-base leading-tight font-bold tracking-normal">
+                  We've received your details and will take it from here. Expect a response soon.
+                </p>
+
+                <div class="mt-4 h-1 w-full max-w-[90%] overflow-hidden rounded-full bg-[#1E2738]">
+                  <div
+                    class="h-full w-1/3 rounded-full bg-gradient-to-r from-[#5B6BF9] to-[#8C4AF2]"
+                  >
+                  </div>
+                </div>
+              </div>
+
+              <div data-state="error" class="hidden w-full flex-col items-center gap-6">
+                <ThemeImage
+                  light="src/icons/form-error.svg"
+                  dark="src/icons/form-error.svg"
+                  alt="form-error"
+                  class="h-full w-full object-contain"
+                />
+                <p class="text-n-950 text-3xl leading-none font-extrabold tracking-normal">
+                  Something Went Wrong
+                </p>
+                <p class="text-n-700 max-w-[60%] text-base leading-tight font-bold tracking-normal">
+                  Something didn't go as planned. Please try again or reach out directly.
+                </p>
+
+                <div class="mt-4 h-1 w-full max-w-[90%] overflow-hidden rounded-full bg-[#1E2738]">
+                  <div
+                    class="h-full w-3/4 rounded-full bg-gradient-to-r from-[#EF4444] to-[#B91C1C]"
+                  >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
     </div>
   </div>
-
-  <!-- Success Result/Error Modal -->
-  <div
-    id="contact-result-modal"
-    class="fixed inset-0 z-60 hidden items-center justify-center bg-black/50 px-6 py-24"
-  >
-    <div class="bg-n-100 relative w-full max-w-[596px] rounded-[32px] px-10 py-8 text-center">
-      <!-- Success -->
-      <div data-state="success" class="flex hidden flex-col items-center gap-2">
-        <!-- Success Icon -->
-        <Icon class={"size-6"} name="success" />
-
-        <!-- Success message text -->
-        <div class="space-y-4">
-          <h2 class="text-n-950 text-2xl font-normal">Cheers!</h2>
-          <p class="text-n-400 text-xl font-normal">
-            You're good to go—your form has been submitted
-          </p>
-        </div>
-      </div>
-
-      <!-- Error -->
-      <div data-state="error" class="flex hidden flex-col items-center gap-2">
-        <!-- Error Icon -->
-        <Icon name="error" class="size-6" />
-
-        <!-- Error Message text -->
-        <div class="space-y-4">
-          <h2 class="text-n-950 text-2xl font-normal">Oops!</h2>
-          <p class="text-n-400 text-xl font-normal">
-            An unexpected issue has occurred—please try again shortly
-          </p>
-        </div>
-      </div>
-      <button
-        id="close-contact-result-modal"
-        class="text-n-700 absolute top-6 right-6 cursor-pointer hover:opacity-70"
-      >
-        <Icon name="close" class="text-n-700" />
-      </button>
-    </div>
-  </div>
 </section>
+<script type="module" src="/src/scripts/contact/contact-form.ts"></script>
 
 <script>
   import { initializeFormSubmission } from "@/scripts/contact/contact-form";
