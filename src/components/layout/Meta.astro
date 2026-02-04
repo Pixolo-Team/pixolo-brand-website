@@ -22,6 +22,9 @@ const canonical = `${site.siteUrl}${Astro.url.pathname}`;
   <!-- Favicon for dark mode -->
   <link rel="icon" href="/favicon-dark.png" media="(prefers-color-scheme: dark)" />
 
+  <!-- Canonical -->
+  <link rel="canonical" href={canonical} />
+
   <!-- Title -->
   <title>{metaTitle}</title>
 
