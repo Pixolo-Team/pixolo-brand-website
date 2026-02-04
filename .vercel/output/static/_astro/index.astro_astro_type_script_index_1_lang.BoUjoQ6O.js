@@ -1,0 +1,1 @@
+import{s as a}from"./supabase.BSLUXaoE.js";const{data:{session:t}}=await a.auth.getSession();t||(window.location.href="/leads/login");a.auth.onAuthStateChange((e,o)=>{o||(window.location.href="/leads/login")});

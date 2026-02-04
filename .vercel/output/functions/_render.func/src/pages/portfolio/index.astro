@@ -1,0 +1,26 @@
+---
+export const prerender = false;
+
+// UTILS //
+import { decodePortfolioIds } from "@/utils/decode";
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+
+// SECTIONS //
+import Hero from "@/sections/portfolio/Hero.astro";
+import Industries from "@/sections/portfolio/Industries.astro";
+import Showcase from "@/sections/portfolio/Showcase.astro";
+
+// Get encoded portfolios from URL
+const encodedPortfolios = Astro.url.searchParams.get("p");
+
+// Decode client specific portfolio
+const clientSpecificPortfolios = decodePortfolioIds(encodedPortfolios);
+---
+
+<Layout>
+  <Hero />
+  <Industries />
+  <Showcase clientSpecificPortfolios={clientSpecificPortfolios} />
+</Layout>

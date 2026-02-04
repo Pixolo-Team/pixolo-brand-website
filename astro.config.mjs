@@ -1,12 +1,13 @@
 // @ts-check
+// MODULES //
+import path from "path";
+
 // OTHERS //
 import { defineConfig } from "astro/config";
 import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
-import path from "path";
-
-import netlify from "@astrojs/netlify";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
@@ -34,6 +35,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [icon()],
-  adapter: netlify(),
+  adapter: vercel(),
 });
