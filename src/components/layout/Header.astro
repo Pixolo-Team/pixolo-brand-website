@@ -8,6 +8,7 @@ import { Icon } from "astro-icon/components";
 
 // DATA //
 import { menuItems, mobileMenuItems } from "@/data/menu";
+import ThemeToggle from "@/components/ui/ThemeToggle.astro";
 ---
 
 <header
@@ -25,7 +26,8 @@ import { menuItems, mobileMenuItems } from "@/data/menu";
     </div>
 
     <!-- Rounded Button component -->
-    <div class="hidden lg:block">
+    <div class="flex items-center justify-center lg:block">
+      <ThemeToggle />
       <RoundedButton
         id="header-contact-cta"
         buttonText="Contact Us"

@@ -1,0 +1,61 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  class="mode-toggle relative h-[28px] w-[54px] px-[5px] py-1"
+  data-theme-toggle
+  aria-label="Toggle theme"
+>
+  <Icon name="sun" class="icon sun size-5" />
+  <Icon name="moon" class="icon moon size-5" />
+</button>
+
+<style>
+  .mode-toggle {
+    position: relative;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #8bb7ff, #6fa1ff);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background 0.4s ease;
+  }
+
+  /* base icon styles */
+  .mode-toggle .icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition:
+      transform 0.35s ease,
+      opacity 0.25s ease;
+  }
+
+  /* ☀️ SUN — default (light mode) */
+  .mode-toggle .sun {
+    left: 8px;
+    opacity: 1;
+  }
+
+  /* 🌙 MOON — default hidden */
+  .mode-toggle .moon {
+    right: 8px;
+    opacity: 0;
+    transform: translateY(-50%) translateX(10px);
+  }
+
+  /* 🌙 DARK MODE */
+  [data-theme="dark"] .mode-toggle {
+    background: radial-gradient(circle at top, #0c1020, #05060a);
+  }
+
+  [data-theme="dark"] .mode-toggle .sun {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-10px);
+  }
+
+  [data-theme="dark"] .mode-toggle .moon {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+</style>
