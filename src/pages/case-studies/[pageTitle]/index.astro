@@ -47,9 +47,9 @@ const { caseStudyItem }: { caseStudyItem: CaseStudyData } = Astro.props;
 
 <Layout
   meta={{
+    ...caseStudyMeta,
     title: caseStudyItem.title + " Development Case Study | Pixolo",
     description: caseStudyItem.description,
-    ...caseStudyMeta,
   }}
 >
   <Hero

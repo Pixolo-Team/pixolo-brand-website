@@ -32,19 +32,6 @@ const { meta = {} } = Astro.props;
       noIndex={meta.noIndex}
       keywords={meta.keywords}
     />
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9E7P2PLT8"></script>
-
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      window.gtag = gtag;
-      gtag("js", new Date());
-      gtag("config", "G-T9E7P2PLT8");
-    </script>
   </head>
 
   <body>
@@ -93,6 +80,19 @@ const { meta = {} } = Astro.props;
     </div>
 
     <ContactForm />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9E7P2PLT8"></script>
+
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag("js", new Date());
+      gtag("config", "G-T9E7P2PLT8");
+    </script>
   </body>
 </html>
 
