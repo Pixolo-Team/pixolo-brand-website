@@ -12,6 +12,9 @@ import { Icon } from "astro-icon/components";
 // API SERVICES //
 import { getPortfoliosRequest } from "@/services/api/portfolio.api";
 
+// CONSTANTS //
+import { URLS } from "@/infrastructure/constants/urls";
+
 // DATA //
 import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
 
@@ -111,6 +114,8 @@ const filteredPortfolioItems = isCuratedView
                   tagItems={projectCard.badges}
                   buttonOneText={"Visit Website"}
                   buttonTwoText={"Show Project"}
+                  buttonOneClick={""}
+                  buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCard.title)}'`}
                 />
               );
             })
@@ -154,6 +159,8 @@ const filteredPortfolioItems = isCuratedView
                             }
                             btnOneText={"Visit Website"}
                             btnTwoText={"Show Project"}
+                            buttonOneClick={""}
+                            buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(cardItem.title)}'`}
                           />
                         </div>
                       )
