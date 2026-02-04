@@ -21,6 +21,9 @@ import SolutionNumbers from "@/sections/case-studies/SolutionNumbers.astro";
 import Hero from "@/sections/case-studies/Hero.astro";
 import KeyTakeaways from "@/sections/case-studies/KeyTakeaways.astro";
 
+// DATA //
+import caseStudyMeta from "@/data/meta/case-studies/case-study-consumption/case-study-consumption.json";
+
 /**
  * Generates static paths for all Case Studies Consumption pages
  * @returns Array of static paths with Case Studies data
@@ -42,7 +45,13 @@ export async function getStaticPaths() {
 const { caseStudyItem }: { caseStudyItem: CaseStudyData } = Astro.props;
 ---
 
-<Layout>
+<Layout
+  meta={{
+    title: caseStudyItem.title + " Development Case Study | Pixolo",
+    description: caseStudyItem.description,
+    ...caseStudyMeta,
+  }}
+>
   <Hero
     badgeTitle={caseStudyItem.badgeTitle}
     title={caseStudyItem.title}

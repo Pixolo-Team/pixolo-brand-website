@@ -5,19 +5,13 @@ import Layout from "@/layouts/Layout.astro";
 // SECTIONS //
 import Hero from "@/sections/contact/Hero.astro";
 import ContactForm from "@/sections/contact/ContactForm.astro";
-
 import FAQ from "@/sections/contact/FAQ.astro";
 
-const contactMetaData = {
-  title: "Build Your MVP or Product with Pixolo",
-  description:
-    "Talk to Pixolo about building your MVP, mobile app, or custom product. We help founders turn ideas into scalable software.",
-  keywords:
-    "mobile app development company, custom software development, end to end software development, product development services, UI UX design and development, web application development, SaaS product development, backend and cloud development, QA testing services, software deployment, software development company in india",
-};
+// DATA //
+import contactMeta from "@/data/meta/contact.json";
 ---
 
-<Layout meta={contactMetaData}>
+<Layout meta={contactMeta}>
   <Hero />
   <ContactForm />
   <FAQ />
