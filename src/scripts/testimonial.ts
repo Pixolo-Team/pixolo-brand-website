@@ -6,7 +6,7 @@ export function initTestimonials() {
   const textWrapper = document.getElementById("testimonial-text");
   const textEl = document.getElementById("testimonial-content");
 
-  const SLIDE_DURATION = 20000; 
+  const SLIDE_DURATION = 10000;
   let activeIndex = 0;
   let intervalId: ReturnType<typeof setInterval>;
 
@@ -15,7 +15,7 @@ export function initTestimonials() {
   const container = items[0].parentElement;
   if (!container) return;
 
-  // Start auto slide
+  /** Start auto slide */
   const startAutoSlide = () => {
     stopAutoSlide(); // Ensure no duplicate intervals
     intervalId = setInterval(() => {
@@ -25,6 +25,7 @@ export function initTestimonials() {
     }, SLIDE_DURATION);
   };
 
+  /** Stop auto slide */
   const stopAutoSlide = () => {
     if (intervalId) clearInterval(intervalId);
   };
@@ -43,8 +44,7 @@ export function initTestimonials() {
     // If Already active then do nothing
     if (activeItem.classList.contains("active")) return;
 
-    activeIndex = Array.from(items).indexOf(activeItem);
-    
+    activeIndex = Array.from(items).indexOf(activeItem);    
     items.forEach((item) => item.classList.remove("active"));
     activeItem.classList.add("active");
 
