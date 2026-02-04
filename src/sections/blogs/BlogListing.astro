@@ -1,0 +1,79 @@
+---
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import Tabs from "@/components/ui/Tabs.astro";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import BlogCard from "@/components/blogs/BlogCard.astro";
+// DATA //
+import { blogListingDetails } from "@/data/blog-listing/Blog-listing.ts";
+---
+
+<section>
+  <div class="container mx-auto grid grid-cols-1 gap-9 px-6 py-20 lg:gap-16 lg:py-28">
+    <div class="grid grid-cols-1 gap-3 md:gap-4 lg:gap-5">
+      <div class="justify-self-start">
+        <ToolBadge icon={blogListingDetails.icon} text={blogListingDetails.badgeTitle} />
+      </div>
+      <h2 class="text-[28px] leading-[1.25] font-normal tracking-[-0.03em] text-white md:text-5xl">
+        {blogListingDetails.heading}
+      </h2>
+    </div>
+
+    <div class="body-section grid grid-cols-1 gap-5 md:gap-7">
+      <Tabs tabItems={blogListingDetails.tabsitems} />
+
+      <div id="blog-cards-wrap" class="grid grid-cols-1 gap-11 md:gap-16">
+        <div id="blog-cards" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-9">
+          {
+            blogListingDetails.blogItems.map((blogItem: any) => (
+              <div class="blog-card-item">
+                <BlogCard
+                  imageSrc={blogItem.image || blogListingDetails.defaultImage}
+                  category={blogItem.category}
+                  date={blogItem.date}
+                  title={blogItem.title}
+                  author={blogItem.author}
+                  href="#"
+                />
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="justify-self-center">
+          <RoundedButton
+            id="load-more-btn"
+            buttonText="Load More Blogs"
+            type="button"
+            variant="tertiary"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import { initLoadMore } from "@/scripts/load-more";
+  const CONFIG = {
+    containerId: "blog-cards",
+    loadMoreBtnId: "load-more-btn",
+    cardClass: "blog-card-item",
+    initialVisible: {
+      desktop: 6,
+      tablet: 4,
+      mobile: 3,
+    },
+    incrementConfig: {
+      desktop: 6,
+      tablet: 2,
+      mobile: 3,
+    },
+  };
+  function setupBlogs() {
+    initLoadMore(CONFIG);
+  }
+  // Run on first page load
+  document.addEventListener("DOMContentLoaded", setupBlogs);
+
+  // Run again after Astro View Transitions navigation
+  document.addEventListener("astro:page-load", setupBlogs);
+</script>
