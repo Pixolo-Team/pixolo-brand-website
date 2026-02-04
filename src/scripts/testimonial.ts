@@ -6,7 +6,7 @@ export function initTestimonials() {
   const textWrapper = document.getElementById("testimonial-text");
   const textEl = document.getElementById("testimonial-content");
 
-  const SLIDE_DURATION = 5000; 
+  const SLIDE_DURATION = 20000; 
   let activeIndex = 0;
   let intervalId: ReturnType<typeof setInterval>;
 
