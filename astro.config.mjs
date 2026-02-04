@@ -6,9 +6,12 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import path from "path";
 
+import netlify from "@astrojs/netlify";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.pixolotechnologies.com",
+
   integrations: [
     icon(),
     sitemap({
@@ -32,4 +35,5 @@ export default defineConfig({
   },
 
   integrations: [icon()],
+  adapter: netlify(),
 });
