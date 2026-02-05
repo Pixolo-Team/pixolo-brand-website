@@ -9,11 +9,13 @@ const { title, description, index } = Astro.props;
 ---
 
 <div class="flex w-full justify-between">
-  <p class="text-3xl leading-normal md:text-5xl">{index}</p>
+  <p class="text-n-700 text-3xl leading-normal md:text-5xl">{index}</p>
   <div class="flex flex-1 flex-col gap-1 text-end leading-tight md:gap-3">
-    <p class="border-n-700 w-full border-b py-1 pr-0 text-xl md:py-2.5 md:text-3xl lg:text-4xl">
+    <p
+      class="border-n-700 text-n-950 w-full border-b py-1 pr-0 text-xl md:py-2.5 md:text-3xl lg:text-4xl"
+    >
       {title}
     </p>
-    <p class="text-xs md:text-base lg:text-lg">{description}</p>
+    <p class="text-n-800 text-xs md:text-base lg:text-lg">{description}</p>
   </div>
 </div>

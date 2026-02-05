@@ -33,6 +33,18 @@ const { meta = {} } = Astro.props;
       keywords={meta.keyword}
     />
 
+    <!-- Theme toggle script -->
+    <script is:inline>
+      (() => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") {
+          document.documentElement.classList.remove("dark");
+        } else {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9E7P2PLT8"></script>
 

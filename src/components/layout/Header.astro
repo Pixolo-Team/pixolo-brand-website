@@ -26,8 +26,14 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
     </div>
 
     <!-- Rounded Button component -->
-    <div class="flex items-center justify-center lg:block">
-      <ThemeToggle />
+    <div class="hidden items-center justify-center gap-4 lg:flex">
+      <!-- Theme toggle Button -->
+      <ThemeToggle id="header-theme-toggle" />
+
+      <!-- Divider line -->
+      <div class="bg-n-600 w-[1px] self-stretch"></div>
+
+      <!-- Contact CTA Button -->
       <RoundedButton
         id="header-contact-cta"
         buttonText="Contact Us"
@@ -35,13 +41,21 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
       />
     </div>
 
-    <!-- Mobile Hamburger -->
-    <Icon
-      id="open-mobile-menu-button"
-      aria-label="Open menu button"
-      name="hamburger"
-      class="text-n-950 block size-6 cursor-pointer lg:hidden"
-    />
+    <div class="flex items-center justify-center gap-3 lg:hidden">
+      <!-- Theme toggle Button -->
+      <ThemeToggle id="mobile-theme-toggle" />
+
+      <!-- Divider line -->
+      <div class="bg-n-600 w-[1px] self-stretch"></div>
+
+      <!-- Mobile Hamburger -->
+      <Icon
+        id="open-mobile-menu-button"
+        aria-label="Open menu button"
+        name="hamburger"
+        class="text-n-950 block size-6 cursor-pointer lg:hidden"
+      />
+    </div>
   </div>
 </header>
 
