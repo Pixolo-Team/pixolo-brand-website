@@ -1,6 +1,10 @@
 ---
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
+import { pixoloOrganizationSchema } from "@/schemas/home/organization";
 
 // SECTIONS //
 import Hero from "@/sections/home/Hero.astro";
@@ -20,6 +24,9 @@ import homeMeta from "@/data/meta/home.json";
 ---
 
 <Layout meta={homeMeta}>
+  <!-- Organization JSON-LD -->
+  <JsonLd slot="head" data={pixoloOrganizationSchema} />
+
   <Hero />
   <Clients />
   <Service />

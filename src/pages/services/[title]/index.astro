@@ -1,6 +1,10 @@
 ---
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
 // SERVICES //
 import serviceConsumptionMeta from "@/data/meta/services/service-consumption/service-consumption.json";
+import { getPixoloServiceSchema } from "@/schemas/services/service-consumption";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
@@ -21,29 +25,34 @@ import { serviceDetails } from "@/data/home/services.ts";
  * @returns Array of static paths with service data
  */
 export function getStaticPaths() {
-  const paths: Array<{
-    params: { title: string };
-    props: { service: any };
-  }> = [];
+  return serviceDetails.map((service) => {
+    const slug = service.title.toLowerCase().replaceAll("&", "and").replaceAll(" ", "-");
 
-  serviceDetails.forEach((service) => {
-    paths.push({
-      params: {
-        title: service.title.toLowerCase().replaceAll("&", "and").replaceAll(" ", "-"),
-      },
+    return {
+      params: { title: slug },
       props: {
         service,
+        slug, // ✅ IMPORTANT
       },
-    });
+    };
   });
-
-  return paths;
 }
 
-const { service } = Astro.props;
+const { service, slug } = Astro.props;
+
+// Dynamic Service JSON-LD
+const serviceSchema = getPixoloServiceSchema({
+  slug,
+  name: service.hero.title,
+  serviceType: service.hero.title,
+  description: service.hero.subTitle,
+});
 ---
 
 <Layout meta={serviceConsumptionMeta}>
+  <!-- Service JSON-LD -->
+  <JsonLd slot="head" data={serviceSchema} />
+
   <Hero title={service.hero.title} subTitle={service.hero.subTitle} />
   <OutcomeFocused outcomeFocusedItems={service} />
   <PainSolution painSolutionCardItems={service.painSolution} />

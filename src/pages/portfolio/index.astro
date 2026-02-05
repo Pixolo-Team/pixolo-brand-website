@@ -1,6 +1,10 @@
 ---
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
+import { pixoloPublisher } from "@/schemas/home/publisher";
 
 // SECTIONS //
 import Hero from "@/sections/portfolio/Hero.astro";
@@ -12,6 +16,7 @@ import portfolioMeta from "@/data/meta/portfolio/portfolio.json";
 ---
 
 <Layout meta={portfolioMeta}>
+  <JsonLd slot="head" data={pixoloPublisher} />
   <Hero />
   <Industries />
   <Showcase />

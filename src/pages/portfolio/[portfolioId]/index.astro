@@ -7,8 +7,12 @@ export function getStaticPaths() {
   ];
 }
 
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
+import { pixoloPublisher } from "@/schemas/home/publisher";
 
 // SECTIONS //
 import Hero from "@/sections/project-consumption/Hero.astro";
@@ -18,6 +22,7 @@ import Impact from "@/sections/project-consumption/Impact.astro";
 ---
 
 <Layout>
+  <JsonLd slot="head" data={pixoloPublisher} />
   <Hero />
   <Video />
   <ProjectIntroduction />

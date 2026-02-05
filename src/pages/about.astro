@@ -1,9 +1,15 @@
 ---
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
+import { pixoloPublisher } from "@/schemas/home/publisher";
 
 // DATA //
 import aboutMeta from "@/data/meta/about.json";
 ---
 
-<Layout meta={aboutMeta} />
+<Layout meta={aboutMeta}>
+  <JsonLd slot="head" data={pixoloPublisher} />
+</Layout>

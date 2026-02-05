@@ -32,6 +32,9 @@ const { meta = {} } = Astro.props;
       noIndex={meta.noIndex}
       keywords={meta.keywords}
     />
+
+    <!-- JSON-LD -->
+    <slot name="head" />
   </head>
 
   <body>

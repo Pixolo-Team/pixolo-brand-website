@@ -1,16 +1,21 @@
 ---
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
 // SERVICES //
 import Hero from "@/sections/services/Hero.astro";
 import Service from "@/sections/services/Service.astro";
-
-// DATA //
 import servicesMeta from "@/data/meta/services/services.json";
+import { pixoloServicesItemListSchema } from "@/schemas/services/services";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout meta={servicesMeta}>
+  <!-- Services ItemList JSON-LD -->
+  <JsonLd slot="head" data={pixoloServicesItemListSchema} />
+
   <Hero />
   <Service />
 </Layout>
