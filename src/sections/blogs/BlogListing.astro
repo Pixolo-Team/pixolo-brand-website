@@ -8,13 +8,14 @@ import BlogCard from "@/components/blogs/BlogCard.astro";
 // DATA //
 import { blogListingDetails } from "@/data/blog-listing/blog-listing";
 import type { BlogItemData } from "@/types/blogs";
+import { URLS } from "@/infrastructure/constants/urls";
 ---
 
 <!-- Blog-Listing Section -->
 <section id="blogs-section">
   <!-- Container -->
-  <div class="container mx-auto grid grid-cols-1 gap-9 px-6 py-20 lg:gap-16 lg:py-28">
-    <!-- Frame -->
+  <div class="container mx-auto grid grid-cols-1 gap-9 px-6 py-28 lg:gap-16 lg:py-30">
+    <!-- Header Section -->
     <div class="grid grid-cols-1 gap-3 md:gap-4 lg:gap-5">
       <!-- Tool Badge -->
       <div class="tool-badge justify-self-start">
@@ -31,7 +32,10 @@ import type { BlogItemData } from "@/types/blogs";
     <!-- Body Section: Tabs and Blog Cards -->
     <div class="body-section grid grid-cols-1 gap-5 md:gap-7">
       <!-- Tabs -->
-      <Tabs tabItems={blogListingDetails.tabsItems} />
+      <div class="tabs-wrapper">
+        <Tabs tabItems={blogListingDetails.tabsItems} />
+      </div>
+
       <!-- Blog-Cards-Wrapper -->
       <div id="blog-cards-wrap" class="grid grid-cols-1 gap-11 md:gap-16">
         <!-- Blog-Card -->
@@ -39,7 +43,7 @@ import type { BlogItemData } from "@/types/blogs";
           {
             // Blog-Card
             blogListingDetails.blogItems.map((blogItem: BlogItemData) => (
-              <div class="blog-card-item">
+              <div class="blog-card-item" data-category={blogItem.category.toLowerCase()}>
                 <BlogCard
                   imageSrc={blogItem.imageSrc || blogListingDetails.defaultImage}
                   category={blogItem.category}
@@ -94,4 +98,45 @@ import type { BlogItemData } from "@/types/blogs";
 
   // Run again after Astro View Transitions navigation
   document.addEventListener("astro:page-load", setupBlogs);
+
+    const filterBlogsByActiveTab = (tabId) => {
+    const cards = document.querySelectorAll(".blog-card-item");
+
+    cards.forEach((card) => {
+      const cardCategory = card.dataset.category;
+
+      if (tabId === "all" || cardCategory === tabId) {
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  };
+
+  const setupTabFiltering = () => {
+    const tabsContainer = document.getElementById("tabs-container");
+    if (!tabsContainer) return;
+
+    const tabs = tabsContainer.querySelectorAll("button[data-tab-id]");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const tabId = tab.dataset.tabId.toLowerCase();
+
+        filterBlogsByActiveTab(tabId);
+
+        // re-init load more for filtered results
+        initLoadMore(CONFIG);
+      });
+    });
+
+    // Apply filter on initial active tab
+    const activeTab = tabsContainer.querySelector(".bg-n-950");
+    if (activeTab) {
+      filterBlogsByActiveTab(activeTab.dataset.tabId.toLowerCase());
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", setupTabFiltering);
+  document.addEventListener("astro:page-load", setupTabFiltering);
 </script>

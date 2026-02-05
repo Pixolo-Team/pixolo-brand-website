@@ -18,6 +18,13 @@ export const animateBlogsSection = () => {
       { duration: 0.8, delay: 0.4 },
     );
 
+    // Animate The tabs for the Blog-Listing
+    animate(
+      blogsSection?.querySelectorAll(".tabs-wrapper .button-tab"),
+      { x: ["-50px", 0], opacity: [0, 1] },
+      { duration: 0.4, delay: stagger(0.2, { from: "first", startDelay: 0.8 }) },
+    );
+
     // Animate the Blog Cards
     animate(
       blogsSection?.querySelectorAll(".blog-card-item"),
