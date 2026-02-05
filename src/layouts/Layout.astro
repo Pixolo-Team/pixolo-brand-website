@@ -93,32 +93,6 @@ const { meta = {} } = Astro.props;
     </div>
 
     <ContactForm />
-
-    <!-- ✅ Theme toggle script -->
-    <script is:inline>
-      const THEME_KEY = "pixolo-theme";
-
-      function applyTheme(theme) {
-        document.documentElement.dataset.theme = theme;
-        localStorage.setItem(THEME_KEY, theme);
-      }
-
-      function getInitialTheme() {
-        const saved = localStorage.getItem(THEME_KEY);
-        if (saved) return saved;
-
-        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-      }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        applyTheme(getInitialTheme());
-
-        document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
-          const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-          applyTheme(next);
-        });
-      });
-    </script>
   </body>
 </html>
 

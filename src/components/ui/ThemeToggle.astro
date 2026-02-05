@@ -7,8 +7,8 @@ import { Icon } from "astro-icon/components";
   data-theme-toggle
   aria-label="Toggle theme"
 >
-  <Icon name="sun" class="icon sun size-5" />
-  <Icon name="moon" class="icon moon size-5" />
+  <Icon name="sun" class="icon sun hidden size-5" />
+  <Icon name="moon" class="icon moon block size-5" />
 </button>
 
 <style>
@@ -42,20 +42,5 @@ import { Icon } from "astro-icon/components";
     right: 8px;
     opacity: 0;
     transform: translateY(-50%) translateX(10px);
-  }
-
-  /* 🌙 DARK MODE */
-  [data-theme="dark"] .mode-toggle {
-    background: radial-gradient(circle at top, #0c1020, #05060a);
-  }
-
-  [data-theme="dark"] .mode-toggle .sun {
-    opacity: 0;
-    transform: translateY(-50%) translateX(-10px);
-  }
-
-  [data-theme="dark"] .mode-toggle .moon {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
   }
 </style>
