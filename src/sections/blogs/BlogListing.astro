@@ -1,18 +1,26 @@
 ---
+// COMPONENTS //
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import Tabs from "@/components/ui/Tabs.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import BlogCard from "@/components/blogs/BlogCard.astro";
+
 // DATA //
-import { blogListingDetails } from "@/data/blog-listing/Blog-listing.ts";
+import { blogListingDetails } from "@/data/blog-listing/blog-listing";
+import type { BlogItemData } from "@/types/blogs";
 ---
 
+<!-- Blog-Listing Section -->
 <section id="blogs-section">
+  <!-- Container -->
   <div class="container mx-auto grid grid-cols-1 gap-9 px-6 py-20 lg:gap-16 lg:py-28">
+    <!-- Frame -->
     <div class="grid grid-cols-1 gap-3 md:gap-4 lg:gap-5">
+      <!-- Tool Badge -->
       <div class="tool-badge justify-self-start">
         <ToolBadge icon={blogListingDetails.icon} text={blogListingDetails.badgeTitle} />
       </div>
+      <!-- Heading -->
       <h2
         id="header-text"
         class="text-n-950 text-3xl leading-tight font-normal tracking-tighter md:text-4xl lg:text-5xl"
@@ -20,17 +28,20 @@ import { blogListingDetails } from "@/data/blog-listing/Blog-listing.ts";
         {blogListingDetails.heading}
       </h2>
     </div>
-
+    <!-- Body Section: Tabs and Blog Cards -->
     <div class="body-section grid grid-cols-1 gap-5 md:gap-7">
-      <Tabs tabItems={blogListingDetails.tabsitems} />
-
+      <!-- Tabs -->
+      <Tabs tabItems={blogListingDetails.tabsItems} />
+      <!-- Blog-Cards-Wrapper -->
       <div id="blog-cards-wrap" class="grid grid-cols-1 gap-11 md:gap-16">
+        <!-- Blog-Card -->
         <div id="blog-cards" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-9 xl:grid-cols-3">
           {
-            blogListingDetails.blogItems.map((blogItem: any) => (
+            // Blog-Card
+            blogListingDetails.blogItems.map((blogItem: BlogItemData) => (
               <div class="blog-card-item">
                 <BlogCard
-                  imageSrc={blogItem.image || blogListingDetails.defaultImage}
+                  imageSrc={blogItem.imageSrc || blogListingDetails.defaultImage}
                   category={blogItem.category}
                   date={blogItem.date}
                   title={blogItem.title}
@@ -41,7 +52,7 @@ import { blogListingDetails } from "@/data/blog-listing/Blog-listing.ts";
             ))
           }
         </div>
-
+        <!-- LoadMore Button -->
         <div class="justify-self-center">
           <RoundedButton
             id="load-more-btn"
@@ -55,9 +66,9 @@ import { blogListingDetails } from "@/data/blog-listing/Blog-listing.ts";
   </div>
 </section>
 <script>
+  // OTHERS //
   import { initLoadMore } from "@/scripts/load-more";
   import { animateBlogsSection } from "@/scripts/blogs";
-
   animateBlogsSection();
   const CONFIG = {
     containerId: "blog-cards",
@@ -74,9 +85,10 @@ import { blogListingDetails } from "@/data/blog-listing/Blog-listing.ts";
       mobile: 3,
     },
   };
-  function setupBlogs() {
+  /** Initialize blog load more functionality */
+  const setupBlogs = () => {
     initLoadMore(CONFIG);
-  }
+  };
   // Run on first page load
   document.addEventListener("DOMContentLoaded", setupBlogs);
 

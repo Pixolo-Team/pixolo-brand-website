@@ -1,6 +1,8 @@
-export const blogListingDetails = {
+import type { BlogListingData } from "@/types/blogs.ts";
+
+export const blogListingDetails: BlogListingData = {
   icon: "comment",
-  tabsitems: [
+  tabsItems: [
     { id: "all", name: "All", isActive: true },
     { id: "design", name: "Design", isActive: false },
     { id: "development", name: "Development", isActive: false },
