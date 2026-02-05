@@ -2,9 +2,9 @@ export const blogListingDetails = {
   icon: "comment",
   tabsitems: [
     { id: "all", name: "All", isActive: true },
-    { id: "technology", name: "Technology", isActive: false },
-    { id: "lifestyle", name: "Lifestyle", isActive: false },
     { id: "design", name: "Design", isActive: false },
+    { id: "development", name: "Development", isActive: false },
+    { id: "product", name: "Product", isActive: false },
   ],
   badgeTitle: "Design Builds",
   heading: "Our Insightful Blog And Articles",
