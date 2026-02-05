@@ -91,7 +91,6 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  scroll-behavior: smooth;
   @apply transition-colors duration-300;
 }
 
@@ -127,7 +126,7 @@ body {
   display: none;
 }
 
-:root {
+@theme {
   /* ===== COLOR VARIABLES - LIGHT MODE (DEFAULT) ===== */
   --color-n-50: #ffffff;
   --color-n-100: #f1f5f9;
@@ -169,6 +168,7 @@ body {
 }
 
 /* ===== COLOR VARIABLES - DARK MODE ===== */
+:root.dark,
 .dark {
   /* Blue Shades Dark Mode */
   --color-blue-50: #0f1543;
@@ -195,6 +195,10 @@ body {
   --color-violet-800: #9e92dd;
   --color-violet-900: #bab1e7;
   --color-violet-950: #d6d0f1;
+}
+
+:root {
+  scroll-behavior: smooth;
 }
 
 /* Common top padding for the hero sections */
