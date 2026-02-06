@@ -1,0 +1,13 @@
+---
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+import { caseStudiesCollectionSchema } from "@/schemas/case-studies/case-studies.schema";
+---
+
+<Layout>
+  {/* Case Studies CollectionPage JSON-LD */}
+  <JsonLd slot="head" data={caseStudiesCollectionSchema} />
+</Layout>

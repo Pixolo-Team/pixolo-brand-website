@@ -6,15 +6,18 @@ import JsonLd from "@/components/layout/JsonLd.astro";
 import Hero from "@/sections/services/Hero.astro";
 import Service from "@/sections/services/Service.astro";
 import servicesMeta from "@/data/meta/services/services.json";
-import { pixoloServicesItemListSchema } from "@/schemas/services/services";
+import { pixoloServicesItemListSchema } from "@/schemas/services/services.schema";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
+import { pixoloIndustriesServedSchema } from "@/schemas/industries-served";
 ---
 
 <Layout meta={servicesMeta}>
   {/* Services ItemList JSON-LD */}
   <JsonLd slot="head" data={pixoloServicesItemListSchema} />
+  {/* Industries Served JSON-LD */}
+  <JsonLd slot="head" data={pixoloIndustriesServedSchema} />
 
   <Hero />
   <Service />

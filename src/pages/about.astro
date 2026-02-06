@@ -4,12 +4,16 @@ import JsonLd from "@/components/layout/JsonLd.astro";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
-import { pixoloPublisher } from "@/schemas/home/publisher";
+import { pixoloIndustriesServedSchema } from "@/schemas/industries-served";
+import { pixoloPlaceSchema } from "@/schemas/place.schema";
 
 // DATA //
 import aboutMeta from "@/data/meta/about.json";
 ---
 
 <Layout meta={aboutMeta}>
-  <JsonLd slot="head" data={pixoloPublisher} />
+  {/* Industries Served JSON-LD */}
+  <JsonLd slot="head" data={pixoloIndustriesServedSchema} />
+  {/* Place Schema JsonLd */}
+  <JsonLd slot="head" data={pixoloPlaceSchema} />
 </Layout>

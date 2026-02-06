@@ -12,7 +12,7 @@ import { getBlogsRequest } from "@/services/api/blogs.api";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
-import { pixoloPublisher } from "@/schemas/home/publisher";
+import { getPixoloBlogPostingSchema } from "@/schemas/blogs/blog-consumption.schema";
 
 /** Generates static paths for all blogs */
 export async function getStaticPaths() {
@@ -30,11 +30,21 @@ export async function getStaticPaths() {
 }
 
 const { blogItem }: { blogItem: BlogPost } = Astro.props;
+
+const blogPostingSchema = getPixoloBlogPostingSchema({
+  title: blogItem.title,
+  description: blogItem?.description && blogItem.title,
+  image: blogItem.image,
+  authorName: blogItem.author,
+  datePublished: blogItem.date,
+  dateModified: blogItem.date,
+});
 ---
 
 <Layout>
   {/* JSON LD */}
-  <JsonLd slot="head" data={pixoloPublisher} />
+  <JsonLd slot="head" data={blogPostingSchema} />
+
   <BlogHero
     image={blogItem.image}
     category={blogItem.category}

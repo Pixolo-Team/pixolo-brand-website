@@ -10,7 +10,7 @@ import { getCaseStudiesRequest } from "@/services/api/case-studies.api";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
-import { pixoloPublisher } from "@/schemas/home/publisher";
+import { getPixoloCaseStudySchema } from "@/schemas/case-studies/case-studies-consumption.schema";
 
 // SECTIONS //
 import Numbers from "@/sections/case-studies/Numbers.astro";
@@ -47,6 +47,15 @@ export async function getStaticPaths() {
 }
 
 const { caseStudyItem }: { caseStudyItem: CaseStudyData } = Astro.props;
+
+/** Case Study JSON-LD */
+const caseStudySchema = getPixoloCaseStudySchema({
+  title: caseStudyItem.title,
+  summary: caseStudyItem.summary,
+  clientName: caseStudyItem.clientName,
+  datePublished: caseStudyItem.datePublished,
+  dateModified: caseStudyItem.dateModified,
+});
 ---
 
 <Layout
@@ -56,7 +65,9 @@ const { caseStudyItem }: { caseStudyItem: CaseStudyData } = Astro.props;
     description: caseStudyItem.description,
   }}
 >
-  <JsonLd slot="head" data={pixoloPublisher} />
+  {/* Case Study JSON-LD */}
+  <JsonLd slot="head" data={caseStudySchema} />
+
   <Hero
     badgeTitle={caseStudyItem.badgeTitle}
     title={caseStudyItem.title}

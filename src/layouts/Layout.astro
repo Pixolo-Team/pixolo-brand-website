@@ -13,6 +13,10 @@ import BottomCTA from "@/components/ui/BottomCTA.astro";
 
 // DATA //
 import { siteInfo } from "@/data/site-info";
+import JsonLd from "@/components/layout/JsonLd.astro";
+
+// OTHERS //
+import { pixoloWebsiteSchema } from "@/schemas/website.schema";
 
 interface Props {
   meta: any;
@@ -35,6 +39,9 @@ const { meta = {} } = Astro.props;
 
     <!-- JSON-LD -->
     <slot name="head" />
+
+    <!-- Global WebSite JSON-LD (ALL pages) -->
+    <JsonLd slot="head" data={pixoloWebsiteSchema} />
   </head>
 
   <body>
