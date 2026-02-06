@@ -87,7 +87,13 @@ categories.forEach((category) => {
                       <BlogCard
                         imageSrc={blogItem.image || blogListingDetails.defaultImage}
                         category={blogItem.category || ""}
-                        date={blogItem.date}
+                        date={new Date(
+                          blogItem.date.split("-").reverse().join("-"),
+                        ).toLocaleDateString("en-IN", {
+                          day: "2-digit",
+                          month: "short",
+                          year: "numeric",
+                        })}
                         title={blogItem.title}
                         author={blogItem.author}
                         href={URLS.BLOGS.ITEM(blogItem.title.replaceAll(" ", "-").toLowerCase())}
