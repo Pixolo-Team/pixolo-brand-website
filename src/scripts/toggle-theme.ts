@@ -1,7 +1,7 @@
 /** Theme toggle functionality */
 export const toggleTheme = () => {
   // Sync toggle UI with theme
-  const toggle = document.querySelectorAll(".mode-toggle");
+  const toggleBtns = document.querySelectorAll(".mode-toggle");
   const root = document.documentElement;
 
   /** Sync toggle UI with theme  */
@@ -10,11 +10,11 @@ export const toggleTheme = () => {
     const isDark = root.classList.contains("dark");
 
     // Toggle theme classes
-    toggle?.forEach((t) => {
-      t.classList.toggle("dark-theme", isDark);
-      t.classList.toggle("light-theme", !isDark);
-      t.classList.toggle("moon-active", isDark);
-      t.classList.toggle("sun-active", !isDark);
+    toggleBtns?.forEach((toggleBtn) => {
+      toggleBtn.classList.toggle("dark-theme", isDark);
+      toggleBtn.classList.toggle("light-theme", !isDark);
+      toggleBtn.classList.toggle("moon-active", isDark);
+      toggleBtn.classList.toggle("sun-active", !isDark);
     });
   };
 
@@ -22,9 +22,8 @@ export const toggleTheme = () => {
   syncToggleUI();
 
   /** Toggle theme on click */
-  toggle.forEach((t) => {
-    /** Add event listener for click */
-    t.addEventListener("click", () => {
+  toggleBtns.forEach((toggleBtn) => {
+    toggleBtn.addEventListener("click", () => {
       const isDarkNow = root.classList.toggle("dark");
 
       // Save theme to local storage
