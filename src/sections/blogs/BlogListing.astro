@@ -12,7 +12,7 @@ import { URLS } from "@/infrastructure/constants/urls";
 ---
 
 <!-- Blog-Listing Section -->
-<section id="blogs-section">
+<section id="blogs-listing-section">
   <!-- Container -->
   <div class="container mx-auto grid grid-cols-1 gap-9 px-6 py-28 lg:gap-16 lg:py-30">
     <!-- Header Section -->
@@ -50,7 +50,7 @@ import { URLS } from "@/infrastructure/constants/urls";
                   date={blogItem.date}
                   title={blogItem.title}
                   author={blogItem.author}
-                  href="#"
+                  href={URLS.BLOGS.ITEM(blogItem.title.replaceAll(" ", "-").toLowerCase())}
                 />
               </div>
             ))
@@ -72,8 +72,8 @@ import { URLS } from "@/infrastructure/constants/urls";
 <script>
   // OTHERS //
   import { initLoadMore } from "@/scripts/load-more";
-  import { animateBlogsSection } from "@/scripts/blogs";
-  animateBlogsSection();
+  import { animateBlogsListingSection } from "@/scripts/blogs-listing";
+  animateBlogsListingSection();
   const CONFIG = {
     containerId: "blog-cards",
     loadMoreBtnId: "load-more-btn",
@@ -99,7 +99,7 @@ import { URLS } from "@/infrastructure/constants/urls";
   // Run again after Astro View Transitions navigation
   document.addEventListener("astro:page-load", setupBlogs);
 
-    const filterBlogsByActiveTab = (tabId) => {
+  const filterBlogsByActiveTab = (tabId) => {
     const cards = document.querySelectorAll(".blog-card-item");
 
     cards.forEach((card) => {

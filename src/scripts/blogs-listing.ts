@@ -1,9 +1,9 @@
 import { animate, inView, stagger } from "motion";
 
 /** Animates the Blogs Section */
-export const animateBlogsSection = () => {
+export const animateBlogsListingSection = () => {
   // Detect when the Section comes into the Screen
-  inView("#blogs-section", (blogsSection) => {
+  inView("#blogs-listing-section", (blogsSection) => {
     // Animate the Tool Badge
     animate(
       blogsSection?.querySelectorAll(".tool-badge"),
@@ -16,6 +16,13 @@ export const animateBlogsSection = () => {
       blogsSection?.querySelectorAll("#header-text"),
       { opacity: [0, 1], x: ["-20px", 0] },
       { duration: 0.8, delay: 0.4 },
+    );
+
+    // Animate The tabs for the Blog-Listing
+    animate(
+      blogsSection?.querySelectorAll(".tabs-wrapper .button-tab"),
+      { x: ["-50px", 0], opacity: [0, 1] },
+      { duration: 0.4, delay: stagger(0.2, { from: "first", startDelay: 0.8 }) },
     );
 
     // Animate the Blog Cards
