@@ -1,4 +1,4 @@
-import type { BlogListingData } from "@/types/blogs.ts";
+import type { BlogListingData } from "@/types/blogs-listing";
 
 export const blogListingDetails: BlogListingData = {
   icon: "comment",
@@ -7,6 +7,7 @@ export const blogListingDetails: BlogListingData = {
     { id: "design", name: "Design", isActive: false },
     { id: "development", name: "Development", isActive: false },
     { id: "product", name: "Product", isActive: false },
+    { id: "technology", name: "Technology", isActive: false },
   ],
   badgeTitle: "Design Builds",
   heading: "Our Insightful Blog And Articles",

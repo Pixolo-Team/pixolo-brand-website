@@ -7,8 +7,12 @@ import BlogCard from "@/components/blogs/BlogCard.astro";
 
 // DATA //
 import { blogListingDetails } from "@/data/blog-listing/blog-listing";
-import type { BlogItemData } from "@/types/blogs";
+import type { BlogItemData, BlogListingData } from "@/types/blogs-listing";
 import { URLS } from "@/infrastructure/constants/urls";
+import { getBlogsRequest } from "@/services/api/blogs.api";
+
+/** Makes an API Call to fetch blogs data */
+const blogsList: any = await getBlogsRequest();
 ---
 
 <!-- Blog-Listing Section -->
@@ -42,11 +46,14 @@ import { URLS } from "@/infrastructure/constants/urls";
         <div id="blog-cards" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-9 xl:grid-cols-3">
           {
             // Blog-Card
-            blogListingDetails.blogItems.map((blogItem: BlogItemData) => (
-              <div class="blog-card-item" data-category={blogItem.category.toLowerCase()}>
+            blogsList.map((blogItem: BlogItemData) => (
+              <div
+                class="blog-card-item"
+                data-category={blogItem.category?.toLowerCase() || "uncategorized"}
+              >
                 <BlogCard
                   imageSrc={blogItem.imageSrc || blogListingDetails.defaultImage}
-                  category={blogItem.category}
+                  category={blogItem.category ? blogItem.category : ""}
                   date={blogItem.date}
                   title={blogItem.title}
                   author={blogItem.author}
