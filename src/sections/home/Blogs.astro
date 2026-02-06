@@ -55,11 +55,13 @@ const homeBlogs = blogsList.filter((blog: { show_in_home: string }) => blog.show
                 <BlogCard
                   imageSrc={blogItem.image || blogSectionDetails.defaultImage}
                   category={blogItem.category}
-                  date={new Date(blogItem.date).toLocaleDateString("en-IN", {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
-                  })}
+                  date={(() => {
+                    const date = new Date(blogItem.date);
+                    const day = date.getDate().toString().padStart(2, "0");
+                    const month = date.toLocaleDateString("en-IN", { month: "short" });
+                    const year = date.getFullYear();
+                    return `${day} ${month}, ${year}`;
+                  })()}
                   title={blogItem.title}
                   author={blogItem.author}
                   href={URLS.BLOGS.ITEM(blogItem.title.replaceAll(" ", "-").toLowerCase())}

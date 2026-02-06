@@ -18,6 +18,15 @@ interface Props {
 }
 
 const { image, category, date, title, author } = Astro.props;
+
+const newDate = new Date(date);
+
+const formattedDate = (() => {
+  const day = newDate.getDate().toString().padStart(2, "0");
+  const month = newDate.toLocaleDateString("en-IN", { month: "short" });
+  const year = newDate.getFullYear();
+  return `${day} ${month}, ${year}`;
+})();
 ---
 
 <!-- Blog Hero Component -->
@@ -47,7 +56,7 @@ const { image, category, date, title, author } = Astro.props;
 
           <!-- Published Date -->
           <p class="text-n-700 justify-start text-xs leading-normal md:text-lg lg:text-xl">
-            {date}
+            {formattedDate}
           </p>
         </div>
 
