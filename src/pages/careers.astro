@@ -6,9 +6,12 @@ import Layout from "@/layouts/Layout.astro";
 import Hero from "@/sections/career/Hero.astro";
 import TechStack from "@/sections/career/TechStack.astro";
 import OpenPositions from "@/sections/career/OpenPositions.astro";
+
+// DATA //
+import careerMeta from "@/data/meta/career.json";
 ---
 
-<Layout>
+<Layout meta={careerMeta}>
   <Hero />
   <TechStack />
   <OpenPositions />
