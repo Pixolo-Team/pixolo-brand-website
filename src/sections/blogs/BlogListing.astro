@@ -5,14 +5,46 @@ import Tabs from "@/components/ui/Tabs.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import BlogCard from "@/components/blogs/BlogCard.astro";
 
+// TYPES //
+import type { BlogItemData, TabItemData } from "@/types/blogs-listing";
+
 // DATA //
 import { blogListingDetails } from "@/data/blog-listing/blog-listing";
-import type { BlogItemData, BlogListingData } from "@/types/blogs-listing";
 import { URLS } from "@/infrastructure/constants/urls";
 import { getBlogsRequest } from "@/services/api/blogs.api";
 
-/** Makes an API Call to fetch blogs data */
-const blogsList: any = await getBlogsRequest();
+// Fetch Blogs from API
+let blogs: BlogItemData[] = [];
+
+try {
+  const response = await getBlogsRequest();
+  blogs = response.message || response || []; // Adjust based on your API structure
+} catch (error) {
+  console.error("Failed to load Blogs", error);
+}
+
+/** Extract unique categories from blogs */
+const categories = [...new Set(blogs.map((blog) => blog.category))];
+
+/** Tabs from blog categories */
+const blogTabItems: TabItemData[] = [
+  { id: "all", name: "All", isActive: true },
+  ...categories.map((category, index) => ({
+    id: category.toLowerCase(),
+    name: category,
+    isActive: false,
+  })),
+];
+
+/** Group blogs by category */
+const blogsByTab: Record<string, BlogItemData[]> = {
+  all: blogs, // All blogs for "all" tab
+};
+
+// Add each category
+categories.forEach((category) => {
+  blogsByTab[category.toLowerCase()] = blogs.filter((blog) => blog.category === category);
+});
 ---
 
 <!-- Blog-Listing Section -->
@@ -33,117 +65,92 @@ const blogsList: any = await getBlogsRequest();
         {blogListingDetails.heading}
       </h2>
     </div>
+
     <!-- Body Section: Tabs and Blog Cards -->
     <div class="body-section grid grid-cols-1 gap-5 md:gap-7">
       <!-- Tabs -->
-      <div class="tabs-wrapper">
-        <Tabs tabItems={blogListingDetails.tabsItems} />
-      </div>
-
-      <!-- Blog-Cards-Wrapper -->
-      <div id="blog-cards-wrap" class="grid grid-cols-1 gap-11 md:gap-16">
-        <!-- Blog-Card -->
-        <div id="blog-cards" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-9 xl:grid-cols-3">
-          {
-            // Blog-Card
-            blogsList.map((blogItem: BlogItemData) => (
+      {
+        blogTabItems.length > 0 && (
+          <Tabs tabItems={blogTabItems}>
+            {blogTabItems.map((tabItem) => (
               <div
-                class="blog-card-item"
-                data-category={blogItem.category?.toLowerCase() || "uncategorized"}
+                class="blog-cards-wrapper grid grid-cols-1 gap-11 md:gap-16"
+                data-tab-content-id={tabItem.id}
               >
-                <BlogCard
-                  imageSrc={blogItem.imageSrc || blogListingDetails.defaultImage}
-                  category={blogItem.category ? blogItem.category : ""}
-                  date={blogItem.date}
-                  title={blogItem.title}
-                  author={blogItem.author}
-                  href={URLS.BLOGS.ITEM(blogItem.title.replaceAll(" ", "-").toLowerCase())}
-                />
+                {/* Blog Cards Grid */}
+                <div
+                  id={`blog-cards-${tabItem.id}`}
+                  class="blog-cards grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-9 xl:grid-cols-3"
+                >
+                  {(blogsByTab[tabItem.id] || []).map((blogItem) => (
+                    <div class="blog-card-item">
+                      <BlogCard
+                        imageSrc={blogItem.image || blogListingDetails.defaultImage}
+                        category={blogItem.category || ""}
+                        date={blogItem.date}
+                        title={blogItem.title}
+                        author={blogItem.author}
+                        href={URLS.BLOGS.ITEM(blogItem.title.replaceAll(" ", "-").toLowerCase())}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Load More Button */}
+                <div class="justify-self-center">
+                  <RoundedButton
+                    id={`load-more-btn-${tabItem.id}`}
+                    buttonText={blogListingDetails.loadMoreButton}
+                    type="button"
+                    variant="tertiary"
+                  />
+                </div>
               </div>
-            ))
-          }
-        </div>
-        <!-- LoadMore Button -->
-        <div class="justify-self-center">
-          <RoundedButton
-            id="load-more-btn"
-            buttonText="Load More Blogs"
-            type="button"
-            variant="tertiary"
-          />
-        </div>
-      </div>
+            ))}
+          </Tabs>
+        )
+      }
     </div>
   </div>
 </section>
+
 <script>
-  // OTHERS //
   import { initLoadMore } from "@/scripts/load-more";
   import { animateBlogsListingSection } from "@/scripts/blogs-listing";
+
   animateBlogsListingSection();
-  const CONFIG = {
-    containerId: "blog-cards",
-    loadMoreBtnId: "load-more-btn",
-    cardClass: "blog-card-item",
-    initialVisible: {
-      desktop: 6,
-      tablet: 4,
-      mobile: 3,
-    },
-    incrementConfig: {
-      desktop: 6,
-      tablet: 2,
-      mobile: 3,
-    },
-  };
-  /** Initialize blog load more functionality */
+
   const setupBlogs = () => {
-    initLoadMore(CONFIG);
-  };
-  // Run on first page load
-  document.addEventListener("DOMContentLoaded", setupBlogs);
+    // Initialize load-more for each tab
+    const tabContents = document.querySelectorAll("[data-tab-content-id]");
 
-  // Run again after Astro View Transitions navigation
-  document.addEventListener("astro:page-load", setupBlogs);
+    tabContents.forEach((tabContent) => {
+      const tabId = tabContent.getAttribute("data-tab-content-id");
+      const blogCardsContainer = tabContent.querySelector(".blog-cards");
+      const loadMoreBtn = tabContent.querySelector(`#load-more-btn-${tabId}`);
 
-  const filterBlogsByActiveTab = (tabId) => {
-    const cards = document.querySelectorAll(".blog-card-item");
+      if (blogCardsContainer && loadMoreBtn) {
+        const CONFIG = {
+          containerId: blogCardsContainer.id,
+          loadMoreBtnId: loadMoreBtn.id,
+          cardClass: "blog-card-item",
+          initialVisible: {
+            desktop: 6,
+            tablet: 4,
+            mobile: 3,
+          },
+          incrementConfig: {
+            desktop: 6,
+            tablet: 2,
+            mobile: 3,
+          },
+        };
 
-    cards.forEach((card) => {
-      const cardCategory = card.dataset.category;
-
-      if (tabId === "all" || cardCategory === tabId) {
-        card.style.display = "";
-      } else {
-        card.style.display = "none";
+        initLoadMore(CONFIG);
       }
     });
   };
 
-  const setupTabFiltering = () => {
-    const tabsContainer = document.getElementById("tabs-container");
-    if (!tabsContainer) return;
-
-    const tabs = tabsContainer.querySelectorAll("button[data-tab-id]");
-
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        const tabId = tab.dataset.tabId.toLowerCase();
-
-        filterBlogsByActiveTab(tabId);
-
-        // re-init load more for filtered results
-        initLoadMore(CONFIG);
-      });
-    });
-
-    // Apply filter on initial active tab
-    const activeTab = tabsContainer.querySelector(".bg-n-950");
-    if (activeTab) {
-      filterBlogsByActiveTab(activeTab.dataset.tabId.toLowerCase());
-    }
-  };
-
-  document.addEventListener("DOMContentLoaded", setupTabFiltering);
-  document.addEventListener("astro:page-load", setupTabFiltering);
+  document.addEventListener("DOMContentLoaded", setupBlogs);
+  document.addEventListener("astro:page-load", setupBlogs);
 </script>

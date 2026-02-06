@@ -5,7 +5,7 @@ export interface TabItemData {
 }
 
 export interface BlogItemData {
-  imageSrc: string;
+  image: string;
   category: string;
   date: string;
   title: string;
