@@ -55,14 +55,11 @@ const homeBlogs = blogsList.filter((blog: { show_in_home: string }) => blog.show
                 <BlogCard
                   imageSrc={blogItem.image || blogSectionDetails.defaultImage}
                   category={blogItem.category}
-                  date={new Date(blogItem.date.split("-").reverse().join("-")).toLocaleDateString(
-                    "en-IN",
-                    {
-                      day: "2-digit",
-                      month: "short",
-                      year: "numeric",
-                    },
-                  )}
+                  date={new Date(blogItem.date).toLocaleDateString("en-IN", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                  })}
                   title={blogItem.title}
                   author={blogItem.author}
                   href={URLS.BLOGS.ITEM(blogItem.title.replaceAll(" ", "-").toLowerCase())}

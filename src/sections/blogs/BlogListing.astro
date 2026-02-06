@@ -87,9 +87,7 @@ categories.forEach((category) => {
                       <BlogCard
                         imageSrc={blogItem.image || blogListingDetails.defaultImage}
                         category={blogItem.category || ""}
-                        date={new Date(
-                          blogItem.date.split("-").reverse().join("-"),
-                        ).toLocaleDateString("en-IN", {
+                        date={new Date(blogItem.date).toLocaleDateString("en-IN", {
                           day: "2-digit",
                           month: "short",
                           year: "numeric",
