@@ -3,7 +3,12 @@ import { insertLead } from "@/services/supabase";
 
 // UTILS //
 import { validateInput } from "@/utils/validations";
-import { showResultModal, hideResultModal } from "@/utils/modal";
+import {
+  showResultModal,
+  runResultProgress,
+  closeResultModalOnBackdropClick,
+  closeResultModal,
+} from "@/utils/modal";
 
 // OTHERS //
 import { trackContactFormError, trackContactFormSubmit } from "@/scripts/analytics";
@@ -24,9 +29,9 @@ export const initializeFormSubmission = () => {
   const nameInput = document.getElementById("name") as HTMLInputElement;
   const messageInput = document.getElementById("message") as HTMLInputElement | null;
 
-  // Result modal close button
-  const closeResultBtn = document.getElementById("close-contact-result-modal");
-  closeResultBtn?.addEventListener("click", () => hideResultModal("contact-result-modal"));
+  // Close result modal
+  closeResultModal("contact-result-modal", "close-contact-result-modal");
+  closeResultModalOnBackdropClick("contact-result-modal");
 
   /** Handle form submission  */
   form.addEventListener("submit", async (e) => {
@@ -82,13 +87,17 @@ export const initializeFormSubmission = () => {
 
       // Show result modal
       showResultModal("contact-result-modal", response?.data ? "success" : "error");
+      runResultProgress("contact-result-modal", "contact-result-progress-bar");
 
       // Reset form
       form.reset();
     } catch {
       // Track form submission error
       trackContactFormError("api_failure");
+
+      // Show result modal
       showResultModal("contact-result-modal", "error");
+      runResultProgress("contact-result-modal", "contact-result-progress-bar");
 
       // Reset form
       form.reset();
