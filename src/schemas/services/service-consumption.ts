@@ -1,4 +1,4 @@
-type PixoloServiceSchemaInput = {
+type PixoloServiceSchemaInputData = {
   slug: string;
   name: string;
   serviceType: string;
@@ -11,7 +11,7 @@ export const getPixoloServiceSchema = ({
   name,
   serviceType,
   description,
-}: PixoloServiceSchemaInput) => ({
+}: PixoloServiceSchemaInputData) => ({
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": `https://www.pixolotechnologies.com/services/${slug}#service`,

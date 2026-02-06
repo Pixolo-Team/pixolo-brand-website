@@ -33,6 +33,7 @@ const { blogItem }: { blogItem: BlogPost } = Astro.props;
 ---
 
 <Layout>
+  {/* JSON LD */}
   <JsonLd slot="head" data={pixoloPublisher} />
   <BlogHero
     image={blogItem.image}
