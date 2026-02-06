@@ -1,0 +1,173 @@
+---
+import { fetchLeads } from "@/services/supabase";
+import LeadsTable from "@/components/leads/LeadsTable.astro";
+
+// Fetch leads data
+const { data: leads, error } = await fetchLeads();
+if (error) {
+  console.error("Error fetching leads:", error);
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leads Admin Panel</title>
+
+    <script>
+      import { supabase } from "@/services/supabase";
+
+      // Check session on page load (client-side)
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session) {
+        window.location.href = "/leads/login";
+      }
+
+      // Optional: listen for auth changes (logout, expiry)
+      supabase.auth.onAuthStateChange((_event, session) => {
+        if (!session) {
+          window.location.href = "/leads/login";
+        }
+      });
+    </script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+        background-color: #f5f5f5;
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      h1 {
+        font-size: 1.75rem;
+        color: #1a1a1a;
+      }
+      .user-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .user-email {
+        color: #666;
+        font-size: 0.875rem;
+      }
+      .logout-btn {
+        background-color: #dc2626;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: background-color 0.2s;
+      }
+      .logout-btn:hover {
+        background-color: #b91c1c;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      .stat-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      .stat-label {
+        font-size: 0.875rem;
+        color: #666;
+        margin-bottom: 0.5rem;
+      }
+      .stat-value {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+      .error-message {
+        background-color: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #dc2626;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Leads Admin Panel</h1>
+        <div class="user-info">
+          <span class="user-email">Pixolo User</span>
+          <form action="/api/auth/logout" method="POST">
+            <button type="submit" class="logout-btn" id="logout-btn">Logout</button>
+          </form>
+        </div>
+      </header>
+      {error && <div class="error-message">Failed to load leads. Please refresh the page.</div>}
+      {
+        leads && (
+          <>
+            <div class="stats">
+              <div class="stat-card">
+                <div class="stat-label">Total Leads</div>
+                <div class="stat-value">{leads.length}</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Stale</div>
+                <div class="stat-value">{leads.filter((l) => l.status === "Stale").length}</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Connected</div>
+                <div class="stat-value">{leads.filter((l) => l.status === "Connected").length}</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Did Not Respond</div>
+                <div class="stat-value">
+                  {leads.filter((l) => l.status === "Did not respond").length}
+                </div>
+              </div>
+            </div>
+            <LeadsTable leads={leads} />
+          </>
+        )
+      }
+    </div>
+
+    <script>
+      import { supabase } from "@/services/supabase";
+      // Handle logout
+      document.getElementById("logout-btn")?.addEventListener("click", async (e) => {
+        e.preventDefault();
+        await supabase.auth.signOut();
+        window.location.href = "/leads/login";
+      });
+    </script>
+  </body>
+</html>

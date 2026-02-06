@@ -31,7 +31,14 @@ const isMeta = (img: Img): img is ImageMetadata => typeof img === "object" && "s
   <!-- Light mode (default) -->
   {
     isMeta(light) ? (
-      <Image src={light} alt={alt} class={className} width={width} height={height} />
+      <Image
+        src={light}
+        alt={alt}
+        class={className}
+        width={width}
+        height={height}
+        referrerpolicy="no-referrer"
+      />
     ) : (
       <img
         src={light}
@@ -41,6 +48,7 @@ const isMeta = (img: Img): img is ImageMetadata => typeof img === "object" && "s
         height={height}
         loading="lazy"
         decoding="async"
+        referrerpolicy="no-referrer"
       />
     )
   }

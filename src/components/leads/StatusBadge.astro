@@ -1,0 +1,28 @@
+---
+import type { LeadStatus } from "../../types/leads";
+interface Props {
+  status: LeadStatus;
+}
+const { status } = Astro.props;
+const statusStyles: Record<LeadStatus, { bg: string; text: string }> = {
+  Stale: { bg: "#fef3c7", text: "#92400e" },
+  Connected: { bg: "#d1fae5", text: "#065f46" },
+  "Did not respond": { bg: "#fee2e2", text: "#991b1b" },
+};
+const style = statusStyles[status];
+---
+
+<span class="status-badge" style={`background-color: ${style.bg}; color: ${style.text};`}>
+  {status}
+</span>
+<style>
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+</style>

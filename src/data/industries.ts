@@ -77,7 +77,7 @@ export const industriesSectionDetails: IndustriesSectionDetails = {
     5: [
       {
         name: "Pango – App + Altius Diet Maker + Backend",
-        image: "/images/industries/pango.svg",
+        image: "/images/industries/pango.png",
         websiteLink: "/",
       },
     ],

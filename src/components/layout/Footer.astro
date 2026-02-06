@@ -70,14 +70,21 @@ import { footerSectionDetails } from "@/data/footer";
             footerSectionDetails.socialLinks.map((socialItem) => (
               // Link to social media
               <a
+                id={socialItem.id}
                 href={socialItem.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={socialItem.iconName}
-                class="social-fill border-n-500 relative flex h-10 w-10 flex-col items-center justify-center overflow-hidden rounded-full border p-2.5 md:h-14 md:w-14 md:gap-2 md:p-3 lg:size-16"
+                class="social-webflow group border-n-500 relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border p-2.5 md:h-14 md:w-14 md:p-3 lg:size-16"
               >
-                {/* Social icon */}
-                <Icon name={socialItem.iconName} class="text-n-700 size-5 self-center md:size-7" />
+                {/* Icon */}
+                <Icon
+                  name={socialItem.iconName}
+                  class="text-n-700 group-hover:text-n-50 relative z-10 size-5 transition-colors duration-300 md:size-7"
+                />
+
+                {/* Inside Glow */}
+                <div class="social-inside-glow" />
               </a>
             ))
           }
@@ -96,24 +103,49 @@ import { footerSectionDetails } from "@/data/footer";
   </div>
 </footer>
 <style>
-  .social-fill::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    height: 0%;
-    top: 0;
-    left: 0;
-    background: var(--color-n-300);
-    transition: height 0.5s ease-in-out;
-    z-index: -1;
+  /* Social icon base animation */
+  .social-webflow {
+    background-color: transparent;
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    transform-style: preserve-3d;
+    transition:
+      transform 0.35s ease,
+      background-color 0.35s ease,
+      border-color 0.35s ease;
   }
 
-  .social-fill:hover::before {
-    height: 100%;
+  /* Hover state */
+  .social-webflow:hover {
+    background-color: var(--color-blue-400);
+    transform: translate3d(0, 0, 0) scale3d(1.15, 1.15, 1);
+    border-color: var(--color-blue-400);
+  }
+
+  /* Inner glow (same as RoundedButton) */
+  .social-inside-glow {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 60%;
+    height: 60%;
+    background-color: var(--color-blue-300);
+    filter: saturate(200%) blur(24px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  /* Show glow on hover */
+  .social-webflow:hover .social-inside-glow {
+    opacity: 1;
   }
 </style>
 <script>
   import { animateFooter, hideStickyWhatsapp } from "@/scripts/footer.ts";
+  import { setupClickTracking, trackSocialLinkClick } from "@/scripts/analytics";
+
+  setupClickTracking("instagram", () => trackSocialLinkClick("instagram"));
+  setupClickTracking("linkedin", () => trackSocialLinkClick("linkedin"));
 
   animateFooter();
   hideStickyWhatsapp();

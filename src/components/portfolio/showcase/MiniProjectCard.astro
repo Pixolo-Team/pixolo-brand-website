@@ -1,32 +1,46 @@
 ---
-// COMPONENTS //
+// STYLES //
 import ThemeImage from "@/components/ui/ThemeImage.astro";
+
+// COMPONENTS //
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import Tag from "@/components/portfolio/showcase/Tag.astro";
 
 interface Props {
-  id: string;
+  id?: string;
   title: string;
   tagItems: string[];
-  date: string;
+  date?: string;
   btnOneText: string;
   btnTwoText: string;
   image: string;
+  buttonOneClick?: string;
+  buttonTwoClick?: string;
 }
 
-const { id, title, tagItems, date, btnOneText, btnTwoText, image } = Astro.props as Props;
+const {
+  id = "",
+  title,
+  tagItems,
+  date = "",
+  btnOneText,
+  btnTwoText,
+  image,
+  buttonOneClick = "",
+  buttonTwoClick = "",
+} = Astro.props as Props;
 ---
 
 <!-- MiniProjectCard Component -->
 <div id={id} class="flex h-full w-full flex-col gap-2.5 md:gap-4 lg:gap-6">
   <!-- Image part -->
-  <div class="h-[218px] overflow-hidden rounded-2xl md:h-[310px] lg:h-[380px]">
+  <div class="h-full overflow-hidden rounded-2xl">
     <!-- Card Image -->
     <ThemeImage
       light={image}
       dark={image}
       alt={title}
-      class="h-full w-full object-cover"
+      class="h-full w-full object-contain"
       width={400}
       height={250}
     />
@@ -47,21 +61,21 @@ const { id, title, tagItems, date, btnOneText, btnTwoText, image } = Astro.props
         </div>
       </div>
 
-      <!-- Date -->
-      <p class="text-n-700 text-sm font-normal">{date}</p>
+      {
+        date !== "" && (
+          // Date
+          <p class="text-n-700 text-sm font-normal">{date}</p>
+        )
+      }
     </div>
 
     <!-- Cta wrap -->
     <div class="flex flex-row gap-3.5">
       <!-- Primary Button -->
-      <RoundedButton buttonText={btnOneText} onClick="window.location.href='/404'" />
+      <RoundedButton buttonText={btnOneText} onClick={buttonOneClick} />
 
       <!-- Secondary Button -->
-      <RoundedButton
-        buttonText={btnTwoText}
-        onClick="window.location.href='/404'"
-        variant="secondary"
-      />
+      <RoundedButton buttonText={btnTwoText} onClick={buttonTwoClick} variant="secondary" />
     </div>
   </div>
 </div>
