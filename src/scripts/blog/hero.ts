@@ -24,20 +24,5 @@ export const animateBlogHeroSection = () => {
       { scaleY: [0.4, 1], opacity: [0, 1] },
       { duration: 0.4, delay: 0.4 },
     );
-
-    // Animate Down Arrow
-    animate(
-      blogHeroSection.querySelectorAll(".scroll-down-icon"),
-      {
-        y: [0, 10],
-        opacity: [0.6, 1],
-      },
-      {
-        duration: 1,
-        easing: "ease-in-out",
-        repeat: Infinity,
-        repeatType: "mirror",
-      },
-    );
   });
 };
