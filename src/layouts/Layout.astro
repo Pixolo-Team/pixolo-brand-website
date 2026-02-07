@@ -33,7 +33,7 @@ const { meta = {} } = Astro.props;
       keywords={meta.keywords}
     />
 
-    <!-- Theme toggle script -->
+    <!-- Load the initial theme from Local Storage -->
     <script is:inline>
       (() => {
         const savedTheme = localStorage.getItem("theme");
@@ -43,19 +43,6 @@ const { meta = {} } = Astro.props;
           document.documentElement.classList.add("dark");
         }
       })();
-    </script>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9E7P2PLT8"></script>
-
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      window.gtag = gtag;
-      gtag("js", new Date());
-      gtag("config", "G-T9E7P2PLT8");
     </script>
   </head>
 
