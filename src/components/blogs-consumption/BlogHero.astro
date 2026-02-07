@@ -6,6 +6,9 @@ import type { BlogPost } from "@/types/blogs";
 import { Image } from "astro:assets";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
+// UTILS //
+import { formattedDate } from "@/utils/format-date";
+
 // DATA //
 import { blogSectionDetails } from "@/data/blogs";
 
@@ -19,14 +22,8 @@ interface Props {
 
 const { image, category, date, title, author } = Astro.props;
 
-const newDate = new Date(date);
-
-const formattedDate = (() => {
-  const day = newDate.getDate().toString().padStart(2, "0");
-  const month = newDate.toLocaleDateString("en-IN", { month: "short" });
-  const year = newDate.getFullYear();
-  return `${day} ${month}, ${year}`;
-})();
+/** Format Date */
+const dateFormatted: string = formattedDate(date);
 ---
 
 <!-- Blog Hero Component -->
@@ -56,7 +53,7 @@ const formattedDate = (() => {
 
           <!-- Published Date -->
           <p class="text-n-700 justify-start text-xs leading-normal md:text-lg lg:text-xl">
-            {formattedDate}
+            {dateFormatted}
           </p>
         </div>
 
