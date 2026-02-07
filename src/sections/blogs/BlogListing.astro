@@ -90,14 +90,16 @@ categories.forEach((category) => {
                   ))}
                 </div>
 
-                {/* Load More Button */}
+                {/* Inside your .map loop for blogTabItems */}
                 <div class="justify-self-center">
-                  <RoundedButton
-                    id={`load-more-btn-${tabItem.id}`}
-                    buttonText={"Load More Blogs"}
-                    type="button"
-                    variant="tertiary"
-                  />
+                  {blogsByTab[tabItem.id].length > 6 ? (
+                    <RoundedButton
+                      id={`load-more-btn-${tabItem.id}`}
+                      buttonText={"Load More Blogs"}
+                      type="button"
+                      variant="tertiary"
+                    />
+                  ) : null}
                 </div>
               </div>
             ))}
@@ -114,34 +116,39 @@ categories.forEach((category) => {
 
   animateBlogsListingSection();
 
+  /** Function to setup load more functionality */
   const setupBlogs = () => {
-    // Initialize load-more for each tab
     const tabContents = document.querySelectorAll("[data-tab-content-id]");
 
+    /** Loop through each tab content */
     tabContents.forEach((tabContent) => {
+      if (!(tabContent instanceof HTMLElement)) return;
+      if (tabContent.offsetParent === null) return;
+
       const tabId = tabContent.getAttribute("data-tab-content-id");
-      const blogCardsContainer = tabContent.querySelector(".blog-cards");
-      const loadMoreBtn = tabContent.querySelector(`#load-more-btn-${tabId}`);
+      const blogCardsContainer = tabContent.querySelector(".blog-cards") as HTMLElement;
+      const loadMoreBtn = tabContent.querySelector(`#load-more-btn-${tabId}`) as HTMLElement;
 
-      if (blogCardsContainer && loadMoreBtn) {
-        const CONFIG = {
-          containerId: blogCardsContainer.id,
-          loadMoreBtnId: loadMoreBtn.id,
-          cardClass: "blog-card-item",
-          initialVisible: {
-            desktop: 6,
-            tablet: 4,
-            mobile: 3,
-          },
-          incrementConfig: {
-            desktop: 6,
-            tablet: 2,
-            mobile: 3,
-          },
-        };
+      if (blogCardsContainer && !loadMoreBtn) return;
 
-        initLoadMore(CONFIG);
-      }
+      /** Configuration for load more */
+      const CONFIG = {
+        containerId: blogCardsContainer.id,
+        loadMoreBtnId: loadMoreBtn.id,
+        cardClass: "blog-card-item",
+        initialVisible: {
+          desktop: 6,
+          tablet: 4,
+          mobile: 3,
+        },
+        incrementConfig: {
+          desktop: 6,
+          tablet: 2,
+          mobile: 3,
+        },
+      };
+
+      initLoadMore(CONFIG);
     });
   };
 
