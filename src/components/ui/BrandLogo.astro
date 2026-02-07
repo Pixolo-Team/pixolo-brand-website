@@ -14,8 +14,8 @@ const { variant = "default", width = 120, height = 120, classes = "" } = Astro.p
 
 const logos = {
   default: "/images/brand-logo/default.png",
-  light: "/images/brand-logo/light.png",
-  dark: "/images/brand-logo/dark.png",
+  light: "/images/brand/pixolo-on-light.png",
+  dark: "/images/brand/pixolo-on-dark.png",
 };
 
 const selectedLogo = logos[variant];
@@ -23,7 +23,7 @@ const selectedLogo = logos[variant];
 
 <!-- Brand Logo -->
 <ThemeImage
-  dark={selectedLogo}
+  dark={logos["dark"]}
   light={logos["light"]}
   alt="Pixolo Logo"
   width={width}
