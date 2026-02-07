@@ -6,30 +6,24 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
 import BlogCard from "@/components/blogs/BlogCard.astro";
 
 // TYPES //
-import type { BlogItemData, TabItemData } from "@/types/blogs-listing";
+import type { BlogPost, TabItemData } from "@/types/blogs";
 
 // DATA //
 import { URLS } from "@/infrastructure/constants/urls";
 import { getBlogsRequest } from "@/services/api/blogs.api";
 import { blogSectionDetails } from "@/data/blogs";
+import { formattedDate } from "@/utils/format-date";
 
-// Fetch Blogs from API
-let blogs: BlogItemData[] = [];
-
-try {
-  const response = await getBlogsRequest();
-  blogs = response.message || response || []; // Adjust based on your API structure
-} catch (error) {
-  console.error("Failed to load Blogs", error);
-}
+/** API Call to fetch blogs */
+const blogItems: BlogPost[] = await getBlogsRequest();
 
 /** Extract unique categories from blogs */
-const categories = [...new Set(blogs.map((blog) => blog.category))];
+const categories: string[] = [...new Set(blogItems.map((blog) => blog.category).filter(Boolean))];
 
 /** Tabs from blog categories */
 const blogTabItems: TabItemData[] = [
   { id: "all", name: "All", isActive: true },
-  ...categories.map((category, index) => ({
+  ...categories.map((category) => ({
     id: category.toLowerCase(),
     name: category,
     isActive: false,
@@ -37,13 +31,13 @@ const blogTabItems: TabItemData[] = [
 ];
 
 /** Group blogs by category */
-const blogsByTab: Record<string, BlogItemData[]> = {
-  all: blogs, // All blogs for "all" tab
+const blogsByTab: Record<string, BlogPost[]> = {
+  all: blogItems, // All blogs for "all" tab
 };
 
-// Add each category
+/** Add each category */
 categories.forEach((category) => {
-  blogsByTab[category.toLowerCase()] = blogs.filter((blog) => blog.category === category);
+  blogsByTab[category.toLowerCase()] = blogItems.filter((blog) => blog.category === category);
 });
 ---
 
@@ -87,13 +81,7 @@ categories.forEach((category) => {
                       <BlogCard
                         imageSrc={blogItem.image || blogSectionDetails.defaultImage}
                         category={blogItem.category || ""}
-                        date={(() => {
-                          const date = new Date(blogItem.date);
-                          const day = date.getDate().toString().padStart(2, "0");
-                          const month = date.toLocaleDateString("en-IN", { month: "short" });
-                          const year = date.getFullYear();
-                          return `${day} ${month}, ${year}`;
-                        })()}
+                        date={formattedDate(blogItem.date)}
                         title={blogItem.title}
                         author={blogItem.author}
                         href={URLS.BLOGS.ITEM(blogItem.title.replaceAll(" ", "-").toLowerCase())}

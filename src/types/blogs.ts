@@ -8,3 +8,10 @@ export type BlogPost = {
   alt: string;
   content: string;
 };
+
+// Tabs Item Data
+export type TabItemData = {
+  id: string;
+  name: string;
+  isActive: boolean;
+};
