@@ -19,23 +19,23 @@ export const initLoader = () => {
     let current = 0;
 
     // show first icon
-    icons[current].classList.remove("opacity-0", "scale-90");
+    icons[current].classList.remove("opacity-0", "scale-70");
     icons[current].classList.add("opacity-100", "scale-100");
 
     /** Icon cycle */
     setInterval(() => {
-      row.classList.replace("gap-1", "gap-0");
+      row.classList.replace("gap-10", "gap-0");
 
       icons[current].classList.replace("opacity-100", "opacity-0");
-      icons[current].classList.replace("scale-100", "scale-90");
+      icons[current].classList.replace("scale-100", "scale-70");
 
       setTimeout(() => {
         current = (current + 1) % icons.length;
 
         icons[current].classList.replace("opacity-0", "opacity-100");
-        icons[current].classList.replace("scale-90", "scale-100");
+        icons[current].classList.replace("scale-70", "scale-100");
 
-        row.classList.replace("gap-0", "gap-1");
+        row.classList.replace("gap-0", "gap-10");
       }, 120);
     }, 700);
   }
