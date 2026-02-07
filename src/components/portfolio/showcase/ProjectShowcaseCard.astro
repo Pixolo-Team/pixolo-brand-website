@@ -16,6 +16,8 @@ interface Props {
   tagItems: string[];
   buttonOneText: string;
   buttonTwoText: string;
+  buttonOneClick?: string;
+  buttonTwoClick?: string;
 }
 
 const {
@@ -29,6 +31,8 @@ const {
   tagItems,
   buttonOneText,
   buttonTwoText,
+  buttonOneClick = "",
+  buttonTwoClick = "",
 } = Astro.props as Props;
 ---
 
@@ -100,14 +104,10 @@ const {
     <!-- Buttons -->
     <div class="project-card-buttons flex flex-row gap-3.5 group-data-[view=grid]:gap-4 md:gap-4">
       <!-- Primary Button -->
-      <RoundedButton buttonText={buttonOneText} onClick={"window.location.href='/404'"} />
+      <RoundedButton buttonText={buttonOneText} onClick={buttonOneClick} />
 
       <!-- Secondary Button -->
-      <RoundedButton
-        buttonText={buttonTwoText}
-        onClick={"window.location.href='/404'"}
-        variant="secondary"
-      />
+      <RoundedButton buttonText={buttonTwoText} onClick={buttonTwoClick} variant="secondary" />
     </div>
   </div>
 </div>
