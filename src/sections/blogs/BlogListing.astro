@@ -9,9 +9,9 @@ import BlogCard from "@/components/blogs/BlogCard.astro";
 import type { BlogItemData, TabItemData } from "@/types/blogs-listing";
 
 // DATA //
-import { blogListingDetails } from "@/data/blog-listing/blog-listing";
 import { URLS } from "@/infrastructure/constants/urls";
 import { getBlogsRequest } from "@/services/api/blogs.api";
+import { blogSectionDetails } from "@/data/blogs";
 
 // Fetch Blogs from API
 let blogs: BlogItemData[] = [];
@@ -55,14 +55,14 @@ categories.forEach((category) => {
     <div class="grid grid-cols-1 gap-3 md:gap-4 lg:gap-5">
       <!-- Tool Badge -->
       <div class="tool-badge justify-self-start">
-        <ToolBadge icon={blogListingDetails.icon} text={blogListingDetails.badgeTitle} />
+        <ToolBadge icon={"comment"} text={"Design Builds"} />
       </div>
       <!-- Heading -->
       <h2
         id="header-text"
         class="text-n-950 text-3xl leading-tight font-normal tracking-tighter md:text-4xl lg:text-5xl"
       >
-        {blogListingDetails.heading}
+        {"Our Insightful Blog And Articles"}
       </h2>
     </div>
 
@@ -85,7 +85,7 @@ categories.forEach((category) => {
                   {(blogsByTab[tabItem.id] || []).map((blogItem) => (
                     <div class="blog-card-item">
                       <BlogCard
-                        imageSrc={blogItem.image || blogListingDetails.defaultImage}
+                        imageSrc={blogItem.image || blogSectionDetails.defaultImage}
                         category={blogItem.category || ""}
                         date={(() => {
                           const date = new Date(blogItem.date);
@@ -106,7 +106,7 @@ categories.forEach((category) => {
                 <div class="justify-self-center">
                   <RoundedButton
                     id={`load-more-btn-${tabItem.id}`}
-                    buttonText={blogListingDetails.loadMoreButton}
+                    buttonText={"Load More Blogs"}
                     type="button"
                     variant="tertiary"
                   />
