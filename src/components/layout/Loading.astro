@@ -19,9 +19,13 @@ const icons = ["code-icon", "block-icon", "bulb-icon", "rocket-icon", "ux-icon"]
 >
   <div class="z-20 flex items-center justify-center">
     <!-- For Mobile -->
-    <BrandLogo width={115} classes="block md:hidden" />
+    <div class="block md:hidden">
+      <BrandLogo width={115} />
+    </div>
     <!-- For Desktop -->
-    <BrandLogo width={180} classes="hidden md:block" />
+    <div class="hidden md:block">
+      <BrandLogo width={180} />
+    </div>
   </div>
 
   <!-- Loader text with icon -->

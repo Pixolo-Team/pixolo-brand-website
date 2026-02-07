@@ -23,9 +23,25 @@ const isMeta = (img: Img): img is ImageMetadata => typeof img === "object" && "s
   <!-- Dark mode source -->
   {
     isMeta(dark) ? (
-      <img src={dark.src} alt={alt} class={`dark-img ${className ?? ""}`} />
+      <Image
+        src={dark}
+        alt={alt}
+        class={`dark-img ${className ?? ""}`}
+        width={width}
+        height={height}
+        referrerpolicy="no-referrer"
+      />
     ) : (
-      <img src={dark} alt={alt} class={`dark-img ${className ?? ""}`} />
+      <img
+        src={dark}
+        alt={alt}
+        class={`dark-img ${className ?? ""}`}
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+        referrerpolicy="no-referrer"
+      />
     )
   }
 
