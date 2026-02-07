@@ -12,6 +12,9 @@ import Hero from "@/sections/portfolio/Hero.astro";
 import Industries from "@/sections/portfolio/Industries.astro";
 import Showcase from "@/sections/portfolio/Showcase.astro";
 
+// DATA //
+import portfolioMeta from "@/data/meta/portfolio/portfolio.json";
+
 // Get encoded portfolios from URL
 const encodedPortfolios = Astro.url.searchParams.get("p");
 
@@ -19,7 +22,7 @@ const encodedPortfolios = Astro.url.searchParams.get("p");
 const clientSpecificPortfolios = decodePortfolioIds(encodedPortfolios);
 ---
 
-<Layout>
+<Layout meta={portfolioMeta}>
   <Hero />
   <Industries />
   <Showcase clientSpecificPortfolios={clientSpecificPortfolios} />
