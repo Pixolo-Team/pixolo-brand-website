@@ -3,11 +3,14 @@
 import Hero from "@/sections/services/Hero.astro";
 import Service from "@/sections/services/Service.astro";
 
+// DATA //
+import servicesMeta from "@/data/meta/services/services.json";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 ---
 
-<Layout>
+<Layout meta={servicesMeta}>
   <Hero />
   <Service />
 </Layout>

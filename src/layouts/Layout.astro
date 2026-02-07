@@ -30,21 +30,8 @@ const { meta = {} } = Astro.props;
       description={meta.description}
       image={meta.image}
       noIndex={meta.noIndex}
-      keywords={meta.keyword}
+      keywords={meta.keywords}
     />
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9E7P2PLT8"></script>
-
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      window.gtag = gtag;
-      gtag("js", new Date());
-      gtag("config", "G-T9E7P2PLT8");
-    </script>
   </head>
 
   <body>
@@ -83,7 +70,7 @@ const { meta = {} } = Astro.props;
 
     <!-- Whatsapp button component -->
     <WhatsappButton
-      href="https://wa.me/9768941186"
+      href={`https://wa.me/${siteInfo.contact.phone[0].value}`}
       extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-10 hidden md:flex"
     />
 
@@ -93,6 +80,19 @@ const { meta = {} } = Astro.props;
     </div>
 
     <ContactForm />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9E7P2PLT8"></script>
+
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag("js", new Date());
+      gtag("config", "G-T9E7P2PLT8");
+    </script>
   </body>
 </html>
 

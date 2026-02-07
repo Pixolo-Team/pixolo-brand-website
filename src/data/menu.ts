@@ -6,6 +6,7 @@ export const menuItems = [
   { name: "Home", url: URLS.HOME },
   { name: "Services", url: URLS.SERVICE.ROOT },
   { name: "Portfolio", url: URLS.PORTFOLIO },
+  { name: "Blogs", url: URLS.BLOGS.ROOT },
   { name: "Career", url: URLS.CAREER },
 ];
 
