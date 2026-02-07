@@ -1,0 +1,157 @@
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import Tabs from "@/components/ui/Tabs.astro";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import BlogCard from "@/components/blogs/BlogCard.astro";
+
+// TYPES //
+import type { BlogPost, TabItemData } from "@/types/blogs";
+
+// DATA //
+import { URLS } from "@/infrastructure/constants/urls";
+import { getBlogsRequest } from "@/services/api/blogs.api";
+import { blogSectionDetails } from "@/data/blogs";
+import { formattedDate } from "@/utils/format-date";
+
+/** API Call to fetch blogs */
+const blogItems: BlogPost[] = await getBlogsRequest();
+
+/** Extract unique categories from blogs */
+const categories: string[] = [...new Set(blogItems.map((blog) => blog.category).filter(Boolean))];
+
+/** Tabs from blog categories */
+const blogTabItems: TabItemData[] = [
+  { id: "all", name: "All", isActive: true },
+  ...categories.map((category) => ({
+    id: category.toLowerCase(),
+    name: category,
+    isActive: false,
+  })),
+];
+
+/** Group blogs by category */
+const blogsByTab: Record<string, BlogPost[]> = {
+  all: blogItems, // All blogs for "all" tab
+};
+
+/** Add each category */
+categories.forEach((category) => {
+  blogsByTab[category.toLowerCase()] = blogItems.filter((blog) => blog.category === category);
+});
+---
+
+<!-- Blog-Listing Section -->
+<section id="blogs-listing-section">
+  <!-- Container -->
+  <div class="container mx-auto grid grid-cols-1 gap-9 px-6 py-28 lg:gap-16 lg:py-30">
+    <!-- Header Section -->
+    <div class="grid grid-cols-1 gap-3 md:gap-4 lg:gap-5">
+      <!-- Tool Badge -->
+      <div class="tool-badge justify-self-start">
+        <ToolBadge icon={"comment"} text={"Design Builds"} />
+      </div>
+      <!-- Heading -->
+      <h2
+        id="header-text"
+        class="text-n-950 text-3xl leading-tight font-normal tracking-tighter md:text-4xl lg:text-5xl"
+      >
+        {"Our Insightful Blog And Articles"}
+      </h2>
+    </div>
+
+    <!-- Body Section: Tabs and Blog Cards -->
+    <div class="body-section grid grid-cols-1 gap-5 md:gap-7">
+      <!-- Tabs -->
+      {
+        blogTabItems.length > 0 && (
+          <Tabs tabItems={blogTabItems}>
+            {blogTabItems.map((tabItem) => (
+              <div
+                class="blog-cards-wrapper grid grid-cols-1 gap-11 md:gap-16"
+                data-tab-content-id={tabItem.id}
+              >
+                {/* Blog Cards Grid */}
+                <div
+                  id={`blog-cards-${tabItem.id}`}
+                  class="blog-cards grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-9 xl:grid-cols-3"
+                >
+                  {(blogsByTab[tabItem.id] || []).map((blogItem) => (
+                    <div class="blog-card-item">
+                      <BlogCard
+                        imageSrc={blogItem.image || blogSectionDetails.defaultImage}
+                        category={blogItem.category || ""}
+                        date={formattedDate(blogItem.date)}
+                        title={blogItem.title}
+                        author={blogItem.author}
+                        href={URLS.BLOGS.ITEM(blogItem.title.replaceAll(" ", "-").toLowerCase())}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Inside your .map loop for blogTabItems */}
+                <div class="justify-self-center">
+                  {blogsByTab[tabItem.id].length > 6 ? (
+                    <RoundedButton
+                      id={`load-more-btn-${tabItem.id}`}
+                      buttonText={"Load More Blogs"}
+                      type="button"
+                      variant="tertiary"
+                    />
+                  ) : null}
+                </div>
+              </div>
+            ))}
+          </Tabs>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initLoadMore } from "@/scripts/load-more";
+  import { animateBlogsListingSection } from "@/scripts/blogs-listing";
+
+  animateBlogsListingSection();
+
+  /** Function to setup load more functionality */
+  const setupBlogs = () => {
+    const tabContents = document.querySelectorAll("[data-tab-content-id]");
+
+    /** Loop through each tab content */
+    tabContents.forEach((tabContent) => {
+      if (!(tabContent instanceof HTMLElement)) return;
+      if (tabContent.offsetParent === null) return;
+
+      const tabId = tabContent.getAttribute("data-tab-content-id");
+      const blogCardsContainer = tabContent.querySelector(".blog-cards") as HTMLElement;
+      const loadMoreBtn = tabContent.querySelector(`#load-more-btn-${tabId}`) as HTMLElement;
+
+      if (blogCardsContainer && !loadMoreBtn) return;
+
+      /** Configuration for load more */
+      const CONFIG = {
+        containerId: blogCardsContainer.id,
+        loadMoreBtnId: loadMoreBtn.id,
+        cardClass: "blog-card-item",
+        initialVisible: {
+          desktop: 6,
+          tablet: 4,
+          mobile: 3,
+        },
+        incrementConfig: {
+          desktop: 6,
+          tablet: 2,
+          mobile: 3,
+        },
+      };
+
+      initLoadMore(CONFIG);
+    });
+  };
+
+  document.addEventListener("DOMContentLoaded", setupBlogs);
+  document.addEventListener("astro:page-load", setupBlogs);
+</script>

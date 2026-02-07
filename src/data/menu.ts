@@ -5,7 +5,7 @@ import { URLS } from "@/infrastructure/constants/urls.ts";
 export const menuItems = [
   { name: "Home", url: URLS.HOME },
   { name: "Services", url: URLS.SERVICE.ROOT },
-  { name: "Portfolio", url: URLS.PORTFOLIO },
+  { name: "Portfolio", url: URLS.PORTFOLIO.ROOT },
   { name: "Career", url: URLS.CAREER },
 ];
 
