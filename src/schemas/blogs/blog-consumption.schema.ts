@@ -1,4 +1,5 @@
 type PixoloBlogPostingInputData = {
+  slug: string;
   title: string;
   description: string;
   image: string;
@@ -9,6 +10,7 @@ type PixoloBlogPostingInputData = {
 
 /** Generate BlogPosting JSON-LD */
 export const getPixoloBlogPostingSchema = ({
+  slug,
   title,
   description,
   image,
@@ -18,10 +20,10 @@ export const getPixoloBlogPostingSchema = ({
 }: PixoloBlogPostingInputData) => ({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "@id": `https://www.pixolotechnologies.com/blogs/${title.toLowerCase().replaceAll(" ", "-")}/#blogposting`,
+  "@id": `https://www.pixolotechnologies.com/blogs/${slug}/#blogposting`,
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": `https://www.pixolotechnologies.com/blogs/${title.toLowerCase().replaceAll(" ", "-")}`,
+    "@id": `https://www.pixolotechnologies.com/blogs/${slug}`,
   },
   headline: title,
   description,

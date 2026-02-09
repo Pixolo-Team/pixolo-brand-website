@@ -1,4 +1,5 @@
 type PixoloCaseStudySchemaInputData = {
+  slug: string;
   title: string;
   summary: string;
   clientName: string;
@@ -7,6 +8,7 @@ type PixoloCaseStudySchemaInputData = {
 };
 
 export const getPixoloCaseStudySchema = ({
+  slug,
   title,
   summary,
   clientName,
@@ -15,10 +17,10 @@ export const getPixoloCaseStudySchema = ({
 }: PixoloCaseStudySchemaInputData) => ({
   "@context": "https://schema.org",
   "@type": "Article", // (valid, though CreativeWork is better long-term)
-  "@id": `https://www.pixolotechnologies.com/case-studies/${title.toLowerCase().replaceAll(" ", "-")}/#case-study`,
+  "@id": `https://www.pixolotechnologies.com/case-studies/${slug}/#case-study`,
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": `https://www.pixolotechnologies.com/case-studies/${title.toLowerCase().replaceAll(" ", "-")}`,
+    "@id": `https://www.pixolotechnologies.com/case-studies/${slug}`,
   },
   headline: title,
   description: summary,

@@ -26,13 +26,11 @@ import { serviceDetails } from "@/data/home/services.ts";
  */
 export function getStaticPaths() {
   return serviceDetails.map((service) => {
-    const slug = service.title.toLowerCase().replaceAll("&", "and").replaceAll(" ", "-");
-
     return {
-      params: { title: slug },
+      params: { title: service.slug },
       props: {
         service,
-        slug, // ✅ IMPORTANT
+        slug: service.slug,
       },
     };
   });

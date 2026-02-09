@@ -50,6 +50,7 @@ const { caseStudyItem }: { caseStudyItem: CaseStudyData } = Astro.props;
 
 /** Case Study JSON-LD */
 const caseStudySchema = getPixoloCaseStudySchema({
+  slug: caseStudyItem.slug,
   title: caseStudyItem.title,
   summary: caseStudyItem.summary,
   clientName: caseStudyItem.clientName,
