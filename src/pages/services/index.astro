@@ -2,6 +2,9 @@
 // COMPONENTS //
 import JsonLd from "@/components/layout/JsonLd.astro";
 
+// UTILS //
+import { getSiteUrl } from "@/utils/site-url";
+
 // SERVICES //
 import Hero from "@/sections/services/Hero.astro";
 import Service from "@/sections/services/Service.astro";
@@ -15,7 +18,7 @@ import Layout from "@/layouts/Layout.astro";
 import { pixoloIndustriesServedSchema } from "@/schemas/industries-served";
 ---
 
-<Layout meta={servicesMeta}>
+<Layout meta={{ ...servicesMeta, image: `${getSiteUrl()}/images/og/services.jpg` }}>
   {/* Services ItemList JSON-LD */}
   <JsonLd slot="head" data={pixoloServicesItemListSchema} />
   {/* Industries Served JSON-LD */}

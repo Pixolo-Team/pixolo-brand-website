@@ -8,6 +8,9 @@ import JsonLd from "@/components/layout/JsonLd.astro";
 // API SERVICES //
 import { getFaqsRequest } from "@/services/api/faq.api";
 
+// UTILS //
+import { getSiteUrl } from "@/utils/site-url";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 import { getFaqSchema } from "@/schemas/faq.schema";
@@ -62,7 +65,7 @@ const faqSchema = getFaqSchema(
 );
 ---
 
-<Layout meta={contactMeta}>
+<Layout meta={{ ...contactMeta, image: `${getSiteUrl()}/images/og/contact.jpg` }}>
   {/* FAQ Schema JsonLd */}
   <JsonLd slot="head" data={faqSchema} />
 

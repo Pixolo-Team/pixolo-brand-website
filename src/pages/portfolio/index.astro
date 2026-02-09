@@ -4,6 +4,7 @@ import JsonLd from "@/components/layout/JsonLd.astro";
 
 // UTILS //
 import { decodePortfolioIds } from "@/utils/decode";
+import { getSiteUrl } from "@/utils/site-url";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
@@ -28,7 +29,7 @@ const encodedPortfolios = Astro.url.searchParams.get("p");
 const clientSpecificPortfolios = decodePortfolioIds(encodedPortfolios);
 ---
 
-<Layout meta={portfolioMeta}>
+<Layout meta={{ ...portfolioMeta, image: `${getSiteUrl()}/images/og/portfolio.jpg` }}>
   {/* Portfolio CollectionPage JSON-LD */}
   <JsonLd slot="head" data={portfolioCollectionSchema} />
 
