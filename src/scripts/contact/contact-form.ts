@@ -108,9 +108,3 @@ export const initializeFormSubmission = () => {
     }
   });
 };
-if (typeof window !== "undefined") {
-  window.addEventListener("DOMContentLoaded", () => {
-    console.log("Contact form JS mounted");
-    initializeFormSubmission();
-  });
-}

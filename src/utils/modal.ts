@@ -76,13 +76,13 @@ export const runResultProgress = (modalId: string, progressBarId: string) => {
   progressBar.style.width = "0%";
 
   // Animate progress bar
-  animate(progressBar, { width: ["0%", "100%"] }, { duration: 5, easing: "linear" });
+  animate(progressBar, { width: ["0%", "100%"] }, { duration: 10, easing: "linear" });
 
   // Auto close modal after 10s
   setTimeout(() => {
     hideResultModal(modalId);
     progressBar.style.width = "0%"; // reset for next time
-  }, 5000);
+  }, 10000);
 };
 
 /** Close result modal */
