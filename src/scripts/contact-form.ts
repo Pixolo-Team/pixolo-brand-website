@@ -3,7 +3,15 @@ import { insertLead } from "@/services/supabase";
 
 // UTILS //
 import { validateInput } from "@/utils/validations";
-import { showResultModal, hideResultModal, disableScroll, enableScroll } from "@/utils/modal";
+import {
+  showResultModal,
+  hideResultModal,
+  disableScroll,
+  enableScroll,
+  closeResultModalOnBackdropClick,
+  closeResultModal,
+  runResultProgress,
+} from "@/utils/modal";
 
 // OTHERS //
 import { trackContactFormError, trackContactFormSubmit } from "@/scripts/analytics";
@@ -23,23 +31,14 @@ export const initContactFormModal = () => {
   const subjectInput = document.getElementById("subject") as HTMLSelectElement | null;
   const messageInput = document.getElementById("additionalNote") as HTMLTextAreaElement | null;
 
-  const resultModal = document.getElementById("submission-result-modal");
-  const closeResultBtn = document.getElementById("close-result-modal");
-
   if (!backdrop || !closeBtn || !form || !submitBtn || !emailInput || !phoneInput) {
     console.warn("ContactFormModal: Required elements not found.");
     return;
   }
 
-  /** Close result modal */
-  closeResultBtn?.addEventListener("click", () => hideResultModal("submission-result-modal"));
-
-  /** Close result modal on backdrop click */
-  resultModal?.addEventListener("click", (e) => {
-    if (e.target === resultModal) {
-      hideResultModal("submission-result-modal");
-    }
-  });
+  // Close result modal
+  closeResultModal("submission-result-modal", "close-result-modal");
+  closeResultModalOnBackdropClick("submission-result-modal");
 
   /** Fade in animation */
   const fadeIn = (el: HTMLElement) => {
@@ -142,6 +141,7 @@ export const initContactFormModal = () => {
 
       /** Show result modal */
       showResultModal("submission-result-modal", response?.data ? "success" : "error");
+      runResultProgress("submission-result-modal", "result-progress-bar");
 
       // Reset form
       form.reset();
@@ -151,6 +151,7 @@ export const initContactFormModal = () => {
 
       /** Show result modal */
       showResultModal("submission-result-modal", "error");
+      runResultProgress("submission-result-modal", "result-progress-bar");
 
       /** Reset form */
       form.reset();
