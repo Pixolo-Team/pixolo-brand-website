@@ -5,10 +5,15 @@ import Dropdown from "@/components/ui/Dropdown.astro";
 import InputField from "@/components/ui/InputField.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import Textarea from "@/components/ui/Textarea.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+// IMAGES //
+import formErrorImage from "@/assets/images/contact/form-error.png";
+import formSuccessImage from "@/assets/images/contact/form-success.png";
 
 // DATA //
 import { contactSubjectOptions } from "@/data/contact";
-import Icon from "node_modules/astro-icon/components/Icon.astro";
 ---
 
 <!-- Backdrop with Contact form modal -->
@@ -117,7 +122,7 @@ import Icon from "node_modules/astro-icon/components/Icon.astro";
   class="fixed inset-0 z-60 hidden items-center justify-center bg-black/50 px-6 py-24"
 >
   <div
-    class="bg-n-100 relative flex w-full max-w-[590px] flex-col items-center justify-center gap-20 rounded-[32px] px-10 pt-20 pb-7 text-center"
+    class="bg-n-100 relative flex w-full max-w-[590px] flex-col items-center justify-center gap-20 rounded-3xl px-10 pt-20 pb-7 text-center"
   >
     <!-- Background Circle Gradient -->
     <div
@@ -139,11 +144,7 @@ import Icon from "node_modules/astro-icon/components/Icon.astro";
     <div data-state="success" class="flex hidden flex-col items-center gap-6 md:w-[85%]">
       <!-- Success Image -->
       <div class="size-20">
-        <img
-          src="/images/contact-form/form-success.png"
-          alt="Success"
-          class="h-full w-full object-contain"
-        />
+        <Image src={formSuccessImage} alt="Success" class="h-full w-full object-contain" />
       </div>
 
       <!-- Success message text -->
@@ -159,11 +160,7 @@ import Icon from "node_modules/astro-icon/components/Icon.astro";
     <div data-state="error" class="flex hidden flex-col items-center gap-6 md:w-[85%]">
       <!-- Error Image -->
       <div class="size-20">
-        <img
-          src="/images/contact-form/form-error.png"
-          alt="Error"
-          class="h-full w-full object-contain"
-        />
+        <Image src={formErrorImage} alt="Error" class="h-full w-full object-contain" />
       </div>
 
       <!-- Error Message text -->
@@ -185,5 +182,6 @@ import Icon from "node_modules/astro-icon/components/Icon.astro";
 
 <script>
   import { initContactFormModal } from "@/scripts/contact-form";
+
   initContactFormModal();
 </script>

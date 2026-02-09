@@ -6,13 +6,16 @@ import ContactCard from "@/components/ContactCard.astro";
 import InputField from "@/components/ui/InputField.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 
+// IMAGES //
+import formErrorImage from "@/assets/images/contact/form-error.png";
+import formSuccessImage from "@/assets/images/contact/form-success.png";
+
 // SVG's //
 import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { contactSectionDetails, contactFormDetails } from "@/data/contact";
 import { Icon } from "astro-icon/components";
-import ThemeImage from "@/components/ui/ThemeImage.astro";
 ---
 
 <section id="contact-section" class="relative overflow-hidden">
@@ -180,8 +183,8 @@ import ThemeImage from "@/components/ui/ThemeImage.astro";
               <div data-state="success" class="flex hidden flex-col items-center gap-6 md:w-[85%]">
                 <!-- Success Image -->
                 <div class="size-20">
-                  <img
-                    src="/images/contact-form/form-success.png"
+                  <Image
+                    src={formSuccessImage}
                     alt="Success"
                     class="h-full w-full object-contain"
                   />
@@ -200,11 +203,7 @@ import ThemeImage from "@/components/ui/ThemeImage.astro";
               <div data-state="error" class="flex hidden flex-col items-center gap-6 md:w-[85%]">
                 <!-- Error Image -->
                 <div class="size-20">
-                  <img
-                    src="/images/contact-form/form-error.png"
-                    alt="Error"
-                    class="h-full w-full object-contain"
-                  />
+                  <Image src={formErrorImage} alt="Error" class="h-full w-full object-contain" />
                 </div>
 
                 <!-- Error Message text -->
