@@ -18,11 +18,5 @@ export const animateCaseStudyHeroSection = () => {
       { opacity: [0, 1], x: ["-50px", 0], scaleY: [0.4, 1] },
       { duration: 0.8, delay: 0.4 },
     );
-
-    animate(
-      caseStudyHeroSection?.querySelector(".graph-logo"),
-      { scaleY: [0.4, 1], opacity: [0, 1] },
-      { duration: 0.4, delay: 0.4 },
-    );
   });
 };
