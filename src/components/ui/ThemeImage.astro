@@ -18,13 +18,30 @@ const { light, dark, alt, class: className, width, height } = Astro.props;
 const isMeta = (img: Img): img is ImageMetadata => typeof img === "object" && "src" in img;
 ---
 
-<picture>
+<!-- Theme image component -->
+<picture class="themed-image">
   <!-- Dark mode source -->
   {
     isMeta(dark) ? (
-      <source srcset={dark.src} media="(prefers-color-scheme: dark)" />
+      <Image
+        src={dark}
+        alt={alt}
+        class={`dark-img ${className ?? ""}`}
+        width={width}
+        height={height}
+        referrerpolicy="no-referrer"
+      />
     ) : (
-      <source srcset={dark} media="(prefers-color-scheme: dark)" />
+      <img
+        src={dark}
+        alt={alt}
+        class={`dark-img ${className ?? ""}`}
+        width={width}
+        height={height}
+        loading="lazy"
+        decoding="async"
+        referrerpolicy="no-referrer"
+      />
     )
   }
 
@@ -34,7 +51,7 @@ const isMeta = (img: Img): img is ImageMetadata => typeof img === "object" && "s
       <Image
         src={light}
         alt={alt}
-        class={className}
+        class={`light-img ${className ?? ""}`}
         width={width}
         height={height}
         referrerpolicy="no-referrer"
@@ -43,7 +60,7 @@ const isMeta = (img: Img): img is ImageMetadata => typeof img === "object" && "s
       <img
         src={light}
         alt={alt}
-        class={className}
+        class={`light-img ${className ?? ""}`}
         width={width}
         height={height}
         loading="lazy"

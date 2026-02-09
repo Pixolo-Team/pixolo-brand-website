@@ -5,7 +5,7 @@ import site from "@/data/meta/site.json";
 // PROPS //
 const { title, description, image, noIndex = false, keywords } = Astro.props;
 
-const metaTitle = title ? `${title} | ${site.siteName}` : site.defaultTitle;
+const metaTitle = title ? title : site.defaultTitle;
 const metaDesc = description || site.defaultDescription;
 const metaImg = image || site.defaultImage;
 const metaKeywords = keywords || site.defaultKeywords;
@@ -21,6 +21,9 @@ const canonical = `${site.siteUrl}${Astro.url.pathname}`;
 
   <!-- Favicon for dark mode -->
   <link rel="icon" href="/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href={canonical} />
 
   <!-- Title -->
   <title>{metaTitle}</title>
