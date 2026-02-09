@@ -11,4 +11,5 @@ export type PortfolioData = {
   badges: string[];
   show_in_home: "TRUE" | "FALSE";
   is_highlight: "TRUE" | "FALSE";
+  slug: string;
 };

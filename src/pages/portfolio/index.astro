@@ -1,11 +1,14 @@
 ---
-export const prerender = false;
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
 
 // UTILS //
 import { decodePortfolioIds } from "@/utils/decode";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
+import { portfolioCollectionSchema } from "@/schemas/portfolio/portfolio.schema";
+import { getPortfolioIndustriesSchema } from "@/schemas/portfolio/industries.schema";
 
 // SECTIONS //
 import Hero from "@/sections/portfolio/Hero.astro";
@@ -13,7 +16,10 @@ import Industries from "@/sections/portfolio/Industries.astro";
 import Showcase from "@/sections/portfolio/Showcase.astro";
 
 // DATA //
+import { portfolioIndustryDetails } from "@/data/portfolio/industries.ts";
 import portfolioMeta from "@/data/meta/portfolio/portfolio.json";
+
+export const prerender = false;
 
 // Get encoded portfolios from URL
 const encodedPortfolios = Astro.url.searchParams.get("p");
@@ -23,7 +29,13 @@ const clientSpecificPortfolios = decodePortfolioIds(encodedPortfolios);
 ---
 
 <Layout meta={portfolioMeta}>
+  {/* Portfolio CollectionPage JSON-LD */}
+  <JsonLd slot="head" data={portfolioCollectionSchema} />
+
+  {/* Portfolio Industries JSON-LD */}
+  <JsonLd slot="head" data={getPortfolioIndustriesSchema(portfolioIndustryDetails)} />
+
   <Hero />
-  <Industries />
+  <Industries portfolioIndustryDetails={portfolioIndustryDetails} />
   <Showcase clientSpecificPortfolios={clientSpecificPortfolios} />
 </Layout>

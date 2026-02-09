@@ -1,21 +1,19 @@
 // API URL
-export const API_URL = "https://pixoloproductions.com/api/pixolo-website/section-content.php?key=";
+export const API_URL = "http://pixoloproductions.com/api/pixolo-website/section-content.php?key=";
 
 // Links for pages to redirect
 export const URLS = {
   HOME: "/",
   ABOUT: "/about",
-
   CAREER: "/careers",
   SERVICE: {
     ROOT: "/services",
-    ITEM: (title: string) =>
-      `/services/${title.toLowerCase().replaceAll("&", "and").replaceAll(" ", "-")}`,
+    ITEM: (slug: string) => `/services/${slug}`,
   },
   CONTACT: "/contact",
   CASE_STUDIES: {
     ROOT: "/case-studies",
-    ITEM: (pageTitle: string) => `/case-studies/${pageTitle.toLowerCase().replaceAll(" ", "-")}`,
+    ITEM: (slug: string) => `/case-studies/${slug}`,
   },
   PORTFOLIO: {
     ROOT: "/portfolio",
@@ -23,6 +21,6 @@ export const URLS = {
   },
   BLOGS: {
     ROOT: "/blogs",
-    ITEM: (pageTitle: string) => `/blogs/${pageTitle.toLowerCase().replaceAll(" ", "-")}`,
+    ITEM: (slug: string) => `/blogs/${slug}`,
   },
 };

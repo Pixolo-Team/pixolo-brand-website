@@ -1,6 +1,10 @@
 ---
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
+import { blogsSchema } from "@/schemas/blogs/blogs.schema";
 
 // SECTIONS //
 import Hero from "@/sections/blog/Hero.astro";
@@ -8,6 +12,9 @@ import BlogListing from "@/sections/blogs/BlogListing.astro";
 ---
 
 <Layout>
+  <!-- JSON-LD -->
+  <JsonLd slot="head" data={blogsSchema} />
+
   <Hero />
   <BlogListing />
 </Layout>
