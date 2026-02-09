@@ -39,7 +39,7 @@ import { serviceDetails, serviceSectionDetails } from "@/data/home/services";
         // Iterating over an array of objects  - services
         serviceDetails.map((serviceItem) => (
           <a
-            href={URLS.SERVICE.ITEM(serviceItem.title)}
+            href={URLS.SERVICE.ITEM(serviceItem.slug)}
             data-service-item={serviceItem.title}
             class="service-card"
           >

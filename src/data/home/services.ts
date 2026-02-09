@@ -8,6 +8,7 @@ export const serviceDetails = [
     id: 1,
     imageName: "/images/services/product-planning.jpg",
     title: "Product Strategy & Planning",
+    slug: "product-strategy-and-planning",
     tags: [
       "Product Ideation",
       "UX Research",
@@ -56,6 +57,7 @@ export const serviceDetails = [
     id: 2,
     imageName: "/images/services/ui-ux-branding.jpg",
     title: "UI-UX & Brand Experience",
+    slug: "ui-ux-and-brand-experience",
     tags: [
       "UI/UX Design",
       "Design Systems (Neevo)",
@@ -100,6 +102,7 @@ export const serviceDetails = [
     id: 3,
     imageName: "/images/services/full-stack-development.jpg",
     title: "Full-Stack Development",
+    slug: "full-stack-development",
     tags: ["Web Apps", "Mobile Apps", "Backend & APIs", "Admin Panels", "Real-time Systems"],
     hero: {
       title: "End-to-end development without handoffs or chaos.",
@@ -138,6 +141,7 @@ export const serviceDetails = [
     id: 4,
     imageName: "/images/services/ai-automation.jpg",
     title: "AI & Automation",
+    slug: "ai-and-automation",
     tags: [
       "Custom AI Models",
       "AI Wrappers (OpenAI, Gemini)",
@@ -182,6 +186,7 @@ export const serviceDetails = [
     id: 5,
     imageName: "/images/services/cloud-devops.jpg",
     title: "Cloud DevOps & Infrastructure",
+    slug: "cloud-devops-and-infrastructure",
     tags: [
       "Cloud Setup",
       "CI/CD Pipelines",
@@ -225,6 +230,7 @@ export const serviceDetails = [
     id: 6,
     imageName: "/images/services/bussiness-tools.jpg",
     title: "Business Tools & Internal Systems",
+    slug: "business-tools-and-internal-systems",
     tags: [
       "Billing Systems",
       "HR & Attendance",

@@ -99,6 +99,7 @@ export type CaseStudyData = {
   name: string;
   thumbnail: string;
   websiteLink: string;
+  slug: string;
 
   /* Client Numbers */
   clientNumbersHeading: string;

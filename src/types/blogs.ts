@@ -7,4 +7,5 @@ export type BlogPost = {
   image: string;
   alt: string;
   content: string;
+  slug: string;
 };

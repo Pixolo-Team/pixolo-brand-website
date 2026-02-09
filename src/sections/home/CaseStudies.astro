@@ -53,9 +53,7 @@ const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
                 <div class="case-study-card-item hidden">
                   <CaseStudyCard
                     image={caseStudyItem.thumbnail}
-                    href={URLS.CASE_STUDIES.ITEM(
-                      caseStudyItem.name?.replaceAll(" ", "-").toLowerCase(),
-                    )}
+                    href={URLS.CASE_STUDIES.ITEM(caseStudyItem.slug)}
                     id={filteredIndex}
                     title={caseStudyItem.name}
                   />
