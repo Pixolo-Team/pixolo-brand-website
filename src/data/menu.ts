@@ -11,3 +11,10 @@ export const menuItems = [
 
 // Data for mobile menu
 export const mobileMenuItems = [...menuItems, { name: "Contact", url: URLS.CONTACT }];
+
+// Data for footer menu
+export const footerMenuItems = [
+  ...menuItems,
+  { name: "Case Studies", url: URLS.CASE_STUDIES.ROOT },
+  { name: "Blogs", url: URLS.BLOGS.ROOT },
+] as const;

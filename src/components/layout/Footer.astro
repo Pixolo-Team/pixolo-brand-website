@@ -5,7 +5,7 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 import BottomCTA from "@/components/ui/BottomCTA.astro";
 
 // DATA //
-import { menuItems } from "@/data/menu";
+import { footerMenuItems } from "@/data/menu";
 import { footerSectionDetails } from "@/data/footer";
 ---
 
@@ -52,9 +52,9 @@ import { footerSectionDetails } from "@/data/footer";
     <div class="anim-fade-in-up flex flex-col gap-3.5 md:gap-4">
       <div class="flex justify-center gap-6 pt-6 md:pt-10 lg:justify-between">
         <!-- Footer Menu -->
-        <div class="hidden lg:flex lg:gap-7">
+        <div class="hidden flex-wrap lg:flex lg:gap-7">
           {
-            menuItems.map((menuItem) => (
+            footerMenuItems.map((menuItem) => (
               <a
                 href={menuItem.url}
                 class="text-n-700 hover:bg-n-200 flex gap-7 self-center px-4 py-2 text-lg leading-[100%] tracking-[0.02em] hover:rounded-3xl"
