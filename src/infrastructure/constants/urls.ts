@@ -15,7 +15,10 @@ export const URLS = {
     ROOT: "/case-studies",
     ITEM: (slug: string) => `/case-studies/${slug}`,
   },
-  PORTFOLIO: "/portfolio",
+  PORTFOLIO: {
+    ROOT: "/portfolio",
+    ITEM: (pageTitle: string) => `/portfolio/${pageTitle.toLowerCase().replaceAll(" ", "-")}`,
+  },
   BLOGS: {
     ROOT: "/blogs",
     ITEM: (slug: string) => `/blogs/${slug}`,

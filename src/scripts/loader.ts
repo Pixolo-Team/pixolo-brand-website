@@ -1,68 +1,82 @@
-/** Function to initialize loader */
+/** Initialize animated loader (no progress) */
 export const initLoader = () => {
-  const loader = document.getElementById("loading-screen");
-  const label = document.getElementById("progress-label");
+  const loader = document.getElementById("loading-screen") as HTMLElement;
+  if (!loader) return;
 
-  if (!loader || !label) return;
+  // Loader elements
+  const row = loader.querySelector<HTMLElement>("#loading-row");
+  const icons = loader.querySelectorAll<HTMLElement>(".loader-icon");
 
-  let progress = 0;
-  let fakeInterval: number;
+  // Loader lifecycle
+  const MIN_VISIBLE_TIME = 3000;
+
+  // Loader state
   let pageLoaded = false;
+  let minTimePassed = false;
 
-  /** Update the progress */
-  function updateUI() {
-    label.textContent = Math.floor(progress) + "%";
+  // Icon cycle
+  if (row && icons.length) {
+    let current = 0;
+
+    // show first icon
+    icons[current].classList.remove("opacity-0", "scale-70");
+    icons[current].classList.add("opacity-100", "scale-100");
+
+    /** Icon cycle */
+    setInterval(() => {
+      row.classList.replace("gap-10", "gap-0");
+
+      icons[current].classList.replace("opacity-100", "opacity-0");
+      icons[current].classList.replace("scale-100", "scale-70");
+
+      setTimeout(() => {
+        current = (current + 1) % icons.length;
+
+        icons[current].classList.replace("opacity-0", "opacity-100");
+        icons[current].classList.replace("scale-70", "scale-100");
+
+        row.classList.replace("gap-0", "gap-10");
+      }, 120);
+    }, 700);
   }
 
-  /** Start fake progress but stop before 100% */
-  function startFakeProgress() {
-    fakeInterval = window.setInterval(() => {
-      let randomNumber = Math.random() * 3;
-
-      progress = Math.min(progress + randomNumber, 90);
-      updateUI();
-    }, 120);
-  }
-
-  /** When animations complete, then finish to 100% */
-  function finishProgress() {
-    clearInterval(fakeInterval);
-
-    const complete = setInterval(() => {
-      if (!pageLoaded) return;
-
-      if (progress < 100) {
-        progress += 2;
-        if (progress > 100) progress = 100;
-        updateUI();
-      }
-
-      if (progress >= 100) {
-        clearInterval(complete);
-
-        // Wait some time before fadeout
-        window.setTimeout(() => {
-          loader.classList.add("fade-out");
-
-          // Remove after fade-out animation
-          setTimeout(() => loader.remove(), 700);
-        }, 800);
-      }
-    }, 30);
-    // Set loader shown in session storage
-    sessionStorage.setItem("loaderShown", "true");
-  }
-
-  // Start the Fake progress to < 100%
-  startFakeProgress();
-
-  /** Check if window has loaded or not */
-  window.addEventListener("load", () => {
-    pageLoaded = true;
+  /** Loader lifecycle */
+  requestAnimationFrame(() => {
+    requestAnimationFrame(startLifecycle);
   });
 
-  // Wait 6s, then finish progress
-  setTimeout(() => {
-    finishProgress();
-  }, 6000);
+  /** Start lifecycle */
+  function startLifecycle() {
+    window.addEventListener("load", () => {
+      pageLoaded = true;
+      hideLoader();
+    });
+
+    /** Hide loader after min time passed */
+    setTimeout(() => {
+      minTimePassed = true;
+      hideLoader();
+    }, MIN_VISIBLE_TIME);
+  }
+
+  /** Hide loader */
+  function hideLoader() {
+    if (!pageLoaded || !minTimePassed) return;
+
+    // Set loader shown in session storage
+    sessionStorage.setItem("loaderShown", "true");
+
+    /** Hide loader text */
+    loader.classList.add("hide-text");
+
+    /** Fade out whole loader */
+    setTimeout(() => {
+      loader.classList.add("opacity-0");
+
+      /** Remove from DOM */
+      setTimeout(() => {
+        loader.remove();
+      }, 700); // matches Tailwind duration-700
+    }, 300); // matches loader-text exit
+  }
 };

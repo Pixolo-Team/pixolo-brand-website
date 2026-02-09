@@ -12,11 +12,31 @@ import { Icon } from "astro-icon/components";
 // API SERVICES //
 import { getPortfoliosRequest } from "@/services/api/portfolio.api";
 
+// CONSTANTS //
+import { URLS } from "@/infrastructure/constants/urls";
+
 // DATA //
 import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
 
+interface Props {
+  clientSpecificPortfolios: number[];
+}
+
+// Astro Props
+const { clientSpecificPortfolios } = Astro.props as Props;
+
 /** API Call to get all portfolio */
 const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
+
+// Checking if the view is curated with client specific portfolios
+const isCuratedView = clientSpecificPortfolios.length > 0;
+
+// Filtering the portfolio items
+const filteredPortfolioItems = isCuratedView
+  ? clientSpecificPortfolios
+      .map((id) => portfolioItems.find((item) => Number(item.id) === id))
+      .filter(Boolean)
+  : portfolioItems;
 ---
 
 <!-- Portfolio Showcase Section -->
@@ -76,26 +96,32 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
           class={`group grid grid-cols-1 data-[view=grid]:md:grid-cols-2 gap-10`}
         >
           {
-            // Project Cards //
-            portfolioItems.map((projectCard) => {
+            filteredPortfolioItems.map((projectCardItem) => {
+              // Checking if the project card should be rendered based on the view
+              const shouldRender = isCuratedView
+                ? true
+                : projectCardItem?.show_in_home === "TRUE" &&
+                  projectCardItem?.is_highlight === "TRUE";
+
+              if (!shouldRender) return null;
+
               return (
-                projectCard.show_in_home === "TRUE" &&
-                projectCard.is_highlight === "TRUE" && (
-                  <ProjectShowcaseCard
-                    name={projectCard.brand_name}
-                    image={
-                      projectCard.thumbnail_image
-                        ? projectCard.thumbnail_image
-                        : "/images/default-showcase-project-image.jpg"
-                    }
-                    title={projectCard.title}
-                    subTitle={projectCard.subtitle}
-                    description={projectCard.subtitle}
-                    tagItems={projectCard.badges}
-                    buttonOneText={"Visit Website"}
-                    buttonTwoText={"Show Project"}
-                  />
-                )
+                <ProjectShowcaseCard
+                  name={projectCardItem.brand_name}
+                  image={
+                    projectCardItem.thumbnail_image
+                      ? projectCardItem.thumbnail_image
+                      : "/images/default-showcase-project-image.jpg"
+                  }
+                  title={projectCardItem.title}
+                  subTitle={projectCardItem.subtitle}
+                  description={projectCardItem.subtitle}
+                  tagItems={projectCardItem.badges}
+                  buttonOneText={"Visit Website"}
+                  buttonTwoText={"Show Project"}
+                  buttonOneClick={""}
+                  buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCardItem.title)}'`}
+                />
               );
             })
           }
@@ -103,68 +129,70 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
       </div>
 
       <!-- Other Projects Wrap -->
-      <div
-        id="portfolio-mini-project-cards"
-        data-view="list"
-        class="group embla flex flex-col gap-8 overflow-hidden md:gap-12 lg:gap-16"
-      >
-        <!-- Other Projects Content -->
-        <div class="flex flex-col gap-5 md:gap-6 lg:gap-7">
-          <!-- Title -->
-          <p
-            class="text-n-950 text-base leading-tight font-normal md:text-2xl group-data-[view=list]:md:text-xl group-data-[view=list]:lg:text-2xl"
+      {
+        !isCuratedView && (
+          <div
+            id="portfolio-mini-project-cards"
+            data-view="list"
+            class="group embla flex flex-col gap-8 overflow-hidden md:gap-12 lg:gap-16"
           >
-            Other Projects
-          </p>
+            {/* Other Projects Content */}
+            <div class="flex flex-col gap-5 md:gap-6 lg:gap-7">
+              {/* Title */}
+              <p class="text-n-950 text-base leading-tight font-normal md:text-2xl group-data-[view=list]:md:text-xl group-data-[view=list]:lg:text-2xl">
+                Other Projects
+              </p>
 
-          <!-- Cards Wrap -->
-          <div id="showcase-slider" class="embla__viewport">
-            <!-- Embla container -->
-            <div class="embla__container flex gap-6">
-              <!-- Iterating on Project Cards -->
-              {
-                portfolioItems.map((cardItem) => {
-                  return (
-                    cardItem.show_in_home === "TRUE" &&
-                    cardItem.is_highlight === "FALSE" && (
-                      // Mini Project Cards
-                      <div class="embla__slide w-full shrink-0 sm:max-w-[328px] lg:max-w-[412px]">
-                        <MiniProjectCard
-                          title={cardItem.brand_name}
-                          tagItems={cardItem.badges}
-                          image={
-                            cardItem.thumbnail_image
-                              ? cardItem.thumbnail_image
-                              : "/images/default-showcase-project-image.jpg"
-                          }
-                          btnOneText={"Visit Website"}
-                          btnTwoText={"Show Project"}
-                        />
-                      </div>
-                    )
-                  );
-                })
-              }
+              {/* Cards Wrap */}
+              <div id="showcase-slider" class="embla__viewport">
+                {/* Embla container */}
+                <div class="embla__container flex gap-6">
+                  {/* Iterating on Project Cards */}
+                  {filteredPortfolioItems.map((cardItem) => {
+                    return (
+                      cardItem?.show_in_home === "TRUE" &&
+                      cardItem?.is_highlight === "FALSE" && (
+                        // Mini Project Cards
+                        <div class="embla__slide w-full shrink-0 sm:max-w-[328px] lg:max-w-[412px]">
+                          <MiniProjectCard
+                            title={cardItem.brand_name}
+                            tagItems={cardItem.badges}
+                            image={
+                              cardItem.thumbnail_image
+                                ? cardItem.thumbnail_image
+                                : "/images/default-showcase-project-image.jpg"
+                            }
+                            btnOneText={"Visit Website"}
+                            btnTwoText={"Show Project"}
+                            buttonOneClick={""}
+                            buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(cardItem.title)}'`}
+                          />
+                        </div>
+                      )
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Slider Cta Wrap */}
+            <div class="flex w-full items-center justify-between gap-6">
+              {/* Left spacer */}
+              <div class="flex-1" />
+
+              {/* Progress bar (centered) */}
+              <div class="bg-n-500 h-[2px] w-24 overflow-hidden rounded-2xl md:w-36 lg:w-96">
+                <div id="embla__progress__bar" class="h-full w-0 bg-blue-500" />
+              </div>
+
+              {/* Slider arrows (right) */}
+              <div class="flex flex-1 justify-end">
+                <SliderArrows />
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Slider Cta Wrap -->
-        <div class="flex w-full items-center justify-between gap-6">
-          <!-- Left spacer -->
-          <div class="flex-1"></div>
-
-          <!-- Progress bar (centered) -->
-          <div class="bg-n-500 h-[2px] w-24 overflow-hidden rounded-2xl md:w-36 lg:w-96">
-            <div id="embla__progress__bar" class="h-full w-0 bg-blue-500"></div>
-          </div>
-
-          <!-- Slider arrows (right) -->
-          <div class="flex flex-1 justify-end">
-            <SliderArrows />
-          </div>
-        </div>
-      </div>
+        )
+      }
     </div>
   </div>
 </section>

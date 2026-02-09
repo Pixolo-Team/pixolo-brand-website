@@ -8,6 +8,7 @@ import { Icon } from "astro-icon/components";
 
 // DATA //
 import { menuItems, mobileMenuItems } from "@/data/menu";
+import ThemeToggle from "@/components/ui/ThemeToggle.astro";
 ---
 
 <header
@@ -25,7 +26,14 @@ import { menuItems, mobileMenuItems } from "@/data/menu";
     </div>
 
     <!-- Rounded Button component -->
-    <div class="hidden lg:block">
+    <div class="hidden items-center justify-center gap-4 lg:flex">
+      <!-- Theme toggle Button -->
+      <ThemeToggle />
+
+      <!-- Divider line -->
+      <div class="bg-n-600 w-[1px] self-stretch"></div>
+
+      <!-- Contact CTA Button -->
       <RoundedButton
         id="header-contact-cta"
         buttonText="Contact Us"
@@ -33,13 +41,21 @@ import { menuItems, mobileMenuItems } from "@/data/menu";
       />
     </div>
 
-    <!-- Mobile Hamburger -->
-    <Icon
-      id="open-mobile-menu-button"
-      aria-label="Open menu button"
-      name="hamburger"
-      class="text-n-950 block size-6 cursor-pointer lg:hidden"
-    />
+    <div class="flex items-center justify-center gap-3 lg:hidden">
+      <!-- Theme toggle Button -->
+      <ThemeToggle />
+
+      <!-- Divider line -->
+      <div class="bg-n-600 w-[1px] self-stretch"></div>
+
+      <!-- Mobile Hamburger -->
+      <Icon
+        id="open-mobile-menu-button"
+        aria-label="Open menu button"
+        name="hamburger"
+        class="text-n-950 block size-6 cursor-pointer lg:hidden"
+      />
+    </div>
   </div>
 </header>
 

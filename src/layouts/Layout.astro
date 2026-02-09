@@ -37,6 +37,18 @@ const { meta = {} } = Astro.props;
       keywords={meta.keywords}
     />
 
+    <!-- Load the initial theme from Local Storage -->
+    <script is:inline>
+      (() => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") {
+          document.documentElement.classList.remove("dark");
+        } else {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+
     <!-- JSON-LD -->
     <slot name="head" />
 

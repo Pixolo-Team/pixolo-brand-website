@@ -1,4 +1,7 @@
 ---
+// TYPES //
+import type { BlogPost } from "@/types/blogs";
+
 // COMPONENTS //
 import BlogCard from "@/components/blogs/BlogCard.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
@@ -10,9 +13,11 @@ import { getBlogsRequest } from "@/services/api/blogs.api";
 // CONSTANTS //
 import { URLS } from "@/infrastructure/constants/urls";
 
+// UTILS //
+import { formattedDate } from "@/utils/format-date";
+
 // DATA //
 import { blogSectionDetails } from "@/data/blogs";
-import type { BlogPost } from "@/types/blogs";
 
 /** Makes an API Call to fetch blogs data */
 const blogsList = await getBlogsRequest();
@@ -55,7 +60,7 @@ const homeBlogs = blogsList.filter((blog: { show_in_home: string }) => blog.show
                 <BlogCard
                   imageSrc={blogItem.image || blogSectionDetails.defaultImage}
                   category={blogItem.category}
-                  date={blogItem.date}
+                  date={formattedDate(blogItem.date)}
                   title={blogItem.title}
                   author={blogItem.author}
                   href={URLS.BLOGS.ITEM(blogItem.slug)}
@@ -67,7 +72,7 @@ const homeBlogs = blogsList.filter((blog: { show_in_home: string }) => blog.show
           {/* Load More Button */}
           <RoundedButton
             id="load-more-blogs"
-            buttonText={blogSectionDetails.loadMoreButton}
+            buttonText={"Load More Blogs"}
             type="button"
             variant="tertiary"
           />

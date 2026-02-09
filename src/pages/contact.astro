@@ -12,6 +12,7 @@ import { getFaqsRequest } from "@/services/api/faq.api";
 import Layout from "@/layouts/Layout.astro";
 import { getFaqSchema } from "@/schemas/faq.schema";
 import { contactOrganizationSchema } from "@/schemas/contact.schema";
+import { pixoloPlaceSchema } from "@/schemas/place.schema";
 
 // SECTIONS //
 import Hero from "@/sections/contact/Hero.astro";
@@ -20,7 +21,6 @@ import FAQ from "@/sections/contact/FAQ.astro";
 
 // DATA //
 import contactMeta from "@/data/meta/contact.json";
-import { pixoloPlaceSchema } from "@/schemas/place.schema";
 
 // Fetch FAQs from API
 let faqs: FaqApiCategory[] = [];
