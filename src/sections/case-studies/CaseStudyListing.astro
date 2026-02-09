@@ -1,0 +1,167 @@
+---
+// TYPES //
+import type { CaseStudyData } from "@/types/case-studies";
+import type { TabItemData } from "@/types/blogs";
+
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import Tabs from "@/components/ui/Tabs.astro";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import CaseStudyCard from "@/components/casestudy/CaseStudyCard.astro";
+
+// API SERVICES //
+import { getCaseStudiesRequest } from "@/services/api/case-studies.api";
+
+// CONSTANTS //
+import { URLS } from "@/infrastructure/constants/urls";
+
+// DATA //
+import { caseStudySectionDetails } from "@/data/case-studies/case-studies";
+
+/** API Call */
+const rawCaseStudies: CaseStudyData[] = await getCaseStudiesRequest();
+
+/** Extract unique categories from case studies */
+const categories: string[] = [
+  ...new Set(rawCaseStudies.map((caseStudy) => caseStudy.category).filter(Boolean)),
+];
+
+/** Tabs from case studies categories */
+const caseStudyTabItems: TabItemData[] = [
+  { id: "all", name: "All", isActive: true },
+  ...categories.map((category) => ({
+    id: category.toLowerCase(),
+    name: category,
+    isActive: false,
+  })),
+];
+
+/** Group case studies by category */
+const caseStudiesByTab: Record<string, CaseStudyData[]> = {
+  all: rawCaseStudies, // All case studies for "all" tab
+};
+
+/** Add each category */
+categories.forEach((category) => {
+  caseStudiesByTab[category.toLowerCase()] = rawCaseStudies.filter(
+    (caseStudy) => caseStudy.category === category,
+  );
+});
+---
+
+<!-- Case Studies Listing Section -->
+<section id="case-studies-listing-section">
+  <div class="container mx-auto grid grid-cols-1 gap-9 px-6 py-28 lg:gap-16 lg:py-30">
+    <!-- Header -->
+    <div class="grid grid-cols-1 gap-3 md:gap-4 lg:gap-5">
+      {/* Tool Badge */}
+      <div class="tool-badge justify-self-start">
+        <ToolBadge icon="notebook" text="Case Studies" />
+      </div>
+
+      {/* Title */}
+      <h2
+        id="header-text"
+        class="text-n-950 text-3xl leading-tight font-normal tracking-tighter md:text-4xl lg:text-5xl"
+      >
+        From Concept to Launch: Our Case Studies
+      </h2>
+    </div>
+
+    <!-- Tabs + Cards -->
+    <div class="grid grid-cols-1 gap-5 md:gap-7">
+      <!-- Tabs -->
+      {
+        caseStudyTabItems.length > 0 && (
+          <Tabs tabItems={caseStudyTabItems}>
+            {caseStudyTabItems.map((tabItem) => {
+              return (
+                <div
+                  class="case-studies-cards-wrapper grid grid-cols-1 gap-11 md:gap-16"
+                  data-tab-content-id={tabItem.id}
+                >
+                  {/* Cards */}
+                  <div
+                    id={`case-studies-cards-${tabItem.id}`}
+                    class="case-studies-cards grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+                  >
+                    {(caseStudiesByTab[tabItem.id] || []).map((caseStudyItem) => (
+                      <div class="case-study-card-item">
+                        <CaseStudyCard
+                          image={caseStudyItem.thumbnail || caseStudySectionDetails.defaultImage}
+                          title={caseStudyItem.title}
+                          href={URLS.CASE_STUDIES.ITEM(caseStudyItem.slug)}
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Load More */}
+                  <div class="justify-self-center">
+                    {caseStudiesByTab[tabItem.id].length > 6 ? (
+                      <RoundedButton
+                        id={`load-more-btn-${tabItem.id}`}
+                        buttonText={"Load More Case Studies"}
+                        type="button"
+                        variant="tertiary"
+                      />
+                    ) : null}
+                  </div>
+                </div>
+              );
+            })}
+          </Tabs>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initLoadMore } from "@/scripts/load-more";
+  import { animateCaseStudiesListingSection } from "@/scripts/case-study/case-study-listing";
+
+  animateCaseStudiesListingSection();
+
+  const setupCaseStudies = () => {
+    const tabContents = document.querySelectorAll("[data-tab-content-id]");
+
+    /** Loop through each tab content */
+    tabContents.forEach((tabContent) => {
+      if (!(tabContent instanceof HTMLElement)) return;
+
+      const tabId = tabContent.getAttribute("data-tab-content-id");
+
+      const caseStudyCardsContainer = tabContent.querySelector(
+        ".case-studies-cards",
+      ) as HTMLElement;
+
+      const loadMoreBtn = tabContent.querySelector(`#load-more-btn-${tabId}`) as HTMLElement;
+
+      // If tab doesn't have load more, skip
+      if (!caseStudyCardsContainer || !loadMoreBtn) return;
+
+      /** Configuration for load more */
+      const CONFIG = {
+        containerId: caseStudyCardsContainer.id,
+        loadMoreBtnId: loadMoreBtn.id,
+        cardClass: "case-study-card-item",
+        initialVisible: {
+          desktop: 6,
+          tablet: 4,
+          mobile: 3,
+        },
+        incrementConfig: {
+          desktop: 6,
+          tablet: 2,
+          mobile: 3,
+        },
+      };
+
+      initLoadMore(CONFIG);
+    });
+  };
+
+  document.addEventListener("DOMContentLoaded", setupCaseStudies);
+  document.addEventListener("astro:page-load", setupCaseStudies);
+</script>
