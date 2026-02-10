@@ -5,9 +5,19 @@ import JsonLd from "@/components/layout/JsonLd.astro";
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 import { caseStudiesCollectionSchema } from "@/schemas/case-studies/case-studies.schema";
+
+// SECTIONS //
+import Hero from "@/sections/case-studies/Hero.astro";
+import CaseStudyListing from "@/sections/case-studies/CaseStudyListing.astro";
+
+// DATA //
+import caseStudiesMeta from "@/data/meta/case-studies/case-studies.json";
 ---
 
-<Layout>
+<Layout meta={caseStudiesMeta}>
   {/* Case Studies CollectionPage JSON-LD */}
   <JsonLd slot="head" data={caseStudiesCollectionSchema} />
+
+  <Hero />
+  <CaseStudyListing />
 </Layout>
