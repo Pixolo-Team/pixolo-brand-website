@@ -1,0 +1,41 @@
+---
+// COMPONENTS //
+import { Image } from "astro:assets";
+
+interface Props {
+  image: string;
+  name: string;
+  role: string;
+}
+
+const { image, name, role } = Astro.props as Props;
+---
+
+<!-- Team Image card component -->
+<div class="flex w-full flex-col gap-3.5">
+  <!-- Image -->
+  <div class="overflow-hidden rounded-2xl">
+    <Image
+      src={image}
+      alt={name}
+      class="w-full object-cover"
+      width={500}
+      height={500}
+      loading="lazy"
+      inferSize={false}
+      referrerpolicy="no-referrer"
+    />
+  </div>
+
+  <div class="flex flex-col gap-0.5 px-2.5">
+    <!-- Name -->
+    <p class="text-n-950 text-xl leading-tight font-normal xl:text-2xl">
+      {name}
+    </p>
+
+    <!-- Role -->
+    <p class="text-n-700 text-sm leading-tight font-normal xl:text-base">
+      {role}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import SliderArrows from "@/components/ui/SliderArrows.astro";
+import TeamImageCard from "@/components/project-consumption/TeamImageCard.astro";
+
+// DATA //
+import { teamsSectionDetails } from "@/data/portfolio-consumption/teams";
+---
+
+<!-- Portfolio Teams Section -->
+<section id="portfolio-teams-section">
+  <!-- Container -->
+  <div class="container mx-auto flex flex-col gap-16 px-6 py-20 md:py-24 xl:py-28">
+    <div class="flex flex-col items-center gap-4 text-center">
+      <!-- Tool Badge Component -->
+      <div class="tool-badge">
+        <ToolBadge icon="service-icon" text="Meet the Team" />
+      </div>
+
+      <!-- Heading -->
+      <p class="title-text text-n-950 text-3xl leading-[125%] md:text-4xl xl:text-5xl">
+        Behind the Scenes With Our Creative & Dev Crew
+      </p>
+    </div>
+
+    <!-- Team Members -->
+    <div class="flex flex-col gap-6">
+      <!-- Slider -->
+      <div id="teams-slider" class="embla__viewport overflow-hidden">
+        <div class="embla__container flex gap-4 lg:gap-5">
+          {
+            teamsSectionDetails.map((teamMemberItem) => (
+              <div class="embla__slide team-member-card flex w-full max-w-[230px] shrink-0 lg:max-w-[250px] xl:max-w-[300px]">
+                {/* Team Image Card Component */}
+                <TeamImageCard
+                  image={teamMemberItem.image}
+                  name={teamMemberItem.name}
+                  role={teamMemberItem.role}
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Slider Arrows -->
+      <div class="flex justify-end gap-6">
+        <!-- Slider Arrows Component -->
+        <SliderArrows prevId="slide-prev" nextId="slide-next" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Hover Cursor -->
+  <div
+    id="team-hover-cursor"
+    class="bg-n-200 pointer-events-none fixed z-50 hidden -translate-x-1/2 -translate-y-1/2 rounded-xl px-3 py-1.5"
+  >
+    <p class="text-n-950 text-xs whitespace-nowrap">Watch Video</p>
+  </div>
+</section>
+
+<script>
+  import { animateTeamsSection, initTeamsSlider } from "@/scripts/portfolio-consumption/teams";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initTeamsSlider();
+    animateTeamsSection();
+  });
+</script>
