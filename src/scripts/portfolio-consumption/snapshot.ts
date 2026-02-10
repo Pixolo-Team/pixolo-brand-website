@@ -39,7 +39,7 @@ export const animateSnapshotSection = () => {
       { opacity: [0, 1], x: ["30px", 0] },
       {
         duration: 0.4,
-        delay: stagger(0.12, { startDelay: 0.9 }),
+        delay: stagger(0.4, { startDelay: 0.9, from: "first" }),
         easing: "ease-out",
       },
     );
