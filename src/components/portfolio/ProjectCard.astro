@@ -1,4 +1,7 @@
 ---
+// STYLES //
+import ThemeImage from "@/components/ui/ThemeImage.astro";
+
 // COMPONENTS //
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 
@@ -18,12 +21,20 @@ const { brandColor, brandName, image, logo, title, subtitle, badges } = Astro.pr
 ---
 
 <!-- Main Project Tile -->
-<div class={`rounded-[42px] md:rounded-[64px] xl:flex xl:flex-row xl:gap-10 ${brandColor}`}>
+<div
+  class={`rounded-[42px] md:rounded-[64px] xl:flex xl:flex-row xl:gap-10`}
+  style={`background-color: ${brandColor};`}
+>
   <!-- Project Content -->
   <div class="flex flex-1 flex-col gap-6 px-5 py-6 md:gap-8 md:p-10 xl:gap-14 xl:p-20">
     <!-- Logo -->
     <div class="h-[98px] justify-start md:h-[110px]">
-      <img src={logo} alt={`${brandName} logo`} class="h-full object-contain" />
+      <ThemeImage
+        light={logo}
+        dark={logo}
+        alt={`${brandName} logo`}
+        class="h-full object-contain"
+      />
     </div>
 
     <!-- Project Details Wrapper -->
@@ -65,6 +76,11 @@ const { brandColor, brandName, image, logo, title, subtitle, badges } = Astro.pr
 
   <!-- Image -->
   <div class="hidden h-full w-[42%] self-end xl:block">
-    <img src={image} alt={`${brandName} Project Screenshot`} class="h-full w-full" />
+    <ThemeImage
+      light={image}
+      dark={image}
+      alt={`${brandName} Project Screenshot`}
+      class="h-full w-full"
+    />
   </div>
 </div>

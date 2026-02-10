@@ -1,10 +1,19 @@
 ---
+// TYPES //
+import type { CareerOpenPositions } from "@/types/career.types";
+
 // COMPONENTS //
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import OpenPositionCard from "@/components/career/OpenPositionCard.astro";
 
+// API SERVICES //
+import { getOpenPositionsRequest } from "@/services/api/career.api";
+
 // DATA //
 import { openPositions } from "@/data/career/open-positions";
+
+/** API Call to get all open positions */
+const openPositionData: CareerOpenPositions[] = await getOpenPositionsRequest();
 ---
 
 <!-- Open Positions Section -->
@@ -23,7 +32,7 @@ import { openPositions } from "@/data/career/open-positions";
       <!-- Title -->
       <p
         id="open-positions-heading"
-        class="font-regular text-2xl leading-tight tracking-[-0.02em] md:text-4xl lg:text-5xl"
+        class="font-regular text-n-950 text-2xl leading-tight tracking-[-0.02em] md:text-4xl lg:text-5xl"
       >
         {openPositions.title}
       </p>
@@ -34,13 +43,16 @@ import { openPositions } from "@/data/career/open-positions";
       class="open-position-cards grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-6 xl:gap-10 2xl:grid-cols-3"
     >
       {
-        openPositions.positions.map((position) => (
+        openPositionData.map((position) => (
           // Open Position Card Component
           <div class="open-position-card">
             <OpenPositionCard
               category={position.category}
               title={position.title}
-              tags={position.tags}
+              applyUrl={position.apply_url}
+              experience={position.experience}
+              location={position.location}
+              openSpots={position.open_spots}
               ctaText="Apply Now"
             />
           </div>

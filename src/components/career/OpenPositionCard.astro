@@ -1,9 +1,16 @@
 ---
 // COMPONENTS //
 import RoundedButton from "@/components/ui/RoundedButton.astro";
-import OpenPositionCardTag from "@/components/career/OpenPositionCardTag.astro";
 
-const { category, title, tags = [], ctaText } = Astro.props;
+const {
+  category,
+  title,
+  ctaText,
+  applyUrl,
+  experience = "",
+  location = "",
+  openSpots = "",
+} = Astro.props;
 ---
 
 <!-- Open Position Card -->
@@ -13,15 +20,15 @@ const { category, title, tags = [], ctaText } = Astro.props;
   <div class="flex flex-col items-start gap-2.5 md:gap-3.5 lg:gap-4">
     <!-- Category -->
     <div
-      class="border-n-950 rounded-3xl border-[0.6px] px-3 py-2 md:px-3.5 md:py-2.5 lg:px-4 lg:py-3"
+      class="border-n-950 flex items-center rounded-3xl border-[0.6px] px-3 py-2 md:px-3.5 md:py-2.5 lg:px-4 lg:py-3"
     >
-      <p class="text-xs leading-tight font-medium tracking-normal lg:text-sm">
+      <p class="text-n-950 self-center text-xs leading-none font-medium tracking-normal lg:text-sm">
         {category}
       </p>
     </div>
 
     <!-- Title -->
-    <p class="text-xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl">
+    <p class="text-n-950 text-xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl">
       {title}
     </p>
   </div>
@@ -30,22 +37,60 @@ const { category, title, tags = [], ctaText } = Astro.props;
   <div class="flex flex-col gap-6 md:gap-10 lg:gap-12">
     <!-- Tags -->
     <div class="flex flex-col gap-2 md:gap-3 lg:gap-4">
-      <!-- Tag -->
       {
-        tags.map((tagItem: any) => (
-          <OpenPositionCardTag label={tagItem.label} value={tagItem.value} />
-        ))
+        experience !== "" && (
+          // Experience
+          <div class="flex gap-10 lg:gap-24">
+            {/* Label */}
+            <p class="font-regular text-n-700 min-w-[138px] text-sm leading-tight tracking-normal md:min-w-[150px] md:text-base lg:min-w-[170px] lg:text-lg">
+              Experience
+            </p>
+
+            {/* Value */}
+            <p class="font-regular text-n-950 flex-1 text-base leading-tight tracking-normal md:text-xl lg:text-2xl">
+              {experience}
+            </p>
+          </div>
+        )
+      }
+      {
+        location !== "" && (
+          // Location
+          <div class="flex gap-10 lg:gap-24">
+            {/* Label */}
+            <p class="font-regular text-n-700 min-w-[138px] text-sm leading-tight tracking-normal md:min-w-[150px] md:text-base lg:min-w-[170px] lg:text-lg">
+              Location
+            </p>
+
+            {/* Value */}
+            <p class="font-regular text-n-950 flex-1 text-base leading-tight tracking-normal md:text-xl lg:text-2xl">
+              {location}
+            </p>
+          </div>
+        )
+      }
+
+      {
+        openSpots !== "" && (
+          // Open Spots
+          <div class="flex gap-10 lg:gap-24">
+            {/* Label */}
+            <p class="font-regular text-n-700 min-w-[138px] text-sm leading-tight tracking-normal md:min-w-[150px] md:text-base lg:min-w-[170px] lg:text-lg">
+              Open Positions
+            </p>
+
+            {/* Value */}
+            <p class="font-regular text-n-950 flex-1 text-base leading-tight tracking-normal md:text-xl lg:text-2xl">
+              {openSpots}
+            </p>
+          </div>
+        )
       }
     </div>
 
     <!-- RoundedButton -->
-    <div class="self-start">
-      <RoundedButton
-        buttonText={ctaText}
-        type="button"
-        variant="primary"
-        onClick="window.open('https://forms.gle/iaRyx245ECd2VtwJ6', '_blank')"
-      />
-    </div>
+    <a class="self-start" href={applyUrl} target="_blank" rel="noopener noreferrer">
+      <RoundedButton buttonText={ctaText} type="button" variant="primary" />
+    </a>
   </div>
 </div>

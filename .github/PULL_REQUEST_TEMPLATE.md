@@ -1,6 +1,6 @@
 ### 🔍 Self-Review
 
-- [x] Tested across standard breakpoints (sm / md / lg / xl)
+- [ ] Tested across standard breakpoints (sm / md / lg / xl)
 - [ ] Verified hover, focus, and animation states
 - [ ] No unused or commented-out code left
 - [ ] Images optimized (format & size)
@@ -8,9 +8,6 @@
 - [ ] ESLint shows 0 errors / warnings
 - [ ] SonarLint clean
 - [ ] Local build runs successfully
-
--
--
 
 ### 🧪 Quality Checks (Designer & QC)
 

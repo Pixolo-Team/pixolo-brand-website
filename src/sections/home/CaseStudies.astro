@@ -1,7 +1,4 @@
 ---
-// TYPES //
-import type { CaseStudyData } from "@/types/case-studies.types";
-
 // COMPONENTS //
 import CaseStudyCard from "@/components/casestudy/CaseStudyCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
@@ -10,17 +7,17 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
 // SERVICES //
 import { getCaseStudiesRequest } from "@/services/api/case-studies.api.ts";
 
-// CONSTANTS //
 import { URLS } from "@/infrastructure/constants/urls";
 
 // DATA //
 import { caseStudySectionDetails } from "@/data/case-studies/case-studies";
+import type { CaseStudyData } from "@/types/case-studies";
 
 /** API Call to get case studies */
 const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
 ---
 
-<section id="case-studies-section">
+<section id="case-studies-section" data-section="Case Studies">
   <div
     class="container mx-auto flex flex-col gap-12 px-8 py-16 md:gap-14 md:px-0 md:py-16 lg:gap-16 lg:py-26"
   >
@@ -33,7 +30,7 @@ const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
 
       <!-- Title -->
       <p
-        class="header-text text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-5xl"
+        class="header-text text-n-950 text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-5xl"
       >
         {caseStudySectionDetails.title}
       </p>
@@ -55,12 +52,10 @@ const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
               .map((caseStudyItem, filteredIndex) => (
                 <div class="case-study-card-item hidden">
                   <CaseStudyCard
-                    href={URLS.CASE_STUDIES.ITEM(
-                      caseStudyItem.name?.replaceAll(" ", "-").toLowerCase(),
-                    )}
+                    image={caseStudyItem.thumbnail}
+                    href={URLS.CASE_STUDIES.ITEM(caseStudyItem.slug)}
                     id={filteredIndex}
                     title={caseStudyItem.name}
-                    image={caseStudyItem.thumbnail}
                   />
                 </div>
               ))
@@ -80,6 +75,19 @@ const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
 <script>
   import { initLoadMore } from "@/scripts/load-more";
   import { animateCaseStudiesSection } from "@/scripts/case-study/case-study";
+  import { trackCaseStudyView } from "@/scripts/analytics";
+
+  // Single event listener for ALL cards (event delegation)
+  document.addEventListener("click", (e) => {
+    const card = (e.target as HTMLElement).closest(".case-study-card");
+    if (card) {
+      const caseStudyName = card.getAttribute("data-case-study-item");
+      if (caseStudyName) {
+        trackCaseStudyView(caseStudyName, "case-studies", "full_page");
+      }
+    }
+  });
+
   animateCaseStudiesSection();
 
   const CONFIG = {

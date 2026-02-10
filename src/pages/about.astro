@@ -1,5 +1,19 @@
 ---
-import Layout from "../layouts/Layout.astro";
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+import { pixoloIndustriesServedSchema } from "@/schemas/industries-served";
+import { pixoloPlaceSchema } from "@/schemas/place.schema";
+
+// DATA //
+import aboutMeta from "@/data/meta/about.json";
 ---
 
-<Layout />
+<Layout meta={aboutMeta}>
+  {/* Industries Served JSON-LD */}
+  <JsonLd slot="head" data={pixoloIndustriesServedSchema} />
+  {/* Place Schema JsonLd */}
+  <JsonLd slot="head" data={pixoloPlaceSchema} />
+</Layout>

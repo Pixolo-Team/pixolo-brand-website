@@ -6,19 +6,34 @@ import Tag from "@/components/portfolio/showcase/Tag.astro";
 
 // Define Props //
 interface Props {
+  id?: string;
   name: string;
   image: string;
   title: string;
   subTitle: string;
   description: string;
-  date: string;
+  date?: string;
   tagItems: string[];
   buttonOneText: string;
   buttonTwoText: string;
+  buttonOneClick?: string;
+  buttonTwoClick?: string;
 }
 
-const { name, image, title, subTitle, description, date, tagItems, buttonOneText, buttonTwoText } =
-  Astro.props as Props;
+const {
+  id = "",
+  name,
+  image,
+  title,
+  subTitle,
+  description,
+  date = "",
+  tagItems,
+  buttonOneText,
+  buttonTwoText,
+  buttonOneClick = "",
+  buttonTwoClick = "",
+} = Astro.props as Props;
 ---
 
 <!-- Project Card -->
@@ -28,21 +43,21 @@ const { name, image, title, subTitle, description, date, tagItems, buttonOneText
 >
   <!-- Project Card Image -->
   <div
-    class=`project-card-image w-full rounded-3xl overflow-hidden group-data-[view=list]:md:flex-1 group-data-[view=list]:md:h-full group-data-[view=list]:h-[238px] group-data-[view=grid]:h-[196px] group-data-[view=grid]:md:h-[224px] group-data-[view=grid]:lg:h-[394px]`
+    class=`project-card-image w-full rounded-3xl overflow-hidden group-data-[view=list]:md:flex-1 group-data-[view=list]:md:h-auto`
   >
     <Image
       src={image}
       alt={name}
       width={327}
       height={238}
-      class="h-full w-full object-cover"
+      class="h-full w-full object-contain"
       loading="lazy"
     />
   </div>
 
   <!-- Content -->
   <div
-    class="flex flex-1 flex-col justify-between gap-8 group-data-[view=grid]:px-1 group-data-[view=grid]:md:px-2 group-data-[view=list]:md:gap-20 lg:gap-12 group-data-[view=grid]:lg:px-4 group-data-[view=list]:lg:gap-36"
+    class="flex flex-1 flex-col justify-between gap-12 group-data-[view=grid]:px-1 group-data-[view=grid]:md:px-2 group-data-[view=grid]:lg:px-4"
   >
     <!-- Details Wrap -->
     <div
@@ -52,7 +67,7 @@ const { name, image, title, subTitle, description, date, tagItems, buttonOneText
       <div class="project-card-header flex flex-col gap-2 md:gap-3">
         <!-- Title -->
         <p class="text-n-950 text-2xl leading-tight font-normal md:text-3xl lg:text-4xl">
-          {title}
+          {name}
         </p>
 
         <!-- Tags -->
@@ -65,36 +80,34 @@ const { name, image, title, subTitle, description, date, tagItems, buttonOneText
       <div class="project-card-content flex flex-col gap-4 md:gap-6 lg:gap-7">
         <!-- SubTitle -->
         {
-          subTitle && (
+          title && (
             <p class="text-n-700 text-sm leading-tight font-medium md:text-base lg:text-lg">
-              {subTitle}
+              {title}
             </p>
           )
         }
 
         <!-- Description -->
         <p class="text-n-600 text-xs leading-tight font-normal md:text-sm lg:text-base">
-          {description}
+          {subTitle}
         </p>
 
-        <!-- Date -->
-        <p class="text-n-700 text-xs leading-tight font-normal md:text-sm">
-          {date}
-        </p>
+        {
+          date !== "" && (
+            // Date
+            <p class="text-n-700 text-xs leading-tight font-normal md:text-sm">{date}</p>
+          )
+        }
       </div>
     </div>
 
     <!-- Buttons -->
     <div class="project-card-buttons flex flex-row gap-3.5 group-data-[view=grid]:gap-4 md:gap-4">
       <!-- Primary Button -->
-      <RoundedButton buttonText={buttonOneText} onClick={"window.location.href='/404'"} />
+      <RoundedButton buttonText={buttonOneText} onClick={buttonOneClick} />
 
       <!-- Secondary Button -->
-      <RoundedButton
-        buttonText={buttonTwoText}
-        onClick={"window.location.href='/404'"}
-        variant="secondary"
-      />
+      <RoundedButton buttonText={buttonTwoText} onClick={buttonTwoClick} variant="secondary" />
     </div>
   </div>
 </div>

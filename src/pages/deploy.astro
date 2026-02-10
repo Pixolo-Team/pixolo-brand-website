@@ -1,0 +1,25 @@
+<button id="deploy-btn"> Deploy Website </button>
+
+<script>
+  const btn = document.getElementById("deploy-btn");
+
+  btn.addEventListener("click", async () => {
+    btn.disabled = true;
+    btn.innerText = "Deploying...";
+
+    try {
+      const res = await fetch("/api/deploy", { method: "POST" });
+      const data = await res.json();
+
+      if (!res.ok) throw data;
+
+      alert("Deployment started 🚀");
+    } catch (err) {
+      console.error(err);
+      alert("Deploy failed ❌");
+    } finally {
+      btn.disabled = false;
+      btn.innerText = "Deploy Website";
+    }
+  });
+</script>

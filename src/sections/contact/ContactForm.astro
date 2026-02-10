@@ -6,11 +6,16 @@ import ContactCard from "@/components/ContactCard.astro";
 import InputField from "@/components/ui/InputField.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 
+// IMAGES //
+import formErrorImage from "@/assets/images/contact/form-error.png";
+import formSuccessImage from "@/assets/images/contact/form-success.png";
+
 // SVG's //
 import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { contactSectionDetails, contactFormDetails } from "@/data/contact";
+import { Icon } from "astro-icon/components";
 ---
 
 <section id="contact-section" class="relative overflow-hidden">
@@ -65,7 +70,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
         }
 
         <!-- Location card -->
-        <div class="anim-fade-in-right w-full md:w-[440px] text-white [&_.text-n-950]:!text-white">
+        <div class="anim-fade-in-right text-n-950 w-full md:w-[440px]">
           <ContactCard
             icon={contactSectionDetails.location.icon}
             title={contactSectionDetails.location.title}
@@ -90,8 +95,10 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
         </div>
         <!-- Contact Form -->
         <form
-          class="form-fill flex w-full flex-col gap-11 xl:w-1/2 xl:flex-1 xl:gap-12"
+          class="form-fill relative flex w-full flex-col gap-11 xl:w-1/2 xl:flex-1 xl:gap-12"
           aria-label="Contact form"
+          novalidate
+          id="contact-form-section"
         >
           <div class="flex flex-col gap-14 lg:gap-16">
             <!-- Name Input field -->
@@ -100,6 +107,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
               id="name"
               type="text"
               required={true}
+              isError={false}
               placeholder="NAME"
               showPlaceholder={true}
               extraClasses="pb-6 md:pb-9 lg:pb-8 placeholder:text-xl placeholder:text-medium"
@@ -112,6 +120,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
               type="tel"
               required={true}
               placeholder="PHONE NUMBER"
+              isError={false}
               showPlaceholder={true}
               extraClasses="pb-6 md:pb-9 lg:pb-8"
             />
@@ -123,6 +132,7 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
               type="email"
               required={true}
               placeholder="E-MAIL"
+              isError={false}
               showPlaceholder={true}
               extraClasses="pb-6 md:pb-9 lg:pb-8"
             />
@@ -144,6 +154,77 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
             <!-- Rounded Button component -->
             <RoundedButton buttonText="Contact Us" type="submit" aria-label="Send message" />
           </div>
+
+          <!-- Success Result/Error Modal -->
+          <div
+            id="contact-result-modal"
+            class="absolute inset-0 z-50 hidden flex-col items-center justify-center bg-black/1 transition-all duration-300"
+          >
+            <div
+              class="bg-n-100 relative flex w-full max-w-[590px] flex-col items-center justify-center gap-20 overflow-hidden rounded-[32px] px-10 pt-20 pb-7 text-center"
+            >
+              <!-- Background Circle Gradient -->
+              <div
+                class="absolute top-[70%] left-1/2 hidden h-[578px] w-[578px] -translate-x-1/2 rounded-full"
+                style="background: linear-gradient(90deg, rgba(22, 125, 229, 0.36) 0%, rgba(95, 74, 200, 0.36) 92.31%); filter: blur(200px);"
+              >
+              </div>
+
+              <!-- Close button -->
+              <button
+                id="close-contact-result-modal"
+                class="text-n-700 absolute top-6 right-6 flex size-12 cursor-pointer items-center justify-center rounded-full hover:opacity-70"
+                type="button"
+              >
+                <Icon name="close" class="text-n-700" />
+              </button>
+
+              <!-- Success -->
+              <div data-state="success" class="flex hidden flex-col items-center gap-6 md:w-[85%]">
+                <!-- Success Image -->
+                <div class="size-20">
+                  <Image
+                    src={formSuccessImage}
+                    alt="Success"
+                    class="h-full w-full object-contain"
+                  />
+                </div>
+
+                <!-- Success message text -->
+                <div class="space-y-5">
+                  <p class="text-n-950 text-3xl font-bold">Message Delivered</p>
+                  <p class="text-n-700 text-base font-bold">
+                    We’ve received your details and will take it from here. Expect a response soon.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Error -->
+              <div data-state="error" class="flex hidden flex-col items-center gap-6 md:w-[85%]">
+                <!-- Error Image -->
+                <div class="size-20">
+                  <Image src={formErrorImage} alt="Error" class="h-full w-full object-contain" />
+                </div>
+
+                <!-- Error Message text -->
+                <div class="space-y-5">
+                  <p class="text-n-950 text-3xl font-bold">Something Went Wrong</p>
+                  <p class="text-n-700 text-base font-bold">
+                    Something didn’t go as planned. Please try again or reach out directly.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Progress bar -->
+              <div class="bg-n-500 h-[5px] w-full overflow-hidden rounded-2xl">
+                <div
+                  id="contact-result-progress-bar"
+                  class="h-full w-0 bg-gradient-to-r from-blue-500 to-[#8b77f3]"
+                >
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
     </div>
@@ -151,17 +232,15 @@ import { contactSectionDetails, contactFormDetails } from "@/data/contact";
 </section>
 
 <script>
-  import {
-    initializeFormValidation,
-    initializeCopyButtons,
-    initializeFormSubmission,
-  } from "@/scripts/contact/contact-form";
+  import { initializeFormSubmission } from "@/scripts/contact/contact-form";
   import { animateMarble } from "@/scripts/hero";
-  document.addEventListener("DOMContentLoaded", () => {
-    initializeFormValidation();
-    initializeCopyButtons();
-    initializeFormSubmission();
-    animateMarble("contact-big-marble", "contact-section");
-    animateMarble("contact-small-marble", "contact-section");
-  });
+  import { trackContactFormView } from "@/scripts/analytics";
+  import { initCopyButtons } from "@/scripts/contact-copy";
+
+  initializeFormSubmission();
+  animateMarble("contact-big-marble", "contact-section");
+  animateMarble("contact-small-marble", "contact-section");
+
+  trackContactFormView();
+  initCopyButtons();
 </script>

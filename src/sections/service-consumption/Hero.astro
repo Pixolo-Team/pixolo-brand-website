@@ -70,23 +70,6 @@ const { title, subTitle } = Astro.props;
     </div>
   </div>
 </section>
-<style>
-  .word-container {
-    display: inline-block;
-    opacity: 0;
-    transform: translateX(15%);
-    transition:
-      opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transition-delay: 0ms; /* This will be set by JS */
-  }
-
-  /* This class is added by JS to trigger the final state */
-  .word-container.is-visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-</style>
 
 <script>
   import { animateHeroTitle, animateMarble } from "@/scripts/hero.ts";
