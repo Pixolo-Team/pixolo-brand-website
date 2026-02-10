@@ -1,45 +1,21 @@
 ---
 // TYPES //
-import type { FaqApiCategory, FaqItemData, FaqTabItemData } from "@/types/faq";
+import type { FaqItemData, FaqTabItemData } from "@/types/faq";
 
 // COMPONENTS //
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import Tabs from "@/components/ui/Tabs.astro";
 import FaqItem from "@/components/FaqItem.astro";
 
-// API SERVICES //
-import { getFaqsRequest } from "@/services/api/faq.api";
-
 // DATA //
 import { faqSectionDetails } from "@/data/faq";
 
-// Fetch FAQs from API
-let faqs: FaqApiCategory[] = [];
-
-try {
-  faqs = await getFaqsRequest();
-} catch (error) {
-  console.error("Failed to load FAQs", error);
+interface Props {
+  tabs: FaqTabItemData[];
+  itemsByTab: Record<string, FaqItemData[]>;
 }
 
-/** Tabs from API categories  */
-const faqTabItems: FaqTabItemData[] = faqs.map((item, index) => ({
-  id: item.category,
-  name: item.category.replace(/^\w/, (c) => c.toUpperCase()),
-  isActive: index === 0,
-}));
-
-/** Converts the API FAQ array into an object where each key is a category name each value is an array of FAQ items belonging to that category */
-const faqItemsByTab: Record<string, FaqItemData[]> = faqs.reduce(
-  (faqItemsByCategory, categoryItem) => {
-    faqItemsByCategory[categoryItem.category] = categoryItem.faq_items.map((faq) => ({
-      question: faq.question,
-      answer: faq.answer,
-    }));
-    return faqItemsByCategory;
-  },
-  {} as Record<string, FaqItemData[]>,
-);
+const { tabs, itemsByTab } = Astro.props;
 ---
 
 <section id="faq-section" data-section="Faq">
@@ -57,14 +33,14 @@ const faqItemsByTab: Record<string, FaqItemData[]> = faqs.reduce(
 
     <!-- Tabs -->
     {
-      faqTabItems.length > 0 && (
-        <Tabs tabItems={faqTabItems}>
-          {faqTabItems.map((tabItem) => (
+      tabs.length > 0 && (
+        <Tabs tabItems={tabs}>
+          {tabs.map((tabItem) => (
             <div
               class="faq-list border-n-700 flex flex-col border-t"
               data-tab-content-id={tabItem.id}
             >
-              {(faqItemsByTab[tabItem.id] || []).map((faqItem, index) => (
+              {(itemsByTab[tabItem.id] || []).map((faqItem, index) => (
                 <FaqItem question={faqItem.question} answer={faqItem.answer} isOpen={index === 0} />
               ))}
             </div>

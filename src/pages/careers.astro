@@ -1,4 +1,7 @@
 ---
+// UTILS //
+import { getSiteUrl } from "@/utils/site-url";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 
@@ -11,7 +14,7 @@ import OpenPositions from "@/sections/career/OpenPositions.astro";
 import careerMeta from "@/data/meta/career.json";
 ---
 
-<Layout meta={careerMeta}>
+<Layout meta={{ ...careerMeta, image: `${getSiteUrl()}/images/og/career.jpg` }}>
   <Hero />
   <TechStack />
   <OpenPositions />

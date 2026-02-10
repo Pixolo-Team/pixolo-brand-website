@@ -63,6 +63,9 @@ export const initLoader = () => {
   function hideLoader() {
     if (!pageLoaded || !minTimePassed) return;
 
+    // Set loader shown in session storage
+    sessionStorage.setItem("loaderShown", "true");
+
     /** Hide loader text */
     loader.classList.add("hide-text");
 

@@ -7,19 +7,27 @@ export function getStaticPaths() {
   ];
 }
 
+// COMPONENTS //
+import ProjectSnapshot from "@/components/ProjectSnapshot.astro";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
 import Hero from "@/sections/project-consumption/Hero.astro";
-import Video from "@/sections/portfolio/Video.astro";
+import Video from "@/sections/project-consumption/Video.astro";
 import ProjectIntroduction from "@/sections/project-consumption/ProjectIntroduction.astro";
 import Impact from "@/sections/project-consumption/Impact.astro";
+import Teams from "@/sections/project-consumption/Teams.astro";
+import ClientTestimonial from "@/sections/project-consumption/ClientTestimonial.astro";
 ---
 
 <Layout>
   <Hero />
   <Video />
   <ProjectIntroduction />
+  <ProjectSnapshot />
   <Impact />
+  <Teams />
+  <ClientTestimonial />
 </Layout>

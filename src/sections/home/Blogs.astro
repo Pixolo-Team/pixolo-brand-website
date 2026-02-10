@@ -63,7 +63,7 @@ const homeBlogs = blogsList.filter((blog: { show_in_home: string }) => blog.show
                   date={formattedDate(blogItem.date)}
                   title={blogItem.title}
                   author={blogItem.author}
-                  href={URLS.BLOGS.ITEM(blogItem.title.replaceAll(" ", "-").toLowerCase())}
+                  href={URLS.BLOGS.ITEM(blogItem.slug)}
                 />
               </div>
             ))}

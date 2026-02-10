@@ -1,0 +1,90 @@
+---
+// DATA //
+import { snapshotDetails } from "@/data/portfolio-consumption/snapshot";
+
+// COMPONENTS //
+import SnapshotCard from "@/components/project-consumption/SnapshotCard.astro";
+import SnapshotList from "@/components/project-consumption/SnapshotList.astro";
+import { Icon } from "astro-icon/components";
+
+interface props {
+  client: string;
+  services: string[];
+  platforms: string[];
+  timeline: string;
+  industry: string;
+  techStack: string[];
+}
+
+const data = snapshotDetails;
+const { client, services, platforms, timeline, industry, techStack } = data as props;
+---
+
+<!-- Project Snapshot Section -->
+<section id="project-snapshot-section">
+  <!-- Container  -->
+  <div
+    class="container mx-auto flex flex-col gap-8 px-6 py-16 md:gap-11 md:py-20 lg:gap-14 lg:py-24"
+  >
+    <!-- Title  -->
+    <h2 class="title-text text-n-950 text-center text-3xl leading-tight -tracking-[2%] md:text-5xl">
+      A Detailed Glimpse Into the Project Journey
+    </h2>
+
+    <!-- Snapshot Cards  -->
+    <div class="flex flex-col gap-1.5 md:gap-4">
+      <!-- First Row -->
+      <div class="flex flex-col gap-1.5 md:gap-3.5 lg:gap-4 xl:flex-row">
+        <!-- Client Card -->
+        <SnapshotCard label="Client" variant="dark" className="md:gap-10 xl:w-1/3">
+          <p class="text-xl md:text-4xl lg:text-5xl">{client}</p>
+        </SnapshotCard>
+
+        <!-- Services & Platforms Cards -->
+        <div class="flex flex-1 gap-1.5 md:gap-3.5">
+          <SnapshotCard label="Services" className="w-full">
+            <SnapshotList items={services} />
+          </SnapshotCard>
+
+          <SnapshotCard label="Platforms" className="w-full">
+            <SnapshotList items={platforms} />
+          </SnapshotCard>
+        </div>
+      </div>
+
+      <!-- Second Row -->
+      <div class="flex flex-col gap-1.5 md:gap-3.5 lg:flex-row lg:gap-4">
+        <!-- Timeline & Industry Cards -->
+        <div class="flex flex-1 gap-1.5 md:gap-3.5">
+          <SnapshotCard label="Timeline" className="w-full flex-1">
+            <p class="text-sm md:text-3xl lg:text-4xl">{timeline}</p>
+          </SnapshotCard>
+
+          <SnapshotCard label="Industry" className="w-full flex-1">
+            <p class="text-sm md:text-3xl lg:text-4xl">{industry}</p>
+          </SnapshotCard>
+        </div>
+
+        <!-- Tech Stack Card -->
+        <SnapshotCard label="Tech Stack" className="w-full flex-1">
+          <div class="scrollbar-hide flex gap-3 overflow-x-auto md:gap-7">
+            {
+              techStack?.map((img) => (
+                <Icon
+                  name={img}
+                  class="tech-stack-icon size-5 shrink-0 md:size-7 lg:size-10 xl:size-12 2xl:size-14"
+                />
+              ))
+            }
+          </div>
+        </SnapshotCard>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animateSnapshotSection } from "@/scripts/portfolio-consumption/snapshot";
+
+  animateSnapshotSection();
+</script>

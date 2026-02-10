@@ -1,119 +1,68 @@
 ---
 // COMPONENTS //
 import ToolBadge from "@/components/ui/ToolBadge.astro";
-import { Image } from "astro:assets";
-
-interface props {
-  badgeTitle: string;
-  title: string;
-  description: string;
-  thumbnail: string;
-  websiteLink: string;
-  name: string;
-}
-
-const {
-  badgeTitle = "",
-  title = "",
-  description = "",
-  thumbnail = "",
-  websiteLink = "",
-  name,
-} = Astro.props as props;
+import { Icon } from "astro-icon/components";
 ---
 
-<!-- Case Study Consumption Hero Section -->
-<section id="case-study-consumption-hero">
+<!-- Case Study Hero Section -->
+<section id="case-study-hero-section" class="relative overflow-hidden">
   <!-- Container -->
   <div
-    class="hero-padding-top container mx-auto flex flex-col items-center justify-start gap-8 px-6 pb-18 md:gap-14 md:pt-20 md:pb-16 lg:gap-16 lg:pb-24"
+    class="container mx-auto flex flex-col justify-center gap-7 px-6 pt-24 pb-12 md:pt-52 lg:pt-40 xl:gap-8 2xl:pt-56"
   >
-    <div class="flex flex-col items-center justify-start gap-6 md:gap-6 lg:gap-7">
-      {
-        badgeTitle !== "" && (
-          // ToolBadge
-          <div class="tool-badge">
-            <ToolBadge icon={"building"} text={badgeTitle} />
-          </div>
-        )
-      }
-
-      {
-        title !== "" && (
-          // Main Heading Content
-          <div class="header-text flex flex-col items-center justify-center gap-4 md:gap-4 lg:gap-5">
-            <div class="flex items-center justify-center gap-5 md:gap-7 lg:gap-8">
-              {/* Client Name */}
-              <p class="text-n-950 text-center text-3xl leading-tight font-medium md:text-5xl lg:text-6xl">
-                {title}
-              </p>
-            </div>
-
-            {/* Description */}
-            {description !== "" && (
-              <p class="text-n-950 text-center leading-tight md:text-2xl lg:text-3xl xl:w-[80%]">
-                {description}
-              </p>
-            )}
-          </div>
-        )
-      }
+    <!-- Tool Badge Component -->
+    <div class="tool-badge">
+      <ToolBadge icon="notebook" text="Case Studies" />
     </div>
 
-    {
-      thumbnail && (
-        // Main Image Container
-        <div class="relative w-full" id="main-image-container">
-          <div class="hero-thumbnail h-[148px] overflow-hidden rounded-3xl md:h-[310px] md:rounded-4xl lg:h-[420px] lg:rounded-[60px] xl:h-[620px]">
-            {websiteLink !== "" ? (
-              // Clickable Thumbnail Image
-              <a href={websiteLink} target="_blank" rel="noopener noreferrer">
-                <Image
-                  src={thumbnail}
-                  alt={name}
-                  width={1536}
-                  height={616}
-                  class="h-full w-full object-cover"
-                  id="main-image"
-                  referrerpolicy="no-referrer"
-                />
-              </a>
-            ) : (
-              <Image
-                src={thumbnail}
-                alt={name}
-                width={1536}
-                height={616}
-                class="h-full w-full object-cover"
-                id="main-image"
-              />
-            )}
-          </div>
+    <div class="flex flex-col items-start justify-between gap-28 md:gap-36 lg:gap-24 xl:gap-40">
+      <!-- Title -->
+      <h1
+        id="header-text"
+        class="text-n-950 text-3xl leading-tight font-medium -tracking-[1%] md:w-[80%] md:text-5xl lg:text-7xl xl:w-[65%]"
+      >
+        Turning Vision into Digital Reality
+      </h1>
 
-          {websiteLink !== "" && (
-            // Visit Website show on Hover
-            <div
-              id="custom-cursor"
-              class="bg-n-50 pointer-events-none absolute z-50 hidden -translate-x-1/2 items-center justify-center rounded-3xl p-2 md:p-2.5"
-            >
-              <a
-                href={websiteLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-n-950 text-center text-xs leading-tight whitespace-nowrap md:text-sm lg:text-base"
-              >
-                Vist Website
-              </a>
-            </div>
-          )}
-        </div>
-      )
-    }
+      <div class="flex flex-col gap-3">
+        <p class="text-n-950 text-sm font-light md:text-lg">Continue scrolling to read</p>
+
+        <!-- Scroll down icon -->
+        <Icon name="scroll-down" class="scroll-down-icon text-n-950 w-[11px]" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Image -->
+  <div
+    class="graph-logo absolute -right-[5px] bottom-[20%] -z-2 sm:bottom-0 lg:right-0 lg:bottom-[10%] xl:right-0 xl:bottom-[5%] 2xl:-right-[1%] 2xl:bottom-[0%]"
+  >
+    <Icon
+      name="graph"
+      class="floating-icon text-n-200 size-44 md:size-96 lg:size-80 xl:size-96 2xl:size-[480px]"
+    />
   </div>
 </section>
-<script>
-  import { animateCaseStudyConsumptionHero, animateHeroImageLink } from "@/scripts/case-studies";
+<style>
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(10px);
+      opacity: 1;
+    }
+  }
 
-  animateCaseStudyConsumptionHero();
-  animateHeroImageLink();
+  .scroll-down-icon {
+    animation: bounce 1.8s ease-in-out infinite;
+  }
+</style>
+<script>
+  // OTHERS //
+  import { animateCaseStudyHeroSection } from "@/scripts/case-study/hero";
+
+  animateCaseStudyHeroSection();
 </script>

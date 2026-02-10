@@ -32,10 +32,10 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
 const isCuratedView = clientSpecificPortfolios.length > 0;
 
 // Filtering the portfolio items
-const filteredPortfolioItems = isCuratedView
+const filteredPortfolioItems: PortfolioData[] = isCuratedView
   ? clientSpecificPortfolios
       .map((id) => portfolioItems.find((item) => Number(item.id) === id))
-      .filter(Boolean)
+      .filter((item): item is PortfolioData => Boolean(item))
   : portfolioItems;
 ---
 
@@ -119,7 +119,7 @@ const filteredPortfolioItems = isCuratedView
                   tagItems={projectCardItem.badges}
                   buttonOneText={"Visit Website"}
                   buttonTwoText={"Show Project"}
-                  buttonOneClick={""}
+                  buttonOneClick={`window.location.href='${projectCardItem.website_link}'`}
                   buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCardItem.title)}'`}
                 />
               );
@@ -164,7 +164,7 @@ const filteredPortfolioItems = isCuratedView
                             }
                             btnOneText={"Visit Website"}
                             btnTwoText={"Show Project"}
-                            buttonOneClick={""}
+                            buttonOneClick={`window.location.href='${cardItem.website_link}'`}
                             buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(cardItem.title)}'`}
                           />
                         </div>
