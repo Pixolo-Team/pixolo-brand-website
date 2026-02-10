@@ -1,0 +1,28 @@
+---
+interface Props {
+  label: string;
+  variant?: "dark" | "light";
+  className?: string;
+}
+
+const { label, variant = "light", className = "" } = Astro.props;
+---
+
+<!-- Snapshot Card Component -->
+<div
+  class={`${className} flex flex-col gap-5 justify-between rounded-2xl p-3 md:gap-8  md:px-9 md:py-4 lg:rounded-3xl ${
+    variant === "dark" ? "bg-n-950" : "bg-n-100"
+  }`}
+>
+  <!-- Label  -->
+  <p
+    class={`text-sm leading-tight md:text-base ${variant === "dark" ? "text-n-300" : "text-n-600"}`}
+  >
+    {label}
+  </p>
+
+  <!-- Children -->
+  <div class={`text-normal leading-tight ${variant === "dark" ? "text-n-50" : "text-n-950"}`}>
+    <slot />
+  </div>
+</div>

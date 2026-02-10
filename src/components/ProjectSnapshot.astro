@@ -1,86 +1,77 @@
 ---
 // DATA //
-import { snapshotData } from "@/data/snapshot";
+import { snapshotDetails } from "@/data/portfolio-consumption/snapshot";
 
-interface ProjectSnapshotData {
-  client?: string;
-  services?: string[];
-  platforms?: string[];
-  timeline?: string;
-  industry?: string;
-  techStack?: string[];
+// COMPONENTS //
+import SnapshotCard from "@/components/project-consumption/SnapshotCard.astro";
+import SnapshotList from "@/components/project-consumption/SnapshotList.astro";
+import { Icon } from "astro-icon/components";
+
+interface props {
+  client: string;
+  services: string[];
+  platforms: string[];
+  timeline: string;
+  industry: string;
+  techStack: string[];
 }
 
-const data = snapshotData as ProjectSnapshotData;
-
-const { client, services, platforms, timeline, industry, techStack } = data;
+const data = snapshotDetails;
+const { client, services, platforms, timeline, industry, techStack } = data as props;
 ---
 
 <section>
   <div class="flex flex-col gap-8 px-6 py-16 md:gap-11 md:py-20 lg:gap-14 lg:py-24">
-    <h2 class="text-n-950 text-center text-3xl md:text-5xl">
+    <h2 class="text-n-950 text-center text-3xl leading-tight -tracking-[2%] md:text-5xl">
       A Detailed Glimpse Into the Project Journey
     </h2>
 
     <div class="flex flex-col gap-1.5 md:gap-4">
-      <div class="flex flex-col gap-1.5 md:gap-3.5 lg:flex-row lg:gap-4">
-        <div
-          class="bg-n-950 flex flex-1 flex-col gap-7 rounded-2xl p-3 md:px-9 md:py-4 lg:w-1/3 lg:justify-between lg:rounded-3xl"
-        >
-          <p class="text-n-300 text-sm leading-tight md:text-base">Client</p>
-          <p class="text-n-50 text-xl md:text-4xl lg:text-5xl">{client}</p>
-        </div>
+      <!-- First Row -->
+      <div class="flex flex-col gap-1.5 md:gap-3.5 lg:gap-4 xl:flex-row">
+        <!-- Client Card -->
+        <SnapshotCard label="Client" variant="dark" className="md:gap-10 xl:w-1/3">
+          <p class="text-xl md:text-4xl lg:text-5xl">{client}</p>
+        </SnapshotCard>
 
-        <div class="flex flex-1 flex-row gap-1.5 md:gap-3.5">
-          <div
-            class="bg-n-100 flex w-full flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:justify-between lg:rounded-3xl"
-          >
-            <p class="text-n-600 text-sm leading-tight md:text-base">Services</p>
-            <div class="text-n-950 gap-1 text-xs leading-tight md:gap-2 md:text-xl lg:text-2xl">
-              {services?.map((service) => <p>{service}</p>)}
-            </div>
-          </div>
+        <!-- Services & Platforms Cards -->
+        <div class="flex flex-1 gap-1.5 md:gap-3.5">
+          <SnapshotCard label="Services" className="w-full">
+            <SnapshotList items={services} />
+          </SnapshotCard>
 
-          <div
-            class="bg-n-100 flex w-full flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:justify-between lg:rounded-3xl"
-          >
-            <p class="text-n-600 text-sm leading-tight md:text-base">Platforms</p>
-            <div
-              class="text-n-950 flex flex-col gap-1 text-xs leading-tight md:gap-2 md:text-xl lg:text-2xl"
-            >
-              {platforms?.map((platform) => <p>{platform}</p>)}
-            </div>
-          </div>
+          <SnapshotCard label="Platforms" className="w-full">
+            <SnapshotList items={platforms} />
+          </SnapshotCard>
         </div>
       </div>
-      <div class="flex flex-col gap-1.5 md:gap-3.5 lg:flex-row lg:gap-4">
-        <div class="flex flex-1 flex-row gap-1.5 md:gap-3.5 lg:flex-[1]">
-          <div
-            class="bg-n-100 lg:justify-space-between flex flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-3xl"
-          >
-            <p class="text-n-600 text-sm leading-tight md:text-base">Timeline</p>
-            <p class="text-sm md:text-3xl lg:text-4xl">{timeline}</p>
-          </div>
 
-          <div
-            class="bg-n-100 lg:justify-space-between flex flex-1 flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:rounded-3xl"
-          >
-            <p class="text-n-600 text-sm leading-tight md:text-base">Industry</p>
+      <!-- Second Row -->
+      <div class="flex flex-col gap-1.5 md:gap-3.5 lg:flex-row lg:gap-4">
+        <!-- Timeline & Industry Cards -->
+        <div class="flex flex-1 gap-1.5 md:gap-3.5">
+          <SnapshotCard label="Timeline" className="w-full flex-1">
+            <p class="text-sm md:text-3xl lg:text-4xl">{timeline}</p>
+          </SnapshotCard>
+
+          <SnapshotCard label="Industry" className="w-full flex-1">
             <p class="text-sm md:text-3xl lg:text-4xl">{industry}</p>
-          </div>
+          </SnapshotCard>
         </div>
-        <div
-          class="bg-n-100 lg:justify-space-between flex flex-col gap-5 rounded-2xl p-3 md:gap-8 md:px-9 md:py-4 lg:flex-[1] lg:rounded-3xl"
-        >
-          <p class="text-n-600 text-sm leading-tight md:text-base">Tech Stack</p>
-          <div class="scrollbar-hide flex gap-3 overflow-x-auto">
+
+        <!-- Tech Stack Card -->
+        <SnapshotCard label="Tech Stack" className="w-full flex-1">
+          <div class="scrollbar-hide flex gap-3 overflow-x-auto md:gap-7">
             {
               techStack?.map((img) => (
-                <img src={img} alt="Tech Stack" class="h-8 shrink-0 md:h-12 lg:h-14" />
+                <Icon
+                  name={img}
+                  class="size-5 shrink-0 md:size-7 lg:size-10 xl:size-12 2xl:size-14"
+                />
               ))
             }
           </div>
-        </div>
+        </SnapshotCard>
       </div>
     </div>
   </div>
