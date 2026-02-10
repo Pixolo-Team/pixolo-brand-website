@@ -16,8 +16,8 @@ interface props {
   techStack: string[];
 }
 
-const data = snapshotDetails;
-const { client, services, platforms, timeline, industry, techStack } = data as props;
+const { client, services, platforms, timeline, industry, techStack } = Astro.props as props;
+console.log(techStack);
 ---
 
 <!-- Project Snapshot Section -->

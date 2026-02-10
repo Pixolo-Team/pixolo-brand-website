@@ -5,7 +5,13 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
 import TeamImageCard from "@/components/project-consumption/TeamImageCard.astro";
 
 // DATA //
-import { teamsSectionDetails } from "@/data/portfolio-consumption/teams";
+import type { PortfolioTeamItem } from "@/types/portfolio";
+
+interface props {
+  teams: PortfolioTeamItem[];
+}
+
+const { teams } = Astro.props as props;
 ---
 
 <!-- Portfolio Teams Section -->
@@ -30,11 +36,11 @@ import { teamsSectionDetails } from "@/data/portfolio-consumption/teams";
       <div id="teams-slider" class="embla__viewport overflow-hidden">
         <div class="embla__container flex gap-4 lg:gap-5">
           {
-            teamsSectionDetails.map((teamMemberItem) => (
+            teams.map((teamMemberItem) => (
               <div class="embla__slide team-member-card flex w-full max-w-[230px] shrink-0 lg:max-w-[250px] xl:max-w-[300px]">
                 {/* Team Image Card Component */}
                 <TeamImageCard
-                  image={teamMemberItem.image}
+                  image={teamMemberItem.video_url}
                   name={teamMemberItem.name}
                   role={teamMemberItem.role}
                 />
