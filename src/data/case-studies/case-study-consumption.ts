@@ -127,6 +127,28 @@ export const aboutClient = {
   },
 };
 
+// Gallery Section Details
+export const gallerySectionDetails = {
+  badgeIcon: "package",
+  badgeText: "Visual Highlights",
+  sectionTitle: "Our Journey, Captured In Powerful Frames",
+
+  galleryImages: [
+    {
+      imagePath: "/images/case-studies/case-study-consumption/gallery-default-image.jpg",
+      alt: "Pixolo Client Gallery Image 1",
+    },
+    {
+      imagePath: "/images/case-studies/case-study-consumption/gallery-default-image.jpg",
+      alt: "Pixolo Client Gallery Image 2",
+    },
+    {
+      imagePath: "/images/case-studies/case-study-consumption/gallery-default-image.jpg",
+      alt: "Pixolo Client Gallery Image 3",
+    },
+  ],
+};
+
 // Client Testimonial Details
 export const clientTestimonialDetails = {
   badgeIcon: "package",
@@ -143,23 +165,23 @@ export const toolsUsedDetails = {
   headerText: "The project relied on key tools to deliver effective results",
   toolItems: [
     {
-      logo: "/images/case-studies/1/tool-logo.png",
+      logo: "/images/case-study/1/tool-logo.png",
       title: "Figma",
       description: "We used Figma to design and prototype the project efficiently.",
     },
     {
-      logo: "/images/case-studies/1/tool-logo.png",
+      logo: "/images/case-study/1/tool-logo.png",
       title: "Sketch",
       description:
         "Sketch allowed us to create vector graphics and collaborate with the team seamlessly",
     },
     {
-      logo: "/images/case-studies/1/tool-logo.png",
+      logo: "/images/case-study/1/tool-logo.png",
       title: "Adobe XD",
       description: "Adobe XD provided powerful tools for interactive prototypes and user testing",
     },
     {
-      logo: "/images/case-studies/1/tool-logo.png",
+      logo: "/images/case-study/1/tool-logo.png",
       title: "InVision",
       description:
         "InVision facilitated our design handoff and feedback processes, enhancing communication.",

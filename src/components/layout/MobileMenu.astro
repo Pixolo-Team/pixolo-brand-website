@@ -20,8 +20,10 @@ const currentPath = Astro.url.pathname;
   id="mobile-menu"
   class="fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300 ease-in-out lg:hidden"
   aria-hidden="true"
+  role="navigation"
+  aria-label="Mobile navigation menu"
 >
-  <div class="container mx-auto flex h-full flex-col justify-between px-6 py-6">
+  <div class="container mx-auto flex h-full w-full flex-col justify-between px-6 py-6">
     <!-- Logo + Close Button -->
     <div class="z-10 flex items-center justify-between">
       <a href="/">
@@ -31,11 +33,11 @@ const currentPath = Astro.url.pathname;
       <!-- Close button -->
       <button
         id="mobile-menu-close"
-        class="bg-n-100 flex size-10 items-center justify-center rounded-full"
+        class="bg-n-100 flex size-10 cursor-pointer items-center justify-center rounded-full"
         aria-label="Close mobile menu"
         type="button"
       >
-        <Icon name="close" />
+        <Icon name="close" class="text-n-950" />
       </button>
     </div>
 
@@ -43,7 +45,11 @@ const currentPath = Astro.url.pathname;
     <div class="z-10 flex flex-1 flex-col gap-6 pt-28 leading-tight">
       {
         menuItems.map((menuItems) => {
-          const isActive = currentPath === menuItems.url;
+          const isActive =
+            menuItems.url === "/"
+              ? currentPath === menuItems.url
+              : currentPath.startsWith(menuItems.url);
+
           return (
             <a
               href={menuItems.url}
@@ -60,10 +66,10 @@ const currentPath = Astro.url.pathname;
 
     <!-- Bottom Buttons -->
     <div class="z-10 flex flex-row justify-center gap-2.5">
-      <a href={siteInfo.contact.phone[0].link}>
+      <a id="call-button" href={siteInfo.contact.phone[0].link}>
         <RoundedButton buttonText="Call" variant="secondary" />
       </a>
-      <a href={`https://wa.me/${siteInfo.contact.phone[0].value}`}>
+      <a id="whatsapp-button" href={`https://wa.me/${siteInfo.contact.phone[0].value}`}>
         <RoundedButton buttonText="Whatsapp" variant="secondary" />
       </a>
     </div>
@@ -79,7 +85,7 @@ const currentPath = Astro.url.pathname;
 
   <!-- Circle at back of the links -->
   <div
-    class="back-circle-anim bg-n-800 absolute top-[10%] left-[-80%] size-[500px] rounded-full opacity-5 transition-all"
+    class="back-circle-anim bg-n-800 absolute top-[10%] left-[-80%] size-[500px] rounded-full transition-all"
   >
   </div>
 </div>
@@ -107,7 +113,7 @@ const currentPath = Astro.url.pathname;
 
   /* When menu becomes visible */
   #mobile-menu.menu-open::before {
-    transform: scale(26);
+    transform: scale(30);
   }
   .nav-link.hidden-pos {
     opacity: 0;
@@ -155,7 +161,16 @@ const currentPath = Astro.url.pathname;
     }
   }
   .back-circle-anim {
-    transition: all;
+    opacity: 0;
+    transition:
+      opacity 0.9s ease,
+      transform 0.9s ease;
+    will-change: opacity, transform;
+    animation: float-circle 5s ease-in-out infinite alternate;
+  }
+
+  #mobile-menu.menu-open .back-circle-anim {
+    opacity: 0.05;
     animation: float-circle 5s ease-in-out infinite alternate;
   }
 
@@ -170,11 +185,25 @@ const currentPath = Astro.url.pathname;
   }
 
   .pixolo-logo-anim {
+    opacity: 0;
+    transition:
+      opacity 0.9s ease,
+      transform 0.9s ease;
+    will-change: opacity, transform;
     animation: circular-float 50s linear infinite;
+  }
+
+  #mobile-menu.menu-open .pixolo-logo-anim {
+    opacity: 1;
+    transition-delay: 0.35s;
   }
 </style>
 <script>
   import { menuOpenCloseAnimation, animateMenu } from "@/scripts/menu";
+  import { setupClickTracking, trackWhatsappClick, trackCallClick } from "@/scripts/analytics";
+
+  setupClickTracking("whatsapp-button", () => trackWhatsappClick("mob-menu"));
+  setupClickTracking("call-button", () => trackCallClick("mob-menu"));
 
   /** Menu open close animation  */
   menuOpenCloseAnimation();

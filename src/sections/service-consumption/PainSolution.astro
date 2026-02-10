@@ -5,13 +5,14 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 
 // DATA //
 import { painSolutionSectionDetails } from "@/data/service-consumption/pain-solution.ts";
+const { painSolutionCardItems } = Astro.props;
 ---
 
 <!-- Pain Solution Section -->
 <section id="pain-solution-section">
   <!-- Container -->
   <div
-    class="container mx-auto flex w-full flex-col gap-10 px-6 py-20 md:gap-12 md:px-3 md:py-24 lg:gap-14 lg:py-28"
+    class="container mx-auto flex w-full flex-col gap-10 px-6 py-18 md:gap-12 md:px-3 md:py-22 lg:gap-14 lg:py-24"
   >
     <!-- Header -->
     <div class="flex flex-col items-center gap-3.5 md:gap-5">
@@ -30,7 +31,7 @@ import { painSolutionSectionDetails } from "@/data/service-consumption/pain-solu
     <!-- Cards wrap -->
     <div class="pain-solution-cards flex w-full flex-col gap-5">
       {
-        painSolutionSectionDetails.painSolutionCardItems.map((painSolutionCardItem) => (
+        painSolutionCardItems.map((painSolutionCardItem: any) => (
           <PainSolutionCard
             problem={painSolutionCardItem.problem}
             solution={painSolutionCardItem.solution}

@@ -1,0 +1,81 @@
+---
+import type { LeadStatus } from "@/types/leads";
+interface Props {
+  leadId: string;
+  currentStatus: LeadStatus;
+}
+const { leadId, currentStatus } = Astro.props;
+const statuses: LeadStatus[] = ["Stale", "Connected", "Did not respond"];
+const statusColors: Record<LeadStatus, string> = {
+  Stale: "#f59e0b",
+  Connected: "#10b981",
+  "Did not respond": "#ef4444",
+};
+---
+
+<select
+  class="status-select"
+  data-lead-id={leadId}
+  style={`border-color: ${statusColors[currentStatus]};`}
+>
+  {
+    statuses.map((status) => (
+      <option value={status} selected={status === currentStatus}>
+        {status}
+      </option>
+    ))
+  }
+</select>
+<style>
+  .status-select {
+    padding: 0.375rem 0.75rem;
+    border: 2px solid;
+    border-radius: 0.375rem;
+    font-size: 0.813rem;
+    font-weight: 500;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    min-width: 140px;
+  }
+  .status-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+  .status-select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+</style>
+<script>
+  import { supabase } from "@/services/supabase";
+  import type { LeadStatus } from "@/types/leads";
+  const statusColors: Record<LeadStatus, string> = {
+    Stale: "#f59e0b",
+    Connected: "#10b981",
+    "Did not respond": "#ef4444",
+  };
+  document.querySelectorAll(".status-select").forEach((select) => {
+    select.addEventListener("change", async (e) => {
+      const target = e.target as HTMLSelectElement;
+      const leadId = target.dataset.leadId;
+      const newStatus = target.value as LeadStatus;
+      if (!leadId) return;
+      // Disable select while updating
+      target.disabled = true;
+      const { error } = await supabase.from("leads").update({ status: newStatus }).eq("id", leadId);
+      if (error) {
+        alert("Failed to update status: " + error.message);
+        // Revert to previous value
+        target.value = target.dataset.previousValue || "Stale";
+      } else {
+        // Update border color
+        target.style.borderColor = statusColors[newStatus];
+        target.dataset.previousValue = newStatus;
+      }
+      target.disabled = false;
+    });
+    // Store initial value
+    (select as HTMLSelectElement).dataset.previousValue = (select as HTMLSelectElement).value;
+  });
+</script>

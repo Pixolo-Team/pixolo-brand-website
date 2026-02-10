@@ -1,6 +1,5 @@
 // OTHERS //
 import EmblaCarousel from "embla-carousel";
-import { initSlider } from "@/scripts/portfolio-consumption/slider";
 
 /**
  * Initializes the industry slider carousel controls on the page.
@@ -31,12 +30,5 @@ export function initIndustrySlider() {
   // Scroll to previous slide on prev button click
   prevBtn.addEventListener("click", () => {
     embla.scrollPrev();
-  });
-  // Alternatively, use the generic initSlider function
-  initSlider({
-    sliderId: "industry-slider",
-    prevId: "slide-prev",
-    nextId: "slide-next",
-    loop: false,
   });
 }

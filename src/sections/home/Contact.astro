@@ -8,7 +8,7 @@ import Tooltip from "@/components/ui/Tooltip.astro";
 import { contactSectionDetails } from "@/data/contact";
 ---
 
-<section>
+<section id="contact-section" data-section="Contact">
   <div
     class="container mx-auto flex flex-col gap-11 px-6 py-16 md:gap-16 md:px-0 md:py-24 lg:gap-20 lg:px-6 lg:py-28"
   >
@@ -20,7 +20,7 @@ import { contactSectionDetails } from "@/data/contact";
       <!-- Header Content -->
       <div class="anim-fade-up-slow flex flex-col gap-3 text-center lg:gap-4">
         <!-- Heading -->
-        <p class="text-n-950 text-3xl font-medium md:text-5xl lg:text-7xl">
+        <p class="text-n-950 text-3xl font-medium md:text-5xl">
           {contactSectionDetails.heading}
         </p>
         <!-- Subheading -->
@@ -37,13 +37,14 @@ import { contactSectionDetails } from "@/data/contact";
           contactSectionDetails.contactCards.map((contactSectionItem) => (
             // Contact Card
             <a
+              id={contactSectionItem.id}
               href={contactSectionItem.link}
               class="hover:bg-n-200 bg-n-100 flex w-full cursor-pointer items-end justify-between gap-5 rounded-4xl px-6 py-5"
             >
               <div class="flex max-w-[80%] items-center gap-5">
                 {/* Icon wrapper */}
-                <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-(--blue-500) to-[#8B77F3] sm:size-16 lg:size-[74px]">
-                  <Icon name={contactSectionItem.icon} class="size-5 sm:size-6" />
+                <div class="flex size-11 items-center justify-center rounded-full bg-linear-to-r from-blue-500 to-[#8B77F3] sm:size-16 lg:size-[74px]">
+                  <Icon name={contactSectionItem.icon} class="text-n-50 size-5 sm:size-6" />
                 </div>
 
                 {/* Contact info */}
@@ -67,8 +68,8 @@ import { contactSectionDetails } from "@/data/contact";
                   class="copy-btn relative flex size-5 cursor-pointer items-center justify-center"
                   data-copy={contactSectionItem.value}
                 >
-                  <Icon name="copy" class="icon-copy size-5" />
-                  <Icon name="check" class="icon-check hidden size-5" />
+                  <Icon name="copy" class="text-n-950 icon-copy size-5 hover:text-blue-500" />
+                  <Icon name="check" class="text-n-950 icon-check hidden size-5" />
                 </span>
               </Tooltip>
             </a>
@@ -87,9 +88,12 @@ import { contactSectionDetails } from "@/data/contact";
           <div class="flex flex-col gap-2.5">
             <!-- Icon wrapper -->
             <div
-              class="flex size-11 items-center justify-center rounded-full bg-gradient-to-r from-[#4254D4] to-[#8B77F3] sm:size-16 lg:size-[74px]"
+              class="flex size-11 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-[#8B77F3] sm:size-16 lg:size-[74px]"
             >
-              <Icon name={contactSectionDetails.location.icon} class="size-5 sm:size-6 lg:size-7" />
+              <Icon
+                name={contactSectionDetails.location.icon}
+                class="text-n-950 size-5 sm:size-6 lg:size-7"
+              />
             </div>
 
             <!-- Location content -->
@@ -105,10 +109,10 @@ import { contactSectionDetails } from "@/data/contact";
 
           <!-- Address with right arrow icon -->
           <div class="flex items-center gap-5">
-            <p class="text-xs font-semibold md:text-sm lg:text-base">
+            <p class="text-n-950 text-xs font-semibold md:text-sm lg:text-base">
               {contactSectionDetails.location.address}
             </p>
-            <Icon name="right-arrow" class={"size-5"} />
+            <Icon name="right-arrow" class="text-n-950 size-5" />
           </div>
         </div>
 
@@ -136,6 +140,9 @@ import { contactSectionDetails } from "@/data/contact";
 
 <script>
   import { initCopyButtons } from "@/scripts/contact-copy";
+  import { setupClickTracking, trackCallClick } from "@/scripts/analytics";
+
+  setupClickTracking("phone", () => trackCallClick("home-contact"));
 
   document.addEventListener("DOMContentLoaded", initCopyButtons);
 </script>

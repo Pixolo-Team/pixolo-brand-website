@@ -5,14 +5,14 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 import BottomCTA from "@/components/ui/BottomCTA.astro";
 
 // DATA //
-import { menuItems } from "@/data/menu";
+import { footerMenuItems } from "@/data/menu";
 import { footerSectionDetails } from "@/data/footer";
 ---
 
 <!-- Footer section -->
-<footer>
+<footer id="footer">
   <!-- Container -->
-  <div class="container mx-auto flex flex-col px-6 pt-24 pb-8 md:pt-32 md:pb-9 lg:pt-36 lg:pb-10">
+  <div class="container mx-auto flex flex-col px-6 pt-24 pb-24 md:pt-32 md:pb-5 lg:pt-36">
     <!-- Header Section :Logo + Tagline  -->
     <div
       class="flex w-full flex-col items-start gap-4 md:w-[75%] md:items-start md:gap-5 lg:w-[68%] lg:gap-6"
@@ -39,7 +39,7 @@ import { footerSectionDetails } from "@/data/footer";
       <div class="flex w-full flex-col items-center justify-center gap-6 self-center md:gap-8">
         <!-- Responsive logo block -->
         <div id="footerLogo" class="flex w-full origin-top lg:w-[945px]">
-          <Icon name="pixolo-logo-text" class="text-n-950 h-full w-full" />
+          <Icon name="pixolo-logo-text" class="text-n-950 h-full w-full invert dark:invert-0" />
         </div>
         <!-- Message under logo -->
         <p class="text-n-950 text-center text-base leading-tight font-normal md:text-xl lg:text-xl">
@@ -52,9 +52,9 @@ import { footerSectionDetails } from "@/data/footer";
     <div class="anim-fade-in-up flex flex-col gap-3.5 md:gap-4">
       <div class="flex justify-center gap-6 pt-6 md:pt-10 lg:justify-between">
         <!-- Footer Menu -->
-        <div class="hidden lg:flex lg:gap-7">
+        <div class="hidden flex-wrap lg:flex lg:gap-7">
           {
-            menuItems.map((menuItem) => (
+            footerMenuItems.map((menuItem) => (
               <a
                 href={menuItem.url}
                 class="text-n-700 hover:bg-n-200 flex gap-7 self-center px-4 py-2 text-lg leading-[100%] tracking-[0.02em] hover:rounded-3xl"
@@ -70,23 +70,30 @@ import { footerSectionDetails } from "@/data/footer";
             footerSectionDetails.socialLinks.map((socialItem) => (
               // Link to social media
               <a
+                id={socialItem.id}
                 href={socialItem.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={socialItem.iconName}
-                class="social-fill border-n-500 relative flex h-10 w-10 flex-col items-center justify-center overflow-hidden rounded-full border p-2.5 md:h-14 md:w-14 md:gap-2 md:p-3 lg:size-16"
+                class="social-webflow group border-n-500 relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border p-2.5 md:h-14 md:w-14 md:p-3 lg:size-16"
               >
-                {/* Social icon */}
-                <Icon name={socialItem.iconName} class="text-n-700 size-5 self-center md:size-7" />
+                {/* Icon */}
+                <Icon
+                  name={socialItem.iconName}
+                  class="text-n-700 group-hover:text-n-50 relative z-10 size-5 transition-colors duration-300 md:size-7"
+                />
+
+                {/* Inside Glow */}
+                <div class="social-inside-glow" />
               </a>
             ))
           }
         </div>
       </div>
       <!-- Copyright wrapper -->
-      <div class="flex items-center justify-center gap-1 md:gap-1.5">
+      <div class="flex items-center justify-center gap-1 md:gap-1.5 md:pt-18 lg:pt-14">
         <!-- Copyright icon -->
-        <Icon name="copyright" class="h-4 w-4 self-center" />
+        <Icon name="copyright" class="text-n-700 h-4 w-4 self-center" />
         <!-- Current year -->
         <span class="text-n-700 text-xs leading-[125%] tracking-[0.02em]"
           >{new Date().getFullYear()}</span
@@ -96,23 +103,50 @@ import { footerSectionDetails } from "@/data/footer";
   </div>
 </footer>
 <style>
-  .social-fill::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    height: 0%;
-    top: 0;
-    left: 0;
-    background: var(--color-n-300);
-    transition: height 0.5s ease-in-out;
-    z-index: -1;
+  /* Social icon base animation */
+  .social-webflow {
+    background-color: transparent;
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    transform-style: preserve-3d;
+    transition:
+      transform 0.35s ease,
+      background-color 0.35s ease,
+      border-color 0.35s ease;
   }
 
-  .social-fill:hover::before {
-    height: 100%;
+  /* Hover state */
+  .social-webflow:hover {
+    background-color: var(--color-blue-400);
+    transform: translate3d(0, 0, 0) scale3d(1.15, 1.15, 1);
+    border-color: var(--color-blue-400);
+  }
+
+  /* Inner glow (same as RoundedButton) */
+  .social-inside-glow {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 60%;
+    height: 60%;
+    background-color: var(--color-blue-300);
+    filter: saturate(200%) blur(24px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  /* Show glow on hover */
+  .social-webflow:hover .social-inside-glow {
+    opacity: 1;
   }
 </style>
 <script>
-  import { animateFooter } from "@/scripts/footer.ts";
+  import { animateFooter, hideStickyWhatsapp } from "@/scripts/footer.ts";
+  import { setupClickTracking, trackSocialLinkClick } from "@/scripts/analytics";
+
+  setupClickTracking("instagram", () => trackSocialLinkClick("instagram"));
+  setupClickTracking("linkedin", () => trackSocialLinkClick("linkedin"));
+
   animateFooter();
+  hideStickyWhatsapp();
 </script>

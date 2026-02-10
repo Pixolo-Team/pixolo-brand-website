@@ -1,49 +1,214 @@
 ---
+// TYPES //
+import type { PortfolioData } from "@/types/portfolio.ts";
+
 // COMPONENTS //
-import ProjectCard from "@/components/portfolio/ProjectCard.astro";
-import MiniProjectCard from "@/components/portfolio/MiniProjectCard.astro";
+import ProjectShowcaseCard from "@/components/portfolio/showcase/ProjectShowcaseCard.astro";
+import MiniProjectCard from "@/components/portfolio/showcase/MiniProjectCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import SliderArrows from "@/components/ui/SliderArrows.astro";
+import { Icon } from "astro-icon/components";
+
+// API SERVICES //
+import { getPortfoliosRequest } from "@/services/api/portfolio.api";
+
+// CONSTANTS //
+import { URLS } from "@/infrastructure/constants/urls";
 
 // DATA //
 import { portfolioShowcaseDetails } from "@/data/portfolio/showcase";
+
+interface Props {
+  clientSpecificPortfolios: number[];
+}
+
+// Astro Props
+const { clientSpecificPortfolios } = Astro.props as Props;
+
+/** API Call to get all portfolio */
+const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
+
+// Checking if the view is curated with client specific portfolios
+const isCuratedView = clientSpecificPortfolios.length > 0;
+
+// Filtering the portfolio items
+const filteredPortfolioItems: PortfolioData[] = isCuratedView
+  ? clientSpecificPortfolios
+      .map((id) => portfolioItems.find((item) => Number(item.id) === id))
+      .filter((item): item is PortfolioData => Boolean(item))
+  : portfolioItems;
 ---
 
 <!-- Portfolio Showcase Section -->
-<section>
-  <div class="container mx-auto px-6 py-20">
-    <div class="flex flex-col gap-10">
-      {
-        portfolioShowcaseDetails.projectCardItems.map((projectCard) => (
-          <ProjectCard
-            name={projectCard.name}
-            image={projectCard.image}
-            title={projectCard.title}
-            subtitle={projectCard.subtitle}
-            description={projectCard.description}
-            date={projectCard.date}
-            badgeItems={projectCard.badgeItems}
-            buttonOneText={"View Website"}
-            buttonTwoText={"Show Project"}
-            view="grid"
-          />
-        ))
-      }
+<section id="showcase-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-8 px-6 py-16 md:gap-11 md:py-20 lg:gap-14 lg:py-16"
+  >
+    <!-- Header -->
+    <div class="flex flex-col items-center justify-center gap-4">
+      <!-- Toolbadge -->
+      <div class="tool-badge">
+        <ToolBadge
+          icon={portfolioShowcaseDetails.sectionHeader.badgeIcon}
+          text={portfolioShowcaseDetails.sectionHeader.badgeTitle}
+        />
+      </div>
+
+      <!-- Title -->
+      <p
+        id="header-text"
+        class="text-n-950 text-center text-2xl leading-tight font-normal tracking-[-2%] md:text-4xl lg:text-6xl"
+      >
+        {portfolioShowcaseDetails.sectionHeader.title}
+      </p>
     </div>
 
-    <!-- Mini Project Cards Wrap -->
-    <div class="scrollbar-hide flex flex-col gap-7 overflow-x-auto md:flex-row">
+    <!-- Portfolio Wrap -->
+    <div class="flex max-w-full flex-col gap-10 md:gap-24 lg:gap-32">
+      <!-- Portfolio Project Tiles -->
+      <div class="flex flex-col gap-10">
+        <!-- Tiles -->
+        <div class="hidden justify-end gap-4 px-8 md:flex lg:gap-5">
+          <!-- List Icon Button-->
+          <button id="listIconBtn" class="cursor-pointer">
+            <!-- Icon -->
+            <Icon
+              name={"list"}
+              class={`text-n-500 size-5 lg:size-6 hover:scale-120 transition duration-200 ease-in-out`}
+            />
+          </button>
+
+          <!-- Grid Icon Button-->
+          <button id="gridIconBtn" class="cursor-pointer">
+            <!-- Icon -->
+            <Icon
+              name={"grid"}
+              class={`size-5 lg:size-6 hover:scale-120 transition duration-200 ease-in-out`}
+            />
+          </button>
+        </div>
+
+        <!-- Portfolio Cards Wrap -->
+        <div
+          id="portfolio-project-cards"
+          data-view="list"
+          class={`group grid grid-cols-1 data-[view=grid]:md:grid-cols-2 gap-10`}
+        >
+          {
+            filteredPortfolioItems.map((projectCardItem) => {
+              // Checking if the project card should be rendered based on the view
+              const shouldRender = isCuratedView
+                ? true
+                : projectCardItem?.show_in_home === "TRUE" &&
+                  projectCardItem?.is_highlight === "TRUE";
+
+              if (!shouldRender) return null;
+
+              return (
+                <ProjectShowcaseCard
+                  name={projectCardItem.brand_name}
+                  image={
+                    projectCardItem.thumbnail_image
+                      ? projectCardItem.thumbnail_image
+                      : "/images/default-showcase-project-image.jpg"
+                  }
+                  title={projectCardItem.title}
+                  subTitle={projectCardItem.subtitle}
+                  description={projectCardItem.subtitle}
+                  tagItems={projectCardItem.badges}
+                  buttonOneText={"Visit Website"}
+                  buttonTwoText={"Show Project"}
+                  buttonOneClick={`window.location.href='${projectCardItem.website_link}'`}
+                  buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCardItem.title)}'`}
+                />
+              );
+            })
+          }
+        </div>
+      </div>
+
+      <!-- Other Projects Wrap -->
       {
-        portfolioShowcaseDetails.miniProjectCardItems.map((cardItem) => (
-          <MiniProjectCard
-            id={cardItem.id}
-            title={cardItem.title}
-            badges={cardItem.badges}
-            date={cardItem.date}
-            btnOneText={cardItem.btnOneText}
-            btnTwoText={cardItem.btnTwoText}
-            image={cardItem.image}
-          />
-        ))
+        !isCuratedView && (
+          <div
+            id="portfolio-mini-project-cards"
+            data-view="list"
+            class="group embla flex flex-col gap-8 overflow-hidden md:gap-12 lg:gap-16"
+          >
+            {/* Other Projects Content */}
+            <div class="flex flex-col gap-5 md:gap-6 lg:gap-7">
+              {/* Title */}
+              <p class="text-n-950 text-base leading-tight font-normal md:text-2xl group-data-[view=list]:md:text-xl group-data-[view=list]:lg:text-2xl">
+                Other Projects
+              </p>
+
+              {/* Cards Wrap */}
+              <div id="showcase-slider" class="embla__viewport">
+                {/* Embla container */}
+                <div class="embla__container flex gap-6">
+                  {/* Iterating on Project Cards */}
+                  {filteredPortfolioItems.map((cardItem) => {
+                    return (
+                      cardItem?.show_in_home === "TRUE" &&
+                      cardItem?.is_highlight === "FALSE" && (
+                        // Mini Project Cards
+                        <div class="embla__slide w-full shrink-0 sm:max-w-[328px] lg:max-w-[412px]">
+                          <MiniProjectCard
+                            title={cardItem.brand_name}
+                            tagItems={cardItem.badges}
+                            image={
+                              cardItem.thumbnail_image
+                                ? cardItem.thumbnail_image
+                                : "/images/default-showcase-project-image.jpg"
+                            }
+                            btnOneText={"Visit Website"}
+                            btnTwoText={"Show Project"}
+                            buttonOneClick={`window.location.href='${cardItem.website_link}'`}
+                            buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(cardItem.title)}'`}
+                          />
+                        </div>
+                      )
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Slider Cta Wrap */}
+            <div class="flex w-full items-center justify-between gap-6">
+              {/* Left spacer */}
+              <div class="flex-1" />
+
+              {/* Progress bar (centered) */}
+              <div class="bg-n-500 h-[2px] w-24 overflow-hidden rounded-2xl md:w-36 lg:w-96">
+                <div id="embla__progress__bar" class="h-full w-0 bg-blue-500" />
+              </div>
+
+              {/* Slider arrows (right) */}
+              <div class="flex flex-1 justify-end">
+                <SliderArrows />
+              </div>
+            </div>
+          </div>
+        )
       }
     </div>
   </div>
 </section>
+
+<script>
+  import {
+    animateShowcaseSection,
+    initShowcase,
+    initShowcaseSlider,
+    animateProjectCards,
+  } from "@/scripts/showcase";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initShowcase();
+    initShowcaseSlider();
+    animateShowcaseSection();
+    animateProjectCards();
+  });
+</script>

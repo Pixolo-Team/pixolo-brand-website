@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./animations.css";
 
+/* Dark mode variant */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* =========================
@@ -83,7 +84,7 @@
 ---------------------------------------- */
 html {
   scroll-behavior: smooth;
-  font-size: 16px; /* base 1rem = 16px */
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -93,25 +94,42 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  scroll-behavior: smooth;
+  @apply transition-colors duration-300;
 }
 
 * {
   @apply box-border;
 }
 
-/* Optional scrollbar style (nice subtle look) */
+/* Scrollbar style */
 ::-webkit-scrollbar {
   width: 8px;
 }
-::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 9999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #aaa;
+
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-/* Colour Variables */
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-blue-500);
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blue-600);
+}
+
+/* Hide scrollbar for all browsers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 @theme inline {
   --color-n-50: var(--color-n-50);
   --color-n-100: var(--color-n-100);
@@ -127,11 +145,12 @@ body {
 }
 
 :root {
+  /* ===== COLOR VARIABLES - LIGHT MODE (DEFAULT) ===== */
+  --color-n-50: #ffffff;
   --color-n-100: #f1f5f9;
   --color-n-200: #e2e8f1;
   --color-n-300: #cad5e2;
   --color-n-400: #90a2b9;
-  --color-n-50: #ffffff;
   --color-n-500: #62748e;
   --color-n-600: #45556c;
   --color-n-700: #324158;
@@ -140,33 +159,35 @@ body {
   --color-n-950: #020617;
 
   /* Blue Shades */
-  --blue-50: #eef0fb;
-  --blue-100: #cdd2f4;
-  --blue-200: #acb3ec;
-  --blue-300: #8b95e5;
-  --blue-400: #6977dd;
-  --blue-500: #4254d4;
-  --blue-600: #2d3fc8;
-  --blue-700: #2635a6;
-  --blue-800: #1e2a85;
-  --blue-900: #172064;
-  --blue-950: #0f1543;
+  --color-blue-50: #eef0fb;
+  --color-blue-100: #cdd2f4;
+  --color-blue-200: #acb3ec;
+  --color-blue-300: #8b95e5;
+  --color-blue-400: #6977dd;
+  --color-blue-500: #4254d4;
+  --color-blue-600: #2d3fc8;
+  --color-blue-700: #2635a6;
+  --color-blue-800: #1e2a85;
+  --color-blue-900: #172064;
+  --color-blue-950: #0f1543;
 
   /* Violet Shades */
-  --violet-50: #f1effa;
-  --violet-100: #d6d0f1;
-  --violet-200: #bab1e7;
-  --violet-300: #9e92dd;
-  --violet-400: #8373d4;
-  --violet-500: #5f4ac8;
-  --violet-600: #4f3abb;
-  --violet-700: #423096;
-  --violet-800: #35267d;
-  --violet-900: #281d5e;
-  --violet-950: #1a133e;
+  --color-violet-50: #f1effa;
+  --color-violet-100: #d6d0f1;
+  --color-violet-200: #bab1e7;
+  --color-violet-300: #9e92dd;
+  --color-violet-400: #8373d4;
+  --color-violet-500: #5f4ac8;
+  --color-violet-600: #4f3abb;
+  --color-violet-700: #423096;
+  --color-violet-800: #35267d;
+  --color-violet-900: #281d5e;
+  --color-violet-950: #1a133e;
 }
 
-:root.dark {
+/* ===== COLOR VARIABLES - DARK MODE ===== */
+
+.dark {
   --color-n-50: #020617;
   --color-n-100: #0e172b;
   --color-n-200: #1d283d;
@@ -178,36 +199,66 @@ body {
   --color-n-800: #e2e8f1;
   --color-n-900: #f1f5f9;
   --color-n-950: #ffffff;
+
+  /* Blue Shades Dark Mode */
+  --color-blue-50: #0f1543;
+  --color-blue-100: #172064;
+  --color-blue-200: #1e2a85;
+  --color-blue-300: #2635a6;
+  --color-blue-400: #2d3fc8;
+  --color-blue-500: #5c6cf3;
+  --color-blue-600: #4a59d8;
+  --color-blue-700: #6977dd;
+  --color-blue-800: #8b95e5;
+  --color-blue-900: #acb3ec;
+  --color-blue-950: #cdd2f4;
+
+  /* Violet Shades Dark Mode */
+  --color-violet-50: #1a133e;
+  --color-violet-100: #281d5e;
+  --color-violet-200: #35267d;
+  --color-violet-300: #423096;
+  --color-violet-400: #4f3abb;
+  --color-violet-500: #7a66f0;
+  --color-violet-600: #6652d8;
+  --color-violet-700: #8373d4;
+  --color-violet-800: #9e92dd;
+  --color-violet-900: #bab1e7;
+  --color-violet-950: #d6d0f1;
 }
 
-/* Hide scrollbar for all browsers */
-.scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
-
-/* ===== Scrollbar Styling ===== */
-::-webkit-scrollbar {
-  width: 8px; /* scrollbar width */
-}
-
-::-webkit-scrollbar-track {
-  background: transparent; /* track color */
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--color-blue-500); /* scrollbar handle color */
-  border-radius: 12px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-blue-600); /* hover color */
-}
 /* Common top padding for the hero sections */
 .hero-padding-top {
   padding-top: calc(90px + 20px);
+}
+
+/* Chrome, Edge, Safari */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  box-shadow: 0 0 0px 1000px transparent inset;
+  -webkit-text-fill-color: inherit;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Theme image styles */
+.light-img {
+  display: block;
+}
+
+.dark-img {
+  display: none;
+}
+
+.dark .light-img {
+  display: none;
+}
+
+.dark .dark-img {
+  display: block;
 }

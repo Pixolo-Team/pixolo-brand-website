@@ -13,6 +13,10 @@ import BottomCTA from "@/components/ui/BottomCTA.astro";
 
 // DATA //
 import { siteInfo } from "@/data/site-info";
+import JsonLd from "@/components/layout/JsonLd.astro";
+
+// OTHERS //
+import { pixoloWebsiteSchema } from "@/schemas/website.schema";
 
 interface Props {
   meta: any;
@@ -22,7 +26,7 @@ const { meta = {} } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <!-- Metadata -->
     <Meta
@@ -30,8 +34,28 @@ const { meta = {} } = Astro.props;
       description={meta.description}
       image={meta.image}
       noIndex={meta.noIndex}
+      keywords={meta.keywords}
     />
+
+    <!-- Load the initial theme from Local Storage -->
+    <script is:inline>
+      (() => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") {
+          document.documentElement.classList.remove("dark");
+        } else {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+
+    <!-- JSON-LD -->
+    <slot name="head" />
+
+    <!-- Global WebSite JSON-LD (ALL pages) -->
+    <JsonLd slot="head" data={pixoloWebsiteSchema} />
   </head>
+
   <body>
     <!-- Loading -->
     <Loading />
@@ -43,18 +67,18 @@ const { meta = {} } = Astro.props;
 
     <!-- Background Star Video -->
     <video
-      class="fixed top-0 left-0 -z-10 h-full w-full bg-transparent object-cover"
+      class="fixed top-0 left-0 -z-1 hidden h-full w-full bg-transparent object-cover dark:block"
       src="/videos/stars.mp4"
       autoplay
       muted
       loop
       playsinline></video>
 
-    <div class="bg-n-50/70 fixed -z-5 h-full w-full"></div>
+    <div class="bg-n-50 fixed -z-5 h-full w-full"></div>
 
     <!-- Background Circle Gradient -->
     <div
-      class="fixed top-[30%] left-1/2 h-[885px] w-[885px] -translate-x-1/2 rounded-full"
+      class="fixed top-[30%] left-1/2 hidden h-[885px] w-[885px] -translate-x-1/2 rounded-full dark:block"
       style="background: linear-gradient(90deg, rgba(22, 125, 229, 0.36) 0%, rgba(95, 74, 200, 0.36) 92.31%); filter: blur(200px);"
     >
     </div>
@@ -68,16 +92,29 @@ const { meta = {} } = Astro.props;
 
     <!-- Whatsapp button component -->
     <WhatsappButton
-      href="https://wa.me/9768941186"
-      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-50"
+      href={`https://wa.me/${siteInfo.contact.phone[0].value}`}
+      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-10 hidden md:flex"
     />
 
     <!-- Bottom CTA -->
-    <div class="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 md:bottom-10">
+    <div class="fixed bottom-5 z-40 justify-self-center md:bottom-12">
       <BottomCTA />
     </div>
 
     <ContactForm />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9E7P2PLT8"></script>
+
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag("js", new Date());
+      gtag("config", "G-T9E7P2PLT8");
+    </script>
   </body>
 </html>
 
@@ -89,6 +126,24 @@ const { meta = {} } = Astro.props;
     height: 100%;
   }
 </style>
+<script>
+  import { trackContactCTAClick, trackContactFormView } from "@/scripts/analytics";
+  import {
+    trackPageView,
+    setupScrollTracking,
+    setupClickTracking,
+    trackWhatsappClick,
+  } from "@/scripts/analytics";
+
+  setupClickTracking("sticky-whatsapp", () => trackWhatsappClick("floating"));
+  setupClickTracking("open-contact-modal", () => trackContactCTAClick("floating"));
+  setupClickTracking("open-contact-modal", () => trackContactFormView());
+
+  // Initial page load
+  trackPageView();
+  setupScrollTracking();
+</script>
+
 <script is:inline>
   const loader = document.querySelector("#loading-screen");
   const hasSeenLoader = sessionStorage.getItem("loaderShown");
@@ -99,6 +154,7 @@ const { meta = {} } = Astro.props;
     loader.style.display = "flex";
   }
 </script>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // Select all elements that should animate when visible

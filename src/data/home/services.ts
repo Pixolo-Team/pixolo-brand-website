@@ -1,0 +1,272 @@
+export const serviceSectionDetails = {
+  badgeTitle: "Services we offer",
+  title: "We deliver client-focused solutions that drive results and build lasting partnerships.",
+};
+
+export const serviceDetails = [
+  {
+    id: 1,
+    imageName: "/images/services/product-planning.jpg",
+    title: "Product Strategy & Planning",
+    slug: "product-strategy-and-planning",
+    tags: [
+      "Product Ideation",
+      "UX Research",
+      "Feature Planning",
+      "System Architecture",
+      "MVP → MLP",
+    ],
+    hero: {
+      title: "Build the right product. Not just a functional one.",
+      subTitle:
+        "We help founders and teams turn ideas into clear, buildable product plans that don’t collapse halfway.",
+    },
+    outcomeFocused: [
+      { description: "Clear product scope and priorities" },
+      { description: "Faster decision-making" },
+      { description: "Fewer reworks and wasted dev hours" },
+      { description: "A roadmap your team actually follows" },
+    ],
+    outcomeFocusedImage: "/images/services/outcome-product.jpg",
+    painSolution: [
+      { problem: "Unclear MVP", solution: "Clear MVP definition" },
+      { problem: "Scope creep", solution: "Locked feature scope" },
+      { problem: "Conflicting priorities", solution: "Prioritized product roadmap" },
+    ],
+    howWeWork: [
+      { description: "Understand business goals, users, and constraints" },
+      { description: "Define MVP vs later phases" },
+      { description: "Map flows, features, and technical approach" },
+      {
+        description: "Create a realistic roadmap with trade-offs clearly called out",
+      },
+    ],
+    deliverables: [
+      "Product requirement document (PRD)",
+      "Feature prioritization",
+      "MVP scope",
+      "User flows",
+      "System overview",
+      "Phase-wise roadmap",
+    ],
+    deliverableImage: "/images/services/deliverable-product.jpg",
+    finalCTA: "If you’re unsure what to build first, let’s fix that before you build anything.",
+  },
+
+  {
+    id: 2,
+    imageName: "/images/services/ui-ux-branding.jpg",
+    title: "UI-UX & Brand Experience",
+    slug: "ui-ux-and-brand-experience",
+    tags: [
+      "UI/UX Design",
+      "Design Systems (Neevo)",
+      "Interaction & Motion",
+      "Brand Identity",
+      "Landing Pages",
+    ],
+    hero: {
+      title: "Design that feels obvious.",
+      subTitle: "If users have to think, something’s already wrong.",
+    },
+    outcomeFocused: [
+      { description: "Higher conversions" },
+      { description: "Lower drop-offs" },
+      { description: "Clear brand presence" },
+      { description: "Interfaces people enjoy using" },
+    ],
+    outcomeFocusedImage: "/images/services/outcome-ui.jpg",
+    painSolution: [
+      { problem: "User confusion", solution: "Intuitive user flows" },
+      { problem: "Low conversion", solution: "Conversion-focused design" },
+      { problem: "Inconsistent branding", solution: "Unified design system" },
+    ],
+    howWeWork: [
+      { description: "Understand user intent and behavior" },
+      { description: "Map journeys and interaction flows" },
+      { description: "Design wireframes before visuals" },
+      { description: "Apply brand, motion, and UI polish" },
+    ],
+    deliverables: [
+      "User journeys",
+      "Wireframes",
+      "High-fidelity UI designs",
+      "Design system / components",
+      "Brand-aligned visual language",
+    ],
+    deliverableImage: "/images/services/deliverable-ui-ux.jpg",
+    finalCTA: "If your product works but doesn’t convert, design is the gap.",
+  },
+
+  {
+    id: 3,
+    imageName: "/images/services/full-stack-development.jpg",
+    title: "Full-Stack Development",
+    slug: "full-stack-development",
+    tags: ["Web Apps", "Mobile Apps", "Backend & APIs", "Admin Panels", "Real-time Systems"],
+    hero: {
+      title: "End-to-end development without handoffs or chaos.",
+      subTitle: "One team. One codebase. One accountable partner.",
+    },
+    outcomeFocused: [
+      { description: "Stable, scalable applications" },
+      { description: "Faster releases" },
+      { description: "Clean architecture" },
+      { description: "Lower long-term maintenance cost" },
+    ],
+    outcomeFocusedImage: "/images/services/outcome-full-stack.jpg",
+    painSolution: [
+      { problem: "Team silos", solution: "End-to-end ownership" },
+      { problem: "Slow releases", solution: "Iterative delivery" },
+      { problem: "Poor scalability", solution: "Scalable architecture" },
+    ],
+    howWeWork: [
+      { description: "Finalize scope and architecture" },
+      { description: "Build in small, testable releases" },
+      { description: "Regular demos and feedback loops" },
+      { description: "Production-ready delivery, not half builds" },
+    ],
+    deliverables: [
+      "Web or mobile application",
+      "APIs",
+      "Backend systems",
+      "Admin dashboards",
+      "Documentation & handover",
+    ],
+    deliverableImage: "/images/services/deliverable-full-stack.jpg",
+    finalCTA: "If you want your product built right the first time, let’s talk.",
+  },
+
+  {
+    id: 4,
+    imageName: "/images/services/ai-automation.jpg",
+    title: "AI & Automation",
+    slug: "ai-and-automation",
+    tags: [
+      "Custom AI Models",
+      "AI Wrappers (OpenAI, Gemini)",
+      "Recommendation Engines",
+      "Automated Workflows",
+      "ML Dashboards",
+    ],
+    hero: {
+      title: "Use AI where it saves money.",
+      subTitle: "Not where it sounds impressive.",
+    },
+    outcomeFocused: [
+      { description: "Reduced manual work" },
+      { description: "Faster operations" },
+      { description: "Smarter decision-making" },
+      { description: "Scalable processes" },
+    ],
+    outcomeFocusedImage: "/images/services/outcome-ai.jpg",
+    painSolution: [
+      { problem: "Manual processes", solution: "Workflow automation" },
+      { problem: "Data overload", solution: "Insight-driven systems" },
+      { problem: "Unclear AI ROI", solution: "Measurable AI use cases" },
+    ],
+    howWeWork: [
+      { description: "Identify repetitive or high-cost tasks" },
+      { description: "Define success metrics clearly" },
+      { description: "Build AI or automation in controlled stages" },
+      { description: "Monitor and refine post-launch" },
+    ],
+    deliverables: [
+      "AI-powered features or tools",
+      "Automated workflows",
+      "Integrations with existing systems",
+      "Usage tracking",
+      "Performance tracking",
+    ],
+    deliverableImage: "/images/services/deliverable-ai.jpg",
+    finalCTA: "If AI feels confusing or overhyped, we’ll make it practical.",
+  },
+
+  {
+    id: 5,
+    imageName: "/images/services/cloud-devops.jpg",
+    title: "Cloud DevOps & Infrastructure",
+    slug: "cloud-devops-and-infrastructure",
+    tags: [
+      "Cloud Setup",
+      "CI/CD Pipelines",
+      "Containerization",
+      "Access Management",
+      "Database Optimization",
+    ],
+    hero: {
+      title: "Infrastructure that doesn’t wake you up at night.",
+      subTitle: "Stable, secure, and built to scale.",
+    },
+    outcomeFocused: [
+      { description: "Faster deployments" },
+      { description: "Higher uptime" },
+      { description: "Lower infra costs" },
+      { description: "Better security" },
+    ],
+    outcomeFocusedImage: "/images/services/outcome-cloud.jpg",
+    painSolution: [
+      { problem: "Risky deployments", solution: "Automated CI/CD" },
+      { problem: "Downtime issues", solution: "Scalable infrastructure" },
+      { problem: "Rising cloud costs", solution: "Cost-optimized setups" },
+    ],
+    howWeWork: [
+      { description: "Review current setup and risks" },
+      { description: "Design scalable cloud architecture" },
+      { description: "Automate deployments and monitoring" },
+      { description: "Optimize cost and performance" },
+    ],
+    deliverables: [
+      "Cloud architecture setup",
+      "CI/CD pipelines",
+      "Monitoring and alerts",
+      "Documentation and access control",
+    ],
+    deliverableImage: "/images/services/deliverable-cloud.jpg",
+    finalCTA: "If infra feels fragile, it’s time to fix the foundation.",
+  },
+
+  {
+    id: 6,
+    imageName: "/images/services/bussiness-tools.jpg",
+    title: "Business Tools & Internal Systems",
+    slug: "business-tools-and-internal-systems",
+    tags: [
+      "Billing Systems",
+      "HR & Attendance",
+      "Finance Automation",
+      "CRM-lite Tools",
+      "Operations Dashboards",
+    ],
+    hero: {
+      title: "Custom tools that fit how your team actually works.",
+      subTitle: "Not the other way around.",
+    },
+    outcomeFocused: [
+      { description: "Operational clarity" },
+      { description: "Time saved daily" },
+      { description: "Fewer spreadsheets" },
+      { description: "Better internal visibility" },
+    ],
+    outcomeFocusedImage: "/images/services/outcome-bussiness.jpg",
+    painSolution: [
+      { problem: "Spreadsheet dependency", solution: "Custom internal tools" },
+      { problem: "Disconnected tools", solution: "Centralized dashboards" },
+      { problem: "Rigid software", solution: "Workflow-first systems" },
+    ],
+    howWeWork: [
+      { description: "Understand existing workflows" },
+      { description: "Identify inefficiencies" },
+      { description: "Design simple, role-based tools" },
+      { description: "Build and iterate with real users" },
+    ],
+    deliverables: [
+      "Internal dashboards",
+      "Admin panels",
+      "Custom workflows",
+      "Role-based access systems",
+    ],
+    deliverableImage: "/images/services/deliverable-bussiness.jpg",
+    finalCTA: "If your team is drowning in tools, let’s simplify.",
+  },
+];

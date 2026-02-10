@@ -8,10 +8,10 @@ import { clientSectionDetails, clientItems } from "@/data/clients";
 ---
 
 <!-- Clients Section -->
-<section id="client-logos-section" class="flex items-center justify-center">
+<section id="client-logos-section" class="flex items-center justify-center" data-section="Clients">
   <!-- Container -->
   <div
-    class="container flex flex-col flex-wrap items-center justify-center gap-10 px-6 py-24 md:gap-16 md:px-6 md:py-32 lg:gap-20 lg:px-8 lg:py-32"
+    class="container flex flex-col flex-wrap items-center justify-center gap-10 px-6 py-16 md:gap-16 md:px-6 md:py-24 lg:gap-20 lg:px-8 lg:py-22"
   >
     <!-- Header Wrapper -->
     <div class="m-auto flex w-full flex-col flex-wrap items-center justify-center gap-6 lg:gap-7">
@@ -37,7 +37,7 @@ import { clientSectionDetails, clientItems } from "@/data/clients";
           <div class="client-logo flex h-[54px] w-[100px] items-center justify-center md:h-[108px] md:w-[200px] lg:h-[141px] lg:w-[260px]">
             {/* Image themed component */}
             <ThemeImage
-              light={`/images/clients/${clientItem.darkImage}`}
+              light={`/images/clients/${clientItem.lightImage}`}
               dark={`/images/clients/${clientItem.darkImage}`}
               alt={clientItem.name}
               class="max-h-10 max-w-24 object-contain md:max-h-[70px] md:max-w-[150px] lg:max-h-[90px] lg:max-w-[200px]"

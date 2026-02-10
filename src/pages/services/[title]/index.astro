@@ -1,12 +1,9 @@
 ---
-export function getStaticPaths() {
-  return [
-    { params: { title: "service-1" } },
-    { params: { title: "service-2" } },
-    { params: { title: "service-3" } },
-  ];
-}
-const { title } = Astro.params;
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
+// SERVICES //
+import { getPixoloServiceSchema } from "@/schemas/services/service-consumption.schema";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
@@ -18,13 +15,46 @@ import PainSolution from "@/sections/service-consumption/PainSolution.astro";
 import HowWeWork from "@/sections/service-consumption/HowWeWork.astro";
 import Deliverables from "@/sections/service-consumption/Deliverables.astro";
 import FinalCta from "@/sections/service-consumption/FinalCta.astro";
+
+// DATA //
+import serviceConsumptionMeta from "@/data/meta/services/service-consumption/service-consumption.json";
+import { serviceDetails } from "@/data/home/services.ts";
+
+/**
+ * Generate static paths for all service pages
+ * @returns Array of static paths with service data
+ */
+export function getStaticPaths() {
+  return serviceDetails.map((service) => {
+    return {
+      params: { title: service.slug },
+      props: {
+        service,
+        slug: service.slug,
+      },
+    };
+  });
+}
+
+const { service, slug } = Astro.props;
+
+// Dynamic Service JSON-LD
+const serviceSchema = getPixoloServiceSchema({
+  slug,
+  name: service.hero.title,
+  serviceType: service.hero.title,
+  description: service.hero.subTitle,
+});
 ---
 
-<Layout>
-  <Hero />
-  <OutcomeFocused />
-  <PainSolution />
-  <HowWeWork />
-  <Deliverables />
-  <FinalCta />
+<Layout meta={serviceConsumptionMeta}>
+  {/* JSON LD */}
+  <JsonLd slot="head" data={serviceSchema} />
+
+  <Hero title={service.hero.title} subTitle={service.hero.subTitle} />
+  <OutcomeFocused outcomeFocusedItems={service} />
+  <PainSolution painSolutionCardItems={service.painSolution} />
+  <HowWeWork howWeWorkSectionSteps={service.howWeWork} />
+  <Deliverables data={service} />
+  <FinalCta subTitle={service.finalCTA} />
 </Layout>

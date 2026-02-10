@@ -1,7 +1,9 @@
 ---
+// STYLES //
+import ThemeImage from "@/components/ui/ThemeImage.astro";
+
 // COMPONENTS //
 import RoundedButton from "@/components/ui/RoundedButton.astro";
-import Badge from "@/components/portfolio/Badge.astro";
 
 // DEFINE PROPS //
 interface Props {
@@ -19,12 +21,20 @@ const { brandColor, brandName, image, logo, title, subtitle, badges } = Astro.pr
 ---
 
 <!-- Main Project Tile -->
-<div class={`rounded-[42px] md:rounded-[64px] xl:flex xl:flex-row xl:gap-10 ${brandColor}`}>
+<div
+  class={`rounded-[42px] md:rounded-[64px] xl:flex xl:flex-row xl:gap-10`}
+  style={`background-color: ${brandColor};`}
+>
   <!-- Project Content -->
   <div class="flex flex-1 flex-col gap-6 px-5 py-6 md:gap-8 md:p-10 xl:gap-14 xl:p-20">
     <!-- Logo -->
     <div class="h-[98px] justify-start md:h-[110px]">
-      <img src={logo} alt={`${brandName} logo`} class="h-full object-contain" />
+      <ThemeImage
+        light={logo}
+        dark={logo}
+        alt={`${brandName} logo`}
+        class="h-full object-contain"
+      />
     </div>
 
     <!-- Project Details Wrapper -->
@@ -34,11 +44,21 @@ const { brandColor, brandName, image, logo, title, subtitle, badges } = Astro.pr
         <!-- Chip Wrapper -->
         <div class="flex flex-wrap gap-2">
           <!-- Portfolio Chip -->
-          {badges?.map((badgeText) => <Badge text={badgeText} />)}
+          {
+            badges?.map((badgeText) => (
+              /* Badge */
+              <div class="gap-2.5 rounded-3xl border border-white px-2.5 py-2 md:px-3 md:py-2.5">
+                {/* Badge Text */}
+                <p class="text-center text-xs leading-tight font-medium text-white md:text-base">
+                  {badgeText}
+                </p>
+              </div>
+            ))
+          }
         </div>
 
         <!-- Title Details -->
-        <div class="text-n-950 flex flex-col gap-4 xl:gap-5">
+        <div class="flex flex-col gap-4 text-white xl:gap-5">
           <!-- Title -->
           <p class="text-2xl leading-tight font-semibold md:text-3xl xl:text-4xl">{title}</p>
 
@@ -49,13 +69,18 @@ const { brandColor, brandName, image, logo, title, subtitle, badges } = Astro.pr
 
       <!-- Rounded Button -->
       <div>
-        <RoundedButton buttonText={"View Case Study"} onClick={'window.location.href = "/404"'} />
+        <RoundedButton buttonText={"View Project"} onClick={'window.location.href = "/404"'} />
       </div>
     </div>
   </div>
 
   <!-- Image -->
   <div class="hidden h-full w-[42%] self-end xl:block">
-    <img src={image} alt={`${brandName} Project Screenshot`} class="h-full w-full" />
+    <ThemeImage
+      light={image}
+      dark={image}
+      alt={`${brandName} Project Screenshot`}
+      class="h-full w-full"
+    />
   </div>
 </div>

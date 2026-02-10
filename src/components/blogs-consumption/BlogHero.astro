@@ -1,0 +1,91 @@
+---
+// TYPES //
+import type { BlogPost } from "@/types/blogs";
+
+// COMPONENTS //
+import { Image } from "astro:assets";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// UTILS //
+import { formattedDate } from "@/utils/format-date";
+
+// DATA //
+import { blogSectionDetails } from "@/data/blogs";
+
+interface Props {
+  image: string;
+  category: string;
+  date: string;
+  title: string;
+  author: string;
+}
+
+const { image, category, date, title, author } = Astro.props;
+
+/** Format Date */
+const dateFormatted: string = formattedDate(date);
+---
+
+<!-- Blog Hero Component -->
+<section id="blog-hero">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center gap-7 px-6 py-24 md:gap-9 md:py-24 lg:py-28"
+  >
+    <!-- ToolBadge -->
+    <div class="tool-badge">
+      <ToolBadge icon="package" text="Insights Worth Reading" />
+    </div>
+
+    <!-- Content Section -->
+    <div class="flex flex-col items-center gap-7 md:gap-14 lg:gap-16">
+      <!-- Header Content -->
+      <div class="header-content flex flex-col items-center justify-center gap-3 md:gap-5 lg:gap-6">
+        <!-- Category + Date -->
+        <div class="flex items-center justify-center gap-3.5 md:gap-5">
+          <!-- Label -->
+          <p class="text-n-950 text-xs leading-normal font-normal capitalize md:text-lg lg:text-xl">
+            {category}
+          </p>
+
+          <!-- Divider line -->
+          <div class="bg-n-950 h-3.5 w-px md:h-6 lg:h-11"></div>
+
+          <!-- Published Date -->
+          <p class="text-n-700 justify-start text-xs leading-normal md:text-lg lg:text-xl">
+            {dateFormatted}
+          </p>
+        </div>
+
+        <!-- Title -->
+        <p class="text-n-950 text-center text-sm leading-tight md:text-3xl lg:text-4xl">
+          {title}
+        </p>
+
+        <!-- Author -->
+        <div class="text-n-700 text-center text-xs leading-normal md:text-lg lg:text-xl">
+          By: {author}
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div
+        class="blog-hero-image h-[295px] overflow-hidden rounded-3xl md:h-[450px] md:rounded-4xl xl:h-[650px]"
+      >
+        <Image
+          src={image || blogSectionDetails.defaultImage}
+          alt={"Blog Hero Image"}
+          class="h-full w-full object-cover"
+          width={1536}
+          height={650}
+          referrerpolicy="no-referrer"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import { animateBlogsConsumptionHero } from "@/scripts/blogs-consumption";
+
+  animateBlogsConsumptionHero();
+</script>

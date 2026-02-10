@@ -4,9 +4,17 @@ import { URLS } from "@/infrastructure/constants/urls.ts";
 // Data for the menu
 export const menuItems = [
   { name: "Home", url: URLS.HOME },
-  { name: "About", url: URLS.ABOUT },
-  { name: "Service", url: URLS.SERVICE.ROOT },
-  { name: "Portfolio", url: URLS.PORTFOLIO },
+  { name: "Services", url: URLS.SERVICE.ROOT },
+  { name: "Portfolio", url: URLS.PORTFOLIO.ROOT },
   { name: "Career", url: URLS.CAREER },
-  // { name: "Contact", url: URLS.CONTACT },
 ];
+
+// Data for mobile menu
+export const mobileMenuItems = [...menuItems, { name: "Contact", url: URLS.CONTACT }];
+
+// Data for footer menu
+export const footerMenuItems = [
+  ...menuItems,
+  { name: "Case Studies", url: URLS.CASE_STUDIES.ROOT },
+  { name: "Blogs", url: URLS.BLOGS.ROOT },
+] as const;

@@ -33,6 +33,52 @@
   transform: translateY(0) !important;
 }
 
+/* Float animation for decorative elements */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.anim-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Floating icon used in Hero (tag icon) */
+.floating-icon {
+  animation: float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Word animation containers used in Hero title */
+.word-container {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20%);
+  transition:
+    opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-delay: 0ms; /* JS sets per-word delay */
+}
+
+/* Class added by JS to reveal word containers */
+.word-container.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Copy button color transition (used on contact cards) */
+[data-copy-btn].active {
+  color: var(--blue-500);
+}
+
+[data-copy-btn] {
+  transition: color 0.3s ease;
+}
 /* IMPACT SECTION HEADING */
 .impact-heading {
   opacity: 0;

@@ -1,0 +1,81 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+---
+
+<!-- Theme toggle button component -->
+<button
+  class="mode-toggle border-n-300 relative h-[28px] w-[54px] cursor-pointer overflow-hidden rounded-full border px-[5px] py-1"
+  aria-label="Toggle theme"
+  aria-pressed="false"
+>
+  <!-- Sun icon -->
+  <Icon name="sun" class="icon sun size-5" />
+
+  <!-- Moon icon -->
+  <Icon name="moon" class="icon moon size-5" />
+
+  <!-- Stars icon -->
+  <Icon name="stars" class="icon stars size-5" />
+
+  <!-- Flares icon -->
+  <Icon name="flares" class="icon flares size-2.5" />
+</button>
+
+<style>
+  .mode-toggle {
+    transition: background 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Background for dark theme */
+  .mode-toggle.dark-theme {
+    background: linear-gradient(180deg, #090b11 15.38%, #141928 50%, #090b11 82.69%);
+  }
+
+  /* Background for light theme */
+  .mode-toggle.light-theme {
+    background: linear-gradient(180deg, #81acff 15.38%, #92b7ff 50%, #81acff 82.69%);
+  }
+
+  /* Icons */
+  .mode-toggle .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+    transition:
+      transform 0.3s ease-out,
+      opacity 0.25s ease;
+  }
+
+  /* Moon icon active state */
+  .mode-toggle.moon-active .moon {
+    opacity: 1;
+    transform: translate(calc(-50% + 12px), -50%) scale(1);
+  }
+
+  /* Stars icon active state */
+  .mode-toggle.moon-active .stars {
+    opacity: 1;
+    transform: translate(calc(-50% - 10px), -50%) scale(1);
+  }
+
+  /* Sun icon active state */
+  .mode-toggle.sun-active .sun {
+    opacity: 1;
+    transform: translate(calc(-50% - 12px), -50%) scale(1);
+  }
+
+  /* Flares icon active state */
+  .mode-toggle.sun-active .flares {
+    opacity: 1;
+    transform: translate(calc(-50% + 10px), -50%) scale(1);
+  }
+</style>
+
+<script>
+  import { toggleTheme } from "@/scripts/toggle-theme";
+
+  toggleTheme();
+</script>

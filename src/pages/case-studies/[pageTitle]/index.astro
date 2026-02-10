@@ -1,0 +1,109 @@
+---
+// TYPES //
+import type { CaseStudyData } from "@/types/case-studies";
+
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
+// API SERVICES //
+import { getCaseStudiesRequest } from "@/services/api/case-studies.api";
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+import { getPixoloCaseStudySchema } from "@/schemas/case-studies/case-studies-consumption.schema";
+
+// SECTIONS //
+import Numbers from "@/sections/case-study-consumption/Numbers.astro";
+import ClientVision from "@/sections/case-study-consumption/ClientVision.astro";
+import Solutions from "@/sections/case-study-consumption/Solutions.astro";
+import Issues from "@/sections/case-study-consumption/Issues.astro";
+import AboutTheClient from "@/sections/case-study-consumption/AboutTheClient.astro";
+import Gallery from "@/sections/case-study-consumption/Gallery.astro";
+import ToolsUsed from "@/sections/case-study-consumption/ToolsUsed.astro";
+import ClientTestimonial from "@/sections/case-study-consumption/ClientTestimonial.astro";
+import SolutionNumbers from "@/sections/case-study-consumption/SolutionNumbers.astro";
+import Hero from "@/sections/case-study-consumption/Hero.astro";
+import KeyTakeaways from "@/sections/case-study-consumption/KeyTakeaways.astro";
+
+// DATA //
+import caseStudyMeta from "@/data/meta/case-studies/case-study-consumption/case-study-consumption.json";
+
+/**
+ * Generates static paths for all Case Studies Consumption pages
+ * @returns Array of static paths with Case Studies data
+ */
+export async function getStaticPaths() {
+  /** API Call to get case studies */
+  const caseStudies = await getCaseStudiesRequest();
+
+  return caseStudies.map((caseStudyItem: CaseStudyData) => ({
+    params: {
+      pageTitle: caseStudyItem.slug,
+    },
+    props: {
+      caseStudyItem,
+    },
+  }));
+}
+
+const { caseStudyItem }: { caseStudyItem: CaseStudyData } = Astro.props;
+
+/** Case Study JSON-LD */
+const caseStudySchema = getPixoloCaseStudySchema({
+  slug: caseStudyItem.slug,
+  title: caseStudyItem.title,
+  summary: caseStudyItem.summary,
+  clientName: caseStudyItem.clientName,
+  datePublished: caseStudyItem.datePublished,
+  dateModified: caseStudyItem.dateModified,
+});
+---
+
+<Layout
+  meta={{
+    ...caseStudyMeta,
+    title: caseStudyItem.title + " Development Case Study | Pixolo",
+    description: caseStudyItem.description,
+  }}
+>
+  {/* Case Study JSON-LD */}
+  <JsonLd slot="head" data={caseStudySchema} />
+
+  <Hero
+    badgeTitle={caseStudyItem.badgeTitle}
+    title={caseStudyItem.title}
+    description={caseStudyItem.description}
+    thumbnail={caseStudyItem.thumbnail}
+    websiteLink={caseStudyItem.websiteLink}
+    name={caseStudyItem.name}
+  />
+  <Numbers
+    clientNumbersHeading={caseStudyItem.clientNumbersHeading}
+    clientNumbers={caseStudyItem.clientNumbers}
+  />
+  <AboutTheClient
+    aboutPointers={caseStudyItem.aboutPointers}
+    aboutImagesMainImage={caseStudyItem.aboutImagesMainImage}
+    aboutImagesOtherImages={caseStudyItem.aboutImagesOtherImages}
+  />
+  <Issues
+    clientIssuesHeading={caseStudyItem.clientIssuesHeading}
+    clientIssues={caseStudyItem.clientIssues}
+  />
+  <ClientVision
+    clientVisionSectionMainImage={caseStudyItem.clientVisionSectionMainImage}
+    clientVisionSectionImageAlt={caseStudyItem.clientVisionSectionImageAlt}
+    clientVisions={caseStudyItem.clientVisions}
+  />
+  <Solutions clientSolutions={caseStudyItem.clientSolutions} />
+  <Gallery galleryImages={caseStudyItem.galleryImages} />
+  <KeyTakeaways learningItems={caseStudyItem.learningItems} />
+  <!-- <ToolsUsed /> -->
+  <ClientTestimonial
+    image={caseStudyItem.clientImage}
+    name={caseStudyItem.clientName}
+    role={caseStudyItem.clientRole}
+    message={caseStudyItem.clientMessage}
+  />
+  <SolutionNumbers solutionNumbers={caseStudyItem.solutionNumbers} />
+</Layout>

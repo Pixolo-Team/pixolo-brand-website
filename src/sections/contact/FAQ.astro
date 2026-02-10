@@ -1,0 +1,71 @@
+---
+// TYPES //
+import type { FaqItemData, FaqTabItemData } from "@/types/faq";
+
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import Tabs from "@/components/ui/Tabs.astro";
+import FaqItem from "@/components/FaqItem.astro";
+
+// DATA //
+import { faqSectionDetails } from "@/data/faq";
+
+interface Props {
+  tabs: FaqTabItemData[];
+  itemsByTab: Record<string, FaqItemData[]>;
+}
+
+const { tabs, itemsByTab } = Astro.props;
+---
+
+<section id="faq-section" data-section="Faq">
+  <div class="container mx-auto flex flex-col gap-12 px-6 py-16">
+    <!-- Header -->
+    <div class="flex flex-col items-center gap-4 text-center">
+      <ToolBadge
+        text={faqSectionDetails.sectionHeader.badgeTitle}
+        icon={faqSectionDetails.sectionHeader.badgeIcon}
+      />
+      <p class="text-n-950 text-3xl md:text-5xl lg:text-6xl">
+        {faqSectionDetails.sectionHeader.title}
+      </p>
+    </div>
+
+    <!-- Tabs -->
+    {
+      tabs.length > 0 && (
+        <Tabs tabItems={tabs}>
+          {tabs.map((tabItem) => (
+            <div
+              class="faq-list border-n-700 flex flex-col border-t"
+              data-tab-content-id={tabItem.id}
+            >
+              {(itemsByTab[tabItem.id] || []).map((faqItem, index) => (
+                <FaqItem question={faqItem.question} answer={faqItem.answer} isOpen={index === 0} />
+              ))}
+            </div>
+          ))}
+        </Tabs>
+      )
+    }
+  </div>
+</section>
+
+<script>
+  import { animateFaqSection, toogleAccordion } from "@/scripts/faq";
+  import { trackFaqExpand } from "@/scripts/analytics";
+
+  // Single event listener for ALL cards (event delegation)
+  document.addEventListener("click", (e) => {
+    const card = (e.target as HTMLElement).closest(".faq-item-list");
+    if (card) {
+      const faqItemName = card.getAttribute("data-faq-item");
+      if (faqItemName) {
+        trackFaqExpand(faqItemName);
+      }
+    }
+  });
+
+  toogleAccordion();
+  animateFaqSection();
+</script>

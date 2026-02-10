@@ -1,0 +1,246 @@
+---
+// COMPONENTS //
+import Image from "astro/components/Image.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import ContactCard from "@/components/ContactCard.astro";
+import InputField from "@/components/ui/InputField.astro";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+
+// IMAGES //
+import formErrorImage from "@/assets/images/contact/form-error.png";
+import formSuccessImage from "@/assets/images/contact/form-success.png";
+
+// SVG's //
+import Ball from "@/assets/3d-ball.svg";
+
+// DATA //
+import { contactSectionDetails, contactFormDetails } from "@/data/contact";
+import { Icon } from "astro-icon/components";
+---
+
+<section id="contact-section" class="relative overflow-hidden">
+  <div
+    id="contact-wrapper"
+    class="container mx-auto flex flex-col gap-11 px-6 py-24 md:gap-20 md:py-14 xl:py-32"
+  >
+    <!-- Decorative Marbles -->
+    <Image
+      id="contact-big-marble"
+      src={Ball}
+      alt="big marble"
+      class="pointer-events-none absolute top-8 left-12 -z-10 w-[59.13px] md:top-12 md:left-20 xl:top-[35%] xl:left-[15%]"
+    />
+    <Image
+      id="contact-small-marble"
+      src={Ball}
+      alt="small marble"
+      class="pointer-events-none absolute top-16 -right-3 -z-10 w-[38.01px] rotate-[-20deg] md:top-20 md:-right-6 xl:top-[55%] xl:right-[8%]"
+    />
+    <!-- Section header -->
+    <div class="anim-fade-up-slow text-n-950 flex w-full flex-col items-center gap-4.5 xl:gap-6">
+      <!--  Tool badge component -->
+      <ToolBadge
+        icon="comment"
+        text={contactFormDetails.badgeTitle}
+        class:list={"text-n-950 md:text-base"}
+      />
+      <!-- Title -->
+      <p class="text-n-950 text-center text-3xl leading-tight font-medium md:text-4xl xl:text-6xl">
+        {contactFormDetails.heading}
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-8 md:gap-9">
+      <!-- Contact cards -->
+      <div
+        class="flex w-full flex-col items-center justify-center gap-4 md:gap-8 lg:gap-9 xl:mx-auto xl:flex-row xl:items-center xl:justify-center"
+      >
+        {
+          contactSectionDetails.contactCards.map((card) => (
+            <div class="anim-fade-in-right w-full md:w-[440px]">
+              <ContactCard
+                icon={card.icon}
+                title={card.title}
+                value={card.value}
+                type={card?.id}
+                link={card.link}
+              />
+            </div>
+          ))
+        }
+
+        <!-- Location card -->
+        <div class="anim-fade-in-right text-n-950 w-full md:w-[440px]">
+          <ContactCard
+            icon={contactSectionDetails.location.icon}
+            title={contactSectionDetails.location.title}
+            value={contactSectionDetails.location.address}
+            type="location"
+            link={contactSectionDetails.location.mapSearchUrl}
+          />
+        </div>
+      </div>
+
+      <!-- Content + Form -->
+      <div
+        class="contact-fill-wrap flex flex-col items-center gap-20 md:gap-24 lg:py-9 xl:flex xl:flex-row xl:gap-48"
+      >
+        <!-- Decorative text -->
+        <div class="text-n-950 relative w-full text-8xl md:text-[150px] xl:w-1/2 xl:text-[200px]">
+          <p class="text-left tracking-[-0.08em] md:leading-[100%]">Lets</p>
+          <p class="my-2 text-right tracking-[-0.08em] md:my-4 md:leading-[100%] xl:text-right">
+            get in
+          </p>
+          <p class="text-left tracking-[-0.08em] md:leading-[100%]">Touch&nbsp;!</p>
+        </div>
+        <!-- Contact Form -->
+        <form
+          class="form-fill relative flex w-full flex-col gap-11 xl:w-1/2 xl:flex-1 xl:gap-12"
+          aria-label="Contact form"
+          novalidate
+          id="contact-form-section"
+        >
+          <div class="flex flex-col gap-14 lg:gap-16">
+            <!-- Name Input field -->
+            <InputField
+              name="name"
+              id="name"
+              type="text"
+              required={true}
+              isError={false}
+              placeholder="NAME"
+              showPlaceholder={true}
+              extraClasses="pb-6 md:pb-9 lg:pb-8 placeholder:text-xl placeholder:text-medium"
+            />
+
+            <!-- Phone Number Input field -->
+            <InputField
+              name="phone"
+              id="phone"
+              type="tel"
+              required={true}
+              placeholder="PHONE NUMBER"
+              isError={false}
+              showPlaceholder={true}
+              extraClasses="pb-6 md:pb-9 lg:pb-8"
+            />
+
+            <!-- E-mail Input field  -->
+            <InputField
+              name="email"
+              id="email"
+              type="email"
+              required={true}
+              placeholder="E-MAIL"
+              isError={false}
+              showPlaceholder={true}
+              extraClasses="pb-6 md:pb-9 lg:pb-8"
+            />
+
+            <!-- Message Input field -->
+            <InputField
+              name="message"
+              id="message"
+              type="text"
+              required={true}
+              placeholder="MESSAGE"
+              showPlaceholder={true}
+              extraClasses="pb-6 md:pb-9 lg:pb-8"
+            />
+          </div>
+
+          <!-- Submit button-->
+          <div class="self-end">
+            <!-- Rounded Button component -->
+            <RoundedButton buttonText="Contact Us" type="submit" aria-label="Send message" />
+          </div>
+
+          <!-- Success Result/Error Modal -->
+          <div
+            id="contact-result-modal"
+            class="absolute inset-0 z-50 hidden flex-col items-center justify-center bg-black/1 transition-all duration-300"
+          >
+            <div
+              class="bg-n-100 relative flex w-full max-w-[590px] flex-col items-center justify-center gap-20 overflow-hidden rounded-[32px] px-10 pt-20 pb-7 text-center"
+            >
+              <!-- Background Circle Gradient -->
+              <div
+                class="absolute top-[70%] left-1/2 hidden h-[578px] w-[578px] -translate-x-1/2 rounded-full"
+                style="background: linear-gradient(90deg, rgba(22, 125, 229, 0.36) 0%, rgba(95, 74, 200, 0.36) 92.31%); filter: blur(200px);"
+              >
+              </div>
+
+              <!-- Close button -->
+              <button
+                id="close-contact-result-modal"
+                class="text-n-700 absolute top-6 right-6 flex size-12 cursor-pointer items-center justify-center rounded-full hover:opacity-70"
+                type="button"
+              >
+                <Icon name="close" class="text-n-700" />
+              </button>
+
+              <!-- Success -->
+              <div data-state="success" class="flex hidden flex-col items-center gap-6 md:w-[85%]">
+                <!-- Success Image -->
+                <div class="size-20">
+                  <Image
+                    src={formSuccessImage}
+                    alt="Success"
+                    class="h-full w-full object-contain"
+                  />
+                </div>
+
+                <!-- Success message text -->
+                <div class="space-y-5">
+                  <p class="text-n-950 text-3xl font-bold">Message Delivered</p>
+                  <p class="text-n-700 text-base font-bold">
+                    We’ve received your details and will take it from here. Expect a response soon.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Error -->
+              <div data-state="error" class="flex hidden flex-col items-center gap-6 md:w-[85%]">
+                <!-- Error Image -->
+                <div class="size-20">
+                  <Image src={formErrorImage} alt="Error" class="h-full w-full object-contain" />
+                </div>
+
+                <!-- Error Message text -->
+                <div class="space-y-5">
+                  <p class="text-n-950 text-3xl font-bold">Something Went Wrong</p>
+                  <p class="text-n-700 text-base font-bold">
+                    Something didn’t go as planned. Please try again or reach out directly.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Progress bar -->
+              <div class="bg-n-500 h-[5px] w-full overflow-hidden rounded-2xl">
+                <div
+                  id="contact-result-progress-bar"
+                  class="h-full w-0 bg-gradient-to-r from-blue-500 to-[#8b77f3]"
+                >
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initializeFormSubmission } from "@/scripts/contact/contact-form";
+  import { animateMarble } from "@/scripts/hero";
+  import { trackContactFormView } from "@/scripts/analytics";
+  import { initCopyButtons } from "@/scripts/contact-copy";
+
+  initializeFormSubmission();
+  animateMarble("contact-big-marble", "contact-section");
+  animateMarble("contact-small-marble", "contact-section");
+
+  trackContactFormView();
+  initCopyButtons();
+</script>

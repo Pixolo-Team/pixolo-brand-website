@@ -3,37 +3,31 @@
 import ServiceItem from "@/components/ui/ServiceItem.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
+// CONSTANTS //
 import { URLS } from "@/infrastructure/constants/urls";
 
 // DATA //
-import { services } from "@/data/services/service";
-
-// DATA
-
-const serviceDetails = {
-  badgeTitle: "Services we offer",
-  title: "We deliver client-focused solutions that drive results and build lasting partnerships.",
-};
+import { serviceDetails, serviceSectionDetails } from "@/data/home/services";
 ---
 
 <!-- Service Section -->
 <section>
   <!-- Container -->
   <div
-    class="container mx-auto flex w-full flex-col flex-wrap items-center justify-center gap-12 px-6 py-16 md:gap-16 md:px-0 md:py-28 lg:gap-20 lg:px-8 lg:py-36"
+    class="container mx-auto flex w-full flex-col flex-wrap items-center justify-center gap-12 px-6 py-12 md:gap-16 md:py-8 lg:gap-20 lg:px-8 lg:py-12"
   >
     <!-- Section Header -->
     <div class="relative flex flex-col flex-wrap gap-6 lg:gap-7">
       <!-- Tool Badge -->
       <div class="flex items-center justify-center self-start">
-        <ToolBadge icon="service-icon" text={serviceDetails.badgeTitle} />
+        <ToolBadge icon="service-icon" text={serviceSectionDetails.badgeTitle} />
       </div>
 
       <!-- Text -->
       <p
         class="anim-fade-in-right text-n-950 w-fit text-2xl leading-tight font-normal md:text-5xl lg:text-6xl"
       >
-        {serviceDetails.title}
+        {serviceSectionDetails.title}
       </p>
     </div>
 
@@ -43,8 +37,12 @@ const serviceDetails = {
     >
       {
         // Iterating over an array of objects  - services
-        services.map((serviceItem) => (
-          <a href={URLS.SERVICE.ITEM(serviceItem.id.toString(), serviceItem.title)}>
+        serviceDetails.map((serviceItem) => (
+          <a
+            href={URLS.SERVICE.ITEM(serviceItem.slug)}
+            data-service-item={serviceItem.title}
+            class="service-card"
+          >
             <ServiceItem
               imageName={serviceItem.imageName}
               title={serviceItem.title}
@@ -56,3 +54,17 @@ const serviceDetails = {
     </div>
   </div>
 </section>
+<script>
+  import { trackServiceInterest } from "@/scripts/analytics";
+
+  // Single event listener for ALL cards (event delegation)
+  document.addEventListener("click", (e) => {
+    const card = (e.target as HTMLElement).closest(".service-card");
+    if (card) {
+      const serviceName = card.getAttribute("data-service-item");
+      if (serviceName) {
+        trackServiceInterest(serviceName);
+      }
+    }
+  });
+</script>

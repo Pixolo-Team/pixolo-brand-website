@@ -1,0 +1,57 @@
+---
+// TYPES //
+import type { BlogPost } from "@/types/blogs";
+
+// COMPONENTS //
+import BlogHero from "@/components/blogs-consumption/BlogHero.astro";
+import BlogBody from "@/components/blogs-consumption/BlogBody.astro";
+import JsonLd from "@/components/layout/JsonLd.astro";
+
+// API SERVICES //
+import { getBlogsRequest } from "@/services/api/blogs.api";
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+import { getPixoloBlogPostingSchema } from "@/schemas/blogs/blog-consumption.schema";
+
+/** Generates static paths for all blogs */
+export async function getStaticPaths() {
+  /** API Call to get Blogs */
+  const blogsList = await getBlogsRequest();
+
+  return blogsList.map((blogItem: BlogPost) => ({
+    params: {
+      pageTitle: blogItem.title.toLowerCase().replaceAll(" ", "-"),
+    },
+    props: {
+      blogItem,
+    },
+  }));
+}
+
+const { blogItem }: { blogItem: BlogPost } = Astro.props;
+
+const blogPostingSchema = getPixoloBlogPostingSchema({
+  slug: blogItem.slug,
+  title: blogItem.title,
+  description: blogItem?.description && blogItem.title,
+  image: blogItem.image,
+  authorName: blogItem.author,
+  datePublished: blogItem.date,
+  dateModified: blogItem.date,
+});
+---
+
+<Layout>
+  {/* JSON LD */}
+  <JsonLd slot="head" data={blogPostingSchema} />
+
+  <BlogHero
+    image={blogItem.image}
+    category={blogItem.category}
+    date={blogItem.date}
+    title={blogItem.title}
+    author={blogItem.author}
+  />
+  <BlogBody content={blogItem.content} />
+</Layout>

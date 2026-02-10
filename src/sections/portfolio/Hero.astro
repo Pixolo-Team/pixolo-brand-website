@@ -14,7 +14,7 @@ import { portfolioHeroDetails } from "src/data/portfolio/hero.ts";
 <section>
   <div
     id="hero-wrapper"
-    class="relative container mx-auto flex flex-col items-center px-6 py-24 text-center md:gap-9 md:py-40 lg:gap-12 xl:pt-52 2xl:pt-64"
+    class="relative container mx-auto flex flex-col items-center px-6 pt-24 pb-16 text-center md:gap-9 md:py-30 lg:gap-12 xl:pt-52 2xl:pt-64"
   >
     <!-- Large 3D Ball  -->
     <Image
@@ -42,13 +42,17 @@ import { portfolioHeroDetails } from "src/data/portfolio/hero.ts";
       <!-- Headings -->
       <div class="flex flex-col gap-3.5 lg:gap-7">
         <!-- Title -->
-        <p class="text-3xl leading-tight font-medium tracking-[-1] md:text-5xl lg:text-7xl">
+        <p
+          class="word-container text-n-950 text-3xl leading-tight font-medium tracking-[-1] md:text-5xl lg:text-7xl"
+          data-animate-word
+        >
           {portfolioHeroDetails.title}
         </p>
 
         <!-- SubTitle -->
         <p
-          class="bg-[linear-gradient(90deg,var(--blue-500)_0%,var(--blue-300)_100%)] bg-clip-text text-sm leading-tight tracking-normal text-transparent md:text-lg lg:text-2xl"
+          class="word-container bg-[linear-gradient(90deg,var(--blue-500)_0%,var(--blue-300)_100%)] bg-clip-text text-sm leading-tight tracking-normal text-transparent md:text-lg lg:text-2xl"
+          data-animate-word
         >
           {portfolioHeroDetails.subTitle}
         </p>

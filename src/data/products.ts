@@ -10,35 +10,36 @@ export const homeProductsDetails = {
 
 export const productItems = [
   {
-    logo: "zizo-logo.png",
+    darkLogo: "zizo-logo.png",
+    lightLogo: "zizo-logo-light.png",
     thumbnail: "zizo-thumbnail.jpg",
     name: "Zizo",
     description:
-      "A smart football team management app that helps coaches, players, and clubs organize matches, track stats, and manage their teams seamlessly.",
-    href: "/",
+      "A smart football tournament listing app that helps coaches, players and clubs to explore & participate in football Tournaments.",
+    href: "https://www.zizoapp.in/football-tournaments",
   },
   {
-    logo: "configo-logo.png",
+    darkLogo: "configo-logo.png",
+    lightLogo: "configo-logo-light.png",
     thumbnail: "configo-thumbnail.jpg",
     name: "Configo",
     description:
       " A single control panel for all your DevOps needs. Instead of juggling servers across multiple platforms, Configo centralizes your databases, cloud servers, deployments, and access management in one clean, managed space.",
-    href: "/",
   },
   {
-    logo: "weddingo-logo.png",
+    darkLogo: "weddingo-logo.png",
+    lightLogo: "weddingo-logo-light.png",
     thumbnail: "weddingo-thumbnail.jpg",
     name: "WeddinGo",
     description:
       "Weddingo is a digital platform for modern weddings — invitations, event timelines, RSVP tracking, and photo galleries all in one place. It gives couples a celebrity-style experience without the traditional chaos.",
-    href: "/",
   },
   {
-    logo: "neevo-logo.png",
+    darkLogo: "neevo-logo.png",
+    lightLogo: "neevo-logo-light.png",
     thumbnail: "neevo-thumbnail.jpg",
     name: "Neevo Design System",
     description:
       " Neevo is a clean, flexible design system with ready-to-use components that any brand can adapt to their style in minutes. It helps teams build consistent interfaces fast, even without deep UI/UX expertise. Everything updates automatically with your brand colors, spacing, and typography.",
-    href: "/",
   },
 ];
