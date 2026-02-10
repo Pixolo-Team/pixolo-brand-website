@@ -61,8 +61,7 @@ categories.forEach((category) => {
 
       {/* Title */}
       <h2
-        id="header-text"
-        class="text-n-950 text-3xl leading-tight font-normal tracking-tighter md:text-4xl lg:text-5xl"
+        class="header-text text-n-950 text-3xl leading-tight font-normal tracking-tighter md:text-4xl lg:text-5xl"
       >
         From Concept to Launch: Our Case Studies
       </h2>
@@ -74,18 +73,18 @@ categories.forEach((category) => {
       {
         caseStudyTabItems.length > 0 && (
           <Tabs tabItems={caseStudyTabItems}>
-            {caseStudyTabItems.map((tabItem) => {
+            {caseStudyTabItems.map((caseStudyTabItem) => {
               return (
                 <div
                   class="case-studies-cards-wrapper grid grid-cols-1 gap-11 md:gap-16"
-                  data-tab-content-id={tabItem.id}
+                  data-tab-content-id={caseStudyTabItem.id}
                 >
                   {/* Cards */}
                   <div
-                    id={`case-studies-cards-${tabItem.id}`}
+                    id={`case-studies-cards-${caseStudyTabItem.id}`}
                     class="case-studies-cards grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
                   >
-                    {(caseStudiesByTab[tabItem.id] || []).map((caseStudyItem) => (
+                    {(caseStudiesByTab[caseStudyTabItem.id] || []).map((caseStudyItem) => (
                       <div class="case-study-card-item">
                         <CaseStudyCard
                           image={caseStudyItem.thumbnail || caseStudySectionDetails.defaultImage}
@@ -98,9 +97,9 @@ categories.forEach((category) => {
 
                   {/* Load More */}
                   <div class="justify-self-center">
-                    {caseStudiesByTab[tabItem.id].length > 6 ? (
+                    {caseStudiesByTab[caseStudyTabItem.id].length > 6 ? (
                       <RoundedButton
-                        id={`load-more-btn-${tabItem.id}`}
+                        id={`load-more-btn-${caseStudyTabItem.id}`}
                         buttonText={"Load More Case Studies"}
                         type="button"
                         variant="tertiary"
@@ -116,93 +115,8 @@ categories.forEach((category) => {
     </div>
   </div>
 </section>
-
 <script>
-  import { initLoadMore } from "@/scripts/load-more";
-  import { animateCaseStudiesListingSection } from "@/scripts/case-study/case-study-listing";
-  import { initTabs } from "@/scripts/tabs";
+  import { initCaseStudiesListingSection } from "@/scripts/case-study/case-study-listing";
 
-  animateCaseStudiesListingSection();
-
-  /** Restore tab from sessionStorage on page load */
-  const restoreTabFromSession = () => {
-    // Get saved tab from sessionStorage
-    const savedTab = sessionStorage.getItem("caseStudiesActiveTab");
-    if (!savedTab) return;
-
-    // Click on the tab button to restore the active tab
-    const tabBtn = document.querySelector(`[data-tab-id="${savedTab}"]`);
-    if (tabBtn instanceof HTMLElement) {
-      tabBtn.click();
-    }
-  };
-
-  /** Save active tab on click */
-  document.addEventListener("click", (e) => {
-    // Get the clicked tab button
-    const btn = e.target.closest("[data-tab-id]");
-    if (!btn) return;
-
-    // Get tab id
-    const tabId = btn.getAttribute("data-tab-id");
-    if (!tabId) return;
-
-    // Save active tab in sessionStorage
-    sessionStorage.setItem("caseStudiesActiveTab", tabId);
-  });
-
-  /** Init Load More (ALL tabs, regardless of visibility) */
-  const setupCaseStudies = () => {
-    const tabContents = document.querySelectorAll("[data-tab-content-id]");
-
-    /** Loop through each tab content */
-    tabContents.forEach((tabContent) => {
-      if (!(tabContent instanceof HTMLElement)) return;
-
-      const tabId = tabContent.dataset.tabContentId;
-      if (!tabId) return;
-
-      const caseStudyCardsContainer = tabContent.querySelector(
-        ".case-studies-cards",
-      ) as HTMLElement;
-
-      const loadMoreBtn = tabContent.querySelector(`#load-more-btn-${tabId}`) as HTMLElement;
-
-      // If tab doesn't have load more, skip
-      if (!caseStudyCardsContainer || !loadMoreBtn) return;
-
-      /** Configuration for load more */
-      const CONFIG = {
-        containerId: caseStudyCardsContainer.id,
-        loadMoreBtnId: loadMoreBtn.id,
-        cardClass: "case-study-card-item",
-        initialVisible: {
-          desktop: 6,
-          tablet: 4,
-          mobile: 3,
-        },
-        incrementConfig: {
-          desktop: 6,
-          tablet: 2,
-          mobile: 3,
-        },
-      };
-
-      initLoadMore(CONFIG);
-    });
-  };
-
-  // Initialize on DOMContentLoaded
-  document.addEventListener("DOMContentLoaded", () => {
-    initTabs();
-    setupCaseStudies();
-    restoreTabFromSession();
-  });
-
-  // Initialize on astro:page-load
-  document.addEventListener("astro:page-load", () => {
-    initTabs();
-    setupCaseStudies();
-    restoreTabFromSession();
-  });
+  initCaseStudiesListingSection();
 </script>
