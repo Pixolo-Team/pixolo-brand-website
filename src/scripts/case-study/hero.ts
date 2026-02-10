@@ -19,6 +19,7 @@ export const animateCaseStudyHeroSection = () => {
       { duration: 0.8, delay: 0.4 },
     );
 
+    // Animate graph logo
     animate(
       caseStudyHeroSection?.querySelector(".graph-logo"),
       { scaleY: [0.4, 1], opacity: [0, 1] },
