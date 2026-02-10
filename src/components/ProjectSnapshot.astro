@@ -20,12 +20,18 @@ const data = snapshotDetails;
 const { client, services, platforms, timeline, industry, techStack } = data as props;
 ---
 
-<section>
-  <div class="flex flex-col gap-8 px-6 py-16 md:gap-11 md:py-20 lg:gap-14 lg:py-24">
-    <h2 class="text-n-950 text-center text-3xl leading-tight -tracking-[2%] md:text-5xl">
+<!-- Project Snapshot Section -->
+<section id="project-snapshot-section">
+  <!-- Container  -->
+  <div
+    class="container mx-auto flex flex-col gap-8 px-6 py-16 md:gap-11 md:py-20 lg:gap-14 lg:py-24"
+  >
+    <!-- Title  -->
+    <h2 class="title-text text-n-950 text-center text-3xl leading-tight -tracking-[2%] md:text-5xl">
       A Detailed Glimpse Into the Project Journey
     </h2>
 
+    <!-- Snapshot Cards  -->
     <div class="flex flex-col gap-1.5 md:gap-4">
       <!-- First Row -->
       <div class="flex flex-col gap-1.5 md:gap-3.5 lg:gap-4 xl:flex-row">
@@ -66,7 +72,7 @@ const { client, services, platforms, timeline, industry, techStack } = data as p
               techStack?.map((img) => (
                 <Icon
                   name={img}
-                  class="size-5 shrink-0 md:size-7 lg:size-10 xl:size-12 2xl:size-14"
+                  class="tech-stack-icon size-5 shrink-0 md:size-7 lg:size-10 xl:size-12 2xl:size-14"
                 />
               ))
             }
@@ -76,3 +82,9 @@ const { client, services, platforms, timeline, industry, techStack } = data as p
     </div>
   </div>
 </section>
+
+<script>
+  import { animateSnapshotSection } from "@/scripts/portfolio-consumption/snapshot";
+
+  animateSnapshotSection();
+</script>
