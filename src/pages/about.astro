@@ -9,6 +9,7 @@ import { pixoloPlaceSchema } from "@/schemas/place.schema";
 
 // DATA //
 import aboutMeta from "@/data/meta/about.json";
+import Hero from "@/sections/about/Hero.astro";
 ---
 
 <Layout meta={aboutMeta}>
@@ -16,4 +17,6 @@ import aboutMeta from "@/data/meta/about.json";
   <JsonLd slot="head" data={pixoloIndustriesServedSchema} />
   {/* Place Schema JsonLd */}
   <JsonLd slot="head" data={pixoloPlaceSchema} />
+
+  <Hero />
 </Layout>
