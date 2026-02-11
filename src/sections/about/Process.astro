@@ -13,38 +13,33 @@ import { processSectionDetails } from "@/data/about/process";
   <div
     class="container mx-auto flex flex-col items-center justify-center gap-14 overflow-hidden px-6 py-16 md:gap-16 md:px-0 lg:px-8"
   >
-    <div class="flex w-full flex-col items-center gap-20 lg:gap-24">
-      <!-- Section Header -->
-      <div class="flex w-full flex-col items-center gap-7">
-        <!-- Tool badge component -->
-        <div class="tool-badge">
-          <ToolBadge
-            icon={processSectionDetails.badgeIcon}
-            text={processSectionDetails.badgeTitle}
+    <!-- Section Header -->
+    <div class="flex w-full flex-col items-center gap-7">
+      <!-- Tool badge component -->
+      <div class="tool-badge">
+        <ToolBadge icon={processSectionDetails.badgeIcon} text={processSectionDetails.badgeTitle} />
+      </div>
+
+      <!-- Section Title -->
+      <p
+        class="header-text text-n-950 text-center text-2xl leading-tight font-medium tracking-normal md:max-w-[65%] md:text-4xl lg:max-w-[874px] lg:text-5xl"
+      >
+        {processSectionDetails.title}
+      </p>
+    </div>
+
+    <!-- Steps Items -->
+    <div class="scroll-line relative flex flex-col items-center gap-48 md:gap-72">
+      {
+        processSectionDetails.stepItems.map((step, stepIndex) => (
+          <StepItem
+            number={step.number}
+            title={step.title}
+            description={step.description}
+            direction={stepIndex % 2 === 0 ? "ltr" : "rtl"}
           />
-        </div>
-
-        <!-- Section Title -->
-        <p
-          class="header-text text-n-950 text-center text-2xl leading-tight font-medium tracking-normal md:max-w-[65%] md:text-4xl lg:max-w-[874px] lg:text-5xl"
-        >
-          {processSectionDetails.title}
-        </p>
-      </div>
-
-      <!-- Steps Items -->
-      <div class="scroll-line relative flex flex-col items-center gap-48 md:gap-72">
-        {
-          processSectionDetails.stepItems.map((step, stepIndex) => (
-            <StepItem
-              number={step.number}
-              title={step.title}
-              description={step.description}
-              direction={stepIndex % 2 === 0 ? "ltr" : "rtl"}
-            />
-          ))
-        }
-      </div>
+        ))
+      }
     </div>
   </div>
 </section>
