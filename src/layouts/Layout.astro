@@ -54,6 +54,12 @@ const { meta = {} } = Astro.props;
 
     <!-- Global WebSite JSON-LD (ALL pages) -->
     <JsonLd slot="head" data={pixoloWebsiteSchema} />
+
+    <script is:inline>
+      if (sessionStorage.getItem("loaderShown")) {
+        document.documentElement.classList.add("hide-loader");
+      }
+    </script>
   </head>
 
   <body>
@@ -142,17 +148,6 @@ const { meta = {} } = Astro.props;
   // Initial page load
   trackPageView();
   setupScrollTracking();
-</script>
-
-<script is:inline>
-  const loader = document.querySelector("#loading-screen");
-  const hasSeenLoader = sessionStorage.getItem("loaderShown");
-
-  if (hasSeenLoader) {
-    loader.style.display = "none";
-  } else {
-    loader.style.display = "flex";
-  }
 </script>
 
 <script>
