@@ -9,8 +9,8 @@ export function initShowcaseSlider() {
   const viewportNode = document.getElementById("showcase-slider");
 
   /** Grab button nodes */
-  const prevButtonNode = rootNode?.querySelector("#slide-prev");
-  const nextButtonNode = rootNode?.querySelector("#slide-next");
+  const prevButtonNode = rootNode?.querySelector("#showcase-prev");
+  const nextButtonNode = rootNode?.querySelector("#showcase-next");
 
   /** Grab progress node */
   const progressNode = document.getElementById("embla__progress__bar");
