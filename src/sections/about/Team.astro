@@ -1,0 +1,51 @@
+---
+// COMPONENTS //
+import TeamCard from "@/components/about/TeamCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// DATA //
+import { teamsSectionDetails } from "@/data/about/teams";
+---
+
+<!-- Team Section  -->
+<section id="about-team-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-14 overflow-hidden px-6 py-16 md:gap-10 md:px-0 lg:gap-16 lg:px-8"
+  >
+    <div class="flex w-full flex-col items-center gap-3.5 lg:gap-4">
+      <!-- Tool badge component -->
+      <div class="tool-badge">
+        <ToolBadge icon={teamsSectionDetails.badgeIcon} text={teamsSectionDetails.badgeTitle} />
+      </div>
+
+      <!-- Section Title -->
+      <p
+        id="header-text"
+        class="text-n-950 text-center text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-5xl"
+      >
+        {teamsSectionDetails.title}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-10 self-center md:grid-cols-2 lg:gap-12 xl:grid-cols-3">
+      {
+        teamsSectionDetails.teamCardItems.map((teamCardItem) => (
+          // Team card component
+          <div class="lg:max-w-[378px]">
+            <TeamCard
+              name={teamCardItem.name}
+              role={teamCardItem.role}
+              quote={teamCardItem.quote}
+              quoteHighlight={teamCardItem.quoteHighlight}
+              profileImage={teamCardItem.profileImage}
+              avatarImage={teamCardItem.avatarImage}
+              linkedinUrl={teamCardItem.linkedinUrl}
+              instagramUrl={teamCardItem.instagramUrl}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
