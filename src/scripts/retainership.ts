@@ -24,7 +24,7 @@ export const animateRetainershipSection = () => {
       { duration: 0.8, delay: 0 },
     );
   });
-  
+
   inView(".step-item", (stepItem) => {
     const paragraphs = stepItem.querySelectorAll("p");
     if (!paragraphs.length) return;

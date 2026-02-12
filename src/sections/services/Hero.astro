@@ -50,7 +50,6 @@ import { heroSectionDetails } from "@/data/services/hero";
       <p
         class="text-n-950 flex items-center justify-center text-center text-3xl leading-tight font-normal tracking-tight text-nowrap md:text-7xl xl:text-8xl"
       >
-        <!-- Title third line -->
         <span class="word-container" data-animate-word>
           {heroSectionDetails.title[2]}
         </span>
@@ -62,17 +61,27 @@ import { heroSectionDetails } from "@/data/services/hero";
           class="floating-icon inline-block w-14 align-middle md:w-44 xl:w-60"
           style={"animation-duration: 5s"}
         />
+      </p>
+
+      <!--  Title third line -->
+      <p
+        class="text-n-950 text-3xl leading-none font-normal tracking-tight md:text-7xl xl:text-8xl"
+      >
         <span class="word-container" data-animate-word>
           {heroSectionDetails.title[3]}
+        </span>
+        <span class="word-container" data-animate-word>
+          {heroSectionDetails.title[4]}
+        </span>
+        <span class="word-container" data-animate-word>
+          {heroSectionDetails.title[5]}
         </span>
       </p>
 
       <!--  Title fourth line -->
-      <p
-        class="text-n-950 text-3xl leading-none font-semibold tracking-[-0.02em] md:text-7xl xl:text-8xl"
-      >
+      <p class="text-n-950 text-3xl leading-none font-bold tracking-tight md:text-7xl xl:text-8xl">
         <span class="word-container" data-animate-word>
-          {heroSectionDetails.title[4]}
+          {heroSectionDetails.title[6]}
         </span>
       </p>
     </div>
