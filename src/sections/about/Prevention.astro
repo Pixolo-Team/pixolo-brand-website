@@ -1,0 +1,55 @@
+---
+// COMPONENTS //
+import FailureCard from "@/components/about/FailureCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// DATA //
+import { preventionSectionDetails } from "@/data/about/prevention";
+---
+
+<section id="prevention-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-11 px-6 py-28 md:gap-14 lg:gap-16"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="warning-shield" text={preventionSectionDetails.badgeTitle} />
+      </div>
+
+      <!-- Title -->
+      <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
+        {preventionSectionDetails.title}
+      </p>
+    </div>
+
+    <!-- Failure Cards -->
+    <div class="flex flex-col items-center justify-center gap-14 lg:gap-20">
+      <div
+        class="failure-cards flex w-full flex-wrap items-center justify-center gap-6 gap-y-4 xl:gap-9 xl:gap-y-6"
+      >
+        {
+          preventionSectionDetails.failureCardItems.map((item, index) => (
+            <div class="w-full md:w-[48%] xl:w-[31%]">
+              {/* Failure Card Component */}
+              <FailureCard index={(index + 1).toString().padStart(2, "0")} title={item.title} />
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Description -->
+      <p
+        class="description-text text-n-950 w-[92%] text-center text-sm font-medium opacity-0 md:w-[42%] md:text-lg lg:w-[52%] lg:text-2xl lg:font-medium xl:w-[42%] 2xl:w-[34%]"
+      >
+        {preventionSectionDetails.description}
+      </p>
+    </div>
+  </div>
+</section>
+<script>
+  import { animatePreventionSection } from "@/scripts/about/prevention";
+
+  animatePreventionSection();
+</script>
