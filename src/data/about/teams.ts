@@ -6,7 +6,7 @@ export const teamsSectionDetails = {
 
   teamCardItems: [
     {
-      name: "Abhay",
+      name: "Abhay Amin",
       role: "Founder & CTO",
       profileImage: "/images/team/abhay-amin.jpg",
       quote: "Thinks in",
