@@ -1,4 +1,4 @@
-// Career Hero Section Details
+// About Hero Section Details
 export const aboutHeroSectionDetails = {
   badgeIcon: "comment",
   badgeTitle: "About Pixolo",
