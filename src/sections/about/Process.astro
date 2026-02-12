@@ -31,11 +31,11 @@ import { processSectionDetails } from "@/data/about/process";
     <!-- Steps Items -->
     <div class="scroll-line relative flex flex-col items-center gap-48 md:gap-72">
       {
-        processSectionDetails.stepItems.map((step, stepIndex) => (
+        processSectionDetails.stepItems.map((stepItem, stepIndex) => (
           <StepItem
-            number={step.number}
-            title={step.title}
-            description={step.description}
+            number={stepItem.number}
+            title={stepItem.title}
+            description={stepItem.description}
             direction={stepIndex % 2 === 0 ? "ltr" : "rtl"}
           />
         ))
@@ -81,7 +81,8 @@ import { processSectionDetails } from "@/data/about/process";
   }
 </style>
 <script>
-  import { animateProcessSection, initScrollLine } from "@/scripts/about/process";
+  import { animateProcessSection } from "@/scripts/about/process";
+  import { initScrollLine } from "@/utils/scroll-line";
 
   // Animate Process Section
   animateProcessSection();
