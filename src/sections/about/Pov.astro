@@ -29,9 +29,13 @@ import { povSectionDetails } from "@/data/about/pov";
       class="pov-cards grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 xl:grid-cols-3 2xl:grid-cols-4"
     >
       {
-        povSectionDetails.povCardItems.map((item) => (
+        povSectionDetails.povCardItems.map((povCardItem) => (
           // Pov Card Component
-          <PovCard label={item.label} title={item.title} description={item.description} />
+          <PovCard
+            label={povCardItem.label}
+            title={povCardItem.title}
+            description={povCardItem.description}
+          />
         ))
       }
     </div>
