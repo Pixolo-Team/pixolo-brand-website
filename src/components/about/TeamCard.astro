@@ -17,12 +17,16 @@ const { name, role, quote, quoteHighlight, profileImage, avatarImage, linkedinUr
   Astro.props as TeamMemberData;
 ---
 
-<div class="flex w-full flex-col items-start gap-4 md:gap-4">
+<div class="group flex w-full flex-col items-start gap-4 md:gap-4">
   <!-- Card Image Area -->
   <div class="relative flex w-full flex-col items-center justify-end overflow-hidden rounded-3xl">
     <!-- Background Image with Overlay -->
     <div class="w-full overflow-hidden rounded-3xl">
-      <img src={profileImage} alt={name} class="h-full w-full object-contain" />
+      <img
+        src={profileImage}
+        alt={name}
+        class="h-full w-full object-contain saturate-0 transition-all duration-500 ease-out group-hover:saturate-100"
+      />
       <!-- Gradient Overlay -->
       <div
         class="absolute inset-0"
