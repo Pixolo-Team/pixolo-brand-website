@@ -17,9 +17,8 @@ export const serviceDetails = [
       "MVP → MLP",
     ],
     hero: {
-      title: "Build the right product. Not just a functional one.",
-      subTitle:
-        "We help founders and teams turn ideas into clear, buildable product plans that don’t collapse halfway.",
+      title: "Before you build anything, you should probably think a little harder.",
+      subTitle: "That’s what product strategy is for.",
     },
     outcomeFocused: [
       { description: "Clear product scope and priorities" },
@@ -105,8 +104,8 @@ export const serviceDetails = [
     slug: "full-stack-development",
     tags: ["Web Apps", "Mobile Apps", "Backend & APIs", "Admin Panels", "Real-time Systems"],
     hero: {
-      title: "End-to-end development without handoffs or chaos.",
-      subTitle: "One team. One codebase. One accountable partner.",
+      title: "We build the front, the back, and the parts nobody sees.",
+      subTitle: "All of it matters.",
     },
     outcomeFocused: [
       { description: "Stable, scalable applications" },
@@ -150,8 +149,8 @@ export const serviceDetails = [
       "ML Dashboards",
     ],
     hero: {
-      title: "Use AI where it saves money.",
-      subTitle: "Not where it sounds impressive.",
+      title: "We automate the boring parts so humans can think better.",
+      subTitle: "Practical AI only.",
     },
     outcomeFocused: [
       { description: "Reduced manual work" },
@@ -239,8 +238,8 @@ export const serviceDetails = [
       "Operations Dashboards",
     ],
     hero: {
-      title: "Custom tools that fit how your team actually works.",
-      subTitle: "Not the other way around.",
+      title: "Tools your team actually enjoys using every day.",
+      subTitle: "Built for humans, not manuals.",
     },
     outcomeFocused: [
       { description: "Operational clarity" },
