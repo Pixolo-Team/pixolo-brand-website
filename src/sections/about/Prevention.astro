@@ -7,7 +7,7 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { preventionSectionDetails } from "@/data/about/prevention";
 ---
 
-<section id="prevention-section">
+<section id="prevention-section" data-section="Prevention">
   <!-- Container -->
   <div
     class="container mx-auto flex flex-col items-center justify-center gap-11 px-6 py-28 md:gap-14 lg:gap-16"
@@ -30,10 +30,13 @@ import { preventionSectionDetails } from "@/data/about/prevention";
         class="failure-cards flex w-full flex-wrap items-center justify-center gap-6 gap-y-4 xl:gap-9 xl:gap-y-6"
       >
         {
-          preventionSectionDetails.failureCardItems.map((item, index) => (
+          preventionSectionDetails.failureCardItems.map((failureCardItem, index) => (
             <div class="w-full md:w-[48%] xl:w-[31%]">
               {/* Failure Card Component */}
-              <FailureCard index={(index + 1).toString().padStart(2, "0")} title={item.title} />
+              <FailureCard
+                index={(index + 1).toString().padStart(2, "0")}
+                title={failureCardItem.title}
+              />
             </div>
           ))
         }
