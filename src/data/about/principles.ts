@@ -1,4 +1,4 @@
-// Priciples Section Details
+// Principles Section Details
 export const principlesSectionDetails = {
   badgeTitle: "Principles",
   title: "What Guides Us",
