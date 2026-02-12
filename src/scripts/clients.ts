@@ -22,5 +22,14 @@ export const animateClientLogos = () => {
       { y: ["50px", 0], opacity: [0, 1] },
       { duration: 0.4, delay: stagger(0.2, { from: "first", startDelay: 1 }) },
     );
+
+    inView("#footer-text", (footerText) => {
+      animate(footerText, { y: ["50px", 0], opacity: [0, 1] }, { duration: 0.4, delay: 0 });
+    });
+    // animate(
+    //   clientLogoSection?.querySelectorAll("#footer-text"),
+    //   { y: ["50px", 0], opacity: [0, 1] },
+    //   { duration: 0.4, delay: stagger(0.2, { from: "first", startDelay: 4 }) },
+    // );
   });
 };

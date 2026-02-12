@@ -1,6 +1,6 @@
 export const serviceSectionDetails = {
   badgeTitle: "Services we offer",
-  title: "We deliver client-focused solutions that drive results and build lasting partnerships.",
+  title: "Things we’re comfortable standing behind",
 };
 
 export const serviceDetails = [
