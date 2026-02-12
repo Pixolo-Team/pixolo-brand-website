@@ -1,0 +1,59 @@
+---
+// COMPONENTS //
+import Image from "astro/components/Image.astro";
+
+interface props {
+  index: number;
+  thumbnail: string;
+  name: string;
+  image: string;
+  position: string;
+  description: string;
+}
+
+const { index, thumbnail, name, image, position, description } = Astro.props as props;
+---
+
+<div
+  class={`leadership-card flex w-full flex-col items-start gap-7 md:gap-9 xl:flex-row xl:items-center xl:gap-14 ${index % 2 !== 0 ? "xl:flex-row-reverse" : "xl:flex-row"}`}
+>
+  <!-- Cover Image -->
+  <Image
+    class="w-full rounded-3xl object-cover xl:w-1/2"
+    src={thumbnail}
+    alt="Profile cover"
+    width={48}
+    height={48}
+    loading="lazy"
+  />
+
+  <!-- Content -->
+  <div class="flex w-full flex-col items-start gap-4 md:gap-6 xl:gap-7">
+    <!-- Profile Info -->
+    <div class="flex w-full items-center gap-4 md:gap-5 xl:gap-6">
+      <Image
+        class="size-16 rounded-full object-cover"
+        src={image}
+        alt="Avatar"
+        width={48}
+        height={48}
+        loading="lazy"
+      />
+
+      <div class="flex flex-1 flex-col items-start gap-2">
+        <!-- Name -->
+        <div class="text-n-950 text-base font-bold md:text-2xl xl:text-3xl">{name}</div>
+
+        <!-- Position -->
+        <div class="text-n-950 text-xs font-normal md:text-sm xl:text-base">{position}</div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <p
+      class="text-n-950 text-sm leading-normal font-normal md:text-base md:leading-relaxed xl:text-lg xl:leading-[180%]"
+    >
+      {description}
+    </p>
+  </div>
+</div>
