@@ -1,0 +1,51 @@
+---
+// COMPONENTS //
+import PrincipleCard from "@/components/about/PrincipleCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// DATA //
+import { principlesSectionDetails } from "@/data/about/principles";
+---
+
+<!-- About Principles Section -->
+<section id="principles-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-10 px-6 py-28 md:gap-14 lg:gap-10"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="star-badge" text={principlesSectionDetails.badgeTitle} />
+      </div>
+
+      <!-- Title -->
+      <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
+        {principlesSectionDetails.title}
+      </p>
+    </div>
+    <div class="flex flex-col gap-6 md:gap-8 lg:gap-10">
+      <!-- Subtitle -->
+      <p class="subtitle-text text-n-950 text-center text-sm font-medium md:text-lg lg:text-2xl">
+        "{principlesSectionDetails.subtitle}"
+      </p>
+
+      <!-- Principle Cards -->
+      <div
+        class="principle-cards grid grid-cols-1 gap-3.5 md:grid-cols-2 md:gap-4 xl:grid-cols-3 xl:gap-5 2xl:grid-cols-4"
+      >
+        {
+          principlesSectionDetails.principleCardItems.map((item) => (
+            // Principle Card Component
+            <PrincipleCard icon={item.icon} title={item.title} description={item.description} />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import { animatePrinciplesSection } from "@/scripts/about/principles";
+
+  animatePrinciplesSection();
+</script>
