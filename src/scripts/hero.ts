@@ -31,6 +31,9 @@ export const animateMarble = (elementId: string, containerId: string) => {
 
   if (!marble || !container) return;
 
+  // Should appear above the text
+  marble.style.zIndex = "50";
+
   const SPEED_PX_PER_SECOND = 25;
   let posX = 0;
   let posY = 0;

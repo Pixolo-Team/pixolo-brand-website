@@ -119,7 +119,7 @@ const filteredPortfolioItems: PortfolioData[] = isCuratedView
                   tagItems={projectCardItem.badges}
                   buttonOneText={"Visit Website"}
                   buttonTwoText={"Show Project"}
-                  buttonOneClick={`window.location.href='${projectCardItem.website_link}'`}
+                  buttonOneClick={`window.open('${projectCardItem.website_link}', '_blank', 'noopener,noreferrer')`}
                   buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCardItem.title)}'`}
                 />
               );
