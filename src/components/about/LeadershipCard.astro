@@ -34,7 +34,7 @@ const { index, thumbnail, name, image, position, description } = Astro.props as 
       <Image
         class="size-16 rounded-full object-cover"
         src={image}
-        alt="Avatar"
+        alt={`${name} profile`}
         width={48}
         height={48}
         loading="lazy"
