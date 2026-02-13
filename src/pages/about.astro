@@ -8,6 +8,7 @@ import { pixoloIndustriesServedSchema } from "@/schemas/industries-served";
 import { pixoloPlaceSchema } from "@/schemas/place.schema";
 
 // SECTIONS //
+import Team from "@/sections/about/Team.astro";
 import Leadership from "@/sections/about/Leadership.astro";
 import Prevention from "@/sections/about/Prevention.astro";
 import Pov from "@/sections/about/Pov.astro";
@@ -26,6 +27,7 @@ import aboutMeta from "@/data/meta/about.json";
   <JsonLd slot="head" data={pixoloPlaceSchema} />
 
   <Hero />
+  <Team />
   <Pov />
   <Prevention />
   <Process />
