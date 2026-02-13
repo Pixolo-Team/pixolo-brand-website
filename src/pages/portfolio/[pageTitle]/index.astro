@@ -38,7 +38,6 @@ export async function getStaticPaths() {
 }
 
 const { portfolioItem }: { portfolioItem: PortfolioData } = Astro.props;
-console.log(portfolioItem.snapshot[0].timeline);
 ---
 
 <Layout>
@@ -47,31 +46,49 @@ console.log(portfolioItem.snapshot[0].timeline);
     title={portfolioItem.title}
     description={portfolioItem.subtitle}
   />
-  <Video
-    videoUrl={portfolioItem.video_section[0].video_url}
-    alt={portfolioItem.video_section[0].alt}
-  />
-  <ProjectIntroduction
-    title={portfolioItem.introduction[0].title}
-    image={portfolioItem.introduction[0].image}
-    aboutProject={portfolioItem.introduction[0].about_project}
-    target={portfolioItem.introduction[0].target}
-    purpose={portfolioItem.introduction[0].purpose}
-  />
-  <ProjectSnapshot
-    client={portfolioItem.snapshot[0].client}
-    services={portfolioItem.snapshot_services}
-    timeline={portfolioItem.snapshot[0].timeline}
-    industry={portfolioItem.snapshot[0].industry}
-    platforms={portfolioItem.snapshot_platforms}
-    techStack={portfolioItem.snapshot_tech_stack}
-  />
-  <Impact impactItems={portfolioItem.impact} />
-  <Teams teams={portfolioItem.teams} />
-  <ClientTestimonial
-    image={portfolioItem.client_testimonial?.[0]?.image ?? ""}
-    name={portfolioItem.client_testimonial?.[0]?.name ?? ""}
-    role={portfolioItem.client_testimonial?.[0]?.role ?? ""}
-    message={portfolioItem.client_testimonial?.[0]?.message ?? ""}
-  />
+  {
+    portfolioItem.video_section && (
+      <Video
+        videoUrl={portfolioItem.video_section[0].video_url}
+        alt={portfolioItem.video_section[0].alt}
+      />
+    )
+  }
+  {
+    portfolioItem.introduction && (
+      <ProjectIntroduction
+        title={portfolioItem.introduction[0].title}
+        image={portfolioItem.introduction[0].image}
+        aboutProject={portfolioItem.introduction[0].about_project}
+        target={portfolioItem.introduction[0].target}
+        purpose={portfolioItem.introduction[0].purpose}
+      />
+    )
+  }
+
+  {
+    portfolioItem.snapshot && (
+      <ProjectSnapshot
+        client={portfolioItem.snapshot[0].client}
+        services={portfolioItem.snapshot_services}
+        timeline={portfolioItem.snapshot[0].timeline}
+        industry={portfolioItem.snapshot[0].industry}
+        platforms={portfolioItem.snapshot_platforms}
+        techStack={portfolioItem.snapshot_tech_stack}
+      />
+    )
+  }
+
+  {portfolioItem.impact && <Impact impactItems={portfolioItem.impact} />}
+  {portfolioItem.teams && <Teams teams={portfolioItem.teams} />}
+  {
+    portfolioItem.client_testimonial && (
+      <ClientTestimonial
+        image={portfolioItem.client_testimonial?.[0]?.image ?? ""}
+        name={portfolioItem.client_testimonial?.[0]?.name ?? ""}
+        role={portfolioItem.client_testimonial?.[0]?.role ?? ""}
+        message={portfolioItem.client_testimonial?.[0]?.message ?? ""}
+      />
+    )
+  }
 </Layout>

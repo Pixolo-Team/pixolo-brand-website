@@ -69,12 +69,16 @@ console.log(techStack);
         <SnapshotCard label="Tech Stack" className="w-full flex-1">
           <div class="scrollbar-hide flex gap-3 overflow-x-auto md:gap-7">
             {
-              techStack?.map((img) => (
-                <Icon
-                  name={img}
-                  class="tech-stack-icon size-5 shrink-0 md:size-7 lg:size-10 xl:size-12 2xl:size-14"
-                />
-              ))
+              techStack &&
+                techStack?.map((img) => {
+                  if (!img) return null;
+                  return (
+                    <Icon
+                      name={img}
+                      class="tech-stack-icon size-5 shrink-0 md:size-7 lg:size-10 xl:size-12 2xl:size-14"
+                    />
+                  );
+                })
             }
           </div>
         </SnapshotCard>
