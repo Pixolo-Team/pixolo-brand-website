@@ -7,6 +7,9 @@ import Layout from "@/layouts/Layout.astro";
 import { pixoloIndustriesServedSchema } from "@/schemas/industries-served";
 import { pixoloPlaceSchema } from "@/schemas/place.schema";
 
+// SECTIONS //
+import Bts from "@/sections/about/Bts.astro";
+
 // DATA //
 import aboutMeta from "@/data/meta/about.json";
 ---
@@ -16,4 +19,6 @@ import aboutMeta from "@/data/meta/about.json";
   <JsonLd slot="head" data={pixoloIndustriesServedSchema} />
   {/* Place Schema JsonLd */}
   <JsonLd slot="head" data={pixoloPlaceSchema} />
+
+  <Bts />
 </Layout>
