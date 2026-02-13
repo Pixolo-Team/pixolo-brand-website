@@ -1,0 +1,122 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+// PROPS //
+interface Props {
+  title: string;
+  description: string;
+  index: string;
+}
+
+const { title, description, index } = Astro.props as Props;
+---
+
+<div
+  class="foundation-item relative flex w-full flex-col items-start gap-3 pt-4 pb-8 lg:pt-5 lg:pb-10"
+  data-state="open"
+>
+  <!-- Header Row -->
+  <div class="flex w-full items-start justify-between gap-8">
+    <!-- Left -->
+    <div class="flex flex-1 items-start gap-6">
+      <!-- Index -->
+      <p
+        class="w-10 bg-gradient-to-br from-blue-500 to-[#8B77F3] bg-clip-text text-center text-lg font-bold tracking-wide text-transparent md:text-xl lg:text-2xl"
+      >
+        {index}
+      </p>
+
+      <!-- Content -->
+      <div class="flex flex-1 flex-col gap-3.5 lg:gap-4">
+        <div class="text-n-950 cursor-pointer text-lg font-bold md:text-xl lg:text-2xl">
+          {title}
+        </div>
+
+        <!-- Description (open only) -->
+        <div class="foundation-description text-n-950 text-xs font-normal md:text-sm lg:text-base">
+          {description}
+        </div>
+      </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="flex h-6 w-6 items-center justify-center md:size-6 lg:size-8">
+      <Icon name="minus" class="icon-minus text-n-950 size-4" />
+      <Icon name="plus" class="icon-plus text-n-950 size-4" />
+    </div>
+  </div>
+
+  <!-- Gradient Line (open only) -->
+  <div
+    class="foundation-progress bg-n-200 absolute top-full left-0 h-[3px] w-full overflow-hidden rounded-full"
+  >
+    <div class="foundation-progress-fill h-full w-0 bg-gradient-to-r from-indigo-600 to-indigo-400">
+    </div>
+  </div>
+</div>
+<style>
+  /* Description */
+  .foundation-description {
+    opacity: 0;
+    transform: translateY(-2px);
+    transition: all 200ms ease;
+  }
+  /* Gradient bar */
+  .foundation-item .foundation-progress {
+    opacity: 0;
+    transform: scaleX(0.98);
+    transition: all 200ms ease;
+  }
+
+  .foundation-item .foundation-progress-fill {
+    width: 0%;
+  }
+
+  /* OPEN STATE */
+  .foundation-item[data-state="open"] .foundation-progress {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  /* Icon visibility */
+  .foundation-item .icon-minus {
+    display: none;
+  }
+  .foundation-item .icon-plus {
+    display: block;
+  }
+
+  /* =========================
+   OPEN STATE
+========================= */
+
+  .foundation-item[data-state="open"] .foundation-description {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .foundation-item[data-state="open"] .foundation-progress {
+    display: block;
+  }
+
+  .foundation-item[data-state="open"] .icon-minus {
+    display: block;
+  }
+
+  .foundation-item[data-state="open"] .icon-plus {
+    display: none;
+  }
+
+  /* =========================
+   CLOSED STATE
+========================= */
+
+  .foundation-item[data-state="closed"] .foundation-description {
+    display: none;
+  }
+
+  .foundation-item[data-state="closed"] .foundation-progress {
+    display: none;
+  }
+</style>
