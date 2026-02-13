@@ -7,9 +7,13 @@ import Layout from "@/layouts/Layout.astro";
 import { pixoloIndustriesServedSchema } from "@/schemas/industries-served";
 import { pixoloPlaceSchema } from "@/schemas/place.schema";
 
+// SECTIONS //
+import Process from "@/sections/about/Process.astro";
+import Hero from "@/sections/about/Hero.astro";
+import Commitment from "@/sections/about/Commitment.astro";
+
 // DATA //
 import aboutMeta from "@/data/meta/about.json";
-import Commitment from "@/sections/about/Commitment.astro";
 ---
 
 <Layout meta={aboutMeta}>
@@ -18,5 +22,7 @@ import Commitment from "@/sections/about/Commitment.astro";
   {/* Place Schema JsonLd */}
   <JsonLd slot="head" data={pixoloPlaceSchema} />
 
+  <Hero />
+  <Process />
   <Commitment />
 </Layout>
