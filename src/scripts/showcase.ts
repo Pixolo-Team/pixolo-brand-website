@@ -165,14 +165,14 @@ export function initShowcase() {
   /** Handling the event on grid icon */
   gridIconBtn.addEventListener("click", () => {
     projectCards.dataset.view = "grid";
-    gridIconBtn.children[0].classList.add("text-n-500");
-    listIconBtn.children[0].classList.remove("text-n-500");
+    gridIconBtn.children[0].classList.add("text-n-950");
+    listIconBtn.children[0].classList.remove("text-n-950");
   });
 
   /** Handling the event on list icon */
   listIconBtn.addEventListener("click", () => {
     projectCards.dataset.view = "list";
-    listIconBtn.children[0].classList.add("text-n-500");
-    gridIconBtn.children[0].classList.remove("text-n-500");
+    listIconBtn.children[0].classList.add("text-n-950");
+    gridIconBtn.children[0].classList.remove("text-n-950");
   });
 }
