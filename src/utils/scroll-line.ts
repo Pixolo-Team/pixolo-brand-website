@@ -8,6 +8,7 @@ export const initScrollLine = () => {
   const initialFill = 0;
   let frameRequested = false; // for requestAnimationFrame optimization
 
+  /** Update Fill Percentage */
   const updateFill = () => {
     // Get the position and height of the scroll line element relative to the viewport
     const { top, height } = scrollLine.getBoundingClientRect();
@@ -29,6 +30,7 @@ export const initScrollLine = () => {
     frameRequested = false;
   };
 
+  /** Handle Scroll and Resize Events */
   const onScrollOrResize = () => {
     // Check if an update frame has already been requested
     if (!frameRequested) {

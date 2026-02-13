@@ -1,3 +1,4 @@
+// OTHERS //
 import { animate, inView, stagger } from "motion";
 
 /** Animate Process Section */
@@ -11,6 +12,7 @@ export const animateProcessSection = () => {
       { duration: 0.8, delay: 0 },
     );
 
+    // Animate the Section Header Text
     animate(
       processSection?.querySelectorAll(".header-text"),
       { opacity: [0, 1], y: ["50px", 0], scaleY: [0.4, 1] },
@@ -18,6 +20,7 @@ export const animateProcessSection = () => {
     );
   });
 
+  // Animate the Step Items
   inView(".step-item", (stepItem) => {
     const paragraphs = stepItem.querySelectorAll("p");
     if (!paragraphs.length) return;
