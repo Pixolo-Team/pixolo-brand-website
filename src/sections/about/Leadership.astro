@@ -1,0 +1,52 @@
+---
+// COMPONENTS //
+import LeadershipCard from "@/components/about/LeadershipCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// DATA //
+import { leadershipSectionDetails } from "@/data/about/leadership";
+---
+
+<!-- Leadership Section -->
+<section id="leadership-section" data-section="Leadership">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-11 px-6 py-28 md:gap-14 lg:gap-16 lg:px-8 lg:pt-52 lg:pb-24"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="potrait" text={leadershipSectionDetails.badgeTitle} />
+      </div>
+
+      <!-- Title -->
+      <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
+        {leadershipSectionDetails.title}
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="leadership-cards flex w-full flex-col items-center justify-center gap-12">
+      {
+        leadershipSectionDetails.leadershipCardItems.map(
+          (leadershipCardItem, leadershipItemIndex) => (
+            // Leadership Card Component
+            <LeadershipCard
+              index={leadershipItemIndex}
+              name={leadershipCardItem.name}
+              image={leadershipCardItem.image}
+              thumbnail={leadershipCardItem.thumbnail}
+              position={leadershipCardItem.position}
+              description={leadershipCardItem.description}
+            />
+          ),
+        )
+      }
+    </div>
+  </div>
+</section>
+<script>
+  import { animateLeadershipSection } from "@/scripts/about/leadership";
+
+  animateLeadershipSection();
+</script>
