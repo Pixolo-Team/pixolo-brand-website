@@ -17,6 +17,7 @@ export const serviceDetails = [
       "MVP → MLP",
     ],
     hero: {
+      badgeTitle: "Build the right thing before you build anything",
       title: "Build the right product. Not just a functional one.",
       subTitle:
         "We help founders and teams turn ideas into clear, buildable product plans that don’t collapse halfway.",
@@ -66,6 +67,7 @@ export const serviceDetails = [
       "Landing Pages",
     ],
     hero: {
+      badgeTitle: "Design that feels right from the first click",
       title: "Design that feels obvious.",
       subTitle: "If users have to think, something’s already wrong.",
     },
@@ -105,6 +107,7 @@ export const serviceDetails = [
     slug: "full-stack-development",
     tags: ["Web Apps", "Mobile Apps", "Backend & APIs", "Admin Panels", "Real-time Systems"],
     hero: {
+      badgeTitle: "Build it once. Build it right.",
       title: "End-to-end development without handoffs or chaos.",
       subTitle: "One team. One codebase. One accountable partner.",
     },
@@ -150,6 +153,7 @@ export const serviceDetails = [
       "ML Dashboards",
     ],
     hero: {
+      badgeTitle: "Work smarter, not harder",
       title: "Use AI where it saves money.",
       subTitle: "Not where it sounds impressive.",
     },
@@ -195,6 +199,7 @@ export const serviceDetails = [
       "Database Optimization",
     ],
     hero: {
+      badgeTitle: "Strong foundations, smooth scaling",
       title: "Infrastructure that doesn’t wake you up at night.",
       subTitle: "Stable, secure, and built to scale.",
     },
@@ -239,6 +244,7 @@ export const serviceDetails = [
       "Operations Dashboards",
     ],
     hero: {
+      badgeTitle: "Run your business without friction",
       title: "Custom tools that fit how your team actually works.",
       subTitle: "Not the other way around.",
     },
