@@ -51,7 +51,11 @@ const serviceSchema = getPixoloServiceSchema({
   {/* JSON LD */}
   <JsonLd slot="head" data={serviceSchema} />
 
-  <Hero title={service.hero.title} subTitle={service.hero.subTitle} />
+  <Hero
+    badgeTitle={service.hero.badgeTitle}
+    title={service.hero.title}
+    subTitle={service.hero.subTitle}
+  />
   <OutcomeFocused outcomeFocusedItems={service} />
   <PainSolution painSolutionCardItems={service.painSolution} />
   <HowWeWork howWeWorkSectionSteps={service.howWeWork} />
