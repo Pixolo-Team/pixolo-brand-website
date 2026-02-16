@@ -262,3 +262,13 @@ select:-webkit-autofill {
 .dark .dark-img {
   display: block;
 }
+
+/* Default: loader visible */
+#loading-screen {
+  display: flex;
+}
+
+/* Loader disabled globally */
+.hide-loader #loading-screen {
+  display: none !important;
+}

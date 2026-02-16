@@ -1,0 +1,28 @@
+---
+interface Props {
+  index: string;
+  title: string;
+}
+
+const { index, title } = Astro.props;
+---
+
+<!-- Failure Card Component -->
+<div
+  class="failure-card border-n-500 relative flex w-full items-center gap-4 rounded-2xl border py-4 pr-6 pl-7 md:rounded-3xl md:py-5"
+>
+  <!-- Red status like dot -->
+  <div
+    class="absolute top-1/2 -left-2.5 flex size-5 -translate-y-1/2 items-center justify-center rounded-full border border-red-300 md:size-5"
+  >
+    <div class="size-3 rounded-full bg-red-300"></div>
+  </div>
+
+  <!-- Index -->
+  <div class="text-n-950 text-xl leading-tight font-bold md:text-4xl lg:text-5xl">{index}</div>
+
+  <!-- Title -->
+  <div class="text-n-950 flex-1 text-sm leading-tight font-medium md:text-base lg:text-lg">
+    {title}
+  </div>
+</div>
