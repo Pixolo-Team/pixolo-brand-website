@@ -1,0 +1,40 @@
+---
+interface props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props as props;
+---
+
+<!-- Step Item  -->
+<div
+  class="process-step relative flex w-full flex-row-reverse items-center justify-center gap-12 pl-9 md:flex-row md:gap-10 md:pl-0 lg:gap-16"
+>
+  <!-- Title -->
+  <p
+    class="step-title text-n-500 flex-1 text-left text-xl leading-tight font-medium md:text-right md:text-3xl lg:text-5xl"
+  >
+    {title}
+  </p>
+
+  <!-- Circle -->
+  <div
+    class="step-circle bg-n-500 relative z-10 size-5 transform rounded-full transition-transform lg:size-7"
+  >
+  </div>
+
+  <!-- Description -->
+  <p
+    class="step-description text-n-500 hidden flex-1 text-base leading-tight md:flex md:text-lg lg:text-2xl"
+  >
+    {description}
+  </p>
+</div>
+<style>
+  .process-step p {
+    transform: translateX(40px);
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+</style>

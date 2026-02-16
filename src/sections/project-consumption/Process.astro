@@ -1,0 +1,139 @@
+---
+// COMPONENTS //
+import ProcessStepItem from "@/components/project-consumption/ProcessStepItem.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import type { PortfolioProcessItem } from "@/types/portfolio";
+
+interface Props {
+  processItems: PortfolioProcessItem[];
+}
+
+const { processItems } = Astro.props as Props;
+---
+
+<!-- Project Consumption Process Section -->
+<section id="project-consumption-process-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col gap-7 px-6 py-16 md:gap-12 md:py-24 lg:gap-16 lg:py-28"
+  >
+    <div class="flex flex-col items-center gap-3 md:gap-4">
+      <!-- ToolBadge Component -->
+      <div class="tool-badge">
+        <ToolBadge icon="service-icon" text={"Crafting the Journey "} />
+      </div>
+
+      <!-- Title -->
+      <p
+        class="header-text text-center text-3xl leading-tight font-normal tracking-[-2px] md:text-4xl lg:text-5xl"
+      >
+        {"Creating Human-Centered Experiences"}
+      </p>
+    </div>
+
+    <!-- Steps Items -->
+    <div class="flex w-full flex-col items-center gap-6 xl:gap-8">
+      <!-- Steps Title -->
+      <p
+        class="text-n-950 text-center text-lg leading-tight font-normal tracking-tight md:text-2xl xl:text-4xl"
+      >
+        {"Our Process"}
+      </p>
+
+      <!-- Steps Items -->
+      <div
+        id="process-steps-container"
+        class="process-scroll-line relative flex flex-col items-center gap-48 md:gap-72"
+      >
+        <div class="process-line-start-dot"></div>
+        {
+          processItems.map((stepItem, stepItemIndex) => (
+            <ProcessStepItem title={stepItem.title} description={stepItem.description} />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+  <style>
+    .process-scroll-line::before,
+    .process-scroll-line::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 4px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      left: 46px;
+    }
+
+    .process-scroll-line::before {
+      height: var(--line-height, 0px);
+      top: var(--line-top, 0px);
+      background-color: var(--color-n-500);
+      z-index: 0;
+    }
+
+    .process-scroll-line::after {
+      height: var(--fill-height, 0%);
+      top: var(--line-top, 0px);
+      background-color: var(--color-n-950);
+      z-index: 0;
+      transition: height 120ms ease-out;
+    }
+
+    @media (min-width: 768px) {
+      .process-scroll-line::before,
+      .process-scroll-line::after {
+        left: 50%;
+      }
+    }
+
+    /* Smooth Activation Transitions */
+    .step-title,
+    .step-description {
+      transition: color 250ms ease;
+    }
+
+    .step-circle {
+      transition:
+        background-color 250ms ease,
+        transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+      transform: scale(1);
+    }
+
+    .process-line-start-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background-color: var(--color-n-950);
+      left: 46px;
+      top: calc(var(--line-top, 0px) + var(--dot-top, 0px));
+      transform: translateX(-50%);
+      z-index: 2;
+      transition:
+        top 120ms linear,
+        transform 200ms ease;
+    }
+
+    /* Center on md+ */
+    @media (min-width: 768px) {
+      .process-line-start-dot {
+        left: 50%;
+      }
+    }
+
+    .process-scroll-line.active .process-line-start-dot {
+      transform: translateX(-50%) scale(1.2);
+    }
+  </style>
+  <script>
+    import {
+      animateProcessStepScroll,
+      animateProjectConsumptionProcessSection,
+    } from "@/scripts/portfolio-consumption/process";
+
+    animateProcessStepScroll();
+    animateProjectConsumptionProcessSection();
+  </script>
+</section>
