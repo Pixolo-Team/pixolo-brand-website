@@ -50,7 +50,11 @@ const { thumbnail, brandName, chipItems, title, subtitle, animateClass, ctaText 
   </div>
 
   <!-- Tabs -->
-  <div class={`${animateClass} delay-300 flex flex-wrap gap-3`}>
-    {chipItems.map((chipItem) => <Badge text={chipItem} />)}
-  </div>
+  {
+    chipItems.length > 0 && (
+      <div class={`${animateClass} flex flex-wrap gap-3 delay-300`}>
+        {chipItems.map((chipItem) => chipItem !== "" && <Badge text={chipItem} />)}
+      </div>
+    )
+  }
 </div>

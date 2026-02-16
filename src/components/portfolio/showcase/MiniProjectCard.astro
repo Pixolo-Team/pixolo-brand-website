@@ -55,10 +55,16 @@ const {
         <!-- Title -->
         <p class="text-n-950 text-lg leading-tight font-normal md:text-xl lg:text-2xl">{title}</p>
 
-        <!-- Badge wrap -->
-        <div class="flex flex-row flex-wrap gap-1.5 gap-y-2">
-          {tagItems.map((tagItem) => <Tag tagName={tagItem} />)}
-        </div>
+        {
+          tagItems.length > 0 && (
+            // Badge wrap
+            <div class="flex flex-row flex-wrap gap-1.5 gap-y-2">
+              {tagItems.map((tagItem) => {
+                return tagItem !== "" && <Tag tagName={tagItem} />;
+              })}
+            </div>
+          )
+        }
       </div>
 
       {
