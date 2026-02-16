@@ -11,7 +11,7 @@ export const foundationSectionDetails = {
     {
       title: "If something feels wrong, it probably is.",
       description:
-        "We listen when something feels off—whether it’s a workflow, a decision, or a relationship. Those signals are prompts to pause, dig deeper, and fix root causes before they grow into real problems.",
+        "We listen when something feels off-whether it’s a workflow, a decision, or a relationship. Those signals are prompts to pause, dig deeper, and fix root causes before they grow into real problems.",
     },
     {
       title: "Shipping matters, but trust matters more.",
