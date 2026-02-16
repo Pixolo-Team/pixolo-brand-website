@@ -120,7 +120,7 @@ const filteredPortfolioItems: PortfolioData[] = isCuratedView
                   buttonOneText={"Visit Website"}
                   buttonTwoText={"Show Project"}
                   buttonOneClick={`window.open('${projectCardItem.website_link}', '_blank', 'noopener,noreferrer')`}
-                  buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCardItem.title)}'`}
+                  buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCardItem.slug)}'`}
                 />
               );
             })
@@ -165,7 +165,7 @@ const filteredPortfolioItems: PortfolioData[] = isCuratedView
                             btnOneText={"Visit Website"}
                             btnTwoText={"Show Project"}
                             buttonOneClick={`window.location.href='${cardItem.website_link}'`}
-                            buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(cardItem.title)}'`}
+                            buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(cardItem.slug)}'`}
                           />
                         </div>
                       )

@@ -16,6 +16,7 @@ import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { portfolioSectionDetails } from "@/data/portfolio.ts";
+import { URLS } from "@/infrastructure/constants/urls";
 
 /** API Call to get all portfolio */
 const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
@@ -81,6 +82,7 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
                   title={projectCardItem.title}
                   subtitle={projectCardItem.subtitle}
                   badges={projectCardItem.badges}
+                  onClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCardItem.slug)}'`}
                 />
               </div>
             )
@@ -103,6 +105,7 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
                 title={articleCardItem.title}
                 animateClass={"anim-fade-in-up"}
                 ctaText={"View Project"}
+                onClick={`window.location.href='${URLS.PORTFOLIO.ITEM(articleCardItem.slug)}'`}
               />
             ),
         )
