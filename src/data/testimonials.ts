@@ -10,14 +10,14 @@ export const testimonialSectionDetails = {
       clientName: "Ruchik Gandhi",
       brandName: " INQ",
       testimonial:
-        "The INQ app started as a raw idea, and Pixolo turned it into a complete product. Abhay’s team kept pushing smarter flows, better analytics, and performance tweaks we hadn’t even thought of. They work like co-founders, not vendors. That’s the rare thing about Pixolo — they get emotionally invested in the product.",
+        "The INQ app started as a raw idea, and Pixolo turned it into a complete product. Abhay’s team kept pushing smarter flows, better analytics, and performance tweaks we hadn’t even thought of. They work like co-founders, not vendors. That’s the rare thing about Pixolo - they get emotionally invested in the product.",
     },
     {
       clientImage: "/images/testimonials/vijay-bhati.png",
       clientName: "Vijay Bhati",
       brandName: "Flybird International",
       testimonial:
-        "Ten years of working together and Pixolo feels like an internal tech team. They handle our billing system, backend ops, website — everything. What I love is the zero-drama approach: reliable, quick, and deeply involved in our day-to-day tech decisions.",
+        "Ten years of working together and Pixolo feels like an internal tech team. They handle our billing system, backend ops, website - everything. What I love is the zero-drama approach: reliable, quick, and deeply involved in our day-to-day tech decisions.",
     },
     {
       clientImage: "/images/testimonials/amit-mehta.png",
@@ -31,7 +31,7 @@ export const testimonialSectionDetails = {
       clientName: "Azhar ali Sayed",
       brandName: "Pango – Health & Nutrition Ecosystem",
       testimonial:
-        "Working with Pixolo has been one of the best decisions we made early on. The design they created for us still looks fresh and stylish even after all these years. Every new idea we bring to the table, they shape it into something smarter and more refined than we imagined. Pixolo isn’t just our tech partner — they’ve shaped how Pango looks and feels.",
+        "Working with Pixolo has been one of the best decisions we made early on. The design they created for us still looks fresh and stylish even after all these years. Every new idea we bring to the table, they shape it into something smarter and more refined than we imagined. Pixolo isn’t just our tech partner - they’ve shaped how Pango looks and feels.",
     },
     {
       clientImage: "/images/testimonials/ashok-mathias.png",

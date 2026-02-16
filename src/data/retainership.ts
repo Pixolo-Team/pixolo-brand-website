@@ -25,13 +25,13 @@ export const retainershipDetails = {
       number: "03",
       title: "We manage everything",
       description:
-        "From training and attendance to equipment and performance — all on us, fully transparent to you.",
+        "From training and attendance to equipment and performance - all on us, fully transparent to you.",
     },
     {
       number: "04",
       title: "Work as one team",
       description:
-        "Your expert works from our office, dedicated to your project — for as long as you need them.",
+        "Your expert works from our office, dedicated to your project - for as long as you need them.",
     },
   ],
 
