@@ -1,3 +1,4 @@
+// OTHERS //
 import { animate, inView, stagger } from "motion";
 
 /** Animate the Client Section */
@@ -17,19 +18,18 @@ export const animateClientLogos = () => {
       { duration: 0.8, delay: 0.4 },
     );
 
+    // Animate the Client Logos
     animate(
       clientLogoSection?.querySelectorAll(".client-logo"),
       { y: ["50px", 0], opacity: [0, 1] },
       { duration: 0.4, delay: stagger(0.2, { from: "first", startDelay: 1 }) },
-    );
-
-    inView("#footer-text", (footerText) => {
-      animate(footerText, { y: ["50px", 0], opacity: [0, 1] }, { duration: 0.4, delay: 0 });
+    ).finished.then(() => {
+      // Animate the Footer Text
+      animate(
+        clientLogoSection?.querySelectorAll(".footer-text"),
+        { y: ["50px", 0], opacity: [0, 1] },
+        { duration: 0.4 },
+      );
     });
-    // animate(
-    //   clientLogoSection?.querySelectorAll("#footer-text"),
-    //   { y: ["50px", 0], opacity: [0, 1] },
-    //   { duration: 0.4, delay: stagger(0.2, { from: "first", startDelay: 4 }) },
-    // );
   });
 };
