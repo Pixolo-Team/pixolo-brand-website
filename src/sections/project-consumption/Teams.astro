@@ -7,11 +7,11 @@ import TeamImageCard from "@/components/project-consumption/TeamImageCard.astro"
 // DATA //
 import type { PortfolioTeamItem } from "@/types/portfolio";
 
-interface props {
+interface Props {
   teams: PortfolioTeamItem[];
 }
 
-const { teams } = Astro.props as props;
+const { teams } = Astro.props as Props;
 ---
 
 <!-- Portfolio Teams Section -->

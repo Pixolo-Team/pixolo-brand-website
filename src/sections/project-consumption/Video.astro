@@ -2,12 +2,12 @@
 // COMPONENTS //
 import PlayButton from "@/components/ui/PlayButton.astro";
 
-interface props {
+interface Props {
   videoUrl: string;
   alt: string;
 }
 
-const { videoUrl, alt } = Astro.props as props;
+const { videoUrl, alt } = Astro.props as Props;
 ---
 
 <section>

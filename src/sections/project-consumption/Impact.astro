@@ -7,11 +7,11 @@ import StatBox from "@/components/project-consumption/StatBox.astro";
 import { impactContent } from "@/data/portfolio/project-consumption/impact";
 import type { PortfolioImpactItem } from "@/types/portfolio";
 
-interface props {
+interface Props {
   impactItems: PortfolioImpactItem[];
 }
 
-const { impactItems } = Astro.props as props;
+const { impactItems } = Astro.props as Props;
 ---
 
 <!-- Impact Section -->

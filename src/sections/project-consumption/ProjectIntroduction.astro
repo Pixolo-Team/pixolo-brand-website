@@ -6,7 +6,7 @@ import Image from "astro/components/Image.astro";
 // DATA //
 import { projectIntroductionDetails } from "@/data/portfolio-consumption/project-introduction";
 
-interface props {
+interface Props {
   title: string;
   image: string;
   aboutProject: string;
@@ -14,7 +14,7 @@ interface props {
   purpose: string;
 }
 
-const { title, image, aboutProject, target, purpose } = Astro.props as props;
+const { title, image, aboutProject, target, purpose } = Astro.props as Props;
 ---
 
 <!-- Project Introduction Section -->
