@@ -40,14 +40,14 @@ const { title, description, index } = Astro.props as Props;
         </button>
 
         <!-- Description (open only) -->
-        <div
-          class="foundation-description ..."
+        <p
+          class="foundation-description text-n-950 font-regular text-xs md:text-sm lg:text-base"
           role="region"
           id={`foundation-panel-${index}`}
           aria-labelledby={`foundation-trigger-${index}`}
         >
           {description}
-        </div>
+        </p>
       </div>
     </div>
 
