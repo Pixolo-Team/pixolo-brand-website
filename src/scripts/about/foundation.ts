@@ -5,17 +5,23 @@ import { animate, inView } from "motion";
 export function initFoundationAccordion(rootSelector = "[data-accordion]", interval = 8000) {
   const accordions = document.querySelectorAll(rootSelector);
 
+  /** Loop through all the Accordions */
   accordions.forEach((accordion) => {
-    const items = Array.from(accordion.querySelectorAll(".foundation-item"));
+    const accordianItems = Array.from(accordion.querySelectorAll(".foundation-item"));
 
-    if (!items.length) return;
+    if (!accordianItems.length) return;
 
-    let currentIndex = items.findIndex((item) => item.dataset.state === "open");
+    /** Find the current index */
+    let currentIndex = accordianItems.findIndex(
+      (accordianItem) => accordianItem.dataset.state === "open",
+    );
     if (currentIndex === -1) currentIndex = 0;
 
     let timer = null;
 
+    /** Reset Progress */
     function resetProgress(item) {
+      /** Find the fill */
       const fill = item.querySelector(".foundation-progress-fill");
       if (!fill) return;
 
@@ -29,26 +35,29 @@ export function initFoundationAccordion(rootSelector = "[data-accordion]", inter
       fill.style.width = "100%";
     }
 
+    /** Function to Open Item */
     function openItem(index) {
-      items.forEach((item, i) => {
-        item.dataset.state = i === index ? "open" : "closed";
+      accordianItems.forEach((accordianItem, i) => {
+        accordianItem.dataset.state = i === index ? "open" : "closed";
 
-        const fill = item.querySelector(".foundation-progress-fill");
-        if (fill) {
-          fill.style.transition = "none";
-          fill.style.width = "0%";
+        const description = accordianItem.querySelector(".foundation-description");
+
+        if (description) {
+          if (i === index) {
+            description.style.maxHeight = description.scrollHeight + "px";
+          } else {
+            description.style.maxHeight = "0px";
+          }
         }
       });
 
-      const activeItem = items[index];
-      resetProgress(activeItem);
-
+      resetProgress(accordianItems[index]);
       currentIndex = index;
       restartTimer();
     }
 
     function nextItem() {
-      const nextIndex = (currentIndex + 1) % items.length;
+      const nextIndex = (currentIndex + 1) % accordianItems.length;
       openItem(nextIndex);
     }
 
@@ -58,8 +67,8 @@ export function initFoundationAccordion(rootSelector = "[data-accordion]", inter
     }
 
     // Click handlers
-    items.forEach((item, index) => {
-      const header = item.querySelector(".foundation-item > div:first-child");
+    accordianItems.forEach((accordianItem, index) => {
+      const header = accordianItem.querySelector(".foundation-item > div:first-child");
 
       if (!header) return;
 
