@@ -1,0 +1,48 @@
+---
+// COMPONENTS //
+import PovCard from "@/components/about/PovCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// DATA //
+import { povSectionDetails } from "@/data/about/pov";
+---
+
+<section id="pov-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-11 px-6 py-16 md:gap-14 lg:gap-16 lg:px-8 lg:pt-48 lg:pb-24"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="visible" text={povSectionDetails.badgeTitle} />
+      </div>
+
+      <!-- Title -->
+      <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
+        {povSectionDetails.title}
+      </p>
+    </div>
+
+    <!-- Pov Cards -->
+    <div
+      class="pov-cards grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 xl:grid-cols-3 2xl:grid-cols-4"
+    >
+      {
+        povSectionDetails.povCardItems.map((povCardItem) => (
+          // Pov Card Component
+          <PovCard
+            label={povCardItem.label}
+            title={povCardItem.title}
+            description={povCardItem.description}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+<script>
+  import { animatePovSection } from "@/scripts/about/pov";
+
+  animatePovSection();
+</script>

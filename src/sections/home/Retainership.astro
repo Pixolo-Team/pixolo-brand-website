@@ -13,7 +13,7 @@ import { retainershipDetails } from "@/data/retainership";
 
 <section id="retainership-section" data-section="Retainership">
   <div
-    class="container mx-auto flex flex-col items-center justify-center gap-40 overflow-hidden px-6 py-16 md:gap-48 md:px-0 lg:gap-60 lg:px-8"
+    class="container mx-auto flex flex-col items-center justify-center gap-40 overflow-hidden px-6 py-16 md:gap-48 lg:gap-60 lg:px-8"
   >
     <!-- Top Half Section -->
     <div class="flex w-full flex-col items-center gap-20 lg:gap-24">
@@ -166,7 +166,8 @@ import { retainershipDetails } from "@/data/retainership";
   }
 </style>
 <script>
-  import { animateRetainershipSection, initScrollLine } from "@/scripts/retainership.ts";
+  import { animateRetainershipSection } from "@/scripts/retainership.ts";
+  import { initScrollLine } from "@/utils/scroll-line";
 
   // Animate Retainership Section
   animateRetainershipSection();
