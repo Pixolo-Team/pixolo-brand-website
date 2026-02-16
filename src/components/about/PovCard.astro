@@ -1,0 +1,33 @@
+---
+interface Props {
+  label: string;
+  title: string;
+  description: string;
+}
+
+const { label, title, description } = Astro.props;
+---
+
+<!-- Pov Card Component -->
+<div
+  class="pov-card border-n-500 relative flex flex-col items-start justify-between gap-6 rounded-2xl border px-4 pt-7 pb-5 md:rounded-3xl md:px-5 md:pb-6 lg:px-6 lg:pt-9 lg:pb-7"
+>
+  <!-- Label  -->
+  <div
+    class="absolute top-[-11px] left-[24px] flex items-center justify-center rounded-2xl bg-gradient-to-r from-indigo-600 to-indigo-400 px-5 py-1.5"
+  >
+    <p class="text-xs leading-tight font-bold text-white lg:text-sm">
+      {label}
+    </p>
+  </div>
+
+  <!-- Title -->
+  <div class="text-n-950 text-lg leading-tight font-bold md:text-2xl lg:text-3xl">
+    {title}
+  </div>
+
+  <!-- Description -->
+  <div class="text-n-950 text-xs leading-tight font-normal md:text-sm lg:text-base">
+    {description}
+  </div>
+</div>

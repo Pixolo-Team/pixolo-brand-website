@@ -9,6 +9,16 @@ import { pixoloPlaceSchema } from "@/schemas/place.schema";
 
 // SECTIONS //
 import Foundation from "@/sections/about/Foundation.astro";
+import Bts from "@/sections/about/Bts.astro";
+import ClientExperience from "@/sections/about/ClientExperience.astro";
+import Principles from "@/sections/about/Principles.astro";
+import Team from "@/sections/about/Team.astro";
+import Leadership from "@/sections/about/Leadership.astro";
+import Prevention from "@/sections/about/Prevention.astro";
+import Pov from "@/sections/about/Pov.astro";
+import Process from "@/sections/about/Process.astro";
+import Hero from "@/sections/about/Hero.astro";
+import Commitment from "@/sections/about/Commitment.astro";
 
 // DATA //
 import aboutMeta from "@/data/meta/about.json";
@@ -20,5 +30,15 @@ import aboutMeta from "@/data/meta/about.json";
   {/* Place Schema JsonLd */}
   <JsonLd slot="head" data={pixoloPlaceSchema} />
 
+  <Hero />
+  <Team />
+  <Pov />
+  <ClientExperience />
+  <Bts />
+  <Prevention />
+  <Principles />
   <Foundation />
+  <Process />
+  <Leadership />
+  <Commitment />
 </Layout>

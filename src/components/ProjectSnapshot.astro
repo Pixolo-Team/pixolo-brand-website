@@ -16,8 +16,7 @@ interface props {
   techStack: string[];
 }
 
-const data = snapshotDetails;
-const { client, services, platforms, timeline, industry, techStack } = data as props;
+const { client, services, platforms, timeline, industry, techStack } = Astro.props as props;
 ---
 
 <!-- Project Snapshot Section -->
@@ -69,12 +68,16 @@ const { client, services, platforms, timeline, industry, techStack } = data as p
         <SnapshotCard label="Tech Stack" className="w-full flex-1">
           <div class="scrollbar-hide flex gap-3 overflow-x-auto md:gap-7">
             {
-              techStack?.map((img) => (
-                <Icon
-                  name={img}
-                  class="tech-stack-icon size-5 shrink-0 md:size-7 lg:size-10 xl:size-12 2xl:size-14"
-                />
-              ))
+              techStack &&
+                techStack?.map((img) => {
+                  if (!img) return null;
+                  return (
+                    <Icon
+                      name={img}
+                      class="tech-stack-icon size-5 shrink-0 md:size-7 lg:size-10 xl:size-12 2xl:size-14"
+                    />
+                  );
+                })
             }
           </div>
         </SnapshotCard>

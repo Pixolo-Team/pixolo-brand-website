@@ -18,7 +18,7 @@ import Layout from "@/layouts/Layout.astro";
 import { pixoloIndustriesServedSchema } from "@/schemas/industries-served";
 ---
 
-<Layout meta={{ ...servicesMeta, image: `${getSiteUrl()}/images/og/services.jpg` }}>
+<Layout meta={{ ...servicesMeta, image: `${getSiteUrl()}/images/og/service.jpg` }}>
   {/* Services ItemList JSON-LD */}
   <JsonLd slot="head" data={pixoloServicesItemListSchema} />
   {/* Industries Served JSON-LD */}

@@ -15,10 +15,11 @@ interface Props {
   subtitle?: string;
   animateClass?: string;
   ctaText: string;
+  onClick: string;
 }
 
 // PROPS //
-const { thumbnail, brandName, chipItems, title, subtitle, animateClass, ctaText } =
+const { thumbnail, brandName, chipItems, title, subtitle, animateClass, ctaText, onClick } =
   Astro.props as Props;
 ---
 
@@ -36,7 +37,7 @@ const { thumbnail, brandName, chipItems, title, subtitle, animateClass, ctaText 
     <div
       class="absolute right-[15px] bottom-[16.46px] block transition ease-in-out group-hover:block md:right-[22px] md:bottom-[28px] lg:right-[19px] lg:bottom-[47px] lg:hidden"
     >
-      <RoundedButton buttonText={ctaText} onClick={'window.location.href = "/404"'} />
+      <RoundedButton buttonText={ctaText} onClick={onClick} />
     </div>
   </div>
 
@@ -50,7 +51,11 @@ const { thumbnail, brandName, chipItems, title, subtitle, animateClass, ctaText 
   </div>
 
   <!-- Tabs -->
-  <div class={`${animateClass} delay-300 flex flex-wrap gap-3`}>
-    {chipItems.map((chipItem) => <Badge text={chipItem} />)}
-  </div>
+  {
+    chipItems.length > 0 && (
+      <div class={`${animateClass} flex flex-wrap gap-3 delay-300`}>
+        {chipItems.map((chipItem) => chipItem !== "" && <Badge text={chipItem} />)}
+      </div>
+    )
+  }
 </div>
