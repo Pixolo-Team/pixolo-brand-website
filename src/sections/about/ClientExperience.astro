@@ -1,0 +1,48 @@
+---
+// COMPONENTS //
+import ExperienceCard from "@/components/about/ExperienceCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// DATA //
+import { clientExperienceSectionDetails } from "@/data/about/client-experience";
+---
+
+<!-- Client Experience Section -->
+<section id="client-experience-section" data-section="Client Experience">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-11 px-6 py-16 md:gap-14 lg:gap-16 lg:pt-48 lg:pb-24"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="combine" text={clientExperienceSectionDetails.badgeTitle} />
+      </div>
+
+      <!-- Title -->
+      <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
+        {clientExperienceSectionDetails.title}
+      </p>
+    </div>
+
+    <!-- Experience Cards -->
+    <div
+      class="experience-cards grid grid-cols-1 gap-3.5 md:grid-cols-2 md:gap-6 md:gap-y-5 lg:gap-6"
+    >
+      {
+        clientExperienceSectionDetails.experienceCard.map((experienceCardItem) => (
+          <ExperienceCard
+            mobileImage={experienceCardItem.mobileImage}
+            desktopImage={experienceCardItem.desktopImage}
+            title={experienceCardItem.title}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+<script>
+  import { animateClientExperienceSection } from "@/scripts/about/client-experience";
+
+  animateClientExperienceSection();
+</script>
