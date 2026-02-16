@@ -1,0 +1,134 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+// PROPS //
+interface Props {
+  title: string;
+  description: string;
+  index: string;
+}
+
+const { title, description, index } = Astro.props as Props;
+---
+
+<!-- Foundation Item Accordion Component -->
+<div
+  class="foundation-item relative flex w-full flex-col items-start gap-3 pt-4 pb-8 md:py-5"
+  data-state="open"
+>
+  <!-- Header Row -->
+  <div class="flex w-full items-start justify-between gap-8">
+    <!-- Left -->
+    <div class="flex flex-1 items-start gap-6">
+      <!-- Index -->
+      <p
+        class="w-10 bg-gradient-to-br from-blue-500 to-[#8B77F3] bg-clip-text text-center text-lg font-bold tracking-wide text-transparent md:text-xl lg:text-2xl"
+      >
+        {index}
+      </p>
+
+      <!-- Content -->
+      <div class="foundation-content flex flex-1 flex-col">
+        <button
+          class="text-n-950 cursor-pointer text-left text-lg font-bold md:text-xl lg:text-2xl"
+          aria-expanded="true"
+          aria-controls={`foundation-panel-${index}`}
+          id={`foundation-trigger-${index}`}
+        >
+          {title}
+        </button>
+
+        <!-- Description (open only) -->
+        <p
+          class="foundation-description text-n-950 font-regular text-xs md:text-sm lg:text-base"
+          role="region"
+          id={`foundation-panel-${index}`}
+          aria-labelledby={`foundation-trigger-${index}`}
+        >
+          {description}
+        </p>
+      </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="flex h-6 w-6 items-center justify-center md:size-6 lg:size-8">
+      <Icon name="minus" class="icon-minus text-n-950 size-4" />
+      <Icon name="plus" class="icon-plus text-n-950 size-4" />
+    </div>
+  </div>
+
+  <!-- Gradient Line (open only) -->
+  <div
+    class="foundation-progress bg-n-200 absolute top-full left-0 h-[3px] w-full overflow-hidden rounded-full"
+  >
+    <div class="foundation-progress-fill h-full w-0 bg-gradient-to-r from-indigo-600 to-indigo-400">
+    </div>
+  </div>
+</div>
+<style>
+  /* Description */
+  .foundation-description {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition:
+      max-height 400ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 250ms ease,
+      transform 300ms ease;
+  }
+
+  /* Gradient bar */
+  .foundation-item .foundation-progress {
+    opacity: 0;
+    transform: scaleX(0.98);
+    transition:
+      opacity 250ms ease,
+      transform 300ms ease;
+  }
+
+  .foundation-content {
+    gap: 0;
+    transition: gap 300ms ease;
+  }
+
+  .foundation-item[data-state="open"] .foundation-content {
+    gap: 0.875rem; /* 3.5 */
+  }
+
+  /* Open State */
+  .foundation-item[data-state="open"] .foundation-description {
+    max-height: 300px; /* adjust if needed */
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Icon visibility */
+  .foundation-item .icon-minus {
+    display: none;
+  }
+  .foundation-item .icon-plus {
+    display: block;
+  }
+
+  /* Open State */
+
+  .foundation-item[data-state="open"] .foundation-progress {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  .foundation-item[data-state="open"] .icon-minus {
+    display: block;
+  }
+
+  .foundation-item[data-state="open"] .icon-plus {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .foundation-item[data-state="open"] .foundation-content {
+      gap: 1rem; /* 4 */
+    }
+  }
+</style>

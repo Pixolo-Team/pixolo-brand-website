@@ -1,0 +1,47 @@
+---
+// COMPONENTS //
+import FoundationItem from "@/components/about/FoundationItem.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// DATA //
+import { foundationSectionDetails } from "@/data/about/foundation";
+---
+
+<!-- Foundation Section -->
+<section id="foundation-section" data-section="Foundation">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-11 px-6 py-16 md:gap-14 lg:gap-16 lg:px-8 lg:pt-48 lg:pb-24"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="feather-pen" text={foundationSectionDetails.badgeTitle} />
+      </div>
+
+      <!-- Title -->
+      <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
+        {foundationSectionDetails.title}
+      </p>
+    </div>
+
+    <!-- Foundations Accordion -->
+    <div class="flex w-full flex-col items-start gap-4 md:gap-5 lg:gap-6" data-accordion>
+      {
+        foundationSectionDetails.foundationItems.map((foundationItem, foundationItemIndex) => (
+          <FoundationItem
+            title={foundationItem.title}
+            description={foundationItem.description}
+            index={(foundationItemIndex + 1).toString().padStart(2, "0")}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+<script>
+  import { initFoundationAccordion, animateFoundationSection } from "@/scripts/about/foundation";
+
+  initFoundationAccordion();
+  animateFoundationSection();
+</script>
