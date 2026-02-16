@@ -2,13 +2,13 @@
 // COMPONENTS //
 import Image from "astro/components/Image.astro";
 
-interface props {
+interface Props {
   mobileImage: string;
   desktopImage: string;
   title: string;
 }
 
-const { mobileImage, desktopImage, title } = Astro.props as props;
+const { mobileImage, desktopImage, title } = Astro.props as Props;
 ---
 
 <!-- Experience Card Component -->
