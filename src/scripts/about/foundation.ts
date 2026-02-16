@@ -2,85 +2,109 @@
 import { animate, inView } from "motion";
 
 /** Initialize the Foundation Accordion */
-export function initFoundationAccordion(rootSelector = "[data-accordion]", interval = 8000) {
-  const accordions = document.querySelectorAll(rootSelector);
+export const initFoundationAccordion = (
+  rootSelector: string = "[data-accordion]",
+  interval: number = 8000,
+) => {
+  const accordions = document.querySelectorAll<HTMLElement>(rootSelector);
+  const cleanupCallbacks: Array<() => void> = [];
 
-  /** Loop through all the Accordions */
+  /** Loop through all Accordions */
   accordions.forEach((accordion) => {
-    const accordianItems = Array.from(accordion.querySelectorAll(".foundation-item"));
+    const accordionItems = Array.from(accordion.querySelectorAll<HTMLElement>(".foundation-item"));
 
-    if (!accordianItems.length) return;
+    if (!accordionItems.length) return;
+    let currentIndex = accordionItems.findIndex((item) => item.dataset.state === "open") ?? 0;
 
-    /** Find the current index */
-    let currentIndex = accordianItems.findIndex(
-      (accordianItem) => accordianItem.dataset.state === "open",
-    );
     if (currentIndex === -1) currentIndex = 0;
-
-    let timer = null;
+    let accordionTimer: ReturnType<typeof setTimeout> | null = null;
 
     /** Reset Progress */
-    function resetProgress(item) {
-      /** Find the fill */
-      const fill = item.querySelector(".foundation-progress-fill");
+    const resetProgress = (item: HTMLElement) => {
+      const fill = item.querySelector<HTMLElement>(".foundation-progress-fill");
       if (!fill) return;
 
       fill.style.transition = "none";
       fill.style.width = "0%";
 
-      // Force reflow
-      fill.offsetWidth;
-
+      // Force reflow intentionally
+      void fill.offsetWidth;
       fill.style.transition = `width ${interval}ms linear`;
       fill.style.width = "100%";
-    }
+    };
 
-    /** Function to Open Item */
-    function openItem(index) {
-      accordianItems.forEach((accordianItem, i) => {
-        accordianItem.dataset.state = i === index ? "open" : "closed";
+    /** Function to smoothly open an item */
+    const openItem = (index: number) => {
+      /** Loop through all items */
+      accordionItems.forEach((accordionItem, accordionIndex) => {
+        const isOpen = accordionIndex === index;
 
-        const description = accordianItem.querySelector(".foundation-description");
+        accordionItem.dataset.state = isOpen ? "open" : "closed";
+
+        /** Set ARIA attributes */
+        const trigger = accordionItem.querySelector<HTMLButtonElement>("button");
+        if (trigger) {
+          trigger.setAttribute("aria-expanded", String(isOpen));
+        }
+
+        /** Set Description Max Height */
+        const description = accordionItem.querySelector<HTMLElement>(".foundation-description");
 
         if (description) {
-          if (i === index) {
-            description.style.maxHeight = description.scrollHeight + "px";
-          } else {
-            description.style.maxHeight = "0px";
-          }
+          description.style.maxHeight = isOpen ? `${description.scrollHeight}px` : "0px";
         }
       });
 
-      resetProgress(accordianItems[index]);
+      /** Reset Progress */
+      resetProgress(accordionItems[index]);
       currentIndex = index;
       restartTimer();
-    }
+    };
 
-    function nextItem() {
-      const nextIndex = (currentIndex + 1) % accordianItems.length;
+    /** Go To Next Item */
+    const nextItem = () => {
+      const nextIndex = (currentIndex + 1) % accordionItems.length;
       openItem(nextIndex);
-    }
+    };
 
-    function restartTimer() {
-      clearTimeout(timer);
-      timer = setTimeout(nextItem, interval);
-    }
+    /** Restart Timer */
+    const restartTimer = () => {
+      if (accordionTimer) clearTimeout(accordionTimer);
+      accordionTimer = setTimeout(nextItem, interval);
+    };
 
-    // Click handlers
-    accordianItems.forEach((accordianItem, index) => {
-      const header = accordianItem.querySelector(".foundation-item > div:first-child");
+    /** Click Handlers */
+    accordionItems.forEach((accordionItem, index) => {
+      /** Get Header Button */
+      const headerButton = accordionItem.querySelector<HTMLButtonElement>("button");
 
-      if (!header) return;
+      if (!headerButton) return;
 
-      header.addEventListener("click", () => {
-        openItem(index);
+      /** Set Click Handler */
+      const handleClick = () => openItem(index);
+
+      headerButton.addEventListener("click", handleClick);
+
+      /** Store cleanup */
+      cleanupCallbacks.push(() => {
+        headerButton.removeEventListener("click", handleClick);
       });
     });
 
-    // Start
+    /** Start */
     openItem(currentIndex);
+
+    /** Cleanup per accordion */
+    cleanupCallbacks.push(() => {
+      if (accordionTimer) clearTimeout(accordionTimer);
+    });
   });
-}
+
+  /** Return cleanup function (VERY IMPORTANT) */
+  return () => {
+    cleanupCallbacks.forEach((cleanup) => cleanup());
+  };
+};
 
 /** Animate the Foundation Section */
 export const animateFoundationSection = () => {

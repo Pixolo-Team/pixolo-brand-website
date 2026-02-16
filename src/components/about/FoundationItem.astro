@@ -30,12 +30,22 @@ const { title, description, index } = Astro.props as Props;
 
       <!-- Content -->
       <div class="foundation-content flex flex-1 flex-col">
-        <div class="text-n-950 cursor-pointer text-lg font-bold md:text-xl lg:text-2xl">
+        <button
+          class="text-n-950 cursor-pointer text-left text-lg font-bold md:text-xl lg:text-2xl"
+          aria-expanded="true"
+          aria-controls={`foundation-panel-${index}`}
+          id={`foundation-trigger-${index}`}
+        >
           {title}
-        </div>
+        </button>
 
         <!-- Description (open only) -->
-        <div class="foundation-description text-n-950 text-xs font-normal md:text-sm lg:text-base">
+        <div
+          class="foundation-description ..."
+          role="region"
+          id={`foundation-panel-${index}`}
+          aria-labelledby={`foundation-trigger-${index}`}
+        >
           {description}
         </div>
       </div>

@@ -24,14 +24,15 @@ import { foundationSectionDetails } from "@/data/about/foundation";
         {foundationSectionDetails.title}
       </p>
     </div>
+
     <!-- Foundations Accordion -->
     <div class="flex w-full flex-col items-start gap-4 md:gap-5 lg:gap-6" data-accordion>
       {
-        foundationSectionDetails.foundationItems.map((item, index) => (
+        foundationSectionDetails.foundationItems.map((foundationItem, foundationItemIndex) => (
           <FoundationItem
-            title={item.title}
-            description={item.description}
-            index={(index + 1).toString().padStart(2, "0")}
+            title={foundationItem.title}
+            description={foundationItem.description}
+            index={(foundationItemIndex + 1).toString().padStart(2, "0")}
           />
         ))
       }
