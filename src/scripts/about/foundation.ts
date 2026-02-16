@@ -2,7 +2,7 @@
 import { animate, inView } from "motion";
 
 /** Initialize the Foundation Accordion */
-export function initFoundationAccordion(rootSelector = "[data-accordion]", interval = 4000) {
+export function initFoundationAccordion(rootSelector = "[data-accordion]", interval = 8000) {
   const accordions = document.querySelectorAll(rootSelector);
 
   accordions.forEach((accordion) => {

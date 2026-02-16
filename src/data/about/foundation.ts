@@ -1,3 +1,4 @@
+// Foundation Section Details
 export const foundationSectionDetails = {
   badgeTitle: "Foundations",
   title: "What We Believe",
@@ -12,7 +13,7 @@ export const foundationSectionDetails = {
       description: "Foundation 2 description",
     },
     {
-      title: "FoShipping matters, but trust matters more.",
+      title: "Shipping matters, but trust matters more.",
       description: "Foundation 3 description",
     },
     {
