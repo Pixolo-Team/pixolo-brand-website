@@ -18,6 +18,13 @@ export const animateRetainershipSection = () => {
       { duration: 0.8, delay: 0.4 },
     );
   });
+  inView("#footer-text", (footerText) => {
+    animate(
+      footerText,
+      { opacity: [0, 1], y: ["50px", 0], scaleY: [0.4, 1] },
+      { duration: 0.8, delay: 0 },
+    );
+  });
 
   inView(".step-item", (stepItem) => {
     const paragraphs = stepItem.querySelectorAll("p");
