@@ -2,10 +2,13 @@
 // OTHERS //
 import type { GetStaticPaths } from "astro";
 import Layout from "@/layouts/Layout.astro";
+import Process from "@/sections/positioning/Process.astro";
 
 export const getStaticPaths = (() => {
   return [{ params: { pageTitle: "page-title" } }];
 }) satisfies GetStaticPaths;
 ---
 
-<Layout />
+<Layout>
+  <Process />
+</Layout>
