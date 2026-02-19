@@ -235,13 +235,13 @@ $structure = (object) [
             "slug" => "",
 
             "hero" => (object)[
-                "badgeTitle" => "",
+                "badge_title" => "",
                 "title" => "",
-                "ctaBtnText" => ""
+                "cta_btn_text" => ""
             ],
 
             "problems" => (object)[
-                "badgeTitle" => "",
+                "badge_title" => "",
                 "title" => "",
                 "problemTabs" => array(
                     (object)[
@@ -252,9 +252,9 @@ $structure = (object) [
             ],
 
             "purpose" => (object)[
-                "badgeTitle" => "",
+                "badge_title" => "",
                 "title" => "",
-                "purposeCards" => array(
+                "purpose_cards" => array(
                     (object)[
                         "title" => "",
                         "description" => ""
@@ -263,9 +263,9 @@ $structure = (object) [
             ],
 
             "services" => (object)[
-                "badgeTitle" => "",
+                "badge_title" => "",
                 "title" => "",
-                "serviceCards" => array(
+                "service_cards" => array(
                     (object)[
                         "title" => "",
                         "description" => ""
@@ -274,9 +274,9 @@ $structure = (object) [
             ],
 
             "process" => (object)[
-                "badgeTitle" => "",
+                "badge_title" => "",
                 "title" => "",
-                "processSteps" => array(
+                "process_steps" => array(
                     (object)[
                         "title" => "",
                         "description" => ""
@@ -285,10 +285,10 @@ $structure = (object) [
             ],
 
             "results" => (object)[
-                "badgeTitle" => "",
+                "badge_title" => "",
                 "title" => "",
-                "subTitle" => "",
-                "resultCards" => array(
+                "sub_title" => "",
+                "result_cards" => array(
                     (object)[
                         "logo" => "",
                         "title" => "",
@@ -297,21 +297,21 @@ $structure = (object) [
                 )
             ],
 
-            "whyPixolo" => (object)[
-                "badgeTitle" => "",
+            "why_pixolo" => (object)[
+                "badge_title" => "",
                 "title" => "",
                 "image" => "",
-                "whyUsCards" => array(
+                "whyus_cards" => array(
                     (object)[
                         "title" => ""
                     ]
                 )
             ],
 
-            "idealCustomers" => (object)[
-                "badgeTitle" => "",
+            "ideal_customers" => (object)[
+                "badge_title" => "",
                 "title" => "",
-                "idealCards" => array(
+                "ideal_cards" => array(
                     (object)[
                         "title" => ""
                     ]
@@ -319,10 +319,10 @@ $structure = (object) [
             ],
 
             "cta" => (object)[
-                "badgeTitle" => "",
-                "subTitle" => "",
+                "badge_title" => "",
+                "subtitle" => "",
                 "title" => "",
-                "ctaBtnText" => ""
+                "cta_btn_text" => ""
             ]
         ]
     )
