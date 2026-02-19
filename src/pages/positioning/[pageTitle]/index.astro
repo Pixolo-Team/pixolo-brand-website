@@ -1,0 +1,16 @@
+---
+// OTHERS //
+import type { GetStaticPaths } from "astro";
+import Layout from "@/layouts/Layout.astro";
+
+// SECTIONS //
+import Cta from "@/sections/positioning/Cta.astro";
+
+export const getStaticPaths = (() => {
+  return [{ params: { pageTitle: "page-title" } }];
+}) satisfies GetStaticPaths;
+---
+
+<Layout>
+  <Cta />
+</Layout>
