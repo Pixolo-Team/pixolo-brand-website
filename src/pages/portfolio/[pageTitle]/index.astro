@@ -18,6 +18,7 @@ import ProjectIntroduction from "@/sections/project-consumption/ProjectIntroduct
 import Impact from "@/sections/project-consumption/Impact.astro";
 import Teams from "@/sections/project-consumption/Teams.astro";
 import ClientTestimonial from "@/sections/project-consumption/ClientTestimonial.astro";
+import Process from "@/sections/project-consumption/Process.astro";
 
 /**
  * Generates static paths for all Portfolio Consumption pages
@@ -79,6 +80,7 @@ const { portfolioItem }: { portfolioItem: PortfolioData } = Astro.props;
     )
   }
 
+  {portfolioItem.process && <Process processItems={portfolioItem.process} />}
   {portfolioItem.impact && <Impact impactItems={portfolioItem.impact} />}
   {portfolioItem.teams && <Teams teams={portfolioItem.teams} />}
   {
