@@ -3,9 +3,14 @@
 import type { GetStaticPaths } from "astro";
 import Layout from "@/layouts/Layout.astro";
 
+// SECTIONS //
+import Results from "@/sections/positioning/Results.astro";
+
 export const getStaticPaths = (() => {
   return [{ params: { pageTitle: "page-title" } }];
 }) satisfies GetStaticPaths;
 ---
 
-<Layout />
+<Layout>
+  <Results />
+</Layout>
