@@ -1,0 +1,24 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  title: string;
+  icon: string;
+}
+
+const { title, icon } = Astro.props as Props;
+---
+
+<!-- Problem Card -->
+<div
+  class="problem-card bg-n-100 flex w-full flex-col items-center gap-6 rounded-3xl px-3.5 py-6 md:gap-9 md:px-5 md:py-9 lg:px-5 lg:py-9"
+>
+  <!-- Icon -->
+  <Icon name={icon} class="text-n-700 size-9 md:size-14 lg:size-16" />
+
+  <!-- Title -->
+  <p class="text-n-950 text-center text-sm leading-tight font-medium md:text-base lg:text-lg">
+    {title}
+  </p>
+</div>
