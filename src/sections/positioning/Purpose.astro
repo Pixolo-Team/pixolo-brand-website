@@ -1,0 +1,68 @@
+---
+// COMPONENTS //
+import PurposeCard from "@/components/positioning/PurposeCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// TODO: Remove this dummy data when integrate the API
+const purposeCardItems = [
+  {
+    title: "Reliable Delivery Partner",
+    description:
+      "Pixolo handles the full technical build and delivery behind the scenes, empowering you to retain complete ownership of your client relationships while scaling effortlessly.",
+  },
+  {
+    title: "Your Private Tech Backbone",
+    description:
+      "We act as your internal tech team, delivering consistent, scalable work under your agency’s name. No competition, no shortcuts and no last-minute chaos.",
+  },
+  {
+    title: "You sell strategy & results",
+    description:
+      "You focus on building client relationships, shaping strategy, and delivering measurable outcomes, while the execution is handled seamlessly in the background.",
+  },
+  {
+    title: "We make sure the tech holds up",
+    description:
+      "We strengthen the technical backbone of your delivery, ensuring every solution is robust, future-ready, and capable of supporting your clients with confidence.",
+  },
+];
+---
+
+<!-- Positioning Purpose Section -->
+<section id="purpose-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-10 px-6 py-16 md:gap-12 lg:gap-16 lg:px-8 lg:pt-48 lg:pb-24"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="hand-shake" text={"True Strategic Partner"} />
+      </div>
+
+      <!-- Title -->
+      <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
+        {"Built to Help Agencies Scale"}
+      </p>
+    </div>
+
+    <!-- Purpose Cards -->
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-7 lg:gap-9">
+      {
+        purposeCardItems.map((purposeCardItem, index) => (
+          // Purpose Card Component
+          <PurposeCard
+            index={(index + 1).toString().padStart(3, "0")}
+            title={purposeCardItem.title}
+            description={purposeCardItem.description}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+<script>
+  import { animatePurposeSection } from "@/scripts/positioning/purpose";
+
+  animatePurposeSection();
+</script>
