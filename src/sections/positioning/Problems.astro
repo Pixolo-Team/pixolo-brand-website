@@ -4,14 +4,14 @@ import ProblemCard from "@/components/positioning/ProblemCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
 // TODO: Remove this dummy data when integrating API
-export const problemCards = [
+const problemCards = [
   {
     icon: "countdown-timer",
     title: "Freelancers miss timelines",
   },
   {
     icon: "countdown-timer",
-    title: "Dev partner break under campaign pressure",
+    title: "Dev partners break under campaign pressure",
   },
   {
     icon: "countdown-timer",
@@ -50,7 +50,11 @@ export const problemCards = [
     <div
       class="grid grid-cols-1 gap-3.5 px-6 sm:grid-cols-2 md:grid-cols-3 md:gap-4 md:px-0 xl:grid-cols-4 2xl:grid-cols-5"
     >
-      {problemCards.map((card) => <ProblemCard icon={card.icon} title={card.title} />)}
+      {
+        problemCards.map((problemCardItem) => (
+          <ProblemCard icon={problemCardItem.icon} title={problemCardItem.title} />
+        ))
+      }
     </div>
   </div>
 </section>
