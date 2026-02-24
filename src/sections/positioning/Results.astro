@@ -4,6 +4,13 @@ import ResultCard from "@/components/positioning/ResultCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
 
+interface Props {
+  badgeTitle: string;
+  title: string;
+}
+
+const { badgeTitle, title }: Props = Astro.props;
+
 // TODO: Remove this data when we have the actual data from the API
 const resultCards = [
   {
@@ -34,19 +41,19 @@ const imagesResultCards = [
     <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
       <!-- Tool Badge -->
       <div class="tool-badge">
-        <ToolBadge icon="ready" text={"Campaign Ready"} />
+        <ToolBadge icon="ready" text={badgeTitle} />
       </div>
 
       <!-- Title -->
       <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
-        {"Built for Long-Term Product Execution"}
+        {title}
       </p>
     </div>
 
     <div class="flex flex-col items-center justify-center gap-8 lg:gap-9">
       <!-- Subtitle -->
       <p class="subtitle-text text-n-800 text-center text-base font-normal md:text-lg lg:text-xl">
-        {"A retainer isn’t about speed alone. It’s about compounding progress."}
+        A retainer isn’t about speed alone. It’s about compounding progress.
       </p>
 
       <!-- Cards -->

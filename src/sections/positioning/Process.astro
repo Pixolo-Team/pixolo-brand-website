@@ -5,6 +5,13 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 
 // DATA //
 import { processSectionDetails } from "@/data/about/process";
+
+interface Props {
+  badgeTitle: string;
+  title: string;
+}
+
+const { badgeTitle, title }: Props = Astro.props;
 ---
 
 <!-- Positioning Process Section -->
@@ -17,14 +24,14 @@ import { processSectionDetails } from "@/data/about/process";
     <div class="flex w-full flex-col items-center gap-7">
       <!-- Tool badge component -->
       <div class="tool-badge">
-        <ToolBadge icon={processSectionDetails.badgeIcon} text={processSectionDetails.badgeTitle} />
+        <ToolBadge icon={"download"} text={badgeTitle} />
       </div>
 
       <!-- Section Title -->
       <p
         class="header-text text-n-950 text-center text-2xl leading-tight font-medium tracking-normal md:max-w-[65%] md:text-4xl lg:max-w-[874px] lg:text-5xl"
       >
-        {processSectionDetails.title}
+        {title}
       </p>
     </div>
 
@@ -33,7 +40,7 @@ import { processSectionDetails } from "@/data/about/process";
       {
         processSectionDetails.stepItems.map((stepItem, stepIndex) => (
           <StepItem
-            number={stepItem.number}
+            number={(stepIndex + 1).toString().padStart(2, "0")}
             title={stepItem.title}
             description={stepItem.description}
             direction={stepIndex % 2 === 0 ? "ltr" : "rtl"}

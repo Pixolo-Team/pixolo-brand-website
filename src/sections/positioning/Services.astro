@@ -3,6 +3,13 @@
 import ServiceCard from "@/components/positioning/ServiceCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
+interface Props {
+  badgeTitle: string;
+  title: string;
+}
+
+const { badgeTitle, title }: Props = Astro.props;
+
 // TODO: Remove this when API integrated
 const serviceCards = [
   {
@@ -41,12 +48,12 @@ const serviceCards = [
     <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
       <!-- Tool Badge -->
       <div class="tool-badge">
-        <ToolBadge icon="hand-gear" text={"White-Label Services"} />
+        <ToolBadge icon="hand-gear" text={badgeTitle} />
       </div>
 
       <!-- Title -->
       <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
-        {"What You Can White-Label With Us"}
+        {title}
       </p>
     </div>
 

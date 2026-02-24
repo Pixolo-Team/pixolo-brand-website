@@ -2,6 +2,14 @@
 // COMPONENTS //
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import IdealCard from "@/components/positioning/IdealCard.astro";
+
+interface Props {
+  badgeTitle: string;
+  title: string;
+  idealCards: string[];
+}
+
+const { badgeTitle, title, idealCards }: Props = Astro.props;
 ---
 
 <!-- Ideal Customers Section -->
@@ -13,12 +21,12 @@ import IdealCard from "@/components/positioning/IdealCard.astro";
     <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
       <!-- Tool Badge -->
       <div class="tool-badge">
-        <ToolBadge icon="collab" text={"Work Best With"} />
+        <ToolBadge icon="collab" text={badgeTitle} />
       </div>
 
       <!-- Title -->
       <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
-        {"Ideal Partners for This Collaboration"}
+        {title}
       </p>
     </div>
 
@@ -27,15 +35,10 @@ import IdealCard from "@/components/positioning/IdealCard.astro";
       class="ideal-cards grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3 xl:grid-cols-4"
     >
       {
-        [
-          "A Digital Marketing Agency Scaling Client Volume",
-          "Running Paid Campaigns or High-Traffic Launches",
-          "Tired of Unreliable Tech Vendors",
-          "Looking for Long-Term Delivery Stability",
-        ].map((idealCardItem, cardItemIndex) => (
+        idealCards.map((idealCardItem, cardItemIndex) => (
           <IdealCard
             index={(cardItemIndex + 1).toString().padStart(2, "0")}
-            title={idealCardItem}
+            title={idealCardItem.title}
           />
         ))
       }

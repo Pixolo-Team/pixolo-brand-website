@@ -294,13 +294,22 @@ $structure = (object) [
                         "title" => "",
                         "description" => ""
                     ]
-                )
+                ),
+                "image_cards" => array(
+                    (object)[
+                        "image" => "",
+                        "alt" => "",
+                        "title" => ""
+                    ]
+                ),
+                    
             ],
 
             "why_pixolo" => (object)[
                 "badge_title" => "",
                 "title" => "",
                 "image" => "",
+                "alt" => "",
                 "whyus_cards" => array(
                     (object)[
                         "title" => ""

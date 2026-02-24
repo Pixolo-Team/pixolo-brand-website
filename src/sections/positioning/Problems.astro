@@ -3,6 +3,13 @@
 import ProblemCard from "@/components/positioning/ProblemCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
+interface Props {
+  badgeTitle: string;
+  title: string;
+}
+
+const { badgeTitle, title }: Props = Astro.props;
+
 // TODO: Remove this dummy data when integrating API
 const problemCards = [
   {
@@ -37,12 +44,12 @@ const problemCards = [
     <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
       <!-- Tool Badge -->
       <div class="tool-badge">
-        <ToolBadge icon="info-icon" text={"Marketing Agencies"} />
+        <ToolBadge icon="info-icon" text={badgeTitle} />
       </div>
 
       <!-- Title -->
       <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
-        {"What’s Usually Broken for Agencies"}
+        {title}
       </p>
     </div>
 
