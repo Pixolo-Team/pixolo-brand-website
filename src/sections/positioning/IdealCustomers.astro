@@ -32,8 +32,11 @@ import IdealCard from "@/components/positioning/IdealCard.astro";
           "Running Paid Campaigns or High-Traffic Launches",
           "Tired of Unreliable Tech Vendors",
           "Looking for Long-Term Delivery Stability",
-        ].map((item, index) => (
-          <IdealCard index={(index + 1).toString().padStart(2, "0")} title={item} />
+        ].map((idealCardItem, cardItemIndex) => (
+          <IdealCard
+            index={(cardItemIndex + 1).toString().padStart(2, "0")}
+            title={idealCardItem}
+          />
         ))
       }
     </div>
