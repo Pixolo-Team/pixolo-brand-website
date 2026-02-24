@@ -4,6 +4,7 @@ import type { GetStaticPaths } from "astro";
 import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
+import Process from "@/sections/positioning/Process.astro";
 import IdealCustomers from "@/sections/positioning/IdealCustomers.astro";
 
 export const getStaticPaths = (() => {
@@ -12,5 +13,6 @@ export const getStaticPaths = (() => {
 ---
 
 <Layout>
+  <Process />
   <IdealCustomers />
 </Layout>
