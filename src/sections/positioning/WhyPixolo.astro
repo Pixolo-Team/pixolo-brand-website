@@ -1,0 +1,60 @@
+---
+// COMPONENTS //
+import WhyUsCard from "@/components/positioning/WhyUsCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import Image from "astro/components/Image.astro";
+
+// TODO: Remove why integrating the API
+const whyUsCards = [
+  { title: "We think like partners, not task-takers" },
+  { title: "We question broken requirements before building them" },
+  { title: "We care about performance, not just visuals" },
+  { title: "We design systems that don’t fall apart post-launch" },
+];
+---
+
+<!-- Why Pixolo Section -->
+<section id="why-pixolo-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-10 px-6 py-16 md:gap-14 lg:gap-16 lg:px-8 lg:pt-48 lg:pb-24"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="feedback-heart" text={"Our Advantage"} />
+      </div>
+
+      <!-- Title -->
+      <p
+        class="title-text text-n-950 text-center text-2xl leading-tight font-normal md:text-4xl lg:text-6xl"
+      >
+        {"Why Agencies Choose Us Over Typical White-Label Vendors"}
+      </p>
+    </div>
+
+    <!-- Content cards -->
+    <div class="flex flex-col gap-6 xl:flex-row">
+      <!-- Image Card -->
+      <div class="image-card w-full overflow-hidden rounded-4xl xl:w-[65%] 2xl:w-[55%]">
+        <Image
+          src="/images/positioning/white-label.jpg"
+          alt="Why Pixolo"
+          width={100}
+          height={100}
+          class="h-full w-full object-cover"
+        />
+      </div>
+
+      <!-- WhyUs cards -->
+      <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+        {whyUsCards.map((card) => <WhyUsCard title={card.title} />)}
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import { animateWhyPixolo } from "@/scripts/positioning/why-pixolo";
+
+  animateWhyPixolo();
+</script>
