@@ -2,7 +2,7 @@
 // COMPONENTS //
 import ResultCard from "@/components/positioning/ResultCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
-import Image from "astro/components/Image.astro";
+import Image from "astro:assets";
 
 // TODO: Remove this data when we have the actual data from the API
 const resultCards = [
@@ -55,25 +55,29 @@ const imagesResultCards = [
       >
         <!-- Results Cards -->
         <div class="flex h-full w-full flex-col gap-3 md:w-[60%] lg:w-[65%] xl:w-[30%]">
-          {resultCards.map((card) => <ResultCard icon={card.icon} title={card.title} />)}
+          {
+            resultCards.map((resultCardItem) => (
+              <ResultCard icon={resultCardItem.icon} title={resultCardItem.title} />
+            ))
+          }
         </div>
 
         <!-- Result Cards with Images -->
         {
-          imagesResultCards.map((resultCard) => (
+          imagesResultCards.map((imageCardItem) => (
             <div class="result-card outline-n-300 bg-n-100 relative flex h-[300px] w-full items-end justify-center overflow-hidden rounded-3xl outline-1 -outline-offset-1 md:h-[-webkit-fill-available] xl:w-[48%]">
               {/* Background Image */}
               <Image
-                src={resultCard.src}
+                src={imageCardItem.src}
                 width={480}
                 height={385}
-                alt={resultCard.title}
+                alt={imageCardItem.title}
                 class="h-full w-full object-cover"
               />
 
               {/* Title */}
               <p class="text-n-950 absolute bottom-8 w-[50%] text-center text-lg leading-tight font-bold md:text-xl xl:text-2xl">
-                {resultCard.title}
+                {imageCardItem.title}
               </p>
             </div>
           ))

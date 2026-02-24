@@ -1,0 +1,49 @@
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import IdealCard from "@/components/positioning/IdealCard.astro";
+---
+
+<!-- Ideal Customers Section -->
+<section id="ideal-customers-section" data-section="Ideal Customers">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-11 px-6 py-16 md:gap-14 lg:gap-16 lg:px-8 lg:pt-48 lg:pb-24"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="collab" text={"Work Best With"} />
+      </div>
+
+      <!-- Title -->
+      <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
+        {"Ideal Partners for This Collaboration"}
+      </p>
+    </div>
+
+    <!-- Ideal Cards -->
+    <div
+      class="ideal-cards grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3 xl:grid-cols-4"
+    >
+      {
+        [
+          "A Digital Marketing Agency Scaling Client Volume",
+          "Running Paid Campaigns or High-Traffic Launches",
+          "Tired of Unreliable Tech Vendors",
+          "Looking for Long-Term Delivery Stability",
+        ].map((idealCardItem, cardItemIndex) => (
+          <IdealCard
+            index={(cardItemIndex + 1).toString().padStart(2, "0")}
+            title={idealCardItem}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+<script>
+  import { animateIdealCustomers } from "@/scripts/positioning/ideal-customers";
+
+  animateIdealCustomers();
+</script>
