@@ -1,0 +1,67 @@
+---
+// COMPONENTS //
+import ServiceCard from "@/components/positioning/ServiceCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// TODO: Remove this when API integrated
+const serviceCards = [
+  {
+    title: "Performance Websites",
+    description: "Brand websites for credibility and lead generation",
+  },
+  {
+    title: "Conversion Landing",
+    description: "High-performance campaign landing pages",
+  },
+  {
+    title: "Results Driven UI/UX",
+    description: "UI/UX for conversion-focused experiences",
+  },
+  {
+    title: "Analytics Dashboards",
+    description: "Custom dashboards and reporting tools",
+  },
+  {
+    title: "Revenue CRM",
+    description: "CRM’s and lead management systems",
+  },
+  {
+    title: "Platform Support",
+    description: "Ongoing maintenance and tech support",
+  },
+];
+---
+
+<!-- Positioning Services Section -->
+<section id="positioning-services-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-10 px-6 py-16 md:gap-14 lg:gap-10 lg:px-8 lg:pt-48 lg:pb-24"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="hand-gear" text={"White-Label Services"} />
+      </div>
+
+      <!-- Title -->
+      <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
+        {"What You Can White-Label With Us"}
+      </p>
+    </div>
+
+    <!-- Services Card -->
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3 xl:gap-6 xl:px-14">
+      {
+        serviceCards.map((serviceCardItem) => (
+          <ServiceCard title={serviceCardItem.title} description={serviceCardItem.description} />
+        ))
+      }
+    </div>
+  </div>
+</section>
+<script>
+  import { animateServicesSection } from "@/scripts/positioning/services";
+
+  animateServicesSection();
+</script>

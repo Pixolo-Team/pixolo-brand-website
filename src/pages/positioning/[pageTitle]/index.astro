@@ -4,13 +4,30 @@ import type { GetStaticPaths } from "astro";
 import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
+import Hero from "@/sections/positioning/Hero.astro";
+import Problems from "@/sections/positioning/Problems.astro";
+import Purpose from "@/sections/positioning/Purpose.astro";
+import Services from "@/sections/positioning/Services.astro";
+import Process from "@/sections/positioning/Process.astro";
+import Results from "@/sections/positioning/Results.astro";
 import WhyPixolo from "@/sections/positioning/WhyPixolo.astro";
+import IdealCustomers from "@/sections/positioning/IdealCustomers.astro";
+import Cta from "@/sections/positioning/Cta.astro";
 
+/** Get Static Paths */
 export const getStaticPaths = (() => {
   return [{ params: { pageTitle: "page-title" } }];
 }) satisfies GetStaticPaths;
 ---
 
 <Layout>
+  <Hero />
+  <Problems />
+  <Purpose />
+  <Services />
+  <Process />
+  <Results />
   <WhyPixolo />
+  <IdealCustomers />
+  <Cta />
 </Layout>
