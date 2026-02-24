@@ -4,9 +4,10 @@ import type { GetStaticPaths } from "astro";
 import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
-import Services from "@/sections/positioning/Services.astro";
 import Hero from "@/sections/positioning/Hero.astro";
+import Problems from "@/sections/positioning/Problems.astro";
 import Purpose from "@/sections/positioning/Purpose.astro";
+import Services from "@/sections/positioning/Services.astro";
 import Process from "@/sections/positioning/Process.astro";
 import IdealCustomers from "@/sections/positioning/IdealCustomers.astro";
 import Cta from "@/sections/positioning/Cta.astro";
@@ -19,6 +20,7 @@ export const getStaticPaths = (() => {
 
 <Layout>
   <Hero />
+  <Problems />
   <Purpose />
   <Services />
   <Process />
