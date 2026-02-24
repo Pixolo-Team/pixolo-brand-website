@@ -4,7 +4,7 @@ import ServiceCard from "@/components/positioning/ServiceCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
 // TODO: Remove this when API integrated
-export const serviceCards = [
+const serviceCards = [
   {
     title: "Performance Websites",
     description: "Brand websites for credibility and lead generation",
@@ -53,8 +53,8 @@ export const serviceCards = [
     <!-- Services Card -->
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-3 xl:gap-6 xl:px-14">
       {
-        serviceCards.map((serviceItem) => (
-          <ServiceCard title={serviceItem.title} description={serviceItem.description} />
+        serviceCards.map((serviceCardItem) => (
+          <ServiceCard title={serviceCardItem.title} description={serviceCardItem.description} />
         ))
       }
     </div>
