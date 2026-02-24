@@ -5,12 +5,17 @@ import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
 import Cta from "@/sections/positioning/Cta.astro";
+import Process from "@/sections/positioning/Process.astro";
+import IdealCustomers from "@/sections/positioning/IdealCustomers.astro";
 
+/** Get Static Paths */
 export const getStaticPaths = (() => {
   return [{ params: { pageTitle: "page-title" } }];
 }) satisfies GetStaticPaths;
 ---
 
 <Layout>
+  <Process />
+  <IdealCustomers />
   <Cta />
 </Layout>
