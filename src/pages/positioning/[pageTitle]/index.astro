@@ -5,9 +5,10 @@ import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
 import Hero from "@/sections/positioning/Hero.astro";
-import Cta from "@/sections/positioning/Cta.astro";
+import Purpose from "@/sections/positioning/Purpose.astro";
 import Process from "@/sections/positioning/Process.astro";
 import IdealCustomers from "@/sections/positioning/IdealCustomers.astro";
+import Cta from "@/sections/positioning/Cta.astro";
 
 /** Get Static Paths */
 export const getStaticPaths = (() => {
@@ -17,6 +18,7 @@ export const getStaticPaths = (() => {
 
 <Layout>
   <Hero />
+  <Purpose />
   <Process />
   <IdealCustomers />
   <Cta />
