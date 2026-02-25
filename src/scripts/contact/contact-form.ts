@@ -1,9 +1,14 @@
-// API SERVICES //
-import { submitContactFormRequest } from "@/services/api/contact.api";
+// SERVICES //
+import { insertLead } from "@/services/supabase";
 
 // UTILS //
 import { validateInput } from "@/utils/validations";
-import { showResultModal, hideResultModal } from "@/utils/modal";
+import {
+  showResultModal,
+  runResultProgress,
+  closeResultModalOnBackdropClick,
+  closeResultModal,
+} from "@/utils/modal";
 
 // OTHERS //
 import { trackContactFormError, trackContactFormSubmit } from "@/scripts/analytics";
@@ -19,17 +24,17 @@ export const initializeFormSubmission = () => {
   if (!submitBtn) return;
 
   // Inputs
-  const emailInput = document.getElementById("email") as HTMLInputElement | null;
-  const phoneInput = document.getElementById("phone") as HTMLInputElement | null;
-  const nameInput = document.getElementById("name") as HTMLInputElement | null;
+  const emailInput = document.getElementById("email") as HTMLInputElement;
+  const phoneInput = document.getElementById("phone") as HTMLInputElement;
+  const nameInput = document.getElementById("name") as HTMLInputElement;
   const messageInput = document.getElementById("message") as HTMLInputElement | null;
 
-  // Result modal close button
-  const closeResultBtn = document.getElementById("close-contact-result-modal");
-  closeResultBtn?.addEventListener("click", () => hideResultModal("contact-result-modal"));
+  // Close result modal
+  closeResultModal("contact-result-modal", "close-contact-result-modal");
+  closeResultModalOnBackdropClick("contact-result-modal");
 
   /** Handle form submission  */
-  submitBtn.addEventListener("click", async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     // Get all inputs
@@ -62,33 +67,37 @@ export const initializeFormSubmission = () => {
 
     // Prepare payload
     const payload = {
-      from_email: emailInput?.value.trim(),
-      phone_number: phoneInput?.value.trim(),
-      name: nameInput?.value.trim(),
+      email: emailInput.value.trim(),
+      phone: phoneInput.value.trim(),
+      name: nameInput.value.trim(),
       message: messageInput?.value.trim(),
     };
 
     // Submit form
     try {
       /** API Call to submit form */
-      const response = await submitContactFormRequest(payload);
+      const response = await insertLead(payload);
 
       // Track form submission
-      if (response?.status) {
+      if (response?.data) {
         trackContactFormSubmit(filledFieldsCount);
       } else {
-        trackContactFormError(response?.message || "api_error");
+        trackContactFormError(response?.error?.message || "api_error");
       }
 
       // Show result modal
-      showResultModal("contact-result-modal", response?.status ? "success" : "error");
+      showResultModal("contact-result-modal", response?.data ? "success" : "error");
+      runResultProgress("contact-result-modal", "contact-result-progress-bar");
 
       // Reset form
       form.reset();
     } catch {
       // Track form submission error
       trackContactFormError("api_failure");
+
+      // Show result modal
       showResultModal("contact-result-modal", "error");
+      runResultProgress("contact-result-modal", "contact-result-progress-bar");
 
       // Reset form
       form.reset();

@@ -16,6 +16,7 @@ import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { portfolioSectionDetails } from "@/data/portfolio.ts";
+import { URLS } from "@/infrastructure/constants/urls";
 
 /** API Call to get all portfolio */
 const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
@@ -43,7 +44,7 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
       <div
         class="header-text z-10 flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-5xl"
       >
-        <p class="text-balance">{portfolioSectionDetails.title}</p>
+        <p class="text-n-950 text-balance">{portfolioSectionDetails.title}</p>
         <p class="bg-gradient-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent">
           {portfolioSectionDetails.highlight}
         </p>
@@ -76,11 +77,12 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
                 <ProjectCard
                   brandColor={projectCardItem.brand_color}
                   brandName={projectCardItem.brand_name}
-                  image={projectCardItem.hero_image}
+                  image={projectCardItem.thumbnail_image}
                   logo={projectCardItem.logo}
                   title={projectCardItem.title}
                   subtitle={projectCardItem.subtitle}
                   badges={projectCardItem.badges}
+                  onClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCardItem.slug)}'`}
                 />
               </div>
             )
@@ -103,6 +105,7 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
                 title={articleCardItem.title}
                 animateClass={"anim-fade-in-up"}
                 ctaText={"View Project"}
+                onClick={`window.location.href='${URLS.PORTFOLIO.ITEM(articleCardItem.slug)}'`}
               />
             ),
         )

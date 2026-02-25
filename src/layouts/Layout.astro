@@ -13,6 +13,10 @@ import BottomCTA from "@/components/ui/BottomCTA.astro";
 
 // DATA //
 import { siteInfo } from "@/data/site-info";
+import JsonLd from "@/components/layout/JsonLd.astro";
+
+// OTHERS //
+import { pixoloWebsiteSchema } from "@/schemas/website.schema";
 
 interface Props {
   meta: any;
@@ -30,19 +34,31 @@ const { meta = {} } = Astro.props;
       description={meta.description}
       image={meta.image}
       noIndex={meta.noIndex}
+      keywords={meta.keywords}
     />
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9E7P2PLT8"></script>
+    <!-- Load the initial theme from Local Storage -->
+    <script is:inline>
+      (() => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") {
+          document.documentElement.classList.remove("dark");
+        } else {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+
+    <!-- JSON-LD -->
+    <slot name="head" />
+
+    <!-- Global WebSite JSON-LD (ALL pages) -->
+    <JsonLd slot="head" data={pixoloWebsiteSchema} />
 
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+      if (sessionStorage.getItem("loaderShown")) {
+        document.documentElement.classList.add("hide-loader");
       }
-      window.gtag = gtag;
-      gtag("js", new Date());
-      gtag("config", "G-T9E7P2PLT8");
     </script>
   </head>
 
@@ -82,7 +98,7 @@ const { meta = {} } = Astro.props;
 
     <!-- Whatsapp button component -->
     <WhatsappButton
-      href="https://wa.me/9768941186"
+      href={`https://wa.me/${siteInfo.contact.phone[0].value}`}
       extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-10 hidden md:flex"
     />
 
@@ -92,6 +108,19 @@ const { meta = {} } = Astro.props;
     </div>
 
     <ContactForm />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9E7P2PLT8"></script>
+
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag("js", new Date());
+      gtag("config", "G-T9E7P2PLT8");
+    </script>
   </body>
 </html>
 
@@ -119,17 +148,6 @@ const { meta = {} } = Astro.props;
   // Initial page load
   trackPageView();
   setupScrollTracking();
-</script>
-
-<script is:inline>
-  const loader = document.querySelector("#loading-screen");
-  const hasSeenLoader = sessionStorage.getItem("loaderShown");
-
-  if (hasSeenLoader) {
-    loader.style.display = "none";
-  } else {
-    loader.style.display = "flex";
-  }
 </script>
 
 <script>

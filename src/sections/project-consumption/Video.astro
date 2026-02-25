@@ -1,0 +1,45 @@
+---
+// COMPONENTS //
+import PlayButton from "@/components/ui/PlayButton.astro";
+
+interface Props {
+  videoUrl: string;
+  alt: string;
+}
+
+const { videoUrl, alt } = Astro.props as Props;
+---
+
+<section>
+  <div class="container mx-auto px-6 py-16 lg:px-0">
+    <div
+      id="portfolio-video"
+      class="group relative aspect-video w-full overflow-hidden rounded-3xl md:h-[400px] lg:h-[580px]"
+    >
+      <!-- Video Player -->
+      <iframe
+        id="portfolio-video-iframe"
+        class="h-full w-full object-contain"
+        src={videoUrl}
+        title={alt}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      >
+      </iframe>
+
+      <!-- Custom Play Button component -->
+      <div
+        class="absolute right-1/2 bottom-1/2 z-10 translate-1/2 md:right-11 md:bottom-11 lg:right-12 lg:bottom-14"
+      >
+        <PlayButton id="play-overlay" />
+      </div>
+    </div>
+  </div>
+</section>
+<style></style>
+<script>
+  import { initVideoPlayPause } from "@/scripts/play-button";
+  import { animatePortfolioVideo } from "@/scripts/portfolio-consumption/video.ts";
+  animatePortfolioVideo();
+  initVideoPlayPause("#portfolio-video-iframe", "#play-overlay");
+</script>

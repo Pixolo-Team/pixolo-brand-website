@@ -2,11 +2,12 @@
 export const retainershipDetails = {
   badgeIcon: "building",
   badgeTitle: "Retainership Program",
-  title: "We lend our best minds to strengthen yours",
+  title: "We lend our best minds to strengthen yours.",
   headerText: "We lend our best minds to strengthen yours",
   stepsTitle: "How it works",
   contentHeading: "Our retainership ensures ongoing collaboration, support, and lasting value.",
   employeeCardTitle: "Some of the skilled professionals we provide include:",
+  footerText: "This isn’t staffing. It’s long-term thinking, without long-term hiring.",
 
   // Step Item details
   stepItems: [
@@ -24,13 +25,13 @@ export const retainershipDetails = {
       number: "03",
       title: "We manage everything",
       description:
-        "From training and attendance to equipment and performance — all on us, fully transparent to you.",
+        "From training and attendance to equipment and performance - all on us, fully transparent to you.",
     },
     {
       number: "04",
       title: "Work as one team",
       description:
-        "Your expert works from our office, dedicated to your project — for as long as you need them.",
+        "Your expert works from our office, dedicated to your project - for as long as you need them.",
     },
   ],
 

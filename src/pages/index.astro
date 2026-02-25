@@ -1,6 +1,13 @@
 ---
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
+// UTILS //
+import { getSiteUrl } from "@/utils/site-url";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
+import { pixoloOrganizationSchema } from "@/schemas/home/organization.schema";
 
 // SECTIONS //
 import Hero from "@/sections/home/Hero.astro";
@@ -14,9 +21,15 @@ import Contact from "@/sections/home/Contact.astro";
 import Testimonials from "@/sections/home/Testimonials.astro";
 import CaseStudies from "@/sections/home/CaseStudies.astro";
 import Blogs from "@/sections/home/Blogs.astro";
+
+// DATA //
+import homeMeta from "@/data/meta/home.json";
 ---
 
-<Layout>
+<Layout meta={{ ...homeMeta, image: `${getSiteUrl()}/images/og/home.jpg` }}>
+  {/* Organization JSON-LD */}
+  <JsonLd slot="head" data={pixoloOrganizationSchema} />
+
   <Hero />
   <Clients />
   <Service />

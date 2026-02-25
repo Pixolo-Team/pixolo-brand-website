@@ -1,0 +1,93 @@
+---
+// COMPONENTS //
+import ResultCard from "@/components/positioning/ResultCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+// TODO: Remove this data when we have the actual data from the API
+const resultCards = [
+  {
+    icon: "comment",
+    title: "80% Faster Loading Pages",
+  },
+  {
+    icon: "comment",
+    title: "Stable, Scalable System",
+  },
+];
+
+// TODO: Remove this data when we have the actual data from the API
+const imagesResultCards = [
+  {
+    src: "/images/positioning/result-bg-image.png",
+    title: "Clean Hand-Off to your Team",
+  },
+];
+---
+
+<!-- Positioning Results Section -->
+<section id="results-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-10 px-6 py-16 md:gap-14 lg:gap-10 lg:px-8 lg:pt-48 lg:pb-24"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="ready" text={"Campaign Ready"} />
+      </div>
+
+      <!-- Title -->
+      <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
+        {"Built for Long-Term Product Execution"}
+      </p>
+    </div>
+
+    <div class="flex flex-col items-center justify-center gap-8 lg:gap-9">
+      <!-- Subtitle -->
+      <p class="subtitle-text text-n-800 text-center text-base font-normal md:text-lg lg:text-xl">
+        {"A retainer isn’t about speed alone. It’s about compounding progress."}
+      </p>
+
+      <!-- Cards -->
+      <div
+        class="flex w-full flex-col items-center justify-center gap-3 md:w-full md:flex-row xl:w-[80%]"
+      >
+        <!-- Results Cards -->
+        <div class="flex h-full w-full flex-col gap-3 md:w-[60%] lg:w-[65%] xl:w-[30%]">
+          {
+            resultCards.map((resultCardItem) => (
+              <ResultCard icon={resultCardItem.icon} title={resultCardItem.title} />
+            ))
+          }
+        </div>
+
+        <!-- Result Cards with Images -->
+        {
+          imagesResultCards.map((imageCardItem) => (
+            <div class="result-card outline-n-300 bg-n-100 relative flex h-[300px] w-full items-end justify-center overflow-hidden rounded-3xl outline-1 -outline-offset-1 md:h-[-webkit-fill-available] xl:w-[48%]">
+              {/* Background Image */}
+              <Image
+                src={imageCardItem.src}
+                width={480}
+                height={385}
+                alt={imageCardItem.title}
+                class="h-full w-full object-cover"
+              />
+
+              {/* Title */}
+              <p class="text-n-950 absolute bottom-8 w-[50%] text-center text-lg leading-tight font-bold md:text-xl xl:text-2xl">
+                {imageCardItem.title}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import { animateResultsSection } from "@/scripts/positioning/results";
+
+  animateResultsSection();
+</script>

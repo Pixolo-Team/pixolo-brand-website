@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 import ThemeImage from "@/components/ui/ThemeImage.astro";
 
 interface Props {
-  id: string | number;
+  id?: string | number;
   title: string;
   image: string;
   href: string;
@@ -39,7 +39,7 @@ const { id, title, image, href } = Astro.props as Props;
     <div>
       {/* Text */}
       <p
-        class="text-xl leading-tight font-medium tracking-normal group-hover:text-blue-400 md:text-2xl lg:text-3xl"
+        class="text-n-950 text-xl leading-tight font-medium tracking-normal group-hover:text-blue-400 md:text-2xl lg:text-3xl"
       >
         {title}
       </p>

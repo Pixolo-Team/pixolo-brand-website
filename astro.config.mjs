@@ -1,26 +1,19 @@
 // @ts-check
+// MODULES //
+import path from "path";
+
 // OTHERS //
 import { defineConfig } from "astro/config";
 import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
-import path from "path";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.pixolotechnologies.com",
-  integrations: [
-    icon(),
-    sitemap({
-      customPages: [
-        "https://www.pixolotechnologies.com/",
-        "https://www.pixolotechnologies.com/services",
-        "https://www.pixolotechnologies.com/portfolio",
-        "https://www.pixolotechnologies.com/careers",
-        "https://www.pixolotechnologies.com/contact",
-      ],
-    }),
-  ],
+
+  integrations: [icon(), sitemap()],
 
   vite: {
     resolve: {
@@ -31,5 +24,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [icon()],
+  adapter: vercel(),
 });

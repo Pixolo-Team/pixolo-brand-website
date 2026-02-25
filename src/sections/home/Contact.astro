@@ -68,8 +68,8 @@ import { contactSectionDetails } from "@/data/contact";
                   class="copy-btn relative flex size-5 cursor-pointer items-center justify-center"
                   data-copy={contactSectionItem.value}
                 >
-                  <Icon name="copy" class="icon-copy size-5" />
-                  <Icon name="check" class="icon-check hidden size-5" />
+                  <Icon name="copy" class="text-n-950 icon-copy size-5 hover:text-blue-500" />
+                  <Icon name="check" class="text-n-950 icon-check hidden size-5" />
                 </span>
               </Tooltip>
             </a>
@@ -92,7 +92,7 @@ import { contactSectionDetails } from "@/data/contact";
             >
               <Icon
                 name={contactSectionDetails.location.icon}
-                class="text-n-50 size-5 sm:size-6 lg:size-7"
+                class="text-n-950 size-5 sm:size-6 lg:size-7"
               />
             </div>
 
@@ -109,10 +109,10 @@ import { contactSectionDetails } from "@/data/contact";
 
           <!-- Address with right arrow icon -->
           <div class="flex items-center gap-5">
-            <p class="text-xs font-semibold md:text-sm lg:text-base">
+            <p class="text-n-950 text-xs font-semibold md:text-sm lg:text-base">
               {contactSectionDetails.location.address}
             </p>
-            <Icon name="right-arrow" class={"size-5"} />
+            <Icon name="right-arrow" class="text-n-950 size-5" />
           </div>
         </div>
 

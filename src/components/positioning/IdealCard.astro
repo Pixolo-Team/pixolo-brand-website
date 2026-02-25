@@ -1,0 +1,23 @@
+---
+interface Props {
+  index: string;
+  title: string;
+}
+
+const { index, title } = Astro.props as Props;
+---
+
+<!-- Ideal Card Component -->
+<div
+  class="ideal-card bg-n-100 outline-n-300 flex w-full flex-col items-start gap-7 rounded-3xl p-6 outline outline-offset-1 md:gap-10 lg:gap-6"
+>
+  <!-- Index -->
+  <div class="text-n-500 text-3xl leading-tight font-bold md:text-4xl lg:text-5xl">
+    {index}.
+  </div>
+
+  <!-- Title -->
+  <div class="text-n-700 text-lg leading-tight font-medium md:text-xl lg:text-2xl">
+    {title}
+  </div>
+</div>

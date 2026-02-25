@@ -1,0 +1,67 @@
+---
+// COMPONENTS //
+import ProblemCard from "@/components/positioning/ProblemCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// TODO: Remove this dummy data when integrating API
+const problemCards = [
+  {
+    icon: "countdown-timer",
+    title: "Freelancers miss timelines",
+  },
+  {
+    icon: "countdown-timer",
+    title: "Dev partners break under campaign pressure",
+  },
+  {
+    icon: "countdown-timer",
+    title: "Websites look good but don’t convert",
+  },
+  {
+    icon: "countdown-timer",
+    title: "Tech becomes a bottleneck during launch",
+  },
+  {
+    icon: "countdown-timer",
+    title: "Vendor management steals client time",
+  },
+];
+---
+
+<!-- Problems Section -->
+<section id="problems-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-10 px-6 py-16 md:gap-14 lg:gap-10 lg:px-8 lg:pt-48 lg:pb-24"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="info-icon" text={"Marketing Agencies"} />
+      </div>
+
+      <!-- Title -->
+      <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
+        {"What’s Usually Broken for Agencies"}
+      </p>
+    </div>
+
+    <!-- Problem Cards -->
+    <div
+      class="grid grid-cols-1 gap-3.5 px-6 sm:grid-cols-2 md:grid-cols-3 md:gap-4 md:px-0 xl:grid-cols-4 2xl:grid-cols-5"
+    >
+      {
+        problemCards.map((problemCardItem) => (
+          <ProblemCard icon={problemCardItem.icon} title={problemCardItem.title} />
+        ))
+      }
+    </div>
+  </div>
+</section>
+<script>
+  // OTHERS //
+  import { animateProblemsSection } from "@/scripts/positioning/problems";
+
+  // Run the Animations
+  animateProblemsSection();
+</script>

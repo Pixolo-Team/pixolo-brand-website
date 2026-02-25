@@ -14,7 +14,7 @@ import { heroSectionDetails } from "@/data/services/hero";
 <section>
   <div
     id="hero-wrapper"
-    class="relative container mx-auto flex flex-col items-center justify-center gap-9 overflow-hidden px-6 pt-34 pb-14 text-center md:py-38 lg:py-12 xl:pt-52 2xl:pt-60 2xl:pb-46"
+    class="relative container mx-auto flex flex-col items-center justify-center gap-9 overflow-hidden px-6 pt-34 pb-14 text-center md:py-38 lg:pt-36 lg:pb-22 xl:pt-52 xl:pb-28 2xl:pb-46"
   >
     <!-- Top-left floating marble -->
     <Image
@@ -50,7 +50,6 @@ import { heroSectionDetails } from "@/data/services/hero";
       <p
         class="text-n-950 flex items-center justify-center text-center text-3xl leading-tight font-normal tracking-tight text-nowrap md:text-7xl xl:text-8xl"
       >
-        <!-- Title third line -->
         <span class="word-container" data-animate-word>
           {heroSectionDetails.title[2]}
         </span>
@@ -62,17 +61,25 @@ import { heroSectionDetails } from "@/data/services/hero";
           class="floating-icon inline-block w-14 align-middle md:w-44 xl:w-60"
           style={"animation-duration: 5s"}
         />
+
         <span class="word-container" data-animate-word>
           {heroSectionDetails.title[3]}
         </span>
       </p>
 
-      <!--  Title fourth line -->
+      <!--  Title third line -->
       <p
-        class="text-n-950 text-3xl leading-none font-semibold tracking-[-0.02em] md:text-7xl xl:text-8xl"
+        class="text-n-950 text-3xl leading-none font-normal tracking-tight md:text-7xl xl:text-8xl"
       >
         <span class="word-container" data-animate-word>
           {heroSectionDetails.title[4]}
+        </span>
+      </p>
+
+      <!--  Title fourth line -->
+      <p class="text-n-950 text-3xl leading-none font-bold tracking-tight md:text-7xl xl:text-8xl">
+        <span class="word-container" data-animate-word>
+          {heroSectionDetails.title[5]}
         </span>
       </p>
     </div>
@@ -85,39 +92,6 @@ import { heroSectionDetails } from "@/data/services/hero";
     </p>
   </div>
 </section>
-<style>
-  @keyframes float {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-12px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-  .floating-icon {
-    animation: float 6s ease-in-out infinite;
-    will-change: transform;
-  }
-  .word-container {
-    display: inline-block;
-    opacity: 0;
-    transform: translateX(15%);
-    transition:
-      opacity 2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transition-delay: 0ms; /* This will be set by JS */
-  }
-
-  /* This class is added by JS to trigger the final state */
-  .word-container.is-visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-</style>
 <script>
   import { animateHeroTitle, animateMarble } from "@/scripts/hero";
 

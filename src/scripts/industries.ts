@@ -9,8 +9,8 @@ export function initIndustrySlider() {
   const slider = document.getElementById("industry-slider");
 
   // Get navigation buttons
-  const prevBtn = document.getElementById("slide-prev");
-  const nextBtn = document.getElementById("slide-next");
+  const prevBtn = document.getElementById("industry-prev");
+  const nextBtn = document.getElementById("industry-next");
 
   // Run only if all required elements exist
   if (!slider || !prevBtn || !nextBtn) return;

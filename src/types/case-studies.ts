@@ -95,10 +95,12 @@ export type CaseStudyData = {
   showInHome: string;
   badgeTitle: string;
   title: string;
+  category: string;
   description: string;
   name: string;
   thumbnail: string;
   websiteLink: string;
+  slug: string;
 
   /* Client Numbers */
   clientNumbersHeading: string;

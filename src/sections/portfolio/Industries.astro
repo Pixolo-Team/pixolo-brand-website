@@ -4,8 +4,14 @@ import SliderArrows from "@/components/ui/SliderArrows.astro";
 import ServiceItem from "@/components/ui/ServiceItem.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
-// DATA //
-import { portfolioIndustryDetails } from "@/data/portfolio/industries.ts";
+// OTHERS //
+import type { PortfolioIndustriesData } from "@/types/portfolio/industries";
+
+interface props {
+  portfolioIndustryDetails: PortfolioIndustriesData;
+}
+
+const { portfolioIndustryDetails } = Astro.props as props;
 ---
 
 <!-- Portfolio Industries Section -->
@@ -52,7 +58,7 @@ import { portfolioIndustryDetails } from "@/data/portfolio/industries.ts";
       </div>
 
       <!-- Arrows -->
-      <SliderArrows />
+      <SliderArrows prevId="industry-prev" nextId="industry-next" />
     </div>
   </div>
 </section>

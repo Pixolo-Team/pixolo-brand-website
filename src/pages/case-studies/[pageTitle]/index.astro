@@ -2,24 +2,31 @@
 // TYPES //
 import type { CaseStudyData } from "@/types/case-studies";
 
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
 // API SERVICES //
 import { getCaseStudiesRequest } from "@/services/api/case-studies.api";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
+import { getPixoloCaseStudySchema } from "@/schemas/case-studies/case-studies-consumption.schema";
 
 // SECTIONS //
-import Numbers from "@/sections/case-studies/Numbers.astro";
-import ClientVision from "@/sections/case-studies/ClientVision.astro";
-import Solutions from "@/sections/case-studies/Solutions.astro";
-import Issues from "@/sections/case-studies/Issues.astro";
-import AboutTheClient from "@/sections/case-studies/AboutTheClient.astro";
-import Gallery from "@/sections/case-studies/Gallery.astro";
-import ToolsUsed from "@/sections/case-studies/ToolsUsed.astro";
-import ClientTestimonial from "@/sections/case-studies/ClientTestimonial.astro";
-import SolutionNumbers from "@/sections/case-studies/SolutionNumbers.astro";
-import Hero from "@/sections/case-studies/Hero.astro";
-import KeyTakeaways from "@/sections/case-studies/KeyTakeaways.astro";
+import Numbers from "@/sections/case-study-consumption/Numbers.astro";
+import ClientVision from "@/sections/case-study-consumption/ClientVision.astro";
+import Solutions from "@/sections/case-study-consumption/Solutions.astro";
+import Issues from "@/sections/case-study-consumption/Issues.astro";
+import AboutTheClient from "@/sections/case-study-consumption/AboutTheClient.astro";
+import Gallery from "@/sections/case-study-consumption/Gallery.astro";
+import ToolsUsed from "@/sections/case-study-consumption/ToolsUsed.astro";
+import ClientTestimonial from "@/sections/case-study-consumption/ClientTestimonial.astro";
+import SolutionNumbers from "@/sections/case-study-consumption/SolutionNumbers.astro";
+import Hero from "@/sections/case-study-consumption/Hero.astro";
+import KeyTakeaways from "@/sections/case-study-consumption/KeyTakeaways.astro";
+
+// DATA //
+import caseStudyMeta from "@/data/meta/case-studies/case-study-consumption/case-study-consumption.json";
 
 /**
  * Generates static paths for all Case Studies Consumption pages
@@ -31,7 +38,7 @@ export async function getStaticPaths() {
 
   return caseStudies.map((caseStudyItem: CaseStudyData) => ({
     params: {
-      pageTitle: caseStudyItem.name.replaceAll(" ", "-").toLowerCase(),
+      pageTitle: caseStudyItem.slug,
     },
     props: {
       caseStudyItem,
@@ -40,10 +47,28 @@ export async function getStaticPaths() {
 }
 
 const { caseStudyItem }: { caseStudyItem: CaseStudyData } = Astro.props;
-console.log(caseStudyItem.clientMessage);
+
+/** Case Study JSON-LD */
+const caseStudySchema = getPixoloCaseStudySchema({
+  slug: caseStudyItem.slug,
+  title: caseStudyItem.title,
+  summary: caseStudyItem.summary,
+  clientName: caseStudyItem.clientName,
+  datePublished: caseStudyItem.datePublished,
+  dateModified: caseStudyItem.dateModified,
+});
 ---
 
-<Layout>
+<Layout
+  meta={{
+    ...caseStudyMeta,
+    title: caseStudyItem.title + " Development Case Study | Pixolo",
+    description: caseStudyItem.description,
+  }}
+>
+  {/* Case Study JSON-LD */}
+  <JsonLd slot="head" data={caseStudySchema} />
+
   <Hero
     badgeTitle={caseStudyItem.badgeTitle}
     title={caseStudyItem.title}

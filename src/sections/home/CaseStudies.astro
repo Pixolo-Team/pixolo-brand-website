@@ -30,7 +30,7 @@ const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
 
       <!-- Title -->
       <p
-        class="header-text text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-5xl"
+        class="header-text text-n-950 text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-5xl"
       >
         {caseStudySectionDetails.title}
       </p>
@@ -53,9 +53,7 @@ const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
                 <div class="case-study-card-item hidden">
                   <CaseStudyCard
                     image={caseStudyItem.thumbnail}
-                    href={URLS.CASE_STUDIES.ITEM(
-                      caseStudyItem.name?.replaceAll(" ", "-").toLowerCase(),
-                    )}
+                    href={URLS.CASE_STUDIES.ITEM(caseStudyItem.slug)}
                     id={filteredIndex}
                     title={caseStudyItem.name}
                   />

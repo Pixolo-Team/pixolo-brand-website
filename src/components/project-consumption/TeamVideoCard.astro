@@ -1,0 +1,55 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+interface Props {
+  image: string;
+  name: string;
+  role: string;
+}
+
+const { image, name, role } = Astro.props as Props;
+---
+
+<!-- Team video card component -->
+<div class="flex w-full flex-col gap-4 md:gap-7 xl:flex-col xl:gap-5">
+  <!-- Media / Video wrapper -->
+  <div
+    class="team-video-hover relative h-69.75 w-full overflow-hidden rounded-3xl md:aspect-video md:h-auto lg:h-130"
+  >
+    <!-- Poster image preview -->
+    <Image
+      src={image}
+      alt={name}
+      class="h-full w-full object-cover"
+      width={500}
+      height={500}
+      inferSize={false}
+      loading="lazy"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Play button -->
+    <button
+      type="button"
+      aria-label="Play video"
+      class="anim-fade-up-quick border-n-950 hover:bg-n-800 xl:bg-n-200 xl:rig absolute right-3 bottom-3 flex size-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-transparent transition-all duration-300 ease-out hover:border-transparent md:right-5 md:bottom-5 md:size-14 md:border-2 xl:right-11 xl:bottom-3 xl:border-0"
+    >
+      <Icon
+        name="play"
+        class="hover:text-n-950 size-[12.26px] transition-colors duration-300 md:size-[17.16px] xl:text-white"
+      />
+    </button>
+  </div>
+
+  <!-- Name & role -->
+  <div class="flex flex-col gap-0.5 px-3 md:justify-center md:px-5">
+    <p class="text-n-950 text-2xl leading-[125%] font-medium md:text-3xl">
+      {name}
+    </p>
+    <p class="text-n-700 text-base leading-[125%] font-normal md:text-xl">
+      {role}
+    </p>
+  </div>
+</div>
