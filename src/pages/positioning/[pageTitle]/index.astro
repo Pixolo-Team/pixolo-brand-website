@@ -2,6 +2,9 @@
 // TYPES //
 import type { PositioningData } from "@/types/positioning.types";
 
+// API SERVICES //
+import { getPositioningRequest } from "@/services/api/positioning.api";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
 
@@ -15,9 +18,6 @@ import Results from "@/sections/positioning/Results.astro";
 import WhyPixolo from "@/sections/positioning/WhyPixolo.astro";
 import IdealCustomers from "@/sections/positioning/IdealCustomers.astro";
 import Cta from "@/sections/positioning/Cta.astro";
-
-// DATA //
-import { getPositioningRequest } from "@/services/api/positioning.api";
 
 /** Get Static Paths */
 export async function getStaticPaths() {
@@ -48,6 +48,7 @@ const { positioningItem }: { positioningItem: PositioningData } = Astro.props;
       <Problems
         badgeTitle={positioningItem.problems[0].badge_title}
         title={positioningItem.problems[0].title}
+        problemCards={positioningItem.problems_cards}
       />
     )
   }
@@ -56,6 +57,7 @@ const { positioningItem }: { positioningItem: PositioningData } = Astro.props;
       <Purpose
         badgeTitle={positioningItem.purpose[0].badge_title}
         title={positioningItem.purpose[0].title}
+        purposeCards={positioningItem.purpose_cards}
       />
     )
   }
@@ -64,6 +66,7 @@ const { positioningItem }: { positioningItem: PositioningData } = Astro.props;
       <Services
         badgeTitle={positioningItem.services[0].badge_title}
         title={positioningItem.services[0].title}
+        serviceCards={positioningItem.service_cards}
       />
     )
   }
@@ -72,6 +75,7 @@ const { positioningItem }: { positioningItem: PositioningData } = Astro.props;
       <Process
         badgeTitle={positioningItem.process[0].badge_title}
         title={positioningItem.process[0].title}
+        processSteps={positioningItem.process_steps}
       />
     )
   }
@@ -80,6 +84,8 @@ const { positioningItem }: { positioningItem: PositioningData } = Astro.props;
       <Results
         badgeTitle={positioningItem.results[0].badge_title}
         title={positioningItem.results[0].title}
+        resultCards={positioningItem.result_cards}
+        resultImageCards={positioningItem.result_image_cards}
       />
     )
   }

@@ -7,29 +7,20 @@ import { Image } from "astro:assets";
 interface Props {
   badgeTitle: string;
   title: string;
+  resultCards: {
+    icon: string;
+    title: string;
+    description: string;
+  }[];
+  resultImageCards: {
+    image: string;
+    alt: string;
+    title: string;
+    description: string;
+  }[];
 }
 
-const { badgeTitle, title }: Props = Astro.props;
-
-// TODO: Remove this data when we have the actual data from the API
-const resultCards = [
-  {
-    icon: "comment",
-    title: "80% Faster Loading Pages",
-  },
-  {
-    icon: "comment",
-    title: "Stable, Scalable System",
-  },
-];
-
-// TODO: Remove this data when we have the actual data from the API
-const imagesResultCards = [
-  {
-    src: "/images/positioning/result-bg-image.png",
-    title: "Clean Hand-Off to your Team",
-  },
-];
+const { badgeTitle, title, resultCards, resultImageCards }: Props = Astro.props;
 ---
 
 <!-- Positioning Results Section -->
@@ -71,14 +62,14 @@ const imagesResultCards = [
 
         <!-- Result Cards with Images -->
         {
-          imagesResultCards.map((imageCardItem) => (
+          resultImageCards.map((imageCardItem) => (
             <div class="result-card outline-n-300 bg-n-100 relative flex h-[300px] w-full items-end justify-center overflow-hidden rounded-3xl outline-1 -outline-offset-1 md:h-[-webkit-fill-available] xl:w-[48%]">
               {/* Background Image */}
               <Image
-                src={imageCardItem.src}
+                src={imageCardItem.image}
                 width={480}
                 height={385}
-                alt={imageCardItem.title}
+                alt={imageCardItem.alt}
                 class="h-full w-full object-cover"
               />
 

@@ -6,37 +6,13 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 interface Props {
   badgeTitle: string;
   title: string;
+  serviceCards: {
+    title: string;
+    description: string;
+  }[];
 }
 
-const { badgeTitle, title }: Props = Astro.props;
-
-// TODO: Remove this when API integrated
-const serviceCards = [
-  {
-    title: "Performance Websites",
-    description: "Brand websites for credibility and lead generation",
-  },
-  {
-    title: "Conversion Landing",
-    description: "High-performance campaign landing pages",
-  },
-  {
-    title: "Results Driven UI/UX",
-    description: "UI/UX for conversion-focused experiences",
-  },
-  {
-    title: "Analytics Dashboards",
-    description: "Custom dashboards and reporting tools",
-  },
-  {
-    title: "Revenue CRM",
-    description: "CRM’s and lead management systems",
-  },
-  {
-    title: "Platform Support",
-    description: "Ongoing maintenance and tech support",
-  },
-];
+const { badgeTitle, title, serviceCards }: Props = Astro.props;
 ---
 
 <!-- Positioning Services Section -->

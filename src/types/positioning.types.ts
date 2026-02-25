@@ -13,9 +13,19 @@ export interface PositioningData {
     title: string;
   }[];
 
+  problems_cards: {
+    icon: string;
+    title: string;
+  }[];
+
   purpose: {
     badge_title: string;
     title: string;
+  }[];
+
+  purpose_cards: {
+    title: string;
+    description: string;
   }[];
 
   services: {
@@ -23,14 +33,38 @@ export interface PositioningData {
     title: string;
   }[];
 
+  service_cards: {
+    title: string;
+    description: string;
+  }[];
+
   process: {
     badge_title: string;
     title: string;
   }[];
 
+  process_steps: {
+    title: string;
+    description: string;
+  }[];
+
   results: {
     badge_title: string;
     title: string;
+    sub_title: string;
+  }[];
+
+  result_cards: {
+    icon: string;
+    title: string;
+    description: string;
+  }[];
+
+  result_image_cards: {
+    image: string;
+    alt: string;
+    title: string;
+    description: string;
   }[];
 
   why_pixolo: {

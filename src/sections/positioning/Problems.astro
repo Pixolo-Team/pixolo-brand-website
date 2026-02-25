@@ -6,33 +6,13 @@ import ToolBadge from "@/components/ui/ToolBadge.astro";
 interface Props {
   badgeTitle: string;
   title: string;
+  problemCards: {
+    icon: string;
+    title: string;
+  }[];
 }
 
-const { badgeTitle, title }: Props = Astro.props;
-
-// TODO: Remove this dummy data when integrating API
-const problemCards = [
-  {
-    icon: "countdown-timer",
-    title: "Freelancers miss timelines",
-  },
-  {
-    icon: "countdown-timer",
-    title: "Dev partners break under campaign pressure",
-  },
-  {
-    icon: "countdown-timer",
-    title: "Websites look good but don’t convert",
-  },
-  {
-    icon: "countdown-timer",
-    title: "Tech becomes a bottleneck during launch",
-  },
-  {
-    icon: "countdown-timer",
-    title: "Vendor management steals client time",
-  },
-];
+const { badgeTitle, title, problemCards }: Props = Astro.props;
 ---
 
 <!-- Problems Section -->

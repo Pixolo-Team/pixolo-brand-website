@@ -3,15 +3,16 @@
 import StepItem from "@/components/retainer/StepItem.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
-// DATA //
-import { processSectionDetails } from "@/data/about/process";
-
 interface Props {
   badgeTitle: string;
   title: string;
+  processSteps: {
+    title: string;
+    description: string;
+  }[];
 }
 
-const { badgeTitle, title }: Props = Astro.props;
+const { badgeTitle, title, processSteps }: Props = Astro.props;
 ---
 
 <!-- Positioning Process Section -->
@@ -38,7 +39,7 @@ const { badgeTitle, title }: Props = Astro.props;
     <!-- Steps Items -->
     <div class="scroll-line relative flex flex-col items-center gap-48 md:gap-72">
       {
-        processSectionDetails.stepItems.map((stepItem, stepIndex) => (
+        processSteps.map((stepItem, stepIndex) => (
           <StepItem
             number={(stepIndex + 1).toString().padStart(2, "0")}
             title={stepItem.title}
