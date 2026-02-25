@@ -229,101 +229,124 @@ $structure = (object) [
             "seo_keywords" => array("")
         ]
     ),
-
     "positioning" => array(
         (object)[
             "slug" => "",
+            "hero" => array(
+                (object)[
+                    "badge_title" => "",
+                    "title" => "",
+                    "cta_btn_text" => ""
+                ]
+            ),
 
-            "hero" => (object)[
-                "badge_title" => "",
-                "title" => "",
-                "cta_btn_text" => ""
-            ],
+            "problems" => array(
+                (object)[
+                    "badge_title" => "",
+                    "title" => "",
+                ]
+            ),
 
-            "problems" => (object)[
-                "badge_title" => "",
-                "title" => "",
-                "problemTabs" => array(
-                    (object)[
-                        "icon" => "",
-                        "title" => ""
-                    ]
-                )
-            ],
+            "problems_cards" => array(
+                (object)[
+                    "icon" => "",
+                    "title" => "",
+                ]
+            ),
 
-            "purpose" => (object)[
-                "badge_title" => "",
-                "title" => "",
-                "purpose_cards" => array(
-                    (object)[
-                        "title" => "",
-                        "description" => ""
-                    ]
-                )
-            ],
+            "purpose" => array(
+                (object)[
+                    "badge_title" => "",
+                    "title" => "",
+                ]
+            ),
 
-            "services" => (object)[
-                "badge_title" => "",
-                "title" => "",
-                "service_cards" => array(
-                    (object)[
-                        "title" => "",
-                        "description" => ""
-                    ]
-                )
-            ],
+            "purpose_cards" => array(
+                (object)[
+                    "title" => "",
+                    "description" => "",
+                ]
+            ),
 
-            "process" => (object)[
-                "badge_title" => "",
-                "title" => "",
-                "process_steps" => array(
-                    (object)[
-                        "title" => "",
-                        "description" => ""
-                    ]
-                )
-            ],
+            "services" => array(
+                (object)[
+                    "badge_title" => "",
+                    "title" => "",
+                ]
+            ),
 
-            "results" => (object)[
-                "badge_title" => "",
-                "title" => "",
-                "sub_title" => "",
-                "result_cards" => array(
-                    (object)[
-                        "logo" => "",
-                        "title" => "",
-                        "description" => ""
-                    ]
-                )
-            ],
+            "service_cards" => array(
+                (object)[
+                    "title" => "",
+                    "description" => "",
+                ]
+            ),
 
-            "why_pixolo" => (object)[
-                "badge_title" => "",
-                "title" => "",
-                "image" => "",
-                "whyus_cards" => array(
-                    (object)[
-                        "title" => ""
-                    ]
-                )
-            ],
+            "process" => array(
+                (object)[
+                    "badge_title" => "",
+                    "title" => "",
+                ]
+            ),
 
-            "ideal_customers" => (object)[
-                "badge_title" => "",
-                "title" => "",
-                "ideal_cards" => array(
-                    (object)[
-                        "title" => ""
-                    ]
-                )
-            ],
+            "process_steps" => array(
+                (object)[
+                    "title" => "",
+                    "description" => "",
+                ]
+            ),
 
-            "cta" => (object)[
-                "badge_title" => "",
-                "subtitle" => "",
-                "title" => "",
-                "cta_btn_text" => ""
-            ]
+            "results" => array(
+                (object)[
+                    "badge_title" => "",
+                    "title" => "",
+                    "sub_title" => "",
+                ]
+            ),
+
+            "result_cards" => array(
+                (object)[
+                    "icon" => "",
+                    "title" => "",
+                    "description" => "",
+                ]
+            ),
+
+            "result_image_cards" => array(
+                (object)[
+                    "image" => "",
+                    "alt" => "",
+                    "title" => "",
+                    "description" => "",
+                ]
+            ),
+
+            "why_pixolo" => array(
+                (object)[
+                    "badge_title" => "",
+                    "title" => "",
+                    "image" => "",
+                    "alt" => "",
+                    "whyus_cards_title" => array("")
+                ]
+            ),
+
+            "ideal_customers" => array(
+                (object)[
+                    "badge_title" => "",
+                    "title" => "",
+                    "ideal_card_title" => array("")
+                ]
+            ),
+
+            "cta" => array(
+                (object)[
+                    "badge_title" => "",
+                    "subtitle" => "",
+                    "title" => "",
+                    "cta_btn_text" => ""
+                ]
+            )
         ]
     )
 
