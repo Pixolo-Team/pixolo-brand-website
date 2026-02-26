@@ -4,25 +4,24 @@ import ResultCard from "@/components/positioning/ResultCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
 
-// TODO: Remove this data when we have the actual data from the API
-const resultCards = [
-  {
-    icon: "comment",
-    title: "80% Faster Loading Pages",
-  },
-  {
-    icon: "comment",
-    title: "Stable, Scalable System",
-  },
-];
+interface Props {
+  badgeTitle: string;
+  title: string;
+  subTitle: string;
+  resultCards: {
+    icon: string;
+    title: string;
+    description: string;
+  }[];
+  resultImageCards: {
+    image: string;
+    alt: string;
+    title: string;
+    description: string;
+  }[];
+}
 
-// TODO: Remove this data when we have the actual data from the API
-const imagesResultCards = [
-  {
-    src: "/images/positioning/result-bg-image.png",
-    title: "Clean Hand-Off to your Team",
-  },
-];
+const { badgeTitle, title, subTitle, resultCards, resultImageCards }: Props = Astro.props;
 ---
 
 <!-- Positioning Results Section -->
@@ -34,19 +33,19 @@ const imagesResultCards = [
     <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
       <!-- Tool Badge -->
       <div class="tool-badge">
-        <ToolBadge icon="ready" text={"Campaign Ready"} />
+        <ToolBadge icon="ready" text={badgeTitle} />
       </div>
 
       <!-- Title -->
       <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
-        {"Built for Long-Term Product Execution"}
+        {title}
       </p>
     </div>
 
     <div class="flex flex-col items-center justify-center gap-8 lg:gap-9">
       <!-- Subtitle -->
       <p class="subtitle-text text-n-800 text-center text-base font-normal md:text-lg lg:text-xl">
-        {"A retainer isn’t about speed alone. It’s about compounding progress."}
+        {subTitle}
       </p>
 
       <!-- Cards -->
@@ -64,15 +63,17 @@ const imagesResultCards = [
 
         <!-- Result Cards with Images -->
         {
-          imagesResultCards.map((imageCardItem) => (
+          resultImageCards.map((imageCardItem) => (
             <div class="result-card outline-n-300 bg-n-100 relative flex h-[300px] w-full items-end justify-center overflow-hidden rounded-3xl outline-1 -outline-offset-1 md:h-[-webkit-fill-available] xl:w-[48%]">
               {/* Background Image */}
               <Image
-                src={imageCardItem.src}
+                src={imageCardItem.image}
                 width={480}
                 height={385}
-                alt={imageCardItem.title}
+                alt={imageCardItem.alt}
                 class="h-full w-full object-cover"
+                loading="lazy"
+                referrerpolicy="no-referrer"
               />
 
               {/* Title */}

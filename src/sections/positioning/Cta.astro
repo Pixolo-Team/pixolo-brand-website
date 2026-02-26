@@ -6,6 +6,15 @@ import { Image } from "astro:assets";
 
 // SVG's //
 import Ball from "@/assets/3d-ball.svg";
+
+interface Props {
+  badgeTitle: string;
+  title: string;
+  subtitle: string;
+  ctaBtnText: string;
+}
+
+const { badgeTitle, title, subtitle, ctaBtnText }: Props = Astro.props;
 ---
 
 <!-- Cta Section -->
@@ -36,7 +45,7 @@ import Ball from "@/assets/3d-ball.svg";
     <div class="flex w-full flex-col items-center justify-center gap-9 md:gap-12 lg:gap-14">
       <!-- Tool Badge Component -->
       <div class="tool-badge">
-        <ToolBadge icon="share-heart" text="Let's Connect" />
+        <ToolBadge icon="share-heart" text={badgeTitle} />
       </div>
 
       <div class="flex flex-col items-center justify-center gap-3 md:w-[92%] md:gap-4">
@@ -45,7 +54,7 @@ import Ball from "@/assets/3d-ball.svg";
           class="word-container text-n-700 text-center text-sm leading-tight font-normal md:text-lg lg:text-xl"
           data-animate-word
         >
-          Looking for a product team that stays, learns, and improves with you?
+          {subtitle}
         </p>
 
         <!-- Title -->
@@ -53,14 +62,13 @@ import Ball from "@/assets/3d-ball.svg";
           class="word-container text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl"
           data-animate-word
         >
-          Book a strategy call. We’ll understand your product and define the right retainership
-          setup
+          {title}
         </p>
       </div>
 
       <!-- Rounded Button -->
       <RoundedButton
-        buttonText="Book Strategy Call"
+        buttonText={ctaBtnText}
         type="button"
         onClick="window.location.href = '#contact-section'"
       />

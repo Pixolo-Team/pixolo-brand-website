@@ -3,33 +3,16 @@
 import ServiceCard from "@/components/positioning/ServiceCard.astro";
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 
-// TODO: Remove this when API integrated
-const serviceCards = [
-  {
-    title: "Performance Websites",
-    description: "Brand websites for credibility and lead generation",
-  },
-  {
-    title: "Conversion Landing",
-    description: "High-performance campaign landing pages",
-  },
-  {
-    title: "Results Driven UI/UX",
-    description: "UI/UX for conversion-focused experiences",
-  },
-  {
-    title: "Analytics Dashboards",
-    description: "Custom dashboards and reporting tools",
-  },
-  {
-    title: "Revenue CRM",
-    description: "CRM’s and lead management systems",
-  },
-  {
-    title: "Platform Support",
-    description: "Ongoing maintenance and tech support",
-  },
-];
+interface Props {
+  badgeTitle: string;
+  title: string;
+  serviceCards: {
+    title: string;
+    description: string;
+  }[];
+}
+
+const { badgeTitle, title, serviceCards }: Props = Astro.props;
 ---
 
 <!-- Positioning Services Section -->
@@ -41,12 +24,12 @@ const serviceCards = [
     <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
       <!-- Tool Badge -->
       <div class="tool-badge">
-        <ToolBadge icon="hand-gear" text={"White-Label Services"} />
+        <ToolBadge icon="hand-gear" text={badgeTitle} />
       </div>
 
       <!-- Title -->
       <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
-        {"What You Can White-Label With Us"}
+        {title}
       </p>
     </div>
 

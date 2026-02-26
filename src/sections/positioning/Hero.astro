@@ -6,6 +6,14 @@ import RoundedButton from "@/components/ui/RoundedButton.astro";
 
 // SVG's //
 import Ball from "@/assets/3d-ball.svg";
+
+interface Props {
+  badgeTitle: string;
+  title: string;
+  ctaBtnText: string;
+}
+
+const { badgeTitle, title, ctaBtnText }: Props = Astro.props;
 ---
 
 <!-- Positioning Hero Section -->
@@ -35,7 +43,7 @@ import Ball from "@/assets/3d-ball.svg";
     <div class="flex flex-col items-center gap-8 md:gap-9 lg:gap-10">
       <!-- ToolBadge Component -->
       <div class="tool-badge">
-        <ToolBadge icon={"comment"} text={"White Label"} />
+        <ToolBadge icon={"comment"} text={badgeTitle} />
       </div>
 
       <div class="z-10 flex flex-col items-center gap-3.5 md:gap-6 lg:w-[85%] lg:gap-7 2xl:w-[80%]">
@@ -44,13 +52,13 @@ import Ball from "@/assets/3d-ball.svg";
           class="word-container text-n-950 text-center text-3xl leading-tight font-medium tracking-[-0.01em] md:text-6xl lg:text-7xl"
           data-animate-word
         >
-          {"White-Label Tech Partner for Digital Marketing Agencies"}
+          {title}
         </p>
       </div>
 
       <!-- Rounded Button -->
       <RoundedButton
-        buttonText="Partner With Pixolo"
+        buttonText={ctaBtnText}
         type="button"
         onClick="window.location.href = '#contact-section'"
       />
