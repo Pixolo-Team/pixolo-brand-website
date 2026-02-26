@@ -20,9 +20,10 @@ import { pixoloWebsiteSchema } from "@/schemas/website.schema";
 
 interface Props {
   meta: any;
+  hideBottomCTA?: boolean;
 }
 
-const { meta = {} } = Astro.props;
+const { meta = {}, hideBottomCTA = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -102,10 +103,14 @@ const { meta = {} } = Astro.props;
       extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-10 hidden md:flex"
     />
 
-    <!-- Bottom CTA -->
-    <div class="fixed bottom-5 z-40 justify-self-center md:bottom-12">
-      <BottomCTA />
-    </div>
+    {
+      !hideBottomCTA && (
+        // Bottom CTA
+        <div class="fixed bottom-5 z-40 justify-self-center md:bottom-12">
+          <BottomCTA />
+        </div>
+      )
+    }
 
     <ContactForm />
 

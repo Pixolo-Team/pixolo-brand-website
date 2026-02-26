@@ -11,11 +11,11 @@ import Layout from "@/layouts/Layout.astro";
 import { pageNotFoundDetails } from "@/data/page-error";
 ---
 
-<Layout>
+<Layout hideBottomCTA={true}>
   <section class="relative z-20">
     <div
       id="hero-wrapper"
-      class="container mx-auto flex flex-col items-center gap-14 px-6 pt-40 pb-14 text-center md:gap-24 md:px-12 lg:gap-14 lg:pt-52 xl:pt-60"
+      class="container mx-auto flex flex-col items-center gap-14 px-6 pt-40 pb-14 text-center md:gap-20 md:px-12 lg:gap-14 lg:pt-52"
     >
       <!-- Larger Astronaut image -->
       <Image
@@ -74,6 +74,7 @@ import { pageNotFoundDetails } from "@/data/page-error";
           variant="default"
           leftIcon="rocket"
           buttonText={"Teleport Home"}
+          onClick="window.location.href = '/'"
         />
       </div>
 
@@ -84,6 +85,7 @@ import { pageNotFoundDetails } from "@/data/page-error";
           variant="default"
           leftIcon="rocket"
           buttonText={"Abort Mission & Teleport Home"}
+          onClick="window.location.href = '/'"
         />
       </div>
     </div>
