@@ -147,6 +147,7 @@ $structure = (object) [
 	     (object)[
 	        "id" => "",
 	        "slug" => "",
+            "platform" => "",
             "brand_color" => "",
             "brand_name" => "",
             "hero_image" => "",

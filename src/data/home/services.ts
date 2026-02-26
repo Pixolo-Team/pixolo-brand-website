@@ -76,7 +76,7 @@ export const serviceDetails = [
       { description: "Clear brand presence" },
       { description: "Interfaces people enjoy using" },
     ],
-    outcomeFocusedImage: "/images/services/outcome-ui.jpg",
+    outcomeFocusedImage: "/images/services/outcome-ui.png",
     painSolution: [
       { problem: "User confusion", solution: "Intuitive user flows" },
       { problem: "Low conversion", solution: "Conversion-focused design" },
