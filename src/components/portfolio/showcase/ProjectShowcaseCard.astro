@@ -3,6 +3,7 @@
 import { Image } from "astro:assets";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import Tag from "@/components/portfolio/showcase/Tag.astro";
+import { Icon } from "astro-icon/components";
 
 // Define Props //
 interface Props {
@@ -18,6 +19,7 @@ interface Props {
   buttonTwoText: string;
   buttonOneClick?: string;
   buttonTwoClick?: string;
+  platform?: "app" | "web" | "both";
 }
 
 const {
@@ -33,6 +35,7 @@ const {
   buttonTwoText,
   buttonOneClick = "",
   buttonTwoClick = "",
+  platform = "web",
 } = Astro.props as Props;
 ---
 
@@ -109,8 +112,32 @@ const {
 
     <!-- Buttons -->
     <div class="project-card-buttons flex flex-row gap-3.5 group-data-[view=grid]:gap-4 md:gap-4">
-      <!-- Primary Button -->
-      <RoundedButton buttonText={buttonOneText} onClick={buttonOneClick} />
+      {
+        platform === "app" ? (
+          <>
+            {/* Play Store */}
+            <a
+              href={buttonOneClick}
+              class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
+            >
+              <span class="flex items-center justify-center">
+                <Icon name="play-store" class="text-n-100 size-5" />
+              </span>
+            </a>
+
+            {/* App Store */}
+            <a
+              href="#"
+              class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
+            >
+              <Icon name="app-store" class="text-n-100 size-5" />
+            </a>
+          </>
+        ) : (
+          // Primary Button
+          <RoundedButton buttonText={buttonOneText} onClick={buttonOneClick} />
+        )
+      }
 
       <!-- Secondary Button -->
       <RoundedButton buttonText={buttonTwoText} onClick={buttonTwoClick} variant="secondary" />
