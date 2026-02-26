@@ -28,6 +28,14 @@ const { clientSpecificPortfolios } = Astro.props as Props;
 /** API Call to get all portfolio */
 const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
 
+// Filtering the portfolio items for mini projects
+const miniProjects = portfolioItems.filter(
+  (item) => item.show_in_home === "TRUE" && item.is_highlight === "FALSE",
+);
+
+// We need arrows on Desktop only if there are more than 3 items
+const showArrowsOnDesktop = miniProjects.length > 3;
+
 // Checking if the view is curated with client specific portfolios
 const isCuratedView = clientSpecificPortfolios.length > 0;
 
@@ -176,9 +184,11 @@ const filteredPortfolioItems: PortfolioData[] = isCuratedView
             </div>
 
             {/* Slider Cta Wrap */}
-            <div class="flex w-full items-center justify-between gap-6">
+            <div
+              class={`flex w-full items-center gap-6 ${showArrowsOnDesktop ? "justify-between" : "justify-between lg:justify-center"}`}
+            >
               {/* Left spacer */}
-              <div class="flex-1" />
+              <div class={`flex-1 ${!showArrowsOnDesktop ? "lg:hidden" : ""}`} />
 
               {/* Progress bar (centered) */}
               <div class="bg-n-500 h-[2px] w-24 overflow-hidden rounded-2xl md:w-36 lg:w-96">
@@ -186,7 +196,7 @@ const filteredPortfolioItems: PortfolioData[] = isCuratedView
               </div>
 
               {/* Slider arrows (right) */}
-              <div class="flex flex-1 justify-end">
+              <div class={`flex flex-1 justify-end ${!showArrowsOnDesktop ? "lg:hidden" : ""}`}>
                 <SliderArrows prevId="showcase-prev" nextId="showcase-next" />
               </div>
             </div>
@@ -195,20 +205,20 @@ const filteredPortfolioItems: PortfolioData[] = isCuratedView
       }
     </div>
   </div>
+
+  <script>
+    import {
+      animateShowcaseSection,
+      initShowcase,
+      initShowcaseSlider,
+      animateProjectCards,
+    } from "@/scripts/showcase";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initShowcase();
+      initShowcaseSlider();
+      animateShowcaseSection();
+      animateProjectCards();
+    });
+  </script>
 </section>
-
-<script>
-  import {
-    animateShowcaseSection,
-    initShowcase,
-    initShowcaseSlider,
-    animateProjectCards,
-  } from "@/scripts/showcase";
-
-  document.addEventListener("DOMContentLoaded", () => {
-    initShowcase();
-    initShowcaseSlider();
-    animateShowcaseSection();
-    animateProjectCards();
-  });
-</script>
