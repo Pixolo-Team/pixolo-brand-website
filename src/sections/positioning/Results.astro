@@ -7,6 +7,7 @@ import { Image } from "astro:assets";
 interface Props {
   badgeTitle: string;
   title: string;
+  subTitle: string;
   resultCards: {
     icon: string;
     title: string;
@@ -20,7 +21,7 @@ interface Props {
   }[];
 }
 
-const { badgeTitle, title, resultCards, resultImageCards }: Props = Astro.props;
+const { badgeTitle, title, subTitle, resultCards, resultImageCards }: Props = Astro.props;
 ---
 
 <!-- Positioning Results Section -->
@@ -44,7 +45,7 @@ const { badgeTitle, title, resultCards, resultImageCards }: Props = Astro.props;
     <div class="flex flex-col items-center justify-center gap-8 lg:gap-9">
       <!-- Subtitle -->
       <p class="subtitle-text text-n-800 text-center text-base font-normal md:text-lg lg:text-xl">
-        A retainer isn’t about speed alone. It’s about compounding progress.
+        {subTitle}
       </p>
 
       <!-- Cards -->

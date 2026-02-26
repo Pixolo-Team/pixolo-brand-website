@@ -35,7 +35,6 @@ export async function getStaticPaths() {
 }
 
 const { positioningItem }: { positioningItem: PositioningData } = Astro.props;
-console.log(positioningItem.why_pixolo[0].image);
 ---
 
 <Layout>
@@ -85,6 +84,7 @@ console.log(positioningItem.why_pixolo[0].image);
       <Results
         badgeTitle={positioningItem.results[0].badge_title}
         title={positioningItem.results[0].title}
+        subTitle={positioningItem.results[0].sub_title}
         resultCards={positioningItem.result_cards}
         resultImageCards={positioningItem.result_image_cards}
       />
