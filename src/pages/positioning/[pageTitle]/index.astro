@@ -35,6 +35,7 @@ export async function getStaticPaths() {
 }
 
 const { positioningItem }: { positioningItem: PositioningData } = Astro.props;
+console.log(positioningItem.why_pixolo[0].image);
 ---
 
 <Layout>
@@ -94,12 +95,13 @@ const { positioningItem }: { positioningItem: PositioningData } = Astro.props;
       <WhyPixolo
         badgeTitle={positioningItem.why_pixolo[0].badge_title}
         title={positioningItem.why_pixolo[0].title}
-        image={positioningItem.why_pixolo[0].image || "/images/positioning/white-label.jpg"}
+        image={positioningItem.why_pixolo[0].image}
         alt={positioningItem.why_pixolo[0].alt}
         whyusCards={positioningItem.why_pixolo[0].whyus_cards_title}
       />
     )
   }
+
   {
     positioningItem.ideal_customers && (
       <IdealCustomers

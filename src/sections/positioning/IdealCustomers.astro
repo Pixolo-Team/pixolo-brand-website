@@ -38,7 +38,7 @@ const { badgeTitle, title, idealCards }: Props = Astro.props;
         idealCards.map((idealCardItem, cardItemIndex) => (
           <IdealCard
             index={(cardItemIndex + 1).toString().padStart(2, "0")}
-            title={idealCardItem.title}
+            title={idealCardItem}
           />
         ))
       }
