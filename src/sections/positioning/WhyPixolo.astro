@@ -52,7 +52,12 @@ const { badgeTitle, title, image, alt, whyusCards }: Props = Astro.props;
 
       <!-- WhyUs cards -->
       <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
-        {whyusCards.map((whyUsCardItem) => <WhyUsCard title={whyUsCardItem} />)}
+        {
+          whyusCards.map(
+            (whyUsCardItem) =>
+              whyUsCardItem !== null && whyUsCardItem !== "" && <WhyUsCard title={whyUsCardItem} />,
+          )
+        }
       </div>
     </div>
   </div>

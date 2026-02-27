@@ -53,18 +53,33 @@ const { badgeTitle, title, subTitle, resultCards, resultImageCards }: Props = As
         class="flex w-full flex-col items-center justify-center gap-3 md:w-full md:flex-row xl:w-[80%]"
       >
         <!-- Results Cards -->
-        <div class="flex h-full w-full flex-col gap-3 md:w-[60%] lg:w-[65%] xl:w-[30%]">
+        <div
+          class={`flex h-full w-full flex-col gap-3 md:w-[60%] xl:w-[28%] ${resultImageCards.length > 1 ? "lg:w-[30%]" : "lg:w-[65%]"}`}
+        >
           {
             resultCards.map((resultCardItem) => (
-              <ResultCard icon={resultCardItem.icon} title={resultCardItem.title} />
+              <ResultCard
+                icon={resultCardItem.icon}
+                title={resultCardItem.title}
+                description={resultCardItem.description}
+              />
             ))
           }
         </div>
 
         <!-- Result Cards with Images -->
         {
-          resultImageCards.map((imageCardItem) => (
-            <div class="result-card outline-n-300 bg-n-100 relative flex h-[300px] w-full items-end justify-center overflow-hidden rounded-3xl outline-1 -outline-offset-1 md:h-[-webkit-fill-available] xl:w-[48%]">
+          resultImageCards.map((imageCardItem, imageCardItemIndex) => (
+            <div
+              class:list={[
+                "result-card outline-n-300 bg-n-100 relative flex h-[300px] w-full items-end justify-center overflow-hidden rounded-3xl outline-1 -outline-offset-1 md:h-[-webkit-fill-available]",
+                resultImageCards.length > 1
+                  ? imageCardItemIndex === 0
+                    ? "lg:w-[24%] xl:w-[24%]"
+                    : "lg:w-[40%] xl:w-[40%]"
+                  : "xl:w-[44%]",
+              ]}
+            >
               {/* Background Image */}
               <Image
                 src={imageCardItem.image}
@@ -76,10 +91,17 @@ const { badgeTitle, title, subTitle, resultCards, resultImageCards }: Props = As
                 referrerpolicy="no-referrer"
               />
 
-              {/* Title */}
-              <p class="text-n-950 absolute bottom-8 w-[50%] text-center text-lg leading-tight font-bold md:text-xl xl:text-2xl">
-                {imageCardItem.title}
-              </p>
+              <div class="absolute bottom-8 flex flex-col items-center justify-center gap-2.5 text-center">
+                {/* Title */}
+                <p class="text-n-950 w-[50%] text-lg leading-tight font-bold md:text-xl lg:w-[60%] xl:text-2xl">
+                  {imageCardItem.title}
+                </p>
+
+                {/* Description */}
+                <p class="text-n-800 w-[90%] text-xs leading-tight font-normal md:text-sm">
+                  {imageCardItem.description}
+                </p>
+              </div>
             </div>
           ))
         }

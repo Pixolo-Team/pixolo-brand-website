@@ -35,12 +35,16 @@ const { badgeTitle, title, idealCards }: Props = Astro.props;
       class="ideal-cards grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3 xl:grid-cols-4"
     >
       {
-        idealCards.map((idealCardItem, cardItemIndex) => (
-          <IdealCard
-            index={(cardItemIndex + 1).toString().padStart(2, "0")}
-            title={idealCardItem}
-          />
-        ))
+        idealCards.map(
+          (idealCardItem, cardItemIndex) =>
+            idealCardItem !== null &&
+            idealCardItem !== "" && (
+              <IdealCard
+                index={(cardItemIndex + 1).toString().padStart(2, "0")}
+                title={idealCardItem}
+              />
+            ),
+        )
       }
     </div>
   </div>
