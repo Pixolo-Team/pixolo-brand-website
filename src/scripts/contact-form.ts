@@ -1,6 +1,3 @@
-// SERVICES //
-import { insertLead } from "@/services/supabase";
-
 // UTILS //
 import { validateInput } from "@/utils/validations";
 import {
@@ -19,19 +16,12 @@ import { animate } from "motion";
 
 /** Initialize contact form modal */
 export const initContactFormModal = () => {
-  // DOM ELEMENTS
+  // DOM ELEMENTS - MODAL
   const backdrop = document.getElementById("backdrop-modal");
   const closeBtn = document.getElementById("close-btn");
 
-  const form = document.getElementById("contact-form") as HTMLFormElement | null;
-  const submitBtn = form?.querySelector<HTMLButtonElement>("button");
-
-  const emailInput = document.getElementById("emailFrom") as HTMLInputElement | null;
-  const phoneInput = document.getElementById("phoneNo") as HTMLInputElement | null;
-  const subjectInput = document.getElementById("subject") as HTMLSelectElement | null;
-  const messageInput = document.getElementById("additionalNote") as HTMLTextAreaElement | null;
-
-  if (!backdrop || !closeBtn || !form || !submitBtn || !emailInput || !phoneInput) {
+  // Bail early if the modal backdrop elements are missing
+  if (!backdrop || !closeBtn) {
     console.warn("ContactFormModal: Required elements not found.");
     return;
   }
@@ -67,7 +57,7 @@ export const initContactFormModal = () => {
     });
   };
 
-  /** Open modal */
+  // Register modal open/close listeners
   window.addEventListener("open-contact-modal", openModal);
   closeBtn.addEventListener("click", closeModal);
 
@@ -84,9 +74,28 @@ export const initContactFormModal = () => {
     }
   });
 
+  // DOM ELEMENTS - FORM
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const submitBtn = document.getElementById("submit-contact-btn") as HTMLAnchorElement | null;
+
+  const emailInput = document.getElementById("emailFrom") as HTMLInputElement | null;
+  const phoneInput = document.getElementById("phoneNo") as HTMLInputElement | null;
+  const subjectInput = document.getElementById("subject") as HTMLSelectElement | null;
+  const messageInput = document.getElementById("additionalNote") as HTMLTextAreaElement | null;
+
+  // Bail if form elements are missing (modal still works for opening/closing)
+  if (!form || !submitBtn || !emailInput || !phoneInput) {
+    return;
+  }
+
   /** Handle form submission */
+  let isSubmitting = false;
+
   submitBtn.addEventListener("click", async (e) => {
     e.preventDefault();
+
+    // Prevent double submission
+    if (isSubmitting) return;
 
     /** Get all inputs */
     const inputs = [phoneInput, emailInput];
@@ -113,7 +122,7 @@ export const initContactFormModal = () => {
       .filter((el) => (el as HTMLInputElement).value.trim().length > 0).length;
 
     /** Disable submit button */
-    submitBtn.disabled = true;
+    isSubmitting = true;
     submitBtn.innerText = "Sending...";
 
     /** Prepare payload */
@@ -126,6 +135,9 @@ export const initContactFormModal = () => {
 
     /** Submit form */
     try {
+      // Dynamic import to avoid blocking modal initialization when Supabase env vars are missing
+      const { insertLead } = await import("@/services/supabase");
+
       /** API Call to submit form */
       const response = await insertLead({ ...payload, name: "" });
 
@@ -157,7 +169,7 @@ export const initContactFormModal = () => {
       form.reset();
     } finally {
       /** Enable submit button */
-      submitBtn.disabled = false;
+      isSubmitting = false;
       submitBtn.innerText = "Send Message";
     }
   });
