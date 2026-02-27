@@ -17,6 +17,7 @@ import Ball from "@/assets/3d-ball.svg";
 // DATA //
 import { portfolioSectionDetails } from "@/data/portfolio.ts";
 import { URLS } from "@/infrastructure/constants/urls";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
 
 /** API Call to get all portfolio */
 const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
@@ -26,90 +27,99 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
 <section id="portfolio-section" data-section="Portfolio">
   <!-- Container -->
   <div
-    class="container mx-auto flex flex-col items-center justify-center gap-20 px-6 py-16 md:gap-28 md:py-28 lg:gap-40 lg:px-14 lg:py-30"
+    class="container mx-auto flex flex-col items-center justify-center gap-12 px-6 py-16 md:gap-16 md:py-28 lg:gap-24 lg:px-14 lg:py-30"
   >
-    <!-- Header -->
-    <div
-      id="portfolio-wrapper"
-      class="relative flex flex-col items-center justify-center gap-5 md:gap-6 lg:gap-7"
-    >
-      <div class="tool-badge">
-        <ToolBadge
-          icon={portfolioSectionDetails.badgeIcon}
-          text={portfolioSectionDetails.badgeTitle}
+    <div class="flex w-full flex-col gap-16 md:gap-24 lg:gap-30">
+      <!-- Header -->
+      <div
+        id="portfolio-wrapper"
+        class="relative flex flex-col items-center justify-center gap-5 md:gap-6 lg:gap-7"
+      >
+        <div class="tool-badge">
+          <ToolBadge
+            icon={portfolioSectionDetails.badgeIcon}
+            text={portfolioSectionDetails.badgeTitle}
+          />
+        </div>
+
+        <!-- Header Text -->
+        <div
+          class="header-text z-10 flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-5xl"
+        >
+          <p class="text-n-950 text-balance">{portfolioSectionDetails.title}</p>
+          <p class="bg-gradient-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent">
+            {portfolioSectionDetails.highlight}
+          </p>
+        </div>
+
+        <!-- Absolute images -->
+        <Image
+          id="big-marble-portfolio"
+          src={Ball}
+          alt="Big Marble"
+          class="absolute top-[22%] left-6 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
+        />
+        <Image
+          id="small-marble-portfolio"
+          src={Ball}
+          alt="Small Marble"
+          class="absolute right-[10%] bottom-[46%] w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
+          style="animation-duration: 4s"
         />
       </div>
 
-      <!-- Header Text -->
-      <div
-        class="header-text z-10 flex flex-col text-center text-4xl leading-tight font-medium md:text-6xl lg:text-5xl"
-      >
-        <p class="text-n-950 text-balance">{portfolioSectionDetails.title}</p>
-        <p class="bg-gradient-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent">
-          {portfolioSectionDetails.highlight}
-        </p>
+      <!-- Tile Wrapper -->
+      <div class="project-card-wrapper flex flex-col gap-11">
+        {
+          portfolioItems.map((projectCardItem) => {
+            return (
+              projectCardItem.show_in_home === "TRUE" &&
+              projectCardItem.is_highlight === "TRUE" && (
+                <div class="project-card sticky top-[10vh]">
+                  <ProjectCard
+                    brandColor={projectCardItem.brand_color}
+                    brandName={projectCardItem.brand_name}
+                    image={projectCardItem.thumbnail_image}
+                    logo={projectCardItem.logo}
+                    title={projectCardItem.title}
+                    subtitle={projectCardItem.subtitle}
+                    badges={projectCardItem.badges}
+                    onClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCardItem.slug)}'`}
+                  />
+                </div>
+              )
+            );
+          })
+        }
       </div>
 
-      <!-- Absolute images -->
-      <Image
-        id="big-marble-portfolio"
-        src={Ball}
-        alt="Big Marble"
-        class="absolute top-[22%] left-6 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
-      />
-      <Image
-        id="small-marble-portfolio"
-        src={Ball}
-        alt="Small Marble"
-        class="absolute right-[10%] bottom-[46%] w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
-        style="animation-duration: 4s"
-      />
-    </div>
-
-    <!-- Tile Wrapper -->
-    <div class="project-card-wrapper flex flex-col gap-11">
-      {
-        portfolioItems.map((projectCardItem) => {
-          return (
-            projectCardItem.show_in_home === "TRUE" &&
-            projectCardItem.is_highlight === "TRUE" && (
-              <div class="project-card sticky top-[10vh]">
-                <ProjectCard
-                  brandColor={projectCardItem.brand_color}
-                  brandName={projectCardItem.brand_name}
-                  image={projectCardItem.thumbnail_image}
-                  logo={projectCardItem.logo}
-                  title={projectCardItem.title}
-                  subtitle={projectCardItem.subtitle}
-                  badges={projectCardItem.badges}
-                  onClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCardItem.slug)}'`}
+      <!-- Article Cards -->
+      <div class="grid grid-cols-1 gap-24 lg:grid-cols-2 lg:gap-20 xl:gap-28 2xl:gap-32">
+        {
+          portfolioItems.map(
+            (articleCardItem) =>
+              articleCardItem.show_in_home == "TRUE" &&
+              articleCardItem.is_highlight == "FALSE" && (
+                <ArticleCard
+                  thumbnail={articleCardItem.thumbnail_image}
+                  brandName={articleCardItem.brand_name}
+                  chipItems={articleCardItem.badges}
+                  title={articleCardItem.title}
+                  animateClass={"anim-fade-in-up"}
+                  ctaText={"View Project"}
+                  onClick={`window.location.href='${URLS.PORTFOLIO.ITEM(articleCardItem.slug)}'`}
                 />
-              </div>
-            )
-          );
-        })
-      }
+              ),
+          )
+        }
+      </div>
     </div>
 
-    <!-- Article Cards -->
-    <div class="grid grid-cols-1 gap-24 lg:grid-cols-2 lg:gap-20 xl:gap-28 2xl:gap-32">
-      {
-        portfolioItems.map(
-          (articleCardItem) =>
-            articleCardItem.show_in_home == "TRUE" &&
-            articleCardItem.is_highlight == "FALSE" && (
-              <ArticleCard
-                thumbnail={articleCardItem.thumbnail_image}
-                brandName={articleCardItem.brand_name}
-                chipItems={articleCardItem.badges}
-                title={articleCardItem.title}
-                animateClass={"anim-fade-in-up"}
-                ctaText={"View Project"}
-                onClick={`window.location.href='${URLS.PORTFOLIO.ITEM(articleCardItem.slug)}'`}
-              />
-            ),
-        )
-      }
+    <!-- View All Button -->
+    <div class="flex w-full justify-center">
+      <a href={URLS.PORTFOLIO.ROOT}>
+        <RoundedButton variant="tertiary" buttonText="View all Portfolio" />
+      </a>
     </div>
   </div>
 </section>
