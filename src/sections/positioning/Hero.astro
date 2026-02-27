@@ -57,11 +57,7 @@ const { badgeTitle, title, ctaBtnText }: Props = Astro.props;
       </div>
 
       <!-- Rounded Button -->
-      <RoundedButton
-        buttonText={ctaBtnText}
-        type="button"
-        onClick="window.location.href = '#contact-section'"
-      />
+      <RoundedButton buttonText={ctaBtnText} href="#contact-section" />
     </div>
   </div>
 </section>
