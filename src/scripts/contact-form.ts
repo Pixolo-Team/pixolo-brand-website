@@ -1,6 +1,3 @@
-// SERVICES //
-import { insertLead } from "@/services/supabase";
-
 // UTILS //
 import { validateInput } from "@/utils/validations";
 import { showResultModal, hideResultModal, disableScroll, enableScroll } from "@/utils/modal";
@@ -127,6 +124,9 @@ export const initContactFormModal = () => {
 
     /** Submit form */
     try {
+      /** Lazy-load supabase to avoid blocking modal initialization when env vars are missing */
+      const { insertLead } = await import("@/services/supabase");
+
       /** API Call to submit form */
       const response = await insertLead({ ...payload, name: "" });
 
