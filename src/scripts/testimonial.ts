@@ -6,7 +6,7 @@ export function initTestimonials() {
   const textWrapper = document.getElementById("testimonial-text");
   const textEl = document.getElementById("testimonial-content");
 
-  const SLIDE_DURATION = 10000;
+  const SLIDE_DURATION = 8000;
   let activeIndex = 0;
   let intervalId: ReturnType<typeof setInterval>;
 
@@ -44,7 +44,7 @@ export function initTestimonials() {
     // If Already active then do nothing
     if (activeItem.classList.contains("active")) return;
 
-    activeIndex = Array.from(items).indexOf(activeItem);    
+    activeIndex = Array.from(items).indexOf(activeItem);
     items.forEach((item) => item.classList.remove("active"));
     activeItem.classList.add("active");
 

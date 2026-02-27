@@ -98,7 +98,7 @@ const { positioningItem }: { positioningItem: PositioningData } = Astro.props;
         title={positioningItem.why_pixolo[0].title}
         image={positioningItem.why_pixolo[0].image}
         alt={positioningItem.why_pixolo[0].alt}
-        whyusCards={positioningItem.why_pixolo[0].whyus_cards_title}
+        whyusCards={positioningItem.whyus_cards_title}
       />
     )
   }
@@ -108,7 +108,7 @@ const { positioningItem }: { positioningItem: PositioningData } = Astro.props;
       <IdealCustomers
         badgeTitle={positioningItem.ideal_customers[0].badge_title}
         title={positioningItem.ideal_customers[0].title}
-        idealCards={positioningItem.ideal_customers[0].ideal_card_title}
+        idealCards={positioningItem.ideal_card_title}
       />
     )
   }

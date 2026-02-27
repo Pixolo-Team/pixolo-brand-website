@@ -28,13 +28,13 @@ const isExternal = type === "location";
   <!-- Left side: Icon + text -->
   <div class="flex max-w-[80%] items-center gap-3.5 md:gap-4 lg:gap-5">
     <div
-      class="flex size-14 shrink-0 items-center justify-center rounded-full bg-linear-to-r from-[#6C6AF2] to-[#8B77F3] shadow-sm md:size-[64px] lg:size-[74px]"
+      class="flex size-14 shrink-0 items-center justify-center rounded-4xl bg-linear-to-r from-[#6C6AF2] to-[#8B77F3] shadow-sm md:size-[64px] lg:size-[74px]"
     >
       <!-- Icon -->
-      <Icon name={icon} class="size-5 text-white" />
+      <Icon name={icon} class="size-5 text-white sm:size-6" />
     </div>
 
-    <div class="flex w-[60%] flex-1 flex-col sm:w-[90%] md:w-[80%]">
+    <div class="flex w-[60%] flex-col sm:w-[80%]">
       <!-- Title -->
       <p class="text-n-700 text-xs font-bold md:text-sm lg:text-base">
         {title}

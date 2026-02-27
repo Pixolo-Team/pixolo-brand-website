@@ -72,14 +72,16 @@ export interface PositioningData {
     title: string;
     image: string;
     alt: string;
-    whyus_cards_title: string[];
   }[];
+
+  whyus_cards_title: string[];
 
   ideal_customers: {
     badge_title: string;
     title: string;
-    ideal_card_title: string[];
   }[];
+
+  ideal_card_title: string[];
 
   cta: {
     badge_title: string;
