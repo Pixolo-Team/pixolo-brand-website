@@ -20,6 +20,8 @@ interface Props {
   buttonOneClick?: string;
   buttonTwoClick?: string;
   platform?: "app" | "web" | "both";
+  buttonOneHref?: string;
+  buttonTwoHref?: string;
 }
 
 const {
@@ -36,6 +38,8 @@ const {
   buttonOneClick = "",
   buttonTwoClick = "",
   platform = "web",
+  buttonOneHref = "#",
+  buttonTwoHref = "#",
 } = Astro.props as Props;
 ---
 
@@ -135,12 +139,17 @@ const {
           </>
         ) : (
           // Primary Button
-          <RoundedButton buttonText={buttonOneText} onClick={buttonOneClick} />
+          <RoundedButton buttonText={buttonOneText} onClick={buttonOneClick} href={buttonOneHref} />
         )
       }
 
       <!-- Secondary Button -->
-      <RoundedButton buttonText={buttonTwoText} onClick={buttonTwoClick} variant="secondary" />
+      <RoundedButton
+        buttonText={buttonTwoText}
+        onClick={buttonTwoClick}
+        href={buttonTwoHref}
+        variant="secondary"
+      />
     </div>
   </div>
 </div>

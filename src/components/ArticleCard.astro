@@ -15,11 +15,11 @@ interface Props {
   subtitle?: string;
   animateClass?: string;
   ctaText: string;
-  onClick: string;
+  href: string;
 }
 
 // PROPS //
-const { thumbnail, brandName, chipItems, title, subtitle, animateClass, ctaText, onClick } =
+const { thumbnail, brandName, chipItems, title, subtitle, animateClass, ctaText, href } =
   Astro.props as Props;
 ---
 
@@ -37,7 +37,7 @@ const { thumbnail, brandName, chipItems, title, subtitle, animateClass, ctaText,
     <div
       class="absolute right-[15px] bottom-[16.46px] block transition ease-in-out group-hover:block md:right-[22px] md:bottom-[28px] lg:right-[19px] lg:bottom-[47px] lg:hidden"
     >
-      <RoundedButton buttonText={ctaText} onClick={onClick} />
+      <RoundedButton buttonText={ctaText} href={href} />
     </div>
   </div>
 

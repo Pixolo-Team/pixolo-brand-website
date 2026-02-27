@@ -9,6 +9,7 @@ import Layout from "@/layouts/Layout.astro";
 
 // DATA //
 import { pageNotFoundDetails } from "@/data/page-error";
+import { URLS } from "@/infrastructure/constants/urls";
 ---
 
 <Layout hideBottomCTA={true}>
@@ -74,7 +75,7 @@ import { pageNotFoundDetails } from "@/data/page-error";
           variant="default"
           leftIcon="rocket"
           buttonText={"Teleport Home"}
-          onClick="window.location.href = '/'"
+          href={URLS.HOME}
         />
       </div>
 
@@ -85,7 +86,7 @@ import { pageNotFoundDetails } from "@/data/page-error";
           variant="default"
           leftIcon="rocket"
           buttonText={"Abort Mission & Teleport Home"}
-          onClick="window.location.href = '/'"
+          href={URLS.HOME}
         />
       </div>
     </div>

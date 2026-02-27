@@ -84,7 +84,7 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
                     title={projectCardItem.title}
                     subtitle={projectCardItem.subtitle}
                     badges={projectCardItem.badges}
-                    onClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCardItem.slug)}'`}
+                    href={URLS.PORTFOLIO.ITEM(projectCardItem.slug)}
                   />
                 </div>
               )
@@ -107,7 +107,7 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
                   title={articleCardItem.title}
                   animateClass={"anim-fade-in-up"}
                   ctaText={"View Project"}
-                  onClick={`window.location.href='${URLS.PORTFOLIO.ITEM(articleCardItem.slug)}'`}
+                  href={URLS.PORTFOLIO.ITEM(articleCardItem.slug)}
                 />
               ),
           )
@@ -117,9 +117,11 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
 
     <!-- View All Button -->
     <div class="flex w-full justify-center">
-      <a href={URLS.PORTFOLIO.ROOT}>
-        <RoundedButton variant="tertiary" buttonText="View all Portfolio" />
-      </a>
+      <RoundedButton
+        variant="tertiary"
+        buttonText="View all Portfolio"
+        href={URLS.PORTFOLIO.ROOT}
+      />
     </div>
   </div>
 </section>

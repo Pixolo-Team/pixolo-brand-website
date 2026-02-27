@@ -14,12 +14,11 @@ interface Props {
   title: string;
   subtitle: string;
   badges: string[];
-  onClick: string;
+  href: string;
 }
 
 // PROPS //
-const { brandColor, brandName, image, logo, title, subtitle, badges, onClick } =
-  Astro.props as Props;
+const { brandColor, brandName, image, logo, title, subtitle, badges, href } = Astro.props as Props;
 ---
 
 <!-- Main Project Tile -->
@@ -73,7 +72,7 @@ const { brandColor, brandName, image, logo, title, subtitle, badges, onClick } =
 
       <!-- Rounded Button -->
       <div>
-        <RoundedButton buttonText={"View Project"} onClick={onClick} />
+        <RoundedButton buttonText={"View Project"} href={href} />
       </div>
     </div>
   </div>

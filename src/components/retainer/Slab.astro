@@ -1,6 +1,7 @@
 ---
 // COMPONENTS //
 import RoundedButton from "@/components/ui/RoundedButton.astro";
+import { URLS } from "@/infrastructure/constants/urls";
 import Image from "astro/components/Image.astro";
 
 interface Props {
@@ -55,5 +56,5 @@ const badgeCount = Math.max(0, images.length - maxVisible);
   </div>
 
   <!-- CTA Button -->
-  <RoundedButton buttonText={btnText} type="button" onClick="window.location.href='/contact'" />
+  <RoundedButton buttonText={btnText} type="button" href={URLS.CONTACT} />
 </div>

@@ -11,6 +11,7 @@ interface Props {
   onClick?: string;
   type?: "button" | "submit" | "reset";
   variant?: "primary" | "secondary" | "tertiary" | "default";
+  href?: string;
 }
 
 // Default values
@@ -22,6 +23,7 @@ const {
   type = "submit",
   variant = "primary",
   id,
+  href = "",
 } = Astro.props;
 
 // Variant classes
@@ -33,11 +35,12 @@ const variants = {
 };
 ---
 
-<button
+<a
+  href={href}
   id={id}
   type={type}
   onclick={onClick}
-  class={`btn-webflow group relative transition-all duration-200 flex items-center gap-1.5 hover:text-n-50 hover:bg-blue-500 cursor-pointer overflow-hidden rounded-4xl px-5 py-3 md:px-6 md:py-3.5 lg:px-7 lg:py-4 ${variants[variant]}`}
+  class={`btn-webflow w-fit group relative transition-all duration-200 flex items-center gap-1.5 hover:text-white hover:bg-blue-500 cursor-pointer overflow-hidden rounded-4xl px-5 py-3 md:px-6 md:py-3.5 lg:px-7 lg:py-4 ${variants[variant]}`}
 >
   <!-- Icon + text -->
   <div class="relative z-10 flex items-center gap-2">
@@ -55,7 +58,7 @@ const variants = {
 
   <!-- Inside Glow -->
   <div class="inside-glow"></div>
-</button>
+</a>
 <style>
   /* Button css animation */
   .btn-webflow {
