@@ -4,12 +4,14 @@ import type { PortfolioData } from "@/types/portfolio";
 
 // COMPONENTS //
 import ProjectSnapshot from "@/components/ProjectSnapshot.astro";
+import JsonLd from "@/components/layout/JsonLd.astro";
 
 // API SERVICES //
 import { getPortfoliosRequest } from "@/services/api/portfolio.api";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
+import { getPixoloPortfolioSchema } from "@/schemas/portfolio/portfolio-consumption.schema";
 
 // SECTIONS //
 import Hero from "@/sections/project-consumption/Hero.astro";
@@ -42,10 +44,21 @@ const { portfolioItem }: { portfolioItem: PortfolioData } = Astro.props;
 ---
 
 <Layout>
+  {/* Portfolio Consumption JSON-LD */}
+  <JsonLd
+    slot="head"
+    data={getPixoloPortfolioSchema({
+      slug: portfolioItem.slug,
+      projectName: portfolioItem.brand_name,
+      summary: portfolioItem.title,
+    })}
+  />
+
   <Hero
     logo={portfolioItem.logo}
     title={portfolioItem.title}
     description={portfolioItem.subtitle}
+    websiteUrl={portfolioItem.website_link}
   />
   {
     portfolioItem.video_section && (
