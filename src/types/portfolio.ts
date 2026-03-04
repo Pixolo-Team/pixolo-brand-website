@@ -57,6 +57,7 @@ export type PortfolioSEOItem = {
 export type PortfolioData = {
   id: string;
   slug: string;
+  platform: string;
 
   brand_color: string;
   brand_name: string;

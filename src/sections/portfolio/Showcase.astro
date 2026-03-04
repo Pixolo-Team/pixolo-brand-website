@@ -129,6 +129,7 @@ const filteredPortfolioItems: PortfolioData[] = isCuratedView
                   buttonTwoText={"Show Project"}
                   buttonOneHref={projectCardItem.website_link}
                   buttonTwoHref={URLS.PORTFOLIO.ITEM(projectCardItem.slug)}
+                  platform={projectCardItem.platform}
                 />
               );
             })
@@ -174,6 +175,7 @@ const filteredPortfolioItems: PortfolioData[] = isCuratedView
                             btnTwoText={"Show Project"}
                             buttonOneHref={cardItem.website_link}
                             buttonTwoHref={URLS.PORTFOLIO.ITEM(cardItem.slug)}
+                            platform={cardItem.platform}
                           />
                         </div>
                       )
