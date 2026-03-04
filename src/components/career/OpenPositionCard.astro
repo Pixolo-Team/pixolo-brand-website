@@ -89,8 +89,12 @@ const {
     </div>
 
     <!-- RoundedButton -->
-    <a class="self-start" href={applyUrl} target="_blank" rel="noopener noreferrer">
-      <RoundedButton buttonText={ctaText} type="button" variant="primary" />
-    </a>
+    <RoundedButton
+      buttonText={ctaText}
+      type="button"
+      variant="primary"
+      href={applyUrl}
+      openInNewTab={true}
+    />
   </div>
 </div>

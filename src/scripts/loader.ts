@@ -40,24 +40,23 @@ export const initLoader = () => {
     }, 700);
   }
 
-  /** Loader lifecycle */
-  requestAnimationFrame(() => {
-    requestAnimationFrame(startLifecycle);
-  });
-
-  /** Start lifecycle */
-  function startLifecycle() {
-    window.addEventListener("load", () => {
-      pageLoaded = true;
-      hideLoader();
-    });
-
-    /** Hide loader after min time passed */
-    setTimeout(() => {
-      minTimePassed = true;
-      hideLoader();
-    }, MIN_VISIBLE_TIME);
+  /* Page Load Detection */
+  if (!pageLoaded) {
+    window.addEventListener(
+      "load",
+      () => {
+        pageLoaded = true;
+        hideLoader();
+      },
+      { once: true },
+    );
   }
+
+  /** Hide loader after min time passed */
+  setTimeout(() => {
+    minTimePassed = true;
+    hideLoader();
+  }, MIN_VISIBLE_TIME);
 
   /** Hide loader */
   function hideLoader() {

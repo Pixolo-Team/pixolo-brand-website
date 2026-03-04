@@ -19,8 +19,8 @@ const { videoUrl, alt } = Astro.props as Props;
       <!-- Video Player -->
       <iframe
         id="portfolio-video-iframe"
-        class="h-full w-full object-contain"
-        src={videoUrl}
+        class="pointer-events-none h-full w-full object-contain"
+        src={`${videoUrl}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
         title={alt}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
@@ -28,11 +28,11 @@ const { videoUrl, alt } = Astro.props as Props;
       </iframe>
 
       <!-- Custom Play Button component -->
-      <div
+      <!-- <div
         class="absolute right-1/2 bottom-1/2 z-10 translate-1/2 md:right-11 md:bottom-11 lg:right-12 lg:bottom-14"
       >
         <PlayButton id="play-overlay" />
-      </div>
+      </div> -->
     </div>
   </div>
 </section>

@@ -13,9 +13,10 @@ interface Props {
   logo: string;
   title: string;
   description: string;
+  websiteUrl: string;
 }
 
-const { logo, title, description } = Astro.props as Props;
+const { logo, title, description, websiteUrl } = Astro.props as Props;
 ---
 
 <!-- Project Consumption Hero Section -->
@@ -48,15 +49,15 @@ const { logo, title, description } = Astro.props as Props;
           light={logo}
           dark={logo}
           alt={title}
-          class="h-9 w-9 md:h-10 md:w-10 lg:h-12 lg:w-12"
+          class="h-9 w-9 invert md:h-10 md:w-10 lg:h-12 lg:w-full dark:invert-0"
         />
 
         <!-- Title -->
-        <p
+        <!-- <p
           class="text-n-950 text-2xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl"
         >
           {title}
-        </p>
+        </p> -->
       </div>
 
       <!-- Description -->
@@ -70,14 +71,12 @@ const { logo, title, description } = Astro.props as Props;
     <!-- Buttons -->
     <div class="flex gap-3.5">
       <!-- Visit Website Button -->
-      <a href={"window.open('/404')"}>
-        <RoundedButton buttonText={"Visit Website"} type="button" />
-      </a>
-
-      <!-- Show Project Button -->
-      <a href={"window.open('/404')"}>
-        <RoundedButton buttonText={"Show Project"} type="button" variant="secondary" />
-      </a>
+      <RoundedButton
+        buttonText={"Visit Website"}
+        type="button"
+        href={websiteUrl}
+        openInNewTab={true}
+      />
     </div>
   </div>
 </section>

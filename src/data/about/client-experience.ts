@@ -21,7 +21,7 @@ export const clientExperienceSectionDetails = {
     {
       desktopImage: "/images/about/client-exp-desktop-4.jpg",
       mobileImage: "/images/about/client-exp-4.jpg",
-      title: "We care about your product like it’s ours sometimes more.",
+      title: "We care about your product like it’s ours, sometimes more.",
     },
   ],
 };

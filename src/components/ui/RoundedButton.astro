@@ -12,6 +12,7 @@ interface Props {
   type?: "button" | "submit" | "reset";
   variant?: "primary" | "secondary" | "tertiary" | "default";
   href?: string;
+  openInNewTab?: boolean;
 }
 
 // Default values
@@ -24,6 +25,7 @@ const {
   variant = "primary",
   id,
   href = "",
+  openInNewTab = false,
 } = Astro.props;
 
 // Variant classes
@@ -33,32 +35,55 @@ const variants = {
   tertiary: "border border-n-950 text-n-950 ",
   default: "bg-blue-500 text-white",
 };
+
+const baseClass = `btn-webflow w-fit group relative transition-all duration-200 flex items-center gap-1.5 hover:text-white hover:bg-blue-500 cursor-pointer overflow-hidden rounded-4xl px-5 py-3 md:px-6 md:py-3.5 lg:px-7 lg:py-4 ${variants[variant]}`;
 ---
 
-<a
-  href={href}
-  id={id}
-  type={type}
-  onclick={onClick}
-  class={`btn-webflow w-fit group relative transition-all duration-200 flex items-center gap-1.5 hover:text-white hover:bg-blue-500 cursor-pointer overflow-hidden rounded-4xl px-5 py-3 md:px-6 md:py-3.5 lg:px-7 lg:py-4 ${variants[variant]}`}
->
-  <!-- Icon + text -->
-  <div class="relative z-10 flex items-center gap-2">
-    <!-- Left icon of Rounded Button -->
-    {leftIcon !== "" && <Icon name={leftIcon} class="size-4 lg:size-8" />}
+{
+  href ? (
+    <a
+      href={href}
+      id={id}
+      target={openInNewTab ? "_blank" : undefined}
+      rel={openInNewTab ? "noopener noreferrer" : undefined}
+      onclick={onClick}
+      class={baseClass}
+    >
+      <Fragment>
+        <div class="relative z-10 flex items-center gap-2">
+          {leftIcon && <Icon name={leftIcon} class="size-4 lg:size-8" />}
 
-    <!-- Flip Text -->
-    <div class="text-flip-wrap text-sm font-medium lg:text-base">
-      <div class="flip-text">{buttonText}</div>
-      <div class="flip-text">{buttonText}</div>
-    </div>
+          <div class="text-flip-wrap text-sm font-medium lg:text-base">
+            <div class="flip-text">{buttonText}</div>
+            <div class="flip-text">{buttonText}</div>
+          </div>
 
-    {rightIcon !== "" && <Icon name={rightIcon} class="size-4 lg:size-5" />}
-  </div>
+          {rightIcon && <Icon name={rightIcon} class="size-4 lg:size-5" />}
+        </div>
 
-  <!-- Inside Glow -->
-  <div class="inside-glow"></div>
-</a>
+        <div class="inside-glow" />
+      </Fragment>
+    </a>
+  ) : (
+    <button id={id} type={type} onclick={onClick} class={baseClass}>
+      <Fragment>
+        <div class="relative z-10 flex items-center gap-2">
+          {leftIcon && <Icon name={leftIcon} class="size-4 lg:size-8" />}
+
+          <div class="text-flip-wrap text-sm font-medium lg:text-base">
+            <div class="flip-text">{buttonText}</div>
+            <div class="flip-text">{buttonText}</div>
+          </div>
+
+          {rightIcon && <Icon name={rightIcon} class="size-4 lg:size-5" />}
+        </div>
+
+        <div class="inside-glow" />
+      </Fragment>
+    </button>
+  )
+}
+
 <style>
   /* Button css animation */
   .btn-webflow {

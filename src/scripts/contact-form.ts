@@ -24,7 +24,7 @@ export const initContactFormModal = () => {
   const closeBtn = document.getElementById("close-btn");
 
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
-  const submitBtn = form?.querySelector<HTMLAnchorElement>("a");
+  const submitBtn = form?.querySelector<HTMLButtonElement>("button");
 
   const emailInput = document.getElementById("emailFrom") as HTMLInputElement | null;
   const phoneInput = document.getElementById("phoneNo") as HTMLInputElement | null;
