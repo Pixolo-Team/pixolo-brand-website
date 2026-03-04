@@ -50,4 +50,5 @@ export const clientItems = [
     lightImage: "skorost-united-light.png",
   },
   { name: "Neelsiddhi", darkImage: "neelsidhi.png", lightImage: "neelsidhi-light.png" },
+  { name: "Bajaj", darkImage: "bajaj.png", lightImage: "bajaj-light.png" },
 ];
