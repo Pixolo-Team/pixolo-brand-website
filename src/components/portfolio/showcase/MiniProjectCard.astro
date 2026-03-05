@@ -5,6 +5,7 @@ import ThemeImage from "@/components/ui/ThemeImage.astro";
 // COMPONENTS //
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import Tag from "@/components/portfolio/showcase/Tag.astro";
+import { Icon } from "astro-icon/components";
 
 interface Props {
   id?: string;
@@ -16,6 +17,9 @@ interface Props {
   image: string;
   buttonOneClick?: string;
   buttonTwoClick?: string;
+  platform?: string;
+  buttonOneHref?: string;
+  buttonTwoHref?: string;
 }
 
 const {
@@ -28,6 +32,9 @@ const {
   image,
   buttonOneClick = "",
   buttonTwoClick = "",
+  platform = "web",
+  buttonOneHref = "#",
+  buttonTwoHref = "#",
 } = Astro.props as Props;
 ---
 
@@ -53,12 +60,18 @@ const {
       <!-- Header-section -->
       <div class="flex flex-col gap-2">
         <!-- Title -->
-        <p class="text-lg leading-tight font-normal md:text-xl lg:text-2xl">{title}</p>
+        <p class="text-n-950 text-lg leading-tight font-normal md:text-xl lg:text-2xl">{title}</p>
 
-        <!-- Badge wrap -->
-        <div class="flex flex-row flex-wrap gap-1.5 gap-y-2">
-          {tagItems.map((tagItem) => <Tag tagName={tagItem} />)}
-        </div>
+        {
+          tagItems.length > 0 && (
+            // Badge wrap
+            <div class="flex flex-row flex-wrap gap-1.5 gap-y-2">
+              {tagItems.map((tagItem) => {
+                return tagItem !== "" && <Tag tagName={tagItem} />;
+              })}
+            </div>
+          )
+        }
       </div>
 
       {
@@ -70,12 +83,46 @@ const {
     </div>
 
     <!-- Cta wrap -->
-    <div class="flex flex-row gap-3.5">
-      <!-- Primary Button -->
-      <RoundedButton buttonText={btnOneText} onClick={buttonOneClick} />
+    <div class="flex flex-row items-center gap-3.5">
+      {
+        platform === "app" ? (
+          <>
+            {/* Play Store */}
+            <a
+              href={buttonOneClick}
+              class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
+            >
+              <span class="flex items-center justify-center">
+                <Icon name="play-store" class="text-n-100 size-5" />
+              </span>
+            </a>
+
+            {/* App Store */}
+            <a
+              href="#"
+              class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
+            >
+              <Icon name="app-store" class="text-n-100 size-5" />
+            </a>
+          </>
+        ) : (
+          // Primary Button
+          <RoundedButton
+            buttonText={btnOneText}
+            onClick={buttonOneClick}
+            href={buttonOneHref}
+            openInNewTab={true}
+          />
+        )
+      }
 
       <!-- Secondary Button -->
-      <RoundedButton buttonText={btnTwoText} onClick={buttonTwoClick} variant="secondary" />
+      <RoundedButton
+        buttonText={btnTwoText}
+        onClick={buttonTwoClick}
+        variant="secondary"
+        href={buttonTwoHref}
+      />
     </div>
   </div>
 </div>

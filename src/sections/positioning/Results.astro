@@ -1,0 +1,116 @@
+---
+// COMPONENTS //
+import ResultCard from "@/components/positioning/ResultCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  badgeTitle: string;
+  title: string;
+  subTitle: string;
+  resultCards: {
+    icon: string;
+    title: string;
+    description: string;
+  }[];
+  resultImageCards: {
+    image: string;
+    alt: string;
+    title: string;
+    description: string;
+  }[];
+}
+
+const { badgeTitle, title, subTitle, resultCards, resultImageCards }: Props = Astro.props;
+---
+
+<!-- Positioning Results Section -->
+<section id="results-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-10 px-6 py-16 md:gap-14 lg:gap-10 lg:px-8 lg:pt-48 lg:pb-24"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="ready" text={badgeTitle} />
+      </div>
+
+      <!-- Title -->
+      <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
+        {title}
+      </p>
+    </div>
+
+    <div class="flex flex-col items-center justify-center gap-8 lg:gap-9">
+      <!-- Subtitle -->
+      <p class="subtitle-text text-n-800 text-center text-base font-normal md:text-lg lg:text-xl">
+        {subTitle}
+      </p>
+
+      <!-- Cards -->
+      <div
+        class="flex w-full flex-col items-center justify-center gap-3 md:w-full md:flex-row xl:w-[80%]"
+      >
+        <!-- Results Cards -->
+        <div
+          class={`flex h-full w-full flex-col gap-3 md:w-[60%] xl:w-[28%] ${resultImageCards.length > 1 ? "lg:w-[30%]" : "lg:w-[65%]"}`}
+        >
+          {
+            resultCards.map((resultCardItem) => (
+              <ResultCard
+                icon={resultCardItem.icon}
+                title={resultCardItem.title}
+                description={resultCardItem.description}
+              />
+            ))
+          }
+        </div>
+
+        <!-- Result Cards with Images -->
+        {
+          resultImageCards.map((imageCardItem, imageCardItemIndex) => (
+            <div
+              class:list={[
+                "result-card outline-n-300 bg-n-100 relative flex h-[300px] w-full items-end justify-center overflow-hidden rounded-3xl outline-1 -outline-offset-1 md:h-[-webkit-fill-available]",
+                resultImageCards.length > 1
+                  ? imageCardItemIndex === 0
+                    ? "lg:w-[24%] xl:w-[24%]"
+                    : "lg:w-[40%] xl:w-[40%]"
+                  : "xl:w-[44%]",
+              ]}
+            >
+              {/* Background Image */}
+              <Image
+                src={imageCardItem.image}
+                width={480}
+                height={385}
+                alt={imageCardItem.alt}
+                class="h-full w-full object-cover"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+
+              <div class="absolute bottom-8 flex flex-col items-center justify-center gap-2.5 text-center">
+                {/* Title */}
+                <p class="text-n-950 w-[50%] text-lg leading-tight font-bold md:text-xl lg:w-[60%] xl:text-2xl">
+                  {imageCardItem.title}
+                </p>
+
+                {/* Description */}
+                <p class="text-n-800 w-[90%] text-xs leading-tight font-normal md:text-sm">
+                  {imageCardItem.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import { animateResultsSection } from "@/scripts/positioning/results";
+
+  animateResultsSection();
+</script>

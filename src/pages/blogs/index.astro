@@ -1,0 +1,23 @@
+---
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
+// UTILS //
+import { getSiteUrl } from "@/utils/site-url";
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+import { blogsSchema } from "@/schemas/blogs/blogs.schema";
+
+// SECTIONS //
+import Hero from "@/sections/blogs/Hero.astro";
+import BlogListing from "@/sections/blogs/BlogListing.astro";
+---
+
+<Layout meta={{ image: `${getSiteUrl()}/images/og/blog.jpg` }}>
+  <!-- JSON-LD -->
+  <JsonLd slot="head" data={blogsSchema} />
+
+  <Hero />
+  <BlogListing />
+</Layout>

@@ -32,7 +32,7 @@ export const productItems = [
     thumbnail: "weddingo-thumbnail.jpg",
     name: "WeddinGo",
     description:
-      "Weddingo is a digital platform for modern weddings — invitations, event timelines, RSVP tracking, and photo galleries all in one place. It gives couples a celebrity-style experience without the traditional chaos.",
+      "Weddingo is a digital platform for modern weddings - invitations, event timelines, RSVP tracking, and photo galleries all in one place. It gives couples a celebrity-style experience without the traditional chaos.",
   },
   {
     darkLogo: "neevo-logo.png",

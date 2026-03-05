@@ -14,12 +14,12 @@ import { serviceDetails, serviceSectionDetails } from "@/data/home/services";
 <section>
   <!-- Container -->
   <div
-    class="container mx-auto flex w-full flex-col flex-wrap items-center justify-center gap-12 px-6 py-12 md:gap-16 md:py-8 lg:gap-20 lg:px-8 lg:py-12"
+    class="container mx-auto flex w-full flex-col flex-wrap items-start justify-center gap-12 px-6 py-12 md:gap-16 md:py-8 lg:gap-20 lg:px-8 lg:py-12"
   >
     <!-- Section Header -->
     <div class="relative flex flex-col flex-wrap gap-6 lg:gap-7">
       <!-- Tool Badge -->
-      <div class="flex items-center justify-center self-start">
+      <div class="anim-fade-in-right">
         <ToolBadge icon="service-icon" text={serviceSectionDetails.badgeTitle} />
       </div>
 
@@ -39,7 +39,7 @@ import { serviceDetails, serviceSectionDetails } from "@/data/home/services";
         // Iterating over an array of objects  - services
         serviceDetails.map((serviceItem) => (
           <a
-            href={URLS.SERVICE.ITEM(serviceItem.title)}
+            href={URLS.SERVICE.ITEM(serviceItem.slug)}
             data-service-item={serviceItem.title}
             class="service-card"
           >

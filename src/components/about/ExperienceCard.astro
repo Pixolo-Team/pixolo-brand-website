@@ -1,0 +1,45 @@
+---
+// COMPONENTS //
+import Image from "astro/components/Image.astro";
+
+interface Props {
+  mobileImage: string;
+  desktopImage: string;
+  title: string;
+}
+
+const { mobileImage, desktopImage, title } = Astro.props as Props;
+---
+
+<!-- Experience Card Component -->
+<div class="experience-card flex flex-col gap-4 pb-7">
+  <!-- Image -->
+  <div class="border-n-300 h-40 w-full overflow-hidden rounded-[20px] border-2 lg:h-50">
+    <!-- Image for Mobile -->
+    <Image
+      src={mobileImage}
+      alt={title}
+      width={327}
+      height={160}
+      loading="lazy"
+      referrerpolicy="no-referrer"
+      class="h-full w-full object-cover lg:hidden"
+    />
+
+    <!-- Image for Desktop -->
+    <Image
+      src={desktopImage}
+      alt={title}
+      width={327}
+      height={160}
+      loading="lazy"
+      referrerpolicy="no-referrer"
+      class="hidden h-full w-full object-cover lg:flex"
+    />
+  </div>
+
+  <!-- Title -->
+  <p class="text-n-950 text-base leading-tight font-bold md:text-lg lg:text-2xl">
+    {title}
+  </p>
+</div>

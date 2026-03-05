@@ -9,6 +9,14 @@ import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { projectConsumptionHero } from "@/data/portfolio/project-consumption.ts";
+interface Props {
+  logo: string;
+  title: string;
+  description: string;
+  websiteUrl: string;
+}
+
+const { logo, title, description, websiteUrl } = Astro.props as Props;
 ---
 
 <!-- Project Consumption Hero Section -->
@@ -38,35 +46,37 @@ import { projectConsumptionHero } from "@/data/portfolio/project-consumption.ts"
       <div class="flex items-center gap-4 md:gap-5 lg:gap-8">
         <!-- Logo -->
         <ThemeImage
-          light={projectConsumptionHero.logo}
-          dark={projectConsumptionHero.logo}
-          alt={projectConsumptionHero.title}
-          class="h-9 w-9 md:h-10 md:w-10 lg:h-12 lg:w-12"
+          light={logo}
+          dark={logo}
+          alt={title}
+          class="h-9 w-9 invert md:h-10 md:w-10 lg:h-12 lg:w-full dark:invert-0"
         />
 
         <!-- Title -->
-        <p class="text-2xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl">
-          {projectConsumptionHero.title}
-        </p>
+        <!-- <p
+          class="text-n-950 text-2xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl"
+        >
+          {title}
+        </p> -->
       </div>
 
       <!-- Description -->
-      <p class="text-3xl leading-tight font-medium tracking-normal md:text-5xl lg:text-6xl">
-        {projectConsumptionHero.description}
+      <p
+        class="text-n-950 text-3xl leading-tight font-medium tracking-normal md:text-5xl lg:text-6xl"
+      >
+        {description}
       </p>
     </div>
 
     <!-- Buttons -->
     <div class="flex gap-3.5">
       <!-- Visit Website Button -->
-      <a href={"window.open('/404')"}>
-        <RoundedButton buttonText={"Visit Website"} type="button" />
-      </a>
-
-      <!-- Show Project Button -->
-      <a href={"window.open('/404')"}>
-        <RoundedButton buttonText={"Show Project"} type="button" variant="secondary" />
-      </a>
+      <RoundedButton
+        buttonText={"Visit Website"}
+        type="button"
+        href={websiteUrl}
+        openInNewTab={true}
+      />
     </div>
   </div>
 </section>

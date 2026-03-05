@@ -1,0 +1,126 @@
+---
+// TYPES //
+import type { PositioningData } from "@/types/positioning.types";
+
+// API SERVICES //
+import { getPositioningRequest } from "@/services/api/positioning.api";
+
+// OTHERS //
+import Layout from "@/layouts/Layout.astro";
+
+// SECTIONS //
+import Hero from "@/sections/positioning/Hero.astro";
+import Problems from "@/sections/positioning/Problems.astro";
+import Purpose from "@/sections/positioning/Purpose.astro";
+import Services from "@/sections/positioning/Services.astro";
+import Process from "@/sections/positioning/Process.astro";
+import Results from "@/sections/positioning/Results.astro";
+import WhyPixolo from "@/sections/positioning/WhyPixolo.astro";
+import IdealCustomers from "@/sections/positioning/IdealCustomers.astro";
+import Cta from "@/sections/positioning/Cta.astro";
+import ContactForm from "@/sections/contact/ContactForm.astro";
+
+/** Get Static Paths */
+export async function getStaticPaths() {
+  /** API Call to get Positioning */
+  const positioningItems = await getPositioningRequest();
+
+  return positioningItems.map((positioningItem: PositioningData) => ({
+    params: {
+      pageTitle: positioningItem.slug,
+    },
+    props: {
+      positioningItem,
+    },
+  }));
+}
+
+const { positioningItem }: { positioningItem: PositioningData } = Astro.props;
+---
+
+<Layout>
+  <Hero
+    badgeTitle={positioningItem.hero[0].badge_title}
+    title={positioningItem.hero[0].title}
+    ctaBtnText={positioningItem.hero[0].cta_btn_text}
+  />
+  {
+    positioningItem.problems && (
+      <Problems
+        badgeTitle={positioningItem.problems[0].badge_title}
+        title={positioningItem.problems[0].title}
+        problemCards={positioningItem.problems_cards}
+      />
+    )
+  }
+  {
+    positioningItem.purpose && (
+      <Purpose
+        badgeTitle={positioningItem.purpose[0].badge_title}
+        title={positioningItem.purpose[0].title}
+        purposeCards={positioningItem.purpose_cards}
+      />
+    )
+  }
+  {
+    positioningItem.services && (
+      <Services
+        badgeTitle={positioningItem.services[0].badge_title}
+        title={positioningItem.services[0].title}
+        serviceCards={positioningItem.service_cards}
+      />
+    )
+  }
+  {
+    positioningItem.process && (
+      <Process
+        badgeTitle={positioningItem.process[0].badge_title}
+        title={positioningItem.process[0].title}
+        processSteps={positioningItem.process_steps}
+      />
+    )
+  }
+  {
+    positioningItem.results && (
+      <Results
+        badgeTitle={positioningItem.results[0].badge_title}
+        title={positioningItem.results[0].title}
+        subTitle={positioningItem.results[0].sub_title}
+        resultCards={positioningItem.result_cards}
+        resultImageCards={positioningItem.result_image_cards}
+      />
+    )
+  }
+  {
+    positioningItem.why_pixolo && (
+      <WhyPixolo
+        badgeTitle={positioningItem.why_pixolo[0].badge_title}
+        title={positioningItem.why_pixolo[0].title}
+        image={positioningItem.why_pixolo[0].image}
+        alt={positioningItem.why_pixolo[0].alt}
+        whyusCards={positioningItem.whyus_cards_title}
+      />
+    )
+  }
+
+  {
+    positioningItem.ideal_customers && (
+      <IdealCustomers
+        badgeTitle={positioningItem.ideal_customers[0].badge_title}
+        title={positioningItem.ideal_customers[0].title}
+        idealCards={positioningItem.ideal_card_title}
+      />
+    )
+  }
+  {
+    positioningItem.cta && (
+      <Cta
+        badgeTitle={positioningItem.cta[0].badge_title}
+        title={positioningItem.cta[0].title}
+        subtitle={positioningItem.cta[0].subtitle}
+        ctaBtnText={positioningItem.cta[0].cta_btn_text}
+      />
+    )
+  }
+  <ContactForm />
+</Layout>

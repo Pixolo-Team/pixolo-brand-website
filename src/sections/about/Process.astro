@@ -1,0 +1,92 @@
+---
+// COMPONENTS //
+import StepItem from "@/components/retainer/StepItem.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+// DATA //
+import { processSectionDetails } from "@/data/about/process";
+---
+
+<!-- Process Section -->
+<section id="process-section" data-section="Process">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-14 overflow-hidden px-6 py-16 md:gap-16 lg:px-8 lg:pt-48 lg:pb-24"
+  >
+    <!-- Section Header -->
+    <div class="flex w-full flex-col items-center gap-7">
+      <!-- Tool badge component -->
+      <div class="tool-badge">
+        <ToolBadge icon={processSectionDetails.badgeIcon} text={processSectionDetails.badgeTitle} />
+      </div>
+
+      <!-- Section Title -->
+      <p
+        class="header-text text-n-950 text-center text-2xl leading-tight font-medium tracking-normal md:max-w-[65%] md:text-4xl lg:max-w-[874px] lg:text-5xl"
+      >
+        {processSectionDetails.title}
+      </p>
+    </div>
+
+    <!-- Steps Items -->
+    <div class="scroll-line relative flex flex-col items-center gap-48 md:gap-72">
+      {
+        processSectionDetails.stepItems.map((stepItem, stepIndex) => (
+          <StepItem
+            number={stepItem.number}
+            title={stepItem.title}
+            description={stepItem.description}
+            direction={stepIndex % 2 === 0 ? "ltr" : "rtl"}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .scroll-line::before,
+  .scroll-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 6px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+  }
+
+  .scroll-line::before {
+    left: 112px;
+    height: 100%;
+    background: var(--color-n-300);
+    z-index: -2;
+  }
+
+  .scroll-line::after {
+    left: 112px;
+    height: var(--fill-height, 0%);
+    background: linear-gradient(var(--color-blue-500), #8b77f3);
+    z-index: -1;
+    transition: height 150ms linear;
+  }
+
+  @media (min-width: 768px) {
+    .scroll-line::before {
+      left: 50%;
+    }
+
+    .scroll-line::after {
+      left: 50%;
+    }
+  }
+</style>
+<script>
+  import { animateProcessSection } from "@/scripts/about/process";
+  import { initScrollLine } from "@/utils/scroll-line";
+
+  // Animate Process Section
+  animateProcessSection();
+
+  // Vertical Scroll Progress
+  initScrollLine();
+</script>

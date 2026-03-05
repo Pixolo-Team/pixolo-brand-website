@@ -1,3 +1,6 @@
+// OTHERS //
+import { animate } from "motion";
+
 /** Prevent Scroll on key press when modal is open */
 const preventScroll = (e: Event) => e.preventDefault();
 
@@ -61,4 +64,39 @@ export const hideResultModal = (modalId: string) => {
 
   /** Enable scroll */
   enableScroll();
+};
+
+/** Run result modal progress bar (10s) and auto close */
+export const runResultProgress = (modalId: string, progressBarId: string) => {
+  const progressBar = document.getElementById(progressBarId);
+
+  if (!progressBar) return;
+
+  // Reset
+  progressBar.style.width = "0%";
+
+  // Animate progress bar
+  animate(progressBar, { width: ["0%", "100%"] }, { duration: 10, easing: "linear" });
+
+  // Auto close modal after 10s
+  setTimeout(() => {
+    hideResultModal(modalId);
+    progressBar.style.width = "0%"; // reset for next time
+  }, 10000);
+};
+
+/** Close result modal */
+export const closeResultModal = (modalId: string, closeBtnId: string) => {
+  const closeBtn = document.getElementById(closeBtnId);
+  closeBtn?.addEventListener("click", () => hideResultModal(modalId));
+};
+
+/** Close result modal on backdrop click */
+export const closeResultModalOnBackdropClick = (modalId: string) => {
+  const modal = document.getElementById(modalId);
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      hideResultModal(modalId);
+    }
+  });
 };

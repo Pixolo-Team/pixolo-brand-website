@@ -30,18 +30,18 @@ const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
 
       <!-- Title -->
       <p
-        class="header-text text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-5xl"
+        class="header-text text-n-950 text-2xl leading-tight font-medium tracking-normal md:text-4xl lg:text-5xl"
       >
         {caseStudySectionDetails.title}
       </p>
     </div>
 
-    <div class="flex flex-col items-center gap-10">
+    <div class="flex flex-col items-center gap-10 md:gap-16 xl:gap-20">
       {/* Case Studies card */}
 
       <div
         id="case-studies-cards-container"
-        class="grid grid-cols-1 gap-10 md:gap-16 md:px-16 lg:grid-cols-2 xl:grid-cols-3"
+        class="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-2 xl:grid-cols-3 xl:gap-14"
       >
         {
           caseStudies.length === 0 ? (
@@ -53,9 +53,7 @@ const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
                 <div class="case-study-card-item hidden">
                   <CaseStudyCard
                     image={caseStudyItem.thumbnail}
-                    href={URLS.CASE_STUDIES.ITEM(
-                      caseStudyItem.name?.replaceAll(" ", "-").toLowerCase(),
-                    )}
+                    href={URLS.CASE_STUDIES.ITEM(caseStudyItem.slug)}
                     id={filteredIndex}
                     title={caseStudyItem.name}
                   />

@@ -14,10 +14,11 @@ interface Props {
   title: string;
   subtitle: string;
   badges: string[];
+  href: string;
 }
 
 // PROPS //
-const { brandColor, brandName, image, logo, title, subtitle, badges } = Astro.props as Props;
+const { brandColor, brandName, image, logo, title, subtitle, badges, href } = Astro.props as Props;
 ---
 
 <!-- Main Project Tile -->
@@ -41,21 +42,23 @@ const { brandColor, brandName, image, logo, title, subtitle, badges } = Astro.pr
     <div class="flex flex-col gap-5 md:gap-9 xl:gap-10">
       <!-- Project Details -->
       <div class="flex flex-col gap-5 md:gap-6 xl:gap-7">
-        <!-- Chip Wrapper -->
-        <div class="flex flex-wrap gap-2">
-          <!-- Portfolio Chip -->
-          {
-            badges?.map((badgeText) => (
-              /* Badge */
-              <div class="gap-2.5 rounded-3xl border border-white px-2.5 py-2 md:px-3 md:py-2.5">
-                {/* Badge Text */}
-                <p class="text-center text-xs leading-tight font-medium text-white md:text-base">
-                  {badgeText}
-                </p>
-              </div>
-            ))
-          }
-        </div>
+        {
+          badges.length > 0 && (
+            // Chip Wrapper
+            <div class="flex flex-wrap gap-2">
+              {/* Portfolio Chip */}
+              {badges?.map((badgeText) => (
+                /* Badge */
+                <div class="gap-2.5 rounded-3xl border border-white px-2.5 py-2 md:px-3 md:py-2.5">
+                  {/* Badge Text */}
+                  <p class="text-center text-xs leading-tight font-medium text-white md:text-base">
+                    {badgeText}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )
+        }
 
         <!-- Title Details -->
         <div class="flex flex-col gap-4 text-white xl:gap-5">
@@ -69,13 +72,13 @@ const { brandColor, brandName, image, logo, title, subtitle, badges } = Astro.pr
 
       <!-- Rounded Button -->
       <div>
-        <RoundedButton buttonText={"View Project"} onClick={'window.location.href = "/404"'} />
+        <RoundedButton buttonText={"View Project"} href={href} />
       </div>
     </div>
   </div>
 
   <!-- Image -->
-  <div class="hidden h-full w-[42%] self-end xl:block">
+  <div class="hidden h-full w-[42%] self-end pr-6 pb-5 xl:block">
     <ThemeImage
       light={image}
       dark={image}

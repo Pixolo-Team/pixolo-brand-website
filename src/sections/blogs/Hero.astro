@@ -1,0 +1,65 @@
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<!-- Blog Hero Section -->
+<section id="blog-hero-section" class="relative overflow-hidden">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col justify-center gap-7 px-6 pt-24 pb-16 md:pt-52 lg:pt-40 xl:gap-8 2xl:pt-56"
+  >
+    <!-- Tool Badge Component -->
+    <div class="tool-badge">
+      <ToolBadge icon="notebook" text="Articles" />
+    </div>
+
+    <div class="flex flex-col items-start justify-between gap-28 md:gap-36 lg:gap-40">
+      <!-- Title -->
+      <h1
+        id="header-text"
+        class="text-n-950 text-3xl leading-tight font-medium -tracking-[1%] md:w-[80%] md:text-5xl lg:w-[65%] lg:text-7xl"
+      >
+        Articles from our writers & ChatGPT
+      </h1>
+
+      <div class="flex flex-col gap-3">
+        <p class="text-n-950 text-sm font-light md:text-lg">Continue scrolling to read</p>
+
+        <!-- Scroll down icon -->
+        <Icon name="scroll-down" class="scroll-down-icon text-n-950 w-[11px]" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Image -->
+  <div class="template-logo absolute right-0 bottom-[20%] -z-2 sm:bottom-0 lg:-bottom-[5%]">
+    <Icon
+      name="hero-template"
+      class="floating-icon text-n-200 size-44 md:size-96 lg:size-[540px]"
+    />
+  </div>
+</section>
+<style>
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(10px);
+      opacity: 1;
+    }
+  }
+
+  .scroll-down-icon {
+    animation: bounce 1.8s ease-in-out infinite;
+  }
+</style>
+<script>
+  import { animateBlogHeroSection } from "@/scripts/blog/hero";
+
+  animateBlogHeroSection();
+</script>

@@ -1,0 +1,100 @@
+---
+// COMPONENTS //
+import StepItem from "@/components/retainer/StepItem.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+interface Props {
+  badgeTitle: string;
+  title: string;
+  processSteps: {
+    title: string;
+    description: string;
+  }[];
+}
+
+const { badgeTitle, title, processSteps }: Props = Astro.props;
+---
+
+<!-- Positioning Process Section -->
+<section id="positioning-process-section" data-section="Positioning Process">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-14 overflow-hidden px-6 py-16 md:gap-16 lg:px-8 lg:pt-48 lg:pb-24"
+  >
+    <!-- Section Header -->
+    <div class="flex w-full flex-col items-center gap-7">
+      <!-- Tool badge component -->
+      <div class="tool-badge">
+        <ToolBadge icon={"download"} text={badgeTitle} />
+      </div>
+
+      <!-- Section Title -->
+      <p
+        class="header-text text-n-950 text-center text-2xl leading-tight font-medium tracking-normal md:max-w-[65%] md:text-4xl lg:max-w-[874px] lg:text-5xl"
+      >
+        {title}
+      </p>
+    </div>
+
+    <!-- Steps Items -->
+    <div class="scroll-line relative flex flex-col items-center gap-48 md:gap-72">
+      {
+        processSteps.map((stepItem, stepIndex) => (
+          <StepItem
+            number={(stepIndex + 1).toString().padStart(2, "0")}
+            title={stepItem.title}
+            description={stepItem.description}
+            direction={stepIndex % 2 === 0 ? "ltr" : "rtl"}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .scroll-line::before,
+  .scroll-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 6px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+  }
+
+  .scroll-line::before {
+    left: 112px;
+    height: 100%;
+    background: var(--color-n-300);
+    z-index: -2;
+  }
+
+  .scroll-line::after {
+    left: 112px;
+    height: var(--fill-height, 0%);
+    background: linear-gradient(var(--color-blue-500), #8b77f3);
+    z-index: -1;
+    transition: height 150ms linear;
+  }
+
+  @media (min-width: 768px) {
+    .scroll-line::before {
+      left: 50%;
+    }
+
+    .scroll-line::after {
+      left: 50%;
+    }
+  }
+</style>
+<script>
+  import { animatePositioningProcessSection } from "@/scripts/positioning/process";
+  import { initScrollLine } from "@/utils/scroll-line";
+
+  // Animate Process Section
+  animatePositioningProcessSection();
+
+  // Vertical Scroll Progress
+  initScrollLine();
+</script>

@@ -1,0 +1,81 @@
+---
+// COMPONENTS //
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+// SVG's //
+import Ball from "@/assets/3d-ball.svg";
+
+interface Props {
+  badgeTitle: string;
+  title: string;
+  subtitle: string;
+  ctaBtnText: string;
+}
+
+const { badgeTitle, title, subtitle, ctaBtnText }: Props = Astro.props;
+---
+
+<!-- Cta Section -->
+<section id="positioning-cta-section" data-section="Cta">
+  <!-- Container -->
+  <div
+    id="positioning-cta-wrapper"
+    class="relative container mx-auto flex flex-col items-center justify-center gap-9 px-6 py-16 md:gap-11 md:py-22 lg:gap-16 lg:px-8 lg:pt-48 lg:pb-24"
+  >
+    <!-- Large 3D Ball Image -->
+    <Image
+      id="big-marble-positioning-cta"
+      src={Ball}
+      alt="A floating 3D Ball"
+      class="absolute top-[22%] left-6 -z-1 w-9 sm:left-[20%] md:top-[380px] md:left-[50px] md:w-16 lg:top-[65%] lg:left-[16%] lg:w-20 2xl:left-[20%]"
+    />
+
+    <!-- Small 3D Ball Image -->
+    <Image
+      id="small-marble-positioning-cta"
+      src={Ball}
+      alt="A floating 3D Ball"
+      class="absolute right-[10%] bottom-[46%] -z-1 w-5 rotate-[-20deg] sm:right-[26%] md:right-[200px] md:bottom-40 md:w-11 lg:right-[35%] 2xl:bottom-[14%]"
+      style="animation-duration: 4s"
+    />
+
+    <!-- Title Wrap -->
+    <div class="flex w-full flex-col items-center justify-center gap-9 md:gap-12 lg:gap-14">
+      <!-- Tool Badge Component -->
+      <div class="tool-badge">
+        <ToolBadge icon="share-heart" text={badgeTitle} />
+      </div>
+
+      <div class="flex flex-col items-center justify-center gap-3 md:w-[92%] md:gap-4">
+        <!-- Subtitle -->
+        <p
+          class="word-container text-n-700 text-center text-sm leading-tight font-normal md:text-lg lg:text-xl"
+          data-animate-word
+        >
+          {subtitle}
+        </p>
+
+        <!-- Title -->
+        <p
+          class="word-container text-n-950 text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl"
+          data-animate-word
+        >
+          {title}
+        </p>
+      </div>
+
+      <!-- Rounded Button -->
+      <RoundedButton buttonText={ctaBtnText} href="#contact-section" />
+    </div>
+  </div>
+
+  <script>
+    import { animateHeroTitle, animateMarble } from "@/scripts/hero";
+
+    animateHeroTitle();
+    animateMarble("big-marble-positioning-cta", "positioning-cta-wrapper");
+    animateMarble("small-marble-positioning-cta", "positioning-cta-wrapper");
+  </script>
+</section>

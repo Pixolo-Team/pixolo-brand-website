@@ -1,0 +1,70 @@
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+import RoundedButton from "@/components/ui/RoundedButton.astro";
+
+// SVG's //
+import Ball from "@/assets/3d-ball.svg";
+
+interface Props {
+  badgeTitle: string;
+  title: string;
+  ctaBtnText: string;
+}
+
+const { badgeTitle, title, ctaBtnText }: Props = Astro.props;
+---
+
+<!-- Positioning Hero Section -->
+<section>
+  <div
+    id="positioning-hero"
+    class="relative container mx-auto px-6 pt-24 pb-16 lg:pt-40 lg:pb-24 2xl:pt-64"
+  >
+    <!-- Top-left floating marble -->
+    <Image
+      id="big-marble-positioning-hero"
+      src={Ball}
+      alt="Big Marble"
+      class="absolute top-[37%] left-4 w-5 md:top-[87%] md:left-50 md:w-16 lg:top-[54%] lg:left-5 lg:w-20"
+    />
+
+    <!-- Bottom-right floating marble -->
+    <Image
+      id="small-marble-positioning-hero"
+      src={Ball}
+      alt="Small Marble"
+      class="absolute right-[6%] bottom-[29%] w-9 rotate-[-20deg] md:right-[10%] md:bottom-[15%] md:w-11 lg:right-[25%] lg:bottom-[46%] lg:w-12"
+      style="animation-duration: 4s"
+    />
+
+    <!-- Content  -->
+    <div class="flex flex-col items-center gap-8 md:gap-9 lg:gap-10">
+      <!-- ToolBadge Component -->
+      <div class="tool-badge">
+        <ToolBadge icon={"comment"} text={badgeTitle} />
+      </div>
+
+      <div class="z-10 flex flex-col items-center gap-3.5 md:gap-6 lg:w-[85%] lg:gap-7 2xl:w-[80%]">
+        <!-- Title -->
+        <p
+          class="word-container text-n-950 text-center text-3xl leading-tight font-medium tracking-[-0.01em] md:text-6xl lg:text-7xl"
+          data-animate-word
+        >
+          {title}
+        </p>
+      </div>
+
+      <!-- Rounded Button -->
+      <RoundedButton buttonText={ctaBtnText} href="#contact-section" />
+    </div>
+  </div>
+</section>
+<script>
+  import { animateHeroTitle, animateMarble } from "@/scripts/hero";
+
+  animateHeroTitle();
+  animateMarble("big-marble-positioning-hero", "positioning-hero");
+  animateMarble("small-marble-positioning-hero", "positioning-hero");
+</script>

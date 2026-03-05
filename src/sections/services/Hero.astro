@@ -14,7 +14,7 @@ import { heroSectionDetails } from "@/data/services/hero";
 <section>
   <div
     id="hero-wrapper"
-    class="relative container mx-auto flex flex-col items-center justify-center gap-9 overflow-hidden px-6 pt-34 pb-14 text-center md:py-38 lg:py-12 xl:pt-52 2xl:pt-60 2xl:pb-46"
+    class="relative container mx-auto flex flex-col items-center justify-center gap-9 overflow-hidden px-6 pt-34 pb-14 text-center md:py-38 lg:pt-36 lg:pb-22 xl:pt-52 xl:pb-28 2xl:pb-46"
   >
     <!-- Top-left floating marble -->
     <Image
@@ -50,7 +50,6 @@ import { heroSectionDetails } from "@/data/services/hero";
       <p
         class="text-n-950 flex items-center justify-center text-center text-3xl leading-tight font-normal tracking-tight text-nowrap md:text-7xl xl:text-8xl"
       >
-        <!-- Title third line -->
         <span class="word-container" data-animate-word>
           {heroSectionDetails.title[2]}
         </span>
@@ -59,20 +58,28 @@ import { heroSectionDetails } from "@/data/services/hero";
         <Image
           src={TagIcon}
           alt="3d-code-icon"
-          class="floating-icon inline-block w-14 align-middle md:w-44 xl:w-60"
+          class="floating-icon inline-block w-[50px] align-middle md:w-[130px] xl:w-[180px]"
           style={"animation-duration: 5s"}
         />
+
         <span class="word-container" data-animate-word>
           {heroSectionDetails.title[3]}
         </span>
       </p>
 
-      <!--  Title fourth line -->
+      <!--  Title third line -->
       <p
-        class="text-n-950 text-3xl leading-none font-semibold tracking-[-0.02em] md:text-7xl xl:text-8xl"
+        class="text-n-950 text-3xl leading-none font-normal tracking-tight md:text-7xl xl:text-8xl"
       >
         <span class="word-container" data-animate-word>
           {heroSectionDetails.title[4]}
+        </span>
+      </p>
+
+      <!--  Title fourth line -->
+      <p class="text-n-950 text-3xl leading-none font-bold tracking-tight md:text-7xl xl:text-8xl">
+        <span class="word-container" data-animate-word>
+          {heroSectionDetails.title[5]}
         </span>
       </p>
     </div>

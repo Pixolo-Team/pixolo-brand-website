@@ -1,0 +1,55 @@
+---
+// COMPONENTS //
+import PurposeCard from "@/components/positioning/PurposeCard.astro";
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+
+interface Props {
+  badgeTitle: string;
+  title: string;
+  purposeCards: {
+    title: string;
+    description: string;
+  }[];
+}
+
+const { badgeTitle, title, purposeCards }: Props = Astro.props;
+---
+
+<!-- Positioning Purpose Section -->
+<section id="purpose-section">
+  <!-- Container -->
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-10 px-6 py-16 md:gap-12 lg:gap-20 lg:px-8 lg:pt-48 lg:pb-24"
+  >
+    <div class="flex flex-col items-center justify-center gap-3.5 lg:gap-4">
+      <!-- Tool Badge -->
+      <div class="tool-badge">
+        <ToolBadge icon="hand-shake" text={badgeTitle} />
+      </div>
+
+      <!-- Title -->
+      <p class="title-text text-n-950 text-center text-3xl font-medium md:text-4xl lg:text-6xl">
+        {title}
+      </p>
+    </div>
+
+    <!-- Purpose Cards -->
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-7 lg:gap-9">
+      {
+        purposeCards.map((purposeCardItem, index) => (
+          // Purpose Card Component
+          <PurposeCard
+            index={(index + 1).toString().padStart(3, "0")}
+            title={purposeCardItem.title}
+            description={purposeCardItem.description}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+<script>
+  import { animatePurposeSection } from "@/scripts/positioning/purpose";
+
+  animatePurposeSection();
+</script>

@@ -1,16 +1,81 @@
 ---
+// TYPES //
+import type { FaqApiCategory, FaqItemData, FaqTabItemData } from "@/types/faq";
+
+// COMPONENTS //
+import JsonLd from "@/components/layout/JsonLd.astro";
+
+// API SERVICES //
+import { getFaqsRequest } from "@/services/api/faq.api";
+
+// UTILS //
+import { getSiteUrl } from "@/utils/site-url";
+
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
+import { getFaqSchema } from "@/schemas/faq.schema";
+import { contactOrganizationSchema } from "@/schemas/contact.schema";
+import { pixoloPlaceSchema } from "@/schemas/place.schema";
 
 // SECTIONS //
 import Hero from "@/sections/contact/Hero.astro";
 import ContactForm from "@/sections/contact/ContactForm.astro";
-
 import FAQ from "@/sections/contact/FAQ.astro";
+
+// DATA //
+import contactMeta from "@/data/meta/contact.json";
+
+// Fetch FAQs from API
+let faqs: FaqApiCategory[] = [];
+
+try {
+  /** API Call to get FAQs */
+  faqs = await getFaqsRequest();
+} catch (error) {
+  console.error("Failed to load FAQs", error);
+}
+
+/** Tabs from API categories  */
+const faqTabItems: FaqTabItemData[] = faqs.map((item, index) => ({
+  id: item.category,
+  name: item.category.replace(/^\w/, (c) => c.toUpperCase()),
+  isActive: index === 0,
+}));
+
+/** Converts the API FAQ array into an object where each key is a category name each value is an array of FAQ items belonging to that category */
+const faqItemsByTab: Record<string, FaqItemData[]> = faqs.reduce(
+  (faqItemsByCategory, categoryItem) => {
+    faqItemsByCategory[categoryItem.category] = categoryItem.faq_items.map((faq) => ({
+      question: faq.question,
+      answer: faq.answer,
+    }));
+    return faqItemsByCategory;
+  },
+  {} as Record<string, FaqItemData[]>,
+);
+
+/** FAQ Schema */
+const faqSchema = getFaqSchema(
+  faqs.flatMap((category) =>
+    category.faq_items.map((faq) => ({
+      question: faq.question,
+      answer: faq.answer,
+    })),
+  ),
+);
 ---
 
-<Layout>
+<Layout meta={{ ...contactMeta, image: `${getSiteUrl()}/images/og/contact.jpg` }}>
+  {/* FAQ Schema JsonLd */}
+  <JsonLd slot="head" data={faqSchema} />
+
+  {/* Contact Schema JsonLd */}
+  <JsonLd slot="head" data={contactOrganizationSchema} />
+
+  {/* Place Schema JsonLd */}
+  <JsonLd slot="head" data={pixoloPlaceSchema} />
+
   <Hero />
   <ContactForm />
-  <FAQ />
+  <FAQ tabs={faqTabItems} itemsByTab={faqItemsByTab} />
 </Layout>

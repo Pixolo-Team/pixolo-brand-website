@@ -5,6 +5,12 @@ import Dropdown from "@/components/ui/Dropdown.astro";
 import InputField from "@/components/ui/InputField.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import Textarea from "@/components/ui/Textarea.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+// IMAGES //
+import formErrorImage from "@/assets/images/contact/form-error.png";
+import formSuccessImage from "@/assets/images/contact/form-success.png";
 
 // DATA //
 import { contactSubjectOptions } from "@/data/contact";
@@ -116,42 +122,67 @@ import Icon from "node_modules/astro-icon/components/Icon.astro";
   id="submission-result-modal"
   class="fixed inset-0 z-60 hidden items-center justify-center bg-black/50 px-6 py-24"
 >
-  <div class="bg-n-100 relative w-full max-w-[596px] rounded-[32px] px-10 py-8 text-center">
+  <div
+    class="bg-n-100 relative flex w-full max-w-[590px] flex-col items-center justify-center gap-20 rounded-3xl px-10 pt-20 pb-7 text-center"
+  >
+    <!-- Background Circle Gradient -->
+    <div
+      class="absolute top-[70%] left-1/2 hidden h-[578px] w-[578px] -translate-x-1/2 rounded-full"
+      style="background: linear-gradient(90deg, rgba(22, 125, 229, 0.36) 0%, rgba(95, 74, 200, 0.36) 92.31%); filter: blur(200px);"
+    >
+    </div>
+
+    <!-- Close button -->
+    <button
+      id="close-result-modal"
+      class="text-n-700 absolute top-6 right-6 flex size-12 cursor-pointer items-center justify-center rounded-full hover:opacity-70"
+      type="button"
+    >
+      <Icon name="close" class="text-n-700" />
+    </button>
+
     <!-- Success -->
-    <div data-state="success" class="flex hidden flex-col items-center gap-2">
-      <!-- Success Icon -->
-      <Icon class={"size-6"} name="success" />
+    <div data-state="success" class="flex hidden flex-col items-center gap-6 md:w-[85%]">
+      <!-- Success Image -->
+      <div class="size-20">
+        <Image src={formSuccessImage} alt="Success" class="h-full w-full object-contain" />
+      </div>
 
       <!-- Success message text -->
-      <div class="space-y-4">
-        <h2 class="text-n-950 text-2xl font-normal">Cheers!</h2>
-        <p class="text-n-400 text-xl font-normal">You're good to go—your form has been submitted</p>
+      <div class="space-y-5">
+        <p class="text-n-950 text-3xl font-bold">Message Delivered</p>
+        <p class="text-n-700 text-base font-bold">
+          We’ve received your details and will take it from here. Expect a response soon.
+        </p>
       </div>
     </div>
 
     <!-- Error -->
-    <div data-state="error" class="flex hidden flex-col items-center gap-2">
-      <!-- Error Icon -->
-      <Icon name="error" class="size-6" />
+    <div data-state="error" class="flex hidden flex-col items-center gap-6 md:w-[85%]">
+      <!-- Error Image -->
+      <div class="size-20">
+        <Image src={formErrorImage} alt="Error" class="h-full w-full object-contain" />
+      </div>
 
       <!-- Error Message text -->
-      <div class="space-y-4">
-        <h2 class="text-n-950 text-2xl font-normal">Oops!</h2>
-        <p class="text-n-400 text-xl font-normal">
-          An unexpected issue has occurred—please try again shortly
+      <div class="space-y-5">
+        <p class="text-n-950 text-3xl font-bold">Something Went Wrong</p>
+        <p class="text-n-700 text-base font-bold">
+          Something didn’t go as planned. Please try again or reach out directly.
         </p>
       </div>
     </div>
-    <button
-      id="close-result-modal"
-      class="text-n-700 absolute top-6 right-6 cursor-pointer hover:opacity-70"
-    >
-      <Icon name="close" class="text-n-700" />
-    </button>
+
+    <!-- Progress bar -->
+    <div class="bg-n-500 h-[5px] w-full overflow-hidden rounded-2xl">
+      <div id="result-progress-bar" class="h-full w-0 bg-gradient-to-r from-blue-500 to-[#8b77f3]">
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
   import { initContactFormModal } from "@/scripts/contact-form";
+
   initContactFormModal();
 </script>

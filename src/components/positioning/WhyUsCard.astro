@@ -1,0 +1,23 @@
+---
+// COMPONENTS //
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props as Props;
+---
+
+<!-- Whyus Card Component -->
+<div
+  class="why-us-card bg-n-100 outline-n-300 flex w-full flex-col items-start gap-4 rounded-3xl p-4 outline -outline-offset-1 md:gap-5 md:p-5 lg:gap-6 lg:p-6"
+>
+  <!-- Icon -->
+  <Icon name="logo-icon" class="text-n-700 size-10 md:size-14 lg:size-16" />
+
+  <!-- Title -->
+  <p class="text-n-950 text-sm leading-tight font-medium md:text-lg lg:text-xl">
+    {title}
+  </p>
+</div>

@@ -28,14 +28,22 @@ const { clientSpecificPortfolios } = Astro.props as Props;
 /** API Call to get all portfolio */
 const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
 
+// Filtering the portfolio items for mini projects
+const miniProjects = portfolioItems.filter(
+  (item) => item.show_in_home === "TRUE" && item.is_highlight === "FALSE",
+);
+
+// We need arrows on Desktop only if there are more than 3 items
+const showArrowsOnDesktop = miniProjects.length > 3;
+
 // Checking if the view is curated with client specific portfolios
 const isCuratedView = clientSpecificPortfolios.length > 0;
 
 // Filtering the portfolio items
-const filteredPortfolioItems = isCuratedView
+const filteredPortfolioItems: PortfolioData[] = isCuratedView
   ? clientSpecificPortfolios
       .map((id) => portfolioItems.find((item) => Number(item.id) === id))
-      .filter(Boolean)
+      .filter((item): item is PortfolioData => Boolean(item))
   : portfolioItems;
 ---
 
@@ -75,7 +83,7 @@ const filteredPortfolioItems = isCuratedView
             <!-- Icon -->
             <Icon
               name={"list"}
-              class={`text-n-500 size-5 lg:size-6 hover:scale-120 transition duration-200 ease-in-out`}
+              class={`text-n-500 text-n-950 size-5 lg:size-6 hover:scale-120 transition duration-200 ease-in-out`}
             />
           </button>
 
@@ -84,7 +92,7 @@ const filteredPortfolioItems = isCuratedView
             <!-- Icon -->
             <Icon
               name={"grid"}
-              class={`size-5 lg:size-6 hover:scale-120 transition duration-200 ease-in-out`}
+              class={`size-5 text-n-500 lg:size-6 hover:scale-120 transition duration-200 ease-in-out`}
             />
           </button>
         </div>
@@ -93,7 +101,7 @@ const filteredPortfolioItems = isCuratedView
         <div
           id="portfolio-project-cards"
           data-view="list"
-          class={`group grid grid-cols-1 data-[view=grid]:md:grid-cols-2 gap-10`}
+          class={`group grid grid-cols-1 data-[view=grid]:md:grid-cols-2 gap-10 md:gap-14 lg:gap-16 lg:gap-x-12`}
         >
           {
             filteredPortfolioItems.map((projectCardItem) => {
@@ -119,8 +127,9 @@ const filteredPortfolioItems = isCuratedView
                   tagItems={projectCardItem.badges}
                   buttonOneText={"Visit Website"}
                   buttonTwoText={"Show Project"}
-                  buttonOneClick={""}
-                  buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(projectCardItem.title)}'`}
+                  buttonOneHref={projectCardItem.website_link}
+                  buttonTwoHref={URLS.PORTFOLIO.ITEM(projectCardItem.slug)}
+                  platform={projectCardItem.platform}
                 />
               );
             })
@@ -164,8 +173,9 @@ const filteredPortfolioItems = isCuratedView
                             }
                             btnOneText={"Visit Website"}
                             btnTwoText={"Show Project"}
-                            buttonOneClick={""}
-                            buttonTwoClick={`window.location.href='${URLS.PORTFOLIO.ITEM(cardItem.title)}'`}
+                            buttonOneHref={cardItem.website_link}
+                            buttonTwoHref={URLS.PORTFOLIO.ITEM(cardItem.slug)}
+                            platform={cardItem.platform}
                           />
                         </div>
                       )
@@ -176,9 +186,11 @@ const filteredPortfolioItems = isCuratedView
             </div>
 
             {/* Slider Cta Wrap */}
-            <div class="flex w-full items-center justify-between gap-6">
+            <div
+              class={`flex w-full items-center gap-6 ${showArrowsOnDesktop ? "justify-between" : "justify-between lg:justify-center"}`}
+            >
               {/* Left spacer */}
-              <div class="flex-1" />
+              <div class={`flex-1 ${!showArrowsOnDesktop ? "lg:hidden" : ""}`} />
 
               {/* Progress bar (centered) */}
               <div class="bg-n-500 h-[2px] w-24 overflow-hidden rounded-2xl md:w-36 lg:w-96">
@@ -186,8 +198,8 @@ const filteredPortfolioItems = isCuratedView
               </div>
 
               {/* Slider arrows (right) */}
-              <div class="flex flex-1 justify-end">
-                <SliderArrows />
+              <div class={`flex flex-1 justify-end ${!showArrowsOnDesktop ? "lg:hidden" : ""}`}>
+                <SliderArrows prevId="showcase-prev" nextId="showcase-next" />
               </div>
             </div>
           </div>
@@ -195,20 +207,20 @@ const filteredPortfolioItems = isCuratedView
       }
     </div>
   </div>
+
+  <script>
+    import {
+      animateShowcaseSection,
+      initShowcase,
+      initShowcaseSlider,
+      animateProjectCards,
+    } from "@/scripts/showcase";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initShowcase();
+      initShowcaseSlider();
+      animateShowcaseSection();
+      animateProjectCards();
+    });
+  </script>
 </section>
-
-<script>
-  import {
-    animateShowcaseSection,
-    initShowcase,
-    initShowcaseSlider,
-    animateProjectCards,
-  } from "@/scripts/showcase";
-
-  document.addEventListener("DOMContentLoaded", () => {
-    initShowcase();
-    initShowcaseSlider();
-    animateShowcaseSection();
-    animateProjectCards();
-  });
-</script>

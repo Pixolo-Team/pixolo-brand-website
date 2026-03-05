@@ -5,6 +5,13 @@ import StatBox from "@/components/project-consumption/StatBox.astro";
 
 // DATA //
 import { impactContent } from "@/data/portfolio/project-consumption/impact";
+import type { PortfolioImpactItem } from "@/types/portfolio";
+
+interface Props {
+  impactItems: PortfolioImpactItem[];
+}
+
+const { impactItems } = Astro.props as Props;
 ---
 
 <!-- Impact Section -->
@@ -23,7 +30,7 @@ import { impactContent } from "@/data/portfolio/project-consumption/impact";
       <!-- Heading -->
       <p
         id="header-text"
-        class="w-full text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl"
+        class="text-n-950 w-full text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:text-4xl lg:text-5xl"
       >
         {impactContent.heading}
       </p>
@@ -31,8 +38,8 @@ import { impactContent } from "@/data/portfolio/project-consumption/impact";
     <!-- StatsRows -->
     <div class="stat-boxes grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       {
-        impactContent.stats.map((statItem, index) => (
-          <StatBox statValue={statItem.statValue} title={statItem.title} index={index} />
+        impactItems.map((impactItem, index) => (
+          <StatBox statValue={impactItem.number} title={impactItem.title} index={index} />
         ))
       }
     </div>

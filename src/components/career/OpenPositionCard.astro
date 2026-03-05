@@ -22,13 +22,13 @@ const {
     <div
       class="border-n-950 flex items-center rounded-3xl border-[0.6px] px-3 py-2 md:px-3.5 md:py-2.5 lg:px-4 lg:py-3"
     >
-      <p class="self-center text-xs leading-none font-medium tracking-normal lg:text-sm">
+      <p class="text-n-950 self-center text-xs leading-none font-medium tracking-normal lg:text-sm">
         {category}
       </p>
     </div>
 
     <!-- Title -->
-    <p class="text-xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl">
+    <p class="text-n-950 text-xl leading-tight font-normal tracking-normal md:text-3xl lg:text-4xl">
       {title}
     </p>
   </div>
@@ -89,8 +89,12 @@ const {
     </div>
 
     <!-- RoundedButton -->
-    <a class="self-start" href={applyUrl} target="_blank" rel="noopener noreferrer">
-      <RoundedButton buttonText={ctaText} type="button" variant="primary" />
-    </a>
+    <RoundedButton
+      buttonText={ctaText}
+      type="button"
+      variant="primary"
+      href={applyUrl}
+      openInNewTab={true}
+    />
   </div>
 </div>

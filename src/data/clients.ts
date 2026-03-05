@@ -1,7 +1,8 @@
 // Data for the Client Section (Header etc)
 export const clientSectionDetails = {
   badgeTitle: "Powering Ideas into Impact",
-  title: "Brands that trust Pixolo",
+  title: "Brands that value thoughtful engineering",
+  footerText: "Turns out good thinking still matters.",
 };
 
 // Clients data that can be reused across the application
@@ -49,4 +50,5 @@ export const clientItems = [
     lightImage: "skorost-united-light.png",
   },
   { name: "Neelsiddhi", darkImage: "neelsidhi.png", lightImage: "neelsidhi-light.png" },
+  { name: "Bajaj", darkImage: "bajaj.png", lightImage: "bajaj-light.png" },
 ];
