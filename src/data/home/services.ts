@@ -12,7 +12,7 @@ export const serviceDetails = [
     tags: [
       "Product Ideation",
       "UX Research",
-      "Feature Planning",
+      "Feature Prioritization",
       "System Architecture",
       "MVP → MLP",
     ],
@@ -58,13 +58,7 @@ export const serviceDetails = [
     imageName: "/images/services/ui-ux-branding.jpg",
     title: "UI-UX & Brand Experience",
     slug: "ui-ux-and-brand-experience",
-    tags: [
-      "UI/UX Design",
-      "Design Systems (Neevo)",
-      "Interaction & Motion",
-      "Brand Identity",
-      "Landing Pages",
-    ],
+    tags: ["User Flows", "Interface Design", "Design Systems", "Brand Consistency"],
     hero: {
       badgeTitle: "Design that feels right from the first click",
       title: "Design that feels obvious.",
@@ -104,7 +98,12 @@ export const serviceDetails = [
     imageName: "/images/services/full-stack-development.jpg",
     title: "Full-Stack Development",
     slug: "full-stack-development",
-    tags: ["Web Apps", "Mobile Apps", "Backend & APIs", "Admin Panels", "Real-time Systems"],
+    tags: [
+      "Web Applications",
+      "Mobile Applications",
+      "APIs & Integrations",
+      "Scalable Architecture",
+    ],
     hero: {
       badgeTitle: "Build it once. Build it right.",
       title: "We build the front, the back, and the parts nobody sees.",
@@ -144,13 +143,7 @@ export const serviceDetails = [
     imageName: "/images/services/ai-automation.jpg",
     title: "AI & Automation",
     slug: "ai-and-automation",
-    tags: [
-      "Custom AI Models",
-      "AI Wrappers (OpenAI, Gemini)",
-      "Recommendation Engines",
-      "Automated Workflows",
-      "ML Dashboards",
-    ],
+    tags: ["Workflow Automation", "AI Integrations", "Smart Dashboards", "Decision Support"],
     hero: {
       badgeTitle: "Work smarter, not harder",
       title: "We automate the boring parts so humans can think better.",
@@ -192,10 +185,9 @@ export const serviceDetails = [
     slug: "cloud-devops-and-infrastructure",
     tags: [
       "Cloud Setup",
-      "CI/CD Pipelines",
-      "Containerization",
-      "Access Management",
-      "Database Optimization",
+      "Deployment Pipelines",
+      "Performance & Scaling",
+      "Security & Reliability",
     ],
     hero: {
       badgeTitle: "Strong foundations, smooth scaling",
@@ -235,13 +227,7 @@ export const serviceDetails = [
     imageName: "/images/services/bussiness-tools.jpg",
     title: "Business Tools & Internal Systems",
     slug: "business-tools-and-internal-systems",
-    tags: [
-      "Billing Systems",
-      "HR & Attendance",
-      "Finance Automation",
-      "CRM-lite Tools",
-      "Operations Dashboards",
-    ],
+    tags: ["Custom CRMs", "Admin Dashboards", "Billing Systems", "Process Automation"],
     hero: {
       badgeTitle: "Run your business without friction",
       title: "Tools your team actually enjoys using every day.",
