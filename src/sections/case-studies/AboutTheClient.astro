@@ -1,0 +1,94 @@
+---
+// COMPONENTS //
+import { Image } from "astro:assets";
+import SectionHeader from "@/components/ui/SectionHeader.astro";
+
+// Receive data from the parent page
+interface props {
+  aboutPointers: {
+    title: string;
+    description: string;
+  }[];
+  aboutImagesMainImage: string;
+  aboutImagesOtherImages: {
+    imagePath: string;
+    alt: string;
+  }[];
+}
+
+const {
+  aboutPointers = [],
+  aboutImagesMainImage = "",
+  aboutImagesOtherImages = [],
+} = Astro.props as props;
+---
+
+<!-- About The Client Section -->
+<section>
+  <div
+    class="text-n-950 container mx-auto flex flex-col gap-8 px-6 py-20 leading-tight md:gap-14 md:py-20 lg:gap-16 lg:px-16 lg:py-28"
+  >
+    {/* Toolbadge & Page Title  */}
+    <SectionHeader
+      sectionTitle="Our Clients at a Glance"
+      badgeIcon="package"
+      badgeText="Our Clients at a Glance"
+    />
+
+    {
+      aboutPointers && (
+        // Content Part
+        <div class="flex flex-col gap-7 md:gap-12">
+          {/* Iterating About the client Data */}
+          {aboutPointers?.map((projectDescriptionItem: any) => (
+            <div class="flex flex-col gap-4 lg:flex-row">
+              {/* Title */}
+              <h2 class="text-2xl font-medium md:text-4xl lg:w-[30%]">
+                {projectDescriptionItem.title}
+              </h2>
+
+              {/* Work Description */}
+              <p class="text-n-800 text-sm md:text-xl lg:flex-1">
+                {projectDescriptionItem.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      )
+    }
+
+    {/* Images Section  */}
+    <div class="flex flex-col gap-4 lg:flex-row lg:gap-5">
+      {/* Top Image */}
+      {
+        aboutImagesMainImage !== "" && (
+          <Image
+            class="h-auto w-full rounded-3xl object-cover md:rounded-4xl lg:w-[60%] lg:rounded-[60px]"
+            width={930}
+            height={482}
+            src={aboutImagesMainImage}
+            alt="Pixolo Client"
+            referrerpolicy="no-referrer"
+          />
+        )
+      }
+
+      {/* Bottom Images */}
+      {
+        aboutImagesOtherImages.length > 0 && (
+          <div class="flex min-w-0 flex-1 gap-4 lg:gap-5">
+            {aboutImagesOtherImages?.slice(0, 2).map((visualImgItem: any) => (
+              <Image
+                class="min-w-0 flex-1 rounded-3xl object-cover lg:rounded-[60px]"
+                width={290}
+                height={400}
+                src={`${visualImgItem.imagePath}`}
+                alt={visualImgItem.alt}
+              />
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
