@@ -5,7 +5,8 @@ export const retainershipDetails = {
   title: "We lend our best minds to strengthen yours.",
   headerText: "We lend our best minds to strengthen yours",
   stepsTitle: "How it works",
-  contentHeading: "Our retainership ensures ongoing collaboration, support, and lasting value.",
+  contentHeading:
+    "Our retainership is for teams that need developers long-term, without hiring them in-house.",
   employeeCardTitle: "Some of the skilled professionals we provide include:",
   footerText: "This isn’t staffing. It’s long-term thinking, without long-term hiring.",
 

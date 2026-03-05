@@ -35,7 +35,7 @@ import { serviceDetails, serviceSectionDetails } from "@/data/home/services.ts";
       class="mx-auto grid w-full grid-cols-1 gap-11 md:gap-16 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-20 2xl:grid-cols-3"
     >
       {
-        serviceDetails.map((serviceItem) => (
+        serviceDetails.slice(0, 3).map((serviceItem) => (
           <a
             href={URLS.SERVICE.ITEM(serviceItem.slug)}
             data-service-item={serviceItem.title}
