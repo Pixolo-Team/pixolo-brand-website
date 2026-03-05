@@ -1,25 +1,109 @@
 ---
-export function getStaticPaths() {
-  return [
-    { params: { pageTitle: "1" } },
-    { params: { pageTitle: "2" } },
-    { params: { pageTitle: "3" } },
-  ];
-}
+// TYPES //
+import type { PortfolioData } from "@/types/portfolio";
+
+// COMPONENTS //
+import ProjectSnapshot from "@/components/ProjectSnapshot.astro";
+import JsonLd from "@/components/layout/JsonLd.astro";
+
+// API SERVICES //
+import { getPortfoliosRequest } from "@/services/api/portfolio.api";
 
 // OTHERS //
 import Layout from "@/layouts/Layout.astro";
+import { getPixoloPortfolioSchema } from "@/schemas/portfolio/portfolio-consumption.schema";
 
 // SECTIONS //
 import Hero from "@/sections/project-consumption/Hero.astro";
-import Video from "@/sections/portfolio/Video.astro";
+import Video from "@/sections/project-consumption/Video.astro";
 import ProjectIntroduction from "@/sections/project-consumption/ProjectIntroduction.astro";
 import Impact from "@/sections/project-consumption/Impact.astro";
+import Teams from "@/sections/project-consumption/Teams.astro";
+import ClientTestimonial from "@/sections/project-consumption/ClientTestimonial.astro";
+import Process from "@/sections/project-consumption/Process.astro";
+
+/**
+ * Generates static paths for all Portfolio Consumption pages
+ * @returns Array of static paths with Portfolio data
+ */
+export async function getStaticPaths() {
+  /** API Call to get portfolio */
+  const portfolioItems = await getPortfoliosRequest();
+
+  return portfolioItems.map((portfolioItem: PortfolioData) => ({
+    params: {
+      pageTitle: portfolioItem.slug,
+    },
+    props: {
+      portfolioItem,
+    },
+  }));
+}
+
+const { portfolioItem }: { portfolioItem: PortfolioData } = Astro.props;
 ---
 
 <Layout>
-  <Hero />
-  <Video />
-  <ProjectIntroduction />
-  <Impact />
+  {/* Portfolio Consumption JSON-LD */}
+  <JsonLd
+    slot="head"
+    data={getPixoloPortfolioSchema({
+      slug: portfolioItem.slug,
+      projectName: portfolioItem.brand_name,
+      summary: portfolioItem.title,
+    })}
+  />
+
+  <Hero
+    logo={portfolioItem.logo}
+    title={portfolioItem.title}
+    description={portfolioItem.subtitle}
+    websiteUrl={portfolioItem.website_link}
+  />
+  {
+    portfolioItem.video_section && (
+      <Video
+        videoUrl={portfolioItem.video_section[0].video_url}
+        alt={portfolioItem.video_section[0].alt}
+      />
+    )
+  }
+  {
+    portfolioItem.introduction && (
+      <ProjectIntroduction
+        title={portfolioItem.introduction[0].title}
+        image={portfolioItem.introduction[0].image}
+        aboutProject={portfolioItem.introduction[0].about_project}
+        target={portfolioItem.introduction[0].target}
+        purpose={portfolioItem.introduction[0].purpose}
+      />
+    )
+  }
+
+  {
+    portfolioItem.snapshot && (
+      <ProjectSnapshot
+        client={portfolioItem.snapshot[0].client}
+        services={portfolioItem.snapshot_services}
+        timeline={portfolioItem.snapshot[0].timeline}
+        industry={portfolioItem.snapshot[0].industry}
+        platforms={portfolioItem.snapshot_platforms}
+        techStack={portfolioItem.snapshot_tech_stack}
+      />
+    )
+  }
+
+  {portfolioItem.process && <Process processItems={portfolioItem.process} />}
+  {portfolioItem.impact && <Impact impactItems={portfolioItem.impact} />}
+  {portfolioItem.teams && <Teams teams={portfolioItem.teams} />}
+  {
+    portfolioItem.client_testimonial && (
+      <ClientTestimonial
+        image={portfolioItem.client_testimonial?.[0]?.image ?? ""}
+        name={portfolioItem.client_testimonial?.[0]?.name ?? ""}
+        role={portfolioItem.client_testimonial?.[0]?.role ?? ""}
+        message={portfolioItem.client_testimonial?.[0]?.message ?? ""}
+      />
+    )
+  }
 </Layout>
