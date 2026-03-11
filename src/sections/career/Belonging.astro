@@ -1,0 +1,95 @@
+---
+// COMPONENTS //
+import ToolBadge from "@/components/ui/ToolBadge.astro";
+import { Image } from "astro:assets";
+
+// ASSETS //
+import coffeeImage from "@/assets/career/belonging/coffee.png";
+import officeImage from "@/assets/career/belonging/office.png";
+import partyImage from "@/assets/career/belonging/party.png";
+import growthMindedImage from "@/assets/career/belonging/growth-minded.png";
+
+const belongingStatements = [
+  {
+    title: "Free coffee, brewed just for you",
+    description: "Enjoy a cup on us because great conversations start with great coffee.",
+    image: coffeeImage,
+    alt: "Fresh coffee being poured into a Pixolo mug",
+  },
+  {
+    title: "A space that sparks brilliance",
+    description:
+      "Where every corner fuels creativity, every desk sparks ideas, and every day feels like a fresh adventure.",
+    image: officeImage,
+    alt: "Pixolo office space with collaborative seating and plants",
+  },
+  {
+    title: "A Night of Team Magic",
+    description:
+      "Good laughs, great stories, unexpected dance moves, and the kind of memories that make Monday feel legendary.",
+    image: partyImage,
+    alt: "Pixolo team members celebrating together at an event",
+  },
+  {
+    title: "Grow with growth-minded people",
+    description:
+      "Step into an environment where every person brings a mindset of progress, curiosity, and relentless improvement to the table.",
+    image: growthMindedImage,
+    alt: "Team member working on a laptop in the office",
+    imageClass: "object-[center_33%]",
+  },
+];
+---
+
+<!-- Belonging Section -->
+<section id="belonging-section">
+  <div
+    class="container mx-auto flex flex-col items-center gap-8 px-6 py-14 md:gap-16 md:py-20 lg:gap-16 lg:py-28"
+  >
+    <div class="flex flex-col items-center gap-3.5 md:gap-4">
+      <div class="tool-badge">
+        <ToolBadge icon="package" text="Built for Everyone" />
+      </div>
+
+      <p
+        class="title-text text-n-950 max-w-[18ch] text-center text-3xl leading-tight font-normal tracking-[-0.02em] md:max-w-[16ch] md:text-4xl lg:max-w-none lg:text-5xl"
+      >
+        A place where everyone belongs, grows, and shines
+      </p>
+    </div>
+
+    <div class="grid w-full gap-8 md:gap-12 lg:grid-cols-2 lg:gap-16">
+      {
+        belongingStatements.map((statement) => (
+          <article class="belonging-card flex flex-col gap-3.5 md:gap-5 lg:gap-6">
+            <div class="overflow-hidden rounded-[32px]">
+              <Image
+                src={statement.image}
+                alt={statement.alt}
+                class={`h-[229px] w-full object-cover md:h-[482px] ${statement.imageClass ?? ""}`}
+                widths={[768, 1024, 1536]}
+                sizes="(min-width: 1024px) 46rem, (min-width: 768px) 48rem, 100vw"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1.5 md:gap-2 lg:gap-2.5">
+              <h3 class="text-n-950 text-[1.75rem] leading-tight font-normal tracking-[-0.02em] md:text-3xl lg:text-4xl">
+                {statement.title}
+              </h3>
+
+              <p class="text-n-700 text-sm leading-tight font-normal md:text-lg lg:text-xl">
+                {statement.description}
+              </p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animateBelongingSection } from "@/scripts/career/belonging";
+
+  animateBelongingSection();
+</script>

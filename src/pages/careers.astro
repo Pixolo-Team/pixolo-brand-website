@@ -7,6 +7,7 @@ import Layout from "@/layouts/Layout.astro";
 
 // SECTIONS //
 import Hero from "@/sections/career/Hero.astro";
+import Belonging from "@/sections/career/Belonging.astro";
 import TechStack from "@/sections/career/TechStack.astro";
 import OpenPositions from "@/sections/career/OpenPositions.astro";
 
@@ -16,6 +17,7 @@ import careerMeta from "@/data/meta/career.json";
 
 <Layout meta={{ ...careerMeta, image: `${getSiteUrl()}/images/og/career.jpg` }}>
   <Hero />
+  <Belonging />
   <TechStack />
   <OpenPositions />
 </Layout>
