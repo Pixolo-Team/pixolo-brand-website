@@ -36,18 +36,23 @@ const {
   buttonOneHref = "#",
   buttonTwoHref = "#",
 } = Astro.props as Props;
+
+const normalizedButtonOneHref = buttonOneHref.trim();
+const normalizedButtonTwoHref = buttonTwoHref.trim();
+const hasPrimaryButton = normalizedButtonOneHref !== "" && normalizedButtonOneHref !== "#";
+const hasSecondaryButton = normalizedButtonTwoHref !== "" && normalizedButtonTwoHref !== "#";
 ---
 
 <!-- MiniProjectCard Component -->
 <div id={id} class="flex h-full w-full flex-col gap-2.5 md:gap-4 lg:gap-6">
   <!-- Image part -->
-  <div class="h-full overflow-hidden rounded-2xl">
+  <div class="bg-n-100 h-full overflow-hidden rounded-2xl p-4 md:p-5">
     <!-- Card Image -->
     <ThemeImage
       light={image}
       dark={image}
       alt={title}
-      class="h-full w-full object-contain"
+      class="h-full w-full rounded-2xl object-contain"
       width={400}
       height={250}
     />
@@ -88,41 +93,51 @@ const {
         platform === "app" ? (
           <>
             {/* Play Store */}
-            <a
-              href={buttonOneClick}
-              class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
-            >
-              <span class="flex items-center justify-center">
-                <Icon name="play-store" class="text-n-100 size-5" />
-              </span>
-            </a>
+            {buttonOneClick && (
+              <a
+                href={buttonOneClick}
+                class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
+              >
+                <span class="flex items-center justify-center">
+                  <Icon name="play-store" class="text-n-100 size-5" />
+                </span>
+              </a>
+            )}
 
             {/* App Store */}
-            <a
-              href="#"
-              class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
-            >
-              <Icon name="app-store" class="text-n-100 size-5" />
-            </a>
+            {hasPrimaryButton && (
+              <a
+                href={normalizedButtonOneHref}
+                class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
+              >
+                <Icon name="app-store" class="text-n-100 size-5" />
+              </a>
+            )}
           </>
         ) : (
           // Primary Button
-          <RoundedButton
-            buttonText={btnOneText}
-            onClick={buttonOneClick}
-            href={buttonOneHref}
-            openInNewTab={true}
-          />
+          hasPrimaryButton && (
+            <RoundedButton
+              buttonText={btnOneText}
+              onClick={buttonOneClick}
+              href={normalizedButtonOneHref}
+              openInNewTab={true}
+            />
+          )
         )
       }
 
       <!-- Secondary Button -->
-      <RoundedButton
-        buttonText={btnTwoText}
-        onClick={buttonTwoClick}
-        variant="secondary"
-        href={buttonTwoHref}
-      />
+      {
+        hasSecondaryButton && (
+          <RoundedButton
+            buttonText={btnTwoText}
+            onClick={buttonTwoClick}
+            variant="secondary"
+            href={normalizedButtonTwoHref}
+          />
+        )
+      }
     </div>
   </div>
 </div>
