@@ -20,6 +20,8 @@ interface Props {
   platform?: string;
   buttonOneHref?: string;
   buttonTwoHref?: string;
+  playStoreHref?: string;
+  appStoreHref?: string;
 }
 
 const {
@@ -35,12 +37,18 @@ const {
   platform = "web",
   buttonOneHref = "#",
   buttonTwoHref = "#",
+  playStoreHref = "",
+  appStoreHref = "",
 } = Astro.props as Props;
 
 const normalizedButtonOneHref = buttonOneHref.trim();
 const normalizedButtonTwoHref = buttonTwoHref.trim();
+const normalizedPlayStoreHref = (playStoreHref || buttonOneHref).trim();
+const normalizedAppStoreHref = (appStoreHref || buttonTwoHref).trim();
 const hasPrimaryButton = normalizedButtonOneHref !== "" && normalizedButtonOneHref !== "#";
 const hasSecondaryButton = normalizedButtonTwoHref !== "" && normalizedButtonTwoHref !== "#";
+const hasPlayStoreButton = normalizedPlayStoreHref !== "" && normalizedPlayStoreHref !== "#";
+const hasAppStoreButton = normalizedAppStoreHref !== "" && normalizedAppStoreHref !== "#";
 ---
 
 <!-- MiniProjectCard Component -->
@@ -93,9 +101,9 @@ const hasSecondaryButton = normalizedButtonTwoHref !== "" && normalizedButtonTwo
         platform === "app" ? (
           <>
             {/* Play Store */}
-            {buttonOneClick && (
+            {hasPlayStoreButton && (
               <a
-                href={buttonOneClick}
+                href={normalizedPlayStoreHref}
                 class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
               >
                 <span class="flex items-center justify-center">
@@ -105,9 +113,9 @@ const hasSecondaryButton = normalizedButtonTwoHref !== "" && normalizedButtonTwo
             )}
 
             {/* App Store */}
-            {hasPrimaryButton && (
+            {hasAppStoreButton && (
               <a
-                href={normalizedButtonOneHref}
+                href={normalizedAppStoreHref}
                 class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
               >
                 <Icon name="app-store" class="text-n-100 size-5" />
