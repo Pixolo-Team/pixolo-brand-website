@@ -3,17 +3,17 @@
 import ToolBadge from "@/components/ui/ToolBadge.astro";
 import { Image } from "astro:assets";
 
-// IMAGES //
-import Ball from "@/assets/marble.png";
+// SVG's //
+import Ball from "@/assets/3d-ball.svg";
 
 // DATA //
 import { portfolioHeroDetails } from "@/data/portfolio/hero.ts";
 ---
 
 <!-- Hero Section -->
-<section>
+<section id="hero-section-portfolio" data-section="Portfolio Hero">
   <div
-    id="hero-wrapper-portfolio"
+    id="portfolio-hero"
     class="relative container mx-auto flex flex-col items-center px-6 pt-24 pb-16 text-center md:gap-9 md:py-30 lg:gap-12 xl:pt-52 2xl:pt-64"
   >
     <!-- Large 3D Ball  -->
@@ -65,6 +65,6 @@ import { portfolioHeroDetails } from "@/data/portfolio/hero.ts";
   import { animateHeroTitle, animateMarble } from "@/scripts/hero";
 
   animateHeroTitle();
-  animateMarble("big-marble-portfolio-hero", "hero-wrapper-portfolio");
-  animateMarble("small-marble-portfolio-hero", "hero-wrapper-portfolio");
+  animateMarble("big-marble-portfolio-hero", "portfolio-hero");
+  animateMarble("small-marble-portfolio-hero", "portfolio-hero");
 </script>
