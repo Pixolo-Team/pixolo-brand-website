@@ -18,7 +18,7 @@ import { portfolioHeroDetails } from "@/data/portfolio/hero.ts";
   >
     <!-- Large 3D Ball  -->
     <Image
-      id="big-marble-portfolio"
+      id="big-marble-portfolio-hero"
       src={Ball}
       alt="Big Marble"
       class="absolute top-[278px] left-[65px] z-[-1] w-9 md:top-[400px] md:left-[200px] md:h-15 md:w-20 lg:h-16 lg:w-20 xl:top-[330px] xl:left-[120px]"
@@ -26,7 +26,7 @@ import { portfolioHeroDetails } from "@/data/portfolio/hero.ts";
 
     <!-- Small 3D Ball -->
     <Image
-      id="small-marble-portfolio"
+      id="small-marble-portfolio-hero"
       src={Ball}
       alt="Small Marble"
       class="absolute top-[145px] left-[252.47px] z-[-1] w-5 rotate-[-20deg] md:top-[450px] md:left-[780px] md:h-10 md:w-12 lg:h-11 lg:w-12 xl:top-[300px] xl:left-[1200px]"
@@ -65,6 +65,6 @@ import { portfolioHeroDetails } from "@/data/portfolio/hero.ts";
   import { animateHeroTitle, animateMarble } from "@/scripts/hero";
 
   animateHeroTitle();
-  animateMarble("big-marble-portfolio", "hero-wrapper-portfolio");
-  animateMarble("small-marble-portfolio", "hero-wrapper-portfolio");
+  animateMarble("big-marble-portfolio-hero", "hero-wrapper-portfolio");
+  animateMarble("small-marble-portfolio-hero", "hero-wrapper-portfolio");
 </script>
