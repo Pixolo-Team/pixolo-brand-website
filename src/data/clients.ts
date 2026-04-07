@@ -51,4 +51,7 @@ export const clientItems = [
   },
   { name: "Neelsiddhi", darkImage: "neelsidhi.png", lightImage: "neelsidhi-light.png" },
   { name: "Bajaj", darkImage: "bajaj.png", lightImage: "bajaj-light.png" },
+  { name: "Project Now", darkImage: "project-now.png", lightImage: "project-now-light.png" },
+  { name: "Samsung", darkImage: "samsung.png", lightImage: "samsung-light.png" },
+  { name: "Flybird", darkImage: "flybird.png", lightImage: "flybird-light.png" },
 ];
