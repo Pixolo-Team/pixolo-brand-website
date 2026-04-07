@@ -110,7 +110,6 @@ export const animateProjectCards = () => {
 
     /** Run only if all required elements exist */
     if (!card || !image || !header || !content || !buttons) {
-      console.log("error");
       return;
     }
 

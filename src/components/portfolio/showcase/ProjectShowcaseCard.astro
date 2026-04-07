@@ -22,6 +22,8 @@ interface Props {
   platform?: string;
   buttonOneHref?: string;
   buttonTwoHref?: string;
+  playStoreHref?: string;
+  appStoreHref?: string;
 }
 
 const {
@@ -40,7 +42,18 @@ const {
   platform = "web",
   buttonOneHref = "#",
   buttonTwoHref = "#",
+  playStoreHref = "",
+  appStoreHref = "",
 } = Astro.props as Props;
+
+const normalizedButtonOneHref = buttonOneHref.trim();
+const normalizedButtonTwoHref = buttonTwoHref.trim();
+const normalizedPlayStoreHref = (playStoreHref || buttonOneHref).trim();
+const normalizedAppStoreHref = (appStoreHref || buttonTwoHref).trim();
+const hasPrimaryButton = normalizedButtonOneHref !== "" && normalizedButtonOneHref !== "#";
+const hasSecondaryButton = normalizedButtonTwoHref !== "" && normalizedButtonTwoHref !== "#";
+const hasPlayStoreButton = normalizedPlayStoreHref !== "" && normalizedPlayStoreHref !== "#";
+const hasAppStoreButton = normalizedAppStoreHref !== "" && normalizedAppStoreHref !== "#";
 ---
 
 <!-- Project Card -->
@@ -50,14 +63,14 @@ const {
 >
   <!-- Project Card Image -->
   <div
-    class=`project-card-image w-full rounded-3xl overflow-hidden group-data-[view=list]:md:flex-1 group-data-[view=list]:md:h-auto`
+    class=`project-card-image bg-n-100 w-full overflow-hidden rounded-3xl p-4 group-data-[view=list]:md:flex-1 group-data-[view=list]:md:h-auto md:p-5 lg:p-6`
   >
     <Image
       src={image}
       alt={name}
       width={327}
       height={238}
-      class="h-full w-full object-contain"
+      class="h-full w-full rounded-2xl object-contain"
       loading="lazy"
     />
   </div>
@@ -120,41 +133,51 @@ const {
         platform === "app" ? (
           <>
             {/* Play Store */}
-            <a
-              href={buttonOneClick}
-              class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
-            >
-              <span class="flex items-center justify-center">
-                <Icon name="play-store" class="text-n-100 size-5" />
-              </span>
-            </a>
+            {hasPlayStoreButton && (
+              <a
+                href={normalizedPlayStoreHref}
+                class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
+              >
+                <span class="flex items-center justify-center">
+                  <Icon name="play-store" class="text-n-100 size-5" />
+                </span>
+              </a>
+            )}
 
             {/* App Store */}
-            <a
-              href="#"
-              class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
-            >
-              <Icon name="app-store" class="text-n-100 size-5" />
-            </a>
+            {hasAppStoreButton && (
+              <a
+                href={normalizedAppStoreHref}
+                class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
+              >
+                <Icon name="app-store" class="text-n-100 size-5" />
+              </a>
+            )}
           </>
         ) : (
           // Primary Button
-          <RoundedButton
-            buttonText={buttonOneText}
-            onClick={buttonOneClick}
-            href={buttonOneHref}
-            openInNewTab={true}
-          />
+          hasPrimaryButton && (
+            <RoundedButton
+              buttonText={buttonOneText}
+              onClick={buttonOneClick}
+              href={normalizedButtonOneHref}
+              openInNewTab={true}
+            />
+          )
         )
       }
 
       <!-- Secondary Button -->
-      <RoundedButton
-        buttonText={buttonTwoText}
-        onClick={buttonTwoClick}
-        href={buttonTwoHref}
-        variant="secondary"
-      />
+      {
+        hasSecondaryButton && (
+          <RoundedButton
+            buttonText={buttonTwoText}
+            onClick={buttonTwoClick}
+            href={normalizedButtonTwoHref}
+            variant="secondary"
+          />
+        )
+      }
     </div>
   </div>
 </div>
