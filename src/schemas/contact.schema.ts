@@ -7,8 +7,8 @@ export const contactOrganizationSchema = {
     {
       "@type": "ContactPoint",
       contactType: "sales",
-      email: "hello@pixolotechnologies.com",
-      telephone: "+91-9768941186",
+      email: "connect@pixolotechnologies.com",
+      telephone: "+91-9892309721",
       areaServed: ["IN", "US", "UK", "Global"],
       availableLanguage: ["English"],
     },

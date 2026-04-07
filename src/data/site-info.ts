@@ -4,15 +4,15 @@ export const siteInfo = {
   contact: {
     phone: [
       {
-        value: "9768941186",
-        link: "tel:9768941186",
+        value: "9892309721",
+        link: "tel:9892309721",
       },
     ],
 
     email: [
       {
-        value: "hello@pixolotechnologies.com",
-        link: "mailto:hello@pixolotechnologies.com",
+        value: "connect@pixolotechnologies.com",
+        link: "mailto:connect@pixolotechnologies.com",
       },
     ],
 
