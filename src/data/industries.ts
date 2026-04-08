@@ -31,12 +31,12 @@ export const industriesSectionDetails: IndustriesSectionDetails = {
       {
         name: "Zizo",
         image: "/images/industries/zizo.svg",
-        websiteLink: "/",
+        websiteLink: "https://www.zizoapp.in/",
       },
       {
         name: "Skorost United",
         image: "/images/industries/skorost.svg",
-        websiteLink: "/",
+        websiteLink: "https://academy.skorostunited.com/",
       },
     ],
 
@@ -44,17 +44,16 @@ export const industriesSectionDetails: IndustriesSectionDetails = {
       {
         name: "Sunali’s Classes (Keystone) – INQ App, QG System, Lwinq",
         image: "/images/industries/sunali-class.svg",
-        websiteLink: "/",
       },
       {
         name: "SAI Group – School App + Brand Websites",
         image: "/images/industries/sai.svg",
-        websiteLink: "/",
+        websiteLink: "https://www.saiinternational.edu.in/",
       },
       {
         name: "Chinook Driving Academy – Driving School Platform",
         image: "/images/industries/chinook.svg",
-        websiteLink: "/",
+        websiteLink: "https://www.chinookdrivingacademy.com/",
       },
     ],
 
@@ -62,7 +61,7 @@ export const industriesSectionDetails: IndustriesSectionDetails = {
       {
         name: "RichMonks – F&O Algorithmic Trading Ecosystem",
         image: "/images/industries/rich-monk.svg",
-        websiteLink: "/",
+        websiteLink: "https://www.richmonks.in/",
       },
     ],
 
@@ -70,7 +69,7 @@ export const industriesSectionDetails: IndustriesSectionDetails = {
       {
         name: "Eightydays – Travel App + Admin + Backend",
         image: "/images/industries/eighty-days.svg",
-        websiteLink: "/",
+        websiteLink: "https://eightydays.ai/",
       },
     ],
 
@@ -78,7 +77,7 @@ export const industriesSectionDetails: IndustriesSectionDetails = {
       {
         name: "Pango – App + Altius Diet Maker + Backend",
         image: "/images/industries/pango.png",
-        websiteLink: "/",
+        websiteLink: "https://pango.in/",
       },
     ],
 
@@ -86,7 +85,7 @@ export const industriesSectionDetails: IndustriesSectionDetails = {
       {
         name: "Neelsidhi – Sheet-Based CMS Project",
         image: "/images/industries/neelsidhi.svg",
-        websiteLink: "/",
+        websiteLink: "https://www.neelsidhi.com/",
       },
     ],
 
@@ -94,7 +93,6 @@ export const industriesSectionDetails: IndustriesSectionDetails = {
       {
         name: "ConnectClub – Community App",
         image: "/images/industries/connect-club.svg",
-        websiteLink: "/",
       },
     ],
 
@@ -102,12 +100,11 @@ export const industriesSectionDetails: IndustriesSectionDetails = {
       {
         name: "Too Yumm Masala Cheers – IPL Sponsorship Website",
         image: "/images/industries/too-tumm.svg",
-        websiteLink: "/",
       },
       {
         name: "Reliance Digital – AI Masterclass Campaign",
         image: "/images/industries/reliance-digial.svg",
-        websiteLink: "/",
+        websiteLink: "https://reliancedigitalcommunity.com/",
       },
     ],
   },
