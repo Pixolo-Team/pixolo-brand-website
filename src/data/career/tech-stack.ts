@@ -44,5 +44,8 @@ export const techStackDetails = {
 
     { icon: "unity", name: "Unity" },
     { icon: "unreal", name: "Unreal Engine" },
+    { icon: "codex", name: "OpenAI Codex" },
+    { icon: "copilot", name: "GitHub Copilot" },
+    { icon: "claude", name: "Claude AI" },
   ],
 };

@@ -5,14 +5,18 @@ import { Icon } from "astro-icon/components";
 interface props {
   image: string;
   name: string;
-  websiteLink: string;
+  websiteLink?: string;
 }
 
 const { image, name, websiteLink } = Astro.props as props;
 ---
 
 <!-- Industry Project Card -->
-<a href={websiteLink} class="group flex h-full w-full cursor-pointer flex-col gap-3 md:gap-4">
+<a
+  target="_blank"
+  href={websiteLink}
+  class="group flex h-full w-full cursor-pointer flex-col gap-3 md:gap-4"
+>
   <div
     class="border-n-700 hover:bg-n-100 hover:border-n-100 flex transform-gpu items-center justify-center overflow-hidden border-b p-20 transition-colors duration-200 ease-in-out"
   >
@@ -29,6 +33,6 @@ const { image, name, websiteLink } = Astro.props as props;
     </p>
 
     {/* Right arrow */}
-    {websiteLink && <Icon name="right-arrow" class="text-n-950 size-6 md:size-7" />}
+    {websiteLink !== "" && <Icon name="right-arrow" class="text-n-950 size-6 md:size-7" />}
   </div>
 </a>

@@ -1,7 +1,7 @@
 export type IndustryProject = {
   name: string;
   image: string;
-  websiteLink: string;
+  websiteLink?: string;
 };
 
 export type IndustryTabItem = {

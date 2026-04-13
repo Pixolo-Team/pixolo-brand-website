@@ -40,7 +40,11 @@ import { industriesSectionDetails } from "@/data/industries";
             class="grid gap-8 md:grid-cols-2 md:gap-16 lg:gap-12 xl:grid-cols-3"
           >
             {industriesSectionDetails.industriesProjectsByTab[tab.id].map((project) => (
-              <ProjectCard name={project.name} image={project.image} />
+              <ProjectCard
+                name={project.name}
+                image={project.image}
+                websiteLink={project.websiteLink}
+              />
             ))}
           </div>
         ))
