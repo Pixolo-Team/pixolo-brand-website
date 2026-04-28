@@ -11,7 +11,7 @@ jobs:
     timeout-minutes: 5
 
     steps:
-      - name: Ping Website Keepalive API
+      - name: Ping Websites Keepalive API
         run: |
           curl --silent --show-error --fail \
             --max-time 20 \
