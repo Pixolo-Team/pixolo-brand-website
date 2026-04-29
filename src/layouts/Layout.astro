@@ -100,13 +100,13 @@ const { meta = {}, hideBottomCTA = false } = Astro.props;
     <!-- Whatsapp button component -->
     <WhatsappButton
       href={`https://wa.me/${siteInfo.contact.phone[0].value}`}
-      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-10 hidden md:flex"
+      extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-30 hidden md:flex"
     />
 
     {
       !hideBottomCTA && (
         // Bottom CTA
-        <div class="fixed right-0 bottom-5 left-0 z-40 flex justify-center px-6 md:bottom-12">
+        <div class="pointer-events-none fixed right-0 bottom-5 left-0 z-40 flex justify-center px-6 md:bottom-12">
           <BottomCTA />
         </div>
       )
