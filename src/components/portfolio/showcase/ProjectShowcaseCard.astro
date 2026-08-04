@@ -48,8 +48,8 @@ const {
 
 const normalizedButtonOneHref = buttonOneHref.trim();
 const normalizedButtonTwoHref = buttonTwoHref.trim();
-const normalizedPlayStoreHref = (playStoreHref || buttonOneHref).trim();
-const normalizedAppStoreHref = (appStoreHref || buttonTwoHref).trim();
+const normalizedPlayStoreHref = (playStoreHref || "").trim();
+const normalizedAppStoreHref = (appStoreHref || "").trim();
 const hasPrimaryButton = normalizedButtonOneHref !== "" && normalizedButtonOneHref !== "#";
 const hasSecondaryButton = normalizedButtonTwoHref !== "" && normalizedButtonTwoHref !== "#";
 const hasPlayStoreButton = normalizedPlayStoreHref !== "" && normalizedPlayStoreHref !== "#";
