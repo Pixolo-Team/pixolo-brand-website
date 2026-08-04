@@ -31,8 +31,8 @@ const {
 } = Astro.props as Props;
 
 const normalizedWebsiteUrl = (websiteUrl || "").trim();
-const normalizedPlayStoreUrl = (playStoreUrl || websiteUrl || "").trim();
-const normalizedAppStoreUrl = (appStoreUrl || websiteUrl || "").trim();
+const normalizedPlayStoreUrl = (playStoreUrl || "").trim();
+const normalizedAppStoreUrl = (appStoreUrl || "").trim();
 const hasWebsite = normalizedWebsiteUrl !== "" && normalizedWebsiteUrl !== "#";
 const hasPlayStore = normalizedPlayStoreUrl !== "" && normalizedPlayStoreUrl !== "#";
 const hasAppStore = normalizedAppStoreUrl !== "" && normalizedAppStoreUrl !== "#";
