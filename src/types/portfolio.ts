@@ -75,6 +75,8 @@ export type PortfolioData = {
   is_highlight: "TRUE" | "FALSE";
 
   website_link: string;
+  play_store_link: string;
+  app_store_link: string;
 
   hero: PortfolioHeroItem[];
 
