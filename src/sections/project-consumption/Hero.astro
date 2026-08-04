@@ -3,6 +3,7 @@
 import ThemeImage from "@/components/ui/ThemeImage.astro";
 import RoundedButton from "@/components/ui/RoundedButton.astro";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 // SVG's //
 import Ball from "@/assets/3d-ball.svg";
@@ -14,9 +15,27 @@ interface Props {
   title: string;
   description: string;
   websiteUrl: string;
+  platform?: string;
+  playStoreUrl?: string;
+  appStoreUrl?: string;
 }
 
-const { logo, title, description, websiteUrl } = Astro.props as Props;
+const {
+  logo,
+  title,
+  description,
+  websiteUrl,
+  platform = "web",
+  playStoreUrl = "",
+  appStoreUrl = "",
+} = Astro.props as Props;
+
+const normalizedWebsiteUrl = (websiteUrl || "").trim();
+const normalizedPlayStoreUrl = (playStoreUrl || websiteUrl || "").trim();
+const normalizedAppStoreUrl = (appStoreUrl || websiteUrl || "").trim();
+const hasWebsite = normalizedWebsiteUrl !== "" && normalizedWebsiteUrl !== "#";
+const hasPlayStore = normalizedPlayStoreUrl !== "" && normalizedPlayStoreUrl !== "#";
+const hasAppStore = normalizedAppStoreUrl !== "" && normalizedAppStoreUrl !== "#";
 ---
 
 <!-- Project Consumption Hero Section -->
@@ -69,14 +88,46 @@ const { logo, title, description, websiteUrl } = Astro.props as Props;
     </div>
 
     <!-- Buttons -->
-    <div class="flex gap-3.5">
-      <!-- Visit Website Button -->
-      <RoundedButton
-        buttonText={"Visit Website"}
-        type="button"
-        href={websiteUrl}
-        openInNewTab={true}
-      />
+    <div class="flex items-center gap-3.5">
+      {
+        platform === "app" ? (
+          <>
+            {/* Play Store */}
+            {hasPlayStore && (
+              <a
+                target="_blank"
+                href={normalizedPlayStoreUrl}
+                aria-label="Get it on Google Play"
+                class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
+              >
+                <Icon name="play-store" class="text-n-100 size-5" />
+              </a>
+            )}
+
+            {/* App Store */}
+            {hasAppStore && (
+              <a
+                target="_blank"
+                href={normalizedAppStoreUrl}
+                aria-label="Download on the App Store"
+                class="bg-n-950 hover:bg-n-500 flex size-11 cursor-pointer items-center justify-center rounded-full transition-all duration-300 md:size-12 lg:size-14"
+              >
+                <Icon name="app-store" class="text-n-100 size-5" />
+              </a>
+            )}
+          </>
+        ) : (
+          // Visit Website Button
+          hasWebsite && (
+            <RoundedButton
+              buttonText={"Visit Website"}
+              type="button"
+              href={normalizedWebsiteUrl}
+              openInNewTab={true}
+            />
+          )
+        )
+      }
     </div>
   </div>
 </section>

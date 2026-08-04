@@ -159,6 +159,8 @@ $structure = (object) [
             "show_in_home" => "",
             "is_highlight" => "",
             "website_link" => "",
+            "play_store_link" => "",
+            "app_store_link" => "",
             "hero" => array(
                 (object)[
                     "title" => "",

@@ -30,14 +30,20 @@ export async function getStaticPaths() {
   /** API Call to get portfolio */
   const portfolioItems = await getPortfoliosRequest();
 
-  return portfolioItems.map((portfolioItem: PortfolioData) => ({
-    params: {
-      pageTitle: portfolioItem.slug,
-    },
-    props: {
-      portfolioItem,
-    },
-  }));
+  // Guard: API can return a non-array error shape on failure
+  if (!Array.isArray(portfolioItems)) return [];
+
+  return portfolioItems
+    // Drop rows without a usable slug (blank/extra sheet rows) — they break the route param
+    .filter((portfolioItem: PortfolioData) => Boolean(portfolioItem?.slug?.trim()))
+    .map((portfolioItem: PortfolioData) => ({
+      params: {
+        pageTitle: portfolioItem.slug.trim(),
+      },
+      props: {
+        portfolioItem,
+      },
+    }));
 }
 
 const { portfolioItem }: { portfolioItem: PortfolioData } = Astro.props;
@@ -59,6 +65,9 @@ const { portfolioItem }: { portfolioItem: PortfolioData } = Astro.props;
     title={portfolioItem.title}
     description={portfolioItem.subtitle}
     websiteUrl={portfolioItem.website_link}
+    platform={portfolioItem.platform}
+    playStoreUrl={portfolioItem.play_store_link}
+    appStoreUrl={portfolioItem.app_store_link}
   />
   {
     portfolioItem.video_section && (
