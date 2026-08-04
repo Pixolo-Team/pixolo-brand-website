@@ -92,10 +92,10 @@ const hasAppStoreButton = normalizedAppStoreHref !== "" && normalizedAppStoreHre
 
         <!-- Tags -->
         {
-          tagItems.length > 0 && (
+          (tagItems ?? []).some((tagItem) => String(tagItem ?? "").trim() !== "") && (
             <div class="flex flex-wrap gap-2 md:gap-2.5">
-              {tagItems.map((tagItem) => {
-                return tagItem !== "" && <Tag tagName={tagItem} />;
+              {(tagItems ?? []).map((tagItem) => {
+                return String(tagItem ?? "").trim() !== "" && <Tag tagName={tagItem} />;
               })}
             </div>
           )

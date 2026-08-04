@@ -19,6 +19,9 @@ interface Props {
 
 // PROPS //
 const { brandColor, brandName, image, logo, title, subtitle, badges, href } = Astro.props as Props;
+
+// Drop empty/null/whitespace badges so blank pills never render
+const visibleBadges = (badges ?? []).filter((badge) => String(badge ?? "").trim() !== "");
 ---
 
 <!-- Main Project Tile -->
@@ -43,11 +46,11 @@ const { brandColor, brandName, image, logo, title, subtitle, badges, href } = As
       <!-- Project Details -->
       <div class="flex flex-col gap-5 md:gap-6 xl:gap-7">
         {
-          badges.length > 0 && (
+          visibleBadges.length > 0 && (
             // Chip Wrapper
             <div class="flex flex-wrap gap-2">
               {/* Portfolio Chip */}
-              {badges?.map((badgeText) => (
+              {visibleBadges.map((badgeText) => (
                 /* Badge */
                 <div class="gap-2.5 rounded-3xl border border-white px-2.5 py-2 md:px-3 md:py-2.5">
                   {/* Badge Text */}
