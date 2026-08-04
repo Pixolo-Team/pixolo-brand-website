@@ -76,11 +76,11 @@ const hasAppStoreButton = normalizedAppStoreHref !== "" && normalizedAppStoreHre
         <p class="text-n-950 text-lg leading-tight font-normal md:text-xl lg:text-2xl">{title}</p>
 
         {
-          tagItems.length > 0 && (
+          (tagItems ?? []).some((tagItem) => String(tagItem ?? "").trim() !== "") && (
             // Badge wrap
             <div class="flex flex-row flex-wrap gap-1.5 gap-y-2">
-              {tagItems.map((tagItem) => {
-                return tagItem !== "" && <Tag tagName={tagItem} />;
+              {(tagItems ?? []).map((tagItem) => {
+                return String(tagItem ?? "").trim() !== "" && <Tag tagName={tagItem} />;
               })}
             </div>
           )

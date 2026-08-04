@@ -4,9 +4,12 @@ interface Props {
 }
 
 const { items } = Astro.props as Props;
+
+// Drop null/empty/whitespace entries so blank lines never render
+const visibleItems = (items ?? []).filter((item) => String(item ?? "").trim() !== "");
 ---
 
 <!-- Snapshot List Component -->
 <div class="text-normal flex flex-col gap-1 text-xs leading-tight md:gap-2 md:text-xl lg:text-2xl">
-  {items.map((item) => <p>{item}</p>)}
+  {visibleItems.map((item) => <p>{item}</p>)}
 </div>
