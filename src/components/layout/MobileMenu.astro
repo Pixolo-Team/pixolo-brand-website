@@ -69,7 +69,7 @@ const currentPath = Astro.url.pathname;
       <a id="call-button" href={siteInfo.contact.phone[0].link}>
         <RoundedButton buttonText="Call" variant="secondary" />
       </a>
-      <a id="whatsapp-button" href={`https://wa.me/${siteInfo.contact.phone[0].value}`}>
+      <a id="whatsapp-button" href={`https://wa.me/${siteInfo.contact.phone[0].whatsapp}`}>
         <RoundedButton buttonText="Whatsapp" variant="secondary" />
       </a>
     </div>

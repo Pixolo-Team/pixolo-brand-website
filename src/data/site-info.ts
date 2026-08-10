@@ -4,8 +4,10 @@ export const siteInfo = {
   contact: {
     phone: [
       {
-        value: "9892309721",
-        link: "tel:9892309721",
+        value: "+91 9892309721",
+        link: "tel:+919892309721",
+        // Digits-only with country code for wa.me links
+        whatsapp: "919892309721",
       },
     ],
 
