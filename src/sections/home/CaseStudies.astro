@@ -15,6 +15,21 @@ import type { CaseStudyData } from "@/types/case-studies";
 
 /** API Call to get case studies */
 const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
+
+const homeCaseStudyTitles: Record<string, string> = {
+  "sai-international-school-ux-case-study-ai-powered-visual-transformation":
+    "How AI can change the visuals in a website.",
+  "sai-international-school-ux-case-study-conversion-driven-content-strategy":
+    "How Content and Language Matter.",
+  "sai-international-school-ux-case-study-simplifying-the-admissions-journey":
+    "User flow to business should be seamless.",
+  "poonam-pandey-case-study-70-server-cost-optimization":
+    "How can we use the best servers with a 70% discount?",
+  "technical-case-study-achieving-near-instant-load-times-with-custom-pre-rendering":
+    "Why do images loading slow on your website lose business.",
+  "technical-case-study-dynamic-content-delivery-via-google-sheets":
+    "Powering a Website via a Simple Google Sheet",
+};
 ---
 
 <section id="case-studies-section" data-section="Case Studies">
@@ -55,7 +70,7 @@ const caseStudies: CaseStudyData[] = await getCaseStudiesRequest();
                     image={caseStudyItem.thumbnail}
                     href={URLS.CASE_STUDIES.ITEM(caseStudyItem.slug)}
                     id={filteredIndex}
-                    title={caseStudyItem.name}
+                    title={homeCaseStudyTitles[caseStudyItem.slug] ?? caseStudyItem.name}
                   />
                 </div>
               ))

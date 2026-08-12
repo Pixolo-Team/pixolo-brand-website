@@ -81,12 +81,12 @@ const visibleBadges = (badges ?? []).filter((badge) => String(badge ?? "").trim(
   </div>
 
   <!-- Image -->
-  <div class="hidden h-full w-[42%] self-end pr-6 pb-5 xl:block">
+  <div class="hidden w-[42%] self-stretch pr-6 pb-5 xl:flex xl:items-end">
     <ThemeImage
       light={image}
       dark={image}
       alt={`${brandName} Project Screenshot`}
-      class="h-full w-full"
+      class="max-h-[520px] w-full object-contain object-bottom"
     />
   </div>
 </div>

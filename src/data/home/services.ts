@@ -6,7 +6,7 @@ export const serviceSectionDetails = {
 export const serviceDetails = [
   {
     id: 1,
-    imageName: "/images/services/product-planning.jpg",
+    imageName: "/images/services/product-planning.png",
     title: "Product Strategy & Planning",
     slug: "product-strategy-and-planning",
     tags: [
@@ -55,7 +55,7 @@ export const serviceDetails = [
 
   {
     id: 2,
-    imageName: "/images/services/ui-ux-branding.jpg",
+    imageName: "/images/services/ui-ux-branding.png",
     title: "UI-UX & Brand Experience",
     slug: "ui-ux-and-brand-experience",
     tags: ["User Flows", "Interface Design", "Design Systems", "Brand Consistency"],
@@ -95,7 +95,7 @@ export const serviceDetails = [
 
   {
     id: 3,
-    imageName: "/images/services/full-stack-development.jpg",
+    imageName: "/images/services/full-stack-development.png",
     title: "Full-Stack Development",
     slug: "full-stack-development",
     tags: [

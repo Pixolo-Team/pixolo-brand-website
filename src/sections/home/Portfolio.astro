@@ -23,6 +23,30 @@ import { portfolioSectionDetails } from "@/data/portfolio.ts";
 
 /** API Call to get all portfolio */
 const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
+
+const normalizePortfolioItem = (item: PortfolioData): PortfolioData => {
+  if (item.slug === "project-now") {
+    return {
+      ...item,
+      brand_name: "Pango",
+      title: item.title.replace(/Project Now/gi, "Pango"),
+      subtitle: item.subtitle.replace(/Project Now/gi, "Pango"),
+    };
+  }
+
+  if (item.slug === "eighty-days") {
+    return {
+      ...item,
+      brand_color: "#111111",
+    };
+  }
+
+  return item;
+};
+
+const homePortfolioItems = Array.isArray(portfolioItems)
+  ? portfolioItems.filter((item) => item.show_in_home === "TRUE").map(normalizePortfolioItem)
+  : [];
 ---
 
 <!-- Portfolio Section -->
@@ -73,9 +97,8 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
       <!-- Tile Wrapper -->
       <div class="project-card-wrapper flex flex-col gap-11">
         {
-          portfolioItems.map((projectCardItem) => {
+          homePortfolioItems.map((projectCardItem) => {
             return (
-              projectCardItem.show_in_home === "TRUE" &&
               projectCardItem.is_highlight === "TRUE" && (
                 <div class="project-card sticky top-[10vh]">
                   <ProjectCard
@@ -98,9 +121,8 @@ const portfolioItems: PortfolioData[] = await getPortfoliosRequest();
       <!-- Article Cards -->
       <div class="grid grid-cols-1 gap-24 lg:grid-cols-2 lg:gap-20 xl:gap-28 2xl:gap-32">
         {
-          portfolioItems.map(
+          homePortfolioItems.map(
             (articleCardItem) =>
-              articleCardItem.show_in_home == "TRUE" &&
               articleCardItem.is_highlight == "FALSE" && (
                 <ArticleCard
                   thumbnail={articleCardItem.thumbnail_image}

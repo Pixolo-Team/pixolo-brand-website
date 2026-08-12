@@ -12,7 +12,7 @@ export const clientItems = [
     darkImage: "times-of-india.png",
     lightImage: "times-of-india-light.png",
   },
-  { name: "Reliance Digital", darkImage: "reliance.png", lightImage: "reliance-light.png" },
+  { name: "Samsung", darkImage: "samsung.png", lightImage: "samsung-light.png" },
   { name: "Eighty Days", darkImage: "eighty-days.png", lightImage: "eighty-days-light.png" },
   { name: "Ceat", darkImage: "ceat.png", lightImage: "ceat-light.png" },
   { name: "Pango", darkImage: "pango.png", lightImage: "pango-light.png" },
@@ -46,6 +46,6 @@ export const clientItems = [
   },
   { name: "Neelsiddhi", darkImage: "neelsidhi.png", lightImage: "neelsidhi-light.png" },
   { name: "Bajaj", darkImage: "bajaj.png", lightImage: "bajaj-light.png" },
-  { name: "Samsung", darkImage: "samsung.png", lightImage: "samsung-light.png" },
+  { name: "Reliance Digital", darkImage: "reliance.png", lightImage: "reliance-light.png" },
   { name: "Flybird", darkImage: "flybird.png", lightImage: "flybird-light.png" },
 ];

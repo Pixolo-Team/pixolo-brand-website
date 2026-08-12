@@ -1,7 +1,7 @@
 import { animate } from "motion";
 /** Function to add animations in Hero section */
 export const animateHeroTitle = () => {
-  document.addEventListener("DOMContentLoaded", () => {
+  const revealWords = () => {
     // Select all words
     const wordContainers = document.querySelectorAll("[data-animate-word]");
     let delay = 0;
@@ -21,7 +21,15 @@ export const animateHeroTitle = () => {
         container.classList.add("is-visible");
       });
     }, 50);
-  });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", revealWords, { once: true });
+  } else {
+    revealWords();
+  }
+
+  document.addEventListener("astro:page-load", revealWords);
 };
 
 /** Animate floating marble inside its container with a constant speed (Motion One version) */
