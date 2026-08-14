@@ -73,7 +73,7 @@ const { client, services, platforms, timeline, industry, techStack } = Astro.pro
                   if (!img) return null;
                   return (
                     <Icon
-                      name={img}
+                      name={img.trim().toLowerCase()}
                       class="tech-stack-icon size-5 shrink-0 md:size-7 lg:size-10 xl:size-12 2xl:size-14"
                     />
                   );

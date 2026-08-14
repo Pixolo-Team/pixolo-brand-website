@@ -99,7 +99,7 @@ const { meta = {}, hideBottomCTA = false } = Astro.props;
 
     <!-- Whatsapp button component -->
     <WhatsappButton
-      href={`https://wa.me/${siteInfo.contact.phone[0].value}`}
+      href={`https://wa.me/${siteInfo.contact.phone[0].whatsapp}`}
       extraClasses="fixed bottom-5 right-5 md:bottom-10 md:right-20 z-30 hidden md:flex"
     />
 
@@ -156,31 +156,43 @@ const { meta = {}, hideBottomCTA = false } = Astro.props;
 </script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // Select all elements that should animate when visible
-    const animatedElements = document.querySelectorAll(
+  const initScrollAnimations = () => {
+    const animatedElements = document.querySelectorAll<HTMLElement>(
       ".anim-fade-up-quick, .anim-fade-up-slow, .anim-fade-in-up, .anim-fade-in-right",
     );
-    // Create a new Intersection Observer to detect when elements appear in the viewport
+
+    if (!("IntersectionObserver" in window)) {
+      animatedElements.forEach((el) => el.classList.add("anim-visible"));
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // Check if the element is currently visible in the viewport
           if (entry.isIntersecting) {
-            // Add the visible class to trigger CSS animation
             entry.target.classList.add("anim-visible");
-
-            // Stop observing the element after animation triggers once
             observer.unobserve(entry.target);
           }
         });
       },
-
-      // Trigger the animation when 20% of the element is visible
       { threshold: 0.18 },
     );
 
-    // Observe each selected element
-    animatedElements.forEach((el) => observer.observe(el));
-  });
+    animatedElements.forEach((el) => {
+      if (el.classList.contains("anim-visible") || el.dataset.scrollAnimationObserved === "true") {
+        return;
+      }
+
+      el.dataset.scrollAnimationObserved = "true";
+      observer.observe(el);
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initScrollAnimations, { once: true });
+  } else {
+    initScrollAnimations();
+  }
+
+  document.addEventListener("astro:page-load", initScrollAnimations);
 </script>

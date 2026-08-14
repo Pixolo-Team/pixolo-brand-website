@@ -22,11 +22,12 @@ const { brandColor, brandName, image, logo, title, subtitle, badges, href } = As
 
 // Drop empty/null/whitespace badges so blank pills never render
 const visibleBadges = (badges ?? []).filter((badge) => String(badge ?? "").trim() !== "");
+const isMatteBlackCard = brandColor.toLowerCase() === "#111111";
 ---
 
 <!-- Main Project Tile -->
 <div
-  class={`rounded-[42px] md:rounded-[64px] xl:flex xl:flex-row xl:gap-10`}
+  class={`rounded-[42px] border border-transparent md:rounded-[64px] xl:flex xl:flex-row xl:gap-10 ${isMatteBlackCard ? "dark:border-white/10" : ""}`}
   style={`background-color: ${brandColor};`}
 >
   <!-- Project Content -->
@@ -81,12 +82,12 @@ const visibleBadges = (badges ?? []).filter((badge) => String(badge ?? "").trim(
   </div>
 
   <!-- Image -->
-  <div class="hidden h-full w-[42%] self-end pr-6 pb-5 xl:block">
+  <div class="hidden w-[42%] self-stretch overflow-hidden pr-6 pb-5 xl:flex xl:items-end">
     <ThemeImage
       light={image}
       dark={image}
       alt={`${brandName} Project Screenshot`}
-      class="h-full w-full"
+      class="max-h-[520px] w-full object-contain object-bottom"
     />
   </div>
 </div>

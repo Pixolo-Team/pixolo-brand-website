@@ -19,12 +19,12 @@ const {
 <!-- Service Item -->
 <div class="flex w-full cursor-pointer flex-col gap-4 md:gap-6 lg:gap-7 2xl:max-w-[500px]">
   <!-- Service Image -->
-  <div class="border-n-300 h-[400px] w-full overflow-hidden rounded-4xl border md:h-[450px]">
+  <div class="border-n-300 aspect-video w-full overflow-hidden rounded-4xl border">
     <Image
       src={imageName}
       alt={title}
       width={490}
-      height={450}
+      height={276}
       class="h-full w-full object-cover transition-transform duration-500 ease-in-out hover:scale-[1.2]"
       loading="lazy"
       decoding="async"
