@@ -22,7 +22,7 @@ export const animateClientLogos = () => {
     animate(
       clientLogoSection?.querySelectorAll(".client-logo"),
       { y: ["50px", 0], opacity: [0, 1] },
-      { duration: 0.4, delay: stagger(0.2, { from: "first", startDelay: 1 }) },
+      { duration: 0.2, delay: stagger(0.2, { from: "first", startDelay: 1 }) },
     ).finished.then(() => {
       // Animate the Footer Text
       animate(
